@@ -1,0 +1,7 @@
+C:\Users\baitola\Desktop\ERA\ERA_0.1\ERA_0.1\bin\ERA_0.1.dll
+C:\Users\baitola\Desktop\ERA\ERA_0.1\ERA_0.1\bin\ERA_0.1.pdb
+C:\Users\baitola\Desktop\ERA\ERA_0.1\ERA_0.1\bin\EntityFramework.dll
+C:\Users\baitola\Desktop\ERA\ERA_0.1\ERA_0.1\bin\EntityFramework.xml
+C:\Users\baitola\Desktop\ERA\ERA_0.1\ERA_0.1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\baitola\Desktop\ERA\ERA_0.1\ERA_0.1\obj\Debug\ERA_0.1.dll
+C:\Users\baitola\Desktop\ERA\ERA_0.1\ERA_0.1\obj\Debug\ERA_0.1.pdb

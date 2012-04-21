@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>AdminCP</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="data/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="data/js/ui/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="data/js/jquery.corner.js"></script>
+<script type="text/javascript" src="data/js/jquery.validate.js"></script>
+<script type="text/javascript" src="data/js/css_browser_selector.js"></script>
+<script type="text/javascript" src="data/js/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="data/js/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="data/js/plugins/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="data/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="data/js/editor/jquery.cleditor.min.js"></script>
+<script type="text/javascript" src="data/js/calendar/fullcalendar.min.js"></script>
+<script type="text/javascript" src="data/js/jquery.multiselect.min.js"></script>
+<script type="text/javascript" src="data/js/tooltip/jquery.tipsy.js"></script>
+<script type="text/javascript" src="data/js/validation/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="data/js/validation/languages/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="data/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="data/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="data/js/fancybox/jquery.easing-1.4.pack.js"></script>
+<script type="text/javascript" src="data/js/js.js"></script>
+<link rel="stylesheet" href="data/css/reset.css" type="text/css" />
+<link rel="stylesheet" href="data/css/grid.css" type="text/css" />
+<link rel="stylesheet" href="data/css/style.css" type="text/css" />
+<link rel="stylesheet" href="data/js/plugins.css" type="text/css" />
+</head>
+<script class="code" type="text/javascript"><!-- Plugin Examples -->
+$(document).ready(function(){
+	$('#datepicker').datepicker();
+	
+	$('.checkboxui, .radioui').buttonset();
+	
+	$('#slider').slider({ values: [20,50], range: true });
+	
+});
+</script>
+<body>
+	<div id="main" class="container_12"><!-- Body Wrapper Begin -->
+		<div id="header"><!-- Header Begin -->
+			<div class="grid_3"><a href="#" id="logo" class="float_left">AdminCP</a></div>
+			<div class="grid_4 push_5">
+				<div id="search"><!-- Header Search Begin -->
+					<input type="text" placeholder="Search..." id="searchinput" name="search" />
+					<input type="submit" id="searchbutton" name="search" />
+				</div><!-- Header Search End -->
+			</div>
+		</div><!-- Header End -->
+		<div class="clear"></div>
+		<div id="userbar"><!-- Userbar Begin -->
+			<div id="profile"><!-- Profile Begin -->
+				<div id="avatar">
+					<img src="img/test_avatar.png" alt="Avatar" height="44" />
+					<a href="#" id="unreadcount">12</a>
+				</div>
+				<div id="profileinfo">
+					<h3 id="username">Administrator</h3>
+					<span id="subline">192.168.1.100</span>
+					<div class="clear"></div>
+					<a href="#" class="profilebutton">Profile</a>
+					<a href="#" class="profilebutton">Logout</a>
+				</div>
+			</div><!-- Userbar End -->
+			<ul id="navigation"><!-- Main Navigation Begin -->
+				<li><a href="cp_main.html" class="icon_stats">Statistics</a></li>
+				<li><a href="#" class="icon_users">Tables</a>
+					<ul>
+						<li><a href="cp_table.html">Normal Table</a></li>
+						<li><a href="cp_datatable.html">Data Table</a></li>
+					</ul>
+				</li>
+				<li class="activepage"><a href="cp_forms.html" class="icon_email">Forms</a></li>
+				<li><a href="#" class="icon_folder">UI Elements</a>
+					<ul>
+						<li><a href="cp_widgets.html">User Interface</a></li>
+						<li><a href="cp_gallery.html">Gallery</a></li>
+						<li><a href="cp_calendar.html">Calendar</a></li>
+					</ul>
+				</li>
+				<li><a href="cp_article.html" class="icon_article">Simple page</a></li>
+				<li><a href="#" class="icon_cross">Error pages</a>
+					<ul>
+						<li><a href="403.html">Error 403</a></li>
+						<li><a href="404.html">Error 404</a></li>
+						<li><a href="503.html">Error 503</a></li>
+					</ul>
+				</li>
+				<li><a href="index.html" class="icon_logout">Logout</a></li>
+			</ul><!-- Main Navigation End -->
+		</div><!-- Userbar End -->
+		<div class="clear"></div>
+		<div class="success grid_12"><h3>Different notification messages - .error, .warning, .success, .inforamtion </h3><a href="#" class="hide_btn">&nbsp;</a></div><!-- Notification -->
+		<div id="body">
+			<div class="block big"><!-- Block Begin -->
+				<div class="titlebar">
+					<h3>Form</h3>
+					<a href="#" class="toggle">&nbsp;</a>
+				</div>
+				<div class="block_cont">
+					<form class="form" action="" method="POST">
+						<div class="form_row"><label>Title:</label><input class="input validate[required] tipRight" type="text" style="width: 290px;" name="req" id="req" placeholder="Enter title" original-title=".tipRight - right tooltip by tipsy" /></div>
+						<div class="form_row">
+							<label>Category:</label>
+							<select name="select" class="select" style="width: 300px;">
+								<option value="opt1">Category name</option>
+								<option value="opt2">Option 2</option>
+								<option value="opt3">Option 3</option>
+								<option value="opt4">Option 4</option>
+								<option value="opt5">Option 5</option>
+								<option value="opt6">Option 6</option>
+								<option value="opt7">Option 7</option>
+								<option value="opt8">Option 8</option>
+							</select>
+						</div>
+						<div class="form_row">
+							<label>Tags:</label>
+							<select name="select" class="multiselect" style="width: 300px;">
+								<option value="opt11">Tag1</option>
+								<option value="opt21">Tag2</option>
+								<option value="opt31">Tag3</option>
+								<option value="opt41">Tag4</option>
+								<option value="opt41">Tag5</option>
+								<option value="opt41">Tag6</option>
+								<option value="opt41">Tag7</option>
+								<option value="opt41">Tag8</option>
+								<option value="opt41">Tag9</option>
+								<option value="opt41">Tag10</option>
+							</select>
+						</div>
+						<div class="form_row"><label>Message:</label><textarea id="htmleditor"></textarea></div>
+						<div class="form_row"><label>Slider:</label><div id="slider" class="tipLeft" original-title=".tipLeft - left tooltip by tipsy"></div></div>
+						<div class="form_row"><label>Datepicker:</label><input class="input validate[required] tipTop" id="datepicker" type="text" style="width: 290px;" name="inputtext" placeholder="Pick a date" original-title=".tipTop - top tooltip by tipsy" /></div>
+						<div class="form_row"><label>Description*(0-120 symbols):</label><textarea cols="80" rows="5" class="textarea validate[required, maxSize[120]] tipBot" id="descr" original-title=".tipBot - bottom tooltip by tipsy"></textarea></div>
+						<div class="form_row radioui">
+							<input type="radio" id="r1" name="question" value="1"><label for="r1">Radio #1</label>
+							<input type="radio" id="r2" name="question" value="2"><label for="r2">Radio #2</label>
+							<input type="radio" id="r3" name="question" value="3"><label for="r3">Radio #3</label>
+							<input type="radio" id="r4" name="question" value="4"><label for="r4">Radio #4</label>
+							<input type="radio" id="r5" name="question" value="5"><label for="r5">Radio #5</label>
+						</div>
+						<div class="form_row radioui">
+							<input type="checkbox" id="c1" name="question" value="1"><label for="c1">Check #1</label>
+							<input type="checkbox" id="c2" name="question" value="2"><label for="c2">Check #2</label>
+							<input type="checkbox" id="c3" name="question" value="3"><label for="c3">Check #3</label>
+							<input type="checkbox" id="c4" name="question" value="4"><label for="c4">Check #4</label>
+							<input type="checkbox" id="c5" name="question" value="5"><label for="c5">Check #5</label>
+						</div>
+						<div class="form_row">
+							<label><input type="checkbox" name="chbox" id=""> Check #1</label>
+							<label><input type="checkbox" name="chbox" id=""> Check #2</label>
+							<label><input type="checkbox" name="chbox" id=""> Check #3</label>
+							<label><input type="checkbox" name="chbox" id=""> Check #4</label>
+						</div>
+						<div class="clear"></div><br />
+						<div class="clear"></div><br />
+						<div class="form_row">
+							<label><input type="radio" id="" name="question" value="1" checked> Radio #1</label>
+							<label><input type="radio" id="" name="question" value="1" checked> Radio #2</label>
+							<label><input type="radio" id="" name="question" value="1" checked> Radio #3</label>
+						</div>
+						<div class="clear"></div><br />
+						<div class="form_row"><input type="submit" class="submit" value="Submit" /></div>
+					</form>
+				</div>
+			</div><!-- Block End -->
+		</div>
+	</div><!-- Body Wrapper End -->
+</body>
+</html>

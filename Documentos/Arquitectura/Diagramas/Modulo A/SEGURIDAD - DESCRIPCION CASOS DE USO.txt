@@ -1,0 +1,16 @@
+CASO USO ADMIN PERFILES DE USUARIOS
+
+El usuario selecciona la opción de registrar nuevo perfil, completa los campos del formulario, selecciona los módulos a los que ese perfil podrá tener acceso, y se envía al servidor esta información.
+
+CASO USO LOGIN
+
+Este caso de uso servirá para verificar la autenticidad de un nombre de usuario y contraseña, los cuales se encuentran almacenados en el servidor.
+
+CASO DE USO LOGOUT
+
+Este caso de uso servirá para desconectar a un usuario del sistema.
+
+CASO USO ADMIN CUENTAS DE USUARIOS
+
+El administrador de seguridad podrá registrar, editar, eliminar y buscar a todos los usuarios del sistema.
+

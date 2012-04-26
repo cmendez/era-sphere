@@ -10,7 +10,3 @@ CASO DE USO LOGOUT
 
 Este caso de uso servirá para desconectar a un usuario del sistema.
 
-CASO USO ADMIN CUENTAS DE USUARIOS
-
-El administrador de seguridad podrá registrar, editar, eliminar y buscar a todos los usuarios del sistema.
-

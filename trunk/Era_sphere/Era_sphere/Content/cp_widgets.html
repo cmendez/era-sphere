@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>AdminCP</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="data/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="data/js/ui/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="data/js/jquery.corner.js"></script>
+<script type="text/javascript" src="data/js/jquery.validate.js"></script>
+<script type="text/javascript" src="data/js/css_browser_selector.js"></script>
+<script type="text/javascript" src="data/js/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="data/js/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="data/js/plugins/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="data/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="data/js/editor/jquery.cleditor.min.js"></script>
+<script type="text/javascript" src="data/js/calendar/fullcalendar.min.js"></script>
+<script type="text/javascript" src="data/js/jquery.multiselect.min.js"></script>
+<script type="text/javascript" src="data/js/tooltip/jquery.tipsy.js"></script>
+<script type="text/javascript" src="data/js/validation/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="data/js/validation/languages/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="data/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="data/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="data/js/fancybox/jquery.easing-1.4.pack.js"></script>
+<script type="text/javascript" src="data/js/js.js"></script>
+<link rel="stylesheet" href="data/css/reset.css" type="text/css" />
+<link rel="stylesheet" href="data/css/grid.css" type="text/css" />
+<link rel="stylesheet" href="data/css/style.css" type="text/css" />
+<link rel="stylesheet" href="data/js/plugins.css" type="text/css" />
+</head>
+<body>
+<script class="code" type="text/javascript"><!-- Plugin Examples -->
+$(document).ready(function(){
+	$('.accordion').accordion();
+	
+	$('#mainpageTabs').tabs();
+		
+	$('#dialog').dialog({
+		autoOpen: false,
+		width: 600,
+		modal: true,
+		buttons: {
+			"Ok": function() { 
+				$(this).dialog("close"); 
+			}, 
+			"Cancel": function() { 
+				$(this).dialog("close"); 
+			} 
+		}
+	});
+	
+	$('#openDialog').click(function(){
+		$('#dialog').dialog('open');
+		return false;
+	});
+	
+	$('#dialog_link, ul.icons li').hover(
+		function() { $(this).addClass('ui-state-hover'); }, 
+		function() { $(this).removeClass('ui-state-hover'); }
+	);
+});
+</script>
+	<div id="main" class="container_12"><!-- Body Wrapper Begin -->
+		<div id="header"><!-- Header Begin -->
+			<div class="grid_3"><a href="#" id="logo" class="float_left">AdminCP</a></div>
+			<div class="grid_4 push_5">
+				<div id="search"><!-- Header Search Begin -->
+					<input type="text" placeholder="Search..." id="searchinput" name="search" />
+					<input type="submit" id="searchbutton" name="search" />
+				</div><!-- Header Search End -->
+			</div>
+		</div><!-- Header End -->
+		<div class="clear"></div>
+		<div id="userbar"><!-- Userbar Begin -->
+			<div id="profile"><!-- Profile Begin -->
+				<div id="avatar">
+					<img src="img/test_avatar.png" alt="Avatar" height="44" />
+					<a href="#" id="unreadcount">12</a>
+				</div>
+				<div id="profileinfo">
+					<h3 id="username">Administrator</h3>
+					<span id="subline">192.168.1.100</span>
+					<div class="clear"></div>
+					<a href="#" class="profilebutton">Profile</a>
+					<a href="#" class="profilebutton">Logout</a>
+				</div>
+			</div><!-- Userbar End -->
+			<ul id="navigation"><!-- Main Navigation Begin -->
+				<li><a href="cp_main.html" class="icon_stats">Statistics</a></li>
+				<li><a href="#" class="icon_users">Tables</a>
+					<ul>
+						<li><a href="cp_table.html">Normal Table</a></li>
+						<li><a href="cp_datatable.html">Data Table</a></li>
+					</ul>
+				</li>
+				<li><a href="cp_forms.html" class="icon_email">Forms</a></li>
+				<li class="activepage"><a href="#" class="icon_folder">UI Elements</a>
+					<ul>
+						<li><a href="cp_widgets.html">User Interface</a></li>
+						<li><a href="cp_gallery.html">Gallery</a></li>
+						<li><a href="cp_calendar.html">Calendar</a></li>
+					</ul>
+				</li>
+				<li><a href="cp_article.html" class="icon_article">Simple page</a></li>
+				<li><a href="#" class="icon_cross">Error pages</a>
+					<ul>
+						<li><a href="403.html">Error 403</a></li>
+						<li><a href="404.html">Error 404</a></li>
+						<li><a href="503.html">Error 503</a></li>
+					</ul>
+				</li>
+				<li><a href="index.html" class="icon_logout">Logout</a></li>
+			</ul><!-- Main Navigation End -->
+		</div><!-- Userbar End -->
+		<div class="clear"></div>
+		<div class="error grid_12"><h3>Different notification messages - .error, .warning, .success, .inforamtion </h3><a href="#" class="hide_btn">&nbsp;</a></div><!-- Notification -->
+		<div id="body">
+			<div class="block big"><!-- Block Begin -->
+				<div class="titlebar">
+					<h3>Tabs with UI elements</h3>
+					<a href="#" class="toggle">&nbsp;</a>
+				</div>
+				<div class="block_cont">
+					<div id="mainpageTabs">
+						<ul>
+							<li><a href="#tabs-1">Custom Buttons</a></li>
+							<li><a href="#tabs-2">UI Icons</a></li>
+							<li><a href="#tabs-3">Hightlight / Error</a></li>
+							<li><a href="#tabs-4">Dialog</a></li>
+							<li><a href="#tabs-5">Accordion</a></li>
+						</ul>
+						<div id="tabs-1">
+							<div class="navbutton_showcase"><!-- Button Icons Begin -->
+								<a href="#" class="navbutton"><span class="icon_stats">.icon_stats</span></a>
+								<a href="#" class="navbutton"><span class="icon_email">.icon_email</span></a>
+								<a href="#" class="navbutton"><span class="icon_logout">.icon_logout</span></a>
+								<a href="#" class="navbutton"><span class="icon_settings">.icon_settings</span></a>
+								<a href="#" class="navbutton"><span class="icon_comment">.icon_comment</span></a>
+								<a href="#" class="navbutton"><span class="icon_users">.icon_users</span></a>
+								<a href="#" class="navbutton"><span class="icon_notify">.icon_notify</span></a>
+								<a href="#" class="navbutton"><span class="icon_lock">.icon_lock</span></a>
+								<a href="#" class="navbutton"><span class="icon_unlock">.icon_unlock</span></a>
+								<a href="#" class="navbutton"><span class="icon_search">.icon_search</span></a>
+								<a href="#" class="navbutton"><span class="icon_save">.icon_save</span></a>
+								<a href="#" class="navbutton"><span class="icon_cut">.icon_cut</span></a>
+								<a href="#" class="navbutton"><span class="icon_paste">.icon_paste</span></a>
+								<a href="#" class="navbutton"><span class="icon_calendar">.icon_calendar</span></a>
+								<a href="#" class="navbutton"><span class="icon_fav">.icon_fav</span></a>
+								<a href="#" class="navbutton"><span class="icon_folder">.icon_folder</span></a>
+								<a href="#" class="navbutton"><span class="icon_star">.icon_star</span></a>
+								<a href="#" class="navbutton"><span class="icon_star2">.icon_star2</span></a>
+								<a href="#" class="navbutton"><span class="icon_minus">.icon_minus</span></a>
+								<a href="#" class="navbutton"><span class="icon_plus">.icon_plus</span></a>
+								<a href="#" class="navbutton"><span class="icon_cross">.icon_cross</span></a>
+								<a href="#" class="navbutton"><span class="icon_check">.icon_check</span></a>
+								<a href="#" class="navbutton"><span class="icon_square">.icon_square</span></a>
+								<a href="#" class="navbutton"><span class="icon_home">.icon_home</span></a>
+								<a href="#" class="navbutton"><span class="icon_up">.icon_up</span></a>
+								<a href="#" class="navbutton"><span class="icon_down">.icon_down</span></a>
+								<a href="#" class="navbutton"><span class="icon_left">.icon_left</span></a>
+								<a href="#" class="navbutton"><span class="icon_right">.icon_right</span></a>
+								<a href="#" class="navbutton"><span class="icon_article">.icon_article</span></a>
+								<a href="#" class="navbutton"><span class="icon_doc">.icon_doc</span></a>
+								<a href="#" class="navbutton"><span class="icon_ppt">.icon_ppt</span></a>
+								<a href="#" class="navbutton"><span class="icon_xls">.icon_xls</span></a>
+								<a href="#" class="navbutton"><span class="icon_pdf">.icon_pdf</span></a>
+								<a href="#" class="navbutton"><span class="icon_zip">.icon_zip</span></a>
+								<a href="#" class="navbutton"><span class="icon_fb">.icon_fb</span></a>
+								<a href="#" class="navbutton"><span class="icon_twitter">.icon_twitter</span></a>
+								<a href="#" class="navbutton"><span class="icon_power">.icon_power</span></a>
+								<a href="#" class="navbutton"><span class="icon_target">.icon_target</span></a>
+								<a href="#" class="navbutton"><span class="icon_tag">.icon_tag</span></a>
+								<a href="#" class="navbutton"><span class="icon_bookmark">.icon_bookmark</span></a>
+								<a href="#" class="navbutton"><span class="icon_music">.icon_music</span></a>
+								<a href="#" class="navbutton"><span class="icon_time">.icon_time</span></a>
+								<a href="#" class="navbutton"><span class="icon_pen">.icon_pen</span></a>
+								<a href="#" class="navbutton"><span class="icon_monitor">.icon_monitor</span></a>
+								<a href="#" class="navbutton"><span class="icon_profile">.icon_profile</span></a>
+								<a href="#" class="navbutton"><span class="icon_charts">.icon_charts</span></a>
+								<a href="#" class="navbutton"><span class="icon_pictures">.icon_pictures</span></a>
+								<a href="#" class="navbutton"><span class="icon_video">.icon_video</span></a>
+								<a href="#" class="navbutton"><span class="icon_next">.icon_next</span></a>
+								<a href="#" class="navbutton"><span class="icon_prev">.icon_prev</span></a>
+							</div><!-- Button Icons End -->					
+						</div>
+						<div id="tabs-2">	
+							<ul class="icons" class="ui-widget ui-helper-clearfix">
+		
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-n"><span class="ui-icon ui-icon-carat-1-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-ne"><span class="ui-icon ui-icon-carat-1-ne"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-e"><span class="ui-icon ui-icon-carat-1-e"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-se"><span class="ui-icon ui-icon-carat-1-se"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-s"><span class="ui-icon ui-icon-carat-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-sw"><span class="ui-icon ui-icon-carat-1-sw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-w"><span class="ui-icon ui-icon-carat-1-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-1-nw"><span class="ui-icon ui-icon-carat-1-nw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-2-n-s"><span class="ui-icon ui-icon-carat-2-n-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-carat-2-e-w"><span class="ui-icon ui-icon-carat-2-e-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-n"><span class="ui-icon ui-icon-triangle-1-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-ne"><span class="ui-icon ui-icon-triangle-1-ne"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-e"><span class="ui-icon ui-icon-triangle-1-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-se"><span class="ui-icon ui-icon-triangle-1-se"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-s"><span class="ui-icon ui-icon-triangle-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-sw"><span class="ui-icon ui-icon-triangle-1-sw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-w"><span class="ui-icon ui-icon-triangle-1-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-1-nw"><span class="ui-icon ui-icon-triangle-1-nw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-2-n-s"><span class="ui-icon ui-icon-triangle-2-n-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-triangle-2-e-w"><span class="ui-icon ui-icon-triangle-2-e-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-1-n"><span class="ui-icon ui-icon-arrow-1-n"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-1-ne"><span class="ui-icon ui-icon-arrow-1-ne"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-1-e"><span class="ui-icon ui-icon-arrow-1-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-1-se"><span class="ui-icon ui-icon-arrow-1-se"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-1-s"><span class="ui-icon ui-icon-arrow-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-1-sw"><span class="ui-icon ui-icon-arrow-1-sw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-1-w"><span class="ui-icon ui-icon-arrow-1-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-1-nw"><span class="ui-icon ui-icon-arrow-1-nw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-2-n-s"><span class="ui-icon ui-icon-arrow-2-n-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-2-ne-sw"><span class="ui-icon ui-icon-arrow-2-ne-sw"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-2-e-w"><span class="ui-icon ui-icon-arrow-2-e-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-2-se-nw"><span class="ui-icon ui-icon-arrow-2-se-nw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowstop-1-n"><span class="ui-icon ui-icon-arrowstop-1-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowstop-1-e"><span class="ui-icon ui-icon-arrowstop-1-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowstop-1-s"><span class="ui-icon ui-icon-arrowstop-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowstop-1-w"><span class="ui-icon ui-icon-arrowstop-1-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-1-n"><span class="ui-icon ui-icon-arrowthick-1-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-1-ne"><span class="ui-icon ui-icon-arrowthick-1-ne"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-1-e"><span class="ui-icon ui-icon-arrowthick-1-e"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-1-se"><span class="ui-icon ui-icon-arrowthick-1-se"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-1-s"><span class="ui-icon ui-icon-arrowthick-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-1-sw"><span class="ui-icon ui-icon-arrowthick-1-sw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-1-w"><span class="ui-icon ui-icon-arrowthick-1-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-1-nw"><span class="ui-icon ui-icon-arrowthick-1-nw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-2-n-s"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-2-ne-sw"><span class="ui-icon ui-icon-arrowthick-2-ne-sw"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-2-e-w"><span class="ui-icon ui-icon-arrowthick-2-e-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthick-2-se-nw"><span class="ui-icon ui-icon-arrowthick-2-se-nw"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthickstop-1-n"><span class="ui-icon ui-icon-arrowthickstop-1-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthickstop-1-e"><span class="ui-icon ui-icon-arrowthickstop-1-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthickstop-1-s"><span class="ui-icon ui-icon-arrowthickstop-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowthickstop-1-w"><span class="ui-icon ui-icon-arrowthickstop-1-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowreturnthick-1-w"><span class="ui-icon ui-icon-arrowreturnthick-1-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowreturnthick-1-n"><span class="ui-icon ui-icon-arrowreturnthick-1-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowreturnthick-1-e"><span class="ui-icon ui-icon-arrowreturnthick-1-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowreturnthick-1-s"><span class="ui-icon ui-icon-arrowreturnthick-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowreturn-1-w"><span class="ui-icon ui-icon-arrowreturn-1-w"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowreturn-1-n"><span class="ui-icon ui-icon-arrowreturn-1-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowreturn-1-e"><span class="ui-icon ui-icon-arrowreturn-1-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowreturn-1-s"><span class="ui-icon ui-icon-arrowreturn-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowrefresh-1-w"><span class="ui-icon ui-icon-arrowrefresh-1-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowrefresh-1-n"><span class="ui-icon ui-icon-arrowrefresh-1-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowrefresh-1-e"><span class="ui-icon ui-icon-arrowrefresh-1-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrowrefresh-1-s"><span class="ui-icon ui-icon-arrowrefresh-1-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-4"><span class="ui-icon ui-icon-arrow-4"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-arrow-4-diag"><span class="ui-icon ui-icon-arrow-4-diag"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-extlink"><span class="ui-icon ui-icon-extlink"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-newwin"><span class="ui-icon ui-icon-newwin"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-refresh"><span class="ui-icon ui-icon-refresh"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-shuffle"><span class="ui-icon ui-icon-shuffle"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-transfer-e-w"><span class="ui-icon ui-icon-transfer-e-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-transferthick-e-w"><span class="ui-icon ui-icon-transferthick-e-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-folder-collapsed"><span class="ui-icon ui-icon-folder-collapsed"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-folder-open"><span class="ui-icon ui-icon-folder-open"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-document"><span class="ui-icon ui-icon-document"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-document-b"><span class="ui-icon ui-icon-document-b"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-note"><span class="ui-icon ui-icon-note"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-mail-closed"><span class="ui-icon ui-icon-mail-closed"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-mail-open"><span class="ui-icon ui-icon-mail-open"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-suitcase"><span class="ui-icon ui-icon-suitcase"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-comment"><span class="ui-icon ui-icon-comment"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-person"><span class="ui-icon ui-icon-person"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-print"><span class="ui-icon ui-icon-print"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-trash"><span class="ui-icon ui-icon-trash"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-locked"><span class="ui-icon ui-icon-locked"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-unlocked"><span class="ui-icon ui-icon-unlocked"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-bookmark"><span class="ui-icon ui-icon-bookmark"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-tag"><span class="ui-icon ui-icon-tag"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-home"><span class="ui-icon ui-icon-home"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-flag"><span class="ui-icon ui-icon-flag"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-calculator"><span class="ui-icon ui-icon-calculator"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-cart"><span class="ui-icon ui-icon-cart"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-pencil"><span class="ui-icon ui-icon-pencil"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-clock"><span class="ui-icon ui-icon-clock"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-disk"><span class="ui-icon ui-icon-disk"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-calendar"><span class="ui-icon ui-icon-calendar"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-zoomin"><span class="ui-icon ui-icon-zoomin"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-zoomout"><span class="ui-icon ui-icon-zoomout"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-search"><span class="ui-icon ui-icon-search"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-wrench"><span class="ui-icon ui-icon-wrench"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-gear"><span class="ui-icon ui-icon-gear"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-heart"><span class="ui-icon ui-icon-heart"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-star"><span class="ui-icon ui-icon-star"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-link"><span class="ui-icon ui-icon-link"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-cancel"><span class="ui-icon ui-icon-cancel"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-plus"><span class="ui-icon ui-icon-plus"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-plusthick"><span class="ui-icon ui-icon-plusthick"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-minus"><span class="ui-icon ui-icon-minus"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-minusthick"><span class="ui-icon ui-icon-minusthick"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-close"><span class="ui-icon ui-icon-close"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-closethick"><span class="ui-icon ui-icon-closethick"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-key"><span class="ui-icon ui-icon-key"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-lightbulb"><span class="ui-icon ui-icon-lightbulb"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-scissors"><span class="ui-icon ui-icon-scissors"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-clipboard"><span class="ui-icon ui-icon-clipboard"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-copy"><span class="ui-icon ui-icon-copy"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-contact"><span class="ui-icon ui-icon-contact"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-image"><span class="ui-icon ui-icon-image"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-video"><span class="ui-icon ui-icon-video"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-script"><span class="ui-icon ui-icon-script"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-alert"><span class="ui-icon ui-icon-alert"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-info"><span class="ui-icon ui-icon-info"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-notice"><span class="ui-icon ui-icon-notice"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-help"><span class="ui-icon ui-icon-help"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-check"><span class="ui-icon ui-icon-check"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-bullet"><span class="ui-icon ui-icon-bullet"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-radio-off"><span class="ui-icon ui-icon-radio-off"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-radio-on"><span class="ui-icon ui-icon-radio-on"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-pin-w"><span class="ui-icon ui-icon-pin-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-pin-s"><span class="ui-icon ui-icon-pin-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-play"><span class="ui-icon ui-icon-play"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-pause"><span class="ui-icon ui-icon-pause"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-seek-next"><span class="ui-icon ui-icon-seek-next"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-seek-prev"><span class="ui-icon ui-icon-seek-prev"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-seek-end"><span class="ui-icon ui-icon-seek-end"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-seek-first"><span class="ui-icon ui-icon-seek-first"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-stop"><span class="ui-icon ui-icon-stop"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-eject"><span class="ui-icon ui-icon-eject"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-volume-off"><span class="ui-icon ui-icon-volume-off"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-volume-on"><span class="ui-icon ui-icon-volume-on"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-power"><span class="ui-icon ui-icon-power"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-signal-diag"><span class="ui-icon ui-icon-signal-diag"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-signal"><span class="ui-icon ui-icon-signal"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-battery-0"><span class="ui-icon ui-icon-battery-0"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-battery-1"><span class="ui-icon ui-icon-battery-1"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-battery-2"><span class="ui-icon ui-icon-battery-2"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-battery-3"><span class="ui-icon ui-icon-battery-3"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-plus"><span class="ui-icon ui-icon-circle-plus"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-minus"><span class="ui-icon ui-icon-circle-minus"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-close"><span class="ui-icon ui-icon-circle-close"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-triangle-e"><span class="ui-icon ui-icon-circle-triangle-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-triangle-s"><span class="ui-icon ui-icon-circle-triangle-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-triangle-w"><span class="ui-icon ui-icon-circle-triangle-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-triangle-n"><span class="ui-icon ui-icon-circle-triangle-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-arrow-e"><span class="ui-icon ui-icon-circle-arrow-e"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-arrow-s"><span class="ui-icon ui-icon-circle-arrow-s"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-arrow-w"><span class="ui-icon ui-icon-circle-arrow-w"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-arrow-n"><span class="ui-icon ui-icon-circle-arrow-n"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-zoomin"><span class="ui-icon ui-icon-circle-zoomin"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-zoomout"><span class="ui-icon ui-icon-circle-zoomout"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circle-check"><span class="ui-icon ui-icon-circle-check"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circlesmall-plus"><span class="ui-icon ui-icon-circlesmall-plus"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circlesmall-minus"><span class="ui-icon ui-icon-circlesmall-minus"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-circlesmall-close"><span class="ui-icon ui-icon-circlesmall-close"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-squaresmall-plus"><span class="ui-icon ui-icon-squaresmall-plus"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-squaresmall-minus"><span class="ui-icon ui-icon-squaresmall-minus"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-squaresmall-close"><span class="ui-icon ui-icon-squaresmall-close"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-grip-dotted-vertical"><span class="ui-icon ui-icon-grip-dotted-vertical"></span></li>
+								
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-grip-dotted-horizontal"><span class="ui-icon ui-icon-grip-dotted-horizontal"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-grip-solid-vertical"><span class="ui-icon ui-icon-grip-solid-vertical"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-grip-solid-horizontal"><span class="ui-icon ui-icon-grip-solid-horizontal"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-gripsmall-diagonal-se"><span class="ui-icon ui-icon-gripsmall-diagonal-se"></span></li>
+								<li class="ui-state-default ui-corner-all" title=".ui-icon-grip-diagonal-se"><span class="ui-icon ui-icon-grip-diagonal-se"></span></li>
+								</ul></div>
+						<div id="tabs-3">
+							<div class="ui-widget">
+								<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+									<p style="padding: 10px 5px;"><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+									<strong>Hey!</strong> Sample ui-state-highlight style.</p>
+								</div>
+							</div>
+							<br/>
+							<div class="ui-widget">
+								<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+									<p style="padding: 10px 5px;"><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+									<strong>Alert:</strong> Sample ui-state-error style.</p>
+								</div>
+							</div>
+						</div>
+						<div id="tabs-4">
+							<a id="openDialog" href="#">Dialog example</a>
+							<div id="dialog" title="Dialog Title">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							</div>
+						</div>
+						<div id="tabs-5">
+							<div class="accordion">
+								<h3><a href="#">First header</a></h3>
+								<div>First content</div>
+								<h3><a href="#">Second header</a></h3>
+								<div>Second content</div>
+								<h3><a href="#">Third header</a></h3>
+								<div>Third content</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- Block End -->
+	</div><!-- Body Wrapper End -->
+	
+</body>
+</html>

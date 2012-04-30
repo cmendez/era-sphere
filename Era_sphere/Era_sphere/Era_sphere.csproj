@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\ApiCliente\ApiClienteAreaRegistration.cs" />
+    <Compile Include="Areas\ApiCliente\Controllers\ClienteController.cs" />
+    <Compile Include="Models\RestHttpVerbFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -71,7 +73,6 @@
     <Compile Include="Areas\ApiCliente\Models\Cliente.cs" />
     <Compile Include="Areas\ApiCliente\Models\InterfazLogicaCliente.cs" />
     <Compile Include="Areas\ApiCliente\Models\LogicaCliente.cs" />
-    <Compile Include="Areas\ApiCliente\Models\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -353,7 +354,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ApiCliente\Controllers\" />
     <Folder Include="Areas\ApiCliente\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

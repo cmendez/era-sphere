@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Data.Entity;
+using Era_sphere.Models;
 
 namespace Era_sphere
 {
@@ -32,7 +34,7 @@ namespace Era_sphere
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ClienteEntities>());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

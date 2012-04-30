@@ -14,6 +14,7 @@
     <AssemblyName>Era_sphere</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>lib\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages" />
@@ -57,13 +61,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Areas\ApiClientes\ApiClientesAreaRegistration.cs" />
+    <Compile Include="Areas\ApiCliente\ApiClienteAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Areas\ApiCliente\Models\Cliente.cs" />
+    <Compile Include="Areas\ApiCliente\Models\InterfazLogicaCliente.cs" />
+    <Compile Include="Areas\ApiCliente\Models\LogicaCliente.cs" />
+    <Compile Include="Areas\ApiCliente\Models\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -307,6 +315,7 @@
     <Content Include="Content\index.html" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ApiCliente\mantenimiento_cliente.js" />
+    <Content Include="Scripts\ApiSeguridad\mantenimiento_login.js" />
     <Content Include="Views\Home\Test_Page.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -344,14 +353,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ApiClientes\Controllers\" />
-    <Folder Include="Areas\ApiClientes\Models\" />
-    <Folder Include="Areas\ApiClientes\Views\Shared\" />
+    <Folder Include="Areas\ApiCliente\Controllers\" />
+    <Folder Include="Areas\ApiCliente\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\ApiClientes\Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Areas\ApiCliente\Views\Web.config" />
     <None Include="Content\data\images\Thumbs.db" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

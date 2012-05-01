@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Era_sphere.Models
+namespace Era_sphere.Areas.ApiCliente.Models
 {
   
         public interface InterfazLogicaCliente

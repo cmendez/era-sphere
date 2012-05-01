@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Models;
-
-
+using Era_sphere.Areas.ApiCliente.Models;
 
 namespace Era_sphere.Areas.ApiCliente.Controllers
 {
@@ -16,11 +15,6 @@ namespace Era_sphere.Areas.ApiCliente.Controllers
         [HttpGet]
         public JsonResult ClientesListaGeneral()
         {
-            Cliente c = new Cliente();
-            c.clienteID = 1;
-            c.nombre = "churrepom";
-            c.apellido_paterno = "churreta";
-            cliente_logica.agregarClientes(c);
             return Json(cliente_logica.retornarClientes(), JsonRequestBehavior.AllowGet);
         }
 
@@ -47,7 +41,7 @@ namespace Era_sphere.Areas.ApiCliente.Controllers
                         return Json(new { Error = false, Mensaje = "Success" }, JsonRequestBehavior.AllowGet);
                 }
             }
-            catch (Exception ex) { return Json(new { Error = true, Message = "error en backend" }); }
+            catch (Exception) { return Json(new { Error = true, Message = "error en backend" }); }
             return Json(new { Error = true, Message = "Operacion no soportada " }, JsonRequestBehavior.AllowGet);
         }
 

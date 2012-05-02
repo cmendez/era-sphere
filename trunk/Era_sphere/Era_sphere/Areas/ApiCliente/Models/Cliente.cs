@@ -43,7 +43,7 @@ namespace Era_sphere.Areas.ApiCliente.Models
             public string telefono { get; set; }
             public string celular { get; set; }
             public string razon_social { get; set; }
-            public Image foto_cliente { get; set; }
+            //public Image foto_cliente { get; set; }
             public Ciudad ciudad { get; set; }
             public Pais pais { get; set; }
             //supuestamente deben de ir los atributos ciudad, país y provincia. 

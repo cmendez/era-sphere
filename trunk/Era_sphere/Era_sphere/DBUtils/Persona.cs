@@ -6,7 +6,7 @@ using Era_sphere.Areas.ApiConfiguracion.Models;
 
 namespace Era_sphere.Generics
 {
-    public abstract class Persona: DBable
+    public abstract class Persona : DBable
     {
         public string nombre { get; set; }
         public string apellido_paterno { get; set; }

@@ -8,7 +8,6 @@ namespace Era_sphere.Areas.ApiCliente.Models
 {
     public class ClienteContext : DbContext
     {
-
         public DbSet<Cliente> clientes { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Drawing;
 using Era_sphere.Areas.ApiConfiguracion.Models;
-using Era_sphere.DBUtils;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.ApiCliente.Models
 {
@@ -43,7 +43,7 @@ namespace Era_sphere.Areas.ApiCliente.Models
             public string telefono { get; set; }
             public string celular { get; set; }
             public string razon_social { get; set; }
-            public virtual Image foto_cliente { get; set; }
+            public byte[] foto_cliente { get; set; }
             public Ciudad ciudad { get; set; }
             public Pais pais { get; set; }
             //supuestamente deben de ir los atributos ciudad, país y provincia. 

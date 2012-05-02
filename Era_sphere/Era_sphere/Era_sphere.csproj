@@ -71,7 +71,8 @@
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Provincia.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
     <Compile Include="Areas\ApiReportes\ApiReportesAreaRegistration.cs" />
-    <Compile Include="DBUtils\DBable.cs" />
+    <Compile Include="Generics\DBable.cs" />
+    <Compile Include="Generics\Pagable.cs" />
     <Compile Include="Models\RestHttpVerbFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -83,7 +84,7 @@
     <Compile Include="Areas\ApiCliente\Models\InterfazLogicaCliente.cs" />
     <Compile Include="Areas\ApiCliente\Models\LogicaCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DBUtils\DBGenericQueriesUtil.cs" />
+    <Compile Include="Generics\DBGenericQueriesUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\403.html" />

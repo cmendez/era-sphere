@@ -66,6 +66,7 @@
     <Compile Include="Areas\ApiCliente\Controllers\ClienteController.cs" />
     <Compile Include="Areas\ApiCliente\Models\ClienteContext.cs" />
     <Compile Include="Areas\ApiConfiguracion\ApiConfiguracionAreaRegistration.cs" />
+    <Compile Include="Areas\ApiConfiguracion\Models\Cadena.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Ciudad.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\UbigeoContext.cs" />

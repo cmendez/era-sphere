@@ -36,6 +36,7 @@ namespace Era_sphere
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            //Todos los contexts deben estar registrados en esta parte
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ClienteContext>());
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<UbigeoContext>());
             RegisterGlobalFilters(GlobalFilters.Filters);

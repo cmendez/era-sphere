@@ -31,7 +31,7 @@ namespace Era_sphere.Areas.ApiCliente.Controllers
                 switch (http_verb)
                 {
                     case "POST":
-                        this.cliente_logica.agregarClientes(cliente);
+                        this.cliente_logica.agregarCliente(cliente);
                         return Json(new {Error =false,Mensaje = "Success"}, JsonRequestBehavior.AllowGet);
                     case "PUT":
                         this.cliente_logica.modificarCliente(cliente);

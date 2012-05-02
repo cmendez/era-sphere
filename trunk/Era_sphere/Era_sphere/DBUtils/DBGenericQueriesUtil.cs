@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.ComponentModel;
 using System.Data;
 
-namespace Era_sphere.DBUtils
+namespace Era_sphere.Generics
 {
     public class DBGenericQueriesUtil<T> where T : DBable
     {

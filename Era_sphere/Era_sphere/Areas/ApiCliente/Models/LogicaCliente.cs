@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Data;
 using System.ComponentModel;
+using Era_sphere.DBUtils;
 
 namespace Era_sphere.Areas.ApiCliente.Models
 {
@@ -27,7 +28,7 @@ namespace Era_sphere.Areas.ApiCliente.Models
         public void modificarCliente(Cliente cliente)
         {
             var clientes = cliente_context.clientes;
-            var cliente_db = clientes.Find(cliente.clienteID);
+            var cliente_db = clientes.Find(cliente.ID);
             foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(cliente))
             {
                 if (property.GetValue(cliente) != null)
@@ -40,7 +41,8 @@ namespace Era_sphere.Areas.ApiCliente.Models
         }
         public void agregarClientes(Cliente cliente)
         {
-            cliente.clienteID = cliente_context.clientes.Max(p => p.clienteID) + 1;
+            DBGenericQueriesUtil<Cliente> dbquery = new DBGenericQueriesUtil<Cliente>(cliente_context, cliente_context.clientes);
+            cliente.ID = cliente_context.clientes.Max(p => p.ID) + 1;
             var clientes = cliente_context.clientes;
             clientes.Add(cliente);
             cliente_context.SaveChanges();
@@ -57,7 +59,23 @@ namespace Era_sphere.Areas.ApiCliente.Models
         public List<Cliente> buscarCliente(Cliente cliente)
         {
             var clientes = cliente_context.clientes;
-            //TODO: falta
+            string where = string.Empty;
+            bool first_line = true;
+            foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(cliente))
+            {
+                if (property.GetValue(cliente) != null)
+                {
+                    var value = property.GetValue(cliente);
+                    if(first_line) 
+                        first_line = false;
+                    else where += " And ";
+                    if (property.GetType() == where.GetType()) //query de un string
+                        where += property.Name + ".StartsWith(\"" + (string)value + "\")";
+                    else //query de cualquier otro tipo de dato
+                        where += property.Name + " = " + value;
+                }
+            }
+
             return null;
         }
     }

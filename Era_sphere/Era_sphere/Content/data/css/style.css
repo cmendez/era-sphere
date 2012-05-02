@@ -359,11 +359,11 @@ div.information .hide_btn:hover {
 
 
 #logo {
-	width: 162px;
-	height: 40px;
+	width: auto;
+	height: 50px;
 	display: block;
-	margin: 0 auto;
-	background: url('../images/logo.png') no-repeat;
+	margin: 0 auto 0 25px;
+	background: url('../images/logo2.png') no-repeat;
 	text-indent: -9999px;
 }
 

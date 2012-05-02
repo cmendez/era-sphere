@@ -41,7 +41,7 @@ namespace Era_sphere.Areas.ApiCliente.Controllers
                         return Json(new { Error = false, Mensaje = "Success" }, JsonRequestBehavior.AllowGet);
                 }
             }
-            catch (Exception) { return Json(new { Error = true, Message = "error en backend" }); }
+            catch (Exception ex ) { return Json(new { Error = true, Message = ex.Data }); }
             return Json(new { Error = true, Message = "Operacion no soportada " }, JsonRequestBehavior.AllowGet);
         }
 

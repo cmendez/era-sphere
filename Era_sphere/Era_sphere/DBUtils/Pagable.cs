@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Era_sphere.Generics
 {
-    public abstract class DBable
+    interface Pagable
     {
-        public int ID { get; set; }
+        decimal costo_final { get; set; }
     }
+   
 }

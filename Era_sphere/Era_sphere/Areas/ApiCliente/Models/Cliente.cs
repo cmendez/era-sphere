@@ -15,8 +15,8 @@ namespace Era_sphere.Areas.ApiCliente.Models
 
             public Cliente() 
             {
-                estado = EstadoCliente.sin_reserva;
-                tipo = TipoCliente.juridico;
+                //estado = EstadoCliente.sin_reserva;
+                //tipo = TipoCliente.natural;
             }
             public enum EstadoCliente
             {
@@ -24,15 +24,10 @@ namespace Era_sphere.Areas.ApiCliente.Models
                 sin_reserva,
                 en_estadia
             };
-            public enum TipoCliente
-            {
-                natural,
-                juridico
-            };
+            
            
             public string tarjeta_cliente { get; set; }
-            public EstadoCliente estado { get; set; }
-            public TipoCliente tipo { get; set; }  
+            public EstadoCliente estado { get; set; }  
         }
 
 }

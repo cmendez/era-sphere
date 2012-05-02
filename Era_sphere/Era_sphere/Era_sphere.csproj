@@ -70,6 +70,8 @@
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Provincia.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
+    <Compile Include="Areas\ApiReportes\ApiReportesAreaRegistration.cs" />
+    <Compile Include="DBUtils\DBable.cs" />
     <Compile Include="Models\RestHttpVerbFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Areas\ApiCliente\Models\InterfazLogicaCliente.cs" />
     <Compile Include="Areas\ApiCliente\Models\LogicaCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DBUtils\DBGenericQueriesUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\403.html" />
@@ -363,11 +366,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ApiCliente\Views\Shared\" />
     <Folder Include="Areas\ApiConfiguracion\Controllers\" />
+    <Folder Include="Areas\ApiConfiguracion\Models\Servicios\" />
     <Folder Include="Areas\ApiConfiguracion\Views\Shared\" />
+    <Folder Include="Areas\ApiReportes\Controllers\" />
+    <Folder Include="Areas\ApiReportes\Models\" />
+    <Folder Include="Areas\ApiReportes\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\ApiCliente\Views\Web.config" />
     <Content Include="Areas\ApiConfiguracion\Views\Web.config" />
+    <Content Include="Areas\ApiReportes\Views\Web.config" />
     <None Include="Content\data\images\Thumbs.db" />
     <Content Include="packages.config" />
   </ItemGroup>

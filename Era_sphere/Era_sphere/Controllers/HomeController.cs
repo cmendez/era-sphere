@@ -19,5 +19,9 @@ namespace Era_sphere.Controllers
         {
             return View();
         }
+        public ActionResult Login(string usuario, string password) {
+            if (usuario == "admin" && password == "admin") return View("Mantenimiento");
+            return View("Index");
+        }
     }
 }

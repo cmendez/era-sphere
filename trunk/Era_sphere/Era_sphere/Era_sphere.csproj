@@ -68,11 +68,11 @@
     <Compile Include="Areas\ApiConfiguracion\ApiConfiguracionAreaRegistration.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Ciudad.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Pais.cs" />
-    <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Provincia.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
     <Compile Include="Areas\ApiReportes\ApiReportesAreaRegistration.cs" />
     <Compile Include="Generics\DBable.cs" />
     <Compile Include="Generics\Pagable.cs" />
+    <Compile Include="Generics\Persona.cs" />
     <Compile Include="Models\RestHttpVerbFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -12,40 +12,41 @@ namespace Era_sphere.Areas.ApiCliente.Models
     public class LogicaCliente: InterfazLogicaCliente
     {
         ClienteContext cliente_context=new ClienteContext();
-        DBGenericQueriesUtil<Cliente> database;
+        DBGenericQueriesUtil<Cliente> database_table;
 
         public LogicaCliente()
         {
-            database = new DBGenericQueriesUtil<Cliente>(cliente_context, cliente_context.clientes);
+            database_table = new DBGenericQueriesUtil<Cliente>(cliente_context, cliente_context.clientes);
         }
+
         public List<Cliente> retornarClientes()
         {
-            return database.retornarTodos();
+            return database_table.retornarTodos();
         }
 
         public Cliente retornarCliente(int clienteID)
         {
-            return database.retornarUnSoloElemento(clienteID);
+            return database_table.retornarUnSoloElemento(clienteID);
         }
 
         public void modificarCliente(Cliente cliente)
         {
-            database.modificarElemento(cliente, cliente.ID);
+            database_table.modificarElemento(cliente, cliente.ID);
         }
 
         public void agregarCliente(Cliente cliente)
         {
-            database.agregarElemento(cliente);
+            database_table.agregarElemento(cliente);
         }
 
         public void eliminarCliente(int clienteID)
         {
-            database.eliminarElemento(clienteID);
+            database_table.eliminarElemento(clienteID);
         }
 
         public List<Cliente> buscarCliente(Cliente cliente_campos)
         {
-            return database.buscarElementos(cliente_campos);
+            return database_table.buscarElementos(cliente_campos);
         }
     }
 }

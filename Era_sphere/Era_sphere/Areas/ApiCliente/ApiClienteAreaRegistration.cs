@@ -19,6 +19,7 @@ namespace Era_sphere.Areas.ApiCliente
                 "ApiCliente/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }

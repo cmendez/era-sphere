@@ -5,11 +5,12 @@ using System.Web;
 using System.Data.Entity;
 using System.Drawing;
 using Era_sphere.Areas.ApiConfiguracion.Models;
+using Era_sphere.DBUtils;
 
 namespace Era_sphere.Areas.ApiCliente.Models
 {
     
-        public class Cliente
+        public class Cliente : DBable
         {
 
             public Cliente() 
@@ -29,7 +30,6 @@ namespace Era_sphere.Areas.ApiCliente.Models
                 juridico
             };
            
-            public int clienteID { get; set; }
             public string tarjeta_cliente { get; set; }
             public EstadoCliente estado { get; set; }
             public string nombre { get; set; }
@@ -43,7 +43,7 @@ namespace Era_sphere.Areas.ApiCliente.Models
             public string telefono { get; set; }
             public string celular { get; set; }
             public string razon_social { get; set; }
-            //public Image foto_cliente { get; set; }
+            public virtual Image foto_cliente { get; set; }
             public Ciudad ciudad { get; set; }
             public Pais pais { get; set; }
             //supuestamente deben de ir los atributos ciudad, país y provincia. 

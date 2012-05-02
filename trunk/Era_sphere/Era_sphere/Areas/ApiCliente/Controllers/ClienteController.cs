@@ -37,7 +37,7 @@ namespace Era_sphere.Areas.ApiCliente.Controllers
                         this.cliente_logica.modificarCliente(cliente);
                         return Json(new { Error = false, Mensaje = "Success" }, JsonRequestBehavior.AllowGet);
                     case "DELETE":
-                        this.cliente_logica.eliminarCliente(cliente.clienteID);
+                        this.cliente_logica.eliminarCliente(cliente.ID);
                         return Json(new { Error = false, Mensaje = "Success" }, JsonRequestBehavior.AllowGet);
                 }
             }

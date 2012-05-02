@@ -10,7 +10,7 @@ using Era_sphere.Generics;
 namespace Era_sphere.Areas.ApiCliente.Models
 {
     
-        public class Cliente : DBable
+        public class Cliente : Persona
         {
 
             public Cliente() 
@@ -32,22 +32,6 @@ namespace Era_sphere.Areas.ApiCliente.Models
            
             public string tarjeta_cliente { get; set; }
             public EstadoCliente estado { get; set; }
-            public string nombre { get; set; }
-            public string apellido_paterno { get; set; }
-            public string apellido_materno { get; set; }
-            public string dni { get; set; }
-            public string pasaporte { get; set; }
-            public string correo_electronico { get; set; }
-            public string direccion { get; set; }
-            public string ruc { get; set; }
-            public string telefono { get; set; }
-            public string celular { get; set; }
-            public string razon_social { get; set; }
-            public byte[] foto_cliente { get; set; }
-            public Ciudad ciudad { get; set; }
-            public Pais pais { get; set; }
-            //supuestamente deben de ir los atributos ciudad, país y provincia. 
-            public DateTime fecha_nacimiento { get; set; }
             public TipoCliente tipo { get; set; }  
         }
 

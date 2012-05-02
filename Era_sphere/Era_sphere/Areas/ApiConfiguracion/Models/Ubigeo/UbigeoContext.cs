@@ -10,6 +10,5 @@ namespace Era_sphere.Areas.ApiConfiguracion.Models
     {
         public DbSet<Pais> paises;
         public DbSet<Ciudad> ciudades;
-        public DbSet<Provincia> provincias;
     }
 }

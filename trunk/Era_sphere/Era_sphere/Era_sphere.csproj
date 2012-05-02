@@ -326,6 +326,7 @@
     <Content Include="Content\img\test_avatar.png" />
     <Content Include="Content\index.html" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\ApiCliente\comunicacion_ajax.js" />
     <Content Include="Scripts\ApiCliente\mantenimiento_cliente.js" />
     <Content Include="Scripts\ApiSeguridad\mantenimiento_login.js" />
     <Content Include="Views\Home\Test_Page.html" />

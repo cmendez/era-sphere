@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <title>AdminCP</title>
@@ -17,7 +17,7 @@
 <script type="text/javascript" src="data/js/jquery.multiselect.min.js"></script>
 <script type="text/javascript" src="data/js/tooltip/jquery.tipsy.js"></script>
 <script type="text/javascript" src="data/js/validation/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="data/js/validation/languages/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="data/js/validation/languages/jquery.validationEngine-es.js"></script>
 <script type="text/javascript" src="data/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="data/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="data/js/fancybox/jquery.easing-1.4.pack.js"></script>
@@ -31,7 +31,7 @@
 </head>
 <script class="code" type="text/javascript"><!-- Plugin Examples -->
 $(document).ready(function(){
-	$('#datepicker').datepicker();
+	$('#fecha_nacimiento_date').datepicker();
 	
 	$('.checkboxui, .radioui').buttonset();
 	
@@ -112,7 +112,7 @@ $(document).ready(function(){
 									<option value="persona_juridica"> Persona juridica</option>
 								</select>
 							</div>
-							<div id="cliente_natural_form" style="display: none">
+							<div id="cliente_natural_form" style="">
 							<!-- empieza natural -->
 							<div class="form_row">
 							<label>Nombres(*):</label>
@@ -167,7 +167,7 @@ $(document).ready(function(){
 									</div>
 									<div class="form_row">
 									<label> Fecha de Nacimiento </label>
-									<input class="input validate[required] tipTop" id="fecha_nacimiento" type="text" style="width:290px;" name="fecha_nacimiento"/>
+									<input class="input validate[required] tipTop" id="fecha_nacimiento_date" type="text" style="width:290px;" name="fecha_nacimiento"/>
 									</div>
 									<div class="form_row">
 									<label> Telefono: </label>

@@ -5,7 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Data;
 using System.ComponentModel;
-using Era_sphere.DBUtils;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.ApiCliente.Models
 {
@@ -13,6 +13,7 @@ namespace Era_sphere.Areas.ApiCliente.Models
     {
         ClienteContext cliente_context=new ClienteContext();
         DBGenericQueriesUtil<Cliente> database;
+
         public LogicaCliente()
         {
             database = new DBGenericQueriesUtil<Cliente>(cliente_context, cliente_context.clientes);

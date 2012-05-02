@@ -42,7 +42,7 @@ namespace Era_sphere.Areas.ApiCliente.Controllers
                 }
             }
             catch (Exception ex ) { return Json(new { Error = true, Message = ex.Data }); }
-            return Json(new { Error = true, Message = "Operacion no soportada " }, JsonRequestBehavior.AllowGet);
+            return Json(new { Error = true, Message = "Operacion no soportada" }, JsonRequestBehavior.AllowGet);
         }
 
     }

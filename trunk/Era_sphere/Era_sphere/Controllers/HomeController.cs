@@ -10,8 +10,6 @@ namespace Era_sphere.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
             return View();
         }
 
@@ -20,7 +18,7 @@ namespace Era_sphere.Controllers
             return View();
         }
         public ActionResult Login(string usuario, string password) {
-            if (usuario == "admin" && password == "admin") return View("Mantenimiento");
+            if (usuario == "admin" && password == "admin") return View("Main");
             return View("Index");
         }
     }

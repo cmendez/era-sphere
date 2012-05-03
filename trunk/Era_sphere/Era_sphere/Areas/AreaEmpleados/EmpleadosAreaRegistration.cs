@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Era_sphere.Areas.ApiEmpleados
+namespace Era_sphere.Areas.Empleados
 {
-    public class ApiEmpleadosAreaRegistration : AreaRegistration
+    public class EmpleadosAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "ApiEmpleados";
+                return "Empleados";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "ApiEmpleados_default",
-                "ApiEmpleados/{controller}/{action}/{id}",
+                "Empleados_default",
+                "Empleados/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

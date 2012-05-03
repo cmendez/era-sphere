@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Era_sphere.Areas.ApiConfiguracion.Models;
+using Era_sphere.Areas.Configuracion.Models;
 
 namespace Era_sphere.Generics
 {

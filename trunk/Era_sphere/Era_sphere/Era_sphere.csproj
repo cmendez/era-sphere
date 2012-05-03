@@ -74,6 +74,7 @@
     <Compile Include="Generics\DBable.cs" />
     <Compile Include="Generics\Pagable.cs" />
     <Compile Include="Generics\Persona.cs" />
+    <Compile Include="Models\InitialData\SampleDataUbigeo.cs" />
     <Compile Include="Models\RestHttpVerbFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Areas\ApiCliente\Models\Cliente.cs" />
     <Compile Include="Areas\ApiCliente\Models\InterfazLogicaCliente.cs" />
     <Compile Include="Areas\ApiCliente\Models\LogicaCliente.cs" />
+    <Compile Include="Models\InitialData\SampleDataCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Generics\DBGenericQueriesUtil.cs" />
   </ItemGroup>

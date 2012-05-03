@@ -8,6 +8,7 @@ namespace Era_sphere.Areas.ApiConfiguracion.Models
 {
     public class Ciudad : DBable
     {
+        public string nombre { get; set; }
         public Pais pais { get; set; }
     }
 }

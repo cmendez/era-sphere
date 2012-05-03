@@ -9,7 +9,7 @@
     $('#tipo_cliente').change(
             function () {
                 $('#cliente_natural_form , #cliente_juridico_form').hide();
-                $('#cliente_' + $(this).find('option:selected').attr('value') + '_form').show();
+                $('#cliente_' + $(this).find('option:selected').attr('value') + '_form').show("slow");
             }
         );
 

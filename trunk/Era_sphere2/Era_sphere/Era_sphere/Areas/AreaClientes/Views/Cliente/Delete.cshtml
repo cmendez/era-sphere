@@ -1,0 +1,66 @@
+﻿@model Era_sphere.Areas.AreaClientes.Models.Cliente
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Cliente</legend>
+
+    <div class="display-label">tarjeta_cliente</div>
+    <div class="display-field">@Model.tarjeta_cliente</div>
+
+    <div class="display-label">nombre</div>
+    <div class="display-field">@Model.nombre</div>
+
+    <div class="display-label">apellido_paterno</div>
+    <div class="display-field">@Model.apellido_paterno</div>
+
+    <div class="display-label">apellido_materno</div>
+    <div class="display-field">@Model.apellido_materno</div>
+
+    <div class="display-label">dni</div>
+    <div class="display-field">@Model.dni</div>
+
+    <div class="display-label">pasaporte</div>
+    <div class="display-field">@Model.pasaporte</div>
+
+    <div class="display-label">correo_electronico</div>
+    <div class="display-field">@Model.correo_electronico</div>
+
+    <div class="display-label">direccion</div>
+    <div class="display-field">@Model.direccion</div>
+
+    <div class="display-label">ruc</div>
+    <div class="display-field">@Model.ruc</div>
+
+    <div class="display-label">telefono</div>
+    <div class="display-field">@Model.telefono</div>
+
+    <div class="display-label">celular</div>
+    <div class="display-field">@Model.celular</div>
+
+    <div class="display-label">razon_social</div>
+    <div class="display-field">@Model.razon_social</div>
+
+    <div class="display-label">fecha_nacimiento</div>
+    <div class="display-field">@String.Format("{0:g}", Model.fecha_nacimiento)</div>
+
+    <div class="display-label">usuario</div>
+    <div class="display-field">@Model.usuario</div>
+
+    <div class="display-label">password</div>
+    <div class="display-field">@Model.password</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

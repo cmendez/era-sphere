@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using Era_sphere.Areas.ApiConfiguracion.Models;
+using Era_sphere.Areas.Configuracion.Models;
 
 namespace Era_sphere.Models
 {

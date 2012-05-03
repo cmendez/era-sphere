@@ -66,7 +66,11 @@
     <Compile Include="Areas\ApiCliente\Controllers\ClienteController.cs" />
     <Compile Include="Areas\ApiCliente\Models\ClienteContext.cs" />
     <Compile Include="Areas\ApiConfiguracion\ApiConfiguracionAreaRegistration.cs" />
+    <Compile Include="Areas\ApiConfiguracion\Controllers\CadenaController.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Cadena.cs" />
+    <Compile Include="Areas\ApiConfiguracion\Models\CadenaContext.cs" />
+    <Compile Include="Areas\ApiConfiguracion\Models\InterfazLogicaCadena.cs" />
+    <Compile Include="Areas\ApiConfiguracion\Models\LogicaCadena.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Ciudad.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
@@ -370,7 +374,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ApiCliente\Views\Shared\" />
-    <Folder Include="Areas\ApiConfiguracion\Controllers\" />
     <Folder Include="Areas\ApiConfiguracion\Models\Servicios\" />
     <Folder Include="Areas\ApiConfiguracion\Views\Shared\" />
     <Folder Include="Areas\ApiReportes\Controllers\" />

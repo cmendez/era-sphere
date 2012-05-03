@@ -661,6 +661,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AreaClientes\Views\Cliente\Index.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\Create.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <None Include="Content\data\._images" />

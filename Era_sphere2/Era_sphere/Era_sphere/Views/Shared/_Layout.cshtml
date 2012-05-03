@@ -19,19 +19,33 @@
 <script type="text/javascript" src="../../Content/data/js/jquery.multiselect.min.js"></script>
 <script type="text/javascript" src="../../Content/data/js/tooltip/jquery.tipsy.js"></script>
 <script type="text/javascript" src="../../Content/data/js/validation/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="../../Content/data/js/validation/languages/jquery.validationEngine-en.js"></script>
+<script type="text/javascript" src="../../Content/data/js/validation/languages/jquery.validationEngine-es.js"></script>
 <script type="text/javascript" src="../../Content/data/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../../Content/data/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="../../Content/data/js/fancybox/jquery.easing-1.4.pack.js"></script>
 <script type="text/javascript" src="../../Content/data/js/js.js"></script>
 <link rel="stylesheet" href="../../Content/data/css/reset.css" type="text/css" />
+<link rel="stylesheet" href="../../Content/data/css/era-style.css" type="text/css" />
 <link rel="stylesheet" href="../../Content/data/css/grid.css" type="text/css" />
 <link rel="stylesheet" href="../../Content/data/css/style.css" type="text/css" />
 <link rel="stylesheet" href="../../Content/data/js/plugins.css" type="text/css" />
 </head>
 <body>
+
 <script class="code" type="text/javascript"><!-- Plugin Examples -->
 $(document).ready(function(){
+
+  $('#fecha_nacimiento_date').datepicker();
+
+        $('.checkboxui, .radioui').buttonset();
+
+        $('#slider').slider({ values: [20, 50], range: true });
+        $('#tipo_cliente').change(
+            function () {
+                $('#cliente_natural_form , #cliente_juridico_form').hide();
+                $('#cliente_' + $(this).find('option:selected').attr('value') + '_form').show();
+            }
+        );
 	  var line1=[['07-Dec-11', 320], ['08-Dec-11', 350], ['09-Dec-11', 355], ['10-Dec-11', 420], ['11-Dec-11', 407], ['12-Dec-11', 320], ['13-Dec-11', 401], ['14-Dec-11', 353], ['15-Dec-11', 402], ['16-Dec-11', 471], ['17-Dec-11', 555]];
 	  var plot1 = $.jqplot('chart1', [line1], {
 		  title:'Unique visitors by days',

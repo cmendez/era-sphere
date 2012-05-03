@@ -17,5 +17,10 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             return View();
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
     }
 }

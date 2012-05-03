@@ -12,14 +12,14 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
     {
         LogicaCliente cliente_logica = new LogicaCliente();
 
-        public ActionResult Index()
+        public ActionResult Index(Cliente cliente_busqueda)
         {
+            ViewBag.clientes = cliente_logica.retornarClientes();
             return View();
         }
 
-        public ActionResult Create(Cliente.TipoPersona? tipo)
+        public ActionResult Create()
         {
-            ViewBag.tipo_persona = tipo;
             return View();
         }
         [HttpPost]

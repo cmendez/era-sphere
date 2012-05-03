@@ -6,8 +6,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Data.Entity;
 using Era_sphere.Models;
-using Era_sphere.Areas.ApiCliente.Models;
-using Era_sphere.Areas.ApiConfiguracion.Models;
+using Era_sphere.Areas.AreaCliente.Models;
+using Era_sphere.Areas.Configuracion.Models;
 
 namespace Era_sphere
 {

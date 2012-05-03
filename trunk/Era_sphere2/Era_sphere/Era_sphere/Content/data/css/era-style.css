@@ -18,10 +18,10 @@
 	position: relative;
 	left : 450px;
 	height: 0px;
-	top: -474px;
+	top: -360px;
 }
 
-#cuenta_usuario {
+#cuenta_usuario , .cuenta_usuario{
 	position: relative;
 	left: 529px;
 	top: -195px;
@@ -31,13 +31,11 @@
 	position: relative;
 }
 
-#detalle_cliente {
-	position: relative;
-}
+
 #cliente_natural_form {
 	position: relative;
-	height : 540px;
-	width: 350px;
+	height : auto;
+	width: auto;
 }
 
 #natural_foto {

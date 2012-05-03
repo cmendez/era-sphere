@@ -1,6 +1,17 @@
 ﻿$(document).ready(function () {
-  
 
+    $('#fecha_nacimiento_date').datepicker();
+
+    $('.checkboxui, .radioui').buttonset();
+
+    $('#slider').slider({ values: [20, 50], range: true });
+
+    $('#tipo_cliente').change(
+            function () {
+                $('#cliente_natural_form , #cliente_juridico_form').hide();
+                $('#cliente_' + $(this).find('option:selected').attr('value') + '_form').show();
+            }
+        );
 
     $("#pruebaGET").click(function () {
 

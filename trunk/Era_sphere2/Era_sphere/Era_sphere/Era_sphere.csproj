@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{69F1B87C-75C8-4037-BC39-104DC3DBC49F}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Era_sphere</RootNamespace>
+    <AssemblyName>Era_sphere</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\AreaClientes\AreaClienteAreaRegistration.cs" />
+    <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs" />
+    <Compile Include="Areas\AreaClientes\Models\Cliente.cs" />
+    <Compile Include="Areas\AreaClientes\Models\ClienteContext.cs" />
+    <Compile Include="Areas\AreaClientes\Models\InterfazLogicaCliente.cs" />
+    <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs" />
+    <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Cadena.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Ciudad.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
+    <Compile Include="Areas\AreaEmpleados\AreaEmpleadoAreaRegistration.cs" />
+    <Compile Include="Areas\AreaReportes\AreaReportesAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Generics\DBable.cs" />
+    <Compile Include="Generics\DBGenericQueriesUtil.cs" />
+    <Compile Include="Generics\Pagable.cs" />
+    <Compile Include="Generics\Persona.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\InitialData\SampleDataCliente.cs" />
+    <Compile Include="Models\InitialData\SampleDataUbigeo.cs" />
+    <Compile Include="Models\RestHttpVerbFilter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\403.html" />
+    <Content Include="Content\404.html" />
+    <Content Include="Content\503.html" />
+    <Content Include="Content\cp_article.html" />
+    <Content Include="Content\cp_calendar.html" />
+    <Content Include="Content\cp_datatable.html" />
+    <Content Include="Content\cp_forms.html" />
+    <Content Include="Content\cp_gallery.html" />
+    <Content Include="Content\cp_main.html" />
+    <Content Include="Content\cp_table.html" />
+    <Content Include="Content\cp_widgets.html" />
+    <Content Include="Content\data\css\._grid.css" />
+    <Content Include="Content\data\css\._reset.css" />
+    <Content Include="Content\data\css\._style.css" />
+    <Content Include="Content\data\css\era-style.css" />
+    <Content Include="Content\data\css\grid.css" />
+    <Content Include="Content\data\css\reset.css" />
+    <Content Include="Content\data\css\style.css" />
+    <Content Include="Content\data\images\._action_icons.png" />
+    <Content Include="Content\data\images\._action_tooltip.png" />
+    <Content Include="Content\data\images\._alert_bg.png" />
+    <Content Include="Content\data\images\._alert_close_btn.png" />
+    <Content Include="Content\data\images\._alert_icons.png" />
+    <Content Include="Content\data\images\._background.jpg" />
+    <Content Include="Content\data\images\._block_cont_shadow.png" />
+    <Content Include="Content\data\images\._block_title_bg.png" />
+    <Content Include="Content\data\images\._block_title_bullet.png" />
+    <Content Include="Content\data\images\._block_title_toggle.png" />
+    <Content Include="Content\data\images\._form_button.png" />
+    <Content Include="Content\data\images\._loginbox_bg.png" />
+    <Content Include="Content\data\images\._loginbox_password.png" />
+    <Content Include="Content\data\images\._loginbox_username.png" />
+    <Content Include="Content\data\images\._logo.png" />
+    <Content Include="Content\data\images\._profile_button.png" />
+    <Content Include="Content\data\images\._search_bg.png" />
+    <Content Include="Content\data\images\._search_button.png" />
+    <Content Include="Content\data\images\._unread_bg.png" />
+    <Content Include="Content\data\images\._userbar_bg.png" />
+    <Content Include="Content\data\images\action_icons.png" />
+    <Content Include="Content\data\images\action_tooltip.png" />
+    <Content Include="Content\data\images\alert_bg.png" />
+    <Content Include="Content\data\images\alert_close_btn.png" />
+    <Content Include="Content\data\images\alert_icons.png" />
+    <Content Include="Content\data\images\background.jpg" />
+    <Content Include="Content\data\images\block_cont_shadow.png" />
+    <Content Include="Content\data\images\block_title_bg.png" />
+    <Content Include="Content\data\images\block_title_bullet.png" />
+    <Content Include="Content\data\images\block_title_toggle.png" />
+    <Content Include="Content\data\images\form_button.png" />
+    <Content Include="Content\data\images\icons\._icon_article.png" />
+    <Content Include="Content\data\images\icons\._icon_bookmark.png" />
+    <Content Include="Content\data\images\icons\._icon_calendar.png" />
+    <Content Include="Content\data\images\icons\._icon_charts.png" />
+    <Content Include="Content\data\images\icons\._icon_check.png" />
+    <Content Include="Content\data\images\icons\._icon_comment.png" />
+    <Content Include="Content\data\images\icons\._icon_cross.png" />
+    <Content Include="Content\data\images\icons\._icon_cut.png" />
+    <Content Include="Content\data\images\icons\._icon_doc.png" />
+    <Content Include="Content\data\images\icons\._icon_down.png" />
+    <Content Include="Content\data\images\icons\._icon_email.png" />
+    <Content Include="Content\data\images\icons\._icon_fav.png" />
+    <Content Include="Content\data\images\icons\._icon_fb.png" />
+    <Content Include="Content\data\images\icons\._icon_folder.png" />
+    <Content Include="Content\data\images\icons\._icon_home.png" />
+    <Content Include="Content\data\images\icons\._icon_left.png" />
+    <Content Include="Content\data\images\icons\._icon_lock.png" />
+    <Content Include="Content\data\images\icons\._icon_logout.png" />
+    <Content Include="Content\data\images\icons\._icon_minus.png" />
+    <Content Include="Content\data\images\icons\._icon_monitor.png" />
+    <Content Include="Content\data\images\icons\._icon_music.png" />
+    <Content Include="Content\data\images\icons\._icon_next.png" />
+    <Content Include="Content\data\images\icons\._icon_notify.png" />
+    <Content Include="Content\data\images\icons\._icon_paste.png" />
+    <Content Include="Content\data\images\icons\._icon_pdf.png" />
+    <Content Include="Content\data\images\icons\._icon_pen.png" />
+    <Content Include="Content\data\images\icons\._icon_pictures.png" />
+    <Content Include="Content\data\images\icons\._icon_plus.png" />
+    <Content Include="Content\data\images\icons\._icon_power.png" />
+    <Content Include="Content\data\images\icons\._icon_ppt.png" />
+    <Content Include="Content\data\images\icons\._icon_prev.png" />
+    <Content Include="Content\data\images\icons\._icon_profile.png" />
+    <Content Include="Content\data\images\icons\._icon_right.png" />
+    <Content Include="Content\data\images\icons\._icon_save.png" />
+    <Content Include="Content\data\images\icons\._icon_search.png" />
+    <Content Include="Content\data\images\icons\._icon_settings.png" />
+    <Content Include="Content\data\images\icons\._icon_square.png" />
+    <Content Include="Content\data\images\icons\._icon_star.png" />
+    <Content Include="Content\data\images\icons\._icon_star2.png" />
+    <Content Include="Content\data\images\icons\._icon_statistics.png" />
+    <Content Include="Content\data\images\icons\._icon_tag.png" />
+    <Content Include="Content\data\images\icons\._icon_target.png" />
+    <Content Include="Content\data\images\icons\._icon_time.png" />
+    <Content Include="Content\data\images\icons\._icon_twitter.png" />
+    <Content Include="Content\data\images\icons\._icon_unlock.png" />
+    <Content Include="Content\data\images\icons\._icon_up.png" />
+    <Content Include="Content\data\images\icons\._icon_users.png" />
+    <Content Include="Content\data\images\icons\._icon_video.png" />
+    <Content Include="Content\data\images\icons\._icon_xls.png" />
+    <Content Include="Content\data\images\icons\._icon_zip.png" />
+    <Content Include="Content\data\images\icons\icon_article.png" />
+    <Content Include="Content\data\images\icons\icon_bookmark.png" />
+    <Content Include="Content\data\images\icons\icon_calendar.png" />
+    <Content Include="Content\data\images\icons\icon_charts.png" />
+    <Content Include="Content\data\images\icons\icon_check.png" />
+    <Content Include="Content\data\images\icons\icon_comment.png" />
+    <Content Include="Content\data\images\icons\icon_cross.png" />
+    <Content Include="Content\data\images\icons\icon_cut.png" />
+    <Content Include="Content\data\images\icons\icon_doc.png" />
+    <Content Include="Content\data\images\icons\icon_down.png" />
+    <Content Include="Content\data\images\icons\icon_email.png" />
+    <Content Include="Content\data\images\icons\icon_fav.png" />
+    <Content Include="Content\data\images\icons\icon_fb.png" />
+    <Content Include="Content\data\images\icons\icon_folder.png" />
+    <Content Include="Content\data\images\icons\icon_home.png" />
+    <Content Include="Content\data\images\icons\icon_left.png" />
+    <Content Include="Content\data\images\icons\icon_lock.png" />
+    <Content Include="Content\data\images\icons\icon_logout.png" />
+    <Content Include="Content\data\images\icons\icon_minus.png" />
+    <Content Include="Content\data\images\icons\icon_monitor.png" />
+    <Content Include="Content\data\images\icons\icon_music.png" />
+    <Content Include="Content\data\images\icons\icon_next.png" />
+    <Content Include="Content\data\images\icons\icon_notify.png" />
+    <Content Include="Content\data\images\icons\icon_paste.png" />
+    <Content Include="Content\data\images\icons\icon_pdf.png" />
+    <Content Include="Content\data\images\icons\icon_pen.png" />
+    <Content Include="Content\data\images\icons\icon_pictures.png" />
+    <Content Include="Content\data\images\icons\icon_plus.png" />
+    <Content Include="Content\data\images\icons\icon_power.png" />
+    <Content Include="Content\data\images\icons\icon_ppt.png" />
+    <Content Include="Content\data\images\icons\icon_prev.png" />
+    <Content Include="Content\data\images\icons\icon_profile.png" />
+    <Content Include="Content\data\images\icons\icon_right.png" />
+    <Content Include="Content\data\images\icons\icon_save.png" />
+    <Content Include="Content\data\images\icons\icon_search.png" />
+    <Content Include="Content\data\images\icons\icon_settings.png" />
+    <Content Include="Content\data\images\icons\icon_square.png" />
+    <Content Include="Content\data\images\icons\icon_star.png" />
+    <Content Include="Content\data\images\icons\icon_star2.png" />
+    <Content Include="Content\data\images\icons\icon_statistics.png" />
+    <Content Include="Content\data\images\icons\icon_tag.png" />
+    <Content Include="Content\data\images\icons\icon_target.png" />
+    <Content Include="Content\data\images\icons\icon_time.png" />
+    <Content Include="Content\data\images\icons\icon_twitter.png" />
+    <Content Include="Content\data\images\icons\icon_unlock.png" />
+    <Content Include="Content\data\images\icons\icon_up.png" />
+    <Content Include="Content\data\images\icons\icon_users.png" />
+    <Content Include="Content\data\images\icons\icon_video.png" />
+    <Content Include="Content\data\images\icons\icon_xls.png" />
+    <Content Include="Content\data\images\icons\icon_zip.png" />
+    <Content Include="Content\data\images\loginbox_bg.png" />
+    <Content Include="Content\data\images\loginbox_password.png" />
+    <Content Include="Content\data\images\loginbox_username.png" />
+    <Content Include="Content\data\images\logo.png" />
+    <Content Include="Content\data\images\logo2.png" />
+    <Content Include="Content\data\images\profile_button.png" />
+    <Content Include="Content\data\images\search_bg.png" />
+    <Content Include="Content\data\images\search_button.png" />
+    <Content Include="Content\data\images\unread_bg.png" />
+    <Content Include="Content\data\images\userbar_bg.png" />
+    <Content Include="Content\data\js\._css_browser_selector.js" />
+    <Content Include="Content\data\js\._jquery-1.7.1.min.js" />
+    <Content Include="Content\data\js\._jquery-ui-1.8.9.custom.min.js" />
+    <Content Include="Content\data\js\._jquery.corner.js" />
+    <Content Include="Content\data\js\._jquery.dataTables.min.js" />
+    <Content Include="Content\data\js\._jquery.jqplot.min.js" />
+    <Content Include="Content\data\js\._jquery.multiselect.min.js" />
+    <Content Include="Content\data\js\._jquery.validate.js" />
+    <Content Include="Content\data\js\._js.js" />
+    <Content Include="Content\data\js\._plugins.css" />
+    <Content Include="Content\data\js\calendar\._fullcalendar.css" />
+    <Content Include="Content\data\js\calendar\._fullcalendar.min.js" />
+    <Content Include="Content\data\js\calendar\._fullcalendar.print.css" />
+    <Content Include="Content\data\js\calendar\fullcalendar.css" />
+    <Content Include="Content\data\js\calendar\fullcalendar.min.js" />
+    <Content Include="Content\data\js\calendar\fullcalendar.print.css" />
+    <Content Include="Content\data\js\css_browser_selector.js" />
+    <Content Include="Content\data\js\editor\._jquery.cleditor.css" />
+    <Content Include="Content\data\js\editor\._jquery.cleditor.js" />
+    <Content Include="Content\data\js\editor\._jquery.cleditor.min.js" />
+    <Content Include="Content\data\js\editor\images\._buttons.gif" />
+    <Content Include="Content\data\js\editor\images\._toolbar.gif" />
+    <Content Include="Content\data\js\editor\images\buttons.gif" />
+    <Content Include="Content\data\js\editor\images\toolbar.gif" />
+    <Content Include="Content\data\js\editor\jquery.cleditor.css" />
+    <Content Include="Content\data\js\editor\jquery.cleditor.js" />
+    <Content Include="Content\data\js\editor\jquery.cleditor.min.js" />
+    <Content Include="Content\data\js\fancybox\._blank.gif" />
+    <Content Include="Content\data\js\fancybox\._fancybox-x.png" />
+    <Content Include="Content\data\js\fancybox\._fancybox-y.png" />
+    <Content Include="Content\data\js\fancybox\._fancybox.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_close.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_loading.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_nav_left.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_nav_right.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_shadow_e.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_shadow_n.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_shadow_ne.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_shadow_nw.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_shadow_s.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_shadow_se.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_shadow_sw.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_shadow_w.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_title_left.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_title_main.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_title_over.png" />
+    <Content Include="Content\data\js\fancybox\._fancy_title_right.png" />
+    <Content Include="Content\data\js\fancybox\._jquery.easing-1.4.pack.js" />
+    <Content Include="Content\data\js\fancybox\._jquery.fancybox-1.3.4.css" />
+    <Content Include="Content\data\js\fancybox\._jquery.fancybox-1.3.4.js" />
+    <Content Include="Content\data\js\fancybox\._jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Content\data\js\fancybox\._jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="Content\data\js\fancybox\blank.gif" />
+    <Content Include="Content\data\js\fancybox\fancybox-x.png" />
+    <Content Include="Content\data\js\fancybox\fancybox-y.png" />
+    <Content Include="Content\data\js\fancybox\fancybox.png" />
+    <Content Include="Content\data\js\fancybox\fancy_close.png" />
+    <Content Include="Content\data\js\fancybox\fancy_loading.png" />
+    <Content Include="Content\data\js\fancybox\fancy_nav_left.png" />
+    <Content Include="Content\data\js\fancybox\fancy_nav_right.png" />
+    <Content Include="Content\data\js\fancybox\fancy_shadow_e.png" />
+    <Content Include="Content\data\js\fancybox\fancy_shadow_n.png" />
+    <Content Include="Content\data\js\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Content\data\js\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Content\data\js\fancybox\fancy_shadow_s.png" />
+    <Content Include="Content\data\js\fancybox\fancy_shadow_se.png" />
+    <Content Include="Content\data\js\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Content\data\js\fancybox\fancy_shadow_w.png" />
+    <Content Include="Content\data\js\fancybox\fancy_title_left.png" />
+    <Content Include="Content\data\js\fancybox\fancy_title_main.png" />
+    <Content Include="Content\data\js\fancybox\fancy_title_over.png" />
+    <Content Include="Content\data\js\fancybox\fancy_title_right.png" />
+    <Content Include="Content\data\js\fancybox\jquery.easing-1.4.pack.js" />
+    <Content Include="Content\data\js\fancybox\jquery.fancybox-1.3.4.css" />
+    <Content Include="Content\data\js\fancybox\jquery.fancybox-1.3.4.js" />
+    <Content Include="Content\data\js\fancybox\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Content\data\js\fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="Content\data\js\jquery-1.7.1.min.js" />
+    <Content Include="Content\data\js\jquery-ui-1.8.9.custom.min.js" />
+    <Content Include="Content\data\js\jquery.corner.js" />
+    <Content Include="Content\data\js\jquery.dataTables.min.js" />
+    <Content Include="Content\data\js\jquery.jqplot.min.js" />
+    <Content Include="Content\data\js\jquery.multiselect.min.js" />
+    <Content Include="Content\data\js\jquery.validate.js" />
+    <Content Include="Content\data\js\js.js" />
+    <Content Include="Content\data\js\mantenimientos\mantenimientosClientes.js" />
+    <Content Include="Content\data\js\plugins.css" />
+    <Content Include="Content\data\js\plugins\._jqplot.barRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.barRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.BezierCurveRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.BezierCurveRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.blockRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.blockRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.bubbleRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.bubbleRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.canvasOverlay.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.canvasOverlay.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.canvasTextRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.categoryAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.ciParser.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.ciParser.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.cursor.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.cursor.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.dateAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.dateAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.donutRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.donutRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.dragable.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.dragable.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.enhancedLegendRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.funnelRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.funnelRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.highlighter.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.highlighter.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.json2.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.json2.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.logAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.logAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.mekkoAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.mekkoRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.mekkoRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.meterGaugeRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.meterGaugeRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.ohlcRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.ohlcRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pieRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pieRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pointLabels.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pointLabels.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pyramidAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pyramidGridRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pyramidGridRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pyramidRenderer.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.pyramidRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.trendline.js" />
+    <Content Include="Content\data\js\plugins\._jqplot.trendline.min.js" />
+    <Content Include="Content\data\js\plugins\._jquery.jqplot.min.css" />
+    <Content Include="Content\data\js\plugins\jqplot.barRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.barRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.BezierCurveRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.BezierCurveRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.blockRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.blockRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.bubbleRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.bubbleRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.canvasOverlay.js" />
+    <Content Include="Content\data\js\plugins\jqplot.canvasOverlay.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.canvasTextRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.categoryAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.ciParser.js" />
+    <Content Include="Content\data\js\plugins\jqplot.ciParser.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.cursor.js" />
+    <Content Include="Content\data\js\plugins\jqplot.cursor.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.dateAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.dateAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.donutRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.donutRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.dragable.js" />
+    <Content Include="Content\data\js\plugins\jqplot.dragable.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.enhancedLegendRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.funnelRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.funnelRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.highlighter.js" />
+    <Content Include="Content\data\js\plugins\jqplot.highlighter.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.json2.js" />
+    <Content Include="Content\data\js\plugins\jqplot.json2.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.logAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.logAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.mekkoAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.mekkoRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.mekkoRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.meterGaugeRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.meterGaugeRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.ohlcRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.ohlcRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pieRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pieRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pointLabels.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pointLabels.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pyramidAxisRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pyramidGridRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pyramidGridRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pyramidRenderer.js" />
+    <Content Include="Content\data\js\plugins\jqplot.pyramidRenderer.min.js" />
+    <Content Include="Content\data\js\plugins\jqplot.trendline.js" />
+    <Content Include="Content\data\js\plugins\jqplot.trendline.min.js" />
+    <Content Include="Content\data\js\plugins\jquery.jqplot.min.css" />
+    <Content Include="Content\data\js\tooltip\._jquery.tipsy.js" />
+    <Content Include="Content\data\js\tooltip\._tipsy.css" />
+    <Content Include="Content\data\js\tooltip\jquery.tipsy.js" />
+    <Content Include="Content\data\js\tooltip\tipsy.css" />
+    <Content Include="Content\data\js\ui\._jquery-ui-1.8.17.custom.min.js" />
+    <Content Include="Content\data\js\ui\admincp\._jquery-ui-1.8.17.custom.css" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-bg_glass_0_ffffff_1x400.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-bg_glass_10_821414_1x400.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-bg_highlight-hard_100_efefef_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-bg_highlight-hard_20_ffb400_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-bg_highlight-soft_10_363e49_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-bg_highlight-soft_20_38404c_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-bg_highlight-soft_20_495362_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-icons_222222_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-icons_454545_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-icons_571c1c_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-icons_bac8dd_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-icons_ea8510_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\._ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-bg_glass_0_ffffff_1x400.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-bg_glass_10_821414_1x400.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-bg_highlight-hard_100_efefef_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-bg_highlight-hard_20_ffb400_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-bg_highlight-soft_10_363e49_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-bg_highlight-soft_20_38404c_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-bg_highlight-soft_20_495362_1x100.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-icons_571c1c_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-icons_bac8dd_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-icons_ea8510_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\data\js\ui\admincp\jquery-ui-1.8.17.custom.css" />
+    <Content Include="Content\data\js\ui\jquery-ui-1.8.17.custom.min.js" />
+    <Content Include="Content\data\js\validation\._jquery.validationEngine.js" />
+    <Content Include="Content\data\js\validation\._validationEngine.jquery.css" />
+    <Content Include="Content\data\js\validation\jquery.validationEngine.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-cz.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-da.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-de.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-en.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-es.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-et.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-fa.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-fi.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-fr.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-hr.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-it.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-ja.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-nl.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-pl.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-pt.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-ro.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-ru.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-sv.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-tr.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-zh_CN.js" />
+    <Content Include="Content\data\js\validation\languages\._jquery.validationEngine-zh_TW.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-cz.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-da.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-de.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-en.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-es.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-et.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-fa.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-fi.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-fr.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-hr.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-it.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-ja.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-nl.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-pl.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-pt.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-ro.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-ru.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-sv.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-tr.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-zh_CN.js" />
+    <Content Include="Content\data\js\validation\languages\jquery.validationEngine-zh_TW.js" />
+    <Content Include="Content\data\js\validation\validationEngine.jquery.css" />
+    <Content Include="Content\formulario_cliente.html" />
+    <Content Include="Content\form_example.html" />
+    <Content Include="Content\img\._testpic1.png" />
+    <Content Include="Content\img\._testpic1b.png" />
+    <Content Include="Content\img\._testpic2.png" />
+    <Content Include="Content\img\._testpic2b.png" />
+    <Content Include="Content\img\._testpic3.png" />
+    <Content Include="Content\img\._testpic3b.png" />
+    <Content Include="Content\img\._testpic4.png" />
+    <Content Include="Content\img\._testpic4b.png" />
+    <Content Include="Content\img\._test_avatar.png" />
+    <Content Include="Content\img\testpic1.png" />
+    <Content Include="Content\img\testpic1b.png" />
+    <Content Include="Content\img\testpic2.png" />
+    <Content Include="Content\img\testpic2b.png" />
+    <Content Include="Content\img\testpic3.png" />
+    <Content Include="Content\img\testpic3b.png" />
+    <Content Include="Content\img\testpic4.png" />
+    <Content Include="Content\img\testpic4b.png" />
+    <Content Include="Content\img\test_avatar.png" />
+    <Content Include="Content\index.html" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\ApiCliente\comunicacion_ajax.js" />
+    <Content Include="Scripts\ApiCliente\mantenimiento_cliente.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Views\Home\Test_Page.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\AreaClientes\Views\Shared\" />
+    <Folder Include="Areas\AreaConfiguracion\Controllers\" />
+    <Folder Include="Areas\AreaConfiguracion\Models\Servicios\" />
+    <Folder Include="Areas\AreaConfiguracion\Views\Shared\" />
+    <Folder Include="Areas\AreaEmpleados\Controllers\" />
+    <Folder Include="Areas\AreaEmpleados\Models\" />
+    <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
+    <Folder Include="Areas\AreaReportes\Controllers\" />
+    <Folder Include="Areas\AreaReportes\Models\" />
+    <Folder Include="Areas\AreaReportes\Views\Shared\" />
+    <Folder Include="Scripts\ApiSeguridad\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\AreaClientes\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\AreaEmpleados\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\AreaConfiguracion\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\AreaReportes\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\data\._.DS_Store" />
+    <None Include="Content\data\._css" />
+    <None Include="Content\data\._images" />
+    <None Include="Content\data\._js" />
+    <None Include="Content\data\images\._icons" />
+    <None Include="Content\data\images\._Thumbs.db" />
+    <None Include="Content\data\images\Thumbs.db" />
+    <None Include="Content\data\js\._.DS_Store" />
+    <None Include="Content\data\js\._calendar" />
+    <None Include="Content\data\js\._editor" />
+    <None Include="Content\data\js\._fancybox" />
+    <None Include="Content\data\js\._plugins" />
+    <None Include="Content\data\js\._tooltip" />
+    <None Include="Content\data\js\._ui" />
+    <None Include="Content\data\js\._validation" />
+    <None Include="Content\data\js\editor\._images" />
+    <None Include="Content\data\js\mantenimientos\._.DS_Store" />
+    <None Include="Content\data\js\ui\._admincp" />
+    <None Include="Content\data\js\ui\admincp\._images" />
+    <None Include="Content\data\js\validation\._languages" />
+    <Content Include="Views\Home\Main.cshtml" />
+    <Content Include="Views\Home\Mantenimiento.cshtml" />
+    <Content Include="Views\Shared\_Main.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51826</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

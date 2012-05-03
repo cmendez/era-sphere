@@ -62,6 +62,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< .mine
+    <Compile Include="Areas\AreaCliente\ApiClienteAreaRegistration.cs" />
+    <Compile Include="Areas\AreaCliente\Controllers\ClienteController.cs" />
+    <Compile Include="Areas\AreaCliente\Models\ClienteContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\ApiConfiguracionAreaRegistration.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Cadena.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Ciudad.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
+    <Compile Include="Areas\AreaEmpleados\EmpleadosAreaRegistration.cs" />
+    <Compile Include="Areas\AreaReportes\ApiReportesAreaRegistration.cs" />
+=======
     <Compile Include="Areas\ApiCliente\ApiClienteAreaRegistration.cs" />
     <Compile Include="Areas\ApiCliente\Controllers\ClienteController.cs" />
     <Compile Include="Areas\ApiCliente\Models\ClienteContext.cs" />
@@ -75,6 +87,7 @@
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\ApiConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
     <Compile Include="Areas\ApiReportes\ApiReportesAreaRegistration.cs" />
+>>>>>>> .r195
     <Compile Include="Generics\DBable.cs" />
     <Compile Include="Generics\Pagable.cs" />
     <Compile Include="Generics\Persona.cs" />
@@ -86,9 +99,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Areas\ApiCliente\Models\Cliente.cs" />
-    <Compile Include="Areas\ApiCliente\Models\InterfazLogicaCliente.cs" />
-    <Compile Include="Areas\ApiCliente\Models\LogicaCliente.cs" />
+    <Compile Include="Areas\AreaCliente\Models\Cliente.cs" />
+    <Compile Include="Areas\AreaCliente\Models\InterfazLogicaCliente.cs" />
+    <Compile Include="Areas\AreaCliente\Models\LogicaCliente.cs" />
     <Compile Include="Models\InitialData\SampleDataCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Generics\DBGenericQueriesUtil.cs" />
@@ -373,20 +386,36 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+<<<<<<< .mine
+    <Folder Include="Areas\AreaCliente\Views\Shared\" />
+    <Folder Include="Areas\AreaConfiguracion\Controllers\" />
+    <Folder Include="Areas\AreaConfiguracion\Models\Servicios\" />
+    <Folder Include="Areas\AreaConfiguracion\Views\Shared\" />
+    <Folder Include="Areas\AreaEmpleados\Controllers\" />
+    <Folder Include="Areas\AreaEmpleados\Models\" />
+    <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
+    <Folder Include="Areas\AreaReportes\Controllers\" />
+    <Folder Include="Areas\AreaReportes\Models\" />
+    <Folder Include="Areas\AreaReportes\Views\Shared\" />
+=======
     <Folder Include="Areas\ApiCliente\Views\Shared\" />
     <Folder Include="Areas\ApiConfiguracion\Models\Servicios\" />
     <Folder Include="Areas\ApiConfiguracion\Views\Shared\" />
     <Folder Include="Areas\ApiReportes\Controllers\" />
     <Folder Include="Areas\ApiReportes\Models\" />
     <Folder Include="Areas\ApiReportes\Views\Shared\" />
+>>>>>>> .r195
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\ApiCliente\Views\Web.config" />
-    <Content Include="Areas\ApiConfiguracion\Views\Web.config" />
-    <Content Include="Areas\ApiReportes\Views\Web.config" />
+    <Content Include="Areas\AreaCliente\Views\Web.config" />
+    <Content Include="Areas\AreaConfiguracion\Views\Web.config" />
+    <Content Include="Areas\AreaReportes\Views\Web.config" />
+    <Content Include="Areas\AreaEmpleados\Views\Web.config" />
     <None Include="Content\data\images\Thumbs.db" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Mantenimiento.cshtml" />
+    <Content Include="Views\Shared\_Main.cshtml" />
+    <Content Include="Views\Home\Main.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -53,12 +53,7 @@ namespace Era_sphere.Generics
                 elemento.ID = maxi + 1;
             }
             dbset.Add(elemento);
-            try
-            {
-                context.SaveChanges();
-            }catch(Exception ex){
-                Console.WriteLine(ex.StackTrace);
-            }
+            context.SaveChanges();
         }
 
         public void eliminarElemento(int ID)

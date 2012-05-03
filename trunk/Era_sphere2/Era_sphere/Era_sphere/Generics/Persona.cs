@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Areas.Configuracion.Models;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Helpers;
 
 namespace Era_sphere.Generics
 {
@@ -41,8 +43,9 @@ namespace Era_sphere.Generics
         
         [DisplayName("Razon social")]
         public string razon_social { get; set; }
+        
         public byte[] foto { get; set; }
-
+        
         [DisplayName("Ciudad")]
         public Ciudad ciudad { get; set; }
 
@@ -50,7 +53,7 @@ namespace Era_sphere.Generics
         public Pais pais { get; set; }
        
         [DisplayName("Fecha de nacimiento")]
-        public DateTime fecha_nacimiento { get; set; }
+        public DateTime? fecha_nacimiento { get; set; }
         
         [DisplayName("Usuario")]
         public string usuario { get; set; }

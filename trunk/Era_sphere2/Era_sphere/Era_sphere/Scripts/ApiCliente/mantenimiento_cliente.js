@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $('#fecha_nacimiento_date').datepicker();
+    $('.fecha').datepicker();
 
     $('.checkboxui, .radioui').buttonset();
 

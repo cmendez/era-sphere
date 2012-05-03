@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Drawing;
 using Era_sphere.Areas.Configuracion.Models;
 using Era_sphere.Generics;
+using System.ComponentModel;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {
@@ -24,9 +25,11 @@ namespace Era_sphere.Areas.AreaClientes.Models
                 sin_reserva,
                 en_estadia
             };
-            
-           
+
+            [DisplayName("Tarjeta cliente")]
             public string tarjeta_cliente { get; set; }
+
+            [DisplayName("Estado")]
             public EstadoCliente estado { get; set; }  
         }
 

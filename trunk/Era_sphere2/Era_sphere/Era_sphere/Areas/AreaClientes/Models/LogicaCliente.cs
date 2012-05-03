@@ -7,7 +7,7 @@ using System.Data;
 using System.ComponentModel;
 using Era_sphere.Generics;
 
-namespace Era_sphere.Areas.AreaCliente.Models
+namespace Era_sphere.Areas.AreaClientes.Models
 {
     public class LogicaCliente: InterfazLogicaCliente
     {

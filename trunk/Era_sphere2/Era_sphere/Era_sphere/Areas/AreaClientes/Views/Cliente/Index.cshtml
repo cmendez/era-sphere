@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Cliente</h3>
+        <a href="#" class="toggle" id="buscarCliente">&nbsp;</a>
+    </div>
+    <form class="form" action="" novalidate="novalidate">
+    <div class="block_cont" id="formCliente" style="display: none">
+        <div id="info_adicional">
+            <div class="small-inner" id="detalle_cliente" style="margin-top: 10px;">
+                <div class="titlebar innertitle">
+                    <h3>
+                        Detalle del Cliente</h3>
+                    <a href="#" class="toggle">&nbsp;</a>
+                </div>
+                <div class="block_cont" id="block_detalle_cliente">
+                    <div class="form_row">
+                        <label>
+                            Nombres:
+                        </label>
+                        <input name="reservas_historicas" type="text" class="input" style="width: 300px">
+                    </div>
+                    <div class="form_row">
+                        <label>
+                            Apellido Paterno:
+                        </label>
+                        <input name="reservas_historicas" type="text" class="input" style="width: 300px">
+                    </div>
+                    <div class="form_row">
+                        <label>
+                            Apellido Materno
+                        </label>
+                        <input name="reservas_historicas" type="text" class="input" style="width: 300px">
+                    </div>
+                    <div class="form_row">
+                        <label>
+                            Razón Social
+                        </label>
+                        <input name="reservas_historicas" type="text" class="input" style="width: 300px">
+                    </div>
+                    <div class="form_row" id="estado_cliente">
+                        <label>
+                            Estado:
+                        </label>
+                        <select name="estado" class="select" style="display: none;">
+                            <option value="estado0">estado0 </option>
+                            <option value="estado1">estado1 </option>
+                        </select>
+                    </div>
+                    <div class="form_row">
+                        <button id="reset">
+                            Limpiar
+                        </button>
+                        <button id="buscar">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tabla -->
+    </div>
+    </form>
+    <div class="clear">
+    </div>
+    <div class="block_cont">
+        <!-- Aca va lo de ayuda html
+						<button id = "eliminarAll"> Eliminar</button>
+					<button id = "addCliente"> + </button>
+					
+					-->
+        <button id="pruebaGET">
+            PruebaGET</button>
+        <button id="agregarCliente">
+            Agregar
+        </button>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="20">
+                            <input type="checkbox" id="chkall" name="check" value="-">
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Documento
+                        </th>
+                        <th>
+                            Tipo
+                        </th>
+                        <th>
+                            Estado
+                        </th>
+                        <th width="80">
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot id="responseData">
+                </tfoot>
+            </table>
+        </div>
+        <div id="dialogEliminar" class="ui-dialog-content ui-widget-content" style="width: auto;
+            min-height: 46px; height: auto; display: none" scrolltop="0" scrollleft="0">
+            <p>
+                Desea eliminar al cliente del sistema?</p>
+        </div>
+        <div id="dialogEditar" class="ui-dialog-content ui-widget-content" style="width: auto;
+            min-height: 46px; height: auto; display: none" scrolltop="0" scrollleft="0">
+            <!-- Carga de formularioCliente.html -->
+        </div>
+        <!-- Table Wrapper End -->
+    </div>
+</div>

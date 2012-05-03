@@ -7,7 +7,7 @@ using System.Drawing;
 using Era_sphere.Areas.Configuracion.Models;
 using Era_sphere.Generics;
 
-namespace Era_sphere.Areas.AreaCliente.Models
+namespace Era_sphere.Areas.AreaClientes.Models
 {
     
         public class Cliente : Persona

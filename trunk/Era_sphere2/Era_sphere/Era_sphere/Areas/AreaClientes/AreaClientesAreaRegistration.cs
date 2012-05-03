@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Era_sphere.Areas.AreaCliente
+namespace Era_sphere.Areas.AreaClientes
 {
-    public class AreaClienteAreaRegistration : AreaRegistration
+    public class AreaClientesAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "AreaCliente";
+                return "AreaClientes";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "AreaCliente_default",
-                "AreaCliente/{controller}/{action}/{id}",
+                "AreaClientes_default",
+                "AreaClientes/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

@@ -1,208 +1,170 @@
 ﻿@model Era_sphere.Areas.AreaClientes.Models.Cliente
-
+@using Era_sphere.Areas.AreaClientes.Models
+@using Era_sphere.Generics;
 @{
     ViewBag.Title = "ViewPage1";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-<div class="block big" style="position: relative"><!-- Block Begin -->
-				<div class="titlebar">
-					<h3>Mantenimento de Cliente</h3>
-				</div>
-				<form class="form" action="">
-				<div class="block_cont">
-					<div id="datos_personales">
-						<div class="titlebar innertitle">
-							<h3>Datos Personales</h3>
-						</div>
-						<div class="block_cont">
-							<div class="form_row" >
-								<label> Tipo de cliente: </label>
-								<select name="tipo_cliente" id="tipo_cliente" class="select">
-									<option value="none"> - </option>
-									<option value="natural"> Persona natural</option>
-									<option value="juridico"> Persona juridica</option>
-								</select>
-							</div>
-                            <div id="cliente_none_form"></div>
-							<div id="cliente_natural_form" style="display: none">
-							<!-- empieza natural -->
-							<div class="form_row">
-							<label>Nombres(*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="nombre_cliente" id="nombre_cliente"/>
-							</div>
-							<div class="form_row">
-							<label> Apellido Paterno(*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="apellido_paterno" id="apellido_paterno"/>
-							</div>
-							<div class="form_row">
-							<label> Apellido Materno(*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="apellido_materno" id="apellido_materno"/>
-							</div>
-							<div class="form_row">
-							<label> Pais:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="pais" id="pais"/>
-							</div>
-							<div class="form_row">
-							<label> Ciudad:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="ciudad" id="ciudad"/>
-							</div>
-							<div class="form_row">
-							<label> Distrito:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="distrito" id="distrito"/>
-							</div>
-							<div class="form_row">
-							<label> Direccion:</label>
-							<input class="input tipRight" type="text" style="width:400px;" name="direccion" id="direccion"/>
-							</div>
-							<div class="form_row">
-							<label> Correo Electronico:</label>
-							<input class="input tipRight" type="text" style="width:400px;" name="email" id="email"/>
-							</div>
-							<div id="right_form_natural">
-								<div id="natural_foto">
-								<label> Foto: </label>
-								<img src="#" alt="exm" height=150 width=150/>
-								</div>
-								<div id="natural_div_extra"> 
-									<div class="form_row">
-									<label> Ruc: </label>
-									<input class="input tipRight" type="text" style="width: 300px;" name="ruc" id="ruc"/> 
-									</div>
-									<label> Tipo Documento: </label>
-									<select name="tipo_documento_natural" class="select" style="width: 300px;">
-										<option value="dni"> DNI </option>
-										<option value="pasaporte"> Pasaporte </option>
-									</select>
-									<div class="form_row">
-									<label> Nro Documento: </label>
-									<input name="nro_documento_natural" class="input tipRight" type="text" style="width: 300px"/>
-									</div>
-									<div class="form_row">
-									<label> Fecha de Nacimiento </label>
-									<input class="input validate[required] tipTop" id="fecha_nacimiento_date" type="text" style="width:290px;" name="fecha_nacimiento"/>
-									</div>
-									<div class="form_row">
-									<label> Telefono: </label>
-									<input name="telefono_natural" class="input tipRight" type="text" style="width: 300px"/>
-									</div>
-									<div class="form_row">
-									<label> Celular: </label>
-									<input name="celular_natural" class="input tipRight" type="text" style="width: 300px"/>
-									</div>
-
-								</div>
-							</div><!-- termina natural -->
-						</div>
-						<div id="cliente_juridico_form" style="display:none"><!-- empieza juridico -->
-							<!-- empieza natural -->
-							<div class="form_row">
-							<label>Razon Social(*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="razon_social" id="razon_social"/>
-							</div>
-							<div class="form_row">
-							<label> Ruc (*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="ruc" id="ruc_juridico"/>
-							</div>
-							<div class="form_row">
-							<label> Pais:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="pais" id="pais_juridico"/>
-							</div>
-							<div class="form_row">
-							<label> Ciudad:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="ciudad" id="ciudad_juridico"/>
-							</div>
-							<div class="form_row">
-							<label> Distrito:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="distrito" id="distrito_juridico"/>
-							</div>
-							<div class="form_row">
-							<label> Direccion:</label>
-							<input class="input tipRight" type="text" style="width:400px;" name="direccion" id="direccion_juridico"/>
-							</div>
-							<div class="form_row">
-							<label> Correo Electronico:</label>
-							<input class="input tipRight" type="text" style="width:400px;" name="email" id="email_juridico"/>
-							</div>
-							<div id="right_form_juridico" >
-								<div id="juridico_foto">
-								<label> Foto: </label>
-								<img src="#" alt="exm" height=150 width=150/>
-								</div>
-								<div id="juridico_div_extra"> 
-									<div class="form_row">
-									<label> Telefono: </label>
-									<input name="telefono_natural" class="input tipRight" type="text" style="width: 300px"/>
-									</div>
-									<div class="form_row">
-									<label> Celular: </label>
-									<input name="celular_natural" class="input tipRight" type="text" style="width: 300px"/>
-									</div>
-
-								</div>
-							</div><!-- termina natural -->
-						</div>
-					</div>
-				</div>
-					<div id="info_adicional">
-					<div class="small-inner" id="detalle_cliente"style="margin-top: 10px;">
-						<div class="titlebar innertitle">
-							<h3>Detalle del Cliente</h3>
-						</div>
-						<div class="block_cont">
-							<div class="form_row" id="estado_cliente">
-							<label> Estado: </label>
-							<select name="estado" class="select">
-								<option value="estado0"> estado0 </option>
-								<option value="estado1"> estado1 </option>
-							</select>
-							</div>
-							<div class="form_row">
-							<label> Reservas Historicas </label>
-							<input name="reservas_historicas" type="text" class="input" readonly="readonly" style="width:300px"/>
-							</div>
-						</div>
-					</div>
-					<div class="small-inner" id="cuenta_usuario" style="margin-top: 10px; width:400px">
-						<div class="titlebar innertitle">
-							<h3>Cuenta de usuario</h3>
-						</div>
-						<div class="block_cont">
-						<div class="form_row">
-						<label> Usuario:</label>
-						<input name="usuario" type="text" class="input" style="width:300px;"/>
-						</div>
-						<div class="form_row">
-						<label> Password:</label>
-						<input name="usuario" type="text" class="input" style="width:300px;"/>
-						</div>
-						<div class="form_row">
-						<label> Tarjeta Cliente:</label>
-						<input name="usuario" type="text" class="input" style="width:300px"/>
-						</div>
-						</div>
-					</div>
-					</div>
-					<div style="position:relative; top: -40px; height:20px">
-					<div class="form_row">
-					<input type="submit" class="submit" value="Aceptar"/> 
-					</div>
-					<div class="form_row" style="position: relative; left : 70px ; top:-42px">
-					<input type="reset" class="submit" value="Cancelar"/>
-					</div>
-					</div>
-                    <div>
-                        <button class="submit">
-                         @Html.ActionLink("Back to List", "Index")
-                         </button>
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Administracion de Cliente</h3>
+    </div>
+    <div class="form_row">
+        <label>
+            Tipo de cliente
+        </label>
+        <select name="tipo_cliente" id="tipo_cliente" class="select">
+            <option value="none">- </option>
+            <option value="@Cliente.TipoPersona.natural">Persona natural</option>
+            <option value="@Cliente.TipoPersona.juridico">Persona juridica</option>
+        </select>
+    </div>
+    <div class="block_cont">
+        <div id="datos_personales">
+            <div class="titlebar innertitle">
+                <h3>
+                    Datos Personales</h3>
+            </div>
+        </div>
+        @if (ViewBag.tipo_persona == null)
+        {
+        using (Html.BeginForm("Create", "Cliente", FormMethod.Post, new { @class = "form" }))
+        {
+				
+            <div class="block_cont">
+                <div id="cliente_none_form">
+                </div>
+                <div id="cliente_natural_form" style="display: none">
+                    <!-- empieza natural -->
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.nombre)
+                        @Html.TextBoxFor(model => model.nombre, new { @class = "input validate[required] tipRight singleInput", })
                     </div>
-
-				</div>
-				</form>
-                
-
-			</div><!-- Block End -->
-
-
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.apellido_paterno)
+                        @Html.TextBoxFor(model => model.apellido_paterno, new { @class = "input validate[required] tipRight singleInput", })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.apellido_materno)
+                        @Html.TextBoxFor(model => model.apellido_materno, new { @class = "input validate[required] tipRight singleInput", })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.fecha_nacimiento)
+                        <input class="input tipTop singleInput" id="fecha_nacimiento_date" type="text" name="fecha_nacimiento" />
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.pais)
+                        <input class="input tipRight" type="text" style="width: 300px;" name="pais" id="pais" />
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.ciudad)
+                        <input class="input tipRight" type="text" style="width: 300px;" name="ciudad" id="ciudad" />
+                    </div>
+                    <div class="form_row">
+                        <label>
+                            Distrito:</label>
+                        <input class="input tipRight" type="text" style="width: 300px;" name="distrito" id="distrito" />
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.direccion)
+                        @Html.TextBoxFor(model => model.direccion, new { @class = "input tipRight singleInputLarge", })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.correo_electronico)
+                        @Html.TextBoxFor(model => model.correo_electronico, new { @class = "input tipRight singleInputLarge", })
+                    </div>
+                    <div id="right_form_natural">
+                        <div id="natural_foto">
+                            <label>
+                                Foto
+                            </label>
+                            <img src="#" alt="exm" height="150" width="150" />
+                        </div>
+                        <div id="natural_div_extra">
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.ruc)
+                                @Html.TextBoxFor(model => model.ruc, new { @class = "input tipRight singleInput", })
+                            </div>
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.dni)
+                                @Html.TextBoxFor(model => model.dni, new { @class = "input tipRight singleInput", })
+                            </div>
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.pasaporte)
+                                @Html.TextBoxFor(model => model.pasaporte, new { @class = "input tipRight singleInput", })
+                            </div>
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.telefono)
+                                @Html.TextBoxFor(model => model.telefono, new { @class = "input tipRight singleInput", })
+                            </div>
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.celular)
+                                @Html.TextBoxFor(model => model.celular, new { @class = "input tipRight singleInput", })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- termina natural -->
+                </div>
+            </div>
+				
+            <div id="info_adicional">
+                <div class="small-inner" id="detalle_cliente" style="margin-top: 10px;">
+                    <div class="titlebar innertitle">
+                        <h3>
+                            Detalle del Cliente</h3>
+                    </div>
+                    <div class="block_cont">
+                        <div class="form_row" id="estado_cliente">
+                            <label>
+                                Estado:
+                            </label>
+                            <select name="estado" class="select">
+                                <option value="@Cliente.EstadoCliente.sin_reserva" >Sin reserva </option>
+                                <option value="@Cliente.EstadoCliente.en_estadia" >En estadia </option>
+                                <option value="@Cliente.EstadoCliente.con_reserva" >Con reserva </option>
+                            </select>
+                        </div>
+                        <div class="form_row">
+                            <label>
+                                Reservas Historicas
+                            </label>
+                            <input name="reservas_historicas" type="text" class="input" readonly="readonly" style="width: 300px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="small-inner" id="cuenta_usuario" style="margin-top: 10px; width: 400px">
+                    <div class="titlebar innertitle">
+                        <h3>
+                            Cuenta de usuario</h3>
+                    </div>
+                    <div class="block_cont">
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.usuario)
+                            @Html.TextBoxFor(model => model.usuario, new { @class = "input tipRight singleInput", })
+                        </div>
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.password)
+                            @Html.TextBoxFor(model => model.password, new { @class = "input password tipRight singleInput", })
+                        </div>
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.tarjeta_cliente)
+                            @Html.TextBoxFor(model => model.tarjeta_cliente, new { @class = "input tipRight singleInput", })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="position: relative; top: -40px; height: 20px">
+                <div class="form_row">
+                    <input type="submit" class="submit" value="Aceptar" />
+                </div>
+                <div class="form_row" style="position: relative; left: 70px; top: -42px">
+                    <input type="reset" class="submit" value="Cancelar" />
+                </div>
+            </div>
+        }
+        }
+    </div>
+    <!-- Block End -->

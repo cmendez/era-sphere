@@ -17,9 +17,17 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             return View();
         }
 
-        public ActionResult Create()
+        public ActionResult Create(Cliente.TipoPersona? tipo)
         {
+            ViewBag.tipo_persona = tipo;
             return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Cliente cliente)
+        {
+            cliente.tipo = Cliente.TipoPersona.natural;
+            cliente_logica.agregarCliente(cliente);
+            return RedirectToAction("Index");
         }
         public ActionResult Delete() {
             return View();

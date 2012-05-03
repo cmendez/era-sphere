@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using Era_sphere.Generics;
+using System.ComponentModel;
 
 namespace Era_sphere.Areas.Configuracion.Models
 {

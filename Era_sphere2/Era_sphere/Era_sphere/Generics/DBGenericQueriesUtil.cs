@@ -46,9 +46,19 @@ namespace Era_sphere.Generics
 
         public void agregarElemento(T elemento)
         {
-            elemento.ID = dbset.Max(p => p.ID) + 1;
+            if (elemento.ID == 0)
+            {
+                var todos = (from u in dbset select u.ID).ToList();
+                int maxi = todos.Count > 0 ? todos.Max() : 0;
+                elemento.ID = maxi + 1;
+            }
             dbset.Add(elemento);
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }catch(Exception ex){
+                Console.WriteLine(ex.StackTrace);
+            }
         }
 
         public void eliminarElemento(int ID)

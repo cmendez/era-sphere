@@ -13,3 +13,6 @@ C:\Users\hp\Desktop\eraspheredocs\Test_App - wallace chan\Test_App\bin\Test_App.
 C:\Users\hp\Desktop\eraspheredocs\Test_App - wallace chan\Test_App\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\hp\Desktop\eraspheredocs\Test_App - wallace chan\Test_App\obj\Debug\Test_App.dll
 C:\Users\hp\Desktop\eraspheredocs\Test_App - wallace chan\Test_App\obj\Debug\Test_App.pdb
+C:\Users\Juan Carlos\Desktop\SW\Test_App\Test_App\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Juan Carlos\Desktop\SW\Test_App\Test_App\obj\Debug\Test_App.dll
+C:\Users\Juan Carlos\Desktop\SW\Test_App\Test_App\obj\Debug\Test_App.pdb

@@ -76,6 +76,8 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadoAreaRegistration.cs" />
     <Compile Include="Areas\AreaReportes\AreaReportesAreaRegistration.cs" />
+    <Compile Include="Areas\AreaReservas\AreaReservasAreaRegistration.cs" />
+    <Compile Include="Areas\AreaReservas\Models\Reserva.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Generics\DBable.cs" />
@@ -644,6 +646,8 @@
     <Folder Include="Areas\AreaReportes\Controllers\" />
     <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
+    <Folder Include="Areas\AreaReservas\Controllers\" />
+    <Folder Include="Areas\AreaReservas\Views\Shared\" />
     <Folder Include="Scripts\ApiSeguridad\" />
   </ItemGroup>
   <ItemGroup>
@@ -666,6 +670,7 @@
     <Content Include="Areas\AreaClientes\Views\Cliente\Create.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\Delete.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\Detail.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Web.config" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <None Include="Content\data\._images" />

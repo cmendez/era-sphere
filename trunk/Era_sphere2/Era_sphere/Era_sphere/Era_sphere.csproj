@@ -707,15 +707,12 @@
     <Content Include="Areas\AreaClientes\Views\Cliente\Create.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\Delete.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\Detail.cshtml" />
-<<<<<<< .mine
     <Content Include="Areas\AreaClientes\Views\Cliente\Detail_natural.cshtml" />
     <Content Include="Areas\AreaContable\Views\Web.config" />
-=======
     <Content Include="Areas\AreaReservas\Views\Web.config" />
     <Content Include="Areas\AreaHoteles\Views\Web.config" />
     <Content Include="Areas\AreaPaquetes\Views\Web.config" />
     <Content Include="Areas\AreaEventos\Views\Web.config" />
->>>>>>> .r225
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <None Include="Content\data\._images" />

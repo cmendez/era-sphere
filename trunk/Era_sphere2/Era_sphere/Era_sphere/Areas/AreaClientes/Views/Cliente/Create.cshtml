@@ -26,8 +26,7 @@
             {
                 <div id="datos_personales_natural">
                     <div class="titlebar innertitle">
-                        <h3>
-                            Datos Personales</h3>
+                        <h3>Datos Personales</h3>
                     </div>
                     <div class="block_cont">
                         <div class="form_row">
@@ -102,14 +101,8 @@
                         </div>
                         <div class="block_cont">
                             <div class="form_row" id="estado_cliente">
-                                <label>
-                                    Estado:
-                                </label>
-                                <select name="estado" class="select">
-                                    <option value="@Cliente.EstadoCliente.sin_reserva" >Sin reserva </option>
-                                    <option value="@Cliente.EstadoCliente.en_estadia" >En estadia </option>
-                                    <option value="@Cliente.EstadoCliente.con_reserva" >Con reserva </option>
-                                </select>
+                                @Html.LabelFor(model => model.estado)
+                                @Html.DropDownListFor(model => model.estado, new SelectList(Enum.GetValues(typeof(Cliente.EstadoCliente))), new { @class = "select" })
                             </div>
                             <div class="form_row">
                                 <label>
@@ -161,6 +154,7 @@
                             Datos Personales</h3>
                     </div>
                     <div class="block_cont">
+                        
                         <div class="form_row">
                             @Html.LabelFor(model => model.razon_social)
                             @Html.TextBoxFor(model => model.razon_social, new { @class = "input validate[required] tipRight singleInput", })
@@ -214,14 +208,8 @@
                         </div>
                         <div class="block_cont">
                             <div class="form_row">
-                                <label>
-                                    Estado:
-                                </label>
-                                <select name="estado" class="select">
-                                    <option value="@Cliente.EstadoCliente.sin_reserva" >Sin reserva </option>
-                                    <option value="@Cliente.EstadoCliente.en_estadia" >En estadia </option>
-                                    <option value="@Cliente.EstadoCliente.con_reserva" >Con reserva </option>
-                                </select>
+                                @Html.LabelFor(model => model.estado)
+                                @Html.DropDownListFor(model => model.estado, new SelectList(Enum.GetValues(typeof(Cliente.EstadoCliente))), new { @class = "select" })
                             </div>
                             <div class="form_row">
                                 <label>

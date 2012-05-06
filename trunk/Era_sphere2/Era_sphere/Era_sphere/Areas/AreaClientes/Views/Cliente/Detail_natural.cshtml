@@ -1,0 +1,144 @@
+﻿@model Era_sphere.Areas.AreaClientes.Models.Cliente
+@{
+    ViewBag.Title = "Detail_natural";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="block big" style="position: relative">
+    <div class="titlebar">
+        <h3>
+            Administracion de Cliente</h3>
+    </div>
+    <div class="form_row">
+        <label>
+            Tipo de cliente
+        </label>
+        <select name="tipo_cliente" id="tipo_cliente" class="select" contenteditable="false">
+            <option value="natural">Persona natural</option>
+        </select>
+    </div>
+    <div class="block_cont">
+        <div id="cliente_natural_form" style="" class="form">
+            <div id="datos_personales_natural">
+                <div class="titlebar innertitle">
+                    <h3>
+                        Datos Personales</h3>
+                </div>
+                <div class="block_cont">
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.nombre)
+                        @Html.TextBoxFor(model => model.nombre, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.apellido_paterno)
+                        @Html.TextBoxFor(model => model.apellido_paterno, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.apellido_materno)
+                        @Html.TextBoxFor(model => model.apellido_materno, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.fecha_nacimiento)
+                        @Html.TextBoxFor(model => model.fecha_nacimiento, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.pais)
+                        @Html.TextBoxFor(model => model.pais, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.ciudad)
+                        @Html.TextBoxFor(model => model.ciudad, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.direccion)
+                        @Html.TextBoxFor(model => model.direccion, new { @class = "input tipRight singleInputLarge", @readonly = "readonly" })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.correo_electronico)
+                        @Html.TextBoxFor(model => model.correo_electronico, new { @class = "input tipRight singleInputLarge", @readonly = "readonly" })
+                    </div>
+                    <div id="right_form_natural" style="height: 0px; left: 600px; position: relative;
+                        top: 0px;">
+                        <div id="natural_foto">
+                            <label>
+                                Foto
+                            </label>
+                            <img src="#" alt="exm" height="150" width="150" />
+                        </div>
+                        <div id="natural_div_extra">
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.ruc)
+                                @Html.TextBoxFor(model => model.ruc, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                            </div>
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.dni)
+                                @Html.TextBoxFor(model => model.dni, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                            </div>
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.pasaporte)
+                                @Html.TextBoxFor(model => model.pasaporte, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                            </div>
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.telefono)
+                                @Html.TextBoxFor(model => model.telefono, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                            </div>
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.celular)
+                                @Html.TextBoxFor(model => model.celular, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info_adicional">
+                <div class="small-inner" class="detalle_cliente" style="margin-top: 10px;">
+                    <div class="titlebar innertitle">
+                        <h3>
+                            Detalle del Cliente</h3>
+                    </div>
+                    <div class="block_cont">
+                        <div class="form_row" id="estado_cliente">
+                            @Model.tipo
+                        </div>
+                        <div class="form_row">
+                            <label>
+                                Reservas Historicas
+                            </label>
+                            <input name="reservas_historicas" type="text" class="input" readonly="readonly" style="width: 300px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="small-inner cuenta_usuario" style="margin-top: 10px; width: 400px">
+                    <div class="titlebar innertitle">
+                        <h3>
+                            Cuenta de usuario</h3>
+                    </div>
+                    <div class="block_cont">
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.usuario)
+                            @Html.TextBoxFor(model => model.usuario, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                        </div>
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.password)
+                            @Html.TextBoxFor(model => model.password, new { @class = "input password tipRight singleInput", @readonly = "readonly" })
+                        </div>
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.tarjeta_cliente)
+                            @Html.TextBoxFor(model => model.tarjeta_cliente, new { @class = "input tipRight singleInput", @readonly = "readonly" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="position: relative; top: -40px; height: 20px">
+                <div class="form_row">
+                    <input type="submit" class="submit" value="Aceptar" />
+                </div>
+                <div class="form_row" style="position: relative; left: 70px; top: -42px">
+                    <input type="reset" class="submit" value="Cancelar" />
+                </div>
+                }
+            </div>
+        </div>
+</div>
+@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+@Html.ActionLink("Back to List", "Index")
+</div> 

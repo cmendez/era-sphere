@@ -20,6 +20,8 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
 
         public ActionResult Create()
         {
+            var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
+
             return View();
         }
         [HttpPost]
@@ -29,11 +31,18 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             cliente_logica.agregarCliente(cliente);
             return RedirectToAction("Index");
         }
-        public ActionResult Delete() {
-            return View();
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+           cliente_logica.eliminarCliente(id);
+           return RedirectToAction("Index");
         }
-        public ActionResult Detail() {
-            return View();
+        public ActionResult Delete(int id) {
+            return View(cliente_logica.retornarCliente(id));
+        }
+        public ActionResult Detail(int id) {
+            return View( "Detail_natural",cliente_logica.retornarCliente(id));
         }
     }
 }

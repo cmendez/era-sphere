@@ -3,6 +3,11 @@
 	margin: 0 0 0 0px;
 }
 
+td 
+{
+    color : black;
+}
+
 .small-inner {
 	position: relative;
 }

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Web Developer Express 2010
+# Visual Web Developer Express  2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Era_sphere", "Era_sphere\Era_sphere.csproj", "{69F1B87C-75C8-4037-BC39-104DC3DBC49F}"
 EndProject
 Global

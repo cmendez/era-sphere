@@ -41,13 +41,8 @@
                             @Html.TextBoxFor(model => model.razon_social, new { @class = "input tipRight singleInput", })
                         </div>
                         <div class="form_row" id="estado_cliente">
-                            <label>
-                                Estado:
-                            </label>
-                            <select name="estado" class="select" style="display: none;">
-                                <option value="estado0">estado0 </option>
-                                <option value="estado1">estado1 </option>
-                            </select>
+                            @Html.LabelFor(model => model.estado)
+                            @Html.DropDownListFor(model => model.estado, new SelectList(Enum.GetValues(typeof(Cliente.EstadoCliente))), new { @class = "select" })
                         </div>
                         <div class="form_row" style="position: relative">
                             <button id="reset" class="submit">
@@ -93,7 +88,7 @@
                         <th>
                             Estado
                         </th>
-                        <th width="80">
+                        <th>
                             Acciones
                         </th>
                     </tr>
@@ -101,12 +96,19 @@
                 @{
                     foreach(Cliente c in ViewBag.clientes){
                         <tr>
-                            <td>@c.nombre</td>
-                            @if (c.dni != null){<td>c.dni</td>}
-                            else{<td>c.pasaporte</td>}
+                            <td> <input type = "checkbox"></td>
+                            <td>
+                                @if (c.nombre != null){@c.nombre}
+                                else{@c.razon_social}
+                            </td>
+                            <td>
+                                @if (c.dni != null){@c.dni}
+                                else{@c.pasaporte}
+                            </td>
                             <td>@c.tipo</td>
                             <td>@c.estado</td>
-                            <td><div style="height: 3px;">&nbsp;</div><div class="actionbar"><a id = "ver" class="action view"><span>View</span></a><a id = "editar" class="action edit"><span>Edit</span></a><a id = "eliminar" class="action delete"><span>Delete</span></a></div></td>;
+                            <td><div style="height: 3px;">&nbsp;</div><div class="actionbar">@Html.ActionLink("Detalles", "Detail", new {id = c.ID})&nbsp;@Html.ActionLink("Modificar", "Modify", new { id = c.ID })&nbsp;@Html.ActionLink("Eliminar", "Delete", new { id = c.ID })</div></td>
+                            <td></td>
                         </tr>
                     }
                 }

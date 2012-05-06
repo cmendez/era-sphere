@@ -21,6 +21,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
             }
             public enum EstadoCliente
             {
+                [Description("Con reserva")]
                 con_reserva,
                 sin_reserva,
                 en_estadia

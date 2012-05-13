@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Models;
 using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models.Perfiles;
+using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
@@ -14,10 +16,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 
         public ActionResult Index(Perfil cliente_busqueda)
         {
-            ViewBag.cadenas = perfil_logica.retornarCadenas();
+            //ViewBag.cadenas = perfil_logica.retornarCadenas();
             return View();
         }
-
+        /*
         public ActionResult Create()
         {
             //var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
@@ -48,6 +50,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
             return View("Detalle_Cadena", cadena_logica.retornarCadena(id));
         }
-
+        */
     }
 }

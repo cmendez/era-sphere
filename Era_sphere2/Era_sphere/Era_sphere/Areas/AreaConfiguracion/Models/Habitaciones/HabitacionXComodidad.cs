@@ -8,6 +8,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Habitaciones
 {
     public class HabitacionXComodidad:DBable
     {
+        public int ID { get; set; }
         public Habitacion habitacion;
         public Comodidad comodidad;
     }

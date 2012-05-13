@@ -48,5 +48,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         {
             return database_table.buscarElementos(cadena_campos);
         }
+
+        public List<Cadena> retornarClientes()
+        {
+            return null;
+        }
     }
 }

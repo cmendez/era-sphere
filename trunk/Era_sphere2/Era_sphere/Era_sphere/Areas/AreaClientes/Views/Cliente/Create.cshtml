@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "ViewPage1";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var paises = new SelectList(ViewBag.paises, "ID", "nombre");
 }
 <div class="block big" style="position: relative">
     <div class="titlebar">
@@ -16,7 +17,7 @@
         </label>
         <select name="tipo_cliente" id="tipo_cliente" class="select">
             <option value="none">- </option>
-            <option value="natural">Persona natural</option>
+            <option value="natural"> Persona natural</option>
             <option value="juridico">Persona juridica</option>
         </select>
     </div>
@@ -46,8 +47,8 @@
                             @Html.TextBoxFor(model => model.fecha_nacimiento, new { @class = "input tipTop singleInput fecha" })
                         </div>
                         <div class="form_row">
-                            @Html.LabelFor(model => model.pais)
-                            <input class="input tipRight" type="text" style="width: 300px;" name="pais" id="pais" />
+                            @Html.LabelFor(model => model.paisID)
+                            @Html.DropDownListFor(model => model.paisID, @paises)
                         </div>
                         <div class="form_row">
                             @Html.LabelFor(model => model.ciudad)

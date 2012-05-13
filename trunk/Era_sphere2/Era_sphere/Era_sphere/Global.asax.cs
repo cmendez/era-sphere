@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Era_sphere.Areas.AreaClientes.Models;
 using System.Data.Entity;
+using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Models;
 
 namespace Era_sphere
 {
@@ -35,7 +37,7 @@ namespace Era_sphere
         {
             AreaRegistration.RegisterAllAreas();
             Database.SetInitializer<ClienteContext>(new DropCreateDatabaseIfModelChanges<ClienteContext>());
-
+            Database.SetInitializer<UbigeoContext>(new DropCreateDatabaseIfModelChanges<UbigeoContext>());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

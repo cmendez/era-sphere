@@ -23,7 +23,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         {
             //var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
             var con = new UbigeoContext();
-            //con.Seed();
+            con.Seed();
             ViewBag.paises = (new UbigeoContext()).paises.ToList();
             return View();
         }

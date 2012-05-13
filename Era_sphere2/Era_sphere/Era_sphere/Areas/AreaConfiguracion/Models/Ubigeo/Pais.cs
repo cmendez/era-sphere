@@ -8,10 +8,11 @@ using System.ComponentModel;
 
 namespace Era_sphere.Areas.Configuracion.Models
 {
-    public class Pais: DBable
+    public class Pais:DBable
     {
-        public string nombre { get; set; }
-        public virtual ICollection<Ciudad> ciudades { get; set; }
+      
+       public string nombre { get; set; }
+       public virtual ICollection<Ciudad> ciudades { get; set; }
     }
 
     

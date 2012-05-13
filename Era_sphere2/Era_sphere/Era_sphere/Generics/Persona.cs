@@ -49,9 +49,11 @@ namespace Era_sphere.Generics
         [DisplayName("Ciudad")]
         public Ciudad ciudad { get; set; }
 
+        
         [DisplayName("Pais")]
-        public Pais pais { get; set; }
-       
+        public int paisID { get; set; }
+        public virtual Pais pais { get; set; }
+        
         [DisplayName("Fecha de nacimiento")]
         public DateTime? fecha_nacimiento { get; set; }
         

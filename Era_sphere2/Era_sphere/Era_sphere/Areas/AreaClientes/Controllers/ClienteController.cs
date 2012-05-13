@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Models;
 using Era_sphere.Areas.AreaClientes.Models;
+using Era_sphere.Areas.Configuracion.Models;
 
 namespace Era_sphere.Areas.AreaClientes.Controllers
 {
@@ -20,8 +21,10 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
 
         public ActionResult Create()
         {
-            var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
-
+            //var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
+            var con = new UbigeoContext();
+            //con.Seed();
+            ViewBag.paises = (new UbigeoContext()).paises.ToList();
             return View();
         }
         [HttpPost]

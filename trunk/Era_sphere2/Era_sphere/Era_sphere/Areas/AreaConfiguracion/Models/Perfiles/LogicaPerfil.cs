@@ -10,12 +10,11 @@ using Era_sphere.Areas.AreaClientes.Models;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Perfiles
 {
-    public class LogicaPerfil
+    public class LogicaPerfil: InterfazLogicaPerfil
     {
         PerfilContext perfil_context = new PerfilContext();
         DBGenericQueriesUtil<Perfil> database_table;
-        DBGenericQueriesUtil<Cliente> database_table_clientes;
-
+        
         public LogicaPerfil()
         {
             database_table = new DBGenericQueriesUtil<Perfil>(perfil_context, perfil_context.perfiles);
@@ -49,11 +48,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Perfiles
         public List<Perfil> buscarPerfil(Perfil perfil_campos)
         {
             return database_table.buscarElementos(perfil_campos);
-        }
-
-        public List<Cliente> retornarClientes()
-        {
-            return database_table_clientes.retornarTodos();
         }
 
     }

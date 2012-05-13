@@ -6,13 +6,13 @@ using Era_sphere.Areas.AreaClientes.Models;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Perfiles
 {
-    public class InterfazLogicaPerfil
+    public interface InterfazLogicaPerfil
     {
-        List<Cliente> retornarClientes();
-        Perfil retornarperfil(int perfil_id);
-        void modificarperfil(Perfil perfil);
-        void agregarperfil(Perfil perfil);
-        void eliminarperfil(int perfil_id);
-        List<Perfil> buscarperfil(Perfil perfil);
+        List<Perfil> retornarPerfiles();
+        Perfil retornarPerfil(int perfil_id);
+        void modificarPerfil(Perfil perfil);
+        void agregarPerfil(Perfil perfil);
+        void eliminarPerfil(int perfil_id);
+        List<Perfil> buscarPerfil(Perfil perfil);
     }
 }

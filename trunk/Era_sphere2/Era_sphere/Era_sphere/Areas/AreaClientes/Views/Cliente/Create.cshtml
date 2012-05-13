@@ -48,7 +48,7 @@
                         </div>
                         <div class="form_row">
                             @Html.LabelFor(model => model.paisID)
-                            @Html.DropDownList("pais", paises)
+                            @Html.DropDownListFor(model => model.paisID, new SelectList(ViewBag.paises, "ID", "nombre"))
                         </div>
                         <div class="form_row">
                             @Html.LabelFor(model => model.ciudad)

@@ -24,13 +24,15 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             //var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
             var con = new UbigeoContext();
             con.Seed();
-            ViewBag.paises = (new UbigeoContext()).paises.ToList();
+            List<Pais> paises = (new UbigeoContext()).paises.ToList();
+            ViewBag.paises = paises;
             return View();
         }
         [HttpPost]
         public ActionResult Create(Cliente cliente)
         {
             cliente.tipo = Cliente.TipoPersona.natural;
+            cliente.pais = (new UbigeoContext()).paises.Find(cliente.paisID);
             cliente_logica.agregarCliente(cliente);
             return RedirectToAction("Index");
         }

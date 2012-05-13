@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Era_sphere.Areas.AreaClientes.Models;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 {
     public interface InterfazLogicaCadena
     {
-        List<Cadena> retornarClientes();
+        List<Cliente> retornarClientes();
         Cadena retornarCadena(int cadena_id);
         void modificarCadena(Cadena cadena);
         void agregarCadena(Cadena cadena);

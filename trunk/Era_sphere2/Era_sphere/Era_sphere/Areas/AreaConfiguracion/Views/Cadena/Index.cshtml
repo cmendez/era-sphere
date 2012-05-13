@@ -1,5 +1,129 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Cadenas.Cadena
+@using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
+@using Era_sphere.Generics;
+@{
+    ViewBag.Title = "Cadenas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Cadena
+        </h3>
+    </div>
+    @using (Html.BeginForm("Index", "Cadena", FormMethod.Get, new { @class = "form" })) { 
+        <div class="block_cont" id="formCadena">
+            <div id="info_adicional">
+            <div class="small-inner" id="detalle_cadena" style="margin-top: 0px; margin-bottom: 0px;
+                width: 930px; position: relative;">
+                <div class="titlebar innertitle">
+                    <h3>
+                        Detalle de la Cadena
+                    </h3>
+                </div>
+                <div class="block_cont" id="block_detalle_cadena">
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.nombreCadena)
+                        @Html.TextBoxFor(model => model.nombreCadena, new { @class = "input tipRight singleInput", })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.rsocial)
+                        @Html.TextBoxFor(model => model.rsocial, new { @class = "input tipRight singleInput", })
+                    </div>
+                    <div class="form_row">
+                        @Html.LabelFor(model => model.ruc)
+                        @Html.TextBoxFor(model => model.ruc, new { @class = "input tipRight singleInput", })
+                    </div>
+           <!--         <div style="position: relative; height: 0px; top: -180px; left: 500px;">
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.url)
+                            @Html.TextBoxFor(model => model.url, new { @class = "input tipRight singleInput", })
+                        </div>
+                        <div class="form_row" id="estado_cliente">
+                            @Html.LabelFor(model => model.estado)
+                            @Html.DropDownListFor(model => model.estado, new SelectList(Enum.GetValues(typeof(Cliente.EstadoCliente))), new { @class = "select" })
+                        </div>
+                        <div class="form_row" style="position: relative">
+                            <button id="reset" class="submit">
+                                Limpiar
+                            </button>
+                            <button id="buscar" class="submit" style="position: relative; top: -32px; left: 80px;">
+                                Buscar
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        </div>
+    }
+    
+        <button class="submit">@Html.ActionLink("Registrar", "Create")</button>
+        <div style="display: none">
+            <button id="pruebaGET">
+                PruebaGET</button>
+            <button id="agregarCliente">
+                Agregar
+            </button>
+        </div>
+        <div style="height: 10px">
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="20">
+                            <input type="checkbox" id="chkall" name="check" value="-">
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Documento
+                        </th>
+                        <th>
+                            Tipo
+                        </th>
+                        <th>
+                            Estado
+                        </th>
+                        <th>
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                @{
+                    foreach(Cliente c in ViewBag.clientes){
+                        <tr>
+                            <td> <input type = "checkbox"></td>
+                            <td>
+                                @if (c.nombre != null){@c.nombre}
+                                else{@c.razon_social}
+                            </td>
+                            <td>
+                                @if (c.dni != null){@c.dni}
+                                else{@c.pasaporte}
+                            </td>
+                            <td>@c.tipo</td>
+                            <td>@c.estado</td>
+                            <td><div style="height: 3px;">&nbsp;</div><div class="actionbar">@Html.ActionLink("Detalles", "Detail", new {id = c.ID})&nbsp;@Html.ActionLink("Modificar", "Modify", new { id = c.ID })&nbsp;@Html.ActionLink("Eliminar", "Delete", new { id = c.ID })</div></td>
+                            <td></td>
+                        </tr>
+                    }
+                }
+                <tfoot id="responseData">
+                </tfoot>
+            </table>
+        </div>
+        <div id="dialogEliminar" class="ui-dialog-content ui-widget-content" style="width: auto;
+            min-height: 46px; height: auto; display: none" scrolltop="0" scrollleft="0">
+            <p>
+                Desea eliminar al cliente del sistema?</p>
+        </div>
+        <div id="dialogEditar" class="ui-dialog-content ui-widget-content" style="width: auto;
+            min-height: 46px; height: auto; display: none" scrolltop="0" scrollleft="0">
+            <!-- Carga de formularioCliente.html -->
+        </div>
+        <!-- Table Wrapper End -->
+    </div>

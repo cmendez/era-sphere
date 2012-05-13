@@ -70,6 +70,7 @@
     <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs" />
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\CadenasController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\Cadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\CadenaContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\InterfazLogicaCadena.cs" />
@@ -86,7 +87,10 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Habitaciones\LogicaTipoHabitacion.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Habitaciones\TipoHabitacion.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Habitaciones\TipoHabitacionContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\InterfazLogicaPerfil.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\LogicaPerfil.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\Perfil.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\PerfilContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Politicas.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\Servicio.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicio.cs" />
@@ -716,6 +720,7 @@
     <Content Include="Areas\AreaPaquetes\Views\Web.config" />
     <Content Include="Areas\AreaEventos\Views\Web.config" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Index.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Perfiles\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <None Include="Content\data\._images" />

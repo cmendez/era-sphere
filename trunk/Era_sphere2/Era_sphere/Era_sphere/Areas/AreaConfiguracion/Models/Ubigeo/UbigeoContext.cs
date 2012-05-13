@@ -17,8 +17,13 @@ namespace Era_sphere.Areas.Configuracion.Models
         }
         public void Seed()
         {
-            
-               var _paises = new List<Pais>
+            try
+            {
+                if (paises.Count() != 0) return;
+            }
+            catch (Exception) { }
+
+            var _paises = new List<Pais>
             {
                 new Pais{nombre = "Peru", ID = 1},
                 new Pais{nombre = "Uruguay", ID = 2},

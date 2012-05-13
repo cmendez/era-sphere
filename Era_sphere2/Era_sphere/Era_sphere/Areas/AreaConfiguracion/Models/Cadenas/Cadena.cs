@@ -10,8 +10,8 @@ using System.ComponentModel;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 {
-    
-    public class Cadena: DBable
+
+    public class Cadena : DBable
     {
         [DisplayName("Nombre de la cadena")]
         public string nombreCadena { get; set; }
@@ -56,7 +56,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         public string password { get; set; }
 
         public Cadena()
-        { 
-            
+        {
+
         }
+    }
 }

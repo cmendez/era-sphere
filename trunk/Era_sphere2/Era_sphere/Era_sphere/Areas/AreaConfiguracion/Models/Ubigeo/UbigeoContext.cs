@@ -11,18 +11,22 @@ namespace Era_sphere.Areas.Configuracion.Models
         public DbSet<Pais> paises {get; set;}
         public DbSet<Ciudad> ciudades { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+        public UbigeoContext()
         {
-            base.OnModelCreating(modelBuilder);
-        }
-        public void Seed()
-        {
+            //esto tiene que hacerse con try catch, porque si la base de datos esta vacia, el metodo Count da Exception, esto es asi porque los del MVC lo hicieorn feo xD
             try
             {
-                if (paises.Count() != 0) return;
+                if (paises.Count() != 0) return; // si hay paises, no hace nada
             }
-            catch (Exception) { }
-
+            catch (Exception) // en caso contrario, crea data inicial
+            {
+                Seed();
+            }
+        }
+        //crea data inicial
+        public void Seed()
+        {
             var _paises = new List<Pais>
             {
                 new Pais{nombre = "Peru", ID = 1},

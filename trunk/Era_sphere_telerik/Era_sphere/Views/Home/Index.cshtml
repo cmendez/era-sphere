@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+	<div id="loginbox">
+		<a href="#" id="logo">AdminCP</a>
+		<div id="loginform">
+			<form name="login" action="/Home/Login" method="post">
+				<div id="username_field"><input type="text" name="usuario" placeholder="Username" class="required" value="" /></div>
+				<div id="password_field"><input type="password" name="password" placeholder="Password" class="required" value="" /></div>
+				<div id="buttonline">
+					<input type="submit" id="loginbutton" class="float_left width_4" value="Login" />
+					<a href="#" class="passforgot float_right">Forgot your password?</a>
+				</div>
+			</form>
+		</div>
+	</div>

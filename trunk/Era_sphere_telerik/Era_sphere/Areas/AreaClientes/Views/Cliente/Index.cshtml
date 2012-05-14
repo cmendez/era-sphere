@@ -1,0 +1,164 @@
+﻿@model Era_sphere.Areas.AreaClientes.Models.Cliente
+@using Era_sphere.Areas.AreaClientes.Models
+
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI;
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Cliente
+        </h3>
+    </div>
+    @{ Html.Telerik().PanelBar()
+        .Name("PanelBar")
+        .HtmlAttributes(new { style = "width: 300px; float: left; margin-bottom: 30px;" })
+
+        .Items(items => {
+            items.Add().Text("Item 1")
+                        .Content( 
+                            @<p>Content</p>
+                        );
+            items.Add().Text("Item 2")
+                     .Content(
+                        @<p>Content</p>
+                     );
+                              
+        
+        })
+        .Render();
+    }
+    @using (Html.BeginForm("Index", "Cliente", FormMethod.Get, new { @class = "form" }))
+    { 
+        <div class="block_cont" id="formCliente">
+            <div id="info_adicional">
+                <div class="small-inner" id="detalle_cliente" style="margin-top: 0px; margin-bottom: 0px;
+                    width: 930px; position: relative;">
+                    <div class="titlebar innertitle">
+                        <h3>
+                            Detalle del Cliente
+                        </h3>
+                    </div>
+                    <div class="block_cont" id="block_detalle_cliente">
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.nombre)
+                            @Html.TextBoxFor(model => model.nombre, new { @class = "input tipRight singleInput", })
+                        </div>
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.apellido_paterno)
+                            @Html.TextBoxFor(model => model.apellido_paterno, new { @class = "input tipRight singleInput", })
+                        </div>
+                        <div class="form_row">
+                            @Html.LabelFor(model => model.apellido_materno)
+                            @Html.TextBoxFor(model => model.apellido_materno, new { @class = "input tipRight singleInput", })
+                        </div>
+                        <div style="position: relative; height: 0px; top: -180px; left: 500px;">
+                            <div class="form_row">
+                                @Html.LabelFor(model => model.razon_social)
+                                @Html.TextBoxFor(model => model.razon_social, new { @class = "input tipRight singleInput", })
+                            </div>
+                            <div class="form_row" id="estado_cliente">
+                                @Html.LabelFor(model => model.estado)
+                                @Html.DropDownListFor(model => model.estado, new SelectList(Enum.GetValues(typeof(Cliente.EstadoCliente))), new { @class = "select" })
+                            </div>
+                            <div class="form_row" style="position: relative">
+                                <button id="reset" class="submit">
+                                    Limpiar
+                                </button>
+                                <button id="buscar" class="submit" style="position: relative; top: -32px; left: 80px;">
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <button class="submit">@Html.ActionLink("Registrar", "Create")</button>
+    <div style="display: none">
+        <button id="pruebaGET">
+            PruebaGET</button>
+        <button id="agregarCliente">
+            Agregar
+        </button>
+    </div>
+    <div style="height: 10px">
+    </div>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th width="20">
+                        <input type="checkbox" id="chkall" name="check" value="-">
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Documento
+                    </th>
+                    <th>
+                        Tipo
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+            @{
+                foreach (Cliente c in ViewBag.clientes)
+                {
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        @if (c.nombre != null)
+                        {@c.nombre}
+                        else
+                        {@c.razon_social}
+                    </td>
+                    <td>
+                        @if (c.dni != null)
+                        {@c.dni}
+                        else
+                        {@c.pasaporte}
+                    </td>
+                    <td>@c.tipo
+                    </td>
+                    <td>@c.estado
+                    </td>
+                    <td>
+                        <div style="height: 3px;">
+                            &nbsp;</div>
+                        <div class="actionbar">@Html.ActionLink("Detalles", "Detail", new { id = c.ID })&nbsp;@Html.ActionLink("Modificar", "Modify", new { id = c.ID })&nbsp;@Html.ActionLink("Eliminar", "Delete", new { id = c.ID })</div>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                }
+            }
+            <tfoot id="responseData">
+            </tfoot>
+        </table>
+    </div>
+    <div id="dialogEliminar" class="ui-dialog-content ui-widget-content" style="width: auto;
+        min-height: 46px; height: auto; display: none" scrolltop="0" scrollleft="0">
+        <p>
+            Desea eliminar al cliente del sistema?</p>
+    </div>
+    <div id="dialogEditar" class="ui-dialog-content ui-widget-content" style="width: auto;
+        min-height: 46px; height: auto; display: none" scrolltop="0" scrollleft="0">
+        <!-- Carga de formularioCliente.html -->
+    </div>
+    <!-- Table Wrapper End -->
+</div>

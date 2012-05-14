@@ -1,0 +1,78 @@
+﻿@model Era_sphere.Areas.AreaProveedores.Models.Proveedor
+@using Era_sphere.Areas.AreaProveedores.Models
+@using Telerik.Web.Mvc.UI
+@{
+    var Estados = (new LogicaProveedor()).retornarEstados();
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.razon_social)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.razon_social)
+        @Html.ValidationMessageFor(model => model.razon_social)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ruc)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ruc)
+        @Html.ValidationMessageFor(model => model.ruc)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.direccion)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.direccion)
+        @Html.ValidationMessageFor(model => model.direccion)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.correo)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.correo)
+        @Html.ValidationMessageFor(model => model.correo)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.telefono)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.telefono)
+        @Html.ValidationMessageFor(model => model.telefono)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.persona_de_contacto)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.persona_de_contacto)
+        @Html.ValidationMessageFor(model => model.persona_de_contacto)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.estadoID)
+    </div>
+     @(Html.Telerik().ComboBox()
+            
+            .Name("estadoID")
+            .AutoFill(true)
+            .SelectedIndex(0)
+            .BindTo(new SelectList(Estados, "ID", "nombre"))
+            .Filterable(filtering =>
+            {
+
+                filtering.FilterMode(AutoCompleteFilterMode.StartsWith);
+
+            })
+            .HighlightFirstMatch(true)
+    )
+}

@@ -1,0 +1,76 @@
+.block div.innertitle {
+	background: gray;
+	margin: 0 0 0 0px;
+}
+
+td 
+{
+    color : black;
+}
+
+.small-inner {
+	position: relative;
+}
+
+#right_form_natural {
+	position: relative;
+	left : 450px;
+	height: 0px;
+	top: -470px;
+}
+
+#right_form_juridico {
+	position: relative;
+	left : 450px;
+	height: 0px;
+	top: -360px;
+}
+
+#cuenta_usuario , .cuenta_usuario{
+	position: relative;
+	left: 529px;
+	top: -195px;
+}
+
+#detalle_cliente {
+	position: relative;
+}
+
+
+#cliente_natural_form {
+	position: relative;
+	height : auto;
+	width: auto;
+}
+
+#natural_foto {
+	position: relative;
+	width: 180px;
+	height: 180px;
+
+}
+
+
+
+#info_adicional, .info_adicional {
+	position: relative;
+	height : 240px;
+	width: 500px;
+}
+
+
+#natural_div_extra {
+	position: relative;
+}
+
+#natural_div_extra {
+	position: relative;
+}
+
+.singleInput {
+	width: 300px;
+}
+
+.singleInputLarge {
+	width: 400px;
+}

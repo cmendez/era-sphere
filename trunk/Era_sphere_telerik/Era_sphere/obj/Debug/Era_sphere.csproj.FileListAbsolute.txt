@@ -1,0 +1,9 @@
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\bin\Era_sphere.dll
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\bin\Era_sphere.pdb
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\bin\EntityFramework.dll
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\bin\Telerik.Web.Mvc.dll
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\bin\EntityFramework.xml
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\bin\Telerik.Web.Mvc.xml
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\obj\Debug\Era_sphere.dll
+C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\obj\Debug\Era_sphere.pdb

@@ -7,3 +7,11 @@ C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\bin\Telerik.We
 C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\obj\Debug\Era_sphere.dll
 C:\Users\Public\Documents\Nueva carpeta (2)\Era_sphere\Era_sphere\obj\Debug\Era_sphere.pdb
+N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\bin\Era_sphere.dll
+N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\bin\Era_sphere.pdb
+N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\bin\EntityFramework.dll
+N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\bin\EntityFramework.xml
+N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\bin\Telerik.Web.Mvc.xml
+N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\obj\Debug\ResolveAssemblyReference.cache
+N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\obj\Debug\Era_sphere.dll
+N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\obj\Debug\Era_sphere.pdb

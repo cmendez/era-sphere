@@ -98,6 +98,7 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
     <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs" />
+    <Compile Include="Areas\AreaContable\Models\Moneda.cs" />
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadoAreaRegistration.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\Empleado.cs" />
     <Compile Include="Areas\AreaEventos\AreaEventosAreaRegistration.cs" />
@@ -677,7 +678,6 @@
     <Folder Include="Areas\AreaConfiguracion\Models\Temporada\" />
     <Folder Include="Areas\AreaConfiguracion\Views\Shared\" />
     <Folder Include="Areas\AreaContable\Controllers\" />
-    <Folder Include="Areas\AreaContable\Models\" />
     <Folder Include="Areas\AreaContable\Views\Shared\" />
     <Folder Include="Areas\AreaEmpleados\Controllers\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />

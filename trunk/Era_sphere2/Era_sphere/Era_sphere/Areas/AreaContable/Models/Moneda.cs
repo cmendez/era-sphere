@@ -5,8 +5,7 @@ namespace Era_sphere.Areas.AreaContable.Models
 {
     public class Moneda:DBable
     {
-        public Moneda() { }
-        
+        public Moneda() { }        
         
         [DisplayName("Descripcion")]
         public string moneda_descripcion { get; set; }

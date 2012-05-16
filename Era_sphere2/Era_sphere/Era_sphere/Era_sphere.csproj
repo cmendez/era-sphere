@@ -74,6 +74,8 @@
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\CadenasController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Controllers\TemporadaController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Controllers\TipoTemporadaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\Cadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\CadenaContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\InterfazLogicaCadena.cs" />
@@ -97,6 +99,10 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Politicas.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\Servicio.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicio.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Temporada\Temporada.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Temporada\TemporadaContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Temporada\TipoTemporada.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Temporada\TipoTemporadaContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Ciudad.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
@@ -909,7 +915,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AreaClientes\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Models\Ambientes\" />
-    <Folder Include="Areas\AreaConfiguracion\Models\Temporada\" />
     <Folder Include="Areas\AreaConfiguracion\Views\Shared\" />
     <Folder Include="Areas\AreaContable\Controllers\" />
     <Folder Include="Areas\AreaContable\Views\Shared\" />
@@ -955,6 +960,16 @@
     <Content Include="Areas\AreaEventos\Views\Web.config" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Index.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Perfiles\Index.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Temporada\Index.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Temporada\Details.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Temporada\Create.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Temporada\Edit.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Temporada\Delete.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Index.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Details.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Create.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Edit.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Delete.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <None Include="Content\data\._images" />

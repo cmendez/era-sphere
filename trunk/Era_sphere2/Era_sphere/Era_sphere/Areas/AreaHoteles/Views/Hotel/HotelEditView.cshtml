@@ -1,0 +1,94 @@
+﻿@model Era_sphere.Areas.AreaHoteles.Models.HotelView
+
+<script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>HotelView</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.descripcion)
+            @Html.ValidationMessageFor(model => model.descripcion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.razon_social)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.razon_social)
+            @Html.ValidationMessageFor(model => model.razon_social)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.reg_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.reg_id)
+            @Html.ValidationMessageFor(model => model.reg_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nroreg_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nroreg_id)
+            @Html.ValidationMessageFor(model => model.nroreg_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.direccion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.direccion)
+            @Html.ValidationMessageFor(model => model.direccion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.telefono_1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.telefono_1)
+            @Html.ValidationMessageFor(model => model.telefono_1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.telefono_2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.telefono_2)
+            @Html.ValidationMessageFor(model => model.telefono_2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fax)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fax)
+            @Html.ValidationMessageFor(model => model.fax)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.provincia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.provincia)
+            @Html.ValidationMessageFor(model => model.provincia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ciudad_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ciudad_id)
+            @Html.ValidationMessageFor(model => model.ciudad_id)
+        </div>
+
+
+    </fieldset>
+}

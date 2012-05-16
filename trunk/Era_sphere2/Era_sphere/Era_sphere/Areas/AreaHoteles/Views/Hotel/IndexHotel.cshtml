@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "IndexHotel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Era_sphere.Areas.AreaHoteles.Models
+@model IEnumerable<Hotel>
+@using Telerik.Web.Mvc.UI
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Hoteles
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("HotelesGrid")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.PopUp)
+                            .TemplateName("ProveedorTemplate") )
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.razon_social);
+            columns.Bound(p => p.telefono);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Proveedor")
+            .Insert("Insert", "Proveedor")
+            .Delete("Delete", "Proveedor")
+            .Update("Update", "Proveedor")
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

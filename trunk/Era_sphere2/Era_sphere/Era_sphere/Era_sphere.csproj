@@ -123,9 +123,14 @@
     <Compile Include="Areas\AreaEventos\AreaEventosAreaRegistration.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento.cs" />
     <Compile Include="Areas\AreaHoteles\AreaHotelesAreaRegistration.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\HotelController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EspacioCargable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EspacioRentable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelContext.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelView.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\InterfazLogicaHotel.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\LogicaHotel.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Piso.cs" />
     <Compile Include="Areas\AreaPaquetes\AreaPaquetesAreaRegistration.cs" />
     <Compile Include="Areas\AreaPaquetes\Models\Paquete.cs" />
@@ -931,7 +936,6 @@
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Views\Shared\" />
-    <Folder Include="Areas\AreaHoteles\Controllers\" />
     <Folder Include="Areas\AreaHoteles\Views\Shared\" />
     <Folder Include="Areas\AreaPaquetes\Controllers\" />
     <Folder Include="Areas\AreaPaquetes\Views\Shared\" />
@@ -979,6 +983,11 @@
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Create.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Edit.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Delete.cshtml" />
+    <None Include="Content\data\._.DS_Store" />
+    <None Include="Content\data\._css" />
+    <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Hotel\ViewPage1.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Hotel\HotelEditView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <None Include="Content\data\._images" />

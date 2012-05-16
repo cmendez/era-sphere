@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Era_sphere.Areas.AreaHoteles.Models
+{
+    public class LogicaHotel : InterfazLogicaHotel
+    {
+
+        public void churre()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

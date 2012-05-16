@@ -15,7 +15,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         public Double monto { get; set; }
 
         [DisplayName("Metodo")]
-        public String Metodo_pago { get; set; }//visa, mastercard,american express, cmr, saga
+        public String Metodo_pago { get; set; }//visa, mastercard,american express
         
         [DisplayName("Mes")]
         public string mes_caduca_tarjeta { get; set; }

@@ -107,7 +107,11 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
     <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs" />
+    <Compile Include="Areas\AreaContable\Models\InterfazLogicaMoneda.cs" />
+    <Compile Include="Areas\AreaContable\Models\LogicaMoneda.cs" />
     <Compile Include="Areas\AreaContable\Models\Moneda.cs" />
+    <Compile Include="Areas\AreaContable\Models\MonedaContext.cs" />
+    <Compile Include="Areas\AreaContable\Models\Pais.cs" />
     <Compile Include="Areas\AreaContable\Models\TipoDePago.cs" />
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadoAreaRegistration.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\Empleado.cs" />

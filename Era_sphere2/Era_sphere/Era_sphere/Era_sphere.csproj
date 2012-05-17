@@ -118,6 +118,7 @@
     <Compile Include="Areas\AreaEventos\Models\Evento.cs" />
     <Compile Include="Areas\AreaHoteles\AreaHotelesAreaRegistration.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelController.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\PisoController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EspacioCargable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EspacioRentable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\Hotel.cs" />
@@ -982,6 +983,8 @@
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Edit.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Delete.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelViewTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Piso\Index.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Piso\IndexPiso.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

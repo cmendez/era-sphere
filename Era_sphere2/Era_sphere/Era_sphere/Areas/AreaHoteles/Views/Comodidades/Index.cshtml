@@ -1,0 +1,82 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaHoteles.Models.Habitaciones
+@model IEnumerable<Comodidad>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Comodidades
+        </h3>
+    </div>
+    <div class="block_cont">
+@using (Html.BeginForm("Filtrado","Comodidad",FormMethod.Post ,new{@class="form"}))
+   { 
+    <!--
+    <div class="form_row">
+        <label>Descripcion :</label>
+        @Html.TextBox("descripcion", "", new { @class = "input tipRignt singleInput" }) 
+    </div>
+    <button class="t-button t-state-default submit" type="submit" >Filtrar</button>
+   -->
+    
+   } 
+
+  @(Html.Telerik().Grid(Model)
+        .Name("ComodidadesGrid")
+        .ToolBar(commands => commands.Insert()
+              )
+        .Editable(editing => editing
+                            .Mode(GridEditMode.PopUp))
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.descripcion);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Comodidades")
+            .Insert("Insert", "Comodidades")
+            .Delete("Delete", "Comodidades")
+            .Update("Update", "Comodidades")
+        )
+    )
+
+    </div>
+    <!-- Table Wrapper End -->
+    <div id = "chota" style = "display:none">
+       Te la comes
+    </div>
+</div>
+
+<script type="text/javascript">
+    localStorage.setItem("chota", "sape");
+
+    $("a .t-button .t-grid-add").html("as");
+
+    $("#searchinput").change(function () {
+        var buscar = $("#searchinput").val();
+        alert(buscar);
+
+    });
+
+    //alert(localStorage.getItem("chota"));
+    //$("#chota").fadeIn(5000);
+
+</script> 

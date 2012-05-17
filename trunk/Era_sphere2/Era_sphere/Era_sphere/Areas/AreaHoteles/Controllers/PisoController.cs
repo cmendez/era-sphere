@@ -10,38 +10,52 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
     public class PisoController : Controller
     {
-        //
+        
         // GET: /AreaHoteles/Piso/
-        InterfazLogicaPiso piso_logica = new LogicaPiso();
-        public ActionResult Index(int hotel_id)
+        InterfazLogicaPiso logica_piso = new LogicaPiso();
+
+        public ActionResult Index()
         {
-            ViewBag.hotel_id = hotel_id;
             return View("IndexPiso");
         }
 
         [GridAction]
-        public ActionResult Select(int hotel_id)
+        public ActionResult select()
         {
-            
-            return View("IndexPiso", new GridModel( piso_logica.retornarPisos(hotel_id) ) );
+            return View("Index", new GridModel(logica_piso.retornarPisos()));
         }
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        [GridAction]
+        public ActionResult Insert()
+        {
+            PisoView piso_view = new PisoView();
+            if (TryUpdateModel(piso_view))
+            {
+                logica_piso.agregarPiso(piso_view);
+            }
+            return View("Index", new GridModel(logica_piso.retornarPisos()));
+            //return View("Index", proveedor_logica.retornarProveedores(  ));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+
+        [GridAction]
         public ActionResult Delete(int? id)
         {
             int piso_id = id ?? -1;
-            piso_logica.eliminarPiso(piso_id);
-            return View("Index", new GridModel(piso_logica.retornarPisos(hotel_id)));
+            logica_piso.eliminarPiso(piso_id);
+            return View("Index", new GridModel(logica_piso.retornarPisos()));
             //return RedirectToAction("proveedor");
         }
         [AcceptVerbs(HttpVerbs.Post)]
+
         [GridAction]
-        public ActionResult Update(PisoView p)
+        public ActionResult Update(PisoView piso)
         {
 
-            piso_logica.modificarPiso(p);
-            return View("Index", new GridModel(piso_logica.retornarPisos(hotel_id)));
+            logica_piso.modificarPiso(piso);
+            return View("Index", new GridModel(logica_piso.retornarPisos()));
             // return RedirectToAction("proveedor");
         }
-
-        public int hotel_id { get; set; }
     }
 }

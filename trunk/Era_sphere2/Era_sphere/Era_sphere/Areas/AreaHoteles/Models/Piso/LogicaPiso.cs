@@ -6,33 +6,17 @@ using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class LogicaPiso:InterfazLogicaPiso
+    public class LogicaPiso : InterfazLogicaPiso
     {
-        PisoContext piso_context = new PisoContext();
+        PisoContext piso_context=new PisoContext();
         DBGenericQueriesUtil<Piso> database_table;
 
-        public LogicaPiso() {
+        public LogicaPiso()
+        {
             database_table = new DBGenericQueriesUtil<Piso>(piso_context, piso_context.pisos);
         }
 
-
-        void agregarPiso(PisoView piso)
-        {   
-            database_table.agregarElemento(piso.deserializa(this));
-        }
-
-        void modificarPiso(PisoView piso_view)
-        {
-            Piso piso = piso_view.deserializa(this);
-            return;
-        }
-
-        void eliminarHotel(int piso_id)
-        {
-            database_table.eliminarElemento(piso_id);
-            return;
-        }
-        List<PisoView> retornarPisos(int hotel_id)
+        public List<PisoView> retornarPisos()
         {
             List<Piso> pisos = database_table.retornarTodos();
             List<PisoView> pisos_view = new List<PisoView>();
@@ -40,13 +24,33 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             foreach (Piso piso in pisos) pisos_view.Add(new PisoView(piso));
             return pisos_view;
         }
-        PisoView retornarPiso(int piso_id)
+
+        public PisoView retornarPiso(int pisoID)
         {
-            Piso piso = database_table.retornarUnSoloElemento(piso_id);
-            PisoView piso_view = new PisoView(piso);
-            return piso_view;
+            Piso piso_aux=database_table.retornarUnSoloElemento(pisoID);
+            PisoView piso = new PisoView(piso_aux);
+            return piso;
         }
-        //HotelView retornarPiso(int ciudad_id);
-        //List<EspacioCargable> retornarEspaciosCargables(int piso_id);
+
+        public void modificarPiso(PisoView piso_view)
+        {
+            Piso piso = piso_view.deserializa(this);
+            return;
+        }
+
+        public void agregarPiso(PisoView piso)
+        {
+            database_table.agregarElemento(piso.deserializa(this));
+        }
+
+        public void eliminarPiso(int pisoID)
+        {
+            database_table.eliminarElemento(pisoID);
+        }
+
+        public List<Piso> buscarPiso(Piso piso_campos)
+        {
+            return database_table.buscarElementos(piso_campos);
+        }
     }
 }

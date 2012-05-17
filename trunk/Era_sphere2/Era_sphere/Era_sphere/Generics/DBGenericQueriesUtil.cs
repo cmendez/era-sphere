@@ -21,7 +21,9 @@ namespace Era_sphere.Generics
 
         public List<T> retornarTodos()
         {
-            return dbset.ToList();
+            var res = dbset.ToList();
+            if (res == null) return new List<T>();
+            else return res;
         }
 
         public T retornarUnSoloElemento(int ID)

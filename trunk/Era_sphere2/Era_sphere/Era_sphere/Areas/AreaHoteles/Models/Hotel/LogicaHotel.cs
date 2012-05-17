@@ -53,7 +53,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public Ciudad retornarCiudad(int ciudad_id)
         {
-            return (new UbigeoContext()).ciudades.Find(ciudad_id);  
+            Ciudad ciudad= (new UbigeoContext()).ciudades.Find(ciudad_id);
+            return ciudad;
         }
 
         public List<Pais> retornarPaises() { 
@@ -61,7 +62,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         }
 
         public List<Ciudad> retornarCiudades( int pais_id ) {
-            return (new UbigeoContext()).paises.Find(pais_id).ciudades.ToList();
+            List<Ciudad> res =  (new UbigeoContext()).paises.Find(pais_id).ciudades.ToList();
+            return res;
         }
     }
 }

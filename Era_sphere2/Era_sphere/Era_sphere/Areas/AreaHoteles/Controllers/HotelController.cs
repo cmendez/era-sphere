@@ -58,8 +58,9 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         }
 
         [HttpPost]
-        public ActionResult CiudadesComboBox( int id_pais ) {
-            return Json( new SelectList( hotel_logica.retornarCiudades( id_pais ) , "ID" , "nombre" ), JsonRequestBehavior.AllowGet);
+        public ActionResult CiudadesComboBox( int? pais_id ) {
+            int id = pais_id ?? -1;
+            return Json( new SelectList( hotel_logica.retornarCiudades( id ) , "ID" , "nombre" ), JsonRequestBehavior.AllowGet);
         }
     }
 }

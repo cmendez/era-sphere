@@ -9,7 +9,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class HotelView
     {
-        
+
         public HotelView() { }
         public HotelView(Hotel hotel)
         {
@@ -24,40 +24,49 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             telefono_2 = hotel.telefono_2;
             fax = hotel.fax;
             provincia = hotel.provincia;
-            ciudad_id = hotel.ciudad.ID;
-            ciudad_nombre = hotel.ciudad.nombre;
-            pais_nombre = hotel.ciudad.pais.nombre;
+            /*  ciudad_id = hotel.ciudad.ID;
+              ciudad_nombre = hotel.ciudad.nombre;
+              pais_nombre = hotel.ciudad.pais.nombre; */
         }
+        [Required]
         [DisplayName("Descripcion")]
         public string descripcion { get; set; }
+        [Required]
         [DisplayName("Razon Social")]
         public string razon_social { get; set; }
+        [Required]
         [DisplayName("Identificacion de Registro")]
         public string reg_id { get; set; }
+        [Required]
         [DisplayName("Numero de Registro")]
         public string nroreg_id { get; set; }
+        [Required]
         [DisplayName("Direccion")]
         public string direccion { get; set; }
+        [Required]
         [DisplayName("Telefono 1")]
         public string telefono_1 { get; set; }
+        [Required]
         [DisplayName("Telefono 2")]
         public string telefono_2 { get; set; }
+        [Required]
         [DisplayName("Fax ")]
         public string fax { get; set; }
+        [Required]
         [DisplayName("Provincia")]
         public string provincia { get; set; }
-        public string pais_nombre { get; set; }
-        public string ciudad_nombre { get; set; }
-        [Required]
-        [DisplayName("Ciudad")]
-        public int ciudad_id { get; set; }
+        /*      public string pais_nombre { get; set; }
+              public string ciudad_nombre { get; set; }
+              [Required]
+              [DisplayName("Ciudad")]
+              public int ciudad_id { get; set; }*/
         [DisplayName("ID Hotel")]
         public int ID { get; set; }
-        public Hotel deserializa( InterfazLogicaHotel logica )
+        public Hotel deserializa(InterfazLogicaHotel logica)
         {
             return new Hotel
             {
-                ciudad = logica.retornarCiudad(ciudad_id),
+                // ciudad = logica.retornarCiudad(ciudad_id),
                 descripcion = this.descripcion,
                 direccion = this.direccion,
                 fax = this.fax,

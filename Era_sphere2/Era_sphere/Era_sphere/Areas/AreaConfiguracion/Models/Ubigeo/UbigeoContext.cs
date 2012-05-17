@@ -18,6 +18,7 @@ namespace Era_sphere.Areas.Configuracion.Models
             try
             {
                 if (paises.Count() != 0) return; // si hay paises, no hace nada
+                else Seed();
             }
             catch (Exception) // en caso contrario, crea data inicial
             {
@@ -53,15 +54,14 @@ namespace Era_sphere.Areas.Configuracion.Models
                 new Ciudad{nombre = "Caracas", ID = 7, pais = _paises.Single(p => p.nombre == "Venezuela")},
                 new Ciudad{nombre = "Quito", ID = 8, pais = _paises.Single(p => p.nombre == "Ecuador")}
             };
-            foreach (var c in ciudades)
+            foreach (var c in _ciudades)
                 ciudades.Add(c);
             SaveChanges();
-            
+            _paises = paises.ToList();
             for(int i = 0; i < _paises.Count; i++){
                 var pais = _paises[i];
-                pais.ciudades = new List<Ciudad>();
-                foreach (var ciudad in _ciudades.Where(p => p.pais == pais))
-                    pais.ciudades.Add(ciudad);
+                pais.ciudades = new List<Ciudad>(){ ciudades.ToList().Find(c => c.pais.nombre == pais.nombre) };
+                pais.ciudades.First().pais = pais;
             }
             SaveChanges();
             

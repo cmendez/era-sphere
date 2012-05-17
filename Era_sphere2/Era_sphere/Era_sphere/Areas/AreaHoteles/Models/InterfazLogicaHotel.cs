@@ -6,7 +6,7 @@ using Era_sphere.Areas.Configuracion.Models;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    interface InterfazLogicaHotel
+    public  interface InterfazLogicaHotel
     {
         void agregarHotel(HotelView hotel);
         void modificarHotel(HotelView hotel);

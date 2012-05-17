@@ -8,9 +8,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class HotelView
     {
-        [DisplayName("ID Hotel")]
-        public int ID;
-
+        
+        public HotelView() { }
         public HotelView(Hotel hotel)
         {
             // TODO: Complete member initialization
@@ -50,7 +49,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string ciudad_nombre { get; set; }
         [DisplayName("Ciudad")]
         public int ciudad_id { get; set; }
-
+        [DisplayName("ID Hotel")]
+        public int ID { get; set; }
         public Hotel deserializa( InterfazLogicaHotel logica )
         {
             return new Hotel

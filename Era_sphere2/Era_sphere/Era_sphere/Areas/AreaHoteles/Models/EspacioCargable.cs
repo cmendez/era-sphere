@@ -13,6 +13,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string descripcion { get; set; }
 
         [DisplayName("Piso")]
-        public Piso piso { get; set; }
+        public Piso piso { get; set; }  
     }
 }

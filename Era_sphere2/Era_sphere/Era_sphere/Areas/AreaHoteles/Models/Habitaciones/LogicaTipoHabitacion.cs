@@ -34,12 +34,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public void modificarTipoHabitacion(TipoHabitacionView tipoHabitacion_view)
         {
-            TipoHabitacion tipoHabitacion=tipoHabitacion_view
+            
+            TipoHabitacion tipoHabitacion = tipoHabitacion_view.deserializa(this);
+            return;
         }
 
-        public void agregarTipoHabitacion(TipoHabitacion tipohabitacion)
+        public void agregarTipoHabitacion(TipoHabitacionView tipohabitacion)
         {
-            database_table.agregarElemento(tipohabitacion);
+            database_table.agregarElemento(tipohabitacion.deserializa(this));
         }
 
         public void eliminarTipoHabitacion(int tipohabitacionID)

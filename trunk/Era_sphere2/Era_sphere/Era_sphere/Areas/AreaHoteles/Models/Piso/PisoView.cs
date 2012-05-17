@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using Era_sphere.Areas.AreaHoteles.Models.Piso;
+using System.ComponentModel.DataAnnotations;
 
-namespace Era_sphere.Areas.AreaHoteles.Models.Piso
+namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class PisoView
     {
@@ -24,6 +22,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Piso
         public int ID { get; set; }
         [DisplayName("ID Hotel")]
         public int hotel_id { get; set; }
+
+        public Piso deserializa(InterfazLogicaPiso logica)
+        {
+            return new Piso
+            {
+                
+            };
+        }
 
     }
 }

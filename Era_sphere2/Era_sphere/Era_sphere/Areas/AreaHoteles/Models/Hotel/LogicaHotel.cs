@@ -55,5 +55,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             return (new UbigeoContext()).ciudades.Find(ciudad_id);  
         }
+
+        public List<Pais> retornarPaises() { 
+            return (new UbigeoContext()).paises.ToList();
+        }
+
+        public List<Ciudad> retornarCiudades( int pais_id ) {
+            return (new UbigeoContext()).paises.Find(pais_id).ciudades.ToList();
+        }
     }
 }

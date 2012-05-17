@@ -8,6 +8,7 @@ using Era_sphere.Areas.AreaClientes.Models;
 using System.Data.Entity;
 using Era_sphere.Areas.Configuracion.Models;
 using Era_sphere.Models;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere
 {
@@ -38,6 +39,7 @@ namespace Era_sphere
             AreaRegistration.RegisterAllAreas();
             Database.SetInitializer<ClienteContext>(new DropCreateDatabaseIfModelChanges<ClienteContext>());
             Database.SetInitializer<UbigeoContext>(new DropCreateDatabaseIfModelChanges<UbigeoContext>());
+            Database.SetInitializer<HotelContext>(new DropCreateDatabaseIfModelChanges<HotelContext>());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

@@ -931,7 +931,6 @@
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Views\Shared\" />
-    <Folder Include="Areas\AreaHoteles\Views\Shared\" />
     <Folder Include="Areas\AreaPaquetes\Controllers\" />
     <Folder Include="Areas\AreaPaquetes\Views\Shared\" />
     <Folder Include="Areas\AreaReportes\Controllers\" />
@@ -978,6 +977,7 @@
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Create.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Edit.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Delete.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

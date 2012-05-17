@@ -14,5 +14,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         List<HotelView> retornarHoteles();
         HotelView retornarHotel(int hotel_id);
         Ciudad retornarCiudad(int ciudad_id);
+        List<Ciudad> retornarCiudades(int pais_id);
     }
 }

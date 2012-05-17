@@ -1,10 +1,11 @@
 ﻿@{
     ViewBag.Title = "IndexHotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
+ 
 }
 
 @using Era_sphere.Areas.AreaHoteles.Models
-@model IEnumerable<Hotel>
+@model IEnumerable<HotelView>
 @using Telerik.Web.Mvc.UI
 
 <div class="block big" style="position: relative">
@@ -20,15 +21,16 @@
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.InForm))
+                            .Mode(GridEditMode.InForm)
+                            .TemplateName("HotelViewTemplate"))
                             
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
             columns.Bound(p => p.ID);
             columns.Bound(p => p.razon_social);
-            columns.Bound(p => p.ciudad.pais.nombre);
-            columns.Bound(p => p.ciudad.nombre);
+            columns.Bound(p => p.pais_nombre);
+            columns.Bound(p => p.ciudad_nombre);
             columns.Bound(p => p.provincia);
             columns.Command(commands =>
             {

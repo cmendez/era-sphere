@@ -11,7 +11,7 @@ namespace Era_sphere.Areas.Configuracion.Models
     public class Pais: DBable
     {
        public string nombre { get; set; }
-       //public virtual ICollection<Ciudad> ciudades { get; set; }
+       public virtual ICollection<Ciudad> ciudades { get; set; }
     }
 
     

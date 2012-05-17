@@ -56,5 +56,10 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index", new GridModel(hotel_logica.retornarHoteles()));
             // return RedirectToAction("proveedor");
         }
+
+        [HttpPost]
+        public ActionResult CiudadesComboBox( int id_pais ) {
+            return Json( new SelectList( hotel_logica.retornarCiudades( id_pais ) , "ID" , "nombre" ), JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -12,6 +12,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         void modificarTipoHabitacion(TipoHabitacionView  tipoHabitacion);
         void agregarTipoHabitacion(TipoHabitacionView tipoHabitacion);
         void eliminarTipoHabitacion(int tipohabitacion_id);
-        List<Habitacion> buscarTipoHabitacion(TipoHabitacion tipohabitacion);
+     //   List<Habitacion> buscarTipoHabitacion(TipoHabitacion tipohabitacion);
     }
 }

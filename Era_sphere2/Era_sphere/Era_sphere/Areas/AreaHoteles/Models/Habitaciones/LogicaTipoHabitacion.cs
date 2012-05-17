@@ -16,7 +16,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             database_table = new DBGenericQueriesUtil< TipoHabitacion >(tipohabitacion_context, tipohabitacion_context.tipos_habitacion);
         }
 
-        public List<TipoHabitacionView> retornarTipoHabitaciones()
+        public List<TipoHabitacionView> retornarTiposHabitacion()
         {
             List<TipoHabitacion> tipoHabitaciones = database_table.retornarTodos();
             List<TipoHabitacionView> tipoHabitacion_view = new List<TipoHabitacionView>();

@@ -8,5 +8,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class HotelContext:DbContext
     {
+        public DbSet<Hotel> hoteles { get; set; }
     }
 }

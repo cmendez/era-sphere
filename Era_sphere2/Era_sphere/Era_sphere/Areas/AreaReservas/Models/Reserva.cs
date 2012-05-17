@@ -5,7 +5,7 @@ using System.Web;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaClientes.Models;
 using System.ComponentModel;
-using Era_sphere.Areas.AreaConfiguracion.Models.Habitaciones;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 
 namespace Era_sphere.Areas.AreaReservas.Models

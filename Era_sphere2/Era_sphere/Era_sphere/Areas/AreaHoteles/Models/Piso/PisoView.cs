@@ -6,29 +6,38 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class PisoView
     {
+        public int ID { get; set; }
+
+        [Required]
+        [DisplayName("Descripción")]
+        public string descripcion { get; set; }
+
+        [Required]
+        [DisplayName("Numero Piso")]
+        public int numero_piso { get; set; }
         public PisoView() { }
+
         public PisoView(Piso piso)
         {
-            descripcion = piso.descripcion;
+            // TODO: Complete member initialization
             ID = piso.ID;
-            hotel_id = piso.hotel.ID;
-            hotel_descripcion = piso.hotel.descripcion;
+            descripcion = piso.descripcion;
+            numero_piso = piso.numero_piso;
+
         }
-        [DisplayName("Descripcion")]
-        public string descripcion { get; set; }
-        [DisplayName("Nombre del hotel")]
-        public string hotel_descripcion { get; set; }
-        [DisplayName("ID piso")]
-        public int ID { get; set; }
-        [DisplayName("ID Hotel")]
-        public int hotel_id { get; set; }
 
         public Piso deserializa(InterfazLogicaPiso logica)
         {
             return new Piso
             {
-                
+                // ciudad = logica.retornarCiudad(ciudad_id),
+                descripcion = this.descripcion,
+                numero_piso = this.numero_piso,
+                ID = this.ID
+
+
             };
+
         }
 
     }

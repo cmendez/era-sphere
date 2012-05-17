@@ -140,6 +140,7 @@
     <Compile Include="Generics\DBable.cs" />
     <Compile Include="Generics\DBGenericQueriesUtil.cs" />
     <Compile Include="Generics\EnumExtensions.cs" />
+    <Compile Include="Generics\GenericBag.cs" />
     <Compile Include="Generics\Pagable.cs" />
     <Compile Include="Generics\Persona.cs" />
     <Compile Include="Global.asax.cs">

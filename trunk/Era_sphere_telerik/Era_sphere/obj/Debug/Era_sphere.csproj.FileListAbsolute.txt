@@ -15,3 +15,6 @@ N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\
 N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\obj\Debug\ResolveAssemblyReference.cache
 N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\obj\Debug\Era_sphere.dll
 N:\Documents\PUCP\Ingeniería de Software\Grupo 4\Era_sphere_telerik\Era_sphere\obj\Debug\Era_sphere.pdb
+C:\Users\JuanCarlos\Desktop\SW\Era_sphere_telerik\Era_sphere\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\JuanCarlos\Desktop\SW\Era_sphere_telerik\Era_sphere\obj\Debug\Era_sphere.dll
+C:\Users\JuanCarlos\Desktop\SW\Era_sphere_telerik\Era_sphere\obj\Debug\Era_sphere.pdb

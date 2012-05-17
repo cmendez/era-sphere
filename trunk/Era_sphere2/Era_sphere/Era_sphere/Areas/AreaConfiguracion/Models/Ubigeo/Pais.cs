@@ -6,7 +6,7 @@ using System.Data.Entity;
 using Era_sphere.Generics;
 using System.ComponentModel;
 
-namespace Era_sphere.Areas.Configuracion.Models
+namespace Era_sphere.Areas.Configuracion.Models.Ubigeo
 {
     public class Pais: DBable
     {

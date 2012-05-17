@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using Era_sphere.Areas.AreaHoteles.Models.Piso;
+//using Era_sphere.Areas.AreaHoteles.Models.;
 using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaHoteles.Models

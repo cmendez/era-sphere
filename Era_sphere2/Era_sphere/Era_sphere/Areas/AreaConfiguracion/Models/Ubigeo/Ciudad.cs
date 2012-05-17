@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
 
-namespace Era_sphere.Areas.Configuracion.Models.Ubigeo
+namespace Era_sphere.Areas.Configuracion.Models
 {
     public class Ciudad : DBable
     {

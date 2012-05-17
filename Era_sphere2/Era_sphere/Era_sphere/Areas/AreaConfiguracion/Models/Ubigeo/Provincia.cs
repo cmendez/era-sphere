@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Era_sphere.Areas.Configuracion.Models.Ubigeo;
+using Era_sphere.Areas.Configuracion.Models;
 
-namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
+namespace Era_sphere.Areas.AreaConfiguracion.Models
 {
     public class Provincia
     {

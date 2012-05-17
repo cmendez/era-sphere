@@ -80,16 +80,16 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\LogicaCadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Impuesto.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Moneda.cs" />
-
-    <Compile Include="Areas\AreaHoteles\Models\Ambientes\Ambiente.cs" />
-
+    <Compile Include="Areas\AreaHoteles\Controllers\ComodidadesController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionController.cs" />
-
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Comodidad.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadesContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Habitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionContext.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\InterfazLogicaComodidades.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\InterfazLogicaHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\InterfazLogicaTipoHabitacion.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaComodidades.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaTipoHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\TipoHabitacion.cs" />
@@ -942,6 +942,7 @@
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Views\Shared\" />
+    <Folder Include="Areas\AreaHoteles\Models\Ambientes\" />
     <Folder Include="Areas\AreaPaquetes\Controllers\" />
     <Folder Include="Areas\AreaPaquetes\Views\Shared\" />
     <Folder Include="Areas\AreaReportes\Controllers\" />
@@ -992,6 +993,7 @@
     <Content Include="Areas\AreaHoteles\Views\Piso\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Piso\IndexPiso.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\PisoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Comodidades\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

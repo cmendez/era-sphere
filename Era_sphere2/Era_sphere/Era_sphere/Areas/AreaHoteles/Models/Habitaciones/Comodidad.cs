@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel;
+using Era_sphere.Generics;
 
-namespace Era_sphere.Areas.AreaHoteles.Models    
+namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
 {
-    public class Comodidad
+    public class Comodidad : DBable
     {
-      //  List<TipoHabitacion> tipo_habitacion();
+        [DisplayName("Descripcion")]
+        public string descripcion { get; set; }
+        public int ID { get; set; }
     }
 }

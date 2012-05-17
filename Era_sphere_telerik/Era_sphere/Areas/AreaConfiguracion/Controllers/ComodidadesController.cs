@@ -14,6 +14,13 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         // GET: /AreaConfiguracion/Comodidades/
 
         InterfazLogicaComodidades comodidades_logica = new LogicaComodidades();
+
+        public ActionResult Filtrado(string desc)
+        {
+            return View("Index", comodidades_logica.retornarComodidades());
+        }
+
+        
         public ActionResult Index()
         {
             return View();
@@ -23,10 +30,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
             ViewBag.comodidades = comodidades_logica.retornarComodidades();
             return View( "Index", comodidades_logica.retornarComodidades() );
-            //ViewBag.proveedores = proveedor_logica.retornarProveedores();
-            //return View("Index", proveedor_logica.retornarProveedores());
+        
         }
-
 
         [GridAction]
         public ActionResult Select()

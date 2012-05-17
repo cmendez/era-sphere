@@ -15,7 +15,7 @@
         </h3>
     </div>
     <div class="block_cont">
-@using (Html.BeginForm("Filtrado","Proveedor",FormMethod.Post ,new{@class="form"}))
+@using (Html.BeginForm("Filtrado","Comodidad",FormMethod.Post ,new{@class="form"}))
    { 
     <!--
     <div class="form_row">
@@ -28,9 +28,8 @@
    } 
 
   @(Html.Telerik().Grid(Model)
-        .Name("ProveedoresGrid")
-        .Filterable()
-              .ToolBar(commands => commands.Insert()
+        .Name("ComodidadesGrid")
+        .ToolBar(commands => commands.Insert()
               )
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp))
@@ -68,7 +67,16 @@
 
 <script type="text/javascript">
     localStorage.setItem("chota", "sape");
-    alert(localStorage.getItem("chota"));
-    $("#chota").fadeIn(5000);
+
+    $("a .t-button .t-grid-add").html("as");
+
+    $("#searchinput").change(function () {
+        var buscar = $("#searchinput").val();
+        alert(buscar);
+
+    });
+
+    //alert(localStorage.getItem("chota"));
+    //$("#chota").fadeIn(5000);
 
 </script> 

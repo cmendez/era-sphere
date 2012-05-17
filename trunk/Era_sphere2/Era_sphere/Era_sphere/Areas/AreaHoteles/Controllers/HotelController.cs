@@ -21,39 +21,39 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         [GridAction]
         public ActionResult Select()
         {
-            ViewBag.proveedores = hotel_logica.retornarProveedores();
-            return View("Index", new GridModel(proveedor_logica.retornarProveedores()));
+            //ViewBag.proveedores = hotel_logica.retornar();
+            return View("Index", new GridModel( hotel_logica.retornarHoteles()));
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
         public ActionResult Insert()
         {
 
-            HotelView proveedor = new HotelView();
-            if (TryUpdateModel(proveedor))
+            HotelView hotel_view = new HotelView();
+            if (TryUpdateModel(hotel_view))
             {
-                proveedor_logica.agregarProveedor(proveedor);
+                hotel_logica.agregarHotel(hotel_view);
 
             }
-            return View("Index", new GridModel(hotel_logica.retor()));
+            return View("Index", new GridModel(hotel_logica.retornarHoteles()));
             //return View("Index", proveedor_logica.retornarProveedores(  ));
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
         public ActionResult Delete(int? id)
         {
-            int _proveedor_id = id ?? -1;
-            hotel_logica.eliminarHotel(_proveedor_id);
-            return View("Index", new GridModel(hotel_logica.retornarClientes()));
+            int hotel_id = id ?? -1;
+            hotel_logica.eliminarHotel(hotel_id);
+            return View("Index", new GridModel(hotel_logica.retornarHoteles()));
             //return RedirectToAction("proveedor");
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Update(Hotel p)
+        public ActionResult Update(HotelView p)
         {
 
             hotel_logica.modificarHotel(p);
-            return View("Index", new GridModel(hotel_logica.retornarClientes()));
+            return View("Index", new GridModel(hotel_logica.retornarHoteles()));
             // return RedirectToAction("proveedor");
         }
     }

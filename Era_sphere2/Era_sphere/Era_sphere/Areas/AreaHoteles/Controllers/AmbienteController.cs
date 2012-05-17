@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 using Telerik.Web.Mvc;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -14,9 +15,11 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         // GET: /AreaHoteles/Ambiente/
 
         InterfazLogicaAmbiente logica_ambiente = new LogicaAmbiente();
+        InterfazLogicaPiso logica_pisos = new LogicaPiso();
 
         public ActionResult Index()
         {
+            ViewData["pisos"] = logica_pisos.retornarPisos();
             return View("IndexAmbiente");
         }
 
@@ -59,5 +62,26 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             // return RedirectToAction("proveedor");
         }
 
+        [GridAction]
+        public ActionResult _pisos()
+        {
+            return View(new GridModel(logica_ambiente.retornarAmbientes()));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult _pisosUpdate(int id, int piso_id)
+        {
+            var ambiente = new Ambiente{
+                ID = id,
+                piso = logica_pisos.retornarPiso(piso_id).deserializa(logica_pisos)
+            };
+            // Exclude "Employee" from the list of updated properties
+            if (TryUpdateModel(ambiente, null, null, new[] { "Ambiente" }))
+            {
+                logica_ambiente.modificarAmbiente(new AmbienteView(ambiente));
+            }
+            return View(new GridModel(logica_ambiente.retornarAmbientes()));
+        }
     }
 }

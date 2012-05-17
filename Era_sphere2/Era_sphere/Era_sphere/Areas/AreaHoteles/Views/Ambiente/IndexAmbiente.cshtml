@@ -33,7 +33,7 @@
             columns.Bound(p => p.ancho);
             columns.Bound(p => p.largo);
             columns.Bound(p => p.num_niveles);
-            columns.Bound(p => p.piso);
+            columns.ForeignKey(p => p.pisoID, (IEnumerable<PisoView>)(ViewData["pisos"]), "ID", "nombre");
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
@@ -47,6 +47,8 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
+            .Select("_pisos", "Ambiente")
+            .Select("_pisosUpdate", "Ambiente")
             .Select("Select", "Ambiente")
             .Insert("Insert", "Ambiente")
             .Delete("Delete", "Ambiente")

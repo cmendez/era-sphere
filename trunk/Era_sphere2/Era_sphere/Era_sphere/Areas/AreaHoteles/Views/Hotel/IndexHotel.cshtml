@@ -20,14 +20,16 @@
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.PopUp)
-                            .TemplateName("ProveedorTemplate") )
+                            .Mode(GridEditMode.InForm))
+                            
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
             columns.Bound(p => p.ID);
             columns.Bound(p => p.razon_social);
-            columns.Bound(p => p.telefono);
+            columns.Bound(p => p.ciudad.pais.nombre);
+            columns.Bound(p => p.ciudad.nombre);
+            columns.Bound(p => p.provincia);
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
@@ -41,10 +43,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Proveedor")
-            .Insert("Insert", "Proveedor")
-            .Delete("Delete", "Proveedor")
-            .Update("Update", "Proveedor")
+            .Select("Select", "Hotel")
+            .Insert("Insert", "Hotel")
+            .Delete("Delete", "Hotel")
+            .Update("Update", "Hotel")
         )
            )
 

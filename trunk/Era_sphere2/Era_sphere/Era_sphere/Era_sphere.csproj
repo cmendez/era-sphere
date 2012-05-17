@@ -74,8 +74,6 @@
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\CadenasController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Controllers\TemporadaController.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Controllers\TipoTemporadaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\Cadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\CadenaContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\InterfazLogicaCadena.cs" />
@@ -99,10 +97,6 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Politicas.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\Servicio.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicio.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Temporada\Temporada.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Temporada\TemporadaContext.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Temporada\TipoTemporada.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Temporada\TipoTemporadaContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Ciudad.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoContext.cs" />

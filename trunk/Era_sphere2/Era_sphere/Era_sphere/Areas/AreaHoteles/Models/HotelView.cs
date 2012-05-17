@@ -8,6 +8,26 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class HotelView
     {
+        [DisplayName("ID Hotel")]
+        public int ID;
+
+        public HotelView(Hotel hotel)
+        {
+            // TODO: Complete member initialization
+            ID = hotel.ID;
+            descripcion = hotel.descripcion;
+            razon_social = hotel.razon_social;
+            reg_id = hotel.reg_id;
+            nroreg_id = hotel.nroreg_id;
+            direccion = hotel.direccion;
+            telefono_1 = hotel.telefono_1;
+            telefono_2 = hotel.telefono_2;
+            fax = hotel.fax;
+            provincia = hotel.provincia;
+            ciudad_id = hotel.ciudad.ID;
+            ciudad_nombre = hotel.ciudad.nombre;
+            pais_nombre = hotel.ciudad.pais.nombre;
+        }
         [DisplayName("Descripcion")]
         public string descripcion { get; set; }
         [DisplayName("Razon Social")]
@@ -26,8 +46,28 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string fax { get; set; }
         [DisplayName("Provincia")]
         public string provincia { get; set; }
-       
+        public string pais_nombre { get; set; }
+        public string ciudad_nombre { get; set; }
         [DisplayName("Ciudad")]
         public int ciudad_id { get; set; }
+
+        public Hotel deserializa( InterfazLogicaHotel logica )
+        {
+            return new Hotel
+            {
+                ciudad = logica.retornarCiudad(ciudad_id),
+                descripcion = this.descripcion,
+                direccion = this.direccion,
+                fax = this.fax,
+                ID = this.ID,
+                nroreg_id = this.nroreg_id,
+                provincia = this.provincia,
+                razon_social = this.razon_social,
+                reg_id = this.reg_id,
+                telefono_1 = this.telefono_1,
+                telefono_2 = this.telefono_2
+
+            };
+        }
     }
 }

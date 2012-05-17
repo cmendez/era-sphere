@@ -5,7 +5,7 @@ using System.Web;
 using Era_sphere.Generics;
 using System.ComponentModel;
 
-namespace Era_sphere.Areas.AreaConfiguracion.Models.Habitaciones
+namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class LogicaHabitacion:InterfazLogicaHabitacion
     {

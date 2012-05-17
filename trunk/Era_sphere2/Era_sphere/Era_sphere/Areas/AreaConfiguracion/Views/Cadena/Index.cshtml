@@ -1,7 +1,6 @@
 ﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Cadenas.Cadena
 @using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 @using Era_sphere.Generics;
-@using Era_sphere.Areas.AreaClientes.Models
 @{
     ViewBag.Title = "Cadenas";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,7 +35,7 @@
                         @Html.LabelFor(model => model.ruc)
                         @Html.TextBoxFor(model => model.ruc, new { @class = "input tipRight singleInput", })
                     </div>
-
+          
                 </div>
             </div>
         </div>
@@ -77,25 +76,6 @@
                         </th>
                     </tr>
                 </thead>
-                @{
-                    foreach(Cliente c in ViewBag.clientes){
-                        <tr>
-                            <td> <input type = "checkbox"></td>
-                            <td>
-                                @if (c.nombre != null){@c.nombre}
-                                else{@c.razon_social}
-                            </td>
-                            <td>
-                                @if (c.dni != null){@c.dni}
-                                else{@c.pasaporte}
-                            </td>
-                            <td>@c.tipo</td>
-                            <td>@c.estado</td>
-                            <td><div style="height: 3px;">&nbsp;</div><div class="actionbar">@Html.ActionLink("Detalles", "Detail", new {id = c.ID})&nbsp;@Html.ActionLink("Modificar", "Modify", new { id = c.ID })&nbsp;@Html.ActionLink("Eliminar", "Delete", new { id = c.ID })</div></td>
-                            <td></td>
-                        </tr>
-                    }
-                }
                 <tfoot id="responseData">
                 </tfoot>
             </table>

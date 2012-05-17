@@ -41,7 +41,7 @@ namespace Era_sphere.Areas.Configuracion.Models
             foreach(var p in _paises)
                 paises.Add(p);
             SaveChanges();
-            /*
+            
             var _ciudades = new List<Ciudad>
             {
                 new Ciudad{nombre = "Lima", ID = 1, pais = _paises.Single(p => p.nombre == "Peru")},
@@ -64,7 +64,7 @@ namespace Era_sphere.Areas.Configuracion.Models
                     pais.ciudades.Add(ciudad);
             }
             SaveChanges();
-             */
+            
         }
         /*
         public class Seeder : DropCreateDatabaseAlways<UbigeoContext>

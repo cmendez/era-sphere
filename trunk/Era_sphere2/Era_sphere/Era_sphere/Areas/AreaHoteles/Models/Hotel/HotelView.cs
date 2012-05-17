@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -47,6 +48,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string provincia { get; set; }
         public string pais_nombre { get; set; }
         public string ciudad_nombre { get; set; }
+        [Required]
         [DisplayName("Ciudad")]
         public int ciudad_id { get; set; }
         [DisplayName("ID Hotel")]

@@ -7,6 +7,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class Comodidad
     {
-        List<TipoHabitacion> tipo_habitacion();
+      //  List<TipoHabitacion> tipo_habitacion();
     }
 }

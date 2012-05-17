@@ -23,7 +23,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [DisplayName("Estado")]
         public Estado estado { get; set; }
 
-        public ICollection<HabitacionXComodidad> habitacionXcomodidad { get; set; }
+       // public ICollection<HabitacionXComodidad> habitacionXcomodidad { get; set; }
 
         [DisplayName("Tipo de habitacion")]
         public TipoHabitacion tipohabitacion { get; set; }

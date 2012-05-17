@@ -126,6 +126,7 @@
     <Compile Include="Areas\AreaHoteles\Models\Hotel\InterfazLogicaHotel.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\LogicaHotel.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Piso\Piso.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Piso\PisoView.cs" />
     <Compile Include="Areas\AreaPaquetes\AreaPaquetesAreaRegistration.cs" />
     <Compile Include="Areas\AreaPaquetes\Models\Paquete.cs" />
     <Compile Include="Areas\AreaReportes\AreaReportesAreaRegistration.cs" />

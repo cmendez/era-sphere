@@ -1,0 +1,129 @@
+﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Cadenas.Cadena
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Cadena</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombreCadena)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombreCadena)
+            @Html.ValidationMessageFor(model => model.nombreCadena)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.rsocial)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.rsocial)
+            @Html.ValidationMessageFor(model => model.rsocial)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ruc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ruc)
+            @Html.ValidationMessageFor(model => model.ruc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.url)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.url)
+            @Html.ValidationMessageFor(model => model.url)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.adel_minimo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.adel_minimo)
+            @Html.ValidationMessageFor(model => model.adel_minimo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.d_cancel_dps_reserva)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.d_cancel_dps_reserva)
+            @Html.ValidationMessageFor(model => model.d_cancel_dps_reserva)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.d_cancel_antes_chk_in)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.d_cancel_antes_chk_in)
+            @Html.ValidationMessageFor(model => model.d_cancel_antes_chk_in)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.porc_ret)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.porc_ret)
+            @Html.ValidationMessageFor(model => model.porc_ret)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ptos_x_dolar)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ptos_x_dolar)
+            @Html.ValidationMessageFor(model => model.ptos_x_dolar)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hostname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hostname)
+            @Html.ValidationMessageFor(model => model.hostname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.port)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.port)
+            @Html.ValidationMessageFor(model => model.port)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.username)
+            @Html.ValidationMessageFor(model => model.username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

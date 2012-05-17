@@ -126,8 +126,11 @@ $(document).ready(function(){
 			</div>
 		</div><!-- Header End -->
 		<div class="clear"></div>
-		<div id="userbar"><!-- Userbar Begin -->
-			<div id="profile"><!-- Profile Begin -->
+		
+        <!--
+
+        <div id="userbar">
+			<div id="profile">
 				<div id="avatar">
 					<img src="@Url.Content("~/Content/img/test_avatar.png")" alt="Avatar" height="44" />
 					<a href="#" id="unreadcount">12</a>
@@ -139,8 +142,8 @@ $(document).ready(function(){
 					<a href="#" class="profilebutton">Profile</a>
 					<a href="#" class="profilebutton">Logout</a>
 				</div>
-			</div><!-- Userbar End -->
-			<ul id="navigation"><!-- Main Navigation Begin -->
+			</div>
+			<ul id="navigation">
 				<li class="activepage">@Html.ActionLink("Clientes", "Index", "Cliente", new { area = "AreaClientes" }, new { })</li>
 				<li><a href="#" class="icon_users">Tables</a>
 					<ul>
@@ -165,8 +168,10 @@ $(document).ready(function(){
 					</ul>
 				</li>
 				<li><a href="index.html" class="icon_logout">Logout</a></li>
-			</ul><!-- Main Navigation End -->
-		</div><!-- Userbar End -->
+			</ul>
+		</div>
+        -->
+
 		<div class="clear"></div>
 		<div id="body">
 

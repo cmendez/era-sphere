@@ -11,6 +11,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Habitaciones
     {
         [DisplayName("Descripcion")]
         public string descripcion { get; set; }
-        //public int estadoID { get; set; }
+        public int ID { get; set; }
     }
 }

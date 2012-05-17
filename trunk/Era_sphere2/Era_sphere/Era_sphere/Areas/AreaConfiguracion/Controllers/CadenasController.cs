@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Era_sphere.Models;
 using Era_sphere.Areas.Configuracion.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
+using Era_sphere.Areas.AreaClientes.Models;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
@@ -16,6 +17,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         public ActionResult Index(Cadena cliente_busqueda)
         {
             ViewBag.cadenas = cadena_logica.retornarCadenas();
+            ViewBag.clientes = new List<Cliente>();
             return View();
         }
 

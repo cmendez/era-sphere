@@ -1,4 +1,12 @@
-﻿using System;
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Entity;
+using Era_sphere.Areas.Configuracion.Models;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +17,7 @@ namespace Era_sphere.Areas.Configuracion.Models
 {
     public class UbigeoContext : DbContext
     {
-        public DbSet<Pais> paises {get; set;}
+        public DbSet<Pais> paises { get; set; }
         public DbSet<Ciudad> ciudades { get; set; }
 
 
@@ -40,10 +48,10 @@ namespace Era_sphere.Areas.Configuracion.Models
                 new Pais{nombre = "Venezuela", ID = 7},
                 new Pais{nombre = "Ecuador", ID = 8}
             };
-            foreach(var p in _paises)
+            foreach (var p in _paises)
                 paises.Add(p);
             SaveChanges();
-            
+
             var _ciudades = new List<Ciudad>
             {
                 new Ciudad{nombre = "Lima", ID = 1, pais = _paises.Single(p => p.nombre == "Peru")},
@@ -59,13 +67,14 @@ namespace Era_sphere.Areas.Configuracion.Models
                 ciudades.Add(c);
             SaveChanges();
             _paises = paises.ToList();
-            for(int i = 0; i < _paises.Count; i++){
+            for (int i = 0; i < _paises.Count; i++)
+            {
                 var pais = _paises[i];
-                pais.ciudades = new List<Ciudad>(){ ciudades.ToList().Find(c => c.pais.nombre == pais.nombre) };
+                pais.ciudades = new List<Ciudad>() { ciudades.ToList().Find(c => c.pais.nombre == pais.nombre) };
                 pais.ciudades.First().pais = pais;
             }
             SaveChanges();
-            
+
         }
         /*
         public class Seeder : DropCreateDatabaseAlways<UbigeoContext>

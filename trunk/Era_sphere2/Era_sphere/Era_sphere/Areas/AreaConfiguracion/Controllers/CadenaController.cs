@@ -35,6 +35,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit(int id)
+        {
+            return View("Edit", cadena_logica.retornarCadena(id));
+        }
+
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

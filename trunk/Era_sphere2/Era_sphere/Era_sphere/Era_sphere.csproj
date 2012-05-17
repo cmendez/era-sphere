@@ -72,7 +72,7 @@
     <Compile Include="Areas\AreaClientes\Models\InterfazLogicaCliente.cs" />
     <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs" />
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Controllers\CadenasController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Controllers\CadenaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\Ambiente.cs" />
@@ -1001,6 +1001,10 @@
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\PisoViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Comodidades\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Ambiente\IndexAmbiente.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Create.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Delete.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Details.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Edit.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

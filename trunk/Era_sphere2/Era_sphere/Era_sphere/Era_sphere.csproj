@@ -80,6 +80,7 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\LogicaCadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Impuesto.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Moneda.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Comodidad.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Habitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionContext.cs" />

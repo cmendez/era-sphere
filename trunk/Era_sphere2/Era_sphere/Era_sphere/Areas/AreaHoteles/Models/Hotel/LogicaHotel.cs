@@ -25,6 +25,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public void modificarHotel(HotelView hotel_view)
         {
             Hotel hotel = hotel_view.deserializa( this );
+            database_table.modificarElemento(hotel, hotel.ID);
             return;
         }
 

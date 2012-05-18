@@ -42,9 +42,9 @@ namespace Era_sphere
             Database.SetInitializer<ProvinciaDBContext>(new DropCreateDatabaseAlways<ProvinciaDBContext>());
 
             AreaRegistration.RegisterAllAreas();
-            Database.SetInitializer<ClienteContext>(new DropCreateDatabaseIfModelChanges<ClienteContext>());
-            Database.SetInitializer<UbigeoContext>(new DropCreateDatabaseAlways<UbigeoContext>());
-            Database.SetInitializer<HotelContext>(new DropCreateDatabaseIfModelChanges<HotelContext>());
+            //Database.SetInitializer<ClienteContext>(new DropCreateDatabaseIfModelChanges<ClienteContext>());
+            //Database.SetInitializer<UbigeoContext>(new DropCreateDatabaseAlways<UbigeoContext>());
+            //Database.SetInitializer<HotelContext>(new DropCreateDatabaseIfModelChanges<HotelContext>());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

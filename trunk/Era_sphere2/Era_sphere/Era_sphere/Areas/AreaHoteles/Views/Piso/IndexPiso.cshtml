@@ -20,9 +20,10 @@
         .Name("PisosGrid")
         .Filterable()
         .ToolBar(commands => commands.Insert())
-        .Editable(editing => editing
-                            .Mode(GridEditMode.InForm)
-                            .TemplateName("PisoViewTemplate"))
+        .Editable(editing => editing.Mode(GridEditMode.InLine))
+        //.Editable(editing => editing
+        //                    .Mode(GridEditMode.InForm)
+        //                    .TemplateName("PisoViewTemplate"))
                             
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>

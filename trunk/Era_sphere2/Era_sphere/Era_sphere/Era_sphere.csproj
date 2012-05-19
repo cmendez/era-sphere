@@ -387,6 +387,7 @@
     <Content Include="Content\data\css\grid.css" />
     <Content Include="Content\data\css\reset.css" />
     <Content Include="Content\data\css\style.css" />
+    <Content Include="Content\data\css\telerik.css" />
     <Content Include="Content\data\images\._action_icons.png" />
     <Content Include="Content\data\images\._action_tooltip.png" />
     <Content Include="Content\data\images\._alert_bg.png" />

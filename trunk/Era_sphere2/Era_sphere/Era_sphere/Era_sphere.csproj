@@ -74,15 +74,17 @@
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\CadenaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
-    <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Ambientes\Ambiente.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\Cadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\CadenaContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\InterfazLogicaCadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\LogicaCadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Impuesto.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Moneda.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionController.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Ambientes\Ambiente.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\AmbienteContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\AmbienteView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\InterfazLogicaAmbiente.cs" />
@@ -996,7 +998,6 @@
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Edit.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\Delete.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelViewTemplate.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\Piso\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Piso\IndexPiso.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\PisoViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Comodidades\Index.cshtml" />
@@ -1005,6 +1006,7 @@
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Delete.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Details.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Edit.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Piso\PisoEditView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />
@@ -1051,7 +1053,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51826</DevelopmentServerPort>
+          <DevelopmentServerPort>50816</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

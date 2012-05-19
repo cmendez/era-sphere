@@ -37,7 +37,7 @@ namespace Era_sphere
         protected void Application_Start()
         {
             //.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Era_sphere.PaisDBContext__Era_sphere.Areas.Configuracion.Models_>());
-            Database.SetInitializer<PaisDBContext>(new PaisInitializer());
+            //Database.SetInitializer<PaisDBContext>(new PaisInitializer());
             Database.SetInitializer<CiudadDBContext>(new DropCreateDatabaseAlways<CiudadDBContext>());
             Database.SetInitializer<ProvinciaDBContext>(new DropCreateDatabaseAlways<ProvinciaDBContext>());
 

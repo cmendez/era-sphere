@@ -35,7 +35,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public void modificarPiso(PisoView piso_view)
         {
             Piso piso = piso_view.deserializa(this);
-            return;
+            database_table.modificarElemento(piso, piso.ID);
         }
 
         public void agregarPiso(PisoView piso)

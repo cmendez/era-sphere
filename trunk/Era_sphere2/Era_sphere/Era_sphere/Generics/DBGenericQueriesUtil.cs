@@ -28,7 +28,14 @@ namespace Era_sphere.Generics
 
         public T retornarUnSoloElemento(int ID)
         {
-            return dbset.Find(ID);
+            try
+            {
+                return dbset.Find(ID);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public void modificarElemento(T elemento, int ID)

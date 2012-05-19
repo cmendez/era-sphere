@@ -16,6 +16,5 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string descripcion { get; set; }
         public int numero_piso { get; set; }
         public int hotel_id { get; set; }
-        public string hotel_nombre { get; set; }
     }
 }

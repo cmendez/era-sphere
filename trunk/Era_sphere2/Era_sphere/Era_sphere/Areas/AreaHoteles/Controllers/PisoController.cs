@@ -16,6 +16,14 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
 
         public ActionResult Index()
         {
+            /*List<PisoView> pisos = logica_piso.retornarPisos();
+            if (pisos.Count() == 0)
+                ViewData["nombre_hotel"] = "-";
+            else
+                ViewData["nombre_hotel"] = pisos[0].nombre_hotel;
+            */
+            ViewData["nombre_hotel"] = "Hotel El Libertador";
+            //TODO: eliminar la linea de arribita
             return View("IndexPiso");
         }
 

@@ -56,16 +56,5 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return database_table.buscarElementos(piso_campos);
         }
 
-        //leo un nombre de hotel
-        public string retornaNombreHotel(int hotel_id)
-        {
-           // con esto tenemos el nombre un objeto hotel 
-           //  Hotel hotel = database_table_hotel.retornarUnSoloElemento(hotel_id);
-           // return hotel.descripcion;
-
-            return "Hotel El Libertador";
-        }
-
-
-    }
+     }
 }

@@ -15,9 +15,10 @@
             Mantenimento de Pisos
         </h3>
     </div>
-
+    @Html.Label("Hotel")
+    @Html.TextBox("Hotel", ViewData["nombre_hotel"])
+             
     <div class="block_cont">
-        @(Html.TextBox("nombre hotel", Model.ElementAt(0).nombre_hotel)
 
         @(Html.Telerik().Grid(Model)
         .Name("PisosGrid")

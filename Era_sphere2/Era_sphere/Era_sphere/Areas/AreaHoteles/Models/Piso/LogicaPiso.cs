@@ -9,11 +9,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models
     public class LogicaPiso : InterfazLogicaPiso
     {
         PisoContext piso_context=new PisoContext();
+        HotelContext hotel_context = new HotelContext();
         DBGenericQueriesUtil<Piso> database_table;
+        DBGenericQueriesUtil<Hotel> database_table_hotel;
 
         public LogicaPiso()
         {
             database_table = new DBGenericQueriesUtil<Piso>(piso_context, piso_context.pisos);
+            database_table_hotel = new DBGenericQueriesUtil<Hotel>(hotel_context, hotel_context.hoteles);
         }
 
         public List<PisoView> retornarPisos()
@@ -52,5 +55,17 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             return database_table.buscarElementos(piso_campos);
         }
+
+        //leo un nombre de hotel
+        public string retornaNombreHotel(int hotel_id)
+        {
+           // con esto tenemos el nombre un objeto hotel 
+           //  Hotel hotel = database_table_hotel.retornarUnSoloElemento(hotel_id);
+           // return hotel.descripcion;
+
+            return "Hotel El Libertador";
+        }
+
+
     }
 }

@@ -8,6 +8,5 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
     public class Servicio : DBable
     {
-        public int ID { get; set; }
     }
 }

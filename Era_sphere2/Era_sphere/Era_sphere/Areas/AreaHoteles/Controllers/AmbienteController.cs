@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models;
+using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {

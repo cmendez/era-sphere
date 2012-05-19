@@ -9,9 +9,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public abstract class EspacioCargable : EspacioRentable
     {
-        [DisplayName("Descripcion")]
-        public string descripcion { get; set; }
-
         [DisplayName("Piso")]
         public Piso piso { get; set; }  
     }

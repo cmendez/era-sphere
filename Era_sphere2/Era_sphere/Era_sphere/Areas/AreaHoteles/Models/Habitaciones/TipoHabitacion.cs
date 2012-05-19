@@ -11,9 +11,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class TipoHabitacion: EspacioRentable
     {
-
-        public string descripcion { get; set; }
-
         public int cap_max_personas { get; set; }
 
         public ICollection<Comodidad> comodidades { get; set; }

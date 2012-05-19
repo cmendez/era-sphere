@@ -13,7 +13,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         [ReadOnly(true)]
         [DisplayName("Hotel")]
-        public string nombre_hotel { get; set; }
+        public string nombre_hotel {
+            get {
+                //TODO
+                return "";
+                //LogicaHotel hoteles = new LogicaHotel();
+                //return hoteles.retornarHotel(id_hotel).descripcion;
+            }
+        }
 
 
         [Required]
@@ -31,7 +38,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             ID = piso.ID;
             descripcion = piso.descripcion;
             numero_piso = piso.numero_piso;
-            nombre_hotel = piso.hotel_nombre;
             id_hotel = piso.hotel_id;
 
         }
@@ -41,7 +47,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return new Piso
             {
                 hotel_id= this.id_hotel,
-                hotel_nombre = this.nombre_hotel,
                 ID = this.ID,         
                 descripcion = this.descripcion,
                 numero_piso = this.numero_piso

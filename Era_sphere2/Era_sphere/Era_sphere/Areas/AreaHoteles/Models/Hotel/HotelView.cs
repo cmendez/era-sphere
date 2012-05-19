@@ -77,7 +77,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
                 reg_id = this.reg_id,
                 telefono_1 = this.telefono_1,
                 telefono_2 = this.telefono_2
-
             };
         }
     }

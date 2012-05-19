@@ -10,6 +10,7 @@ using Era_sphere.Areas.Configuracion.Models;
 using Era_sphere.Models;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 
 namespace Era_sphere
 {
@@ -39,17 +40,18 @@ namespace Era_sphere
         {
             //.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Era_sphere.PaisDBContext__Era_sphere.Areas.Configuracion.Models_>());
             //Database.SetInitializer<PaisDBContext>(new PaisInitializer());
-            Database.SetInitializer<CiudadDBContext>(new DropCreateDatabaseAlways<CiudadDBContext>());
-            Database.SetInitializer<ProvinciaDBContext>(new DropCreateDatabaseAlways<ProvinciaDBContext>());
+            Database.SetInitializer<CiudadDBContext>(new DropCreateDatabaseIfModelChanges<CiudadDBContext>());
+            Database.SetInitializer<ProvinciaDBContext>(new DropCreateDatabaseIfModelChanges<ProvinciaDBContext>());
 
             AreaRegistration.RegisterAllAreas();
-            //Database.SetInitializer<ClienteContext>(new DropCreateDatabaseIfModelChanges<ClienteContext>());
-            //Database.SetInitializer<UbigeoContext>(new DropCreateDatabaseAlways<UbigeoContext>());
-            //Database.SetInitializer<HotelContext>(new DropCreateDatabaseIfModelChanges<HotelContext>());
+            Database.SetInitializer<ClienteContext>(new DropCreateDatabaseIfModelChanges<ClienteContext>());
+            Database.SetInitializer<UbigeoContext>(new DropCreateDatabaseIfModelChanges<UbigeoContext>());
+            Database.SetInitializer<HotelContext>(new DropCreateDatabaseIfModelChanges<HotelContext>());
             //prueba para que funcione el mantenimiento de pisos T_T
-            Database.SetInitializer<ComodidadesContext>(new DropCreateDatabaseAlways<ComodidadesContext>());
-            Database.SetInitializer<HabitacionContext>(new DropCreateDatabaseAlways<HabitacionContext>());
-            Database.SetInitializer<PisoContext>(new DropCreateDatabaseAlways<PisoContext>());
+            Database.SetInitializer<ComodidadesContext>(new DropCreateDatabaseIfModelChanges<ComodidadesContext>());
+            Database.SetInitializer<AmbienteContext>(new DropCreateDatabaseIfModelChanges<AmbienteContext>());
+            Database.SetInitializer<HabitacionContext>(new DropCreateDatabaseIfModelChanges<HabitacionContext>());
+            Database.SetInitializer<PisoContext>(new DropCreateDatabaseIfModelChanges<PisoContext>());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

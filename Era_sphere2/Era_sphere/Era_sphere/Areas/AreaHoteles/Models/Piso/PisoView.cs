@@ -30,11 +30,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             return new Piso
             {
-                // ciudad = logica.retornarCiudad(ciudad_id),
+                ID = this.ID,         
                 descripcion = this.descripcion,
-                numero_piso = this.numero_piso,
-                ID = this.ID
-
+                numero_piso = this.numero_piso
 
             };
 

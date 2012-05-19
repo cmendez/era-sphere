@@ -19,6 +19,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("IndexPiso");
         }
 
+        
+
         [GridAction]
         public ActionResult select()
         {

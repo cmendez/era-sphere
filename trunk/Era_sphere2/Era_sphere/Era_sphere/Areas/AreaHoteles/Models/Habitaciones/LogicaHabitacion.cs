@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
 using System.ComponentModel;
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -17,34 +18,41 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             database_table = new DBGenericQueriesUtil< Habitacion >(habitacion_context, habitacion_context.habitaciones);
         }
 
-        public List<Habitacion> retornarHabitaciones()
+        public List<HabitacionView> retornarHabitaciones()
         {
-            return database_table.retornarTodos();
+            List<Habitacion> habitaciones = database_table.retornarTodos();
+            List<HabitacionView> habitacion_view = new List<HabitacionView>();
+
+            foreach (Habitacion habitacion in habitaciones) habitacion_view.Add(new HabitacionView(habitacion));
+            return habitacion_view;
         }
 
-        public Habitacion retornarHabitacion(int habitacionID)
+        public HabitacionView retornarHabitacion(int habitacion_id)
         {
-            return database_table.retornarUnSoloElemento(habitacionID);
+            Habitacion habitacion = database_table.retornarUnSoloElemento(habitacion_id);
+            HabitacionView habitacion_view = new HabitacionView(habitacion);
+            return habitacion_view;
         }
 
-        public void modificarHabitacion(Habitacion habitacion)
+        public void modificarHabitacion(HabitacionView habitacion_view)
         {
-            database_table.modificarElemento(habitacion, habitacion.ID);
+            Habitacion habitacion = habitacion_view.deserializa(this);
+            return;
         }
 
-        public void agregarHabitacion(Habitacion habitacion)
+        public void agregarHabitacion(HabitacionView habitacion)
         {
-            database_table.agregarElemento(habitacion);
+            database_table.agregarElemento(habitacion.deserializa(this));
         }
 
-        public void eliminarHabitacion(int habitacionID)
+        public void eliminarHabitacion(int habitacion_id)
         {
-            database_table.eliminarElemento(habitacionID);
+            database_table.eliminarElemento(habitacion_id);
         }
 
-        public List<Habitacion> buscarHabitacion(Habitacion habitacion_campos)
+        /*public List<Habitacion> buscarHabitacion(Habitacion habitacion_campos)
         {
             return database_table.buscarElementos(habitacion_campos);
-        }
+        }*/
     }
 }

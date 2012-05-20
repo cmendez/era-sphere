@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public interface InterfazLogicaHabitacion
     {
-        List<Habitacion> retornarHabitaciones();
-        Habitacion retornarHabitacion(int habitacion_id);
-        void modificarHabitacion(Habitacion habitacion);
-        void agregarHabitacion(Habitacion habitacion);
+        List<HabitacionView> retornarHabitaciones();
+        HabitacionView retornarHabitacion(int habitacion_id);
+        void modificarHabitacion(HabitacionView habitacion);
+        void agregarHabitacion(HabitacionView habitacion);
         void eliminarHabitacion(int habitacion_id);
-        List<Habitacion> buscarHabitacion(Habitacion habitacion);
+        //List<Habitacion> buscarHabitacion(Habitacion habitacion);
     }
 }

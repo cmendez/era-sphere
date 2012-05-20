@@ -10,22 +10,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class Habitacion: EspacioCargable
     {
-        [DisplayName("Detalles")]
-        public string detalles { get; set; }
+        
+        public string detalle { get; set; }
 
-        public enum Estado
-        {
-            ocupada,
-            libre,
-            inactiva
-        }
-
-        [DisplayName("Estado")]
-        public Estado estado { get; set; }
+        public string estado { get; set; }
 
        // public ICollection<HabitacionXComodidad> habitacionXcomodidad { get; set; }
 
-        [DisplayName("Tipo de habitacion")]
-        public TipoHabitacion tipohabitacion { get; set; }
+        public string tipoHabitacion { get; set; }
     }
 }

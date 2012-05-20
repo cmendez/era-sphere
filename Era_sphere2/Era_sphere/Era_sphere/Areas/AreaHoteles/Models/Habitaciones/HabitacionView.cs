@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 
-namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
+namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class HabitacionView
     {
@@ -17,11 +17,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
             tipoHabitacion = habitacion.tipoHabitacion;
         }
         [DisplayName("Detalle")]
-        string detalle { get; set; }
+        public string detalle { get; set; }
         [DisplayName("estado")]
-        string estado { get; set; }
+        public string estado { get; set; }
         [DisplayName("ID Habitacion")]
-        int ID { get; set; }
+        public int ID { get; set; }
         [DisplayName("Tipo de habitacion")]
         string tipoHabitacion { get; set; }
         public Habitacion deserializa(InterfazLogicaHabitacion logica)

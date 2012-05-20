@@ -28,7 +28,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return new TipoHabitacion
             {
                 descripcion=this.descripcion,
-                cap_max_personas=this.cap_max_personas
+                cap_max_personas=this.cap_max_personas,
                 ID=this.ID
             };
         }

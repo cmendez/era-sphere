@@ -29,7 +29,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             {
                 descripcion=this.descripcion,
                 cap_max_personas=this.cap_max_personas
-
+                ID=this.ID
             };
         }
     }

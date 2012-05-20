@@ -952,6 +952,7 @@
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Views\Shared\" />
+    <Folder Include="Areas\AreaHoteles\Views\Habitaciones\" />
     <Folder Include="Areas\AreaPaquetes\Controllers\" />
     <Folder Include="Areas\AreaPaquetes\Views\Shared\" />
     <Folder Include="Areas\AreaReportes\Controllers\" />
@@ -1007,11 +1008,9 @@
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Delete.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Details.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Edit.cshtml" />
-
-    <Content Include="Areas\AreaHoteles\Views\Habitaciones\TipoHabitacionIndex.cshtml" />
-
     <Content Include="Areas\AreaHoteles\Views\Piso\PisoEditView.cshtml" />
-
+    <Content Include="Areas\AreaHoteles\Views\TipoHabitacion\TipoHabitacionIndex.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\TipoHabitacion\TipoHabitacionEditView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

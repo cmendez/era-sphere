@@ -1007,7 +1007,11 @@
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Delete.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Details.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Edit.cshtml" />
+
+    <Content Include="Areas\AreaHoteles\Views\Habitaciones\TipoHabitacionIndex.cshtml" />
+
     <Content Include="Areas\AreaHoteles\Views\Piso\PisoEditView.cshtml" />
+
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

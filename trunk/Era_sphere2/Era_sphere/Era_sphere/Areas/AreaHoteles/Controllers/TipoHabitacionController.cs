@@ -15,7 +15,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         InterfazLogicaTipoHabitacion tipoHabitacion_logica = new LogicaTipoHabitacion();
         public ActionResult Index()
         {
-            return View();
+            return View("TipoHabitacionIndex");
         }
         [GridAction]
         public ActionResult Select()

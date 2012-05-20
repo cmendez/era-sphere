@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "TipoHabitacionIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Era_sphere.Areas.AreaHoteles.Models
+@model IEnumerable<TipoHabitacionView>
+@using Telerik.Web.Mvc.UI
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de tipos de habitacion
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("TipoHabitacionGrid")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InForm)
+                            .TemplateName("TipoHabitacionViewTemplate"))
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.descripcion);
+            columns.Bound(p => p.cap_max_personas);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Hotel")
+            .Insert("Insert", "Hotel")
+            .Delete("Delete", "Hotel")
+            .Update("Update", "Hotel")
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

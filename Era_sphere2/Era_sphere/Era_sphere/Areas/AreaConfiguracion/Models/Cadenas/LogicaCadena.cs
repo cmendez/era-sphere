@@ -15,7 +15,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
     {
         CadenaContext cadena_context = new CadenaContext();
         DBGenericQueriesUtil<Cadena> database_table;
-        DBGenericQueriesUtil<Cliente> database_table_clientes;
+       
 
         public LogicaCadena()
         {
@@ -54,7 +54,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 
         public List<Cliente> retornarClientes()
         {
-            return database_table_clientes.retornarTodos();
+            return null;
         }
     }
 }

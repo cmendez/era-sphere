@@ -7,21 +7,29 @@ using System.Drawing;
 using Era_sphere.Areas.Configuracion.Models;
 using Era_sphere.Generics;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 {
 
     public class Cadena : DBable
     {
+        [Required(ErrorMessage = "Este campo es obligatorio")]
         [DisplayName("Nombre de la cadena")]
         public string nombreCadena { get; set; }
 
+            [Required(ErrorMessage = "Este campo es obligatorio")]
         [DisplayName("Razón social")]
         public string rsocial { get; set; }
 
+        [MinLength(11)]
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+//[Range(11, 11, ErrorMessage = "El RUC debe ser contener 11 digitos")]
         [DisplayName("RUC de la cadena")]
         public string ruc { get; set; }
 
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        //  [DataType(DataType.Url)] 
         [DisplayName("Página web")]
         public string url { get; set; }
 

@@ -1,24 +1,48 @@
 ﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Cadenas.Cadena
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar detalles de la cadena";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Cadena</legend>
 
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Cadena
+        </h3>
+    </div>
+
+    @using (Html.BeginForm("Edit", "Cadena", FormMethod.Post, new { @class = "form" })) { 
+         @Html.ValidationSummary(true)
+        <div class="block_cont" id="formCadena">
+        
+        <!--
+            <div id="info_adicional">
+            -->
+            <div class="small-inner" id="detalle_cadena" style="margin-top: 0px; margin-bottom: 0px;
+                width: 930px; position: relative;">
+                <div class="titlebar innertitle">
+                    <h3>
+                        Detalle de la Cadena
+                    </h3>
+                </div>
+                <fieldset>
+                <div class="block_cont" id="block_detalle_cadena">
+        
+       <div> @Html.HiddenFor(model => model.ID) </div>
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.nombreCadena)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.nombreCadena)
+            @Html.TextBoxFor(model => model.nombreCadena, new { @class = "input tipRight singleInput", })
             @Html.ValidationMessageFor(model => model.nombreCadena)
         </div>
 
@@ -26,7 +50,7 @@
             @Html.LabelFor(model => model.rsocial)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.rsocial)
+            @Html.TextBoxFor(model => model.rsocial, new { @class = "input tipRight singleInput", })
             @Html.ValidationMessageFor(model => model.rsocial)
         </div>
 
@@ -34,7 +58,7 @@
             @Html.LabelFor(model => model.ruc)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ruc)
+            @Html.TextBoxFor(model => model.ruc, new { @class = "input tipRight singleInput", })
             @Html.ValidationMessageFor(model => model.ruc)
         </div>
 
@@ -42,90 +66,29 @@
             @Html.LabelFor(model => model.url)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.url)
+            @Html.TextBoxFor(model => model.url, new { @class = "input tipRight singleInput", })
             @Html.ValidationMessageFor(model => model.url)
         </div>
+        <p>  &nbsp; </p>
+                     <p>
+                        <input class="submit" type="submit" value="Guardar" />
+                    </p>
+                </div>
+                </fieldset>
+            </div>
+       <!--
+        </div>
+        -->
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.adel_minimo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.adel_minimo)
-            @Html.ValidationMessageFor(model => model.adel_minimo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.d_cancel_dps_reserva)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.d_cancel_dps_reserva)
-            @Html.ValidationMessageFor(model => model.d_cancel_dps_reserva)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.d_cancel_antes_chk_in)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.d_cancel_antes_chk_in)
-            @Html.ValidationMessageFor(model => model.d_cancel_antes_chk_in)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.porc_ret)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.porc_ret)
-            @Html.ValidationMessageFor(model => model.porc_ret)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ptos_x_dolar)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ptos_x_dolar)
-            @Html.ValidationMessageFor(model => model.ptos_x_dolar)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.hostname)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.hostname)
-            @Html.ValidationMessageFor(model => model.hostname)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.port)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.port)
-            @Html.ValidationMessageFor(model => model.port)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.username)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.username)
-            @Html.ValidationMessageFor(model => model.username)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.password)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.password)
-            @Html.ValidationMessageFor(model => model.password)
-        </div>
-
-        @Html.HiddenFor(model => model.ID)
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        <div>
+    @Html.ActionLink("Volver atrás", "Index")
 </div>
+        </div>
+    }
+    
+ 
+  
+</div>
+
+
+

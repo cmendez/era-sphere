@@ -21,23 +21,44 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 
         public ActionResult Create()
         {
-            //var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
-            var con = new UbigeoContext();
-            //con.Seed();
-            ViewBag.paises = (new UbigeoContext()).paises.ToList();
-            return View();
+//validar que solo se pueda crear una cadena
+            /*List<Cadena> lista = cadena_logica.retornarCadenas();
+            if (lista.Count > 1)
+            {
+                Response.Write("<script>alert('Errorrrrrrr')</script>"); //este de aca no se muestra T_T
+                return RedirectToAction("Index");
+            }*/
+            return View(); //devuelve el view de cadena, CREATE.CSHTML
         }
         [HttpPost]
         public ActionResult Create(Cadena cadena)
         {
             //cadena.asdasd = Cadena.TipoPersona.natural;
-            cadena_logica.agregarCadena(cadena);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                cadena_logica.agregarCadena(cadena);
+                return RedirectToAction("Index"); //regresa al index de cadena
+            }
+            return View();
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id=0)
         {
+            List<Cadena> lista = cadena_logica.retornarCadenas();
+            id = lista[lista.Count - 1].ID;
             return View("Edit", cadena_logica.retornarCadena(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Cadena cadena)
+        {
+            try
+            { 
+                cadena_logica.modificarCadena(cadena);
+            }
+            catch
+            { }
+            return RedirectToAction("Index");
         }
 
         [HttpPost, ActionName("Delete")]
@@ -50,9 +71,17 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
             return View(cadena_logica.retornarCadena(id));
         }
-        public ActionResult Detail(int id)
+        public ActionResult Details(int id=0)
         {
-            return View("Details", cadena_logica.retornarCadena(id));
+            try
+            {
+                List<Cadena> lista = cadena_logica.retornarCadenas();
+                id = lista[lista.Count - 1].ID;
+                return View("Details", cadena_logica.retornarCadena(id));
+            }
+            catch{
+                return RedirectToAction("Index");
+            }
         }
 
     }

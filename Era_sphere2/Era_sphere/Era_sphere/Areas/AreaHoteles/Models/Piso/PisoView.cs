@@ -24,12 +24,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
 
         [Required]
+        [DisplayName("Código Piso")]
+        public string codigo_piso { get; set; }
+        
+        [Required]
         [DisplayName("Descripción")]
         public string descripcion { get; set; }
 
-        [Required]
-        [DisplayName("Numero Piso")]
-        public int numero_piso { get; set; }
+        
         public PisoView() { }
 
         public PisoView(Piso piso)
@@ -37,7 +39,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             // TODO: Complete member initialization
             ID = piso.ID;
             descripcion = piso.descripcion;
-            numero_piso = piso.numero_piso;
+            codigo_piso = piso.codigo_piso;
             id_hotel = piso.hotel_id;
 
         }
@@ -49,7 +51,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
                 hotel_id= this.id_hotel,
                 ID = this.ID,         
                 descripcion = this.descripcion,
-                numero_piso = this.numero_piso
+                codigo_piso = this.codigo_piso
 
             };
 

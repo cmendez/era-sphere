@@ -33,8 +33,8 @@
         .Columns(columns =>
         {
            // columns.Bound(p => p.ID);
+            columns.Bound(p => p.codigo_piso);
             columns.Bound(p => p.descripcion);
-            columns.Bound(p => p.numero_piso);
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

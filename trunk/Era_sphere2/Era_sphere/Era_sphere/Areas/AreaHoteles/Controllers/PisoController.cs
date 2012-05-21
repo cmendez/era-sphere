@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -22,6 +23,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             else
                 ViewData["nombre_hotel"] = pisos[0].nombre_hotel;
             */
+            
             ViewData["nombre_hotel"] = "Hotel El Libertador";
             //TODO: eliminar la linea de arribita
             return View("IndexPiso");
@@ -55,7 +57,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             int piso_id = id ?? -1;
             logica_piso.eliminarPiso(piso_id);
             return View("Index", new GridModel(logica_piso.retornarPisos()));
-            //return RedirectToAction("proveedor");
+    
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
@@ -65,7 +67,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
 
             logica_piso.modificarPiso(piso);
             return View("Index", new GridModel(logica_piso.retornarPisos()));
-            // return RedirectToAction("proveedor");
+     
         }
     }
 }

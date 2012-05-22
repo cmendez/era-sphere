@@ -8,10 +8,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models
     public interface InterfazLogicaTipoHabitacion
     {
         List<TipoHabitacionView> retornarTiposHabitacion();
+        //List<TipoHabitacionView> retornarTiposHabitacion(int hotel_id);
         TipoHabitacionView retornarTipoHabitacion(int tipohabitacion_id);
         void modificarTipoHabitacion(TipoHabitacionView  tipoHabitacion);
         void agregarTipoHabitacion(TipoHabitacionView tipoHabitacion);
         void eliminarTipoHabitacion(int tipohabitacion_id);
-     //   List<Habitacion> buscarTipoHabitacion(TipoHabitacion tipohabitacion);
+        List<TipoHabitacion> buscarTipoHabitacion(TipoHabitacion tipohabitacion);
     }
 }

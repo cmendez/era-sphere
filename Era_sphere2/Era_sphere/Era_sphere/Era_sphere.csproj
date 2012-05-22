@@ -1016,6 +1016,7 @@
     <Content Include="Areas\AreaHoteles\Views\Habitacion\HabitacionIndex.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Habitacion\HabitacionEditView.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HabitacionViewTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\TipoHabitacionViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

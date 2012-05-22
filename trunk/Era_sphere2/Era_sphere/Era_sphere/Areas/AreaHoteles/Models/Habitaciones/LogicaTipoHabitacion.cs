@@ -48,11 +48,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             database_table.eliminarElemento(tipohabitacionID);
         }
-
         public List<TipoHabitacion> buscarTipoHabitacion(TipoHabitacion tipohabitacion_campos)
         {
             return database_table.buscarElementos(tipohabitacion_campos);
         }
+        
     }
     
 }

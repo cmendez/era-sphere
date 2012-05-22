@@ -14,7 +14,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         
         // GET: /AreaHoteles/Piso/
         InterfazLogicaPiso logica_piso = new LogicaPiso();
-
+        // 
+        PisoView piso = new PisoView();
         public ActionResult Index()
         {
             /*List<PisoView> pisos = logica_piso.retornarPisos();
@@ -23,9 +24,10 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             else
                 ViewData["nombre_hotel"] = pisos[0].nombre_hotel;
             */
-            
-            ViewData["nombre_hotel"] = "Hotel El Libertador";
+
+            ViewData["HOTEL"] = logica_piso.retornaNombreHotel(piso.id_hotel);
             //TODO: eliminar la linea de arribita
+     
             return View("IndexPiso");
         }
 

@@ -13,5 +13,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         List<PisoView> retornarPisos();
         PisoView retornarPiso(int piso_id);
         List<Piso> buscarPiso(Piso piso);
+        //con esta función se retorna el nombre del hotel
+        string retornaNombreHotel(int hotel_id);
     }
 }

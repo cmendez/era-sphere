@@ -1,0 +1,25 @@
+﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Fiscal.Moneda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Moneda</legend>
+
+    <div class="display-label">Descripcion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descripcion)
+    </div>
+
+    <div class="display-label">simbolo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.simbolo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

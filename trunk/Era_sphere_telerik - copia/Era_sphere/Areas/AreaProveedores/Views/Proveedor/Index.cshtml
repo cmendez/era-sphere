@@ -1,0 +1,68 @@
+﻿@using Era_sphere.Areas.AreaProveedores.Models
+@model IEnumerable<Proveedor>
+@using Telerik.Web.Mvc.UI
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Proveedores
+        </h3>
+    </div>
+    <div class="block_cont">
+@using (Html.BeginForm("Filtrado","Proveedor",FormMethod.Post ,new{@class="form"}))
+   { 
+    <div class="form_row">
+        <label>Razon Social :</label>
+        @Html.TextBox("razon_social", "", new { @class = "input tipRignt singleInput" }) 
+    </div>
+   <div class="form_row">
+        <label>Ruc :</label>
+        @Html.TextBox("ruc", "", new { @class = "input tipRignt singleInput" }) 
+    </div>
+    
+    <button class="t-button t-state-default submit" type="submit" >Filtrar</button>
+ } 
+
+        @(Html.Telerik().Grid(Model)
+        .Name("ProveedoresGrid")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.PopUp)
+                            .TemplateName("ProveedorTemplate") )
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.razon_social);
+            columns.Bound(p => p.telefono);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Proveedor")
+            .Insert("Insert", "Proveedor")
+            .Delete("Delete", "Proveedor")
+            .Update("Update", "Proveedor")
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

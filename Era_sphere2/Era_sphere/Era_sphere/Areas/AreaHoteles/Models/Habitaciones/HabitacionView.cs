@@ -23,7 +23,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [DisplayName("ID Habitacion")]
         public int ID { get; set; }
         [DisplayName("Tipo de habitacion")]
-        string tipoHabitacion { get; set; }
+        public string tipoHabitacion { get; set; }
         public Habitacion deserializa(InterfazLogicaHabitacion logica)
         {
             return new Habitacion

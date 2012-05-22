@@ -1,0 +1,38 @@
+﻿@using Era_sphere.Areas.AreaHoteles.Models
+@using Telerik.Web.Mvc.UI
+@model Era_sphere.Areas.AreaHoteles.Models.HabitacionView
+@{
+    ViewBag.Title = "HabitacionViewTemplate";
+    var tiposHabitacion = (new LogicaTipoHabitacion()).retornarTiposHabitacion();
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+    
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.detalle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.detalle)
+            @Html.ValidationMessageFor(model => model.detalle)
+        </div>
+        
+       <div class="editor-field">
+            <p>
+                <label for="ComboBox_Categories-input">
+                    Tipos habitacion:</label>
+                @( Html.Telerik().ComboBox()
+                    .Name("tipoHabitacion_id")
+                    .BindTo(new SelectList(tiposHabitacion, "ID", "descripcion"))
+                    .Placeholder("Seleccione un tipo de habitacion")
+                    .SelectedIndex(0)
+                )
+            </p>
+        </div>
+        <!-- tipo habitacion -->
+     </fieldset>
+}

@@ -1,0 +1,28 @@
+﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Fiscal.Moneda
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Moneda</legend>
+
+    <div class="display-label">Descripcion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Descripcion)
+    </div>
+
+    <div class="display-label">simbolo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.simbolo)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

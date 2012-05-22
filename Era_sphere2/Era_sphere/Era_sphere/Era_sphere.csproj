@@ -73,13 +73,18 @@
     <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs" />
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\CadenaController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Controllers\MonedaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Controllers\TipoDePagoController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\Cadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\CadenaContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\InterfazLogicaCadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\LogicaCadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Impuesto.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Moneda.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\MonedaContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePago.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePagoContext.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1017,6 +1022,16 @@
     <Content Include="Areas\AreaHoteles\Views\Habitacion\HabitacionEditView.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HabitacionViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\TipoHabitacionViewTemplate.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoDePago\Index.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoDePago\Details.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoDePago\Create.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoDePago\Edit.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoDePago\Delete.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Moneda\Index.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Moneda\Create.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Moneda\Delete.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Moneda\Edit.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Moneda\Details.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

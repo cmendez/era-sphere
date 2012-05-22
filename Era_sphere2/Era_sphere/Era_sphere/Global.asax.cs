@@ -11,6 +11,7 @@ using Era_sphere.Models;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
+using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 
 namespace Era_sphere
 {
@@ -52,6 +53,9 @@ namespace Era_sphere
             Database.SetInitializer<AmbienteContext>(new DropCreateDatabaseIfModelChanges<AmbienteContext>());
             Database.SetInitializer<HabitacionContext>(new DropCreateDatabaseIfModelChanges<HabitacionContext>());
             Database.SetInitializer<PisoContext>(new DropCreateDatabaseIfModelChanges<PisoContext>());
+            Database.SetInitializer(new MonedaContextInitializer());
+            Database.SetInitializer(new TipoDePagoContextInitializer());
+
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

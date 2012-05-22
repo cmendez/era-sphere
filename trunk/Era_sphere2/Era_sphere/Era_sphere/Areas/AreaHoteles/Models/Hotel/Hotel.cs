@@ -31,6 +31,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
        //public Ciudad ciudad { get; set; }
        // public Pais pais { get; set; }
-        public List<Piso> pisos_hotel { get; set; }
+       // public List<Piso> pisos_hotel { get; set; }
     }
 }

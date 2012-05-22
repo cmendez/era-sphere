@@ -11,7 +11,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class Habitacion: EspacioCargable
     {
-        
+         
         public string detalle { get; set; }
 
         public string estado { get; set; }

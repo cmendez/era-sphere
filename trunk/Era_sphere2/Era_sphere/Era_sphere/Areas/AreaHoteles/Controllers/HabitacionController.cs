@@ -55,6 +55,10 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             habitacion_logica.modificarHabitacion(p);
             return View("Index", new GridModel(habitacion_logica.retornarHabitaciones()));
         }
-
+        /*[HttpPost]
+        public ActionResult TiposHabitacionComboBox()
+        {
+            return Json(new SelectList(hotel_logica.retornarCiudades(id), "ID", "nombre"), JsonRequestBehavior.AllowGet);
+        }*/
     }
 }

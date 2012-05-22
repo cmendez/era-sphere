@@ -36,6 +36,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             
             TipoHabitacion tipoHabitacion = tipoHabitacion_view.deserializa(this);
+            database_table.modificarElemento(tipoHabitacion, tipoHabitacion.ID);
             return;
         }
 

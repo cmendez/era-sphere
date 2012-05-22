@@ -56,5 +56,12 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return database_table.buscarElementos(piso_campos);
         }
 
+        //retorna un hotel
+        public string retornaNombreHotel(int hotel_id)
+        {
+            Hotel hotel_perteneciente = database_table_hotel.retornarUnSoloElemento(hotel_id);
+            return "Hotel bellavista";
+            //  return hotel_perteneciente.descripcion;
+        }
      }
 }

@@ -40,7 +40,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             ID = piso.ID;
             descripcion = piso.descripcion;
             codigo_piso = piso.codigo_piso;
-            id_hotel = piso.hotel_id;
+            id_hotel = piso.hotel.ID;
 
         }
 
@@ -48,7 +48,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             return new Piso
             {
-                hotel_id= this.id_hotel,
+                //hotel_id= this.id_hotel,
                 ID = this.ID,         
                 descripcion = this.descripcion,
                 codigo_piso = this.codigo_piso

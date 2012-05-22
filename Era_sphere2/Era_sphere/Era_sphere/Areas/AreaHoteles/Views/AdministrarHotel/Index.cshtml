@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Era_sphere.Areas.AreaHoteles.Models
+@using Era_sphere.Areas.AreaHoteles.Controllers
+@model IEnumerable<HotelView>
+@using Telerik.Web.Mvc.UI
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Administracion de Hoteles
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("HotelesGrid")
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID).Width(30);
+            columns.Bound(p => p.razon_social);
+            //  columns.Bound(p => p.pais_nombre);
+            //  columns.Bound(p => p.ciudad_nombre);
+            columns.Bound(p => p.provincia);
+            columns.Command(commands => commands
+                .Custom("seleccionarHotel")
+                .Text("Seleccionar")
+                .Action("Administrar","AdministrarHotel")
+                ).Title("Seleccionar").Width(50);
+        })
+
+        .Pageable()
+        .Sortable()
+
+       )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

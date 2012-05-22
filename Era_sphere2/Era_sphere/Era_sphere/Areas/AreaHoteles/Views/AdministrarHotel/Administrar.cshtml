@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Administrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id_hotel = (int)@ViewData["id"];
+    var razon_social = @ViewData["razon_hotel"];
+}
+
+@using Era_sphere.Areas.AreaHoteles.Models
+@model IEnumerable<HotelView>
+@using Telerik.Web.Mvc.UI
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Acciones a administrar en : @razon_social
+        </h3>
+    </div>
+    <div class="block_cont">
+        @id_hotel asdasdasd
+        <p>@Html.ActionLink("Agregar Pisos", "AgregarPisos", new { controller = "AdministrarHotel"},
+                            new { id = @id_hotel }                      
+                        )
+
+                        </p>
+        <p>@Html.ActionLink("Agregar Habitaciones", "AgregarHabitaciones", new { controller = "AdministrarHotel" }, new { id = @id_hotel})</p>
+        <p>@Html.ActionLink("Agregar Ambientes", "AgregarAmbientes", new { controller = "AdministrarHotel" }, new { id = @id_hotel }) </p>
+    </div>
+    <!-- Table Wrapper End -->
+</div>

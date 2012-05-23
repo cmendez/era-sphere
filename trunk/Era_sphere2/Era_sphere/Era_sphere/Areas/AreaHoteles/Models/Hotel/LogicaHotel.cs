@@ -54,16 +54,16 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public Ciudad retornarCiudad(int ciudad_id)
         {
-            Ciudad ciudad= (new UbigeoContext()).ciudades.Find(ciudad_id);
+            Ciudad ciudad = (new EraSphereContext()).ciudades.Find(ciudad_id);
             return ciudad;
         }
 
-        public List<Pais> retornarPaises() { 
-            return (new UbigeoContext()).paises.ToList();
+        public List<Pais> retornarPaises() {
+            return (new EraSphereContext()).paises.ToList();
         }
 
         public List<Ciudad> retornarCiudades( int pais_id ) {
-            List<Ciudad> res =  (new UbigeoContext()).paises.Find(pais_id).ciudades.ToList();
+            List<Ciudad> res = (new EraSphereContext()).paises.Find(pais_id).ciudades.ToList();
             return res;
         }
     }

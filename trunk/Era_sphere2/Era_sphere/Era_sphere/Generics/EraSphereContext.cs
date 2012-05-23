@@ -8,7 +8,7 @@ using System.Data.Entity;
 namespace Era_sphere.Generics
 {
     public partial class EraSphereContext : DbContext
-    {        
-
+    {
+        
     }
 }

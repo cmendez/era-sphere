@@ -65,5 +65,15 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return hotel_perteneciente.razon_social;
             //  return hotel_perteneciente.descripcion;
         }
+
+        public List<PisoView> retornarPisoHotel(int hotel_id)
+        {
+            List<Piso> pisos_aux = database_table.retornarTodos().Where(p => p.hotelID == hotel_id).ToList();
+            List<PisoView> pisos_view = new List<PisoView>();
+
+            foreach (Piso piso in pisos_aux) pisos_view.Add(new PisoView(piso));
+            return pisos_view;
+           
+        }
      }
 }

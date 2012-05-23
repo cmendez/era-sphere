@@ -60,6 +60,7 @@ namespace Era_sphere
             Database.SetInitializer<EraSphereContext>(new DropCreateDatabaseAlways<EraSphereContext>());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(new EstadoHabitacionInitializer());
         }
     }
 }

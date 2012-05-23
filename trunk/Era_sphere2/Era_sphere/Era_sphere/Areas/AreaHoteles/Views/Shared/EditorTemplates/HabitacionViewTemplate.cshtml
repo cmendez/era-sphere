@@ -10,7 +10,7 @@
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        aslkdjalskdjalss
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.detalle)
         </div>
@@ -37,7 +37,7 @@
         .Columns(columns =>
         {
             columns.Bound(o => o.ID)
-                      .ClientTemplate("<a href='#' />")
+                      .ClientTemplate("<input type='checkbox' name='checkedRecords' value='<#= ID #>' />")
                       .Title("Check")
                       .Width(36);
 

@@ -69,6 +69,7 @@
     <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs" />
     <Compile Include="Areas\AreaClientes\Models\Cliente.cs" />
     <Compile Include="Areas\AreaClientes\Models\ClienteContext.cs" />
+    <Compile Include="Areas\AreaClientes\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaClientes\Models\InterfazLogicaCliente.cs" />
     <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs" />
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
@@ -78,25 +79,38 @@
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoDePagoController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\Cadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\CadenaContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\InterfazLogicaCadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\LogicaCadena.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Impuesto.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Moneda.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\MonedaContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePago.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePagoContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\InterfazLogicaTipoTemporada.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\LogicaTipoTemporada.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporada.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporadaContext.cs" />
+    <Compile Include="Areas\AreaContable\Models\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\AdministrarHotelController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\AreaHoteles\Controllers\ComodidadesController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HabitacionController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\Ambiente.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\AmbienteContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\AmbienteView.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Ambientes\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\InterfazLogicaAmbiente.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\LogicaAmbiente.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Comodidad.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadesContext.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EstadoHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Habitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionContext.cs" />
@@ -142,11 +156,13 @@
     <Compile Include="Areas\AreaHoteles\Controllers\PisoController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EspacioCargable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EspacioRentable.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Hotel\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\Hotel.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\HotelContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\HotelView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\InterfazLogicaHotel.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\LogicaHotel.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Piso\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Piso\InterfazLogicaPiso.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Piso\LogicaPiso.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Piso\Piso.cs" />
@@ -177,6 +193,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Era_sphere.dll" />
+    <Content Include="bin\Era_sphere.pdb" />
+    <Content Include="bin\Telerik.Web.Mvc.dll" />
+    <Content Include="bin\Telerik.Web.Mvc.xml" />
     <Content Include="Content\2012.1.214\Black\editor.png" />
     <Content Include="Content\2012.1.214\Black\imagebrowser.png" />
     <Content Include="Content\2012.1.214\Black\loading.gif" />
@@ -1032,6 +1054,8 @@
     <Content Include="Areas\AreaConfiguracion\Views\Moneda\Delete.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Moneda\Edit.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Moneda\Details.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\AdministrarHotel\Administrar.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\AdministrarHotel\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

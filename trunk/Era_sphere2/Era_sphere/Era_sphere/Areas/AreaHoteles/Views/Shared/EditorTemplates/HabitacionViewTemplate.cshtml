@@ -23,7 +23,7 @@
                 <label for="ComboBox_Categories-input">
                     Tipos habitacion:</label>
                 @( Html.Telerik().ComboBox()
-                    .Name("tipoHabitacion_id")
+                    .Name("tipoHabitacionID")                    
                     .BindTo(new SelectList(tiposHabitacion, "ID", "descripcion"))
                     .Placeholder("Seleccione")
                     .SelectedIndex(0)

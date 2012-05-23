@@ -36,14 +36,17 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public void modificarHabitacion(HabitacionView habitacion_view)
         {
-            Habitacion habitacion = habitacion_view.deserializa(this);
-            database_table.modificarElemento(habitacion, habitacion.ID);
+            Habitacion modif = habitacion_view.deserializa(this);  
+            database_table.modificarElemento(modif, modif.ID);
             return;
         }
 
         public void agregarHabitacion(HabitacionView habitacion)
         {
-            database_table.agregarElemento(habitacion.deserializa(this));
+            Habitacion habitacion_per = habitacion.deserializa(this);
+            habitacion_per.tipoHabitacion = habitacion_context.tipos_habitacion.Find(habitacion_per.tipoHabitacionID);
+            habitacion_per.estado_habitacion = habitacion_context.estado_habitacion.Find(habitacion.estado_habitacionID);
+            database_table.agregarElemento(habitacion_per);
         }
 
         public void eliminarHabitacion(int habitacion_id)

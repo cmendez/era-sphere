@@ -1,9 +1,11 @@
 ﻿@using Era_sphere.Areas.AreaHoteles.Models
 @using Telerik.Web.Mvc.UI
+@using Era_sphere.Generics
 @model Era_sphere.Areas.AreaHoteles.Models.HabitacionView
 @{
     ViewBag.Title = "HabitacionViewTemplate";
     var tiposHabitacion = (new LogicaTipoHabitacion()).retornarTiposHabitacion();
+    var estados = (new EraSphereContext()).estado_habitacion.ToList();
     // name='checkedRecords' value='<#= ID #>' 
 }
 @using (Html.BeginForm())
@@ -26,6 +28,16 @@
                     .Name("tipoHabitacionID")                    
                     .BindTo(new SelectList(tiposHabitacion, "ID", "descripcion"))
                     .Placeholder("Seleccione")
+                    .SelectedIndex(0)
+                )
+            </p>
+            <p>
+
+                <label> Estado Habitacion : </label>
+                @( Html.Telerik().ComboBox()
+                    .Name("estado_habitacionID")
+                    .BindTo(new SelectList(estados, "ID", "descripcion"))
+                    .Placeholder("Seleccione Estado")
                     .SelectedIndex(0)
                 )
             </p>

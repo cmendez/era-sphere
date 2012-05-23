@@ -9,7 +9,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
 {
     public class EstadoHabitacionInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>
     {
-        protected override void Seed(EraSphereContext context)
+        public void Seed(EraSphereContext context)
         {
             EstadoHabitacion estado_habitacion_1 = new EstadoHabitacion { descripcion="libre"};
             EstadoHabitacion estado_habitacion_2 = new EstadoHabitacion { descripcion = "reservado" };

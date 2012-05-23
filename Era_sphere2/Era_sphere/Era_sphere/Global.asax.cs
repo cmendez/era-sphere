@@ -12,6 +12,7 @@ using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
+using Era_sphere.Generics;
 
 namespace Era_sphere
 {
@@ -39,12 +40,13 @@ namespace Era_sphere
 
         protected void Application_Start()
         {
+            AreaRegistration.RegisterAllAreas();
             //.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Era_sphere.PaisDBContext__Era_sphere.Areas.Configuracion.Models_>());
             //Database.SetInitializer<PaisDBContext>(new PaisInitializer());
-            Database.SetInitializer<CiudadDBContext>(new DropCreateDatabaseIfModelChanges<CiudadDBContext>());
+            /*Database.SetInitializer<CiudadDBContext>(new DropCreateDatabaseIfModelChanges<CiudadDBContext>());
             Database.SetInitializer<ProvinciaDBContext>(new DropCreateDatabaseIfModelChanges<ProvinciaDBContext>());
 
-            AreaRegistration.RegisterAllAreas();
+            
             Database.SetInitializer<ClienteContext>(new DropCreateDatabaseIfModelChanges<ClienteContext>());
             Database.SetInitializer<UbigeoContext>(new DropCreateDatabaseIfModelChanges<UbigeoContext>());
             Database.SetInitializer<HotelContext>(new DropCreateDatabaseIfModelChanges<HotelContext>());
@@ -54,8 +56,8 @@ namespace Era_sphere
             Database.SetInitializer<HabitacionContext>(new DropCreateDatabaseIfModelChanges<HabitacionContext>());
             Database.SetInitializer<PisoContext>(new DropCreateDatabaseIfModelChanges<PisoContext>());
             Database.SetInitializer(new MonedaContextInitializer());
-            Database.SetInitializer(new TipoDePagoContextInitializer());
-
+            Database.SetInitializer(new TipoDePagoContextInitializer());*/
+            Database.SetInitializer<EraSphereContext>(new DropCreateDatabaseAlways<EraSphereContext>());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

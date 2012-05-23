@@ -10,7 +10,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class LogicaHabitacion:InterfazLogicaHabitacion
     {
-        HabitacionContext habitacion_context = new HabitacionContext();
+        EraSphereContext habitacion_context = new EraSphereContext();
         DBGenericQueriesUtil<Habitacion> database_table;
         
         public LogicaHabitacion()

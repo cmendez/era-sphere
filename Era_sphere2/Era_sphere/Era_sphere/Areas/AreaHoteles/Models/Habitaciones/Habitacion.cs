@@ -9,9 +9,9 @@ using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class Habitacion: EspacioCargable
+    public class Habitacion: EspacioRentable
     {
-         
+        
         public string detalle { get; set; }
 
         public string estado { get; set; }
@@ -20,6 +20,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public int tipoHabitacionID { get; set; }
 
-        public TipoHabitacion tipoHabitacion { get; set; }
+        public virtual TipoHabitacion tipoHabitacion { get; set; }
     }
 }

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using Era_sphere.Generics;
-
-
+using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -15,7 +14,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public ICollection<Habitacion> lista_habitaciones { get; set; }
         public string descripcion { get; set; }
         public string codigo_piso { get; set; }
+        [ForeignKey("hotel")]
         public int hotelID { get; set; }
-        public Hotel hotel { get; set; }
+        [Required]
+        public virtual Hotel hotel { get; set; }
     }
 }

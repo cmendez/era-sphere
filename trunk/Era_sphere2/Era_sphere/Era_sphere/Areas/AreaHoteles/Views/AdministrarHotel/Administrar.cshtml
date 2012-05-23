@@ -18,8 +18,8 @@
     </div>
     <div class="block_cont">
         @id_hotel asdasdasd
-        <p>@Html.ActionLink("Agregar Pisos", "AgregarPisos", new { controller = "AdministrarHotel"},
-                            new { id = @id_hotel }                      
+        <p>@Html.ActionLink("Agregar Pisos", "Index", new { controller = "Piso" , id = @id_hotel },
+                            new { @class = "tipTop" }                      
                         )
 
                         </p>

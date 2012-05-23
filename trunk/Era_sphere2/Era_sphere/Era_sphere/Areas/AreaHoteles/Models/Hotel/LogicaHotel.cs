@@ -10,7 +10,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
     public class LogicaHotel : InterfazLogicaHotel
     {
 
-        HotelContext hotel_context = new HotelContext();
+        EraSphereContext hotel_context = new EraSphereContext();
         DBGenericQueriesUtil<Hotel> database_table;
 
         public LogicaHotel() {

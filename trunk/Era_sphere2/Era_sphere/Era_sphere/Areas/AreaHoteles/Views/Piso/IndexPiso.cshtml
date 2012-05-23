@@ -8,6 +8,10 @@
 @model IEnumerable<PisoView>
 @using Telerik.Web.Mvc.UI
 
+@{
+    var hotelID = ViewData["hotelID"];
+    }
+
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
@@ -15,24 +19,24 @@
             Mantenimento de Pisos
         </h3>
     </div>
-    @Html.Label("Hotel")
-    @Html.TextBox("Hotel", ViewData["nombre_hotel"])
-             
+    
     <div class="block_cont">
+        <p> Hotel @ViewData["hotel"] </p>     
 
+             
         @(Html.Telerik().Grid(Model)
         .Name("PisosGrid")
         .Filterable()
         .ToolBar(commands => commands.Insert())
-        .Editable(editing => editing.Mode(GridEditMode.InLine))
-        //.Editable(editing => editing
-        //                    .Mode(GridEditMode.InForm)
-        //                    .TemplateName("PisoViewTemplate"))
-                            
+
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InForm)
+                            .TemplateName("PisoViewTemplate"))
+
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-           // columns.Bound(p => p.ID);
+            columns.Bound(p => p.ID);
             columns.Bound(p => p.codigo_piso);
             columns.Bound(p => p.descripcion);
             columns.Command(commands =>
@@ -49,7 +53,7 @@
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("Select", "Piso")
-            .Insert("Insert", "Piso")
+            .Insert("Insert", "Piso", new { id=@hotelID})
             .Delete("Delete", "Piso")
             .Update("Update", "Piso")
         )

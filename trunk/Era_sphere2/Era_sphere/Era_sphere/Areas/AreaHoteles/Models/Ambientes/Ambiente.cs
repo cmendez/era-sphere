@@ -8,7 +8,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
     public class Ambiente: EspacioCargable
     {
         public string nombre { get; set; }
-        public int pisoID { get; set; }
         public int capacidad_personas { get; set; }
         public int num_niveles { get; set; }
         public int largo { get; set; }

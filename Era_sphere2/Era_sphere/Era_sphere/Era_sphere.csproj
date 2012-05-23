@@ -97,9 +97,6 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\EraSphereContext.cs" />
     <Compile Include="Areas\AreaContable\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AdministrarHotelController.cs" />
-    <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Areas\AreaHoteles\Controllers\ComodidadesController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HabitacionController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionController.cs" />

@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "TipoHabitacionIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //int[] checkedRecords = (int[])ViewData["checkedRecords"]; 
 }
 @using Era_sphere.Areas.AreaHoteles.Models
 @model IEnumerable<TipoHabitacionView>
@@ -25,6 +26,7 @@
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
+            
             columns.Bound(p => p.ID);
             columns.Bound(p => p.descripcion);
             columns.Bound(p => p.cap_max_personas);

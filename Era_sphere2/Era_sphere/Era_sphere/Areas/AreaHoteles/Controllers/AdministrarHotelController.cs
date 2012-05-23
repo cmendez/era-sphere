@@ -25,9 +25,5 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             ViewData["razon_hotel"] = logica_hotel.retornarHotel(id).razon_social;
             return View();
         }
-
-        public ActionResult AgregarPisos(int id) {
-            return View("Index");
-        }
     }
 }

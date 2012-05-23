@@ -29,6 +29,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public string provincia { get; set; }
 
+        public ICollection<Piso> lista_pisos { get; set; } 
+
        //public Ciudad ciudad { get; set; }
        // public Pais pais { get; set; }
        // public List<Piso> pisos_hotel { get; set; }

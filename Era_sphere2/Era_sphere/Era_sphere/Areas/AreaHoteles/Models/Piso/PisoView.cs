@@ -44,11 +44,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         }
 
-        public Piso deserializa(InterfazLogicaPiso logica)
+        public Piso deserializa(LogicaPiso logica)
         {
             return new Piso
             {
                 //hotel_id= this.id_hotel,
+                hotel = logica.context.hoteles.Find(id_hotel),
+                hotelID = this.id_hotel,
                 ID = this.ID,         
                 descripcion = this.descripcion,
                 codigo_piso = this.codigo_piso

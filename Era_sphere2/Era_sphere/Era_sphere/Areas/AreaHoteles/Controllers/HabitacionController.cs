@@ -60,5 +60,6 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         {
             return Json(new SelectList(hotel_logica.retornarCiudades(id), "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }*/
+        
     }
 }

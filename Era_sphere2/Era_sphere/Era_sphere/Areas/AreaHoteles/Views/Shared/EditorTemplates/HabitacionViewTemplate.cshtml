@@ -4,15 +4,13 @@
 @{
     ViewBag.Title = "HabitacionViewTemplate";
     var tiposHabitacion = (new LogicaTipoHabitacion()).retornarTiposHabitacion();
+    // name='checkedRecords' value='<#= ID #>' 
 }
-
-
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <fieldset>
-    
-        
+        aslkdjalskdjalss
         <div class="editor-label">
             @Html.LabelFor(model => model.detalle)
         </div>
@@ -20,8 +18,7 @@
             @Html.EditorFor(model => model.detalle)
             @Html.ValidationMessageFor(model => model.detalle)
         </div>
-        
-       <div class="editor-field">
+        <div class="editor-field">
             <p>
                 <label for="ComboBox_Categories-input">
                     Tipos habitacion:</label>
@@ -34,5 +31,22 @@
             </p>
         </div>
         <!-- tipo habitacion -->
-     </fieldset>
+
+        @(Html.Telerik().Grid(tiposHabitacion)
+        .Name("GG")
+        .Columns(columns =>
+        {
+            columns.Bound(o => o.ID)
+                      .ClientTemplate("<a href='#' />")
+                      .Title("Check")
+                      .Width(36);
+
+            columns.Bound(o => o.ID).Width(20);
+            columns.Bound(o => o.descripcion).Width(100);
+            columns.Bound(o => o.cap_max_personas).Width(50);
+        })
+        .Footer(false)
+        )
+    </fieldset>
+
 }

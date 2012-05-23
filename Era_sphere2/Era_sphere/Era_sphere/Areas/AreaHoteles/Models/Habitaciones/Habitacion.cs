@@ -18,6 +18,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public ICollection<Comodidad> comodidades { get; set; }
 
+        public int tipoHabitacionID { get; set; }
+
         public TipoHabitacion tipoHabitacion { get; set; }
     }
 }

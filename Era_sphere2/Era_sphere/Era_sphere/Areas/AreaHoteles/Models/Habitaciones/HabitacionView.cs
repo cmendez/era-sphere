@@ -14,7 +14,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             detalle = habitacion.detalle;
             estado = habitacion.estado;
             ID = habitacion.ID;
-            tipoHabitacion = habitacion.tipoHabitacion.ID;
+            //tipoHabitacion = habitacion.tipoHabitacion.ID;
         }
         [DisplayName("Detalle")]
         public string detalle { get; set; }
@@ -27,15 +27,15 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public Habitacion deserializa(InterfazLogicaHabitacion logica)
         {
-            LogicaTipoHabitacion lth = new LogicaTipoHabitacion();
-            TipoHabitacionView thv=lth.retornarTipoHabitacion(this.tipoHabitacion);
-            TipoHabitacion th = thv.deserializa(lth);
+            //LogicaTipoHabitacion lth = new LogicaTipoHabitacion();
+            //TipoHabitacionView thv=lth.retornarTipoHabitacion(this.tipoHabitacion);
+            //TipoHabitacion th = thv.deserializa(lth);
             return new Habitacion
             {
                 detalle = this.detalle,
                 estado = this.estado,
-                ID = this.ID,
-                tipoHabitacion=th
+                ID = this.ID
+              //  tipoHabitacion=th
                 
             };
         }

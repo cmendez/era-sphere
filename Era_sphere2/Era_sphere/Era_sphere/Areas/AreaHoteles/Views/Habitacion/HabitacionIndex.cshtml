@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "HabitacionIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 @using Era_sphere.Areas.AreaHoteles.Models
 @model IEnumerable<HabitacionView>
@@ -19,12 +20,13 @@
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.InForm)
+                            .Mode(GridEditMode.PopUp)
                             .TemplateName("HabitacionViewTemplate"))
 
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
+            
             columns.Bound(p => p.ID);
             columns.Bound(p => p.detalle);
             columns.Bound(p => p.tipoHabitacion);

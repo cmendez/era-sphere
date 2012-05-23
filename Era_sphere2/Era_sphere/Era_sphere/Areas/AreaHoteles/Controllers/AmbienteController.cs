@@ -72,7 +72,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         [GridAction]
         public ActionResult _pisosUpdate(int id, int piso_id)
         {
-            var ambiente = new Ambiente{
+           /* var ambiente = new Ambiente{
                 ID = id,
                 piso = logica_pisos.retornarPiso(piso_id).deserializa(logica_pisos)
             };
@@ -80,7 +80,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             if (TryUpdateModel(ambiente, null, null, new[] { "Ambiente" }))
             {
                 logica_ambiente.modificarAmbiente(new AmbienteView(ambiente));
-            }
+            }*/
             return View(new GridModel(logica_ambiente.retornarAmbientes()));
         }
     }

@@ -14,12 +14,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         
         public string detalle { get; set; }
 
-        public string estado { get; set; }
-
         public ICollection<Comodidad> comodidades { get; set; }
 
         public int tipoHabitacionID { get; set; }
 
         public virtual TipoHabitacion tipoHabitacion { get; set; }
+
+        public int estado_habitacionID { get; set; }
+
+        public EstadoHabitacion estado_habitacion { get; set; }
     }
 }

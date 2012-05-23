@@ -94,6 +94,7 @@
     <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\LogicaTipoTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporadaContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\EraSphereContext.cs" />
     <Compile Include="Areas\AreaContable\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AdministrarHotelController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs">
@@ -112,6 +113,7 @@
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadesContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EstadoHabitacion.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EstadoHabitacionInitializer.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Habitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionView.cs" />
@@ -182,6 +184,7 @@
     <Compile Include="Generics\DBable.cs" />
     <Compile Include="Generics\DBGenericQueriesUtil.cs" />
     <Compile Include="Generics\EnumExtensions.cs" />
+    <Compile Include="Generics\EraSphereContext.cs" />
     <Compile Include="Generics\GenericBag.cs" />
     <Compile Include="Generics\Pagable.cs" />
     <Compile Include="Generics\Persona.cs" />

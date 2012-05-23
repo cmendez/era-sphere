@@ -11,13 +11,22 @@ namespace Era_sphere.Areas.Configuracion.Models
 {
     public class Provincia: DBable
     {
-        public string nombre { get; set; }
-        public Ciudad ciudad { get; set; }
-        public Pais pais { get; set; }
-    }
+        public Provincia(string Nombre, int CiudadID)
+        {
+            this.Nombre = Nombre;
+            this.CiudadID = CiudadID;
+        }
 
-    public class ProvinciaDBContext : DbContext
-    {
-        public DbSet<Provincia> Provincias { get; set; }
+        [Required]
+        [MaxLength(20)]
+        public string Nombre { get; set; }
+
+        [Required]
+        [ForeignKey("Ciudad")]
+        public int CiudadID { get; set; }
+
+
+
+        public virtual Ciudad Ciudad { get; set; }
     }
 }

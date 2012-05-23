@@ -136,7 +136,6 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Ciudad.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Provincia.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoContext.cs" />
     <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs" />
     <Compile Include="Areas\AreaContable\Models\InterfazLogicaMoneda.cs" />
     <Compile Include="Areas\AreaContable\Models\InterfazLogicaTipoDePago.cs" />

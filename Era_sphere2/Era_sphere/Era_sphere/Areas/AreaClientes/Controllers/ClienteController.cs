@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Era_sphere.Models;
 using Era_sphere.Areas.AreaClientes.Models;
 using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaClientes.Controllers
 {
@@ -22,9 +23,9 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         public ActionResult Create()
         {
             //var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
-            var con = new UbigeoContext();
-            con.Seed();
-            List<Pais> paises = (new UbigeoContext()).paises.ToList();
+            //var con = new UbigeoContext();
+            //con.Seed();
+            List<Pais> paises = (new EraSphereContext()).paises.ToList();
             ViewBag.paises = paises;
             return View();
         }
@@ -32,7 +33,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         public ActionResult Create(Cliente cliente)
         {
             cliente.tipo = Cliente.TipoPersona.natural;
-            cliente.pais = (new UbigeoContext()).paises.Find(cliente.paisID);
+            cliente.pais = (new EraSphereContext()).paises.Find(cliente.paisID);
             cliente_logica.agregarCliente(cliente);
             return RedirectToAction("Index");
         }

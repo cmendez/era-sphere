@@ -18,8 +18,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             LogicaTipoHabitacion logica_tipo_habitacion = new LogicaTipoHabitacion();
             TipoHabitacionView tipo_habitacion_view = logica_tipo_habitacion.retornarTipoHabitacion(tipoHabitacionID);
             tipoHabitacion_descripcion = tipo_habitacion_view.descripcion;
-            estado_habitacionID = habitacion.estado_habitacionID;
-            
+            estado_habitacionID = habitacion.estado_habitacionID;         
         }
         [DisplayName("Estado")]
         public int estado_habitacionID { get; set; }

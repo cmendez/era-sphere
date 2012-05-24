@@ -85,8 +85,11 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Cadenas\LogicaCadena.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Impuesto.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\InterfazLogicaMoneda.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\LogicaMoneda.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\Moneda.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\MonedaContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\MonedaView.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePago.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePagoContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\EraSphereContext.cs" />
@@ -1053,6 +1056,8 @@
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\AmbienteViewTemplate.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\TipoTemporadaIndex.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoTemporadaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Moneda\IndexMoneda.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\MonedaViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

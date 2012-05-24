@@ -7,7 +7,7 @@ using Era_sphere.Areas.AreaConfiguracion.Models;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 
-namespace Era_sphere.Areas.Configuracion.Models
+namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
 {
     public class Ciudad : DBable
     {

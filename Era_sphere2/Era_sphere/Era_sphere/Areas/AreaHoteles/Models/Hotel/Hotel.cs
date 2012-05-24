@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
 using System.ComponentModel;
-using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {

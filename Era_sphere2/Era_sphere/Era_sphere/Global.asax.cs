@@ -58,11 +58,10 @@ namespace Era_sphere
             Database.SetInitializer<PisoContext>(new DropCreateDatabaseIfModelChanges<PisoContext>());
             Database.SetInitializer(new MonedaContextInitializer());
             Database.SetInitializer(new TipoDePagoContextInitializer());*/
-           // Database.SetInitializer<EraSphereContext>(new DropCreateDatabaseAlways<EraSphereContext>());
+            Database.SetInitializer<EraSphereContext>(new EraSphereContextInitializer());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new EstadoEspacioRentableInitializer());
-           // Database.SetInitializer(new UbigeoInitializer());
+
         }
     }
 }

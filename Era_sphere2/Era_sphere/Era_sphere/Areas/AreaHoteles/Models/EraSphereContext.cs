@@ -12,5 +12,14 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public DbSet<EstadoEspacioRentable> estado_espacio_rentable { get; set; }
+
+        public void seedEstadoEspacioRentable()
+        {
+            EstadoEspacioRentable estado_habitacion_1 = new EstadoEspacioRentable { descripcion = "libre" };
+            EstadoEspacioRentable estado_habitacion_2 = new EstadoEspacioRentable { descripcion = "ocupado" };
+            estado_espacio_rentable.Add(estado_habitacion_1);
+            estado_espacio_rentable.Add(estado_habitacion_2);
+            SaveChanges();
+        }
     }
 }

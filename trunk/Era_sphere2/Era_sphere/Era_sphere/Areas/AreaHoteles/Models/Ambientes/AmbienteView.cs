@@ -41,6 +41,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
         [DisplayName("Area")]
         public int area { get { return largo * ancho; } }
 
+        [Required]
+        [DisplayName("Hotel")]
+        public int hotelID { get; set; }
+
         public AmbienteView() { }
 
         public AmbienteView(Ambiente ambiente)
@@ -54,6 +58,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             num_niveles = ambiente.num_niveles;
             largo = ambiente.largo;
             ancho = ambiente.ancho;
+            hotelID = ambiente.hotelID;
         }
 
         public Ambiente deserializa(InterfazLogicaAmbiente logica)
@@ -68,6 +73,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             num_niveles = this.num_niveles,
             largo = this.largo,
             ancho = this.ancho,
+            hotelID = this.hotelID,
             };
 
         }

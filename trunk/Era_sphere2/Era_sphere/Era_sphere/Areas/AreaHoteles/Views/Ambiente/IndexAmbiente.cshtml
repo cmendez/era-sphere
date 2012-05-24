@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "IndexAmbiente";
     Layout = "~/Views/Shared/_Layout.cshtml";
- 
+    var hotelID = ViewData["hotelID"];
 }
 
 @using Era_sphere.Areas.AreaHoteles.Models
@@ -21,7 +21,7 @@
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.InForm)
+                            .Mode(GridEditMode.PopUp)
                             .TemplateName("AmbienteViewTemplate"))
                             
         .DataKeys(key => key.Add(c => c.ID))
@@ -47,15 +47,12 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("_pisos", "Ambiente")
-            .Select("_pisosUpdate", "Ambiente")
-            .Select("Select", "Ambiente")
-            .Insert("Insert", "Ambiente")
-            .Delete("Delete", "Ambiente")
-            .Update("Update", "Ambiente")
+            .Select("Select", "Ambiente", new { hotelID = @hotelID})
+            .Insert("Insert", "Ambiente", new { hotelID = @hotelID})
+            .Delete("Delete", "Ambiente", new { hotelID = @hotelID})
+            .Update("Update", "Ambiente", new { hotelID = @hotelID})
         )
            )
 
-    </div>
     <!-- Table Wrapper End -->
 </div>

@@ -13,5 +13,7 @@ namespace Era_sphere.Generics
         public DbSet<Pais> paises { get; set; }
         public DbSet<Ciudad> ciudades { get; set; }
         public DbSet<Provincia> provincias { get; set; }
+
+        public void SeedUbigeo(DbModelBuilder builder){}
     }
 }

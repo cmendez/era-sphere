@@ -1052,7 +1052,7 @@
     <Content Include="Areas\AreaHoteles\Views\AdministrarHotel\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\AmbienteViewTemplate.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\TipoTemporadaIndex.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoTemproadaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoTemporadaViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

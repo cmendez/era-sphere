@@ -5,6 +5,7 @@ using System.Web;
 using Era_sphere.Generics;
 using System.ComponentModel;
 using Era_sphere.Areas.AreaConfiguracion.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -28,8 +29,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string fax { get; set; }
 
         public string provincia { get; set; }
-
-        public ICollection<Piso> lista_pisos { get; set; } 
+        [InverseProperty("hotel")]
+        public virtual ICollection<Piso> lista_pisos { get; set; } 
 
        //public Ciudad ciudad { get; set; }
        // public Pais pais { get; set; }

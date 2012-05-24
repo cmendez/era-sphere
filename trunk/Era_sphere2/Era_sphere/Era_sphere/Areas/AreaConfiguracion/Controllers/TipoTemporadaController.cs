@@ -14,12 +14,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         InterfazLogicaTipoTemporada tipotemporada_logica = new LogicaTipoTemporada();
         public ActionResult Index()
         {
-            return View("TipoTemporadaIndex");
+            return View("TipoTemporadaIndex", tipotemporada_logica.retornarTiposTemporada());
         }
         [GridAction]
         public ActionResult Select()
         {
-            return View("Index", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
+            return View("TipoTemporadaIndex", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
@@ -32,7 +32,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
                 tipotemporada_logica.agregarTipoTemporada(tipotemporada_view);
 
             }
-            return View("Index", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
+            return View("TipoTemporadaIndex", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
             //return View("Index", proveedor_logica.retornarProveedores(  ));
         }
 
@@ -42,7 +42,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
             int tipotemporada_id = id ?? -1;
             tipotemporada_logica.eliminarTipoTemporada(tipotemporada_id);
-            return View("Index", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
+            return View("TipoTemporadaIndex", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -51,7 +51,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
 
             tipotemporada_logica.modificarTipoTemporada(p);
-            return View("Index", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
+            return View("TipoTemporadaIndex", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
         }
 
     }

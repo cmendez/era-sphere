@@ -20,14 +20,17 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             tipoHabitacion_descripcion = tipo_habitacion_view.descripcion;
             estado_habitacionID = habitacion.estadoID;         
         }
+        [Required]
         [DisplayName("Estado")]
         public int estado_habitacionID { get; set; }
+        [Required]
         [DisplayName("Detalle")]
         [StringLength(50)]
         public string detalle { get; set; }
         [DisplayName("ID Habitacion")]
         [Required]
         public int ID { get; set; }
+        [Required]
         [DisplayName("ID Tipo de habitacion")]
         public int tipoHabitacionID { get; set; }
         [DisplayName("Tipo de habitacion")]

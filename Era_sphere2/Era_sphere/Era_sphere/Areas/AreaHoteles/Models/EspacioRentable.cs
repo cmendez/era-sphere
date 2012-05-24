@@ -14,7 +14,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string detalle { get; set; }
         [ForeignKey("piso")]
         public int pisoID { get; set; }
-        public Piso piso { get; set; }
+        public virtual Piso piso { get; set; }
 
         [ForeignKey("estado")]
         public int estadoID { get; set; }

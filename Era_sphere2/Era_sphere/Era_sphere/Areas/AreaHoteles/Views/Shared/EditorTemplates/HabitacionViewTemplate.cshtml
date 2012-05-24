@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "HabitacionViewTemplate";
     var tiposHabitacion = (new LogicaTipoHabitacion()).retornarTiposHabitacion();
-    var estados = (new EraSphereContext()).estado_habitacion.ToList();
+    var estados = (new EraSphereContext()).estado_espacio_rentable.ToList();
     // name='checkedRecords' value='<#= ID #>' 
     var id_hotel = ViewData["id_hotel"];
     var hotel = (new EraSphereContext()).hoteles.Find(id_hotel);

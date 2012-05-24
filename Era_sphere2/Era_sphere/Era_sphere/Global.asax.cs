@@ -61,6 +61,7 @@ namespace Era_sphere
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             Database.SetInitializer(new EstadoEspacioRentableInitializer());
+            
         }
     }
 }

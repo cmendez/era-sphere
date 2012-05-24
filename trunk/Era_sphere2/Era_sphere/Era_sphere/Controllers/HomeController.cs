@@ -17,9 +17,39 @@ namespace Era_sphere.Controllers
         {
             return View();
         }
+
+
+
+        [HttpPost]
+        public JsonResult LoginResult(String user, String password)
+        {
+            if (user == "admin" && password == "admin")
+            {
+                return Json(new { token = "111" });
+            }
+            else if (user == "xurreta" && password == "xurreta")
+            {
+                return Json(new { token = "101" });
+            }
+            else
+            {
+                return Json(new { token = "" });
+            }
+
+        }
+
+
+        public ActionResult Sistema()
+        {
+            return View("Main");
+        }
+  
+
+        /*
         public ActionResult Login(string usuario, string password) {
             if (usuario == "admin" && password == "admin") return View("Main");
             return View("Index");
         }
+         * */
     }
 }

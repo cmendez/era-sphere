@@ -48,7 +48,7 @@ namespace Era_sphere.Models
                     new Link() { 
                         Nombre = "Hoteles",
                         Url ="#",
-                        Icono = "icon_email",
+                        Icono = "icon_pen",
                         Sublinks = AreaHoteles
                     }
                 );
@@ -80,7 +80,7 @@ namespace Era_sphere.Models
             {
                 Nombre = "Configuracion",
                 Url = "#",
-                Icono = "icon_email",
+                Icono = "icon_pen",
                 Sublinks = configuracion
             });
 

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Era_sphere.Generics;
+using System.ComponentModel;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Fiscal
 {
-    public class Moneda
+    public class Moneda : DBable
     {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
+        public string descripcion { get; set; }
         public string simbolo { get; set; }
-
     }
 }

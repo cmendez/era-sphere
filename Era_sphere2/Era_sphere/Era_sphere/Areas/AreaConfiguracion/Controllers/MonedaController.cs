@@ -5,111 +5,50 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 using System.Data;
+using Telerik.Web.Mvc;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
     public class MonedaController : Controller
     {
-
-        MonedaContext db = new MonedaContext();
-
-        //
-        // GET: /Moneda/
-
+        InterfazLogicaMoneda moneda_logica = new LogicaMoneda();
         public ActionResult Index()
         {
-            return View(db.monedas);
+            return View("IndexMoneda");
         }
 
-        //
-        // GET: /Moneda/Details/5
-
-        public ActionResult Details(int id)
+        [GridAction]
+        public ActionResult Select()
         {
-            return View(db.monedas.Find(id));
+            return View("Index", new GridModel(moneda_logica.retornarMonedas()));
         }
-
-        //
-        // GET: /Moneda/Create
-
-        public ActionResult Create()
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Insert()
         {
-            return View();
-        }
 
-        //
-        // POST: /Moneda/Create
-
-        [HttpPost]
-        public ActionResult Create(Moneda moneda)
-        {
-            try
+            MonedaView moneda_view = new MonedaView();
+            if (TryUpdateModel(moneda_view))
             {
-                // TODO: Add insert logic here
-                db.monedas.Add(moneda);
-                db.SaveChanges();
+                moneda_logica.agregarMoneda(moneda_view);
 
-                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View("Index", new GridModel(moneda_logica.retornarMonedas()));
         }
-
-        //
-        // GET: /Moneda/Edit/5
-
-        public ActionResult Edit(int id)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Delete(int? id)
         {
-            return View(db.monedas.Find(id));
+            int moneda_id = id ?? -1;
+            moneda_logica.eliminarMoneda(moneda_id);
+            return View("Index", new GridModel(moneda_logica.retornarMonedas()));
         }
-
-        //
-        // POST: /Moneda/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, Moneda moneda)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Update(MonedaView p)
         {
-            try
-            {
-                // TODO: Add update logic here
-                db.Entry(moneda).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Moneda/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View(db.monedas.Find(id));
-        }
-
-        //
-        // POST: /Moneda/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, Moneda moneda)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                db.Entry(moneda).State = EntityState.Deleted;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            moneda_logica.modificarMoneda(p);
+            return View("Index", new GridModel(moneda_logica.retornarMonedas()));
         }
     }
-    
 }

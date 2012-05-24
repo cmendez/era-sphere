@@ -10,18 +10,4 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Fiscal
     {
         public DbSet<Moneda> monedas { get; set; }
     }
-
-    public class MonedaContextInitializer : DropCreateDatabaseAlways<MonedaContext>
-    {
-        protected override void Seed(MonedaContext context)
-        {
-            new List<Moneda>
-            {
-                new Moneda {Id=1, Descripcion="Nuevos Soles", simbolo="S/. "},
-                new Moneda {Id=2,Descripcion="Dolares Americanos", simbolo="USS/. "}
-            }.ForEach(b => context.monedas.Add(b));
-
-            base.Seed(context);
-        }
-    }
 }

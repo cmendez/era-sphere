@@ -56,13 +56,20 @@ namespace Era_sphere.Models
 
         public NavegacionModel()
         {
-            List<SubLink> sl = new List<SubLink>();
-            sl.Add(new SubLink()
+            List<SubLink> configuracion = new List<SubLink>();
+            configuracion.Add(new SubLink()
             {
                 Nombre = "Cadena",
                 Url = "../AreaConfiguracion/Cadena"
             });
 
+            configuracion.Add(new SubLink()
+            {
+                Nombre = "Comodidades",
+                Url = "../AreaHoteles/Comodidades"
+            });
+
+            
 
             this.menu = new List<Link>();
 
@@ -74,16 +81,10 @@ namespace Era_sphere.Models
                 Nombre = "Configuracion",
                 Url = "#",
                 Icono = "icon_email",
-                Sublinks = sl
+                Sublinks = configuracion
             });
 
-            this.menu.Add(new Link()
-            {
-                Nombre = "menu 2",
-                Url = "#",
-                Icono = "icon_email",
-                Sublinks = new List<SubLink>()
-            });
+          
 
             this.menu.Add(new Link()
             {

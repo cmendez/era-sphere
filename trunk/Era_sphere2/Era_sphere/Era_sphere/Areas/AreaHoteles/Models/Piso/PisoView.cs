@@ -13,7 +13,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         [ReadOnly(true)]
         [DisplayName("Hotel")]
-        public string nombre_hotel {
+        public string nombre {
             get {
                 //TODO
                 return "";

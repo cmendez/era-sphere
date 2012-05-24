@@ -12,5 +12,6 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public DbSet<Moneda> monedas { get; set; }
+        public DbSet<TipoDePago> tiposdepagos { get; set; }
     }
 }

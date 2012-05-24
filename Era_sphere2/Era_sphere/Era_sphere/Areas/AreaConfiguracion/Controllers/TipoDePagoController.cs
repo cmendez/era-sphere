@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 using System.Data;
 
@@ -10,106 +11,43 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
     public class TipoDePagoController : Controller
     {
-        TipoDePagoContext db = new TipoDePagoContext();
-
-        //
-        // GET: /AreaConfiguracion/TipoDePago/
-
+        InterfazLogicaTipoDePago tipodepago_logica = new LogicaTipoDePago();
         public ActionResult Index()
         {
-            return View(db.tipo_de_pagos);
+            return View("IndexTipoDePago");
         }
-
-        //
-        // GET: /AreaConfiguracion/TipoDePago/Details/5
-
-        public ActionResult Details(int id)
+        [GridAction]
+        public ActionResult Select()
         {
-            return View(db.tipo_de_pagos.Find(id));
+            //ViewBag.proveedores = hotel_logica.retornar();
+            return View("Index", new GridModel(tipodepago_logica.retornarTiposDePagos()));
         }
-
-        //
-        // GET: /AreaConfiguracion/TipoDePago/Create
-
-        public ActionResult Create()
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Insert()
         {
-            return View();
-        } 
-
-        //
-        // POST: /AreaConfiguracion/TipoDePago/Create
-
-        [HttpPost]
-        public ActionResult Create(TipoDePago tipopago)
-        {
-            try
+            TipoDePagoView tipodepago_view = new TipoDePagoView();
+            if (TryUpdateModel(tipodepago_view))
             {
-                // TODO: Add insert logic here
-                db.tipo_de_pagos.Add(tipopago);
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
+                tipodepago_logica.agregarTipoDePago(tipodepago_view);
             }
-            catch
-            {
-                return View();
-            }
+            return View("Index", new GridModel(tipodepago_logica.retornarTiposDePagos()));            
         }
-        
-        //
-        // GET: /AreaConfiguracion/TipoDePago/Edit/5
- 
-        public ActionResult Edit(int id)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Delete(int? id)
         {
-            return View(db.tipo_de_pagos.Find(id));
+            int tipodepago_id = id ?? -1;
+            tipodepago_logica.eliminarTipoDePago(tipodepago_id);
+            return View("Index", new GridModel(tipodepago_logica.retornarTiposDePagos()));            
         }
-
-        //
-        // POST: /AreaConfiguracion/TipoDePago/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, TipoDePago tipopago)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Update(TipoDePagoView p)
         {
-            try
-            {
-                // TODO: Add update logic here
-                db.Entry(tipopago).State = EntityState.Modified;
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            tipodepago_logica.modificarTipoDePago(p);
+            return View("Index", new GridModel(tipodepago_logica.retornarTiposDePagos()));            
         }
 
-        //
-        // GET: /AreaConfiguracion/TipoDePago/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View(db.tipo_de_pagos.Find(id));
-        }
-
-        //
-        // POST: /AreaConfiguracion/TipoDePago/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, TipoDePago tipopago)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                db.Entry(tipopago).State = EntityState.Deleted;
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

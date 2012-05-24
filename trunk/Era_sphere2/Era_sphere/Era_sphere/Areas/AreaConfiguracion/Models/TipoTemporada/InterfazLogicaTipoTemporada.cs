@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace Era_sphere.Areas.AreaConfiguracion.Models.TipoTemporada
+namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
 {
     interface InterfazLogicaTipoTemporada
     {
-        List<TipoTemporada> retornarTiposTemporada();
-        void modificarTipoTemporada(TipoTemporada tipotemporada);
-        void agregarTipoTemporada(TipoTemporada tipotemporada);
-        void eliminarTipoTemporada(int comodidad_id);
+        void modificarTipoTemporada(TipoTemporadaView tipotemporada);
+        void agregarTipoTemporada(TipoTemporadaView tipotemporada);
+        void eliminarTipoTemporada(int tipotemporada_id);
+        List<TipoTemporadaView> retornarTiposTemporada();
+        TipoTemporadaView retornarTipoTemporada(int tipotemporada_id);
+        List<TipoTemporada> buscarTipoTemporada(TipoTemporada tipotemporada);
+
     }
 }

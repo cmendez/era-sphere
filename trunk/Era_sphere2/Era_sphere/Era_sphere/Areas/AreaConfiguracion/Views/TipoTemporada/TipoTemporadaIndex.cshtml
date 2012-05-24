@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "TipoTemporadaIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //int[] checkedRecords = (int[])ViewData["checkedRecords"]; 
+}
+@using Era_sphere.Areas.AreaConfiguracion.Models.Temporada
+@model IEnumerable<TipoTemporadaView>
+@using Telerik.Web.Mvc.UI
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de tipos de temporada
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("TipoTemporadaGrid")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InForm)
+                            .TemplateName("TipoTemporadaViewTemplate"))
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.descripcion);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "TipoHabitacion")
+            .Insert("Insert", "TipoHabitacion")
+            .Delete("Delete", "TipoHabitacion")
+            .Update("Update", "TipoHabitacion")
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

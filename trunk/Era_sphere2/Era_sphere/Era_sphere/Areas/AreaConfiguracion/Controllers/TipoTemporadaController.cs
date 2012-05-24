@@ -10,54 +10,48 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
     public class TipoTemporadaController : Controller
     {
-        
-        InterfazLogicaTipoTemporada logica_tipotemporada = new LogicaTipoTemporada();
-        // 
-        TipoTemporadaView piso = new TipoTemporadaView();
+
+        InterfazLogicaTipoTemporada tipotemporada_logica = new LogicaTipoTemporada();
         public ActionResult Index()
         {
-            return View("IndexTipoTemporada");
+            return View("TipoTemporadaIndex");
         }
-
-        
         [GridAction]
-        public ActionResult Select(int id)
+        public ActionResult Select()
         {
-            return View("Index", new GridModel(logica_piso.retornarPisoHotel(id)));
+            return View("Index", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
         }
         [AcceptVerbs(HttpVerbs.Post)]
-
         [GridAction]
-        public ActionResult Insert(int id)
+        public ActionResult Insert()
         {
-            PisoView piso_view = new PisoView();
-            if (TryUpdateModel(piso_view))
+
+            TipoTemporadaView tipotemporada_view = new TipoTemporadaView();
+            if (TryUpdateModel(tipotemporada_view))
             {
-                piso_view.id_hotel = id;
-                logica_piso.agregarPiso(piso_view);
+                tipotemporada_logica.agregarTipoTemporada(tipotemporada_view);
+
             }
-            return View("IndexPiso", new GridModel(logica_piso.retornarPisoHotel(id)));
+            return View("Index", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
             //return View("Index", proveedor_logica.retornarProveedores(  ));
         }
+
         [AcceptVerbs(HttpVerbs.Post)]
-
         [GridAction]
-        public ActionResult Delete(int? id, int id_hotel)
+        public ActionResult Delete(int? id)
         {
-            int piso_id = id ?? -1;
-            logica_piso.eliminarPiso(piso_id);
-            return View("IndexPiso", new GridModel(logica_piso.retornarPisoHotel(id_hotel)));
-
+            int tipotemporada_id = id ?? -1;
+            tipotemporada_logica.eliminarTipoTemporada(tipotemporada_id);
+            return View("Index", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
         }
-        [AcceptVerbs(HttpVerbs.Post)]
 
+        [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Update(PisoView piso, int id_hotel)
+        public ActionResult Update(TipoTemporadaView p)
         {
 
-            logica_piso.modificarPiso(piso);
-            return View("IndexPiso", new GridModel(logica_piso.retornarPisoHotel(id_hotel)));
-
+            tipotemporada_logica.modificarTipoTemporada(p);
+            return View("Index", new GridModel(tipotemporada_logica.retornarTiposTemporada()));
         }
 
     }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Objects.DataClasses;
 
 namespace Era_sphere.Generics
 {
@@ -61,6 +62,7 @@ namespace Era_sphere.Generics
                 int maxi = todos.Count > 0 ? todos.Max() : 0;
                 elemento.ID = maxi + 1;
             }
+            
             dbset.Add(elemento);
             context.SaveChanges();
         }

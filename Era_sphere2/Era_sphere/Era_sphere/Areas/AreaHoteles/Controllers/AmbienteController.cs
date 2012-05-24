@@ -21,6 +21,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
 
         public ActionResult Index(int id)
         {
+           // (new EstadoEspacioRentableInitializer()).Seed(new EraSphereContext());
             ViewData["hotelID"] = id;
             ViewData["pisos"] = logica_pisos.retornarPisosDeHotel(id);
             return View("IndexAmbiente");

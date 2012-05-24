@@ -25,6 +25,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             telefono_2 = hotel.telefono_2;
             fax = hotel.fax;
             provincia = hotel.provincia;
+            paisID = hotel.paisID;
             /*  ciudad_id = hotel.ciudad.ID;
               ciudad_nombre = hotel.ciudad.nombre;
               pais_nombre = hotel.ciudad.pais.nombre; */
@@ -73,6 +74,12 @@ namespace Era_sphere.Areas.AreaHoteles.Models
               public int ciudad_id { get; set; }*/
         [DisplayName("ID Hotel")]
         public int ID { get; set; }
+
+        [Required]
+        [DisplayName("Pais")]
+        public int paisID { get; set; }
+
+
         public Hotel deserializa(InterfazLogicaHotel logica)
         {
             return new Hotel
@@ -87,7 +94,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models
                 razon_social = this.razon_social,
                 reg_id = this.reg_id,
                 telefono_1 = this.telefono_1,
-                telefono_2 = this.telefono_2
+                telefono_2 = this.telefono_2,
+                paisID = this.paisID,
+                pais = logica.context_publico.paises.Find(this.paisID),
             };
         }
     }

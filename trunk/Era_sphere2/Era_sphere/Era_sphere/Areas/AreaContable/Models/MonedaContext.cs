@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 
 namespace Era_sphere.Areas.AreaContable.Models
 {
@@ -32,22 +33,6 @@ namespace Era_sphere.Areas.AreaContable.Models
 
             foreach (var m in _monedas)
                 monedas.Add(m);
-            SaveChanges();
-
-            try
-            {
-                if (pais.Count() != 0) return;
-            }
-            catch (Exception) { }
-
-            var _pais = new List<Pais>
-            {
-                new Pais{nombrePais="Peru",ID=1},
-                new Pais{nombrePais="Otros",ID=2},
-            };
-
-            foreach (var p in _pais)
-                pais.Add(p);
             SaveChanges();
 
         }

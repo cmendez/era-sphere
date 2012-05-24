@@ -11,6 +11,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
     {
 
         EraSphereContext hotel_context = new EraSphereContext();
+        public EraSphereContext context_publico { get { return hotel_context; } }
         DBGenericQueriesUtil<Hotel> database_table;
 
         public LogicaHotel() {

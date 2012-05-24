@@ -17,16 +17,19 @@
         </h3>
     </div>
     <div class="block_cont">
-        <p>@Html.ActionLink("Agregar Pisos", "Index", new { controller = "Piso" , id = @id_hotel },
+        <p>@Html.ActionLink("Administrar Pisos", "Index", new { controller = "Piso" , id = @id_hotel },
                             new { @class = "tipTop" }                      
                         )
 
         </p>
-        <p>@Html.ActionLink("Agregar Habitaciones", "Index",
+        <p>@Html.ActionLink("Administrar Habitaciones", "Index",
                             new { controller = "Habitacion" , id= @id_hotel}
                             , new { @class = "tipTop"})
         </p>
-        <p>@Html.ActionLink("Agregar Ambientes", "AgregarAmbientes", new { controller = "AdministrarHotel" }, new { id = @id_hotel }) </p>
+        <p>@Html.ActionLink("Administrar Ambientes", "Index",
+                            new { controller = "Ambiente" , id= @id_hotel}
+                            , new { @class = "tipTop"})
+        </p>
     </div>
     <!-- Table Wrapper End -->
 </div>

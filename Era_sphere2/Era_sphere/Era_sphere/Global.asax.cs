@@ -13,6 +13,7 @@ using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 
 namespace Era_sphere
 {
@@ -57,11 +58,11 @@ namespace Era_sphere
             Database.SetInitializer<PisoContext>(new DropCreateDatabaseIfModelChanges<PisoContext>());
             Database.SetInitializer(new MonedaContextInitializer());
             Database.SetInitializer(new TipoDePagoContextInitializer());*/
-            Database.SetInitializer<EraSphereContext>(new DropCreateDatabaseAlways<EraSphereContext>());
+           // Database.SetInitializer<EraSphereContext>(new DropCreateDatabaseAlways<EraSphereContext>());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             Database.SetInitializer(new EstadoEspacioRentableInitializer());
-            
+           // Database.SetInitializer(new UbigeoInitializer());
         }
     }
 }

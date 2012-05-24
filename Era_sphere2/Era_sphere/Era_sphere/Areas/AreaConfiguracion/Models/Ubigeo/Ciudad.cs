@@ -16,7 +16,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
         public string nombre { get; set; }
 
         [Required]
-        [ForeignKey("Pais")]
+        [ForeignKey("pais")]
         public int paisID;
 
         public virtual Pais pais { get; set; }

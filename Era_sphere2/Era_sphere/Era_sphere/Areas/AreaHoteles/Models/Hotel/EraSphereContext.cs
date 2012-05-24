@@ -11,5 +11,6 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public DbSet<Hotel> hoteles { get; set; }
+        void seedHotel( DbModelBuilder builder){}
     }
 }

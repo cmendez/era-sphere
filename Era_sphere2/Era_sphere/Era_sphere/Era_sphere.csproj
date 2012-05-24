@@ -197,6 +197,7 @@
     <Compile Include="Generics\GenericBag.cs" />
     <Compile Include="Generics\Pagable.cs" />
     <Compile Include="Generics\Persona.cs" />
+    <Compile Include="Generics\StringsDeValidaciones.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

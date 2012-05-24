@@ -23,7 +23,7 @@
             data: JSON.stringify(jsonMenu), 
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            url: "../Navegacion/ListaMenu", 
+            url: "/Navegacion/ListaMenu", 
             success: function (data) {
                  var result = "";
                  $.each(data, function (i, item) {

@@ -23,6 +23,37 @@ namespace Era_sphere.Models
     public class NavegacionModel
     {
         public List<Link> menu;
+
+        void agregarAreaHotel() { 
+        
+            List<SubLink> AreaHoteles = new List<SubLink>();
+            AreaHoteles.Add(
+                    new SubLink
+                    {
+                        Nombre = "Agregar Hotel",
+                        Url = "/AreaHoteles/Hotel"
+                    }
+            );
+
+            AreaHoteles.Add(
+                    new SubLink
+                    {
+                        Nombre = "Administrar Hoteles",
+                        Url = "/AreaHoteles/AdministrarHotel"
+                    }
+                );
+
+
+             menu.Add(
+                    new Link() { 
+                        Nombre = "Hoteles",
+                        Url ="#",
+                        Icono = "icon_email",
+                        Sublinks = AreaHoteles
+                    }
+                );
+        }
+
         public NavegacionModel()
         {
             List<SubLink> sl = new List<SubLink>();
@@ -32,9 +63,12 @@ namespace Era_sphere.Models
                 Url = "../AreaConfiguracion/Cadena"
             });
 
-            
 
             this.menu = new List<Link>();
+
+            agregarAreaHotel();
+       
+
             this.menu.Add(new Link()
             {
                 Nombre = "Configuracion",

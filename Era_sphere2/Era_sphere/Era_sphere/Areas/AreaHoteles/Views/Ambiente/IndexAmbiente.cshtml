@@ -1,4 +1,5 @@
 ﻿@{
+    
     ViewBag.Title = "IndexAmbiente";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var hotelID = ViewData["hotelID"];
@@ -18,10 +19,11 @@
     <div class="block_cont">
         @(Html.Telerik().Grid(Model)
         .Name("AmbientesGrid")
+        .Localizable("es-ES")
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.PopUp)
+                            .Mode(GridEditMode.InLine)
                             .TemplateName("AmbienteViewTemplate"))
                             
         .DataKeys(key => key.Add(c => c.ID))

@@ -1,12 +1,15 @@
-﻿@{
-    ViewBag.Title = "IndexHotel";
-    Layout = "~/Views/Shared/_Layout.cshtml";
- 
-}
-
+﻿
 @using Era_sphere.Areas.AreaHoteles.Models
+@using Era_sphere.Generics;
 @model IEnumerable<HotelView>
 @using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "IndexHotel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var paises = (new EraSphereContext()).paises.ToList();
+}
+
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
@@ -33,6 +36,7 @@
             //  columns.Bound(p => p.pais_nombre);
             //  columns.Bound(p => p.ciudad_nombre);
             columns.Bound(p => p.provincia);
+            columns.ForeignKey(p => p.paisID, paises, "ID", "nombre");
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

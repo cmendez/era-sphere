@@ -1,5 +1,6 @@
 ﻿using Era_sphere.Generics;
 using System.ComponentModel;
+using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 
 namespace Era_sphere.Areas.AreaContable.Models
 {

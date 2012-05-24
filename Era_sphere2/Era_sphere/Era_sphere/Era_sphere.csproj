@@ -154,7 +154,6 @@
     <Compile Include="Areas\AreaContable\Models\MonedaContext.cs" />
     <Compile Include="Areas\AreaContable\Models\PagoEfectivo.cs" />
     <Compile Include="Areas\AreaContable\Models\PagoTarjeta.cs" />
-    <Compile Include="Areas\AreaContable\Models\Pais.cs" />
     <Compile Include="Areas\AreaContable\Models\TipoDePago.cs" />
     <Compile Include="Areas\AreaContable\Models\TipoDePagoContext.cs" />
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadoAreaRegistration.cs" />

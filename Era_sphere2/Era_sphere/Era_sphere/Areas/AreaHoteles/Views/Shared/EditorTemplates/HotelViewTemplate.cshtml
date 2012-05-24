@@ -1,11 +1,10 @@
 ﻿@model Era_sphere.Areas.AreaHoteles.Models.HotelView
 @using Era_sphere.Areas.AreaHoteles.Models
 @using Telerik.Web.Mvc.UI
-<script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 @{
-    var Paises = (new LogicaHotel()).retornarPaises();
+    var paises = (new LogicaHotel()).retornarPaises();
 }
 @using (Html.BeginForm())
 {
@@ -77,6 +76,14 @@
             @Html.EditorFor(model => model.provincia)
             @Html.ValidationMessageFor(model => model.provincia)
         </div>
+        <div class="editor-label"> @Html.LabelFor(model => model.paisID) </div>
+        @( Html.Telerik().ComboBox()
+                    .Name("paisID")
+                    .BindTo(new SelectList(paises, "ID", "nombre"))
+                    .SelectedIndex(0)
+                )
+
+
     <!--
         <div class="editor-field">
             <p>
@@ -84,7 +91,7 @@
                     Paises:</label>
                 @( Html.Telerik().ComboBox()
                     .Name("pais_id")
-                    .BindTo(new SelectList(Paises, "ID", "nombre"))
+                    .BindTo(new SelectList(paises, "ID", "nombre"))
                     .Placeholder("Seleccione un Pais")
                     .CascadeTo("ciudad_id")
                     .SelectedIndex(0)

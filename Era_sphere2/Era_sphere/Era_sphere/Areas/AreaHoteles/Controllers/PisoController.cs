@@ -37,7 +37,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         [GridAction]
         public ActionResult Select( int id )
         {
-            return View("Index", new GridModel(logica_piso.retornarPisoHotel(id)));
+            return View("Index", new GridModel(logica_piso.retornarPisosDeHotel(id)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
@@ -50,7 +50,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
                 piso_view.id_hotel = id;
                 logica_piso.agregarPiso(piso_view);
             }
-            return View("IndexPiso", new GridModel(logica_piso.retornarPisoHotel(id)));
+            return View("IndexPiso", new GridModel(logica_piso.retornarPisosDeHotel(id)));
             //return View("Index", proveedor_logica.retornarProveedores(  ));
         }
         [AcceptVerbs(HttpVerbs.Post)]
@@ -60,7 +60,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         {
             int piso_id = id ?? -1;
             logica_piso.eliminarPiso(piso_id);
-            return View("IndexPiso", new GridModel(logica_piso.retornarPisoHotel(id_hotel)));
+            return View("IndexPiso", new GridModel(logica_piso.retornarPisosDeHotel(id_hotel)));
     
         }
         [AcceptVerbs(HttpVerbs.Post)]
@@ -70,7 +70,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         {
 
             logica_piso.modificarPiso(piso);
-            return View("IndexPiso", new GridModel(logica_piso.retornarPisoHotel(id_hotel)));
+            return View("IndexPiso", new GridModel(logica_piso.retornarPisosDeHotel(id_hotel)));
      
         }
     }

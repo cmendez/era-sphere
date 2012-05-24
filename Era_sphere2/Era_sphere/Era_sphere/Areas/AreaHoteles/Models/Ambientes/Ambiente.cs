@@ -5,10 +5,10 @@ using System.Web;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class Ambiente: EspacioCargable
+    public class Ambiente: EspacioRentable
     {
         public string nombre { get; set; }
-        public int capacidad_personas { get; set; }     
-        public int hotelID { get; set; }
+        public int capacidad_maxima { get; set; }
+        public int num_niveles { get; set; }
     }
 }

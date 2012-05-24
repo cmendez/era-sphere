@@ -15,35 +15,22 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
         [DisplayName("Nombre")]
         public string nombre { get; set; }
         
-        [Required]
-        [DisplayName("Descripción")]
-        public string descripcion { get; set; }
+        [DisplayName("Detalle")]
+        public string detalle { get; set; }
 
         [Required]
         [DisplayName("Piso")]
         public int pisoID { get; set; }
-        public Piso piso { get; set; }
 
         [Required]
         [DisplayName("Capacidad de personas")]
-
-        public int capacidad_personas { get; set; }
+        public int capacidad_maxima { get; set; }
         
         [DisplayName("Numero de niveles")]
         public int num_niveles { get; set; }
         
-        [DisplayName("Largo")]
-        public int largo { get; set; }
-
-        [DisplayName("Ancho")]
-        public int ancho { get; set; }
-    
-        [DisplayName("Area")]
-        public int area { get { return largo * ancho; } }
-
-        [Required]
-        [DisplayName("Hotel")]
-        public int hotelID { get; set; }
+        [DisplayName("Estado")]
+        public int estadoID { get; set; }
 
         public AmbienteView() { }
 
@@ -51,11 +38,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
         {
             // TODO: Complete member initialization
             ID = ambiente.ID;
-            descripcion = ambiente.descripcion;
+            nombre = ambiente.nombre;
+            detalle = ambiente.detalle;
             pisoID = ambiente.pisoID;
-            piso = ambiente.piso;
-            capacidad_personas = ambiente.capacidad_personas;
-            hotelID = ambiente.hotelID;
+            capacidad_maxima = ambiente.capacidad_maxima;
+            estadoID = ambiente.estadoID;
         }
 
         public Ambiente deserializa(InterfazLogicaAmbiente logica)
@@ -63,11 +50,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             return new Ambiente
             {
             ID = this.ID,
-            descripcion = this.descripcion,
+            nombre = this.nombre,
+            detalle = this.detalle,
             pisoID = this.pisoID,
-            piso = this.piso,
-            capacidad_personas = this.capacidad_personas,
-            hotelID = this.hotelID,
+            capacidad_maxima = this.capacidad_maxima,
+            estadoID = this.estadoID,
             };
 
         }

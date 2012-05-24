@@ -45,7 +45,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             Habitacion habitacion_per = habitacion.deserializa(this);
             habitacion_per.tipoHabitacion = habitacion_context.tipos_habitacion.Find(habitacion_per.tipoHabitacionID);
-            habitacion_per.estado_habitacion = habitacion_context.estado_habitacion.Find(habitacion.estado_habitacionID);
+            habitacion_per.estado = habitacion_context.estado_espacio_rentable.Find(habitacion.estado_habitacionID);
             database_table.agregarElemento(habitacion_per);
         }
 

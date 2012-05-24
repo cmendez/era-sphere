@@ -118,11 +118,12 @@
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\InterfazLogicaAmbiente.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\LogicaAmbiente.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Comodidad.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadesContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EstadoHabitacion.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EstadoHabitacionInitializer.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\EstadoEspacioRentable.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\EstadoEspacioRentableInitializer.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Habitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionView.cs" />
@@ -164,7 +165,6 @@
     <Compile Include="Areas\AreaHoteles\AreaHotelesAreaRegistration.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\PisoController.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\EspacioCargable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EspacioRentable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Hotel\Hotel.cs" />

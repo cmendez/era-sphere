@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -37,21 +38,31 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [Required]
         [DisplayName("Identificacion de Registro")]
         public string reg_id { get; set; }
+        
         [Required]
         [DisplayName("Numero de Registro")]
+        [RegularExpression(@StringsDeValidaciones.numeric)]
         public string nroreg_id { get; set; }
+        
         [Required]
         [DisplayName("Direccion")]
         public string direccion { get; set; }
-        [Required]
+        
+        [Required, StringLength(28)]
+        [RegularExpression(@StringsDeValidaciones.telefono)]
         [DisplayName("Telefono 1")]
         public string telefono_1 { get; set; }
-        [Required]
+
+        [StringLength(28)]
+        [RegularExpression(@StringsDeValidaciones.telefono)]
         [DisplayName("Telefono 2")]
         public string telefono_2 { get; set; }
-        [Required]
-        [DisplayName("Fax ")]
+        
+        [Required, StringLength(28)]
+        [DisplayName("Fax")]
+        [RegularExpression(@StringsDeValidaciones.telefono)]
         public string fax { get; set; }
+
         [Required]
         [DisplayName("Provincia")]
         public string provincia { get; set; }

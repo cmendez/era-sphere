@@ -74,6 +74,11 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index", new GridModel(comodidades_logica.retornarComodidades()));
         }
 
+        public ActionResult SeleccionGrilla()
+        {
+
+            return View("SeleccionGrilla", new GridModel(comodidades_logica.retornarComodidades()));
+        }
 
 
     }

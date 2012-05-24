@@ -13,7 +13,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 {
     public class LogicaCadena : InterfazLogicaCadena
     {
-        CadenaContext cadena_context = new CadenaContext();
+        EraSphereContext cadena_context = new EraSphereContext();
         DBGenericQueriesUtil<Cadena> database_table;
        
 

@@ -29,7 +29,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string fax { get; set; }
 
         public string provincia { get; set; }
-        [InverseProperty("hotel")]
+        //[InverseProperty("hotel")]
         public virtual ICollection<Piso> lista_pisos { get; set; } 
 
        //public Ciudad ciudad { get; set; }

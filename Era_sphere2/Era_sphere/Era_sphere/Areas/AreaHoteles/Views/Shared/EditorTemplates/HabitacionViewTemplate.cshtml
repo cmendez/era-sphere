@@ -39,8 +39,9 @@
             </p>
 
             <p>
+                <label> Piso de Hotel : </label>
                 @( Html.Telerik().ComboBox()
-                    .Name("XURRETON")
+                    .Name("pisoID")
                     .BindTo(new SelectList(pisos , "ID" , "descripcion"))
                     .Placeholder("Seleccione Piso")
                 )

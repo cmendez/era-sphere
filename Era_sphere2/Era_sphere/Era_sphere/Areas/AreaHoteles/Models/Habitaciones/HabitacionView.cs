@@ -18,7 +18,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             LogicaTipoHabitacion logica_tipo_habitacion = new LogicaTipoHabitacion();
             TipoHabitacionView tipo_habitacion_view = logica_tipo_habitacion.retornarTipoHabitacion(tipoHabitacionID);
             tipoHabitacion_descripcion = tipo_habitacion_view.descripcion;
-            estado_habitacionID = habitacion.estadoID;         
+            estado_habitacionID = habitacion.estadoID;
+            pisoID = habitacion.pisoID;
+            piso_nombre = habitacion.piso.descripcion;
         }
         [Required]
         [DisplayName("Estado")]
@@ -30,6 +32,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [DisplayName("ID Habitacion")]
         [Required]
         public int ID { get; set; }
+
+        public int pisoID { get; set; }
         [Required]
         [DisplayName("ID Tipo de habitacion")]
         public int tipoHabitacionID { get; set; }
@@ -43,10 +47,12 @@ namespace Era_sphere.Areas.AreaHoteles.Models
                 detalle = this.detalle,
                 estadoID=this.estado_habitacionID,
                 ID = this.ID,
-                tipoHabitacionID=this.tipoHabitacionID 
-                
+                tipoHabitacionID=this.tipoHabitacionID,
+                pisoID = this.pisoID
             };
         }
-        
+
+        [DisplayName("Piso")]
+        public string piso_nombre { get; set; }
     }
 }

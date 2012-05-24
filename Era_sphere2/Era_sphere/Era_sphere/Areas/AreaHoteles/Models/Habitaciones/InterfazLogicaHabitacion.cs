@@ -8,7 +8,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public interface InterfazLogicaHabitacion
     {
-        List<HabitacionView> retornarHabitaciones();
+        List<HabitacionView> retornarHabitaciones( int hotel_id );
         HabitacionView retornarHabitacion(int habitacion_id);
         void modificarHabitacion(HabitacionView habitacion);
         void agregarHabitacion(HabitacionView habitacion);

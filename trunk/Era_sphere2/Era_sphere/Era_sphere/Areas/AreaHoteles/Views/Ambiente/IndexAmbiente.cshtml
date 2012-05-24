@@ -2,7 +2,8 @@
     
     ViewBag.Title = "IndexAmbiente";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var hotelID = ViewData["hotelID"];
+    int hotelID = (int)ViewData["hotelID"];
+    var pisos = (new LogicaPiso()).retornarPisosDeHotel(hotelID);
 }
 
 @using Era_sphere.Areas.AreaHoteles.Models
@@ -23,7 +24,7 @@
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.InLine)
+                            .Mode(GridEditMode.PopUp)
                             .TemplateName("AmbienteViewTemplate"))
                             
         .DataKeys(key => key.Add(c => c.ID))
@@ -32,7 +33,7 @@
             columns.Bound(p => p.ID);
             columns.Bound(p => p.nombre);
             columns.Bound(p => p.detalle);
-            columns.Bound(p => p.pisoID);
+            columns.ForeignKey(p => p.pisoID, pisos, "ID", "codigo_piso");
             columns.Bound(p => p.capacidad_maxima);
             columns.Bound(p => p.num_niveles);
             columns.Command(commands =>

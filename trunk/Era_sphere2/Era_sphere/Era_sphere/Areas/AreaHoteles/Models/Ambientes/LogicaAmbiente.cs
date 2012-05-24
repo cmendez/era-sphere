@@ -8,12 +8,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
 {
     public class LogicaAmbiente : InterfazLogicaAmbiente
     {
-        EraSphereContext ambiente_context=new EraSphereContext();
+        public EraSphereContext context = new EraSphereContext();
+        public EraSphereContext context_publico { get { return context; } }
         DBGenericQueriesUtil<Ambiente> database_table;
 
         public LogicaAmbiente()
         {
-            database_table = new DBGenericQueriesUtil<Ambiente>(ambiente_context, ambiente_context.ambientes);
+            database_table = new DBGenericQueriesUtil<Ambiente>(context, context.ambientes);
         }
 
         public List<AmbienteView> retornarAmbientes()

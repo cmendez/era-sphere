@@ -189,6 +189,7 @@
     <Compile Include="Areas\AreaReservas\Models\ReservaContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Navegacion\NavegacionController.cs" />
     <Compile Include="Generics\DBable.cs" />
     <Compile Include="Generics\DBGenericQueriesUtil.cs" />
     <Compile Include="Generics\EnumExtensions.cs" />
@@ -200,6 +201,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\NavegacionModel.cs" />
     <Compile Include="Models\RestHttpVerbFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -56,10 +56,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             nombre = this.nombre,
             detalle = this.detalle,
             pisoID = this.pisoID,
-            piso = (new EraSphereContext()).pisos.Find(pisoID),
+            piso = logica.context_publico.pisos.Find(pisoID),
             capacidad_maxima = this.capacidad_maxima,
             estadoID = this.estadoID,
-            estado = (new EraSphereContext()).estado_espacio_rentable.Find(estadoID),
+            estado = logica.context_publico.estado_espacio_rentable.Find(estadoID),
             num_niveles = this.num_niveles,
             };
 

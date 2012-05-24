@@ -23,6 +23,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [DisplayName("Estado")]
         public int estado_habitacionID { get; set; }
         [DisplayName("Detalle")]
+        [StringLength(50)]
         public string detalle { get; set; }
         [DisplayName("ID Habitacion")]
         [Required]

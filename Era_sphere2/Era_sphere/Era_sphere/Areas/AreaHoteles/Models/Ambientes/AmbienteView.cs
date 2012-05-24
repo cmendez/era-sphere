@@ -55,9 +55,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             pisoID = ambiente.pisoID;
             piso = ambiente.piso;
             capacidad_personas = ambiente.capacidad_personas;
-            num_niveles = ambiente.num_niveles;
-            largo = ambiente.largo;
-            ancho = ambiente.ancho;
             hotelID = ambiente.hotelID;
         }
 
@@ -70,9 +67,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             pisoID = this.pisoID,
             piso = this.piso,
             capacidad_personas = this.capacidad_personas,
-            num_niveles = this.num_niveles,
-            largo = this.largo,
-            ancho = this.ancho,
             hotelID = this.hotelID,
             };
 

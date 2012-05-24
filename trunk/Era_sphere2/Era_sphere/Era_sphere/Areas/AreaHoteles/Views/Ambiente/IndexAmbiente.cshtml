@@ -30,12 +30,12 @@
         .Columns(columns =>
         {
             columns.Bound(p => p.ID);
-            columns.Bound(p => p.descripcion);
-            columns.Bound(p => p.capacidad_personas);
-            columns.Bound(p => p.ancho);
-            columns.Bound(p => p.largo);
+            columns.Bound(p => p.nombre);
+            columns.Bound(p => p.detalle);
+            columns.Bound(p => p.pisoID);
+            columns.Bound(p => p.capacidad_maxima);
             columns.Bound(p => p.num_niveles);
-            columns.ForeignKey(p => p.pisoID, (IEnumerable<PisoView>)(ViewData["pisos"]), "ID", "nombre");
+            columns.ForeignKey(p => p.pisoID, (IEnumerable<PisoView>)(ViewData["pisos"]), "ID", "codigo_piso");
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

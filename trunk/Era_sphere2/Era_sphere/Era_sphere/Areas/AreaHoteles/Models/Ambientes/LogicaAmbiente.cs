@@ -27,7 +27,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
 
         public List<AmbienteView> retornarAmbientes(int hotelID)
         {
-            List<Ambiente> ambientes = database_table.retornarTodos().Where(p => p.hotelID == hotelID).ToList();
+            List<Ambiente> ambientes = database_table.retornarTodos().Where(p => p.piso.hotelID == hotelID).ToList();
             List<AmbienteView> ambientes_view = new List<AmbienteView>();
             foreach (Ambiente ambiente in ambientes) ambientes_view.Add(new AmbienteView(ambiente));
             return ambientes_view;

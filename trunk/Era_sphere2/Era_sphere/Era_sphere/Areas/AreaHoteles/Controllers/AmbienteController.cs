@@ -20,7 +20,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         public ActionResult Index(int id)
         {
             ViewData["hotelID"] = id;
-            ViewData["pisos"] = logica_pisos.retornarPisos();
+            ViewData["pisos"] = logica_pisos.retornarPisosDeHotel(id);
             return View("IndexAmbiente");
         }
 
@@ -37,7 +37,6 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             AmbienteView ambiente_view = new AmbienteView();
             if (TryUpdateModel(ambiente_view))
             {
-                ambiente_view.hotelID = hotelID;
                 logica_ambiente.agregarAmbiente(ambiente_view);
             }
             return View("Index", new GridModel(logica_ambiente.retornarAmbientes(hotelID)));

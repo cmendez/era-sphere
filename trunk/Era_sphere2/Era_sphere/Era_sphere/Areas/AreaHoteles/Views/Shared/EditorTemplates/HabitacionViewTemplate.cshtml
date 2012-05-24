@@ -7,7 +7,12 @@
     var tiposHabitacion = (new LogicaTipoHabitacion()).retornarTiposHabitacion();
     var estados = (new EraSphereContext()).estado_habitacion.ToList();
     // name='checkedRecords' value='<#= ID #>' 
+    var id_hotel = ViewData["id_hotel"];
+    var hotel = (new EraSphereContext()).hoteles.Find(id_hotel);
+    var pisos = hotel.lista_pisos;
 }
+
+
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
@@ -16,7 +21,8 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.detalle)
         </div>
-        <div class="editor-field">
+        <div class="form_row">
+           
             @Html.EditorFor(model => model.detalle)
             @Html.ValidationMessageFor(model => model.detalle)
         </div>
@@ -25,10 +31,18 @@
                 <label for="ComboBox_Categories-input">
                     Tipos habitacion:</label>
                 @( Html.Telerik().ComboBox()
-                    .Name("tipoHabitacionID")                    
+                    .Name("tipoHabitacionID")
                     .BindTo(new SelectList(tiposHabitacion, "ID", "descripcion"))
                     .Placeholder("Seleccione")
                     .SelectedIndex(0)
+                )
+            </p>
+
+            <p>
+                @( Html.Telerik().ComboBox()
+                    .Name("XURRETON")
+                    .BindTo(new SelectList(pisos , "ID" , "descripcion"))
+                    .Placeholder("Seleccione Piso")
                 )
             </p>
             <p>
@@ -45,7 +59,7 @@
         <!-- tipo habitacion -->
 
         @(Html.Telerik().Grid(tiposHabitacion)
-        .Name("GG")
+        .Name("tipo_habit")
         .Columns(columns =>
         {
             columns.Bound(o => o.ID)

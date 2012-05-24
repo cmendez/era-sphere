@@ -85,6 +85,17 @@ namespace Era_sphere.Models
                 Nombre = "Comodidades",
                 Url = "../AreaHoteles/Comodidades"
             });
+            AreaConfiguracion.Add(new SubLink()
+            {
+                Nombre = "Temporada",
+                Url = "../AreaConfiguracion/Temporada"
+            });
+
+            AreaConfiguracion.Add(new SubLink()
+            {
+                Nombre = "Tipo Temporada",
+                Url = "../AreaConfiguracion/TipoTemporada"
+            });
 
             
             menu.Add(

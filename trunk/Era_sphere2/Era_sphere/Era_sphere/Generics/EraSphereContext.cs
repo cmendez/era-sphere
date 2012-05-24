@@ -11,12 +11,16 @@ namespace Era_sphere.Generics
 {
     public partial class EraSphereContext : DbContext
     {
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            seedHotel(modelBuilder);
-            seedUbigeo(modelBuilder);
+        public void seed(){
+            seedHotel();
+            seedUbigeo();
+            seedEstadoEspacioRentable();
+        }
+    }
 
+    public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
+        protected override void Seed(EraSphereContext context){
+            context.seed();
         }
     }
 }

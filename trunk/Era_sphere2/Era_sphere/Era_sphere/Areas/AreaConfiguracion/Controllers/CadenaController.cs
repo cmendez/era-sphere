@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Models;
-using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers

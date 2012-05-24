@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Models;
 using Era_sphere.Areas.AreaClientes.Models;
-using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models;
 using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaClientes.Controllers

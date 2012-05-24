@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Era_sphere.Areas.AreaClientes.Models;
 using System.Data.Entity;
-using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models;
 using Era_sphere.Models;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Helpers;

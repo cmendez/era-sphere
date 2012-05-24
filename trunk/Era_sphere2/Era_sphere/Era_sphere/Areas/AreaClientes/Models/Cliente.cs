@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Drawing;
-using Era_sphere.Areas.Configuracion.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 using Era_sphere.Generics;
 using System.ComponentModel;
 

@@ -9,6 +9,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
     public class LogicaPiso : InterfazLogicaPiso
     {
         public EraSphereContext context = new EraSphereContext();
+        public EraSphereContext context_publico { get { return context; } }
         DBGenericQueriesUtil<Piso> database_table;
         DBGenericQueriesUtil<Hotel> database_table_hotel;
 

@@ -980,7 +980,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AreaClientes\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Models\Ambientes\" />
-    <Folder Include="Areas\AreaConfiguracion\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Views\Temporada\" />
     <Folder Include="Areas\AreaContable\Controllers\" />
     <Folder Include="Areas\AreaContable\Views\Shared\" />
@@ -1053,6 +1052,8 @@
     <Content Include="Areas\AreaHoteles\Views\AdministrarHotel\Administrar.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\AdministrarHotel\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\AmbienteViewTemplate.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\TipoTemporadaIndex.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoTemproadaViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

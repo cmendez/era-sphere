@@ -97,11 +97,11 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\EraSphereContext.cs" />
     <Compile Include="Areas\AreaContable\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AdministrarHotelController.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\ComodidadesController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HabitacionController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\Ambiente.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Ambientes\AmbienteContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\AmbienteView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\InterfazLogicaAmbiente.cs" />
@@ -1055,6 +1055,7 @@
     <Content Include="Areas\AreaConfiguracion\Views\Moneda\Details.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\AdministrarHotel\Administrar.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\AdministrarHotel\Index.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\AmbienteViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

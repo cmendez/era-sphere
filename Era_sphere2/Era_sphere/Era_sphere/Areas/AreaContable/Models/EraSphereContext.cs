@@ -11,6 +11,6 @@ namespace Era_sphere.Generics
 {
     public partial class EraSphereContext : DbContext
     {
-        public DbSet<Ambiente> ambientes { get; set; }
+        
     }
 }

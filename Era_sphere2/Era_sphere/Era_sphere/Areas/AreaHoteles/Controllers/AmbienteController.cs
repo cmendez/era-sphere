@@ -17,49 +17,48 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         InterfazLogicaAmbiente logica_ambiente = new LogicaAmbiente();
         InterfazLogicaPiso logica_pisos = new LogicaPiso();
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            ViewData["hotelID"] = id;
             ViewData["pisos"] = logica_pisos.retornarPisos();
             return View("IndexAmbiente");
         }
 
         [GridAction]
-        public ActionResult select()
+        public ActionResult Select(int hotelID)
         {
-            return View("Index", new GridModel(logica_ambiente.retornarAmbientes()));
+            return View("Index", new GridModel(logica_ambiente.retornarAmbientes(hotelID)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
-        public ActionResult Insert()
+        public ActionResult Insert(int hotelID)
         {
             AmbienteView ambiente_view = new AmbienteView();
             if (TryUpdateModel(ambiente_view))
             {
+                ambiente_view.hotelID = hotelID;
                 logica_ambiente.agregarAmbiente(ambiente_view);
             }
-            return View("Index", new GridModel(logica_ambiente.retornarAmbientes()));
-            //return View("Index", proveedor_logica.retornarProveedores(  ));
+            return View("Index", new GridModel(logica_ambiente.retornarAmbientes(hotelID)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int hotelID)
         {
             int ambiente_id = id ?? -1;
             logica_ambiente.eliminarAmbiente(ambiente_id);
-            return View("Index", new GridModel(logica_ambiente.retornarAmbientes()));
-            //return RedirectToAction("proveedor");
+            return View("Index", new GridModel(logica_ambiente.retornarAmbientes(hotelID)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
-        public ActionResult Update(AmbienteView ambiente)
+        public ActionResult Update(AmbienteView ambiente, int hotelID)
         {
 
             logica_ambiente.modificarAmbiente(ambiente);
-            return View("Index", new GridModel(logica_ambiente.retornarAmbientes()));
-            // return RedirectToAction("proveedor");
+            return View("Index", new GridModel(logica_ambiente.retornarAmbientes(hotelID)));
         }
 
         [GridAction]

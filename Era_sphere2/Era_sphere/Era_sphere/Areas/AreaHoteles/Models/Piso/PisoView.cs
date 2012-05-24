@@ -51,7 +51,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return new Piso
             {
                 //hotel_id= this.id_hotel,
-                hotel = logica.context.hoteles.Find(id_hotel),
+                hotel = logica.context.hoteles.Find(this.id_hotel),
                 hotelID = this.id_hotel,
                 ID = this.ID,         
                 descripcion = this.descripcion,

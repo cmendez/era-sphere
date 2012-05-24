@@ -1,6 +1,8 @@
 ﻿@{
     ViewBag.Title = "HabitacionIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var id_hotel = @ViewData["id_hotel"];
+    var nombre_hotel = @ViewData["nombre_hotel"];
     
 }
 @using Era_sphere.Areas.AreaHoteles.Models
@@ -11,7 +13,7 @@
     <!-- Block Begin -->
     <div class="titlebar">
         <h3>
-            Mantenimiento de habitaciones
+            Mantenimiento de habitaciones : @nombre_hotel
         </h3>
     </div>
     <div class="block_cont">
@@ -21,16 +23,17 @@
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp)
-                            .TemplateName("HabitacionViewTemplate"))
+                            .TemplateName("HabitacionViewTemplate")
+                            .AdditionalViewData(new { id_hotel = @id_hotel }))
 
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-            
+
             columns.Bound(p => p.ID);
             columns.Bound(p => p.detalle);
             columns.Bound(p => p.tipoHabitacion_descripcion);
-            
+
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
@@ -44,10 +47,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Habitacion")
-            .Insert("Insert", "Habitacion")
-            .Delete("Delete", "Habitacion")
-            .Update("Update", "Habitacion")
+            .Select("Select", "Habitacion", new { id_hotel = @id_hotel })
+            .Insert("Insert", "Habitacion", new { id_hotel = @id_hotel })
+            .Delete("Delete", "Habitacion", new { id_hotel = @id_hotel })
+            .Update("Update", "Habitacion", new { id_hotel = @id_hotel })
         )
            )
 

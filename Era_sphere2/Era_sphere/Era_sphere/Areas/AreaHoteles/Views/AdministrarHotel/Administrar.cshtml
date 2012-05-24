@@ -22,8 +22,11 @@
                             new { @class = "tipTop" }                      
                         )
 
-                        </p>
-        <p>@Html.ActionLink("Agregar Habitaciones", "AgregarHabitaciones", new { controller = "AdministrarHotel" }, new { id = @id_hotel})</p>
+        </p>
+        <p>@Html.ActionLink("Agregar Habitaciones", "Index",
+                            new { controller = "Habitacion" , id= @id_hotel}
+                            , new { @class = "tipTop"})
+        </p>
         <p>@Html.ActionLink("Agregar Ambientes", "AgregarAmbientes", new { controller = "AdministrarHotel" }, new { id = @id_hotel }) </p>
     </div>
     <!-- Table Wrapper End -->

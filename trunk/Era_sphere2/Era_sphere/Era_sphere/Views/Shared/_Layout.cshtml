@@ -26,94 +26,30 @@
 <script type="text/javascript" src="@Url.Content("~/Content/data/js/fancybox/jquery.easing-1.4.pack.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/Content/data/js/js.js")"></script>
 <script type="text/javascript" src="@Url.Content("~/Scripts/ApiCliente/mantenimiento_cliente.js")"></script>
+<<<<<<< .mine
+
+<script type="text/javascript" src="@Url.Content("~/Content/data/js/seguridad/navegacion.js")"></script>
+
+<link rel="stylesheet" href="@Url.Content("~/Content/data/css/reset.css")" type="text/css" />
+=======
+>>>>>>> .r429
 <link rel="stylesheet" href="@Url.Content("~/Content/data/css/era-style.css")" type="text/css" />
 <link rel="stylesheet" href="@Url.Content("~/Content/data/css/grid.css")" type="text/css" />
 <link rel="stylesheet" href="@Url.Content("~/Content/data/css/reset.css")" type="text/css" />
 <link rel="stylesheet" href="@Url.Content("~/Content/data/css/style.css")" type="text/css" />
 <link rel="stylesheet" href="@Url.Content("~/Content/data/css/telerik.css")" type="text/css" />
 <link rel="stylesheet" href="@Url.Content("~/Content/data/js/plugins.css")" type="text/css" />
+
+
+
 @( Html.Telerik().StyleSheetRegistrar()
         .DefaultGroup(group => group.Add("telerik.common.css")
                                     .Add("telerik.vista.css"))
 )
+
 </head>
 <body>
 
-<script class="code" type="text/javascript"><!-- Plugin Examples -->
-$(document).ready(function(){
-
- 
-   
-	  var line1=[['07-Dec-11', 320], ['08-Dec-11', 350], ['09-Dec-11', 355], ['10-Dec-11', 420], ['11-Dec-11', 407], ['12-Dec-11', 320], ['13-Dec-11', 401], ['14-Dec-11', 353], ['15-Dec-11', 402], ['16-Dec-11', 471], ['17-Dec-11', 555]];
-	  var plot1 = $.jqplot('chart1', [line1], {
-		  title:'Unique visitors by days',
-		  axes:{
-			xaxis:{
-			  renderer:$.jqplot.DateAxisRenderer,
-			  tickOptions:{
-				formatString:'%b&nbsp;%#d'
-			  } 
-			},
-			yaxis:{
-			  tickOptions:{
-				formatString:'%.0f Visitors'
-				}
-			}
-		  },
-		  highlighter: {
-			show: true,
-			sizeAdjust: 10
-		  },
-		  cursor: {
-			show: false
-		  }
-	  });
-	  
-	  var data = [
-		['Heavy Industry', 12],['Retail', 9], ['Light Industry', 14], 
-		['Out of home', 16],['Commuting', 7], ['Orientation', 9]
-	  ];
-	  var plot1 = jQuery.jqplot ('chart2', [data], 
-		{ 
-		  seriesDefaults: {
-			// Make this a pie chart.
-			renderer: jQuery.jqplot.PieRenderer, 
-			rendererOptions: {
-			  // Put data labels on the pie slices.
-			  // By default, labels show the percentage of the slice.
-			  showDataLabels: true
-			}
-		  }, 
-		  legend: { show:true, location: 'e' }
-		}
-	  );
-	  
-  var line1 = [['Cup Holder Pinion Bob', 7], ['Generic Fog Lamp', 9], ['HDTV Receiver', 15], 
-  ['8 Track Control Module', 12], [' Sludge Pump Fourier Modulator', 3], 
-  ['Transcender/Spice Rack', 6], ['Hair Spray Danger Indicator', 18]];
- 
-  var cosPoints = []; 
-  for (var i=0; i<2*Math.PI; i+=0.1){ 
-     cosPoints.push([i, Math.cos(i)]); 
-  } 
-  var plot1 = $.jqplot('chart3', [cosPoints], {  
-      series:[{showMarker:false}],
-      axes:{
-        xaxis:{
-          label:'Angle (radians)'
-        },
-        yaxis:{
-          label:'Cosine'
-        }
-      }
-  });
-	
-	$('#progress1').progressbar({value: 25});
-	$('#progress2').progressbar({value: 50});
-	$('#progress3').progressbar({value: 100});
-	
-});
-</script>
 	<div id="main" class="container_12"><!-- Body Wrapper Begin -->
 		<div id="header"><!-- Header Begin -->
 			<div class="grid_3"><a href="#" id="logo" class="float_left" style="width: 300px; height: 55px; margin-left: 5px;" >ERA Sphere</a></div>
@@ -127,9 +63,10 @@ $(document).ready(function(){
 		<div class="clear"></div>
 		
 
-        <!-- Userbar
+      
         <div id="userbar">
-			<div id="profile">
+		  <!-- Userbar	
+            <div id="profile">
 				<div id="avatar">
 					<img src="@Url.Content("~/Content/img/test_avatar.png")" alt="Avatar" height="44" />
 					<a href="#" id="unreadcount">12</a>
@@ -142,43 +79,50 @@ $(document).ready(function(){
 					<a href="#" class="profilebutton">Logout</a>
 				</div>
 			</div>
+            -->
 			<ul id="navigation">
-				<li class="activepage">@Html.ActionLink("Clientes", "Index", "Cliente", new { area = "AreaClientes" }, new { })</li>
-				<li><a href="#" class="icon_users">Tables</a>
+            <!--
+				<li><a href="#" id = "usuarios-2" class="icon_users">Usuarios</a>
 					<ul>
-						<li><a href="cp_table.html">Normal Table</a></li>
-						<li><a href="cp_datatable.html">Data Table</a></li>
+						<li><a id = "u1" href="#">Mantenimiento</a></li>
+                        <li><a id = "u2" href="#">Reportes</a></li>
 					</ul>
 				</li>
-				<li><a href="cp_forms.html" class="icon_email">Forms</a></li>
-				<li><a href="#" class="icon_folder">UI Elements</a>
-					<ul>
-						<li><a href="cp_widgets.html">User Interface</a></li>
-						<li><a href="cp_gallery.html">Gallery</a></li>
-						<li><a href="cp_calendar.html">Calendar</a></li>
+				<li><a href="#" id = "clientes-2" class="icon_email">Clientes</a>
+                    <ul>
+						<li><a id = "c1" href="#">Mantenimiento</a></li>
+						<li><a id = "c2" href="#">Reportes</a></li>
 					</ul>
-				</li>
-				<li><a href="cp_article.html" class="icon_article">Simple page</a></li>
-				<li><a href="#" class="icon_cross">Error pages</a>
-					<ul>
-						<li><a href="403.html">Error 403</a></li>
-						<li><a href="404.html">Error 404</a></li>
-						<li><a href="503.html">Error 503</a></li>
+                </li>
+
+                <li><a href="#" class="icon_email">Ventas</a>
+                    <ul>
+						<li><a href="#">Mantenimiento</a></li>
+						<li><a href="#">Reportes</a></li>
 					</ul>
-				</li>
-				<li><a href="index.html" class="icon_logout">Logout</a></li>
+                </li>
+
+                <li><a href="#" class="icon_email">Empleados</a>
+                    <ul>
+						<li><a href="#">Mantenimiento</a></li>
+						<li><a href="#">Reportes</a></li>
+					</ul>
+                </li>
+	
+				<li><a href="#" class="icon_logout">Logout</a></li>
 			</ul>
+            -->
 		</div>
-
-        -->
-
-
 
 		<div class="clear"></div>
 		<div id="body">
 			@RenderBody()
 	</div><!-- Body Wrapper End -->
+    <!--
 	@(Html.Telerik().ScriptRegistrar())
+    -->
+
     </div>
+
 </body>
 </html>

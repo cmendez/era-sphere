@@ -107,6 +107,7 @@
     <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporadaView.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\UbigeoInitializer.cs" />
     <Compile Include="Areas\AreaContable\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AdministrarHotelController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AmbienteController.cs" />

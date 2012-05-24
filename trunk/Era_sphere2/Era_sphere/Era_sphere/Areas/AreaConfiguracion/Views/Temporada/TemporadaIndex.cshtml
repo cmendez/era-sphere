@@ -30,10 +30,8 @@
             
             columns.Bound(p => p.ID);
             columns.Bound(p => p.descripcion);
-            columns.Bound(p => p.fecha_inicio)
-                .Format("{0:MM/dd/yyyy}");
-            columns.Bound(p => p.fecha_fin)
-                .Format("{0:MM/dd/yyyy}");
+            columns.Bound(p => p.fecha_inicio).Format("{0:MM/dd/yyyy}");
+            columns.Bound(p => p.fecha_fin).Format("{0:MM/dd/yyyy}");
             columns.Bound(p => p.tipotemporada_descripcion);
             columns.Command(commands =>
             {

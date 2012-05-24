@@ -11,7 +11,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
     {
         public int ID { get; set; }
 
-        [Required]
+        [Required, StringLength(30)]
         [DisplayName("Descripción")]
         public string descripcion { get; set; }
 
@@ -23,6 +23,13 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
         [DisplayName("Fecha de fin")]
         public DateTime fecha_fin { get; set; }
 
+        [Required]
+        [DisplayName("ID Tipo de temporada")]
+        public int tipotemporadaID { get; set; }
+        [DisplayName("Tipo de temporada")]
+        public string tipotemporada_descripcion { get; set; }
+
+
         
         public TemporadaView() { }
 
@@ -31,6 +38,14 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
             // TODO: Complete member initialization
             ID = temporada.ID;
             descripcion = temporada.descripcion;
+            
+            //
+            tipotemporadaID = temporada.tipotemporadaID;
+            fecha_inicio = temporada.fecha_inicio;
+            fecha_fin = temporada.fecha_fin;
+            LogicaTipoTemporada logica_tipo_temporada = new LogicaTipoTemporada();
+            TipoTemporadaView tipo_temporada_view = logica_tipo_temporada.retornarTipoTemporada(tipotemporadaID);
+            tipotemporada_descripcion = tipo_temporada_view.descripcion;
         }
 
         public Temporada deserializa(LogicaTemporada logica)
@@ -41,6 +56,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
                 descripcion = this.descripcion,
                 fecha_fin = this.fecha_fin,
                 fecha_inicio = this.fecha_inicio,
+                tipotemporadaID = this.tipotemporadaID,
             };
 
         }

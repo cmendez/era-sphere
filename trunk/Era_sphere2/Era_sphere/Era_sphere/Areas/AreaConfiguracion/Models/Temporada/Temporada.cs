@@ -20,6 +20,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
 
         [DisplayName("Tipo de temporada")]
         public int tipotemporadaID { get; set; }
-        public TipoTemporada tipotemporada { get; set; }
+        public virtual TipoTemporada tipotemporada { get; set; }
     }
 }

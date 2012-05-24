@@ -12,7 +12,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
 
         public int ID { get; set; }
 
-        [Required]
+        [Required, StringLength(30)]
         [DisplayName("Descripción")]
         public string descripcion { get; set; }
 

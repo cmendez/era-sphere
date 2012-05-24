@@ -34,10 +34,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
 
         public void modificarTemporada(TemporadaView temporada_view)
         {
-            Temporada temporada = temporada_view.deserializa(this);
-            Temporada orig = database_table.retornarUnSoloElemento(temporada_view.ID);
-            orig.descripcion = temporada.descripcion ?? orig.descripcion;
-            database_table.modificarElemento(orig, temporada.ID);
+            Temporada temporada = temporada_view.deserializa(this);            
+            database_table.modificarElemento(temporada, temporada.ID);
         }
 
         public void agregarTemporada(TemporadaView temporada)

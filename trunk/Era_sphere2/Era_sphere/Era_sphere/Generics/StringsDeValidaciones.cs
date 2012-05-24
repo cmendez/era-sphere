@@ -7,7 +7,7 @@ namespace Era_sphere.Generics
 {
     public class StringsDeValidaciones
     {
-        public static string telefono = "[+]?[0-9|-]*";
-        public static string numeric = "[0-9]*";
+        public const string telefono = @"[+]?[0-9|-]*";
+        public const string numeric = @"[0-9]*";
     }
 }

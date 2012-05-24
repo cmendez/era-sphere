@@ -41,7 +41,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         
         [Required]
         [DisplayName("Numero de Registro")]
-        [RegularExpression(@StringsDeValidaciones.numeric)]
+        [RegularExpression(StringsDeValidaciones.numeric)]
         public string nroreg_id { get; set; }
         
         [Required]
@@ -49,18 +49,18 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public string direccion { get; set; }
         
         [Required, StringLength(28)]
-        [RegularExpression(@StringsDeValidaciones.telefono)]
+        [RegularExpression(StringsDeValidaciones.telefono)]
         [DisplayName("Telefono 1")]
         public string telefono_1 { get; set; }
 
         [StringLength(28)]
-        [RegularExpression(@StringsDeValidaciones.telefono)]
+        [RegularExpression(StringsDeValidaciones.telefono)]
         [DisplayName("Telefono 2")]
         public string telefono_2 { get; set; }
         
         [Required, StringLength(28)]
         [DisplayName("Fax")]
-        [RegularExpression(@StringsDeValidaciones.telefono)]
+        [RegularExpression(StringsDeValidaciones.telefono)]
         public string fax { get; set; }
 
         [Required]

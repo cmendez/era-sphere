@@ -55,7 +55,9 @@ ul li {
 /****************** FORM ELLEMENTS *******************/
 
 
-.form {}
+.form 
+{   
+ }
 
 .form .input {
 	height: 20px;

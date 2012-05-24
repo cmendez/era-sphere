@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -60,26 +62,6 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index", new GridModel(logica_ambiente.retornarAmbientes(hotelID)));
         }
 
-        [GridAction]
-        public ActionResult _pisos()
-        {
-            return View(new GridModel(logica_ambiente.retornarAmbientes()));
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        [GridAction]
-        public ActionResult _pisosUpdate(int id, int piso_id)
-        {
-           /* var ambiente = new Ambiente{
-                ID = id,
-                piso = logica_pisos.retornarPiso(piso_id).deserializa(logica_pisos)
-            };
-            // Exclude "Employee" from the list of updated properties
-            if (TryUpdateModel(ambiente, null, null, new[] { "Ambiente" }))
-            {
-                logica_ambiente.modificarAmbiente(new AmbienteView(ambiente));
-            }*/
-            return View(new GridModel(logica_ambiente.retornarAmbientes()));
-        }
+       
     }
 }

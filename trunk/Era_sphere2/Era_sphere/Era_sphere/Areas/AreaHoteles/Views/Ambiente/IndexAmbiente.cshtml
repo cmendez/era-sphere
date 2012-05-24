@@ -35,7 +35,6 @@
             columns.Bound(p => p.pisoID);
             columns.Bound(p => p.capacidad_maxima);
             columns.Bound(p => p.num_niveles);
-            columns.ForeignKey(p => p.pisoID, (IEnumerable<PisoView>)(ViewData["pisos"]), "ID", "codigo_piso");
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

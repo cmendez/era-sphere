@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
 {
@@ -43,18 +44,23 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             pisoID = ambiente.pisoID;
             capacidad_maxima = ambiente.capacidad_maxima;
             estadoID = ambiente.estadoID;
+            num_niveles = ambiente.num_niveles;
         }
 
         public Ambiente deserializa(InterfazLogicaAmbiente logica)
         {
+            if (this.estadoID == 0) this.estadoID = 1;
             return new Ambiente
             {
             ID = this.ID,
             nombre = this.nombre,
             detalle = this.detalle,
             pisoID = this.pisoID,
+            piso = (new EraSphereContext()).pisos.Find(pisoID),
             capacidad_maxima = this.capacidad_maxima,
             estadoID = this.estadoID,
+            estado = (new EraSphereContext()).estado_espacio_rentable.Find(estadoID),
+            num_niveles = this.num_niveles,
             };
 
         }

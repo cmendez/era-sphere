@@ -25,10 +25,12 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         [Required]
         [DisplayName("Código Piso")]
+        [StringLength(50)]
         public string codigo_piso { get; set; }
         
         [Required]
         [DisplayName("Descripción")]
+        [StringLength(50)]
         public string descripcion { get; set; }
 
         

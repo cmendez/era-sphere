@@ -14,9 +14,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
 
         [Required]
         [DisplayName("Nombre")]
+        [StringLength(50)]
         public string nombre { get; set; }
         
         [DisplayName("Detalle")]
+        [StringLength(50)]
         public string detalle { get; set; }
 
         [Required]
@@ -25,9 +27,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
 
         [Required]
         [DisplayName("Capacidad de personas")]
+        [Range(0, StringsDeValidaciones.infinito)]
         public int capacidad_maxima { get; set; }
         
         [DisplayName("Numero de niveles")]
+        [Range(0, StringsDeValidaciones.infinito)]
         public int num_niveles { get; set; }
         
         [DisplayName("Estado")]

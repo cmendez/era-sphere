@@ -9,5 +9,6 @@ namespace Era_sphere.Generics
     {
         public const string telefono = @"[+]?[0-9|-]*";
         public const string numeric = @"[0-9]*";
+        public const int infinito = 0x7FFFFFFF;
     }
 }

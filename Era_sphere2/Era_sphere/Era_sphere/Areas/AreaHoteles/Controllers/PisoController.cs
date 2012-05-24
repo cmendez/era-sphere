@@ -66,11 +66,11 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
-        public ActionResult Update(PisoView piso, int id)
+        public ActionResult Update(PisoView piso, int id_hotel)
         {
 
             logica_piso.modificarPiso(piso);
-            return View("IndexPiso", new GridModel(logica_piso.retornarPisoHotel(id)));
+            return View("IndexPiso", new GridModel(logica_piso.retornarPisoHotel(id_hotel)));
      
         }
     }

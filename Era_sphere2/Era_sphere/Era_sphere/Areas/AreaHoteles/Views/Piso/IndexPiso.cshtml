@@ -53,9 +53,9 @@
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("Select", "Piso", new { id = @hotelID }) 
-            .Insert("Insert", "Piso", new { id=@hotelID})
+            .Insert("Insert", "Piso", new { id = @hotelID})
             .Delete("Delete", "Piso", new { id_hotel = @hotelID })
-            .Update("Update", "Piso", new { id = @hotelID })
+            .Update("Update", "Piso", new { id_hotel = @hotelID })
         )
            )
 

@@ -84,35 +84,6 @@
                     .SelectedIndex(0)
                 )
 
- <!--       <div class="editor-label">
-            @Html.LabelFor(model => model.ciudad_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ciudad_id)
-            @Html.ValidationMessageFor(model => model.ciudad_id)
-        </div> 
-        <div class="editor-field">
-            <p>
-                <label for="ComboBox_Categories-input">
-                    Paises:</label>
-                @( Html.Telerik().ComboBox()
-                    .Name("pais_id")
-                    .BindTo(new SelectList(Paises, "ID", "nombre"))
-                    .Placeholder("Seleccione un Pais")
-                    .CascadeTo("ciudad_id")
-                    .SelectedIndex(0)
-                )
-            </p>
-            <p>
-                <label for="ComboBox_Products-input">
-                    Ciudad:</label>
-                @( Html.Telerik().ComboBox()
-                    .Name("ciudad_id")
-                    .DataBinding(binding => binding.Ajax().Select("CiudadesComboBox", "Hotel"))
-                    .Placeholder("Seleccione una Ciudad")                    
-                    .SelectedIndex(0)
-            )
-            </p>
-        </div>-->
+
     </fieldset>
 }

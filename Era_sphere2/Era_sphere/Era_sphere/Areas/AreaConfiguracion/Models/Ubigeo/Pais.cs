@@ -17,8 +17,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
 
         [Required]
         [Range(0,100)]
-        [DefaultValue(0)]
-        public double IGV { get; set; }
+        public double? IGV { get; set; }
 
         public virtual ICollection<Ciudad> ciudades { get; set; }
     }

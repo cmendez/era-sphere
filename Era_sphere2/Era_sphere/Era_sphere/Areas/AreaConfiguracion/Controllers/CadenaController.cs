@@ -44,9 +44,15 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 
         public ActionResult Edit(int id=0)
         {
-            List<Cadena> lista = cadena_logica.retornarCadenas();
-            id = lista[lista.Count - 1].ID;
-            return View("Edit", cadena_logica.retornarCadena(id));
+            try
+            {
+                List<Cadena> lista = cadena_logica.retornarCadenas();
+                id = lista[lista.Count - 1].ID;
+                return View("Edit", cadena_logica.retornarCadena(id));
+            }
+            catch
+            { }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

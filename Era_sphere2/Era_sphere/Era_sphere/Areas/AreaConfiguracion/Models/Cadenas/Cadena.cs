@@ -22,9 +22,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         [DisplayName("Razón social")]
         public string rsocial { get; set; }
 
-        [MinLength(11)]
+        [MinLength(11, ErrorMessage = "El campo RUC debe estar compuesto por 11 digitos")]
+        [MaxLength(11, ErrorMessage = "El campo RUC debe estar compuesto por 11 digitos")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
-//[Range(11, 11, ErrorMessage = "El RUC debe ser contener 11 digitos")]
+        //[Range(11, 11, ErrorMessage = "El RUC debe ser contener 11 digitos")]
+        [RegularExpression("([0-9]+)", ErrorMessage = "El campo RUC debe estar compuesto por 11 digitos")]
         [DisplayName("RUC de la cadena")]
         public string ruc { get; set; }
 

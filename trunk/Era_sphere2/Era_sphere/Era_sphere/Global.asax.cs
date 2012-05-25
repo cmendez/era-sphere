@@ -6,14 +6,19 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Era_sphere.Areas.AreaClientes.Models;
 using System.Data.Entity;
+
+
+
 using Era_sphere.Areas.AreaConfiguracion.Models;
+
 using Era_sphere.Models;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
-using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
+
+using Era_sphere.Generics;
 
 namespace Era_sphere
 {
@@ -42,22 +47,7 @@ namespace Era_sphere
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            //.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Era_sphere.PaisDBContext__Era_sphere.Areas.Configuracion.Models_>());
-            //Database.SetInitializer<PaisDBContext>(new PaisInitializer());
-            /*Database.SetInitializer<CiudadDBContext>(new DropCreateDatabaseIfModelChanges<CiudadDBContext>());
-            Database.SetInitializer<ProvinciaDBContext>(new DropCreateDatabaseIfModelChanges<ProvinciaDBContext>());
-
-            
-            Database.SetInitializer<ClienteContext>(new DropCreateDatabaseIfModelChanges<ClienteContext>());
-            Database.SetInitializer<UbigeoContext>(new DropCreateDatabaseIfModelChanges<UbigeoContext>());
-            Database.SetInitializer<HotelContext>(new DropCreateDatabaseIfModelChanges<HotelContext>());
-            //prueba para que funcione el mantenimiento de pisos T_T
-            Database.SetInitializer<ComodidadesContext>(new DropCreateDatabaseIfModelChanges<ComodidadesContext>());
-            Database.SetInitializer<AmbienteContext>(new DropCreateDatabaseIfModelChanges<AmbienteContext>());
-            Database.SetInitializer<HabitacionContext>(new DropCreateDatabaseIfModelChanges<HabitacionContext>());
-            Database.SetInitializer<PisoContext>(new DropCreateDatabaseIfModelChanges<PisoContext>());
-            Database.SetInitializer(new MonedaContextInitializer());
-            Database.SetInitializer(new TipoDePagoContextInitializer());*/
+         
             Database.SetInitializer<EraSphereContext>(new EraSphereContextInitializer());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);

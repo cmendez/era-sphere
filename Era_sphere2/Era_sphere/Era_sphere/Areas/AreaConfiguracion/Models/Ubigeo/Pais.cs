@@ -15,7 +15,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
         [MaxLength(30)]
         public string nombre { get; set; }
 
-        [Required]
         [Range(0,100)]
         public double? IGV { get; set; }
 

@@ -14,10 +14,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 
     public class Cadena : DBable
     {
+        [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         [DisplayName("Nombre de la cadena")]
         public string nombreCadena { get; set; }
 
+        [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
             [Required(ErrorMessage = "Este campo es obligatorio")]
         [DisplayName("Razón social")]
         public string rsocial { get; set; }
@@ -30,6 +32,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         [DisplayName("RUC de la cadena")]
         public string ruc { get; set; }
 
+        [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         //  [DataType(DataType.Url)] 
         [DisplayName("Página web")]

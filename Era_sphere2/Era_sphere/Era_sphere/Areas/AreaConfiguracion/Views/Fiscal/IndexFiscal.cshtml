@@ -1,0 +1,53 @@
+﻿
+@using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
+@using Era_sphere.Generics;
+@model IEnumerable<PaisView>
+@using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "IndexFiscal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //var paises = (new EraSphereContext()).paises.ToList();
+}
+
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Fiscal
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("PaisesGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InLine))
+
+        .DataKeys(key => key.Add(p => p.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.Nombre);
+            columns.Bound(p => p.IGV);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Fiscal")
+            .Update("Update", "Fiscal")
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

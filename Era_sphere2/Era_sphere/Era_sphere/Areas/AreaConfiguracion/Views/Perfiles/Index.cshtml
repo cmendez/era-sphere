@@ -82,6 +82,8 @@
 
     $("#agregarPerfil").click(function () {
         //ajax
+        $("#nombre").val(""),
+        $("#descripcion").val(""),
         $.ajax({
             type: "POST",
             dataType: "json",
@@ -110,7 +112,26 @@
         position: "center",
         buttons: {
             "Aceptar": function () {
-                $('#PerfilesGrid').data('tGrid').ajaxRequest();
+                var jsonMenu = {
+                    nombre: $("#nombre").val(),
+                    descripcion: $("#descripcion").val(),
+                    lista : "111"
+                 }; 
+                    $.ajax({
+                        type: "POST", 
+                        data: JSON.stringify(jsonMenu), 
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        url: "Perfiles/nuevoPerfil", 
+                            success: function (data) {
+                                if (data.me == "") {
+                                    $('#PerfilesGrid').data('tGrid').ajaxRequest();
+                                    
+                                }
+                            }
+                    });
+
+                        $(this).dialog("close");
             },
             "Cancelar": function () {
                 $(this).dialog("close");

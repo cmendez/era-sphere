@@ -1,4 +1,5 @@
 ﻿@using Telerik.Web.Mvc.UI
+@using Telerik.Web.Mvc.Configuration
 @using Era_sphere.Areas.AreaConfiguracion.Models.Perfiles
 @model IEnumerable<Perfil>
            
@@ -6,6 +7,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+
+
 
 
 <div class="block big" style="position: relative">
@@ -17,6 +22,103 @@
     </div>
     <div class="block_cont">
 
+    <div class = "form">
+    <p>
+    <button class="t-button t-state-default submit" id="refrescaGrid"> Agregar Perfil </button>
+    </p>
+    </div>
+ 
+  @(Html.Telerik().Grid(Model)
+        .Name("GRID")
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InLine))
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            
+            columns.Bound(p => p.nombrePerfil);
+            columns.Bound(p => p.descripcion);
+            
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Perfiles")
+            .Insert("Insert", "Perfiles")
+            .Delete("Delete", "Perfiles")
+            .Update("Update", "Perfiles")
+        )
+    )
+
+    <div id="dialogEditar" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 46px; height: auto; display:none" scrolltop="0" scrollleft="0">
+		
+         @(Html.Telerik().Grid(Model)
+        .Name("PerfilesGrid")
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InLine))
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            
+            columns.Bound(p => p.nombrePerfil);
+            columns.Bound(p => p.descripcion);
+            
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Perfiles")
+            .Insert("Insert", "Perfiles")
+            .Delete("Delete", "Perfiles")
+            .Update("Update", "Perfiles")
+        )
+    )
+    			
+	</div>
     </div>
    
 </div>
+
+<script type = "text/javascript">
+
+    $("#refrescaGrid").click(function () {
+        $('#dialogEditar').dialog('open');
+    });
+
+    $('#dialogEditar').dialog({
+        autoOpen: false,
+        resizable: false,
+        draggable: false,
+        width: 600,
+        modal: true,
+        title: "Crear Perfil",
+        position: "center",
+        buttons: {
+            "Aceptar": function () {
+                $('#PerfilesGrid').data('tGrid').ajaxRequest();
+            },
+            "Cancelar": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+</script>

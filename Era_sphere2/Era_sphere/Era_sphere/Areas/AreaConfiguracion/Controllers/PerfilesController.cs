@@ -7,6 +7,7 @@ using Era_sphere.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Perfiles;
 using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
+using Telerik.Web.Mvc;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
@@ -19,6 +20,15 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             //ViewBag.cadenas = perfil_logica.retornarCadenas();
             return View();
         }
+
+        public ActionResult Select()
+        {
+            ViewBag.perfiles = perfil_logica.retornarPerfiles();
+            return View("Index", new GridModel(perfil_logica.retornarPerfiles()));
+        }
+
+
+
         /*
         public ActionResult Create()
         {

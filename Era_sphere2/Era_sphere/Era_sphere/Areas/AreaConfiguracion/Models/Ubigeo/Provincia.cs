@@ -12,12 +12,14 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
     public class Provincia: DBable
     {
         [Required]
-        [MaxLength(20)]
         public string Nombre { get; set; }
 
-        [Required]
+        //[Required]
         [ForeignKey("ciudad")]
         public int ciudadID { get; set; }
+
+
+
 
         public virtual Ciudad ciudad { get; set; }
     }

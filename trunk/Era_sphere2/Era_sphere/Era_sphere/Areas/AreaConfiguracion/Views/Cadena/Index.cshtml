@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Cadenas";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int nc = new LogicaCadena().retornarCadenas().Count; 
 }
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
@@ -15,7 +16,10 @@
     
     <div class="block_cont">
       <ul>
+      @if (nc == 0)
+      {
             <li> <a href = "Cadena/Create" > Create </li>
+      }
             <li> <a href = "Cadena/Details" >Detalles </li>
             <li> <a href = "Cadena/Edit" >Editar </li>
       </ul>

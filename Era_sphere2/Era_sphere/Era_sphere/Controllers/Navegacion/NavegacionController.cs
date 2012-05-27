@@ -24,5 +24,12 @@ namespace Era_sphere.Controllers.Navegacion
             return new JsonResult() { Data = menu };
         }
 
+        [HttpPost]
+        public JsonResult ListaMenu()
+        {
+            var menu = new NavegacionModel().getMenu("");
+            return new JsonResult() { Data = menu };
+        }
+
     }
 }

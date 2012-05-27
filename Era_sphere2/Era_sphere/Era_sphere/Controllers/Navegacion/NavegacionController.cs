@@ -25,9 +25,9 @@ namespace Era_sphere.Controllers.Navegacion
         }
 
         [HttpPost]
-        public JsonResult ListaMenu()
+        public JsonResult ListaTodoMenu()
         {
-            var menu = new NavegacionModel().getMenu("");
+            var menu = new NavegacionModel().getMenu("all");
             return new JsonResult() { Data = menu };
         }
 

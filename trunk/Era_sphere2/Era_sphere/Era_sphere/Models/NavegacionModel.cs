@@ -66,6 +66,11 @@ namespace Era_sphere.Models
         void agregarConfiguracion() {
             List<SubLink> AreaConfiguracion = new List<SubLink>();
             AreaConfiguracion.Add(new SubLink { 
+                Nombre = "Administrar Perfiles",
+                Url    = "/AreaConfiguracion/Perfiles"
+            });
+
+            AreaConfiguracion.Add(new SubLink { 
                 Nombre = "Agregar Monedas",
                 Url= "/AreaConfiguracion/Moneda"
             });

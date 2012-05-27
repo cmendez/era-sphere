@@ -41,16 +41,22 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         //[DisplayName("Logo")]
         public byte[] logo { get; set; }
 
-        [DisplayName("Adelanto mínimo")]
+        [DisplayName("Adelanto mínimo (%)")]
+        [Range(0,100)]
         public decimal adel_minimo { get; set; }
 
-        [DisplayName("Depósito a cancelar después de la reserver")]
-        public int d_cancel_dps_reserva { get; set; }
+        //[DisplayName("Depósito a cancelar después de la reserver")]
+        //public int d_cancel_dps_reserva { get; set; }
 
-        [DisplayName("Depósito a cancelar antes del check in")]
-        public int d_cancel_antes_chk_in { get; set; }
+        //[DisplayName("Depósito a cancelar antes del check in")]
+        //public int d_cancel_antes_chk_in { get; set; }
 
-        [DisplayName("Porcentaje retenido")]
+        [DisplayName("Dias antes de check-in con retencion")]
+        [Range(0, Generics.StringsDeValidaciones.infinito)]
+        public int d_ant_ret { get; set; }
+
+        [DisplayName("% retenido (del adelanto)")]
+        [Range(0,100)]
         public decimal porc_ret { get; set; }
 
         [DisplayName("Puntos por dólar")]

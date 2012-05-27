@@ -74,6 +74,12 @@ namespace Era_sphere.Models
                 Nombre = "Agregar Monedas",
                 Url= "/AreaConfiguracion/Moneda"
             });
+
+            AreaConfiguracion.Add(new SubLink { 
+                Nombre = "Fiscal",
+                Url = "/AreaConfiguracion/Fiscal"
+            });
+
             AreaConfiguracion.Add(new SubLink
             {
                 Nombre = "Agregar Tipo Pago",

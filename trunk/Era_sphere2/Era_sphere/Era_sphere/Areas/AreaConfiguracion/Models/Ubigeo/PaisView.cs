@@ -26,7 +26,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
         [DisplayName("Nombre")]
         public string Nombre { get; set; }
         [Required]
-        [DisplayName("IGV")]
+        [DisplayName("IGV (%)")]
         [Range(0, 100)]
         public double? IGV { get; set; }
 

@@ -15,7 +15,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
         [MaxLength(50)]
         public string nombre { get; set; }
 
-        [Required]
+        //[Required]
         [ForeignKey("pais")]
         public int paisID;
 

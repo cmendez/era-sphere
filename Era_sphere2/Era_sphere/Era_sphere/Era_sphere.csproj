@@ -68,8 +68,9 @@
     <Compile Include="Areas\AreaClientes\AreaClientesAreaRegistration.cs" />
     <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs" />
     <Compile Include="Areas\AreaClientes\Models\Cliente.cs" />
-    <Compile Include="Areas\AreaClientes\Models\ClienteContext.cs" />
+    <Compile Include="Areas\AreaClientes\Models\ClienteView.cs" />
     <Compile Include="Areas\AreaClientes\Models\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaClientes\Models\EstadoCliente.cs" />
     <Compile Include="Areas\AreaClientes\Models\InterfazLogicaCliente.cs" />
     <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs" />
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />

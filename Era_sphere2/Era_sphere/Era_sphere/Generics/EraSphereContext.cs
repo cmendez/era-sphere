@@ -15,6 +15,7 @@ namespace Era_sphere.Generics
             seedHotel();
             seedUbigeo();
             seedEstadoEspacioRentable();
+            seedEstadoCliente();
         }
     }
 

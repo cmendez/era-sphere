@@ -7,6 +7,8 @@ using System.Drawing;
 using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 using Era_sphere.Generics;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {
@@ -19,19 +21,20 @@ namespace Era_sphere.Areas.AreaClientes.Models
                 //estado = EstadoCliente.sin_reserva;
                 //tipo = TipoCliente.natural;
             }
-            public enum EstadoCliente
-            {
-                [Description("Con reserva")]
-                con_reserva,
-                sin_reserva,
-                en_estadia
-            };
 
-            [DisplayName("Tarjeta cliente")]
+  //        [ForeignKey("Estado")]
+            public int estadoID { get; set; }
+            public virtual EstadoCliente estado { get; set; }
+
+//          [DisplayName("Tarjeta cliente")]
             public string tarjeta_cliente { get; set; }
 
-            [DisplayName("Estado")]
-            public EstadoCliente estado { get; set; }  
+            public Habitacion habitacion_asignada { get; set; }
+            public int id_habitacion_asisgnada { get; set; }
+
+ 
         }
+
+
 
 }

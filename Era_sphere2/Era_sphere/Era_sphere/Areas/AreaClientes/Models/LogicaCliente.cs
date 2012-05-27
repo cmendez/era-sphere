@@ -11,7 +11,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
 {
     public class LogicaCliente: InterfazLogicaCliente
     {
-        ClienteContext cliente_context=new ClienteContext();
+        EraSphereContext cliente_context=new EraSphereContext();
         DBGenericQueriesUtil<Cliente> database_table;
 
         public LogicaCliente()

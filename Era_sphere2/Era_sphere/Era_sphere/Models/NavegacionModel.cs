@@ -136,6 +136,11 @@ namespace Era_sphere.Models
         public IEnumerable<Link> getMenu(string token)
         {
             List<Link> retorno = new List<Link>();
+            
+            if ( token == "all" ){
+                return this.menu;
+            }
+
             for (int i = 0; i < token.Length; i++)
                 if (token[i] == '1') retorno.Add(this.menu[i]);
             return retorno;

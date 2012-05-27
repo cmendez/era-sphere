@@ -2,16 +2,12 @@
 @using Telerik.Web.Mvc.Configuration
 @using Era_sphere.Areas.AreaConfiguracion.Models.Perfiles
 @model IEnumerable<Perfil>
+
            
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
-
-
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
@@ -24,12 +20,12 @@
 
     <div class = "form">
     <p>
-    <button class="t-button t-state-default submit" id="refrescaGrid"> Agregar Perfil </button>
+    <button class="t-button t-state-default submit" id="agregarPerfil"> Agregar Perfil </button>
     </p>
     </div>
  
   @(Html.Telerik().Grid(Model)
-        .Name("GRID")
+        .Name("PerfilesGrid")
         .Editable(editing => editing
                             .Mode(GridEditMode.InLine))
         .DataKeys(key => key.Add(c => c.ID))
@@ -60,37 +56,22 @@
     )
 
     <div id="dialogEditar" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 46px; height: auto; display:none" scrolltop="0" scrollleft="0">
-		
-         @(Html.Telerik().Grid(Model)
-        .Name("PerfilesGrid")
-        .Editable(editing => editing
-                            .Mode(GridEditMode.InLine))
-        .DataKeys(key => key.Add(c => c.ID))
-        .Columns(columns =>
-        {
-            
-            columns.Bound(p => p.nombrePerfil);
-            columns.Bound(p => p.descripcion);
-            
-            columns.Command(commands =>
-            {
-                commands.Edit().ButtonType(GridButtonType.Image);
-                commands.Delete().ButtonType(GridButtonType.Image);
-            });
-        })
+		<div class = "form">
+            <div class="form_row">
+                <label>Nombre :</label>
+                <input type = "text" id = "nombre" class = "input tipRignt singleInput">
+            </div>
+            <div class="form_row">
+                <label>Descripcion :</label>
+                <textarea id = "descripcion" class = "input tipRignt singleInput"></textarea>  
+            </div>
+            <div class="form_row">
+                <label>Lista de Actividades :</label>
+                <div id = "listaActividades">
 
-        .Pageable()
-        .Sortable()
-
-
-        .DataBinding(dataBinding => dataBinding
-            .Ajax()
-            .Select("Select", "Perfiles")
-            .Insert("Insert", "Perfiles")
-            .Delete("Delete", "Perfiles")
-            .Update("Update", "Perfiles")
-        )
-    )
+                </div>
+            </div>
+        </div>
     			
 	</div>
     </div>
@@ -99,7 +80,23 @@
 
 <script type = "text/javascript">
 
-    $("#refrescaGrid").click(function () {
+    $("#agregarPerfil").click(function () {
+        //ajax
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "../Navegacion/ListaTodoMenu",
+            success: function (data) {
+                var result = "";
+                $.each(data, function (i, item) {
+                    var nombre = item.Nombre;
+                    result += '<p><input type = "checkbox" id = "actividad-' + i +'">' + nombre + '</p>';
+                });
+                $("#listaActividades").html(result);
+            }
+        });
+
         $('#dialogEditar').dialog('open');
     });
 
@@ -107,7 +104,7 @@
         autoOpen: false,
         resizable: false,
         draggable: false,
-        width: 600,
+        width: 800,
         modal: true,
         title: "Crear Perfil",
         position: "center",

@@ -21,45 +21,28 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View();
         }
 
+        [GridAction]
         public ActionResult Select()
         {
             ViewBag.perfiles = perfil_logica.retornarPerfiles();
             return View("Index", new GridModel(perfil_logica.retornarPerfiles()));
         }
 
-
-
-        /*
-        public ActionResult Create()
-        {
-            //var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
-            var con = new UbigeoContext();
-            //con.Seed();
-            ViewBag.paises = (new UbigeoContext()).paises.ToList();
-            return View();
-        }
         [HttpPost]
-        public ActionResult Create(Cadena cadena)
+        public JsonResult nuevoPerfil(String nombre, String descripcion, String lista )
         {
-            //cadena.asdasd = Cadena.TipoPersona.natural;
-            cadena_logica.agregarCadena(cadena);
-            return RedirectToAction("Index");
-        }
+            Perfil perfil = new Perfil(){
+                nombrePerfil = nombre,
+                descripcion = descripcion,
+                listaVisibilidad = lista
+            };
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            cadena_logica.eliminarCadena(id);
-            return RedirectToAction("Index");
+            if (TryUpdateModel(perfil))
+            {
+                perfil_logica.agregarPerfil(perfil);
+                return Json(new { me = "" });
+            }
+            else return Json(new { me = "error" });
         }
-        public ActionResult Delete(int id)
-        {
-            return View(cadena_logica.retornarCadena(id));
-        }
-        public ActionResult Detail(int id)
-        {
-            return View("Detalle_Cadena", cadena_logica.retornarCadena(id));
-        }
-        */
     }
 }

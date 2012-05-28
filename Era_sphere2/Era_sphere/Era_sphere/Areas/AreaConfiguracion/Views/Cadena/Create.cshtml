@@ -91,6 +91,14 @@
             @Html.ValidationMessageFor(model => model.porc_ret)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ptos_x_dolar)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ptos_x_dolar, new { @class = "input tipRight singleInput", })
+            @Html.ValidationMessageFor(model => model.ptos_x_dolar)
+        </div>
+
         <p>  &nbsp; </p>
                      <p>
                         <input class="submit" type="submit" value="Registrar" />

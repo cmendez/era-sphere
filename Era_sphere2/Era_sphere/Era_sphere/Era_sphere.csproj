@@ -101,10 +101,6 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\InterfazLogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\LogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\PaisView.cs" />
-    <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionXHotelController.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\InterfazLogicaTHXHotel.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\LogicaTHXHotel.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\TipoHabitacionXHotel.cs" />
     <Compile Include="Controllers\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\InterfazLogicaTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\LogicaTemporada.cs" />
@@ -197,6 +193,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Navegacion\NavegacionController.cs" />
+    <Compile Include="Generics\Costeable.cs" />
     <Compile Include="Generics\DBable.cs" />
     <Compile Include="Generics\DBGenericQueriesUtil.cs" />
     <Compile Include="Generics\EnumExtensions.cs" />

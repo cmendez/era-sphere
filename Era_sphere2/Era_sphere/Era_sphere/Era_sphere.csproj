@@ -101,6 +101,10 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\InterfazLogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\LogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\PaisView.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionXHotelController.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\InterfazLogicaTHXHotel.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\LogicaTHXHotel.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\TipoHabitacionXHotel.cs" />
     <Compile Include="Controllers\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\InterfazLogicaTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\LogicaTemporada.cs" />

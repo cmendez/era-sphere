@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Era_sphere.Generics
 {
-    interface Pagable
+    public abstract class Pagable
     {
-        decimal costo_final { get; set; }
+        public virtual decimal costo_base;
+        public virtual decimal costo;
+
     }
    
 }

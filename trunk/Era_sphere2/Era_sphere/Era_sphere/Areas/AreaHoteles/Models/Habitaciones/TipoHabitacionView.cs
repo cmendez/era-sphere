@@ -13,6 +13,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public TipoHabitacionView() { }
         public TipoHabitacionView(TipoHabitacion tipoHabitacion)
         {
+            costo_base = tipoHabitacion.costo_base;
             descripcion = tipoHabitacion.descripcion;
             cap_max_personas = tipoHabitacion.cap_max_personas;
             ID = tipoHabitacion.ID;
@@ -26,6 +27,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public int cap_max_personas { get; set; }
         [DisplayName("ID tipo habitacion")]
         public int ID { get; set; }
+        [DisplayName("Costo base")]
+        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        public decimal costo_base { get; set; }
 
         public TipoHabitacion deserializa(InterfazLogicaTipoHabitacion logica)
         {

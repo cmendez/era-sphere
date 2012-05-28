@@ -16,6 +16,7 @@
             Acciones a administrar en : @razon_social
         </h3>
     </div>
+    Infraestructura
     <div class="block_cont">
         <p>@Html.ActionLink("Administrar Pisos", "Index", new { controller = "Piso" , id = @id_hotel },
                             new { @class = "tipTop" }                      
@@ -28,6 +29,18 @@
         </p>
         <p>@Html.ActionLink("Administrar Ambientes", "Index",
                             new { controller = "Ambiente" , id= @id_hotel}
+                            , new { @class = "tipTop"})
+        </p>
+    </div>
+    Alquileres
+    <div class="block_cont">
+        <p>@Html.ActionLink("Alquileres Tipo de habitaciones", "Index", new { controller = "TipoHabitacionXHotel" , id = @id_hotel },
+                            new { @class = "tipTop" }                      
+                        )
+
+        </p>
+        <p>@Html.ActionLink("Alquileres Ambientes", "Index",
+                            new { controller = "AmbientesXHotel" , id= @id_hotel}
                             , new { @class = "tipTop"})
         </p>
     </div>

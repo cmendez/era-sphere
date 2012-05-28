@@ -1,11 +1,11 @@
 ﻿
-@using Era_sphere.Areas.AreaHoteles.Models.HotelXCosteablexTemporada;
+@using Era_sphere.Areas.AreaHoteles.Models.HotelXCosteableXTemporadaNM;
 @using Era_sphere.Generics;
-@model IEnumerable<HotelXCosteableView>
+@model IEnumerable<HotelXCosteableXTemporadaView>
 @using Telerik.Web.Mvc.UI
 
 @{
-    ViewBag.Title = "IndexHotelXCosteable";
+    ViewBag.Title = "IndexHotelXCosteableXTemporada";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,23 +19,39 @@
     </div>
     <div class="block_cont">
         @(Html.Telerik().Grid(Model)
+        .Name("HotelXCosteableXTemporadaGrid")
         .Localizable("es-ES")
-        .Name("HotelXCosteableGrid")
-        .DataKeys(key => key.Add(hxc => hxc.costeableID))
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.PopUp))
+
+        .DataKeys(key => key.Add(v => v.ID))
         .Columns(columns =>
         {
-            columns.Bound(hxc => hxc.costeable.nombre);
-            columns.Command(commands => commands
-                .Custom("seleccionarCosteable")
-                .Text("Seleccionar")
-                .Action("Administrar","AdministrarHotelXCosteable")
-                ).Title("Seleccionar").Width(50);
+            columns.Bound(v => v.costeable.nombre);
+            columns.Bound(v => v.temporada.tipotemporada.descripcion);
+            columns.Bound(v => v.temporada.descripcion);
+            columns.Bound(v => v.precio);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
         })
 
         .Pageable()
         .Sortable()
 
-       )
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "HotelXCosteableXTemporada")
+            .Insert("Insert", "HotelXCosteableXTemporada")
+            .Delete("Delete", "HotelXCosteableXTemporada")
+            .Update("Update", "HotelXCosteableXTemporada")
+        )
+           )
 
     </div>
     <!-- Table Wrapper End -->

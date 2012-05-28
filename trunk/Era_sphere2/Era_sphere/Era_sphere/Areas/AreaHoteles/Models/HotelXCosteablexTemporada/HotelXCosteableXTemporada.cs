@@ -10,7 +10,7 @@ using Era_sphere.Generics;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
 using Era_sphere.Areas.AreaCargos.Models;
 
-namespace Era_sphere.Areas.AreaHoteles.Models.HotelXCosteable
+namespace Era_sphere.Areas.AreaHoteles.Models.HotelXCosteableXTemporadaNM
 {
     public class HotelXCosteableXTemporada : DBable
     {
@@ -23,6 +23,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXCosteable
         [Required]
         [ForeignKey("temporada")]
         public int temporadaID { get; set; }
+        [Required]
+        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        public int precio { get; set; }
 
 
 

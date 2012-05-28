@@ -60,7 +60,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         public decimal porc_ret { get; set; }
 
         [DisplayName("Puntos por dólar")]
-        public decimal ptos_x_dolar { get; set; }
+        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        public int ptos_x_dolar { get; set; }
 
         [DisplayName("Hostname")]
         public string hostname { get; set; }

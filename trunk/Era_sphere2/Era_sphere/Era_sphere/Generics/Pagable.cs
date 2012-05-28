@@ -7,8 +7,8 @@ namespace Era_sphere.Generics
 {
     public abstract class Pagable
     {
-        public virtual decimal costo_base;
-        public virtual decimal costo;
+        //public virtual decimal costo_base;
+        //public virtual decimal costo;
 
     }
    

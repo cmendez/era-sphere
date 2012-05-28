@@ -5,8 +5,7 @@ using System.Web;
 
 namespace Era_sphere.Generics
 {
-    public abstract class Costeable
+    public class LogicaCosteable
     {
-        public virtual decimal precio { get; set; }
     }
 }

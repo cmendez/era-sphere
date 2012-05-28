@@ -5,7 +5,7 @@ using System.Web;
 
 using Era_sphere.Areas.AreaCargos.Models;
 
-namespace Era_sphere.Areas.AreaHoteles.Models.HotelXCosteablexTemporada
+namespace Era_sphere.Areas.AreaHoteles.Models.HotelXCosteableXTemporadaNM
 {
     public class HotelXCosteableView
     {

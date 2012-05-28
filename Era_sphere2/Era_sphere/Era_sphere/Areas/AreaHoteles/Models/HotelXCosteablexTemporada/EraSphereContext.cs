@@ -6,13 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 
-using Era_sphere.Areas.AreaHoteles.Models.HotelXCosteable;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXCosteableXTemporadaNM;
 
 
 namespace Era_sphere.Generics
 {
     public partial class EraSphereContext : DbContext
     {
-        public DbSet<HotelXCosteableXTemporada> hotelXCosteables { get; set; }
+        public DbSet<HotelXCosteableXTemporada> hxchts { get; set; }
     }
 }

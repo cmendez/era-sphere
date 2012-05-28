@@ -9,7 +9,7 @@ using System.ComponentModel;
 using Era_sphere.Areas.AreaCargos.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
 
-namespace Era_sphere.Areas.AreaHoteles.Models.HotelXCosteable
+namespace Era_sphere.Areas.AreaHoteles.Models.HotelXCosteableXTemporadaNM
 {
     public class HotelXCosteableXTemporadaView
     {
@@ -30,6 +30,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXCosteable
         [Required]
         [DisplayName("Temporada")]
         public Temporada temporada { get; set; }
+
+        [Required]
+        [DisplayName("Precio")] //EN QUE MONEDA!!!
+        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        public decimal precio { get; set; }
 
         public HotelXCosteableXTemporada deserializa()
         {

@@ -1,0 +1,42 @@
+﻿
+@using Era_sphere.Areas.AreaHoteles.Models.HotelXCosteablexTemporada;
+@using Era_sphere.Generics;
+@model IEnumerable<HotelXCosteableView>
+@using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "IndexHotelXCosteable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Precios
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Localizable("es-ES")
+        .Name("HotelXCosteableGrid")
+        .DataKeys(key => key.Add(hxc => hxc.costeableID))
+        .Columns(columns =>
+        {
+            columns.Bound(hxc => hxc.costeable.nombre);
+            columns.Command(commands => commands
+                .Custom("seleccionarCosteable")
+                .Text("Seleccionar")
+                .Action("Administrar","AdministrarHotelXCosteable")
+                ).Title("Seleccionar").Width(50);
+        })
+
+        .Pageable()
+        .Sortable()
+
+       )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

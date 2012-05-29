@@ -18,9 +18,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models.TipoHabitacionXHotel
         [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
         public decimal Precio { get; set; }
 
-
-
-
         public virtual TipoHabitacion tipoHabitacion { get; set; }
         public virtual Hotel hotel { get; set; }
     }

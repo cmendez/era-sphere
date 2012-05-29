@@ -19,7 +19,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
             return View("IndexPoliticas");
         }
-
+        /*
         [GridAction]
         public ActionResult Select()
         {
@@ -33,7 +33,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
             ubigeo_logica.modificarPais(p);
             return View("Index", new GridModel(ubigeo_logica.retornarPaises()));
-        }
+        }*/
 
 
     }

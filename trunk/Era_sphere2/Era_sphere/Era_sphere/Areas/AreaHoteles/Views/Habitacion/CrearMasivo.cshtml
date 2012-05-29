@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "CrearMasivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id_hotel = @ViewData["id_hotel"];
+    var nombre_hotel = @ViewData["nombre_hotel"];
+    var tiposHabitacion = (new LogicaTipoHabitacion()).retornarTiposHabitacion();
+    var hotel = (new Era_sphere.Generics.EraSphereContext()).hoteles.Find(id_hotel);
+    var pisos = hotel.lista_pisos;
+}
+@using Era_sphere.Areas.AreaHoteles.Models
+@model IEnumerable<HabitacionView>
+@using Telerik.Web.Mvc.UI
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimiento de habitaciones : @nombre_hotel
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("HabitacionGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InLine)
+                            .TemplateName("HabitacionViewTemplate")
+                            .AdditionalViewData(new { id_hotel = @id_hotel }))
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.detalle);
+            columns.Bound(p => p.tipoHabitacion_descripcion);
+            columns.Bound(p => p.piso_nombre);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Habitacion", new { id_hotel = @id_hotel })
+            .Insert("Insert", "Habitacion", new { id_hotel = @id_hotel })
+            .Delete("Delete", "Habitacion", new { id_hotel = @id_hotel })
+            .Update("Update", "Habitacion", new { id_hotel = @id_hotel })
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

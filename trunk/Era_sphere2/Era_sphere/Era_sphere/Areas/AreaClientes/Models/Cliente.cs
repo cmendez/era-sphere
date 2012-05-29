@@ -32,7 +32,9 @@ namespace Era_sphere.Areas.AreaClientes.Models
             public Habitacion habitacion_asignada { get; set; }
             public int id_habitacion_asisgnada { get; set; }
             public int puntos_cliente { get; set; }
- 
+
+
+            public int ciudadID { get; set; }
         }
 
 

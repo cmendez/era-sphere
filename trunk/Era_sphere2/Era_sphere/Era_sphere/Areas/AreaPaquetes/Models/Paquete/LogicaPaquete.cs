@@ -8,7 +8,7 @@ namespace Era_sphere.Areas.AreaPaquetes.Models
 {
     public class LogicaPaquete:InterfazLogicaPaquete
     {
-        EraSphereContext paquete_context = new EraSphereContext();
+    /*    EraSphereContext paquete_context = new EraSphereContext();
         DBGenericQueriesUtil<Paquete> database_table;
         
         public LogicaPaquete()
@@ -52,6 +52,6 @@ namespace Era_sphere.Areas.AreaPaquetes.Models
         {
             database_table.eliminarElemento(paquete_id);
         }
-
+        */
     }
 }

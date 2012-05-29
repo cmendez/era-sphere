@@ -12,7 +12,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
     {
         //
         // GET: /AreaContable/Producto/
-
+/*
         InterfazLogicaProducto producto_logica = new LogicaProducto();
         public ActionResult Index()
         {
@@ -49,6 +49,6 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             producto_logica.modificarProducto(p);
             return View("Index", new GridModel(producto_logica.retornarProductos()));
         }
-
+        */
     }
 }

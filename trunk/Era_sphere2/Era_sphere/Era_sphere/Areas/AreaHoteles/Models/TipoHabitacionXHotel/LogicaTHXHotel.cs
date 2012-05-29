@@ -9,7 +9,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.TipoHabitacionXHotel
 {
     public class LogicaTHXHotel
     {
-        public EraSphereContext context = new EraSphereContext();
+       /* public EraSphereContext context = new EraSphereContext();
         DBGenericQueriesUtil<Piso> database_table;
         DBGenericQueriesUtil<Hotel> database_table_hotel;
 
@@ -75,7 +75,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.TipoHabitacionXHotel
             foreach (Piso piso in pisos_aux) pisos_view.Add(new PisoView(piso));
             return pisos_view;
            
-        }
+        }*/
 
     }
 }

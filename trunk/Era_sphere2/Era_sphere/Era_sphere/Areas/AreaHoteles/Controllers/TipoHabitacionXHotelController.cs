@@ -14,19 +14,13 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
     {
 
         // GET: /AreaHoteles/TipoHabitacionXHotel/
-        InterfazLogicaTHXHotel logica_thXHotel = new LogicaTHXHotel();
+        /*InterfazLogicaTHXHotel logica_thXHotel = new LogicaTHXHotel();
         // 
         InterfazLogicaPiso logica_piso = new LogicaPiso();
         TipoHabitacionView thv = new TipoHabitacionView();
         public ActionResult Index(int id)
         {
-            /*List<PisoView> pisos = logica_piso.retornarPisos();
-            if (pisos.Count() == 0)
-                ViewData["nombre_hotel"] = "-";
-            else
-                ViewData["nombre_hotel"] = pisos[0].nombre_hotel;
-            */
-
+            
             ViewData["hotel"] = logica_piso.retornaNombreHotel(id);
             //TODO: eliminar la linea de arribita
             ViewData["hotelID"] = id;
@@ -74,6 +68,6 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             logica_piso.modificarPiso(piso);
             return View("IndexPiso", new GridModel(logica_piso.retornarPisosDeHotel(id_hotel)));
 
-        }
+        }*/
     }
 }

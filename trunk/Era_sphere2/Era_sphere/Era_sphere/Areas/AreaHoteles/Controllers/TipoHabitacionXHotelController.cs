@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 
 using Era_sphere.Areas.AreaHoteles.Models.TipoHabitacionXHotel;
+using Era_sphere.Areas.AreaHoteles.Models;
+using Telerik.Web.Mvc;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -14,7 +16,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         // GET: /AreaHoteles/TipoHabitacionXHotel/
         InterfazLogicaTHXHotel logica_thXHotel = new LogicaTHXHotel();
         // 
-        TipoHabitacionView thv = new PisoView();
+        InterfazLogicaPiso logica_piso = new LogicaPiso();
+        TipoHabitacionView thv = new TipoHabitacionView();
         public ActionResult Index(int id)
         {
             /*List<PisoView> pisos = logica_piso.retornarPisos();

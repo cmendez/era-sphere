@@ -13,6 +13,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
     {
 
         public PaisView() { }
+
         public PaisView(Pais pais)
         {
             this.ID = pais.ID;

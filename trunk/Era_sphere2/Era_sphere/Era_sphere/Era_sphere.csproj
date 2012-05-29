@@ -113,6 +113,7 @@
     <Compile Include="Areas\AreaContable\Models\Producto\ProductoContext.cs" />
     <Compile Include="Areas\AreaContable\Models\Producto\ProductoView.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedores\Proveedor.cs" />
+    <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AdministrarHotelXCosteableController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXCosteableXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionXHotelController.cs" />
@@ -190,7 +191,6 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Provincia.cs" />
     <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs" />
-    <Compile Include="Areas\AreaEmpleados\AreaEmpleadoAreaRegistration.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\Empleado.cs" />
     <Compile Include="Areas\AreaEventos\AreaEventosAreaRegistration.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento.cs" />

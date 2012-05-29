@@ -11,6 +11,8 @@ namespace Era_sphere.Areas.AreaContable.Models.Orden
         public double cantidad { get; set; }
         public double precioU { get; set; }
         public double SubTotal { get; set; }
+        public bool estado { get; set; }
+        public DateTime fechaentrega { get; set; }
 
         public virtual proveedor_x_producto p_x_p { get; set; }
 

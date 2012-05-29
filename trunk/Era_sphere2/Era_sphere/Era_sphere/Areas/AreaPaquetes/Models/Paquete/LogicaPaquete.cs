@@ -6,7 +6,7 @@ using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaPaquetes.Models
 {
-    public class LogicaPaquete:InterfazLogicaPaquete
+    public class LogicaPaquete : InterfazLogicaPaquete
     {
     /*    EraSphereContext paquete_context = new EraSphereContext();
         DBGenericQueriesUtil<Paquete> database_table;
@@ -16,9 +16,9 @@ namespace Era_sphere.Areas.AreaPaquetes.Models
             database_table = new DBGenericQueriesUtil< Paquete >(paquete_context, paquete_context.paquetes);
         }
 
-        public List<PaqueteView> retornarHabitaciones( int id_hotel )
+        public List<PaqueteView> retornarPaquetes( int hotel_id )
         {
-            IEnumerable<Paquete> paquetes = database_table.retornarTodos().Where( p => p.piso.hotel.ID == id_hotel );
+            IEnumerable<Paquete> paquetes = database_table.retornarTodos();//.Where( p => p.piso.hotel.ID == id_hotel );
             List<PaqueteView> paquete_view = new List<PaqueteView>();
 
             foreach (Paquete paquete in paquetes) paquete_view.Add(new PaqueteView(paquete));

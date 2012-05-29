@@ -13,9 +13,11 @@ namespace Era_sphere.Areas.AreaContable.Models.Orden
         public int idEmpleadoElabora{get;set;}
         public int idEmpleadoAutoriza{get;set;}
         public int idEmpleadoRecibe{get;set;}
+        public bool estado { get; set; }
         public DateTime fechapedido{get;set;}
         public DateTime fechaentrega{get;set;}
         public double Total { get; set; }
+        
 
         public virtual Empleado empleado{get;set;}
 

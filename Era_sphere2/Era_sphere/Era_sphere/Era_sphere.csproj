@@ -133,10 +133,13 @@
     <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\TipoHabitacionXHotel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\AreaPaquetes\Models\Era_sphereContext.cs" />
-    <Compile Include="Areas\AreaPaquetes\Models\InterfazLogicaPaquete.cs" />
-    <Compile Include="Areas\AreaPaquetes\Models\LogicaPaquete.cs" />
-    <Compile Include="Areas\AreaPaquetes\Models\PaqueteView.cs" />
+    <Compile Include="Areas\AreaPaquetes\Models\PaqueteXTipoHabitacion\InterfazLogicaPaqueteXTH.cs" />
+    <Compile Include="Areas\AreaPaquetes\Models\PaqueteXTipoHabitacion\LogicaPaqueteXTH.cs" />
+    <Compile Include="Areas\AreaPaquetes\Models\PaqueteXTipoHabitacion\PaqueteXTipoHabitacion.cs" />
+    <Compile Include="Areas\AreaPaquetes\Models\Paquete\Era_sphereContext.cs" />
+    <Compile Include="Areas\AreaPaquetes\Models\Paquete\InterfazLogicaPaquete.cs" />
+    <Compile Include="Areas\AreaPaquetes\Models\Paquete\LogicaPaquete.cs" />
+    <Compile Include="Areas\AreaPaquetes\Models\Paquete\PaqueteView.cs" />
     <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaServicios\AreaServiciosAreaRegistration.cs" />
     <Compile Include="Areas\AreaServicios\Models\Servicio.cs" />
@@ -210,7 +213,7 @@
     <Compile Include="Areas\AreaHoteles\Models\Piso\PisoContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Piso\PisoView.cs" />
     <Compile Include="Areas\AreaPaquetes\AreaPaquetesAreaRegistration.cs" />
-    <Compile Include="Areas\AreaPaquetes\Models\Paquete.cs" />
+    <Compile Include="Areas\AreaPaquetes\Models\Paquete\Paquete.cs" />
     <Compile Include="Areas\AreaReportes\AreaReportesAreaRegistration.cs" />
     <Compile Include="Areas\AreaReservas\AreaReservasAreaRegistration.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\ReservaController.cs" />

@@ -133,8 +133,6 @@
     <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\TipoHabitacionXHotel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\AreaPaquetes\Models\PaqueteXTipoHabitacion\InterfazLogicaPaqueteXTH.cs" />
-    <Compile Include="Areas\AreaPaquetes\Models\PaqueteXTipoHabitacion\LogicaPaqueteXTH.cs" />
     <Compile Include="Areas\AreaPaquetes\Models\PaqueteXTipoHabitacion\PaqueteXTipoHabitacion.cs" />
     <Compile Include="Areas\AreaPaquetes\Models\Paquete\Era_sphereContext.cs" />
     <Compile Include="Areas\AreaPaquetes\Models\Paquete\InterfazLogicaPaquete.cs" />

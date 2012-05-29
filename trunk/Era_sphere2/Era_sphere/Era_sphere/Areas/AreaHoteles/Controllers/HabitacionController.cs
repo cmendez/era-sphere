@@ -21,6 +21,14 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             ViewData["nombre_hotel"] = hotel.razon_social;
             return View("HabitacionIndex");
         }
+
+        public ActionResult CrearMasivo(int id)
+        {
+            Hotel hotel = (new EraSphereContext()).hoteles.Find(id);
+            ViewData["id_hotel"] = id;
+            ViewData["nombre_hotel"] = hotel.razon_social;
+            return View("CrearMasivo");
+        }
         [GridAction]
         public ActionResult Select( int id_hotel )
         {

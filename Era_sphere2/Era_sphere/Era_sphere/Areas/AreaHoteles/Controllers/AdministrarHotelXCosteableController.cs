@@ -9,7 +9,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
     public class AdministrarHotelXCosteableXTemporadaController : Controller
     {
         //
-        // GET: /AreaHoteles/AdministrarHotelXCosteable/
+       /* // GET: /AreaHoteles/AdministrarHotelXCosteable/
 
         public ActionResult Index()
         {
@@ -25,6 +25,6 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index",lhxcxtv);
 
         }
-
+        */
     }
 }

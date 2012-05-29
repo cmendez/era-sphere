@@ -12,7 +12,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
     public class PoliticasController : Controller
     {
-        //
+      /*  //
         // GET: /AreaConfiguracion/Politicas/
         InterfazLogicaCadena cadena_logica = new LogicaCadena();
         public ActionResult Index()
@@ -35,6 +35,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View("Index", new GridModel(ubigeo_logica.retornarPaises()));
         }*/
 
-
+        */
     }
 }

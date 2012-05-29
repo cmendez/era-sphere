@@ -18,7 +18,7 @@ using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 
-using Era_sphere.Generics;
+//using Era_sphere.Generics;
 
 namespace Era_sphere
 {

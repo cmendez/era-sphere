@@ -45,9 +45,10 @@ namespace Era_sphere.Generics
         public string razon_social { get; set; }
         
         public byte[] foto { get; set; }
-        
+
         [DisplayName("Ciudad")]
-        public Ciudad ciudad { get; set; }
+        public int ciudadID { get; set; }
+        public virtual Ciudad ciudad { get; set; }
 
         
         [DisplayName("Pais")]

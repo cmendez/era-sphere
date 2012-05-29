@@ -23,7 +23,7 @@
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.PopUp)
+                            .Mode(GridEditMode.InLine)
                             .TemplateName("HabitacionViewTemplate")
                             .AdditionalViewData(new { id_hotel = @id_hotel }))
 

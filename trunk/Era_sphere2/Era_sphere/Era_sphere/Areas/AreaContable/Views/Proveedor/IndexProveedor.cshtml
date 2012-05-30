@@ -1,0 +1,61 @@
+﻿@using Era_sphere.Areas.AreaContable.Models
+@using Era_sphere.Generics;
+@model IEnumerable<ProveedorView>
+@using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "IndexProveedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Proveedores
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("ProveedoresGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.PopUp)
+                            .TemplateName("ProveedorViewTemplate"))
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.razon_social);
+            columns.Bound(p => p.ruc);
+            columns.Bound(p => p.direccion);
+            columns.Bound(p => p.correo);
+            columns.Bound(p => p.telefono);
+            columns.Bound(p => p.persona_contacto);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Proveedor")
+            .Insert("Insert", "Proveedor")
+            .Delete("Delete", "Proveedor")
+            .Update("Update", "Proveedor")
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

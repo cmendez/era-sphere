@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Era_sphere.Areas.AreaContable.Models.Producto
+namespace Era_sphere.Areas.AreaContable.Models
 {
     public class ProductoView
     {

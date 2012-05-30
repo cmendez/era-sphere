@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
 
-namespace Era_sphere.Areas.AreaContable.Models.Producto
+namespace Era_sphere.Areas.AreaContable.Models
 {
     public class LogicaProducto : InterfazLogicaProducto
     {
-      /*  EraSphereContext producto_context = new EraSphereContext();
+        EraSphereContext producto_context = new EraSphereContext();
         DBGenericQueriesUtil<Producto> database_table;
 
         public LogicaProducto()
@@ -44,6 +44,6 @@ namespace Era_sphere.Areas.AreaContable.Models.Producto
             Producto producto = database_table.retornarUnSoloElemento(producto_id);
             ProductoView producto_view = new ProductoView(producto);
             return producto_view;
-        }*/
+        }
     }
 }

@@ -18,10 +18,8 @@ namespace Era_sphere.Generics
                 
         public string apellido_materno { get; set; }
                 
-        public string dni { get; set; }
-       
-        public string pasaporte { get; set; }
-       
+        public string documento_identidad { get; set; }
+           
         public string correo_electronico { get; set; }
        
         public string direccion { get; set; }
@@ -52,11 +50,9 @@ namespace Era_sphere.Generics
        
         public string password { get; set; }
 
+        [ForeignKey("tipo")]
+        public int tipoID { get; set; }
         public TipoPersona tipo { get; set; }
 
-        public enum TipoPersona{
-            natural = 0,
-            juridico = 1
-        }
     }
 }

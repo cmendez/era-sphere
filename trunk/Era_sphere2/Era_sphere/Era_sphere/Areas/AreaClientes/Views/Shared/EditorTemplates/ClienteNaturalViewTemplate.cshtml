@@ -9,7 +9,6 @@
     var paises = (new EraSphereContext()).paises.ToList();
     var ciudades = (new EraSphereContext()).ciudades.ToList();
     var estados = (new EraSphereContext()).estados_cliente.ToList();
-    Model.tipo = Cliente.TipoPersona.natural;
 }
 @using (Html.BeginForm())
 {
@@ -18,13 +17,6 @@
     <fieldset>
     
         <legend>Cliente Natural</legend>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.tipo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.tipo)
-            @Html.ValidationMessageFor(model => model.tipo)
-        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.nombre)
         </div>
@@ -54,24 +46,17 @@
             @Html.ValidationMessageFor(model => model.ruc)
         </div>
         <div class="editor-label">
-            @Html.LabelFor(model => model.dni)
+            @Html.LabelFor(model => model.documento_identidad)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.dni)
-            @Html.ValidationMessageFor(model => model.dni)
+            @Html.EditorFor(model => model.documento_identidad)
+            @Html.ValidationMessageFor(model => model.documento_identidad)
         </div>
         <div class="editor-label">
-            @Html.LabelFor(model => model.pasaporte)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.pasaporte)
-            @Html.ValidationMessageFor(model => model.pasaporte)
-        </div>
-         <div class="editor-label">
             @Html.LabelFor(model => model.fecha_nacimiento)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.fecha_nacimiento)
+            @Html.Telerik().DatePickerFor(model => model.fecha_nacimiento)
             @Html.ValidationMessageFor(model => model.fecha_nacimiento)
         </div>
         <div class="editor-label"> @Html.LabelFor(model => model.paisID) </div>

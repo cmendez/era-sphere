@@ -20,6 +20,11 @@
             Mantenimiento de Clientes
         </h3>
     </div>
+    <div class="titlebar">
+        <h5>
+            Clientes Naturales
+        </h5>
+    </div>
     <div class="block_cont">
         @(Html.Telerik().Grid(Model)
         .Name("ClienteNaturalGrid")
@@ -38,6 +43,7 @@
             columns.Bound(p => p.apellido_paterno);
             columns.Bound(p => p.apellido_materno);
             columns.Bound(p => p.id_estado);
+            columns.Bound(p => p.fecha_nacimiento).Format("{0:dd/MM/yyyy}");
             //  columns.Bound(p => p.pais_nombre);
             //  columns.Bound(p => p.ciudad_nombre);
             //  columns.Bound(p => p.provincia);
@@ -56,15 +62,22 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-                    .Select("Select", "Cliente", new { tipoi = 0 })
-                    .Insert("Insert", "Cliente", new { tipoi = 0 })
-                    .Delete("Delete", "Cliente", new { tipoi = 0 })
-                    .Update("Update", "Cliente", new { tipoi = 0 })
+                    .Select("Select", "Cliente", new { tipoi = 1 })
+                    .Insert("Insert", "Cliente", new { tipoi = 1 })
+                    .Delete("Delete", "Cliente", new { tipoi = 1 })
+                    .Update("Update", "Cliente", new { tipoi = 1 })
         )
            )
 
     </div>
+    
+    <div style="height:20px;"></div>
 
+    <div class="titlebar">
+        <h5>
+            Clientes Jurídicos
+        </h5>
+    </div>
        <div class="block_cont">
         @(Html.Telerik().Grid(Model)
         .Name("ClienteJuridicoGrid")
@@ -100,10 +113,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Cliente", new { tipoi = 1 })
-            .Insert("Insert", "Cliente", new { tipoi = 1 })
-            .Delete("Delete", "Cliente", new { tipoi = 1 })
-            .Update("Update", "Cliente", new { tipoi = 1 })
+            .Select("Select", "Cliente", new { tipoi = 2 })
+            .Insert("Insert", "Cliente", new { tipoi = 2 })
+            .Delete("Delete", "Cliente", new { tipoi = 2 })
+            .Update("Update", "Cliente", new { tipoi = 2 })
         )
            )
 

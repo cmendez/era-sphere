@@ -8,7 +8,6 @@
     var paises = (new EraSphereContext()).paises.ToList();
     var ciudades = (new EraSphereContext()).ciudades.ToList();
     var estados = (new EraSphereContext()).estados_cliente.ToList();
-    Model.tipo = Cliente.TipoPersona.juridico;
 }
 @using (Html.BeginForm())
 {
@@ -17,13 +16,6 @@
     <fieldset>
     
         <legend>Cliente Juridico</legend>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.tipo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.tipo)
-            @Html.ValidationMessageFor(model => model.tipo)
-        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.razon_social)
         </div>

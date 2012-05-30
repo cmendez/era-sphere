@@ -9,6 +9,7 @@ using System.Data;
 
 namespace Era_sphere.Generics
 {
+    
     public partial class EraSphereContext : DbContext
     {
         public void seed(){
@@ -16,7 +17,19 @@ namespace Era_sphere.Generics
             seedUbigeo();
             seedEstadoEspacioRentable();
             seedEstadoCliente();
+            seedTipoPersona();
         }
+
+        public DbSet<TipoPersona> tipos_personas { get; set; }
+        public void seedTipoPersona()
+        {
+            TipoPersona natural = new TipoPersona { ID = 1, descripcion = "Natural" };
+            TipoPersona juridico = new TipoPersona { ID = 2, descripcion = "Juridico" };
+            tipos_personas.Add(natural);
+            tipos_personas.Add(juridico);
+            SaveChanges();
+        }
+
     }
 
     public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{

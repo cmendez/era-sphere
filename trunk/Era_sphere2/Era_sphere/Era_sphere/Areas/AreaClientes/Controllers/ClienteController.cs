@@ -24,8 +24,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         [GridAction]
         public ActionResult Select(int tipoi)
         {
-            Cliente.TipoPersona tipo = tipoi == 0 ? Cliente.TipoPersona.natural : Cliente.TipoPersona.juridico;
-            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipo == tipo)));
+            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
         
         }
         
@@ -33,14 +32,19 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         [GridAction]
         public ActionResult Insert(int tipoi)
         {
-            Cliente.TipoPersona tipo = tipoi == 0 ? Cliente.TipoPersona.natural : Cliente.TipoPersona.juridico;
             ClienteView cliente_view = new ClienteView();
+            cliente_view.nombre = "-";
+            cliente_view.apellido_materno = "-";
+            cliente_view.apellido_paterno = "-";
+            cliente_view.documento_identidad = "-";
+            cliente_view.razon_social = "-";
+            cliente_view.ruc = "-";
             if (TryUpdateModel(cliente_view))
             {
-                cliente_view.tipo = tipo;
+                cliente_view.tipoID = tipoi;
                 cliente_logica.agregarCliente(cliente_view);
             }
-            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c=>c.tipo == tipo)));
+            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
         }
 
         
@@ -48,10 +52,9 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         [GridAction]
         public ActionResult Delete(int? id, int tipoi)
         {
-            Cliente.TipoPersona tipo = tipoi == 0 ? Cliente.TipoPersona.natural : Cliente.TipoPersona.juridico;
             int cliente_id = id ?? -1;
             cliente_logica.eliminarCliente(cliente_id);
-            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c =>c.tipo == tipo)));
+            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
     
         }
        
@@ -59,9 +62,8 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         [GridAction]
         public ActionResult Update(ClienteView cliente, int tipoi)
         {
-            Cliente.TipoPersona tipo = tipoi == 0 ? Cliente.TipoPersona.natural : Cliente.TipoPersona.juridico;
             cliente_logica.modificarCliente(cliente);
-            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipo == tipo)));
+            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
             // return RedirectToAction("proveedor");
         }
 

@@ -115,8 +115,11 @@
     <Compile Include="Areas\AreaContable\Models\Proveedores\Proveedor.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\Adicional.cs" />
     <Compile Include="Areas\AreaEventos\Models\EventoXAmbiente\EventoXAmbiente.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Evento\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\EventoView.cs" />
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Evento\InterfazLogicaEvento.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Evento\LogicaEvento.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\AdministrarHotelXCosteableController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXCosteableXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionXHotelController.cs" />

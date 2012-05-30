@@ -9,11 +9,11 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
 {
     public class Evento:DBable
     {
-        [Required]
+        
         public string nombre { get; set; }
-        [Required]
+        
         public decimal precio_total { get; set; }
-        [Required]
+        
         public int num_participantes { get; set; }
     }
 }

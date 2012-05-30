@@ -29,7 +29,7 @@ td
 #cuenta_usuario , .cuenta_usuario{
 	position: relative;
 	left: 529px;
-	top: -280px;
+	top: -500px;
 }
 
 #detalle_cliente {
@@ -54,7 +54,7 @@ td
 
 #info_adicional, .info_adicional {
 	position: relative;
-	height : 400px;
+	height : 500px;
 	width: 500px;
 }
 

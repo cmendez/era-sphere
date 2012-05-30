@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -80,6 +81,12 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("SeleccionGrilla", new GridModel(comodidades_logica.retornarComodidades()));
         }
 
-
+        public void ComodidadesSeleccion(int[] checkedRecords)
+        {
+            checkedRecords = checkedRecords ?? new int[] { };
+            //return Controller
+            //volver a la vista anterior 
+            //falta el view de return
+        }
     }
 }

@@ -113,6 +113,9 @@
     <Compile Include="Areas\AreaContable\Models\Producto\ProductoContext.cs" />
     <Compile Include="Areas\AreaContable\Models\Producto\ProductoView.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedores\Proveedor.cs" />
+    <Compile Include="Areas\AreaContable\Models\Recibo\Boleta.cs" />
+    <Compile Include="Areas\AreaContable\Models\Recibo\Recibo.cs" />
+    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLinea.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\Adicional.cs" />
     <Compile Include="Areas\AreaEventos\Models\EventoXAmbiente\EventoXAmbiente.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\EraSphereContext.cs" />

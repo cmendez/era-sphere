@@ -17,7 +17,7 @@
 
     <div class = "form">
     <p>
-    <button class="t-button t-state-default submit" id="agregarPerfil"> Agregar Perfil </button>
+    <button class="t-button t-state-default submit" id="agregarPerfil"> Agregar Empleado </button>
     </p>
     </div>
  
@@ -73,49 +73,81 @@
 						</div>
 						<div class="block_cont">
 							<div class="form_row" >
-								<label> Tipo de cliente: </label>
-								<select name="tipo_cliente" id="tipo_cliente" class="select">
+								<label> Cargo: </label>
+								<select name="tipo_cargo" id="tipo_cargo" class="select">
 									<option value="none"> - </option>
 									<option value="persona_natural"> Persona natural</option>
 									<option value="persona_juridica"> Persona juridica</option>
 								</select>
 							</div>
-						<div id="cliente_juridico_form" ><!-- empieza juridico -->
+							<div id="cliente_natural_form">
 							<!-- empieza natural -->
 							<div class="form_row">
-							<label>Razon Social(*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="razon_social" id="razon_social"/>
+							<label>Nombres(*):</label>
+							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="nombre_cliente" id="nombre_cliente"/>
 							</div>
 							<div class="form_row">
-							<label> Ruc (*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="ruc" id="ruc_juridico"/>
+							<label> Apellido Paterno(*):</label>
+							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="apellido_paterno" id="apellido_paterno"/>
 							</div>
 							<div class="form_row">
-							<label> Pais:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="pais" id="pais_juridico"/>
+							<label> Apellido Materno(*):</label>
+							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="apellido_materno" id="apellido_materno"/>
 							</div>
 							<div class="form_row">
+							
+                            <label> Pais:</label>
+							<input class="input tipRight" type="text" style="width:300px;" name="pais" id="pais"/>
+							</div>
+							<!--
+                            <div class="form_row">
 							<label> Ciudad:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="ciudad" id="ciudad_juridico"/>
+							<input class="input tipRight" type="text" style="width:300px;" name="ciudad" id="ciudad"/>
 							</div>
 							<div class="form_row">
 							<label> Distrito:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="distrito" id="distrito_juridico"/>
+							<input class="input tipRight" type="text" style="width:300px;" name="distrito" id="distrito"/>
 							</div>
+                            -->
+                            
+                            <!-- 
+                             Si se aumenta 1, el top debe bajar en top / 2
+                            -->
 							<div class="form_row">
 							<label> Direccion:</label>
-							<input class="input tipRight" type="text" style="width:400px;" name="direccion" id="direccion_juridico"/>
+							<input class="input tipRight" type="text" style="width:400px;" name="direccion" id="direccion"/>
 							</div>
 							<div class="form_row">
 							<label> Correo Electronico:</label>
-							<input class="input tipRight" type="text" style="width:400px;" name="email" id="email_juridico"/>
+							<input class="input tipRight" type="text" style="width:400px;" name="email" id="email"/>
 							</div>
-							<div id="right_form_juridico" >
-								<div id="juridico_foto">
+							<div id="right_form_natural" style = "top:-400px">
+								<!--
+                                <div id="natural_foto">
 								<label> Foto: </label>
 								<img src="#" alt="exm" height=150 width=150/>
 								</div>
-								<div id="juridico_div_extra"> 
+                                -->
+								<div id="natural_div_extra"> 
+									<!--
+                                    <div class="form_row">
+									<label> Ruc: </label>
+									<input class="input tipRight" type="text" style="width: 300px;" name="ruc" id="ruc"/> 
+									</div>
+									-->
+                                    <label> Tipo Documento: </label>
+									<select name="tipo_documento_natural" class="select" style="width: 300px;">
+										<option value="dni"> DNI </option>
+										<option value="pasaporte"> Pasaporte </option>
+									</select>
+									<div class="form_row">
+									<label> Nro Documento: </label>
+									<input name="nro_documento_natural" class="input tipRight" type="text" style="width: 300px"/>
+									</div>
+									<div class="form_row">
+									<label> Fecha de Nacimiento </label>
+									<input class="input validate[required] tipTop" id="fecha_nacimiento" type="date" style="width: 290px;" name="inputtext" placeholder="" original-title=".tipTop - top tooltip by tipsy">
+									</div>
 									<div class="form_row">
 									<label> Telefono: </label>
 									<input name="telefono_natural" class="input tipRight" type="text" style="width: 300px"/>
@@ -186,6 +218,10 @@
 
     
 <script type = "text/javascript">
+
+    $('#fecha_nacimiento').datepicker({
+        dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-120:+0'
+    });
 
     $("#agregarPerfil").click(function () {
         //ajax

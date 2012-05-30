@@ -688,6 +688,18 @@ div.information .hide_btn:hover {
 	padding: 0 0 0 30px;
 }
 
+.titlebar h5 {
+	height: 28px;
+	color: #cfd7e4;
+	font-size: 11px;
+	margin: 0;
+	text-shadow: 1px 1px 0px #000000;
+	text-transform: uppercase;
+	line-height: 38px;
+	background: url('../images/block_title_bullet.png') 15px center no-repeat;
+	padding: 0 0 0 30px;
+}
+
 .titlebar .toggle {
 	width: 16px;
 	height: 17px;

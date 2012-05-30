@@ -29,12 +29,13 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             ViewBag.paises = paises;
             return View();
         }
-        [HttpPost]
-        public ActionResult Create(Cliente cliente)
+        
+        /*[HttpPost]
+        public ActionResult Create(ClienteView cliente)
         {
-            cliente.tipo = Cliente.TipoPersona.natural;
-            cliente.pais = (new EraSphereContext()).paises.Find(cliente.paisID);
-            cliente_logica.agregarCliente(cliente);
+            Cliente nuevo = new Cliente
+            //cliente.paisID = (new EraSphereContext()).paises.Find(cliente.paisID);
+            //cliente_logica.agregarCliente(cliente);
             return RedirectToAction("Index");
         }
 
@@ -44,11 +45,13 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
            cliente_logica.eliminarCliente(id);
            return RedirectToAction("Index");
         }
+        
         public ActionResult Delete(int id) {
             return View(cliente_logica.retornarCliente(id));
         }
+
         public ActionResult Detail(int id) {
             return View( "Detail_natural",cliente_logica.retornarCliente(id));
-        }
+        }*/
     }
 }

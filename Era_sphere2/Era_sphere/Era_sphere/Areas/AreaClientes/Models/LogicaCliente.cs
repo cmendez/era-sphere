@@ -11,7 +11,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
 {
     public class LogicaCliente: InterfazLogicaCliente
     {
-        EraSphereContext cliente_context=new EraSphereContext();
+        public EraSphereContext cliente_context=new EraSphereContext();
         DBGenericQueriesUtil<Cliente> database_table;
 
         public LogicaCliente()
@@ -19,29 +19,38 @@ namespace Era_sphere.Areas.AreaClientes.Models
             database_table = new DBGenericQueriesUtil<Cliente>(cliente_context, cliente_context.clientes);
         }
 
-        public List<Cliente> retornarClientes()
+        public List<ClienteView> retornarClientes()
         {
-            return database_table.retornarTodos();
+            
+            List<Cliente> clientes = database_table.retornarTodos();
+            List<ClienteView> clientes_view = new List<ClienteView>();
+
+            foreach (Cliente cliente in clientes) clientes_view.Add(new ClienteView(cliente));
+            return clientes_view;
         }
 
-        public Cliente retornarCliente(int clienteID)
+        public ClienteView retornarCliente(int id_cliente)
         {
-            return database_table.retornarUnSoloElemento(clienteID);
+            Cliente cliente = database_table.retornarUnSoloElemento(id_cliente);
+            ClienteView cliente_view = new ClienteView(cliente);
+            return cliente_view;
         }
 
-        public void modificarCliente(Cliente cliente)
+        public void modificarCliente(ClienteView cliente_view)
         {
+            Cliente cliente = cliente_view.deserializa(this);
             database_table.modificarElemento(cliente, cliente.ID);
+
         }
 
-        public void agregarCliente(Cliente cliente)
+        public void agregarCliente(ClienteView cliente_view)
         {
-            database_table.agregarElemento(cliente);
+            database_table.agregarElemento(cliente_view.deserializa(this));
         }
 
-        public void eliminarCliente(int clienteID)
+        public void eliminarCliente(int cliente_id)
         {
-            database_table.eliminarElemento(clienteID);
+            database_table.eliminarElemento(cliente_id);
         }
 
         public List<Cliente> buscarCliente(Cliente cliente_campos)

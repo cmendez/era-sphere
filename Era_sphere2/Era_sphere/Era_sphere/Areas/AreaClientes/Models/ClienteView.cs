@@ -17,18 +17,6 @@ namespace Era_sphere.Areas.AreaClientes.Models
         [DisplayName("Habitación Asignada")]
         public int id_habitacion { get; set; }
 
-       // public int id_hotel {get; set;}
-       // [ReadOnly(true)]
-       // [DisplayName("Hotel")]
-       // public string nombre {
-       //     get {
-                //TODO
-       //         return "";
-                //LogicaHotel hoteles = new LogicaHotel();
-                //return hoteles.retornarHotel(id_hotel).descripcion;
-       //     }
-       // }
-
         [DisplayName("Estado")]
         public EstadoCliente id_estado { get; set; }
 
@@ -114,6 +102,10 @@ namespace Era_sphere.Areas.AreaClientes.Models
         [DisplayName("Ciudad")]
         public int ciudadID { get; set; }
 
+
+        [Required]
+        [DisplayName("Tipo de persona")]
+        public Cliente.TipoPersona tipo { get; set; }
         //opcional
         //[DisplayName("Imagen")]
         
@@ -174,6 +166,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     ciudadID = this.ciudadID,
                     //dude
                     paisID = this.paisID,
+                    pais = logica.cliente_context.paises.Find(this.paisID),
                     puntos_cliente = this.puntos_cliente,
                   //  habitacion_asignada =
                    // pais =

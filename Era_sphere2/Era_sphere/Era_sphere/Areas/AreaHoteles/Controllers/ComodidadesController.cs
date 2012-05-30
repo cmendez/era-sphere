@@ -78,15 +78,16 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         public ActionResult SeleccionGrilla(int ID)
         {
 
-            return View("SeleccionGrilla", new GridModel(comodidades_logica.retornarComodidades()));
+            return View("SeleccionGrilla", comodidades_logica.retornarComodidades());
         }
 
-        public void ComodidadesSeleccion(int[] checkedRecords)
+        public ActionResult ComodidadesSeleccion(int[] checkedRecords)
         {
             checkedRecords = checkedRecords ?? new int[] { };
             //return Controller
             //volver a la vista anterior 
             //falta el view de return
+            return View();
         }
     }
 }

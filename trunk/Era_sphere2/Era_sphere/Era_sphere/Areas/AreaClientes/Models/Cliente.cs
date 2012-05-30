@@ -15,18 +15,10 @@ namespace Era_sphere.Areas.AreaClientes.Models
     
         public class Cliente : Persona
         {
-
-            public Cliente() 
-            {
-                //estado = EstadoCliente.sin_reserva;
-                //tipo = TipoCliente.natural;
-            }
-
-  //        [ForeignKey("Estado")]
+            [ForeignKey("Estado")]
             public int estadoID { get; set; }
             public virtual EstadoCliente estado { get; set; }
 
-//          [DisplayName("Tarjeta cliente")]
             public string tarjeta_cliente { get; set; }
 
             public Habitacion habitacion_asignada { get; set; }
@@ -34,7 +26,6 @@ namespace Era_sphere.Areas.AreaClientes.Models
             public int puntos_cliente { get; set; }
 
 
-            public int ciudadID { get; set; }
         }
 
 

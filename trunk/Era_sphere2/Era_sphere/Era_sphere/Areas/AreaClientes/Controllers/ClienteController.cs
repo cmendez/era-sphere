@@ -7,6 +7,7 @@ using Era_sphere.Models;
 using Era_sphere.Areas.AreaClientes.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 using Era_sphere.Generics;
+using Telerik.Web.Mvc;
 
 namespace Era_sphere.Areas.AreaClientes.Controllers
 {
@@ -14,44 +15,57 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
     {
         LogicaCliente cliente_logica = new LogicaCliente();
 
-        public ActionResult Index(Cliente cliente_busqueda)
+        public ActionResult Index()
         {
             ViewBag.clientes = cliente_logica.retornarClientes();
-            return View();
+            return View("IndexCliente");
         }
 
-        public ActionResult Create()
+        [GridAction]
+        public ActionResult Select(int tipoi)
         {
-            //var vals = Enum.GetValues(typeof(Cliente.EstadoCliente));
-            //var con = new UbigeoContext();
-            //con.Seed();
-            List<Pais> paises = (new EraSphereContext()).paises.ToList();
-            ViewBag.paises = paises;
-            return View();
+            Cliente.TipoPersona tipo = tipoi == 0 ? Cliente.TipoPersona.natural : Cliente.TipoPersona.juridico;
+            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipo == tipo)));
+        
         }
         
-        /*[HttpPost]
-        public ActionResult Create(ClienteView cliente)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Insert(int tipoi)
         {
-            Cliente nuevo = new Cliente
-            //cliente.paisID = (new EraSphereContext()).paises.Find(cliente.paisID);
-            //cliente_logica.agregarCliente(cliente);
-            return RedirectToAction("Index");
+            Cliente.TipoPersona tipo = tipoi == 0 ? Cliente.TipoPersona.natural : Cliente.TipoPersona.juridico;
+            ClienteView cliente_view = new ClienteView();
+            if (TryUpdateModel(cliente_view))
+            {
+                cliente_view.tipo = tipo;
+                cliente_logica.agregarCliente(cliente_view);
+            }
+            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c=>c.tipo == tipo)));
         }
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-           cliente_logica.eliminarCliente(id);
-           return RedirectToAction("Index");
-        }
         
-        public ActionResult Delete(int id) {
-            return View(cliente_logica.retornarCliente(id));
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Delete(int? id, int tipoi)
+        {
+            Cliente.TipoPersona tipo = tipoi == 0 ? Cliente.TipoPersona.natural : Cliente.TipoPersona.juridico;
+            int cliente_id = id ?? -1;
+            cliente_logica.eliminarCliente(cliente_id);
+            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c =>c.tipo == tipo)));
+    
+        }
+       
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Update(ClienteView cliente, int tipoi)
+        {
+            Cliente.TipoPersona tipo = tipoi == 0 ? Cliente.TipoPersona.natural : Cliente.TipoPersona.juridico;
+            cliente_logica.modificarCliente(cliente);
+            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipo == tipo)));
+            // return RedirectToAction("proveedor");
         }
 
-        public ActionResult Detail(int id) {
-            return View( "Detail_natural",cliente_logica.retornarCliente(id));
-        }*/
+
+
     }
 }

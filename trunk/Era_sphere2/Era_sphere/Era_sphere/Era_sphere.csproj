@@ -1021,7 +1021,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AreaCargos\Controllers\" />
     <Folder Include="Areas\AreaCargos\Views\Shared\" />
-    <Folder Include="Areas\AreaClientes\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Models\Ambientes\" />
     <Folder Include="Areas\AreaEmpleados\Controllers\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
@@ -1052,7 +1051,7 @@
     <Content Include="Areas\AreaReportes\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\AreaClientes\Views\Cliente\Index.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\IndexCliente.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\Create.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\Delete.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\Detail.cshtml" />
@@ -1108,6 +1107,8 @@
     <Content Include="Areas\AreaHoteles\Views\Habitacion\CrearMasivo.cshtml" />
     <Content Include="Areas\AreaContable\Views\Producto\IndexProducto.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\ProductoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Shared\EditorTemplates\ClienteNaturalViewTemplate.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Shared\EditorTemplates\ClienteJuridicoViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

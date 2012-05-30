@@ -14,11 +14,11 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public int ID { get; set; }
 
         //llega una habitacion
-        [DisplayName("Habitación Asignada")]
+        [DisplayName(@"Habitación Asignada")]
         public int id_habitacion { get; set; }
 
         [DisplayName("Estado")]
-        public EstadoCliente id_estado { get; set; }
+        public int id_estado { get; set; }
 
         [Required]
         [DisplayName("Tarjeta Cliente")]
@@ -30,37 +30,37 @@ namespace Era_sphere.Areas.AreaClientes.Models
         [Range(0,StringsDeValidaciones.infinito)]
         public int puntos_cliente { get; set; }
 
-        [Required]
+        //[Required]
         [DisplayName("Nombre (*)")]
         [StringLength(50)]
         public string nombre {get; set;}
 
-        [Required]
-        [DisplayName("Razón Social (*)")]
+        //[Required]
+        [DisplayName(@"Razón Social (*)")]
         [StringLength(100)]
         public string razon_social { get; set;}
 
-        [Required]
+        //[Required]
         [DisplayName("Apellido Paterno (*)")]
         [StringLength(28)]
         public string apellido_paterno {get; set;}
 
-        [Required]
+        //[Required]
         [DisplayName("Apellido Materno (*)")]
         [StringLength(28)]
         public string apellido_materno {get; set;}
         
-        [Required]
+        //[Required]
         [DisplayName("DNI (*)")]
         [StringLength(28)]
         public string dni {get; set;}
 
-        [Required]
+        //[Required]
         [DisplayName("Pasaporte (*)")]
         [StringLength(28)]
         public string pasaporte {get; set;}
 
-        [DisplayName("Correo Electrónico")]
+        [DisplayName(@"Correo Electrónico")]
         [StringLength(100)]
         public string correo_electronico { get; set; }
 
@@ -68,7 +68,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
         [StringLength(100)]
         public string direccion {get; set;}
 
-        [DisplayName("Teléfono")]
+        [DisplayName(@"Teléfono")]
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string telefono {get; set;}
 
@@ -94,11 +94,9 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public DateTime? fecha_nacimiento { get; set; }
 
 
-        [Required]
-        [DisplayName("Pais")]
+        [DisplayName(@"Pais")]
         public int paisID { get; set; }
 
-        [Required]
         [DisplayName("Ciudad")]
         public int ciudadID { get; set; }
 
@@ -108,7 +106,10 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public Cliente.TipoPersona tipo { get; set; }
         //opcional
         //[DisplayName("Imagen")]
-        
+
+        [DisplayName(@"Reservas Históricas")]
+        public int numero_reservas { get; set; }
+
         public ClienteView() { }
 
         public ClienteView(Cliente cliente)
@@ -130,10 +131,13 @@ namespace Era_sphere.Areas.AreaClientes.Models
             usuario = cliente.usuario;
             contrasenha = cliente.password;
             id_habitacion = cliente.id_habitacion_asisgnada;
-            id_estado = cliente.estado;
+            id_estado = cliente.estadoID;
             ciudadID = cliente.ciudadID;
             paisID = cliente.paisID;
             puntos_cliente = cliente.puntos_cliente;
+            numero_reservas = cliente.numero_reservas;
+            tarjeta_cliente = cliente.tarjeta_cliente;
+            tipo = cliente.tipo;
             //pais = logica.context_publico.paises.Find(this.paisID);
 
            
@@ -161,13 +165,18 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     usuario = this.usuario,
                     password = this.contrasenha,
                     id_habitacion_asisgnada = this.id_habitacion,
-                    estado = this.id_estado,
+                    estadoID = this.id_estado,
+                    estado = logica.cliente_context.estados_cliente.Find(this.id_estado),
                     //dude
                     ciudadID = this.ciudadID,
+                    ciudad = logica.cliente_context.ciudades.Find(this.ciudadID),
                     //dude
                     paisID = this.paisID,
                     pais = logica.cliente_context.paises.Find(this.paisID),
                     puntos_cliente = this.puntos_cliente,
+                    numero_reservas = this.numero_reservas,
+                    tarjeta_cliente = this.tarjeta_cliente,
+                    tipo = this.tipo,
                   //  habitacion_asignada =
                    // pais =
                    // ciudad =

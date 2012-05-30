@@ -59,15 +59,19 @@
     <div id="dialogEditar" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 46px; height: auto; display:none" scrolltop="0" scrollleft="0">
 	<div id="main" class="container_12"><!-- Body Wrapper Begin -->
 		<div id="body">
-			<div class="block big" style="position: relative"><!-- Block Begin -->
+			
+            <div class="block big" style="position: relative;">
+           
+            <!-- Block Begin -->
 				<div class="titlebar">
 					<!--
 					<h3>Mantenimento de Cliente</h3>
 					-->
 				</div>
 				<form class="form" action="">
-				<div class="block_cont">
-					<div id="datos_personales">
+				
+                <div class="block_cont">
+                	<div  id="datos_personales">
 						<div class="titlebar innertitle">
 							<h3>Datos Personales</h3>
 						</div>
@@ -165,20 +169,39 @@
 					<div id="info_adicional">
 					<div class="small-inner" id="detalle_cliente"style="margin-top: 10px;">
 						<div class="titlebar innertitle">
-							<h3>Detalle del Cliente</h3>
+							<h3>Detalle del Trabajo</h3>
 						</div>
 						<div class="block_cont">
 							<div class="form_row" id="estado_cliente">
 							<label> Estado: </label>
 							<select name="estado" class="select">
-								<option value="estado0"> estado0 </option>
-								<option value="estado1"> estado1 </option>
+								<option value="activo"> ACTIVO </option>
+								<option value="noactivo"> NO ACTIVO </option>
 							</select>
 							</div>
 							<div class="form_row">
-							<label> Reservas Historicas </label>
-							<input name="reservas_historicas" type="text" class="input" readonly="readonly" style="width:300px"/>
+							<label> Horario: </label>
+                                <p>&nbsp;L &nbsp;&nbsp; M &nbsp;&nbsp; M &nbsp;&nbsp; J &nbsp;&nbsp; V &nbsp;&nbsp;&nbsp; S &nbsp;&nbsp;&nbsp; D</p> 
+							    <input type = "checkbox" id = "chklunes" />
+                                <input type = "checkbox" id = "chkmartes" />
+                                <input type = "checkbox" id = "chklmiercoles" />
+                                <input type = "checkbox" id = "chkljueves" />
+                                <input type = "checkbox" id = "chklviernes" />
+                                <input type = "checkbox" id = "chklsabado" />
+                                <input type = "checkbox" id = "chkldomingo" />
 							</div>
+                            <div class="form_row">
+							<label> Horario Entrada: </label>
+                                <p>&nbsp;L &nbsp;&nbsp; M &nbsp;&nbsp; M &nbsp;&nbsp; J &nbsp;&nbsp; V &nbsp;&nbsp;&nbsp; S &nbsp;&nbsp;&nbsp; D</p> 
+							    <input id="lunesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="martesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="miercolesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="juevesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="viernesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="sabadoTimeIn" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="domingoTimeIn" class="input tipRight" type="text" style="width: 35px"/>
+							</div>
+
 						</div>
 					</div>
 					<div class="small-inner" id="cuenta_usuario" style="margin-top: 10px; width:400px">
@@ -192,16 +215,16 @@
 						</div>
 						<div class="form_row">
 						<label> Password:</label>
-						<input name="usuario" type="text" class="input" style="width:300px;"/>
+						<input name="usuario" type="password" class="input" style="width:300px;"/>
 						</div>
 						<div class="form_row">
-						<label> Tarjeta Cliente:</label>
-						<input name="usuario" type="text" class="input" style="width:300px"/>
+						<label> Repetir Password:</label>
+						<input name="usuario" type="password" class="input" style="width:300px"/>
 						</div>
 						</div>
 					</div>
 					</div>
-				</div>
+				 </div>
 				</form>
 			</div><!-- Block End -->
 		</div>
@@ -218,10 +241,45 @@
 
     
 <script type = "text/javascript">
-
+   
     $('#fecha_nacimiento').datepicker({
         dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-120:+0'
     });
+
+    $('#lunesTimeIn').timepicker({
+        hourGrid: 4,
+        stepMinute: 10,
+    });
+
+    $('#martesTimeIn').timepicker({
+        hourGrid: 4,
+        stepMinute: 10,
+    });
+
+    $('#miercolesTimeIn').timepicker({
+        hourGrid: 4,
+        stepMinute: 10,
+    });
+
+    $('#juevesTimeIn').timepicker({
+        hourGrid: 4,
+        stepMinute: 10,
+    });
+
+    $('#viernesTimeIn').timepicker({
+        hourGrid: 4,
+        minuteGrid: 10
+    });
+
+    $('#sabadoTimeIn').timepicker({
+        hourGrid: 4,
+        minuteGrid: 10
+    });
+    $('#domingoTimeIn').timepicker({
+        hourGrid: 4,
+        minuteGrid: 10
+    });
+    
 
     $("#agregarPerfil").click(function () {
         //ajax
@@ -253,7 +311,7 @@
         draggable: false,
         width: 1000,
         modal: true,
-        title: "Crear Perfil",
+        title: "Agregar Empleado",
         position: "top",
         buttons: {
             "Aceptar": function () {

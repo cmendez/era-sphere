@@ -15,6 +15,5 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
         List<TemporadaView> retornarTemporadas();
         TemporadaView retornarTemporada(int temporada_id);
         List<Temporada> buscarTemporada(Temporada temporada);
-
     }
 }

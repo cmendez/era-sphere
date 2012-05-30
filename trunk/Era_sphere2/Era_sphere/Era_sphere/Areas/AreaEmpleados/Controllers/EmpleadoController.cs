@@ -13,7 +13,12 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
+        }
+
+        public ActionResult CrearEmpleado() 
+        {
+            return View("CrearEmpleado");
         }
 
     }

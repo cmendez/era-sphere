@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "SeleccionGrilla";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
 
@@ -18,31 +19,45 @@
 
 
   @(Html.Telerik().Grid(Model)
-        .Name("ComodidadesGrid")
+        .Name("Grid")
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-            columns.Bound(c => c.ID)
-                   .ClientTemplate("<input type='checkbox' name='checkedRecords' value='<#= ID #>' />")
-                   .Title("check")
+            columns.Template(
+                        @<text>
+                            <input name="checkedRecords" type="checkbox" value="@item.ID" title="checkedRecords" />
+                        </text>
+                    )
+                   .Title("Seleccionar")
                    .Width(36);
             columns.Bound(p => p.ID);
             columns.Bound(p => p.descripcion);
-            columns.Command(commands =>
-            {
-                
-            });
         })
 
-        .Pageable()
-        .Sortable()
+            .Pageable()
+            .Sortable()
 
 
-        .DataBinding(dataBinding => dataBinding
-            .Ajax()
+            .DataBinding(dataBinding => dataBinding
+                .Ajax()
+            )
         )
-    )
-
+       
     </div>
+    <button class="t-button t-state-default" onclick="displayCheckedOrders()">Guardar Cambios</button>
+    <script type="text/javascript">
+        function displayCheckedOrders() {
+            var $checkedRecords = $(':checked');
+
+            if ($checkedRecords.length < 1) {
+                alert('Debe seleccionar comodidades');
+                return;
+            }   
+            //falta linkear 
+            $('#result').load('@Url.Action("ComodidadesSeleccion", "Comodidades")', $checkedRecords);
+            
+        }
+    </script>
+    <div id="result"></div>
     <!-- Table Wrapper End -->
 </div>

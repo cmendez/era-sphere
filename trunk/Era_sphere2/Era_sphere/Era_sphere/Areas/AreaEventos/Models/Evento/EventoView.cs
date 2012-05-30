@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Era_sphere.Areas.AreaEventos.Models
+namespace Era_sphere.Areas.AreaEventos.Models.Evento
 {
-    public class Evento
+    public class EventoView
     {
+
     }
 }

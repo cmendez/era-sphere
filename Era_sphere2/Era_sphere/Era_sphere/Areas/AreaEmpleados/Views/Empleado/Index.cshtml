@@ -192,7 +192,7 @@
 							</div>
                             <div class="form_row">
 							<label> Horario Entrada: </label>
-                                <p>&nbsp;L &nbsp;&nbsp; M &nbsp;&nbsp; M &nbsp;&nbsp; J &nbsp;&nbsp; V &nbsp;&nbsp;&nbsp; S &nbsp;&nbsp;&nbsp; D</p> 
+                                <p>&nbsp;L &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D</p> 
 							    <input id="lunesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
                                 <input id="martesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
                                 <input id="miercolesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
@@ -201,7 +201,25 @@
                                 <input id="sabadoTimeIn" class="input tipRight" type="text" style="width: 35px"/>
                                 <input id="domingoTimeIn" class="input tipRight" type="text" style="width: 35px"/>
 							</div>
-
+                             <div class="form_row">
+							<label> Horario Salida: </label>
+                                <p>&nbsp;L &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D</p> 
+							    <input id="lunesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="martesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="miercolesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="juevesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="viernesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="sabadoTimeOut" class="input tipRight" type="text" style="width: 35px"/>
+                                <input id="domingoTimeOut" class="input tipRight" type="text" style="width: 35px"/>
+							</div>
+                            <div class="form_row">
+									<label> Cvitae: </label>
+									<input name="telefono_natural" class="input tipRight" type="text" style="width: 300px"/>
+									</div>
+									<div class="form_row">
+									<label> Sueldo: </label>
+									<input name="celular_natural" class="input tipRight" type="text" style="width: 300px"/>
+									</div>
 						</div>
 					</div>
 					<div class="small-inner" id="cuenta_usuario" style="margin-top: 10px; width:400px">
@@ -235,7 +253,7 @@
    
     </div>
  <!-- para el modal amplio ftw!! -->
- <div id="mask" style="width: 1263px; height: 773px; display: none; opacity: 0.8; "></div>
+ <div id="mask" style="width: 1263px; height: 900px; display: none; opacity: 0.8; "></div>
  
 </div>
 
@@ -268,16 +286,50 @@
 
     $('#viernesTimeIn').timepicker({
         hourGrid: 4,
-        minuteGrid: 10
+        stepMinute: 10
     });
 
     $('#sabadoTimeIn').timepicker({
         hourGrid: 4,
-        minuteGrid: 10
+        stepMinute: 10
     });
     $('#domingoTimeIn').timepicker({
         hourGrid: 4,
-        minuteGrid: 10
+        stepMinute: 10
+    });
+
+    $('#lunesTimeOut').timepicker({
+        hourGrid: 4,
+        stepMinute: 10,
+    });
+
+    $('#martesTimeOut').timepicker({
+        hourGrid: 4,
+        stepMinute: 10,
+    });
+
+    $('#miercolesTimeOut').timepicker({
+        hourGrid: 4,
+        stepMinute: 10,
+    });
+
+    $('#juevesTimeOut').timepicker({
+        hourGrid: 4,
+        stepMinute: 10,
+    });
+
+    $('#viernesTimeOut').timepicker({
+        hourGrid: 4,
+        stepMinute: 10
+    });
+
+    $('#sabadoTimeOut').timepicker({
+        hourGrid: 4,
+        stepMinute: 10
+    });
+    $('#domingoTimeOut').timepicker({
+        hourGrid: 4,
+        stepMinute: 10
     });
     
 

@@ -24,6 +24,27 @@ namespace Era_sphere.Models
     {
         public List<Link> menu;
 
+        void agregarAreaEmpleados()
+        {
+            List<SubLink> AreaEmpleados = new List<SubLink>();
+            AreaEmpleados.Add(
+                    new SubLink
+                    {
+                        Nombre = "Administrar Empleados",
+                        Url = "/AreaEmpleados/Empleado"
+                    }
+            );
+            menu.Add(
+              new Link()
+              {
+                  Nombre = "Empleados",
+                  Url = "#",
+                  Icono = "icon_pen",
+                  Sublinks = AreaEmpleados
+              }
+              );
+        }
+
         void agregarAreaHotel() { 
         
             List<SubLink> AreaHoteles = new List<SubLink>();
@@ -121,11 +142,13 @@ namespace Era_sphere.Models
                 }
                 );
         }
+
+
         public NavegacionModel()
         {
 
             this.menu = new List<Link>();
-
+            agregarAreaEmpleados();
             agregarAreaHotel();
             agregarConfiguracion();
           

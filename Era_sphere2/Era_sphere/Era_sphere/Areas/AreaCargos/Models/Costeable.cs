@@ -11,6 +11,6 @@ namespace Era_sphere.Areas.AreaCargos.Models
     public abstract class Costeable : DBable
     {
         public virtual string nombre { get; set; }
-        public virtual decimal precio { get; set; }
+        public decimal precio { get; set; }
     }
 }

@@ -29,7 +29,8 @@
                 else {
                     localStorage.setItem("token", token);
                     var url = "/Home/Sistema";
-                    $(location).attr('href', url)
+                    $(location).attr('href', url);
+                    localStorage.setItem("usuario", u);
                     //$(this).load("@Url.Action("/../../Home/LoginResult")");
                 }
             }

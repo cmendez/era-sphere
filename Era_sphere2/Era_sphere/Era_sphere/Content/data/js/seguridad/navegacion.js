@@ -1,14 +1,35 @@
 ﻿$(document).ready(function () {
     var token = localStorage.getItem("token");
     if (token == null) {
-        alert("No seas Rata");
+        alert("No tienes Acceso");
         nsp_redirect()
     } else if (token == "") {
-        alert("No seas Rata");
+        alert("No tienes Acceso");
         nsp_redirect();
     } else {
         arma_menu(token);
     }
+
+    $("#name").html(localStorage.getItem("usuario"));
+
+    $("#licreado").click(function(){
+        $.ajax({
+            type: "POST", 
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "Cadena/CreateCadena", 
+            success: function (data) {
+                //alert(data.flag);
+                if (data.flag == 1) {
+                    alert ("La cadena ya fue creada, puede editarla");
+                }
+                else {
+                    $(location).attr('href', "Cadena/Create"); 
+                }
+            }
+        });
+    });
+
 
     var path = window.location.pathname;
     localStorage.setItem("logout", path);

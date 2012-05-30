@@ -28,6 +28,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View("Index", new GridModel(perfil_logica.retornarPerfiles()));
         }
 
+
+
         [HttpPost]
         public JsonResult nuevoPerfil(String nombre, String descripcion, String lista )
         {

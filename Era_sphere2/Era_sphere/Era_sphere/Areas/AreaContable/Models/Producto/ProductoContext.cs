@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 
-namespace Era_sphere.Areas.AreaContable.Models.Producto
+namespace Era_sphere.Areas.AreaContable.Models
 {
     public class ProductoContext
     {

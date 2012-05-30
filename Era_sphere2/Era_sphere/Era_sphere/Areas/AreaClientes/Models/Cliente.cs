@@ -15,8 +15,8 @@ namespace Era_sphere.Areas.AreaClientes.Models
     
         public class Cliente : Persona
         {
-            //[ForeignKey("Estado")]
-            //public int estadoID { get; set; }
+            [ForeignKey("estado")]
+            public int estadoID { get; set; }
             public virtual EstadoCliente estado { get; set; }
 
             public string tarjeta_cliente { get; set; }

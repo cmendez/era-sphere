@@ -5,106 +5,52 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Era_sphere.Areas.AreaContable.Models.Productos;
-using Era_sphere.Areas.AreaEventos.Models.Evento;
+using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Generics;
+using Telerik.Web.Mvc;
 
 namespace Era_sphere.Areas.AreaContable.Controllers
-{ 
+{
     public class ProductoController : Controller
     {
-        private EraSphereContext db = new EraSphereContext();
-
-        //
-        // GET: /AreaContable/Producto/
-
-        public ViewResult Index()
+        InterfazLogicaProducto producto_logica = new LogicaProducto();
+        public ActionResult Index()
         {
-            return View(db.productos.ToList());
+            return View("IndexProducto");
         }
 
-        //
-        // GET: /AreaContable/Producto/Details/5
-
-        public ViewResult Details(int id)
+        [GridAction]
+        public ActionResult Select()
         {
-            Producto producto = db.productos.Find(id);
-            return View(producto);
+            return View("Index", new GridModel(producto_logica.retornarProductos()));
         }
-
-        //
-        // GET: /AreaContable/Producto/Create
-
-        public ActionResult Create()
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Insert()
         {
-            return View();
-        } 
 
-        //
-        // POST: /AreaContable/Producto/Create
-
-        [HttpPost]
-        public ActionResult Create(Producto producto)
-        {
-            if (ModelState.IsValid)
+            ProductoView producto_view = new ProductoView();
+            if (TryUpdateModel(producto_view))
             {
-                db.productos.Add(producto);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
+                producto_logica.agregarProducto(producto_view);
+
             }
-
-            return View(producto);
+            return View("Index", new GridModel(producto_logica.retornarProductos()));
         }
-        
-        //
-        // GET: /AreaContable/Producto/Edit/5
- 
-        public ActionResult Edit(int id)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Delete(int? id)
         {
-            Producto producto = db.productos.Find(id);
-            return View(producto);
+            int producto_id = id ?? -1;
+            producto_logica.eliminarProducto(producto_id);
+            return View("Index", new GridModel(producto_logica.retornarProductos()));
         }
-
-        //
-        // POST: /AreaContable/Producto/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Producto producto)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Update(ProductoView p)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(producto).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(producto);
-        }
-
-        //
-        // GET: /AreaContable/Producto/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            Producto producto = db.productos.Find(id);
-            return View(producto);
-        }
-
-        //
-        // POST: /AreaContable/Producto/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            Producto producto = db.productos.Find(id);
-            db.productos.Remove(producto);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
+            producto_logica.modificarProducto(p);
+            return View("Index", new GridModel(producto_logica.retornarProductos()));
         }
     }
 }

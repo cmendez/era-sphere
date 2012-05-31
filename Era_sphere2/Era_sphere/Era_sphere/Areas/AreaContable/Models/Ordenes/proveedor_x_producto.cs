@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
-using Era_sphere.Areas.AreaContable.Models.Productos;
-using Era_sphere.Areas.AreaContable.Models.Proveedores;
+using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Generics;
 
 

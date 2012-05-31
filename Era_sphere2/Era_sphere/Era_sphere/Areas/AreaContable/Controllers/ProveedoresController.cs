@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Era_sphere.Areas.AreaContable.Models.Proveedores;
+using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Areas.AreaEventos.Models.Evento;
 using Era_sphere.Generics;
 

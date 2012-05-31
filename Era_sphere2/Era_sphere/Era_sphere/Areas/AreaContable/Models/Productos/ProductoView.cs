@@ -5,31 +5,28 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace Era_sphere.Areas.AreaContable.Models.Productos
+namespace Era_sphere.Areas.AreaContable.Models
 {
     public class ProductoView
     {
-        [Required]
-        [DisplayName("Descripcion")]
-        public string Descripcion { get; set; }
-        
-        [DisplayName("ID Moneda")]
-        public int ID { get; set; }
-
-
         public ProductoView() { }
-        
-        public ProductoView(Producto producto) 
+        public ProductoView(Producto producto)
         {
             ID = producto.ID;
-            Descripcion = producto.descripcion;
+            descripcion = producto.descripcion;
         }
+        [Required, StringLength(50)]
+        [DisplayName("Descripcion")]
+        public string descripcion { get; set; }
 
-        public Producto deserializa()
+        [DisplayName("ID Producto")]
+        public int ID { get; set; }
+
+        public Producto deserializa(InterfazLogicaProducto logica)
         {
             return new Producto
             {
-                descripcion = this.Descripcion,
+                descripcion = this.descripcion,
                 ID = this.ID
             };
         }

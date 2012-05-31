@@ -8,7 +8,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
 {
     public class LogicaComodidades : InterfazLogicaComodidades
     {
-        ComodidadesContext comodidad_context = new ComodidadesContext();
+        EraSphereContext comodidad_context = new EraSphereContext();
         DBGenericQueriesUtil<Comodidad> database_table;
         //DBGenericQueriesUtil<EstadoComodidad> table_estado;
 

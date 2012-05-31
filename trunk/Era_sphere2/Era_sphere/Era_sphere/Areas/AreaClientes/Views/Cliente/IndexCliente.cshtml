@@ -1,14 +1,17 @@
 ﻿@using Era_sphere.Areas.AreaClientes.Models
 @using Era_sphere.Generics;
-@model IEnumerable<ClienteView>
 @using Telerik.Web.Mvc.UI
+@model IEnumerable<ClienteNaturalView>
 @{
     ViewBag.Title = "IndexHotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var paises = (new EraSphereContext()).paises.ToList();
-    var ciudades = (new EraSphereContext()).ciudades.ToList();
-    var estados = (new EraSphereContext()).estados_cliente.ToList();
+   // var paises = (new EraSphereContext()).paises.ToList();
+   // var ciudades = (new EraSphereContext()).ciudades.ToList();
+   // var estados = (new EraSphereContext()).estados_cliente.ToList();
 }
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
@@ -22,50 +25,9 @@
         </h5>
     </div>
     <div class="block_cont">
-        @(Html.Telerik().Grid(Model)
-        .Name("ClienteNaturalGrid")
-        .Localizable("es-ES")
-        .Filterable()
-        .ToolBar(commands => commands.Insert())
-        .Editable(editing => editing
-                            .Mode(GridEditMode.PopUp)
-                            .TemplateName("ClienteNaturalViewTemplate"))
-
-        .DataKeys(key => key.Add(c => c.ID))
-        .Columns(columns =>
-        {
-            columns.Bound(p => p.ID);
-            columns.Bound(p => p.nombre);
-            columns.Bound(p => p.apellido_paterno);
-            columns.Bound(p => p.apellido_materno);
-            columns.Bound(p => p.id_estado);
-            //columns.Bound(p => p.fecha_nacimiento).Format("{0:dd/MM/yyyy}");
-            columns.Bound(p => p.tipoID);
-            //  columns.Bound(p => p.pais_nombre);
-            //  columns.Bound(p => p.ciudad_nombre);
-            //  columns.Bound(p => p.provincia);
-            //  columns.ForeignKey(p => p.paisID, paises, "ID", "nombre");
-            columns.Command(commands =>
-            {
-                commands.Edit().ButtonType(GridButtonType.Image);
-                commands.Delete().ButtonType(GridButtonType.Image);
-                commands.Custom("mostrar").Text("Mostrar").
-                    DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("Mostrar", "Cliente");
-            }).Width(160);
-        })
-
-        .Pageable()
-        .Sortable()
-
-                .ClientEvents(events => events.OnComplete("onComplete"))
-                .DataBinding(dataBinding => dataBinding
-                    .Ajax().Select("_CustomCommand", "Cliente")
-                    .Select("Select", "Cliente", new { tipoi = 1 })
-                    .Insert("Insert", "Cliente", new { tipoi = 1 })
-                    .Delete("Delete", "Cliente", new { tipoi = 1 })
-                    .Update("Update", "Cliente", new { tipoi = 1 })
-        )
-           )
+       @{
+           //Html.RenderPartial("ClienteNaturalIndexView");
+          }
     </div>
     <div style="height: 20px;">
     </div>
@@ -75,73 +37,9 @@
         </h5>
     </div>
     <div class="block_cont">
-        @(Html.Telerik().Grid(Model)
-        .Name("ClienteJuridicoGrid")
-        .Localizable("es-ES")
-        .Filterable()
-        .ToolBar(commands => commands.Insert())
-        .Editable(editing => editing
-                            .Mode(GridEditMode.PopUp)
-                            .TemplateName("ClienteJuridicoViewTemplate"))
-
-        .DataKeys(key => key.Add(c => c.ID))
-        .Columns(columns =>
-        {
-            columns.Bound(p => p.ID);
-            columns.Bound(p => p.razon_social);
-            columns.Bound(p => p.ruc);
-            columns.ForeignKey(p => p.id_estado, new SelectList(estados, "ID", "descripcion"));
-            //  columns.Bound(p => p.pais_nombre);
-            //  columns.Bound(p => p.ciudad_nombre);
-            //  columns.Bound(p => p.provincia);
-            //  columns.ForeignKey(p => p.paisID, paises, "ID", "nombre");
-            columns.Command(commands =>
-            {
-                commands.Edit().ButtonType(GridButtonType.Image);
-                commands.Delete().ButtonType(GridButtonType.Image);
-                commands.Custom("mostrar").Text("Mostrar").
-                    DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("Mostrar", "Cliente");
-
-            }).Width(160);
-        })
-
-        .Pageable()
-        .Sortable()
-
-        .ClientEvents(events => events.OnComplete("onComplete"))
-        .DataBinding(dataBinding => dataBinding
-            .Ajax().Select("_CustomCommand", "Cliente")
-            .Select("Select", "Cliente", new { tipoi = 2 })
-            .Insert("Insert", "Cliente", new { tipoi = 2 })
-            .Delete("Delete", "Cliente", new { tipoi = 2 })
-            .Update("Update", "Cliente", new { tipoi = 2 })
-        )
-           )
+        @{
+            Html.RenderPartial("ClienteJuridicoIndexView");
+           }
     </div>
     <!-- Table Wrapper End -->
 </div>
-@(Html.Telerik().Window()
-    .Name("Detalle").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).LoadContentFrom("ClienteJuridicoShow", "Cliente"))
-
-<script type="text/javascript">
-    function onComplete(e) {
-        if (e.name == "mostrar") {
-            var detailModal = $("#Detalle").data("tWindow");
-            var cliente = e.response.cliente;
-            $("#detalle-cliente-juridico")
-            .find("#razon_social").val(cliente.razon_social).end()
-            .find("#ruc").val(cliente.ruc).end()
-            .find("#telefono").val(cliente.telefono).end()
-            .find("#celular").val(cliente.celular).end()
-            .find("#direccion").val(cliente.direccion).end()
-            .find("#correo_electronico").val(cliente.correo_electronico).end()
-            .find("#numero_reservas").val(cliente.numero_reservas).end()
-            .find("#usuario").val(cliente.usuario).end()
-            .find("#tarjeta_cliente").val(cliente.tarjeta_cliente).end()
-            .find("#paisID").val(e.response.pais).end()
-            .find("#id_estado").val(e.response.estado).end()
-            .find("#ciudadID").val(e.response.ciudad).end()
-            detailModal.center().open();
-        }
-    }
-</script>

@@ -70,7 +70,8 @@
     <Compile Include="Areas\AreaClientes\AreaClientesAreaRegistration.cs" />
     <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs" />
     <Compile Include="Areas\AreaClientes\Models\Cliente.cs" />
-    <Compile Include="Areas\AreaClientes\Models\ClienteView.cs" />
+    <Compile Include="Areas\AreaClientes\Models\ClienteNaturalView.cs" />
+    <Compile Include="Areas\AreaClientes\Models\ClienteJuridicoView.cs" />
     <Compile Include="Areas\AreaClientes\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaClientes\Models\EstadoCliente.cs" />
     <Compile Include="Areas\AreaClientes\Models\InterfazLogicaCliente.cs" />
@@ -1135,6 +1136,8 @@
     <Content Include="Areas\AreaCargos\Views\Web.config" />
     <Content Include="Areas\AreaConfiguracion\Views\Servicio\ServiciosIndex.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Shared\ClienteNaturalIndexView.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXPreciableXTemporadaViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />

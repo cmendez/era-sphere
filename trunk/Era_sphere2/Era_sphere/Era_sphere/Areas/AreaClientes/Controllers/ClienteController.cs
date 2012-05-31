@@ -17,65 +17,90 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.clientes = cliente_logica.retornarClientes();
             return View("IndexCliente");
         }
 
         [GridAction]
-        public ActionResult Select(int tipoi)
+        public ActionResult SelectNatural()
         {
-            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
+            return View("IndexCliente", new GridModel(cliente_logica.retonarClientesNaturales()));
         
+        }
+        [GridAction]
+        public ActionResult SelectJuridico()
+        {
+            return View("IndexCliente", new GridModel(cliente_logica.retonarClientesJuridicos()));
+
         }
         
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Insert(int tipoi)
+        public ActionResult InsertNatural()
         {
-            ClienteView cliente_view = new ClienteView();
-            cliente_view.nombre = "-";
-            cliente_view.apellido_materno = "-";
-            cliente_view.apellido_paterno = "-";
-            cliente_view.documento_identidad = "-";
-            cliente_view.razon_social = "-";
-            cliente_view.ruc = "-";
+            ClienteNaturalView cliente_view = new ClienteNaturalView();
             if (TryUpdateModel(cliente_view))
             {
-                cliente_view.tipoID = tipoi;
-                cliente_logica.agregarCliente(cliente_view);
+                cliente_logica.agregarCliente(cliente_view.deserializa(this.cliente_logica));
             }
-            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
+            return View("IndexCliente", new GridModel(cliente_logica.retonarClientesNaturales()));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult InsertJuridico()
+        {
+            ClienteJuridicoView cliente_view = new ClienteJuridicoView();
+            if (TryUpdateModel(cliente_view))
+            {
+                cliente_logica.agregarCliente(cliente_view.deserializa(this.cliente_logica));
+            }
+            return View("IndexCliente", new GridModel(cliente_logica.retonarClientesJuridicos()));
         }
 
         
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Delete(int? id, int tipoi)
+        public ActionResult DeleteNatural(int? id)
         {
             int cliente_id = id ?? -1;
             cliente_logica.eliminarCliente(cliente_id);
-            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
-    
+            return View("IndexCliente", new GridModel(cliente_logica.retonarClientesNaturales()));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult DeleteJuridico(int? id)
+        {
+            int cliente_id = id ?? -1;
+            cliente_logica.eliminarCliente(cliente_id);
+            return View("IndexCliente", new GridModel(cliente_logica.retonarClientesJuridicos()));
         }
        
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Update(ClienteView cliente, int tipoi)
+        public ActionResult UpdateNatural(ClienteNaturalView cliente)
         {
-            cliente.tipoID = tipoi;
-            cliente_logica.modificarCliente(cliente);
-            return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
-            // return RedirectToAction("proveedor");
+            cliente_logica.modificarCliente(cliente.deserializa(cliente_logica));
+            return View("IndexCliente", new GridModel(cliente_logica.retonarClientesNaturales()));
         }
 
-        public JsonResult Mostrar(int id)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult UpdateJuridico(ClienteJuridicoView cliente)
         {
-            var cliente_view = cliente_logica.retornarCliente(id);
-            var cliente = cliente_view.deserializa(cliente_logica);
+            cliente_logica.modificarCliente(cliente.deserializa(cliente_logica));
+            return View("IndexCliente", new GridModel(cliente_logica.retonarClientesJuridicos()));
+        }
+
+   
+        public JsonResult MostrarJuridico(int id)
+        {
+            var cliente = cliente_logica.retornarCliente(id);
+            var cliente_view = new ClienteJuridicoView(cliente);
             string pais = cliente.pais.nombre;
             string estado = cliente.estado.descripcion;
             string ciudad = cliente.ciudad.nombre;
-            return Json(new { cliente = cliente_view, estado = estado, pais = pais, ciudad = ciudad });
+            return Json(new { cliente = cliente_view, estado = estado, pais = pais, ciudad = ciudad }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ClienteJuridicoShow()

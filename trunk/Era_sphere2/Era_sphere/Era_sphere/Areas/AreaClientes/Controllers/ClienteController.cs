@@ -70,9 +70,17 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
 
         public JsonResult Mostrar(int id)
         {
-            var cliente = cliente_logica.retornarCliente(id);
-            return Json(new { cliente = cliente });
+            var cliente_view = cliente_logica.retornarCliente(id);
+            var cliente = cliente_view.deserializa(cliente_logica);
+            string pais = cliente.pais.nombre;
+            string estado = cliente.estado.descripcion;
+            string ciudad = cliente.ciudad.nombre;
+            return Json(new { cliente = cliente_view, estado = estado, pais = pais, ciudad = ciudad });
         }
 
+        public ActionResult ClienteJuridicoShow()
+        {
+            return View("ClienteJuridicoShowTemplate");
+        }
     }
 }

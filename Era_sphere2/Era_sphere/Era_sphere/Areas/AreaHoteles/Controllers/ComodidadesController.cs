@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -77,17 +78,17 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
 
         public ActionResult SeleccionGrilla(int ID)
         {
-
+            ViewBag.tipohabitacion = ID;
             return View("SeleccionGrilla", comodidades_logica.retornarComodidades());
         }
 
-        public ActionResult ComodidadesSeleccion(int[] checkedRecords)
+        public ActionResult ComodidadesSeleccion(int[] checkedRecords,int id)
         {
             checkedRecords = checkedRecords ?? new int[] { };
-            //return Controller
-            //volver a la vista anterior 
-            //falta el view de return
-            return View();
+            
+            LogicaTipoHabitacion logicaTH = new LogicaTipoHabitacion();
+            logicaTH.agregarComodidades(id,checkedRecords);
+            return RedirectToAction("Index", "TipoHabitacion");
         }
     }
 }

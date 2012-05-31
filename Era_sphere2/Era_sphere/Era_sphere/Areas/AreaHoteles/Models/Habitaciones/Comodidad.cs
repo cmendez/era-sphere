@@ -11,5 +11,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
     {
         [DisplayName("Descripcion")]
         public string descripcion { get; set; }
+
     }
 }

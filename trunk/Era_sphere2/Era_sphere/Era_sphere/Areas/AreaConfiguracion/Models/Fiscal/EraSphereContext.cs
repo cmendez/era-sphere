@@ -6,8 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using Era_sphere.Areas.AreaConfiguracion.Models.Perfiles;
 using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
-using Era_sphere.Areas.AreaContable.Models.Productos;
-using Era_sphere.Areas.AreaContable.Models.Proveedores;
+using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Areas.AreaContable.Models.Ordenes;
 
 namespace Era_sphere.Generics

@@ -4,14 +4,12 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Era_sphere.Generics;
 
-namespace Era_sphere.Areas.AreaContable.Models.Productos
+namespace Era_sphere.Areas.AreaContable.Models
 {
-    public class Producto
+    public class Producto : DBable
     {
-        [Key]
-        public int ID { get; set; }
-
         public String descripcion { get; set; }
     }
 }

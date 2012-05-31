@@ -31,7 +31,7 @@
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
-                commands.Custom("mostrar").Text("Mostrar").
+                commands.Custom("mostrar_juridico").Text("Mostrar").
                     DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("MostrarJuridico", "Cliente");
 
             }).Width(160);
@@ -52,12 +52,12 @@
 
            
 @(Html.Telerik().Window()
-    .Name("Detalle").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).LoadContentFrom("ClienteJuridicoShow", "Cliente"))
+    .Name("DetalleJuridico").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).LoadContentFrom("ClienteJuridicoShow", "Cliente"))
 
 <script type="text/javascript">
     function onComplete(e) {
-        if (e.name == "mostrar") {
-            var detailModal = $("#Detalle").data("tWindow");
+        if (e.name == "mostrar_juridico") {
+            var detailModal = $("#DetalleJuridico").data("tWindow");
             var cliente = e.response.cliente;
             $("#detalle-cliente-juridico")
             .find("#_razon_social").val(cliente.razon_social).end()
@@ -67,6 +67,25 @@
             .find("#_direccion").val(cliente.direccion).end()
             .find("#_correo_electronico").val(cliente.correo_electronico).end()
             .find("#_numero_reservas").val(cliente.numero_reservas).end()
+            .find("#_usuario").val(cliente.usuario).end()
+            .find("#_tarjeta_cliente").val(cliente.tarjeta_cliente).end()
+            .find("#_paisID").val(e.response.pais).end()
+            .find("#_id_estado").val(e.response.estado).end()
+            .find("#_ciudadID").val(e.response.ciudad).end()
+            detailModal.center().open();
+        } else if (e.name == "mostrar_natural") {
+            var detailModal = $("#DetalleNatural").data("tWindow");
+            var cliente = e.response.cliente;
+            $("#detalle-cliente-juridico")
+            .find("#_nombre").val(cliente.nombre).end()
+            .find("#_apellido_paterno").val(cliente.apellido_paterno).end()
+            .find("#_apellido_materno").val(cliente.apellido_materno).end()
+            .find("#_ruc").val(cliente.ruc).end()
+            .find("#_telefono").val(cliente.telefono).end()
+            .find("#_celular").val(cliente.celular).end()
+            .find("#_direccion").val(cliente.direccion).end()
+            .find("#_correo_electronico").val(cliente.correo_electronico).end()
+            .find("#_id_habitacion").val(cliente.id_habitacion).end()
             .find("#_usuario").val(cliente.usuario).end()
             .find("#_tarjeta_cliente").val(cliente.tarjeta_cliente).end()
             .find("#_paisID").val(e.response.pais).end()

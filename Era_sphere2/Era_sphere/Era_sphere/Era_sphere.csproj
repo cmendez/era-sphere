@@ -1135,10 +1135,11 @@
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\AreaCargos\Views\Web.config" />
     <Content Include="Areas\AreaConfiguracion\Views\Servicio\ServiciosIndex.cshtml" />
-    <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\ClienteNaturalShowTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteNaturalIndexView.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXPreciableXTemporadaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

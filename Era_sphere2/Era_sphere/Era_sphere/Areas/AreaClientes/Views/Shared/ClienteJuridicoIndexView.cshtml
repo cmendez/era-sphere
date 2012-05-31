@@ -61,17 +61,17 @@
             var cliente = e.response.cliente;
             $("#detalle-cliente-juridico")
             .find("#_razon_social").val(cliente.razon_social).end()
-             .find("#ruc").val(cliente.ruc).end()
-            .find("#telefono").val(cliente.telefono).end()
-            .find("#celular").val(cliente.celular).end()
-            .find("#direccion").val(cliente.direccion).end()
-            .find("#correo_electronico").val(cliente.correo_electronico).end()
-            .find("#numero_reservas").val(cliente.numero_reservas).end()
-            .find("#usuario").val(cliente.usuario).end()
-            .find("#tarjeta_cliente").val(cliente.tarjeta_cliente).end()
-            .find("#paisID").val(e.response.pais).end()
-            .find("#id_estado").val(e.response.estado).end()
-            .find("#ciudadID").val(e.response.ciudad).end()
+            .find("#_ruc").val(cliente.ruc).end()
+            .find("#_telefono").val(cliente.telefono).end()
+            .find("#_celular").val(cliente.celular).end()
+            .find("#_direccion").val(cliente.direccion).end()
+            .find("#_correo_electronico").val(cliente.correo_electronico).end()
+            .find("#_numero_reservas").val(cliente.numero_reservas).end()
+            .find("#_usuario").val(cliente.usuario).end()
+            .find("#_tarjeta_cliente").val(cliente.tarjeta_cliente).end()
+            .find("#_paisID").val(e.response.pais).end()
+            .find("#_id_estado").val(e.response.estado).end()
+            .find("#_ciudadID").val(e.response.ciudad).end()
             detailModal.center().open();
         }
     }

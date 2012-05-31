@@ -53,7 +53,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
         }
         public List<ClienteNaturalView> retonarClientesNaturales()
         {
-            List<Cliente> clientes = database_table.retornarTodos();
+            List<Cliente> clientes = database_table.retornarTodos().Where(c => c.tipoID == 1).ToList();
             List<ClienteNaturalView> clientes_view = new List<ClienteNaturalView>();
 
             foreach (Cliente cliente in clientes) clientes_view.Add(new ClienteNaturalView(cliente));
@@ -61,7 +61,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
         }
         public List<ClienteJuridicoView> retonarClientesJuridicos()
         {
-            List<Cliente> clientes = database_table.retornarTodos();
+            List<Cliente> clientes = database_table.retornarTodos().Where(c => c.tipoID == 2).ToList();
             List<ClienteJuridicoView> clientes_view = new List<ClienteJuridicoView>();
 
             foreach (Cliente cliente in clientes) clientes_view.Add(new ClienteJuridicoView(cliente));

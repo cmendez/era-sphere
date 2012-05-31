@@ -52,16 +52,17 @@
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
-                
-            });
+                commands.Custom("mostrar").Text("Mostrar").
+                    DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("Mostrar", "Cliente");
+            }).Width(160);
         })
 
         .Pageable()
         .Sortable()
 
-
-        .DataBinding(dataBinding => dataBinding
-            .Ajax()
+                .ClientEvents(events => events.OnComplete("onComplete"))
+                .DataBinding(dataBinding => dataBinding
+                    .Ajax().Select("_CustomCommand", "Cliente")
                     .Select("Select", "Cliente", new { tipoi = 1 })
                     .Insert("Insert", "Cliente", new { tipoi = 1 })
                     .Delete("Delete", "Cliente", new { tipoi = 1 })
@@ -103,16 +104,18 @@
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
+                commands.Custom("mostrar").Text("Mostrar").
+                    DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("Mostrar", "Cliente");
 
-            });
+            }).Width(160);
         })
 
         .Pageable()
         .Sortable()
 
-
+        .ClientEvents(events => events.OnComplete("onComplete"))
         .DataBinding(dataBinding => dataBinding
-            .Ajax()
+            .Ajax().Select("_CustomCommand", "Cliente")
             .Select("Select", "Cliente", new { tipoi = 2 })
             .Insert("Insert", "Cliente", new { tipoi = 2 })
             .Delete("Delete", "Cliente", new { tipoi = 2 })
@@ -123,3 +126,25 @@
     </div>
     <!-- Table Wrapper End -->
 </div>
+
+@(Html.Telerik().Window()
+    .Name("Detalle").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).Content(
+    @<text>
+        <div id="detalle-cliente">
+            <d1>
+            <dt>ID</dt><dd></dd>
+            </d1>
+        </div>
+    </text>))
+
+<script type="text/javascript">
+    function onComplete(e) {
+        if (e.name == "mostrar") {
+            var detailModal = $("#Detalle").data("tWindow");
+            var cliente = e.response.cliente;
+            $("#detalle-cliente")
+            .find("dd").text(cliente.ID).end();
+            detailModal.center().open();
+        }
+    }
+</script>

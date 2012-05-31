@@ -12,8 +12,10 @@ using Era_sphere.Areas.AreaContable.Models.Productos;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
-    public class Servicio : Costeable
+    public class Servicio : Preciable
     {
+        //public string descripcion { get; set; }
+
         [ForeignKey("tipo_servicio")]
         public int? tipo_servicioID { get; set; }
         public TipoServicio tipo_servicio { get; set; }

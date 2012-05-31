@@ -6,11 +6,13 @@ using Era_sphere.Generics;
 using System.ComponentModel.DataAnnotations;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
+using Era_sphere.Areas.AreaCargos.Models;
+
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class Ambiente: DBable
+    public class Ambiente: Preciable
     {
-        public string nombre { get; set; }
+        public string descripcion { get; set; }
         public int capacidad_maxima { get; set; }
         public int num_niveles { get; set; }
         public string detalle { get; set; }

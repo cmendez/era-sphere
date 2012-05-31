@@ -1,0 +1,61 @@
+﻿
+@using Era_sphere.Areas.AreaHoteles.Models.HotelXPreciableXTemporadaNM;
+@using Era_sphere.Generics;
+@model IEnumerable<HotelXPreciableXTemporadaView>
+@using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "IndexHotelXPreciableXTemporada";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var hotelID = ViewData["hotelID"];
+}
+
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            PreciablesXTemporada
+        </h3>
+    </div>
+    <div class="block_cont">
+        <p> Hotel @ViewData["hotel"] </p>   
+        @(Html.Telerik().Grid(Model)
+        .Name("HotelXPreciableXTemporadaGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.PopUp)
+                            .TemplateName("HotelXPreciableXTemporadaViewTemplate"))
+
+        .DataKeys(key => key.Add(v => v.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(v => v.preciable_descripcion);
+            columns.Bound(v => v.tt_desc);
+            columns.Bound(v => v.t_desc);
+            columns.Bound(v => v.precio);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "HotelXPreciableXTemporada", new { id = @hotelID })
+            .Insert("Insert", "HotelXPreciableXTemporada", new { id = @hotelID })
+            .Delete("Delete", "HotelXPreciableXTemporada", new { id_hotel = @hotelID })
+            .Update("Update", "HotelXPreciableXTemporada", new { id_hotel = @hotelID })
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

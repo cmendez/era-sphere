@@ -15,7 +15,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
     public class Servicio : Costeable
     {
         [ForeignKey("tipo_servicio")]
-        public int tipo_servicioID { get; set; }
+        public int? tipo_servicioID { get; set; }
         public TipoServicio tipo_servicio { get; set; }
 
         public ICollection<Producto> productos { get; set; }
@@ -26,7 +26,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public int repeticiones { get; set; }
 
         [ForeignKey("espacio_rentable")]
-        public int espacio_rentableID { get; set; }
+        public int? espacio_rentableID { get; set; }
         public EspacioRentable espacio_rentable { get; set; }
 
         

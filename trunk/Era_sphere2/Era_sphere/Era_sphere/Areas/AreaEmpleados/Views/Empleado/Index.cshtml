@@ -10,19 +10,19 @@
     <!-- Block Begin -->
     <div class="titlebar">
         <h3>
-            Mantenimento de Empleados
+            Mantenimiento de Empleados
         </h3>
     </div>
     <div class="block_cont">
 
     <div class = "form">
     <p>
-    <button class="t-button t-state-default submit" id="agregarPerfil"> Agregar Empleado </button>
+    <button class="t-button t-state-default submit" id="agregarEmpleado"> Agregar Empleado </button>
     </p>
     </div>
  
   @(Html.Telerik().Grid(Model)
-        .Name("PerfilesGrid")
+        .Name("EmpleadosGrid")
         .Editable(editing => editing
                             .Mode(GridEditMode.InLine))
         .DataKeys(key => key.Add(c => c.ID))
@@ -47,10 +47,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Perfiles")
-            .Insert("Insert", "Perfiles")
-            .Delete("Delete", "Perfiles")
-            .Update("Update", "Perfiles")
+            .Select("Select", "Empleado")
+            .Insert("Insert", "Empleado")
+            .Delete("Delete", "Empleado")
+            .Update("Update", "Empleado")
         )
     )
 
@@ -333,7 +333,7 @@
     });
     
 
-    $("#agregarPerfil").click(function () {
+    $("#agregarEmpleado").click(function () {
         //ajax
         $("#mask").show();
         $("#nombre").val(""),
@@ -377,10 +377,10 @@
                     data: JSON.stringify(jsonMenu),
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
-                    url: "Perfiles/nuevoPerfil",
+                    url: "Empleados/nuevoEmpleado",
                     success: function (data) {
                         if (data.me == "") {
-                            $('#PerfilesGrid').data('tGrid').ajaxRequest();
+                            $('#EmpleadosGrid').data('tGrid').ajaxRequest();
 
                         }
                     }

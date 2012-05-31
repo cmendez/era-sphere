@@ -10,21 +10,17 @@ namespace Era_sphere.Areas.AreaContable.Models.Orden
 {
     public class Orden:DBable
     {
-        [ForeignKey("empleado_solicita")]
-        public int idEmpleadoSolicita{get;set;}
+        public virtual Empleado empleado_solicita { get; set; }
+        public int empleado_solicitaID { get; set; }
 
-        [ForeignKey("empleado_recibe")]
-        public int idEmpleadoRecibe{get;set;}
         public bool estado { get; set; }
         public DateTime fechapedido{get;set;}
         public DateTime fechaentrega{get;set;}
         public double Total { get; set; }
-        
 
-        public virtual Empleado empleado_solicita {get;set;}
-        public virtual Empleado empleado_recibe { get; set; }
 
         public virtual ICollection<OrdenLinea> ordenlinea { set; get; }
+        public int ordenlineaID { get; set; }
 
     }
 }

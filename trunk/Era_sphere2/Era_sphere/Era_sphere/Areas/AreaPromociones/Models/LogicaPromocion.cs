@@ -36,7 +36,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         {
             Promocion promocion = promocion_view.deserializa(this);
             Promocion orig = database_table.retornarUnSoloElemento(promocion_view.ID);
-            orig.descripcion = promocion.descripcion ?? orig.descripcion;
+            orig.nombre = promocion.nombre ?? orig.nombre;
             database_table.modificarElemento(orig, promocion.ID);
         }
 

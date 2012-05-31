@@ -14,18 +14,17 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public int ID { get; set; }
 
         //llega una habitacion
-        [DisplayName(@"Habitación Asignada")]
-        public int id_habitacion { get; set; }
 
         [DisplayName("Estado")]
         public int id_estado { get; set; }
 
         [Required]
         [DisplayName("Tarjeta Cliente")]
-        [StringLength(30)]
+        [StringLength(28)]
+        [RegularExpression(StringsDeValidaciones.telefono)]
         public string tarjeta_cliente { get; set; }
 
-        [Required]
+ 
         [DisplayName("Puntos Cliente")]
         [Range(0, StringsDeValidaciones.infinito)]
         public int puntos_cliente { get; set; }
@@ -61,15 +60,11 @@ namespace Era_sphere.Areas.AreaClientes.Models
         [StringLength(28)]
         public string contrasenha { get; set; }
 
+        [Required]
         [DisplayName("RUC")]
         [StringLength(28)]
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string ruc { get; set; }
-
-        //alguna validación
-        [DisplayName("Fecha Nacimiento")]
-        public DateTime? fecha_nacimiento { get; set; }
-
 
         [DisplayName(@"Pais")]
         public int paisID { get; set; }
@@ -94,11 +89,9 @@ namespace Era_sphere.Areas.AreaClientes.Models
             correo_electronico = cliente.correo_electronico;
             telefono = cliente.telefono;
             celular = cliente.celular;
-            fecha_nacimiento = cliente.fecha_nacimiento;
             direccion = cliente.direccion;
             usuario = cliente.usuario;
             contrasenha = cliente.password;
-            id_habitacion = cliente.id_habitacion_asisgnada;
             id_estado = cliente.estadoID;
             ciudadID = cliente.ciudadID;
             paisID = cliente.paisID;
@@ -122,11 +115,9 @@ namespace Era_sphere.Areas.AreaClientes.Models
                 correo_electronico = this.correo_electronico,
                 telefono = this.telefono,
                 celular = this.celular,
-                fecha_nacimiento = this.fecha_nacimiento,
                 direccion = this.direccion,
                 usuario = this.usuario,
                 password = this.contrasenha,
-                id_habitacion_asisgnada = this.id_habitacion,
                 estadoID = this.id_estado,
                 estado = logica.cliente_context.estados_cliente.Find(this.id_estado),
                 ciudadID = this.ciudadID,

@@ -29,18 +29,24 @@
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
+                commands.Custom("mostrar_natural").Text("Mostrar").
+                    DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("MostrarNatural", "Cliente");
                 
             }).Width(160);
         })
 
         .Pageable()
         .Sortable()
-
+             .ClientEvents(events => events.OnComplete("onComplete"))
                 .DataBinding(dataBinding => dataBinding
-                    .Ajax()
+                         .Ajax().Select("_CustomCommand", "Cliente")
                     .Select("SelectNatural", "Cliente")
                     .Insert("InsertNatural", "Cliente")
                     .Delete("DeleteNatural", "Cliente")
                     .Update("UpdateNatural", "Cliente")
         )
            )
+
+
+           @(Html.Telerik().Window()
+    .Name("DetalleNatural").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).LoadContentFrom("ClienteNaturalShow", "Cliente"))

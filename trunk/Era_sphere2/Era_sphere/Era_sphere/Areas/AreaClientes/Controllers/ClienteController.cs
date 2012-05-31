@@ -103,9 +103,24 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             return Json(new { cliente = cliente_view, estado = estado, pais = pais, ciudad = ciudad }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult MostrarNatural(int id)
+        {
+            var cliente = cliente_logica.retornarCliente(id);
+            var cliente_view = new ClienteNaturalView(cliente);
+            string pais = cliente.pais.nombre;
+            string estado = cliente.estado.descripcion;
+            string ciudad = cliente.ciudad.nombre;
+            return Json(new { cliente = cliente_view, estado = estado, pais = pais, ciudad = ciudad }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult ClienteJuridicoShow()
         {
             return View("ClienteJuridicoShowTemplate");
+        }
+
+        public ActionResult ClienteNaturalShow()
+        {
+            return View("ClienteNaturalShowTemplate");
         }
     }
 }

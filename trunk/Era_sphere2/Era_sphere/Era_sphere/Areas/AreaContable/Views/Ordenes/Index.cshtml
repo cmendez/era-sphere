@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Era_sphere.Areas.AreaContable.Models.Ordenes
+@model IEnumerable<Orden>
+@using Telerik.Web.Mvc.UI           
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div>
+    @(Html.Telerik().Grid(Model)
+    .Name("OrdenesGrid")
+    .Filterable()
+    .ToolBar(commands => commands.Insert())
+            .Editable(editing => editing
+                                 .Mode(GridEditMode.InForm)
+                                 .TemplateName("OrdenesTemplate"))
+    .DataKeys(key => key.Add(c => c.ID))
+    .Columns(columns =>
+    {
+        //columns.Bound(p => p.ID);
+        columns.Bound(p => p.empleado_solicita); //DEBE SER UN DROPBOXLIST
+        columns.Bound(P => P.fechapedido);// FECHA TIME AHORA
+        columns.Bound(P => P.fechaentrega);// FECHA TIME     VACIO
+        columns.Bound(P => P.Total);// FECHA Valor de la orden
+        
+        columns.Command(commands =>
+        {
+            commands.Edit().ButtonType(GridButtonType.Image);
+            commands.Select().ButtonType(GridButtonType.Image);// muestro un popup del detalle linea
+            commands.Delete().ButtonType(GridButtonType.Image);
+
+        });
+
+    })
+    .Pageable()
+    .Sortable()
+    
+    .DataBinding(databinding => databinding
+    .Ajax()
+            .Select("Details","Orden")
+            .Insert("Create", "Orden")
+            .Delete("Delete", "Orden")
+            .Update("Edit", "Orden")            
+    )
+    )
+</div>

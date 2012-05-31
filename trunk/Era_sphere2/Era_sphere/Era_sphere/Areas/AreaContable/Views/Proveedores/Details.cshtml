@@ -1,0 +1,45 @@
+﻿@model Era_sphere.Areas.AreaContable.Models.Proveedores.Proveedor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Proveedor</legend>
+
+    <div class="display-label">razon_social</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.razon_social)
+    </div>
+
+    <div class="display-label">ruc</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ruc)
+    </div>
+
+    <div class="display-label">direccion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.direccion)
+    </div>
+
+    <div class="display-label">correo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.correo)
+    </div>
+
+    <div class="display-label">telefono</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefono)
+    </div>
+
+    <div class="display-label">persona_contacto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.persona_contacto)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

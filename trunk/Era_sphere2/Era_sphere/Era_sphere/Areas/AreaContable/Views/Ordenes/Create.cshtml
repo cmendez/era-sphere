@@ -1,0 +1,73 @@
+﻿@model Era_sphere.Areas.AreaContable.Models.Ordenes.Orden
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Orden</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.empleado_solicitaID, "empleado_solicita")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("empleado_solicitaID", String.Empty)
+            @Html.ValidationMessageFor(model => model.empleado_solicitaID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ordenlineaID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ordenlineaID)
+            @Html.ValidationMessageFor(model => model.ordenlineaID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.estado)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.estado)
+            @Html.ValidationMessageFor(model => model.estado)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fechapedido)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fechapedido)
+            @Html.ValidationMessageFor(model => model.fechapedido)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fechaentrega)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fechaentrega)
+            @Html.ValidationMessageFor(model => model.fechaentrega)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Total)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Total)
+            @Html.ValidationMessageFor(model => model.Total)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

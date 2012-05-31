@@ -1,0 +1,45 @@
+﻿@model Era_sphere.Areas.AreaContable.Models.Ordenes.Orden
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Orden</legend>
+
+    <div class="display-label">empleado_solicita</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.empleado_solicita.ID)
+    </div>
+
+    <div class="display-label">ordenlineaID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ordenlineaID)
+    </div>
+
+    <div class="display-label">estado</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.estado)
+    </div>
+
+    <div class="display-label">fechapedido</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechapedido)
+    </div>
+
+    <div class="display-label">fechaentrega</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fechaentrega)
+    </div>
+
+    <div class="display-label">Total</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Total)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

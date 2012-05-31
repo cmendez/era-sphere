@@ -43,7 +43,7 @@
             columns.Bound(p => p.apellido_paterno);
             columns.Bound(p => p.apellido_materno);
             columns.Bound(p => p.id_estado);
-            columns.Bound(p => p.fecha_nacimiento).Format("{0:dd/MM/yyyy}");
+            //columns.Bound(p => p.fecha_nacimiento).Format("{0:dd/MM/yyyy}");
             columns.Bound(p => p.tipoID);
             //  columns.Bound(p => p.pais_nombre);
             //  columns.Bound(p => p.ciudad_nombre);
@@ -129,7 +129,7 @@
 </div>
 
 @(Html.Telerik().Window()
-    .Name("Detalle").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).Content(
+    .Name("Detalle").Visible(false).Title("Cliente").Modal(true).Width(500).Content(
     @<text>
         <div id="detalle-cliente">
             <d1>

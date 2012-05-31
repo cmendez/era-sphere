@@ -1,9 +1,7 @@
-﻿
-@using Era_sphere.Areas.AreaClientes.Models
+﻿@using Era_sphere.Areas.AreaClientes.Models
 @using Era_sphere.Generics;
 @model IEnumerable<ClienteView>
 @using Telerik.Web.Mvc.UI
-
 @{
     ViewBag.Title = "IndexHotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,8 +9,6 @@
     var ciudades = (new EraSphereContext()).ciudades.ToList();
     var estados = (new EraSphereContext()).estados_cliente.ToList();
 }
-
-
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
@@ -70,17 +66,15 @@
                     .Update("Update", "Cliente", new { tipoi = 1 })
         )
            )
-
     </div>
-    
-    <div style="height:20px;"></div>
-
+    <div style="height: 20px;">
+    </div>
     <div class="titlebar">
         <h5>
             Clientes Jurídicos
         </h5>
     </div>
-       <div class="block_cont">
+    <div class="block_cont">
         @(Html.Telerik().Grid(Model)
         .Name("ClienteJuridicoGrid")
         .Localizable("es-ES")
@@ -123,28 +117,30 @@
             .Update("Update", "Cliente", new { tipoi = 2 })
         )
            )
-
     </div>
     <!-- Table Wrapper End -->
 </div>
-
 @(Html.Telerik().Window()
-    .Name("Detalle").Visible(false).Title("Cliente").Modal(true).Width(500).Content(
-    @<text>
-        <div id="detalle-cliente">
-            <d1>
-            <dt>ID</dt><dd></dd>
-            </d1>
-        </div>
-    </text>))
+    .Name("Detalle").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).LoadContentFrom("ClienteJuridicoShow", "Cliente"))
 
 <script type="text/javascript">
     function onComplete(e) {
         if (e.name == "mostrar") {
             var detailModal = $("#Detalle").data("tWindow");
             var cliente = e.response.cliente;
-            $("#detalle-cliente")
-            .find("dd").text(cliente.ID).end();
+            $("#detalle-cliente-juridico")
+            .find("#razon_social").val(cliente.razon_social).end()
+            .find("#ruc").val(cliente.ruc).end()
+            .find("#telefono").val(cliente.telefono).end()
+            .find("#celular").val(cliente.celular).end()
+            .find("#direccion").val(cliente.direccion).end()
+            .find("#correo_electronico").val(cliente.correo_electronico).end()
+            .find("#numero_reservas").val(cliente.numero_reservas).end()
+            .find("#usuario").val(cliente.usuario).end()
+            .find("#tarjeta_cliente").val(cliente.tarjeta_cliente).end()
+            .find("#paisID").val(e.response.pais).end()
+            .find("#id_estado").val(e.response.estado).end()
+            .find("#ciudadID").val(e.response.ciudad).end()
             detailModal.center().open();
         }
     }

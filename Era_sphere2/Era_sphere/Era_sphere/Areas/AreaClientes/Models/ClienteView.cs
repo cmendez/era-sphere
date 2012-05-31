@@ -96,7 +96,6 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public int ciudadID { get; set; }
 
 
-        [Required]
         [DisplayName("Tipo de persona")]
         public int tipoID { get; set; }
         //opcional

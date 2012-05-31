@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
 {
@@ -21,5 +22,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
         [DisplayName("Tipo de temporada")]
         public int tipotemporadaID { get; set; }
         public virtual TipoTemporada tipotemporada { get; set; }
+
+    
     }
 }

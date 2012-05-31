@@ -1,0 +1,102 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaHoteles.Models.Habitaciones
+@model IEnumerable<Comodidad>
+@{
+    ViewBag.Title = "SeleccionGrilla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int tipoHabitacion = ViewBag.tipoHabitacion;
+}
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Comodidades
+        </h3>
+    </div>
+    @{ Html.BeginForm("ComodidadesSeleccion", "Comodidades"); }
+@{
+    int[] checkedRecords = (int[])ViewData["checkedRecords"];    
+    Html.Telerik().Grid(Model)
+        .Name("Grid")
+        .Columns(columns =>
+        {
+            columns.Template(
+                @<text>
+                    <input name="checkedRecords" type="checkbox" value="@item.ID " title="checkedRecords" />
+                </text>)
+                .Title("").Width(36).HtmlAttributes(new { style = "text-align:center" });
+            columns.Bound(o => o.ID).Width(100);
+            columns.Bound(o => o.descripcion).Width(200);
+        })
+        .Pageable()
+        .Render();                
+}
+<input name="id" type="hidden" value="@tipoHabitacion" />
+<p>
+    <button type="submit" class="t-button t-state-default">Guardar Comodidades</button>
+</p>
+@{ Html.EndForm(); }
+    @*<div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("Grid")
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Template(
+                        @<text>
+        <input name="checkedRecords" type="checkbox" value="@item.ID" title="checkedRecords" />
+        </text>
+                    )
+                   .Title("Seleccionar")
+                   .Width(36);
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.descripcion);
+        })
+
+            .Pageable()
+            .Sortable()
+
+
+            .DataBinding(dataBinding => dataBinding
+                .Ajax()
+            )
+        )
+    </div>*@
+    @*<button class="t-button t-state-default" onclick="displayCheckedOrders()">
+        Guardar Cambios</button>
+    <script type="text/javascript">
+        function displayCheckedOrders() {
+            var $checkedRecords = $(':checked');
+            alert( $checkedRecords.length );
+            if ($checkedRecords.length < 1) {
+                alert('Debe seleccionar comodidades');
+                return;
+            }
+
+//            var jsonMenu = {
+//                checkedRecords: $checkedRecords,
+//                id: @tipoHabitacion
+//                };
+            $.ajax({
+                type: "POST",
+//                data: JSON.stringify(jsonMenu),
+                data: {"id": @tipoHabitacion , "checkedRecords": [ 1 , 2 ] },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                url: "/AreaHoteles/Comodidades/ComodidadesSeleccion",
+                success: function (data) {
+                                              
+                    }
+                
+            });  
+
+            //falta linkear  y enviar id tipo habitacin (ViewBag.tipoHabitacion)
+//            $('#result').load('@Url.Action("ComodidadesSeleccion", "Comodidades")', { checked:$checkedRecords, text:asda });
+//            $('#result').post('@Url.Action("ComodidadesSeleccion", "Comodidades")', $checkedRecords);
+            
+        }
+    </script>
+    <div id="result">
+    </div>*@
+    <!-- Table Wrapper End -->
+</div>

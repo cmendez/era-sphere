@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using System.Web.Mvc;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -53,7 +55,18 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             return database_table.buscarElementos(tipohabitacion_campos);
         }
-        
+        public void agregarComodidades(int tipohabitacion_id, int[] checkedRecord)
+        {
+            TipoHabitacion tipo_habitacion = tipohabitacion_context.tipos_habitacion.Find(tipohabitacion_id);
+            
+            tipo_habitacion.comodidades= new List<Comodidad> () ;
+            foreach (int check in checkedRecord) { 
+                  tipo_habitacion.comodidades.Add( tipohabitacion_context.comodidades.Find( check ) );
+            }
+            //database_table.modificarElemento(tipo_habitacion, tipo_habitacion.ID);
+            //recorer checkedrecord y agregar comodidades
+            //tipo_habitacion.comodidades;
+        }
     }
     
 }

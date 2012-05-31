@@ -117,12 +117,12 @@
     <Compile Include="Areas\AreaContable\Models\Proveedores\InterfazLogicaProveedor.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedores\LogicaProveedor.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedores\Proveedor.cs" />
+    <Compile Include="Areas\AreaEmpleados\Controllers\EmpleadoController.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedores\ProveedorContext.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedores\ProveedorView.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\Boleta.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\Recibo.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLinea.cs" />
-    <Compile Include="Areas\AreaEmpleados\Controllers\EmpleadoController.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\InterfazLogicaEmpleado.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\LogicaEmpleado.cs" />
@@ -1074,7 +1074,7 @@
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\AmbienteViewTemplate.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoTemporada\TipoTemporadaIndex.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoTemporadaViewTemplate.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\Comodidades\SeleccionGrilla.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\SeleccionGrilla.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Moneda\IndexMoneda.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\MonedaViewTemplate.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoDePagoViewTemplate.cshtml" />
@@ -1088,6 +1088,8 @@
     <Content Include="Areas\AreaContable\Views\Shared\ProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\EditorTemplates\ClienteNaturalViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\EditorTemplates\ClienteJuridicoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />
+    <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\ProveedorViewTemplate.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />

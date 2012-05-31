@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -17,6 +18,22 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             descripcion = tipoHabitacion.descripcion;
             cap_max_personas = tipoHabitacion.cap_max_personas;
             ID = tipoHabitacion.ID;
+            int tam = 0;
+            
+            if (tipoHabitacion.comodidades != null)
+            {
+                tam = tipoHabitacion.comodidades.Count;
+                comodidades_descripcion = new string[tam];
+                comodidades_id = new int[tam];
+                int i = 0;
+                foreach (Comodidad comodidad in tipoHabitacion.comodidades)
+                {
+                    comodidades_descripcion[i] = comodidad.descripcion;
+                    comodidades_id[i] = comodidad.ID;
+                    i++;
+                }
+            }
+
         }
         [Required]
         [DisplayName("Descripcion")]
@@ -30,15 +47,23 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [DisplayName("Costo base")]
         [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
         public decimal costo_base { get; set; }
-
+        public string [] comodidades_descripcion { get; set; }
+        public int [] comodidades_id { get; set; }
         public TipoHabitacion deserializa(InterfazLogicaTipoHabitacion logica)
         {
-            return new TipoHabitacion
+
+            TipoHabitacion tipo_habitacion=new TipoHabitacion
             {
                 descripcion=this.descripcion,
                 cap_max_personas=this.cap_max_personas,
                 ID=this.ID
             };
+            
+            //for (int i = 0; i<comodidades_id.Length; i++)
+            //{
+            //    tipo_habitacion.comodidades=(new Era_sphere)
+            //}
+            return tipo_habitacion;
         }
     }
 }

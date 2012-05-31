@@ -94,7 +94,7 @@
             columns.Bound(p => p.ID);
             columns.Bound(p => p.razon_social);
             columns.Bound(p => p.ruc);
-            columns.Bound(p => p.id_estado);
+            columns.ForeignKey(p => p.id_estado, new SelectList(estados, "ID", "descripcion"));
             //  columns.Bound(p => p.pais_nombre);
             //  columns.Bound(p => p.ciudad_nombre);
             //  columns.Bound(p => p.provincia);

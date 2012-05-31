@@ -15,25 +15,25 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
     public class Cadena : DBable
     {
         [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
-        [Required(ErrorMessage = "Este campo es obligatorio")]
+        [Required(ErrorMessage = "El campo nombre de la cadena es obligatorio")]
         [DisplayName("Nombre de la cadena")]
         public string nombreCadena { get; set; }
 
         [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
-            [Required(ErrorMessage = "Este campo es obligatorio")]
+            [Required(ErrorMessage = "El campo razón social es obligatorio")]
         [DisplayName("Razón social")]
         public string rsocial { get; set; }
 
         [MinLength(11, ErrorMessage = "El campo RUC debe estar compuesto por 11 digitos")]
         [MaxLength(11, ErrorMessage = "El campo RUC debe estar compuesto por 11 digitos")]
-        [Required(ErrorMessage = "Este campo es obligatorio")]
+        [Required(ErrorMessage = "El campo RUC es obligatorio")]
         //[Range(11, 11, ErrorMessage = "El RUC debe ser contener 11 digitos")]
         [RegularExpression("([0-9]+)", ErrorMessage = "El campo RUC debe estar compuesto por 11 digitos")]
         [DisplayName("RUC de la cadena")]
         public string ruc { get; set; }
 
         [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
-        [Required(ErrorMessage = "Este campo es obligatorio")]
+        [Required(ErrorMessage = "El campo página web es obligatorio")]
         //  [DataType(DataType.Url)] 
         [DisplayName("Página web")]
         public string url { get; set; }

@@ -12,6 +12,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
         DBGenericQueriesUtil<Comodidad> database_table;
         //DBGenericQueriesUtil<EstadoComodidad> table_estado;
 
+
         public LogicaComodidades()
         {
             database_table = new DBGenericQueriesUtil<Comodidad>(comodidad_context, comodidad_context.comodidades);

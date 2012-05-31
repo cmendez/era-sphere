@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace Era_sphere.Areas.AreaPromociones.Models
 {
-    public class Promocion
+    public class Promocion:DBable
     {
         [DisplayName("Nombre")]
         public string nombre{ get; set; }
@@ -27,7 +27,10 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         [DisplayName("Fecha de fin")]
         public DateTime fecha_fin { get; set; }
 
-        [DisplayName("Ascociado a")]
-        public string asociado_a { get; set; }
+        //[DisplayName("Ascociado a")]
+        //public string asociado_a { get; set; }
+
+        //[DisplayName("Estado")]
+        //public string estado { get; set; }
     }
 }

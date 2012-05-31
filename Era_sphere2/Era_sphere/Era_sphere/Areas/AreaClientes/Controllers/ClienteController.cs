@@ -67,7 +67,11 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             // return RedirectToAction("proveedor");
         }
 
-
+        public JsonResult Mostrar(int id)
+        {
+            var cliente = cliente_logica.retornarCliente(id);
+            return Json(new { cliente = cliente });
+        }
 
     }
 }

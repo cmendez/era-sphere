@@ -86,11 +86,11 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         {
             checkedRecords = checkedRecords ?? new int[] { };
             
-            foreach (int check in checkedRecords)
-            {
-                Comodidad comodidad = (new EraSphereContext()).comodidades.Find(check);
-                comodidad.tipoHabitacionID=id;
-            }
+            //foreach (int check in checkedRecords)
+            //{
+            //    Comodidad comodidad = (new EraSphereContext()).comodidades.Find(check);
+            //    comodidad.tipoHabitacionID=id;
+            //}
             //LogicaTipoHabitacion logicaTH = new LogicaTipoHabitacion();
             //logicaTH.agregarComodidades(id,checkedRecords);
             return RedirectToAction("Index", "TipoHabitacion");

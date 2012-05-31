@@ -12,9 +12,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
     {
         [DisplayName("Descripcion")]
         public string descripcion { get; set; }
-        [ForeignKey("tipoHabitacion")]
-        public int ? tipoHabitacionID { get; set; }
-        [Required]
-        public virtual  TipoHabitacion  tipoHabitacion { get; set; }
+        //[ForeignKey("tipoHabitacion")]
+        //public int ? tipoHabitacionID { get; set; }
+        //[Required]
+        //public virtual  TipoHabitacion  tipoHabitacion { get; set; }
     }
 }

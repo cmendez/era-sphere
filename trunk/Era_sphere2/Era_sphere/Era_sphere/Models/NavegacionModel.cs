@@ -86,6 +86,14 @@ namespace Era_sphere.Models
 
         void agregarConfiguracion() {
             List<SubLink> AreaConfiguracion = new List<SubLink>();
+
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Promociones",
+                Url = "/AreaPromociones/Promocion"
+            });
+
+
             AreaConfiguracion.Add(new SubLink { 
                 Nombre = "Administrar Perfiles",
                 Url    = "/AreaConfiguracion/Perfiles"

@@ -17,12 +17,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public bool tiene_repeticiones { get; set; }
         
         public string nombre { get; set; }
-        public string descripcion { get; set; }
-
-        [ForeignKey("espacio_rentable")]
-        public int espacio_rentableID { get; set; }
-        public EspacioRentable espacio_rentable { get; set; }
-
-                
+        public string descripcion { get; set; }                
     }
 }

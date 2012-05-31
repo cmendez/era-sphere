@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using Era_sphere.Areas.AreaContable.Models.Productos;
+using Era_sphere.Areas.AreaContable.Models.Proveedores;
+using Era_sphere.Generics;
 
-namespace Era_sphere.Areas.AreaContable.Models.Orden
+
+namespace Era_sphere.Areas.AreaContable.Models.Ordenes
 {
-    public class proveedor_x_producto
+    public class proveedor_x_producto : DBable
     {
+
         [ForeignKey("producto")]
         public int productoID { get; set; }
-
+        
         [ForeignKey("proveedor")]
         public int proveedorID { get; set; }
 
@@ -18,6 +23,6 @@ namespace Era_sphere.Areas.AreaContable.Models.Orden
 
         public virtual Proveedor proveedor { get; set; }
 
-        public double precioU { get; set; }
+        public double  precioU { get; set; }
     }
 }

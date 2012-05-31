@@ -103,6 +103,12 @@ namespace Era_sphere.Models
 
             AreaConfiguracion.Add(new SubLink
             {
+                Nombre = "Servicios",
+                Url = "/AreaConfiguracion/Servicio"
+            });
+
+            AreaConfiguracion.Add(new SubLink
+            {
                 Nombre = "Agregar Tipo Pago",
                 Url = "/AreaConfiguracion/TipoDePago"
             });

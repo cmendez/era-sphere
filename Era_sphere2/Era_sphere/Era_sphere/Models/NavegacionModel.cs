@@ -143,11 +143,24 @@ namespace Era_sphere.Models
                 );
         }
 
+        void agregarAreaClientes()
+        {
+            this.menu.Add(new Link()
+            {
+                Nombre = "Clientes",
+                Url = "/../AreaClientes/Cliente",
+                Icono = "icon_pen",
+                Sublinks = new List<SubLink>()
+            });
+        }
 
         public NavegacionModel()
         {
 
             this.menu = new List<Link>();
+
+
+            agregarAreaClientes();
             agregarAreaEmpleados();
             agregarAreaHotel();
             agregarConfiguracion();

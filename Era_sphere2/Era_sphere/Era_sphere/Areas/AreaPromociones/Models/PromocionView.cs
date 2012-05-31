@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaPromociones.Models
 {
-    public class PromocionView
+    public class PromocionView : IValidatableObject
     {
         public int ID { get; set; }
 
@@ -39,7 +39,8 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         public IEnumerable<ValidationResult>
            Validate(ValidationContext validationContext)
         {
-            var field = new[] { "fecha_inicio", "fecha_fin" };
+            var field = new[] { "fecha_inicio"};
+            var field2 = new[] { "fecha_fin" };
 
             if (fecha_inicio < DateTime.Now)
             {
@@ -48,7 +49,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
 
             if (fecha_fin < fecha_inicio)
             {
-                yield return new ValidationResult("la fecha de fin debe ser mayor que la fecha de inicio", field);
+                yield return new ValidationResult("la fecha de fin debe ser mayor que la fecha de inicio", field2);
             }
         }
 

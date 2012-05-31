@@ -62,6 +62,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         [GridAction]
         public ActionResult Update(ClienteView cliente, int tipoi)
         {
+            cliente.tipoID = tipoi;
             cliente_logica.modificarCliente(cliente);
             return View("IndexCliente", new GridModel(cliente_logica.retornarClientes().Where(c => c.tipoID == tipoi)));
             // return RedirectToAction("proveedor");

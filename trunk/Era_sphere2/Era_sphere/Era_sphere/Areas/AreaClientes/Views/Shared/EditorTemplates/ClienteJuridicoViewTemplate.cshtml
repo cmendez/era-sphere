@@ -8,13 +8,14 @@
     var paises = (new EraSphereContext()).paises.ToList();
     var ciudades = (new EraSphereContext()).ciudades.ToList();
     var estados = (new EraSphereContext()).estados_cliente.ToList();
+
 }
 @using (Html.BeginForm())
 {
     
     @Html.ValidationSummary(true)
     <fieldset>
-    
+        
         <legend>Cliente Juridico</legend>
         <div class="editor-label">
             @Html.LabelFor(model => model.razon_social)

@@ -8,5 +8,6 @@ namespace Era_sphere.Generics
     public class TipoPersona : DBable
     {
         public string descripcion { get; set; }
+        public virtual ICollection<Persona> personas { get; set; }
     }
 }

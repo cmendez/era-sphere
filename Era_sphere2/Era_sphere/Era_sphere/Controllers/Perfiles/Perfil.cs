@@ -17,6 +17,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Perfiles
         [DisplayName("Descripción del perfil")]
         public string descripcion { get; set; }
 
+
         [DisplayName("Lista de visibilidad asignado al perfil")]
         public string listaVisibilidad { get; set; }
     }

@@ -53,5 +53,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
             return database_table.buscarElementos(temporada_campos);
         }
 
+
+        public List<Temporada> retornarTemporadas2()
+        {
+            return database_table.retornarTodos();
+        }
     }
 }

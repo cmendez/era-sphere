@@ -7,9 +7,11 @@ using System.ComponentModel;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
+using Era_sphere.Areas.AreaCargos.Models;
+
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class TipoHabitacion: DBable
+    public class TipoHabitacion: Preciable
     {
         public int cap_max_personas { get; set; }
         public string descripcion { get; set; }

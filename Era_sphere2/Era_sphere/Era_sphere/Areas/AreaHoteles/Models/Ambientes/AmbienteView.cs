@@ -43,7 +43,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
         {
             // TODO: Complete member initialization
             ID = ambiente.ID;
-            nombre = ambiente.nombre;
+            nombre = ambiente.descripcion;
             detalle = ambiente.detalle;
             pisoID = ambiente.pisoID;
             capacidad_maxima = ambiente.capacidad_maxima;
@@ -57,7 +57,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             return new Ambiente
             {
             ID = this.ID,
-            nombre = this.nombre,
+            descripcion = this.nombre,
             detalle = this.detalle,
             pisoID = this.pisoID,
             piso = logica.context_publico.pisos.Find(pisoID),

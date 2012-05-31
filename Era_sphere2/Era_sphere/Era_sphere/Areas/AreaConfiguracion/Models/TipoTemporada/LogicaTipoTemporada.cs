@@ -57,5 +57,14 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
 
 
 
+
+
+
+        public List<TipoTemporada> retornarTodos()
+        {
+            return database_table.retornarTodos();
+        }
+
+
     }
 }

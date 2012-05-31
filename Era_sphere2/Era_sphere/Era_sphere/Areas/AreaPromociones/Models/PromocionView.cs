@@ -36,6 +36,23 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         [DisplayName("Fecha de fin")]
         public DateTime fecha_fin { get; set; }
 
+        public IEnumerable<ValidationResult>
+           Validate(ValidationContext validationContext)
+        {
+            var field = new[] { "fecha_inicio", "fecha_fin" };
+
+            if (fecha_inicio < DateTime.Now)
+            {
+                yield return new ValidationResult("La fecha de inicio debe ser mayor que la fecha actual.", field);
+            }
+
+            if (fecha_fin < fecha_inicio)
+            {
+                yield return new ValidationResult("la fecha de fin debe ser mayor que la fecha de inicio", field);
+            }
+        }
+
+
 
 
         public PromocionView() { }

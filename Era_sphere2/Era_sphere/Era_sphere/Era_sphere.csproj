@@ -157,11 +157,9 @@
     <Compile Include="Areas\AreaHoteles\Models\Ambientes\LogicaAmbiente.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Comodidad.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadesContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\EstadoEspacioRentable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Habitacion.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\InterfazLogicaComodidades.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\InterfazLogicaHabitacion.cs" />
@@ -170,7 +168,6 @@
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaTipoHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\TipoHabitacion.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\TipoHabitacionContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\TipoHabitacionView.cs" />
     <Compile Include="Controllers\Perfiles\InterfazLogicaPerfil.cs" />
     <Compile Include="Controllers\Perfiles\LogicaPerfil.cs" />

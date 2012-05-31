@@ -23,18 +23,21 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.apellido_paterno)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.apellido_paterno)
+            @Html.ValidationMessageFor(model => model.apellido_paterno)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.apellido_materno)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.apellido_materno)
+            @Html.ValidationMessageFor(model => model.apellido_materno)
         </div>
          
         <div class="editor-label">
@@ -42,12 +45,14 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ruc)
+            @Html.ValidationMessageFor(model => model.ruc)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.documento_identidad)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.documento_identidad)
+            @Html.ValidationMessageFor(model => model.documento_identidad)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.fecha_nacimiento)
@@ -74,24 +79,28 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.telefono)
+            @Html.ValidationMessageFor(model => model.telefono)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.celular)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.celular)
+            @Html.ValidationMessageFor(model => model.celular)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.direccion)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.direccion)
+            @Html.ValidationMessageFor(model => model.direccion)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.correo_electronico)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.correo_electronico)
+            @Html.ValidationMessageFor(model => model.correo_electronico)
         </div>
         
         <div class="editor-label">
@@ -113,18 +122,21 @@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.usuario)
+            @Html.ValidationMessageFor(model => model.usuario)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.contrasenha)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.contrasenha)
+            @Html.PasswordFor(model => model.contrasenha)
+            @Html.ValidationMessageFor(model => model.contrasenha)
         </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.tarjeta_cliente)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.tarjeta_cliente)
+            @Html.ValidationMessageFor(model => model.tarjeta_cliente)
         </div>
        
     </fieldset>

@@ -131,6 +131,13 @@
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\InterfazLogicaEvento.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\LogicaEvento.cs" />
+    <Compile Include="Areas\AreaPromociones\AreaPromocionesAreaRegistration.cs" />
+    <Compile Include="Areas\AreaPromociones\Controllers\PromocionController.cs" />
+    <Compile Include="Areas\AreaPromociones\Models\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaPromociones\Models\InterfazLogicaPromocion.cs" />
+    <Compile Include="Areas\AreaPromociones\Models\LogicaPromocion.cs" />
+    <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
+    <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
     <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />
     <Compile Include="Controllers\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\InterfazLogicaTemporada.cs" />
@@ -1082,15 +1089,21 @@
     <Content Include="Areas\AreaHoteles\Views\Habitacion\CrearMasivo.cshtml" />
     <Content Include="Areas\AreaContable\Views\Producto\IndexProducto.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\ProductoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaPromociones\Views\Web.config" />
     <Content Include="Areas\AreaClientes\Views\Shared\EditorTemplates\ClienteNaturalViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\EditorTemplates\ClienteJuridicoViewTemplate.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\ProveedorViewTemplate.cshtml" />
+
+    <Content Include="Areas\AreaPromociones\Views\Shared\EditorTemplates\PromocionViewTemplate.cshtml" />
+    <Content Include="Areas\AreaPromociones\Views\Promocion\PromocionIndex.cshtml" />
+
     <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\AreaCargos\Views\Web.config" />
+
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

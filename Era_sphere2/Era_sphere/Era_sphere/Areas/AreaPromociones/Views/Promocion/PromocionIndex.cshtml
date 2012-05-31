@@ -1,38 +1,39 @@
 ﻿@{
-    ViewBag.Title = "TemporadaIndex";
+    ViewBag.Title = "PromocionIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    //int[] checkedRecords = (int[])ViewData["checkedRecords"]; 
 }
-@using Era_sphere.Areas.AreaConfiguracion.Models.Temporada
-@model IEnumerable<TemporadaView>
+@using Era_sphere.Areas.AreaPromociones.Models
+@model IEnumerable<PromocionView>
 @using Telerik.Web.Mvc.UI
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
         <h3>
-            Mantenimento de temporadas
+            Mantenimento de Promociones
         </h3>
     </div>
     <div class="block_cont">
         @(Html.Telerik().Grid(Model)
-        .Name("TipoTemporadaGrid")
-        .Localizable("es-ES")
+        .Name("PromocionGrid")
         .Filterable()
+        .Localizable("es-ES")
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp)
-                            .TemplateName("TemporadaViewTemplate"))
+                            .TemplateName("PromocionViewTemplate"))
 
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
             
             columns.Bound(p => p.ID);
+            columns.Bound(p => p.nombre);
             columns.Bound(p => p.descripcion);
+            columns.Bound(p => p.puntos_requeridos);
+            columns.Bound(p => p.descuento);
             columns.Bound(p => p.fecha_inicio).Format("{0:dd/MM/yyyy}");
             columns.Bound(p => p.fecha_fin).Format("{0:dd/MM/yyyy}");
-            columns.Bound(p => p.tipotemporada_descripcion);
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
@@ -46,10 +47,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Temporada")
-            .Insert("Insert", "Temporada")
-            .Delete("Delete", "Temporada")
-            .Update("Update", "Temporada")
+            .Select("Select", "Promocion")
+            .Insert("Insert", "Promocion")
+            .Delete("Delete", "Promocion")
+            .Update("Update", "Promocion")
         )
            )
 

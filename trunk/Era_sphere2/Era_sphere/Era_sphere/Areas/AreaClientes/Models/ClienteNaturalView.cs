@@ -22,60 +22,61 @@ namespace Era_sphere.Areas.AreaClientes.Models
         
         [Required]
         [DisplayName("Tarjeta Cliente")]
-        //[StringLength(30)]
+        [StringLength(28)]
+        [RegularExpression(StringsDeValidaciones.telefono)]
         public string tarjeta_cliente { get; set; }
         
-        [Required]
+    
         [DisplayName("Puntos Cliente")]
-        //[Range(0,StringsDeValidaciones.infinito)]
+        [Range(0,StringsDeValidaciones.infinito)]
         public int puntos_cliente { get; set; }
         
-        //[Required]
+        [Required]
         [DisplayName("Nombre (*)")]
-        //[StringLength(50)]
+        [StringLength(50)]
         public string nombre {get; set;}
 
-        //[Required]
+        [Required]
         [DisplayName("Apellido Paterno (*)")]
-        //[StringLength(28)]
+        [StringLength(28)]
         public string apellido_paterno {get; set;}
 
-        //[Required]
+        [Required]
         [DisplayName("Apellido Materno (*)")]
-        //[StringLength(28)]
+        [StringLength(28)]
         public string apellido_materno {get; set;}
         
         [Required]
         [DisplayName("Documento Identidad (*)")]
-        //[StringLength(28)]
+        [StringLength(28)]
         public string documento_identidad {get; set;}
 
         [DisplayName(@"Correo Electrónico")]
-        //[StringLength(100)]
+        [StringLength(100)]
         public string correo_electronico { get; set; }
 
         [DisplayName("Dirección")]
-        //[StringLength(100)]
+        [StringLength(100)]
         public string direccion {get; set;}
 
         [DisplayName(@"Teléfono")]
-        //[RegularExpression(StringsDeValidaciones.telefono)]
+        [RegularExpression(StringsDeValidaciones.telefono)]
         public string telefono {get; set;}
 
         [DisplayName("Celular")]
-        //[RegularExpression(StringsDeValidaciones.telefono)]
+        [RegularExpression(StringsDeValidaciones.telefono)]
         public string celular {get; set;}
 
         [DisplayName("Usuario")]
-        //[StringLength(50)]
+        [StringLength(50)]
         public string usuario { get; set;}
 
         [DisplayName("Password")]
-        //[StringLength(28)]
+        [StringLength(28)]
         public string contrasenha { get; set; }
 
         [DisplayName("RUC")]
-        //[StringLength(28)]
+        [StringLength(28)]
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string ruc { get; set; }
 
@@ -93,8 +94,8 @@ namespace Era_sphere.Areas.AreaClientes.Models
         //opcional
         //[DisplayName("Imagen")]
 
-        [DisplayName(@"Reservas Históricas")]
-        public int numero_reservas { get; set; }
+        //[DisplayName(@"Reservas Históricas")]
+        //public int numero_reservas { get; set; }
         
         public ClienteNaturalView() { }
 
@@ -118,7 +119,6 @@ namespace Era_sphere.Areas.AreaClientes.Models
             ciudadID = cliente.ciudadID;
             paisID = cliente.paisID;
             puntos_cliente = cliente.puntos_cliente;
-            numero_reservas = cliente.numero_reservas;
             tarjeta_cliente = cliente.tarjeta_cliente;
             id_estado = cliente.estadoID;
             //pais = logica.context_publico.paises.Find(this.paisID);
@@ -136,26 +136,25 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     nombre = this.nombre,
                     apellido_paterno = this.apellido_paterno,
                     apellido_materno = this.apellido_materno,
-                documento_identidad = this.documento_identidad,
-                ruc = this.ruc,
-                correo_electronico = this.correo_electronico,
-                telefono = this.telefono,
-                celular = this.celular,
-                fecha_nacimiento = this.fecha_nacimiento,
-                direccion = this.direccion,
-                usuario = this.usuario,
-                password = this.contrasenha,
-                id_habitacion_asisgnada = this.id_habitacion,
-                ciudadID = this.ciudadID,
-                ciudad = logica.cliente_context.ciudades.Find(this.ciudadID),
-                paisID = this.paisID,
-                pais = logica.cliente_context.paises.Find(this.paisID),
-                puntos_cliente = this.puntos_cliente,
-                numero_reservas = this.numero_reservas,
-                tarjeta_cliente = this.tarjeta_cliente,
+                    documento_identidad = this.documento_identidad,
+                    ruc = this.ruc,
+                    correo_electronico = this.correo_electronico,
+                    telefono = this.telefono,
+                    celular = this.celular,
+                    fecha_nacimiento = this.fecha_nacimiento,
+                    direccion = this.direccion,
+                    usuario = this.usuario,
+                    password = this.contrasenha,
+                    id_habitacion_asisgnada = this.id_habitacion,
+                    ciudadID = this.ciudadID,
+                    ciudad = logica.cliente_context.ciudades.Find(this.ciudadID),
+                    paisID = this.paisID,
+                    pais = logica.cliente_context.paises.Find(this.paisID),
+                    puntos_cliente = this.puntos_cliente,
+                    tarjeta_cliente = this.tarjeta_cliente,
                     
-                estadoID = this.id_estado,
-                estado = logica.cliente_context.estados_cliente.Find(this.id_estado),
+                    estadoID = this.id_estado,
+                    estado = logica.cliente_context.estados_cliente.Find(this.id_estado),
                     tipoID = 1,
                     tipo = logica.cliente_context.tipos_personas.Find(1),
                   //  habitacion_asignada =

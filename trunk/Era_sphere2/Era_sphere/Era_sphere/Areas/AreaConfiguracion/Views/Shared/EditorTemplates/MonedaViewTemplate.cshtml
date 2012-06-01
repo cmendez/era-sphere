@@ -24,6 +24,14 @@
             @Html.EditorFor(model => model.simbolo)
             @Html.ValidationMessageFor(model => model.simbolo)
         </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tc)
+            @Html.ValidationMessageFor(model => model.tc)
+        </div>
   
     </fieldset>
 }

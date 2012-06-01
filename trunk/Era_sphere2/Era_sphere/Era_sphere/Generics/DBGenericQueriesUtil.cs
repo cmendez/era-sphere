@@ -18,6 +18,7 @@ namespace Era_sphere.Generics
         {
             this.context = context;
             this.dbset = dbset;
+
         }
 
         public List<T> retornarTodos()

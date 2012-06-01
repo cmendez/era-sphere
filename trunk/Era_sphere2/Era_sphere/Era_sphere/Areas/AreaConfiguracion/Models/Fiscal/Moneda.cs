@@ -11,5 +11,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Fiscal
     {
         public string descripcion { get; set; }
         public string simbolo { get; set; }
+        public decimal? tc { get; set; }
     }
 }

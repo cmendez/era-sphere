@@ -124,7 +124,6 @@
     <Compile Include="Areas\AreaContable\Models\Productos\Producto.cs" />
     <Compile Include="Areas\AreaContable\Models\Productos\ProductoContext.cs" />
     <Compile Include="Areas\AreaContable\Models\Productos\ProductoView.cs" />
-    <Compile Include="Areas\AreaContable\Models\Proveedores\Proveedor.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedor\InterfazLogicaProveedor.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedor\LogicaProveedor.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedor\Proveedor.cs" />

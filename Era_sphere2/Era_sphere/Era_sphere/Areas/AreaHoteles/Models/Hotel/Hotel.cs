@@ -8,6 +8,7 @@ using Era_sphere.Areas.AreaConfiguracion.Models;
 using System.ComponentModel.DataAnnotations;
 using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
+using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -39,5 +40,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public int paisID;
         public virtual Pais pais { get; set; }
         //public ICollection<Piso> pisos_hotel { get; set; }
+
+        public virtual ICollection<TipoServicioXHotel> tiposerviciosxhoteles { get; set; }
     }
 }

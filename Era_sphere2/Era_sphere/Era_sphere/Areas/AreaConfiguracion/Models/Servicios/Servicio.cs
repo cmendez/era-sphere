@@ -11,7 +11,7 @@ using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
-    public class Servicio : DBable
+    public class Servicio : Costeable
     {
         public string descripcion { get; set; }
 
@@ -19,8 +19,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public int? tipo_servicioID { get; set; }
         public TipoServicio tipo_servicio { get; set; }
 
-        public ICollection<Producto> productos { get; set; }
-        public ICollection<int> cantidades { get; set; }
+        public virtual ICollection<ProductoXServicio> productos { get; set; }
 
         public DateTime? fecha { get; set; }
         public int hora { get; set; }
@@ -31,9 +30,17 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public EspacioRentable espacio_rentable { get; set; }
 
         
-        public List<ReciboLinea> generarReciboLineas()
+        public override List<ReciboLinea> generarReciboLineas()
         {
-            return null;
+            var lista = new List<ReciboLinea>();
+            ReciboLinea rec = new ReciboLinea(descripcion, 0, this.repeticiones);
+            lista.Add(rec);
+            if (tipo_servicio.tiene_productos_asociados)
+            {
+                   foreach (var pxs in productos)
+                       lista.Add(new ReciboLinea(pxs.producto.descripcion, 1, pxs.unidades));
+            }
+            return lista;
         }
     }
 }

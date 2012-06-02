@@ -16,6 +16,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public bool tiene_repeticiones { get; set; }    
         
         public string nombre { get; set; }
-        public string descripcion { get; set; }                
+        public string descripcion { get; set; }
+
+        public virtual ICollection<TipoServicioXHotel> tiposerviciosxhoteles { get; set; }
     }
 }

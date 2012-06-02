@@ -106,8 +106,10 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\InterfazLogicaServicios.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\LogicaServicios.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\ProductoXServicio.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\Servicio.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\ServicioView.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioXHotel.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicio.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\InterfazLogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\LogicaUbigeo.cs" />

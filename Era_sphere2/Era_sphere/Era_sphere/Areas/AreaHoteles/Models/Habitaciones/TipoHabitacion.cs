@@ -11,7 +11,7 @@ using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class TipoHabitacion: Preciable
+    public class TipoHabitacion: DBable
     {
         public int cap_max_personas { get; set; }
         public string descripcion { get; set; }

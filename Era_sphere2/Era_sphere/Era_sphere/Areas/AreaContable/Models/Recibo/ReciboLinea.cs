@@ -15,10 +15,18 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
 
         public int espacio_rentableID { get; set; }
 
-        public decimal precio { get; set; }
+        public decimal precio_unitario { get; set; }
 
         public string detalle { get; set; }
         public int unidades { get; set; }
         public bool pagado { get; set; }
+
+        public ReciboLinea(string detalle, decimal precio_unitario, int unidades = 1)
+        {
+            this.detalle = detalle;
+            this.precio_unitario = precio_unitario;
+            this.unidades = unidades;
+            this.pagado = false;
+        }
     }
 }

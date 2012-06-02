@@ -53,5 +53,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             return database_table.buscarElementos(servicio_campos);
         }
 
+        public List<Servicio> retornarServicios2()
+        {
+            return database_table.retornarTodos();
+        }
+
     }
 }

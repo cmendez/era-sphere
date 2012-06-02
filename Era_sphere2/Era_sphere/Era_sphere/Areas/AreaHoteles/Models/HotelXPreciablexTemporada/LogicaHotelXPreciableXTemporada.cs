@@ -63,5 +63,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXPreciableXTemporadaNM
             Hotel hotel_perteneciente = database_table_hotel.retornarUnSoloElemento(hotel_id);
             return hotel_perteneciente.razon_social;
         }
+
+        internal System.Web.Mvc.IView retornarHotelXServiciosXTemporada(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -6,59 +6,56 @@ using System.Web.Mvc;
 
 using Telerik.Web.Mvc;
 
-using Era_sphere.Areas.AreaHoteles.Models.HotelXPreciableXTemporadaNM;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
-    public class HotelXPreciableXTemporadaController : Controller
+    public class HotelXServicioXTemporadaController : Controller
     {
-        //
-        // GET: /AreaHoteles/HotelXPreciableXTemporada/
+        private LogicaHotelXServicioXTemporada logicahpt = new LogicaHotelXServicioXTemporada();
 
-        private LogicaHotelXPreciableXTemporada logicahpt = new LogicaHotelXPreciableXTemporada();
-
-        public ActionResult Index(int id, int tp)
+        public ActionResult Index(int id)
         {
             ViewData["hotelID"] = id;
             ViewData["hotel"] = logicahpt.retornaNombreHotel(id);
-            return View(logicahpt.retornarPreciablesXTemporada(id));
+            return View(logicahpt.retornarServiciosXTemporada(id));
         }
 
         [GridAction]
         public ActionResult Select(int id)
         {
-            return View("IndexHotelXPreciableXTemporada", logicahpt.retornarPreciablesXTemporada(id));
+            return View("IndexHotelXServicioXTemporada", logicahpt.retornarServiciosXTemporada(id));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
         public ActionResult Insert(int id)
         {
-            HotelXPreciableXTemporadaView hpt_view = new HotelXPreciableXTemporadaView();
+            HotelXServicioXTemporadaView hpt_view = new HotelXServicioXTemporadaView();
             if (TryUpdateModel(hpt_view))
             {
-                logicahpt.agregarPreciableXTemporada(id,hpt_view);
+                logicahpt.agregarServicioXTemporada(id, hpt_view);
 
             }
-            return View("Index", new GridModel(logicahpt.retornarPreciablesXTemporada(id)));
+            return View("Index", new GridModel(logicahpt.retornarServiciosXTemporada(id)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
         public ActionResult Delete(int? id, int id_hotel)
         {
-            int preciableXTemporada_id = id ?? -1;
-            logicahpt.eliminarPreciableXTemporada(id_hotel, preciableXTemporada_id);
-            return View("Index", new GridModel(logicahpt.retornarPreciablesXTemporada(id_hotel)));
+            int servicioXTemporada_id = id ?? -1;
+            logicahpt.eliminarServicioXTemporada(id_hotel, servicioXTemporada_id);
+            return View("Index", new GridModel(logicahpt.retornarServiciosXTemporada(id_hotel)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
-        public ActionResult Update(HotelXPreciableXTemporadaView p, int id_hotel)
+        public ActionResult Update(HotelXServicioXTemporadaView p, int id_hotel)
         {
-            logicahpt.modificarPreciableXTemporada(id_hotel,p);
-            return View("Index", new GridModel(logicahpt.retornarPreciablesXTemporada(id_hotel)));
+            logicahpt.modificarServicioXTemporada(id_hotel, p);
+            return View("Index", new GridModel(logicahpt.retornarServiciosXTemporada(id_hotel)));
         }
 
         [HttpPost]
@@ -72,7 +69,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
             List<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
             ts.Where(e => e.tipotemporadaID == tipoTemporadaID);
-            return Json(new SelectList(ts,"ID","descripcion"),JsonRequestBehavior.AllowGet);
+            return Json(new SelectList(ts, "ID", "descripcion"), JsonRequestBehavior.AllowGet);
         }
+
     }
 }

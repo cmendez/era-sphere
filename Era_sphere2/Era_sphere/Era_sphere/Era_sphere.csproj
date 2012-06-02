@@ -143,33 +143,12 @@
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\InterfazLogicaEvento.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\LogicaEvento.cs" />
-    <Compile Include="Areas\AreaHoteles\Controllers\HotelXPreciableXTemporadaController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\EraSphereContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\HotelXPreciable.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\HotelXPreciableView.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\HotelXPreciableXTemporada.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\HotelXPreciableXTemporadaView.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\InterfazLogicaHotelXPreciable.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\InterfazLogicaHotelXPreciableXTemporada.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\LogicaHotelXPreciableXTemporada.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Areas\AreaHoteles\Controllers\HotelXServicioXTemporadaController.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\HotelXServicioXTemporadaView.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\HotelXServicioXTemporada.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\InterfazLogicaHotelXServicioXTemporada.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\LogicaHotelXServicioXTemporada.cs" />
     <Compile Include="Areas\AreaPromociones\AreaPromocionesAreaRegistration.cs" />
     <Compile Include="Areas\AreaPromociones\Controllers\PromocionController.cs" />
     <Compile Include="Areas\AreaPromociones\Models\EraSphereContext.cs" />
@@ -1056,7 +1035,6 @@
     <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
     <Folder Include="Areas\AreaEventos\Views\Shared\" />
-    <Folder Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\" />
     <Folder Include="Areas\AreaReportes\Controllers\" />
     <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
@@ -1125,7 +1103,6 @@
     <Content Include="Areas\AreaConfiguracion\Views\Temporada\TemporadaIndex.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TemporadaViewTemplate.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Fiscal\IndexFiscal.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\HotelXPreciableXTemporada\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Habitacion\CrearMasivo.cshtml" />
     <Content Include="Areas\AreaContable\Views\Producto\IndexProducto.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\ProductoViewTemplate.cshtml" />
@@ -1145,8 +1122,9 @@
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteNaturalShowTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteNaturalIndexView.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXPreciableXTemporadaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXServicioXTemporadaViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\HotelXServicioXTemporada\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

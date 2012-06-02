@@ -18,6 +18,9 @@ namespace Era_sphere.Generics
             seedEstadoEspacioRentable();
             seedEstadoCliente();
             seedTipoPersona();
+            seedServicios();
+            seedTipoTemporadas();
+            seedTemporadas();
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }

@@ -10,7 +10,7 @@ using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class Ambiente: Preciable
+    public class Ambiente: DBable
     {
         public string descripcion { get; set; }
         public int capacidad_maxima { get; set; }

@@ -16,5 +16,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
         //public int ? tipoHabitacionID { get; set; }
         //[Required]
         //public virtual  TipoHabitacion  tipoHabitacion { get; set; }
+        public virtual ICollection<TipoHabitacion> tiposHabitacion { get; set; }
     }
 }

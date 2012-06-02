@@ -16,7 +16,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public int cap_max_personas { get; set; }
         public string descripcion { get; set; }
         public decimal costo_base { get; set; }
-        public ICollection<Comodidad> comodidades { get; set; }
-        public ICollection<Habitacion> lista_habitaciones { get; set; }
+        public virtual ICollection<Comodidad> comodidades { get; set; }
+        public virtual ICollection<Habitacion> lista_habitaciones { get; set; }
     }
 }

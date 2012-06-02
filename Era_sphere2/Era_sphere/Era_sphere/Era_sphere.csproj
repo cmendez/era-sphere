@@ -114,6 +114,75 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\InterfazLogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\LogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\PaisView.cs" />
+
+    <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Controllers\OrdenesController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Controllers\ProductoController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Controllers\ProveedorController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Controllers\ProveedoresController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
+    <Compile Include="Areas\AreaContable\Models\Ordenes\Orden.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_producto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Productos\InterfazLogicaProducto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Productos\LogicaProducto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Productos\Producto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Productos\ProductoContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Productos\ProductoView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Proveedores\Proveedor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Proveedor\InterfazLogicaProveedor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Proveedor\LogicaProveedor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Proveedor\Proveedor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Proveedor\ProveedorContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Proveedor\ProveedorView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Recibo\Boleta.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Recibo\Recibo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLinea.cs">
+      <SubType>Code</SubType>
+    </Compile>
+
     <Compile Include="Areas\AreaContable\Controllers\OrdenesController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\ProductoController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\ProveedorController.cs" />
@@ -131,10 +200,8 @@
     <Compile Include="Areas\AreaContable\Models\Proveedor\Proveedor.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedor\ProveedorContext.cs" />
     <Compile Include="Areas\AreaContable\Models\Proveedor\ProveedorView.cs" />
+
     <Compile Include="Areas\AreaEmpleados\Controllers\EmpleadoController.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\Boleta.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\Recibo.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLinea.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\InterfazLogicaEmpleado.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\LogicaEmpleado.cs" />
@@ -202,7 +269,6 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Ciudad.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Provincia.cs" />
-    <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\Empleado.cs" />
     <Compile Include="Areas\AreaEventos\AreaEventosAreaRegistration.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\Evento.cs" />
@@ -250,6 +316,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\AreaContable\Views\Producto\IndexProducto.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\ProductoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\ProveedorViewTemplate.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Web.config" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.xml" />
     <Content Include="bin\Era_sphere.dll" />
@@ -1033,6 +1104,7 @@
     <Folder Include="Areas\AreaCargos\Controllers\" />
     <Folder Include="Areas\AreaCargos\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Models\Ambientes\" />
+    <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
@@ -1060,7 +1132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AreaClientes\Views\Cliente\IndexCliente.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Web.config" />
     <Content Include="Areas\AreaReservas\Views\Web.config" />
     <Content Include="Areas\AreaHoteles\Views\Web.config" />
     <Content Include="Areas\AreaEventos\Views\Web.config" />
@@ -1106,15 +1177,11 @@
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TemporadaViewTemplate.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Fiscal\IndexFiscal.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Habitacion\CrearMasivo.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Producto\IndexProducto.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\ProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaPromociones\Views\Web.config" />
     <Content Include="Areas\AreaClientes\Views\Shared\EditorTemplates\ClienteNaturalViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\EditorTemplates\ClienteJuridicoViewTemplate.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\ProveedorViewTemplate.cshtml" />
     <Content Include="Areas\AreaPromociones\Views\Shared\EditorTemplates\PromocionViewTemplate.cshtml" />
     <Content Include="Areas\AreaPromociones\Views\Promocion\PromocionIndex.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />
@@ -1126,7 +1193,26 @@
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXServicioXTemporadaViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
+
+    <Content Include="Areas\AreaContable\Views\Ordenes\Create.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Delete.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Details.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Edit.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Index.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Producto\Create.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Producto\Delete.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Producto\Details.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Producto\Edit.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Producto\Index.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Proveedores\Create.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Proveedores\Delete.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Proveedores\Details.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Proveedores\Edit.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Proveedores\Index.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\_Layout.cshtml" />
+
     <Content Include="Areas\AreaHoteles\Views\HotelXServicioXTemporada\Index.cshtml" />
+
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

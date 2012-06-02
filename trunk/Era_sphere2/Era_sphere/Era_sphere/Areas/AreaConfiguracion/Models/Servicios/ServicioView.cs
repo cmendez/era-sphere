@@ -11,7 +11,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
     {
         public int ID { get; set; }
 
-        [Required, StringLength(30)]
+        [Required]
+        [StringLength(30)]
         [DisplayName("Descripcion")]
         public string detalle { get; set; }
 
@@ -21,7 +22,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public ServicioView(Servicio servicio)
         {
             ID = servicio.ID;
-            detalle = servicio.tipo_servicio.descripcion;
+            detalle = servicio.descripcion;
         }
 
         public Servicio deserializa()

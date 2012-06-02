@@ -34,10 +34,14 @@
     </div>
     Precios
     <div class="block_cont">
-        <p>@Html.ActionLink("Precios de Servicios y Alquileres de tipo de habitaciones", "Index", new { controller = "HotelXPreciableXTemporada" , id = @id_hotel },
+        <p>@Html.ActionLink("Precios de Servicios", "Index", new { controller = "HotelXServicioXTemporada" , id = @id_hotel },
                             new { @class = "tipTop" }                      
                         )
 
+        </p>
+        <p>@Html.ActionLink("Alquileres de tipo de habitacion", "Index", new { controller = "HotelXPreciableXTemporada" , id = @id_hotel , tp = 1 },
+                            new { @class = "tipTop" }                      
+                        )
         </p>
     </div>
     <!-- Table Wrapper End -->

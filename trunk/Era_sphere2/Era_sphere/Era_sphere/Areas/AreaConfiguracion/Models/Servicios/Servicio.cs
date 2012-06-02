@@ -11,9 +11,9 @@ using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
-    public class Servicio : Preciable
+    public class Servicio : DBable
     {
-        //public string descripcion { get; set; }
+        public string descripcion { get; set; }
 
         [ForeignKey("tipo_servicio")]
         public int? tipo_servicioID { get; set; }

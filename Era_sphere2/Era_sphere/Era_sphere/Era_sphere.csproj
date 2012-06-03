@@ -198,10 +198,27 @@
     <Compile Include="Areas\AreaPromociones\Models\LogicaPromocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
-    <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
-    <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaView.cs" />
-    <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaReservas\ReservaView.cs" />
+    <Compile Include="Areas\AreaReservas\AreaReservasAreaRegistration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReservas\Controllers\ReservaController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReservas\Models\InterfazLogicaReserva.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReservas\Models\LogicaReserva.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReservas\Models\Reserva.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReservas\Models\ReservaContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\InterfazLogicaTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\LogicaTemporada.cs" />
@@ -265,12 +282,6 @@
     <Compile Include="Areas\AreaHoteles\Models\Piso\PisoContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Piso\PisoView.cs" />
     <Compile Include="Areas\AreaReportes\AreaReportesAreaRegistration.cs" />
-    <Compile Include="Areas\AreaReservas\AreaReservasAreaRegistration.cs" />
-    <Compile Include="Areas\AreaReservas\Controllers\ReservaController.cs" />
-    <Compile Include="Areas\AreaReservas\Models\InterfazLogicaReserva.cs" />
-    <Compile Include="Areas\AreaReservas\Models\LogicaReserva.cs" />
-    <Compile Include="Areas\AreaReservas\Models\Reserva.cs" />
-    <Compile Include="Areas\AreaReservas\Models\ReservaContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Navegacion\NavegacionController.cs" />
@@ -297,6 +308,7 @@
     <Content Include="Areas\AreaContable\Models\Views\Shared\ProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Models\Views\Shared\ProveedorViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Models\Views\Web.config" />
+    <Content Include="Areas\AreaReservas\Views\Web.config" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.xml" />
     <Content Include="bin\Era_sphere.dll" />
@@ -1088,6 +1100,7 @@
     <Folder Include="Areas\AreaReportes\Controllers\" />
     <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
+    <Folder Include="Areas\AreaReservas\Models\Consultas\" />
     <Folder Include="Areas\AreaReservas\Views\Shared\" />
     <Folder Include="Scripts\ApiSeguridad\" />
   </ItemGroup>
@@ -1108,7 +1121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AreaClientes\Views\Cliente\IndexCliente.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Web.config" />
     <Content Include="Areas\AreaHoteles\Views\Web.config" />
     <Content Include="Areas\AreaEventos\Views\Web.config" />
     <Content Include="Areas\AreaConfiguracion\Views\Cadena\Index.cshtml" />

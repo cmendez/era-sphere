@@ -29,22 +29,37 @@
         .Editable(editing => editing
                             .Mode(GridEditMode.InLine))
         .DataKeys(key => key.Add(c => c.ID))
+       
         .Columns(columns =>
         {
             
             columns.Bound(p => p.nombrePerfil);
             columns.Bound(p => p.descripcion);
-            
+
             columns.Command(commands =>
             {
-                commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
+                commands.Custom("editarPerfil")
+                    .ButtonType(GridButtonType.Image)
+                    .ImageHtmlAttributes(new { @class = "t-icon t-edit" })
+                    .Ajax(true)
+                    .Action("DamePerfil", "Perfiles")
+                    .Text("Edit")
+                    .DataRouteValues(route =>
+                    {
+                        route.Add(p => p.ID).RouteKey("perfilID");
+                    });
+                    
+                    
             });
+            
+            
         })
-
+        .ClientEvents(events => events.OnComplete("Grid_onComplete"))
+        
         .Pageable()
         .Sortable()
-
+        
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
@@ -56,14 +71,15 @@
     )
 
     <div id="dialogEditar" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 46px; height: auto; display:none" scrolltop="0" scrollleft="0">
-		<div class = "form">
+
+        <div class = "form">
             <div class="form_row">
-                <label>Nombre :</label>
-                <input type = "text" id = "nombre" class = "input tipRignt singleInput" placeholder = "Ingrese el nombre del perfil">
+                <label>Nombre : <span class = "nombreError" style = "color:Red; display:none">Este campo es Obligatorio *</span></label> 
+                <input type = "text" id = "nombre" maxlength = "50" required="required" class = "input tipRignt singleInput" placeholder = "Ingrese el nombre del perfil">
             </div>
             <div class="form_row">
-                <label>Descripcion :</label>
-                <textarea id = "descripcion" class = "input tipRignt singleInput" maxlength = "60" placeholder = "Ingrese la descripcion"></textarea>  
+                <label>Descripcion : <span class = "descripcionError" style = "color:Red; display:none">Este campo es Obligatorio *</span></label>
+                <textarea id = "descripcion" required="required" class = "input tipRignt singleInput" maxlength = "60" placeholder = "Ingrese la descripcion"></textarea>  
             </div>
             <div class="form_row">
                 <label>Lista de Actividades :</label>
@@ -79,9 +95,16 @@
 </div>
 
 <script type = "text/javascript">
+    var gridID = "PerfilesGrid";
+    var commandName = "editarPerfil";
+    var iconName = "t-edit";
+    //$("#" + gridID + " .t-grid-" + commandName + " .t-" + commandName).attr("class", "t-icon " + iconName);
+    //$(".t-icon .t-editarPerfil").attr("class", "t-icon " + iconName);
+    //attr("class", "t-icon " + iconName);
 
     $("#agregarPerfil").click(function () {
         //ajax
+        localStorage.setItem("estado", "agregando");
         $("#nombre").val(""),
         $("#descripcion").val(""),
         $.ajax({
@@ -91,9 +114,10 @@
             url: "../Navegacion/ListaTodoMenu",
             success: function (data) {
                 var result = "";
+                localStorage.setItem("actividades",data.length);
                 $.each(data, function (i, item) {
                     var nombre = item.Nombre;
-                    result += '<p><input type = "checkbox" id = "actividad-' + i +'">' + nombre + '</p>';
+                    result += '<p><input type = "checkbox" id = "actividad-' + i + '">' + nombre + '</p>';
                 });
                 $("#listaActividades").html(result);
             }
@@ -112,26 +136,66 @@
         position: "center",
         buttons: {
             "Aceptar": function () {
-                var jsonMenu = {
-                    nombre: $("#nombre").val(),
-                    descripcion: $("#descripcion").val(),
-                    lista : "111"
-                 }; 
+                if (!validarForm()) {
+                    return false;
+                } else {
+                    $("#nombreError").hide();
+                    $("#descripcionError").hide();
+                }
+                var cadLista = "";
+                for (j = 0; j < localStorage.getItem("actividades"); j++) {
+                    var nombreActividad = "#actividad-" + j;
+                    if ($(nombreActividad).is(":checked")) cadLista += "1";
+                    else cadLista += "0";
+                }
+
+                if (localStorage.getItem("estado") == "editando") {
+                    //ajax para editar
+                    var perfil = {
+                        ID: localStorage.getItem("idperfil"),
+                        nombrePerfil: $("#nombre").val(),
+                        descripcion: $("#descripcion").val(),
+                        listaVisibilidad: cadLista
+                    };
                     $.ajax({
-                        type: "POST", 
-                        data: JSON.stringify(jsonMenu), 
+                        type: "POST",
+                        data: JSON.stringify(perfil),
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
-                        url: "Perfiles/nuevoPerfil", 
-                            success: function (data) {
-                                if (data.me == "") {
-                                    $('#PerfilesGrid').data('tGrid').ajaxRequest();
-                                    
-                                }
-                            }
+                        url: "Perfiles/Update",
+                        success: function (data) {
+                            $('#PerfilesGrid').data('tGrid').ajaxRequest();
+                        }
                     });
 
-                        $(this).dialog("close");
+
+                } else if (localStorage.getItem("estado") == "agregando") {
+                    //ajax para agregar
+                    var perfil = {
+                        nombre: $("#nombre").val(),
+                        descripcion: $("#descripcion").val(),
+                        lista: cadLista
+                    };
+
+
+                    $.ajax({
+                        type: "POST",
+                        data: JSON.stringify(perfil),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        url: "Perfiles/nuevoPerfil",
+                        success: function (data) {
+                            if (data.me == "") {
+                                $('#PerfilesGrid').data('tGrid').ajaxRequest();
+                            }
+                        }
+                    });
+                }
+
+
+                
+
+                $(this).dialog("close");
             },
             "Cancelar": function () {
                 $(this).dialog("close");
@@ -139,4 +203,47 @@
         }
     });
 
+    function validarForm() {
+        var name = $("#nombre").val();
+        var desc = $("#descripcion").val();
+        var b = true;
+        if (name == "") { $(".nombreError").show(); b = false; } else { $("#nombreError").hide(); }
+        if (desc == "") { $(".descripcionError").show(); b = false; } else { $("#descripcionError").hide(); }
+        return b;
+    }
+
+    function Grid_onComplete(e) {
+        if (e.name == "editarPerfil") {
+            localStorage.setItem("estado", "editando");
+            var result = e.response;
+            var nomb = result.nombrePerfil;
+            var desc = result.descripcion;
+            var idperfil = result.ID;
+            localStorage.setItem("idperfil", idperfil);
+            var lista = result.listaVisibilidad;
+            $("#nombre").val(nomb),
+            $("#descripcion").val(desc),
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "../Navegacion/ListaTodoMenu",
+            success: function (data) {
+                var result = "";
+                localStorage.setItem("actividades", data.length);
+                $.each(data, function (i, item) {
+                    var nombre = item.Nombre;
+                    if (lista[i] == "1") {
+                        result += '<p><input type = "checkbox" checked="checked" id = "actividad-' + i + '">' + nombre + '</p>';
+                    } else {
+                        result += '<p><input type = "checkbox" id = "actividad-' + i + '">' + nombre + '</p>';
+                    }
+                    
+                });
+                $("#listaActividades").html(result);
+            }
+        });
+         $('#dialogEditar').dialog('open');
+        }
+    }
 </script>

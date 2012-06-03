@@ -6,7 +6,7 @@
     ViewBag.Title = "ClienteNaturalIndexView";
     //var paises = (new EraSphereContext()).paises.ToList();
     //var ciudades = (new EraSphereContext()).ciudades.ToList();
-    //var estados = (new EraSphereContext()).estados_cliente.ToList();
+    var estados = (new EraSphereContext()).estados_cliente.ToList();
 }
 
  @(Html.Telerik().Grid(Model)
@@ -25,6 +25,7 @@
             columns.Bound(p => p.nombre);
             columns.Bound(p => p.apellido_paterno);
             columns.Bound(p => p.apellido_materno);
+            columns.ForeignKey(p => p.id_estado, new SelectList(estados, "ID", "descripcion"));
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

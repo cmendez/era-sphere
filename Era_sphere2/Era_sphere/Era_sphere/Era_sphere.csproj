@@ -198,7 +198,10 @@
     <Compile Include="Areas\AreaPromociones\Models\LogicaPromocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
+    <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
+    <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaView.cs" />
     <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaReservas\ReservaView.cs" />
     <Compile Include="Controllers\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\InterfazLogicaTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\LogicaTemporada.cs" />
@@ -1183,6 +1186,7 @@
     <Content Include="Areas\AreaContable\Models\Views\Proveedores\Index.cshtml" />
     <Content Include="Areas\AreaContable\Models\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\HotelXServicioXTemporada\Index.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\DetalleClienteTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

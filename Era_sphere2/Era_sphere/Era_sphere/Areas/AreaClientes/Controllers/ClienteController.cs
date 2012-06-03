@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Models;
 using Era_sphere.Areas.AreaClientes.Models;
+using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 using Era_sphere.Generics;
 using Telerik.Web.Mvc;
@@ -121,6 +122,19 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         public ActionResult ClienteNaturalShow()
         {
             return View("ClienteNaturalShowTemplate");
+        }
+
+        public ActionResult DetalleCliente(int id_cliente)
+        {
+            List<ReciboLinea> recibo_linea = new List<ReciboLinea>();
+            Cliente cliente = cliente_logica.retornarCliente(id_cliente);
+            foreach (Recibo r in cliente.recibos_cliente)
+                foreach (ReciboLinea rl in r.recibo_lineas)
+                    if (rl.de_servicio)
+                        recibo_linea.Add(rl);
+            ViewBag.estado = cliente.estado.descripcion;
+            ViewBag.puntos = cliente.puntos_cliente;
+            return View("DetalleClienteID", recibo_linea);
         }
     }
 }

@@ -86,5 +86,25 @@
 
         
           </fieldset>
+        <button id="Mostrar-Detalle" class="t-button t-state-default">Mostrar Detalle</button>
+      
+        @(Html.Telerik().Window().Name("MostrarDetallePopup")
+        .Title("Detalle de consumo de Cliente").LoadContentFrom("DetalleCliente", "Cliente")
+            .Modal(true)
+            .Visible(false)
+            .Width(300))
+
+
          </div>
 
+@{ Html.Telerik().ScriptRegistrar()
+        .OnDocumentReady(@<text>
+            
+            $('#Mostrar-Detalle')
+                .click(function(e) {
+                    e.preventDefault();
+                    $('#MostrarDetallePopup').data('tWindow').center().open();
+                });
+            $('.t-button').live('mouseenter', $.telerik.buttonHover)
+                            .live('mouseleave', $.telerik.buttonLeave);
+        </text>); }

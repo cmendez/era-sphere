@@ -1,0 +1,185 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Telerik.Web.Mvc.Configuration
+@using Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleado
+@using Era_sphere.Areas.AreaEmpleados.Models
+@model IEnumerable<AsistenciaEmpleado>
+
+           
+@{
+    ViewBag.Title = "Index";
+    int idusuario = 1;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Asistencia de empleados
+        </h3>
+    </div>
+    <div class="block_cont">
+
+
+
+        @(Html.ActionLink("Registrar Entrada", "RegistrarAsistencia", new { id = idusuario}, null))
+        @(Html.ActionLink("Registrar Salida", "RegistrarSalida", new { id = idusuario }, null))
+    </div>
+   
+</div>
+<!--
+<script type = "text/javascript">
+    var gridID = "PerfilesGrid";
+    var commandName = "editarPerfil";
+    var iconName = "t-edit";
+    //$("#" + gridID + " .t-grid-" + commandName + " .t-" + commandName).attr("class", "t-icon " + iconName);
+    //$(".t-icon .t-editarPerfil").attr("class", "t-icon " + iconName);
+    //attr("class", "t-icon " + iconName);
+
+    $("#agregarPerfil").click(function () {
+        //ajax
+        localStorage.setItem("estado", "agregando");
+        $("#nombre").val(""),
+        $("#descripcion").val(""),
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "../Navegacion/ListaTodoMenu",
+            success: function (data) {
+                var result = "";
+                localStorage.setItem("actividades", data.length);
+                $.each(data, function (i, item) {
+                    var nombre = item.Nombre;
+                    result += '<p><input type = "checkbox" id = "actividad-' + i + '">' + nombre + '</p>';
+                });
+                $("#listaActividades").html(result);
+            }
+        });
+
+        $('#dialogEditar').dialog('open');
+    });
+
+    $('#dialogEditar').dialog({
+        autoOpen: false,
+        resizable: false,
+        draggable: false,
+        width: 800,
+        modal: true,
+        title: "Crear Perfil",
+        position: "center",
+        buttons: {
+            "Aceptar": function () {
+                if (!validarForm()) {
+                    return false;
+                } else {
+                    $("#nombreError").hide();
+                    $("#descripcionError").hide();
+                }
+                var cadLista = "";
+                for (j = 0; j < localStorage.getItem("actividades"); j++) {
+                    var nombreActividad = "#actividad-" + j;
+                    if ($(nombreActividad).is(":checked")) cadLista += "1";
+                    else cadLista += "0";
+                }
+
+                if (localStorage.getItem("estado") == "editando") {
+                    //ajax para editar
+                    var perfil = {
+                        ID: localStorage.getItem("idperfil"),
+                        nombrePerfil: $("#nombre").val(),
+                        descripcion: $("#descripcion").val(),
+                        listaVisibilidad: cadLista
+                    };
+                    $.ajax({
+                        type: "POST",
+                        data: JSON.stringify(perfil),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        url: "Perfiles/Update",
+                        success: function (data) {
+                            $('#PerfilesGrid').data('tGrid').ajaxRequest();
+                        }
+                    });
+
+
+                } else if (localStorage.getItem("estado") == "agregando") {
+                    //ajax para agregar
+                    var perfil = {
+                        nombre: $("#nombre").val(),
+                        descripcion: $("#descripcion").val(),
+                        lista: cadLista
+                    };
+
+
+                    $.ajax({
+                        type: "POST",
+                        data: JSON.stringify(perfil),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        url: "Perfiles/nuevoPerfil",
+                        success: function (data) {
+                            if (data.me == "") {
+                                $('#PerfilesGrid').data('tGrid').ajaxRequest();
+                            }
+                        }
+                    });
+                }
+
+
+
+
+                $(this).dialog("close");
+            },
+            "Cancelar": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    function validarForm() {
+        var name = $("#nombre").val();
+        var desc = $("#descripcion").val();
+        var b = true;
+        if (name == "") { $(".nombreError").show(); b = false; } else { $("#nombreError").hide(); }
+        if (desc == "") { $(".descripcionError").show(); b = false; } else { $("#descripcionError").hide(); }
+        return b;
+    }
+
+    function Grid_onComplete(e) {
+        if (e.name == "editarPerfil") {
+            localStorage.setItem("estado", "editando");
+            var result = e.response;
+            var nomb = result.nombrePerfil;
+            var desc = result.descripcion;
+            var idperfil = result.ID;
+            localStorage.setItem("idperfil", idperfil);
+            var lista = result.listaVisibilidad;
+            $("#nombre").val(nomb),
+            $("#descripcion").val(desc),
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "../Navegacion/ListaTodoMenu",
+            success: function (data) {
+                var result = "";
+                localStorage.setItem("actividades", data.length);
+                $.each(data, function (i, item) {
+                    var nombre = item.Nombre;
+                    if (lista[i] == "1") {
+                        result += '<p><input type = "checkbox" checked="checked" id = "actividad-' + i + '">' + nombre + '</p>';
+                    } else {
+                        result += '<p><input type = "checkbox" id = "actividad-' + i + '">' + nombre + '</p>';
+                    }
+
+                });
+                $("#listaActividades").html(result);
+            }
+        });
+            $('#dialogEditar').dialog('open');
+        }
+    }
+</script>
+
+-->

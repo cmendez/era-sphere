@@ -20,6 +20,8 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
         public string detalle { get; set; }
         public int unidades { get; set; }
         public bool pagado { get; set; }
+        public DateTime fecha { get; set; }
+        public int puntos { get; set; }
 
         public ReciboLinea(string detalle, decimal precio_unitario, int unidades = 1)
         {

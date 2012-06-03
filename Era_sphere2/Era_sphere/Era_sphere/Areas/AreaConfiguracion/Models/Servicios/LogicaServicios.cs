@@ -6,19 +6,19 @@ using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
-    public class LogicaServicios : InterfazLogicaServicios
+    public class LogicaServicios
     {
-        EraSphereContext servicios_context = new EraSphereContext();
-        DBGenericQueriesUtil<Servicio> database_table;
+        EraSphereContext context = new EraSphereContext();
+        DBGenericQueriesUtil<Servicio> tabla_servicios, tabla_tipo_servicios;
 
         public LogicaServicios()
         {
-            database_table = new DBGenericQueriesUtil<Servicio>(servicios_context, servicios_context.servicios);
+            tabla_servicios = new DBGenericQueriesUtil<Servicio>(context, context.servicios);
         }
 
         public List<ServicioView> retornarServicios()
         {
-            List<Servicio> servicios = database_table.retornarTodos();
+            List<Servicio> servicios = tabla_servicios.retornarTodos();
             List<ServicioView> servicios_view = new List<ServicioView>();
 
             foreach (Servicio servicio in servicios) servicios_view.Add(new ServicioView(servicio));
@@ -27,7 +27,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         public ServicioView retornarServicio(int servicioID)
         {
-            Servicio servicio_aux = database_table.retornarUnSoloElemento(servicioID);
+            Servicio servicio_aux = tabla_servicios.retornarUnSoloElemento(servicioID);
             ServicioView servicio = new ServicioView(servicio_aux);
             return servicio;
         }
@@ -35,28 +35,30 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public void modificarServicio(ServicioView servicio_view)
         {
             Servicio servicio = servicio_view.deserializa();
-            database_table.modificarElemento(servicio, servicio.ID);
+            tabla_servicios.modificarElemento(servicio, servicio.ID);
         }
 
         public void agregarServicio(ServicioView servicio)
         {
-            database_table.agregarElemento(servicio.deserializa());
+            tabla_servicios.agregarElemento(servicio.deserializa());
         }
 
         public void eliminarServicio(int servicioID)
         {
-            database_table.eliminarElemento(servicioID);
+            tabla_servicios.eliminarElemento(servicioID);
         }
 
         public List<Servicio> buscarServicio(Servicio servicio_campos)
         {
-            return database_table.buscarElementos(servicio_campos);
+            return tabla_servicios.buscarElementos(servicio_campos);
         }
 
-        public List<Servicio> retornarServicios2()
+
+
+
+        internal object retornarTipoServicios()
         {
-            return database_table.retornarTodos();
+            throw new NotImplementedException();
         }
-
     }
 }

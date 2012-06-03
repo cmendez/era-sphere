@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ReciboLinea>
+@using Era_sphere.Areas.AreaClientes.Models
+@using Era_sphere.Areas.AreaContable.Models.Recibo;
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI
+@{
+    ViewBag.Title = "ClienteNaturalIndexView";
+    string estado = ViewBag.estado;
+    int puntos_acumulados = ViewBag.puntos;
+}
+
+
+ @Html.DisplayText("Estado: " + estado)
+ 
+ @(Html.Telerik().Grid(Model)
+        .Name("ClienteNaturalGrid")
+        .Localizable("es-ES")
+        .Filterable()
+
+                            
+                            
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.detalle);
+            columns.Bound(p => p.precio_final);
+            columns.Bound(p => p.fecha);
+            columns.Bound(p => p.puntos);
+            
+        })
+
+        .Pageable()
+        .Sortable()
+                .DataBinding(dataBinding => dataBinding
+                         .Ajax()
+                    
+        )
+           )
+
+        
+        @Html.DisplayText("Puntos Acumulados: " + puntos_acumulados)

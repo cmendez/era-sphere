@@ -9,6 +9,7 @@ using Era_sphere.Generics;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Era_sphere.Areas.AreaHoteles.Models;
+using Era_sphere.Areas.AreaContable.Models.Recibo;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {
@@ -25,6 +26,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
             public int id_habitacion_asisgnada { get; set; }
             public int puntos_cliente { get; set; }
             public int numero_reservas { get; set; }
+            public ICollection<Recibo> recibos_cliente { get; set; }
 
 
         }

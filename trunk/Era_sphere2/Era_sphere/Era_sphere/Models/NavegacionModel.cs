@@ -74,7 +74,7 @@ namespace Era_sphere.Models
             AreaHoteles.Add(
                     new SubLink
                     {
-                        Nombre = "Agregar Tipo Habitacion",
+                        Nombre = "Tipos de habitaciones",
                         Url = "/AreaHoteles/TipoHabitacion"
                     }
                 );
@@ -102,12 +102,12 @@ namespace Era_sphere.Models
 
 
             AreaConfiguracion.Add(new SubLink { 
-                Nombre = "Administrar Perfiles",
+                Nombre = "Perfiles",
                 Url    = "/AreaConfiguracion/Perfiles"
             });
 
             AreaConfiguracion.Add(new SubLink { 
-                Nombre = "Agregar Monedas",
+                Nombre = "Monedas",
                 Url= "/AreaConfiguracion/Moneda"
             });
 
@@ -124,31 +124,31 @@ namespace Era_sphere.Models
 
             AreaConfiguracion.Add(new SubLink
             {
-                Nombre = "Agregar Tipo Pago",
+                Nombre = "Tipos de Pago",
                 Url = "/AreaConfiguracion/TipoDePago"
             });
 
             AreaConfiguracion.Add(new SubLink()
             {
                 Nombre = "Cadena",
-                Url = "../AreaConfiguracion/Cadena"
+                Url = "/AreaConfiguracion/Cadena"
             });
 
             AreaConfiguracion.Add(new SubLink()
             {
                 Nombre = "Comodidades",
-                Url = "../AreaHoteles/Comodidades"
+                Url = "/AreaHoteles/Comodidades"
             });
             AreaConfiguracion.Add(new SubLink()
             {
-                Nombre = "Temporada",
-                Url = "../AreaConfiguracion/Temporada"
+                Nombre = "Temporadas",
+                Url = "/AreaConfiguracion/Temporada"
             });
 
             AreaConfiguracion.Add(new SubLink()
             {
-                Nombre = "Tipo Temporada",
-                Url = "../AreaConfiguracion/TipoTemporada"
+                Nombre = "Tipo  de temporadas",
+                Url = "/AreaConfiguracion/TipoTemporada"
             });
 
             

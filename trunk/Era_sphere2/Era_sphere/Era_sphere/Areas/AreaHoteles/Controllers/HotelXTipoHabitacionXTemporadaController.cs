@@ -6,57 +6,59 @@ using System.Web.Mvc;
 
 using Telerik.Web.Mvc;
 
-using Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
+
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
-    public class HotelXServicioXTemporadaController : Controller
+    public class HotelXTipoHabitacionXTemporadaController : Controller
     {
-        private LogicaHotelXServicioXTemporada logicahpt = new LogicaHotelXServicioXTemporada();
+        private LogicaHotelXTipoHabitacionXTemporada logicahtht = new LogicaHotelXTipoHabitacionXTemporada();
 
         public ActionResult Index(int id)
         {
             ViewData["hotelID"] = id;
-            ViewData["hotel"] = logicahpt.retornaNombreHotel(id);
-            return View(logicahpt.retornarServiciosXTemporada(id));
+            ViewData["hotel"] = (new EraSphereContext()).hoteles.Find(id).descripcion;
+            return View(logicahtht.retornarTipoHabitacionsXTemporada(id));
         }
 
         [GridAction]
         public ActionResult Select(int id)
         {
-            return View("Index", logicahpt.retornarServiciosXTemporada(id));
+            return View("Index", logicahtht.retornarTipoHabitacionsXTemporada(id));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
         public ActionResult Insert(int id)
         {
-            HotelXServicioXTemporadaView hpt_view = new HotelXServicioXTemporadaView(id);
-            if (TryUpdateModel(hpt_view))
+            HotelXTipoHabitacionXTemporadaView htht_view = new HotelXTipoHabitacionXTemporadaView(id);
+            if (TryUpdateModel(htht_view))
             {
-                logicahpt.agregarServicioXTemporada(id, hpt_view);
+                logicahtht.agregarTipoHabitacionXTemporada(id, htht_view);
 
             }
-            return View("Index", new GridModel(logicahpt.retornarServiciosXTemporada(id)));
+            return View("Index", new GridModel(logicahtht.retornarTipoHabitacionsXTemporada(id)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
         public ActionResult Delete(int? id, int id_hotel)
         {
-            int servicioXTemporada_id = id ?? -1;
-            logicahpt.eliminarServicioXTemporada(id_hotel, servicioXTemporada_id);
-            return View("Index", new GridModel(logicahpt.retornarServiciosXTemporada(id_hotel)));
+            int tipoHabitacionXTemporada_id = id ?? -1;
+            logicahtht.eliminarTipoHabitacionXTemporada(id_hotel, tipoHabitacionXTemporada_id);
+            return View("Index", new GridModel(logicahtht.retornarTipoHabitacionsXTemporada(id_hotel)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
         [GridAction]
-        public ActionResult Update(HotelXServicioXTemporadaView hstv, int id_hotel)
+        public ActionResult Update(HotelXTipoHabitacionXTemporadaView hxthxtv, int id_hotel)
         {
-            hstv.hotelID = id_hotel;
-            logicahpt.modificarServicioXTemporada(id_hotel, hstv);
-            return View("Index", new GridModel(logicahpt.retornarServiciosXTemporada(id_hotel)));
+            hxthxtv.hotelID = id_hotel;
+            logicahtht.modificarTipoHabitacionXTemporada(id_hotel, hxthxtv);
+            return View("Index", new GridModel(logicahtht.retornarTipoHabitacionsXTemporada(id_hotel)));
         }
 
         [HttpPost]

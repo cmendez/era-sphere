@@ -30,6 +30,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             return new Servicio
             {
                 ID = this.ID,
+                descripcion = this.detalle
             };
 
         }

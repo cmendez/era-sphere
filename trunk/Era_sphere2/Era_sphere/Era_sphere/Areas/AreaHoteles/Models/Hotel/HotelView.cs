@@ -23,13 +23,20 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             direccion = hotel.direccion;
             telefono_1 = hotel.telefono_1;
             telefono_2 = hotel.telefono_2;
-            fax = hotel.fax;
-            provincia = hotel.provincia;
+            fax = hotel.fax;            
             paisID = hotel.paisID;
-            /*  ciudad_id = hotel.ciudad.ID;
-              ciudad_nombre = hotel.ciudad.nombre;
-              pais_nombre = hotel.ciudad.pais.nombre; */
+            ciudadID = hotel.ciudadID;
+            provinciaID = hotel.provinciaID;
+
+            pais_nombre = hotel.pais.nombre;
+            ciudad_nombre = hotel.ciudad.nombre;
+            provincia_nombre = hotel.provincia.nombre;
         }
+
+        [Required]
+        [DisplayName("ID")]
+        public int ID { get; set; }
+
         [Required]
         [DisplayName("Descripcion")]
         public string descripcion { get; set; }
@@ -59,25 +66,28 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [DisplayName("Telefono 2")]
         public string telefono_2 { get; set; }
         
-        [Required, StringLength(28)]
+        [StringLength(28)]
         [DisplayName("Fax")]
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string fax { get; set; }
 
         [Required]
-        [DisplayName("Provincia")]
-        public string provincia { get; set; }
-        /*      public string pais_nombre { get; set; }
-              public string ciudad_nombre { get; set; }
-              [Required]
-              [DisplayName("Ciudad")]
-              public int ciudad_id { get; set; }*/
-        [DisplayName("ID Hotel")]
-        public int ID { get; set; }
-
-        [Required]
         [DisplayName("Pais")]
         public int paisID { get; set; }
+        [Required]
+        [DisplayName("Ciudad")]
+        public int ciudadID { get; set; }
+        [Required]
+        [DisplayName("Provincia")]
+        [DisplayFormat(NullDisplayText="No aplica")]
+        public int? provinciaID { get; set; }
+
+        [DisplayName("Pais")]
+        public string pais_nombre { get; set; }
+        [DisplayName("Ciudad")]
+        public string ciudad_nombre { get; set; }
+        [DisplayName("Provincia")]
+        public string provincia_nombre { get; set; }
 
 
         public Hotel deserializa(InterfazLogicaHotel logica)
@@ -90,13 +100,16 @@ namespace Era_sphere.Areas.AreaHoteles.Models
                 fax = this.fax,
                 ID = this.ID,
                 nroreg_id = this.nroreg_id,
-                provincia = this.provincia,
                 razon_social = this.razon_social,
                 reg_id = this.reg_id,
                 telefono_1 = this.telefono_1,
                 telefono_2 = this.telefono_2,
                 paisID = this.paisID,
+                ciudadID = this.ciudadID,
+                provinciaID = this.provinciaID,
                 pais = logica.context_publico.paises.Find(this.paisID),
+                ciudad = logica.context_publico.ciudades.Find(this.ciudadID),
+                provincia = logica.context_publico.provincias.Find(this.provinciaID)
             };
         }
     }

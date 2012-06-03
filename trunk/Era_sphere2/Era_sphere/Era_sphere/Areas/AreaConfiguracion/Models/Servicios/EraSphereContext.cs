@@ -16,7 +16,7 @@ namespace Era_sphere.Generics
 
         public void seedServicios()
         {
-          /*  List<Servicio> ss = new List<Servicio>
+            List<Servicio> ss = new List<Servicio>
             {
                 new Servicio { descripcion = "Botella 1/2L Coca Cola" },
                 new Servicio { descripcion =  "Desayuno Premium"}
@@ -24,7 +24,7 @@ namespace Era_sphere.Generics
 
             foreach (Servicio s in ss) servicios.Add(s);
             this.SaveChanges();
-            */
+            
         }
     }
 }

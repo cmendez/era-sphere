@@ -25,9 +25,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public int hora { get; set; }
         public int repeticiones { get; set; }
 
-        [ForeignKey("espacio_rentable")]
-        public int? espacio_rentableID { get; set; }
-        public EspacioRentable espacio_rentable { get; set; }
+        //[ForeignKey("espacio_rentable")]
+        //public int? espacio_rentableID { get; set; }
+        //public EspacioRentable espacio_rentable { get; set; }
 
         
         public override List<ReciboLinea> generarReciboLineas()

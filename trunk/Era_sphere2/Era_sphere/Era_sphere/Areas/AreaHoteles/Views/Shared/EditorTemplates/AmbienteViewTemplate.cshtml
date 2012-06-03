@@ -44,6 +44,9 @@
                     .BindTo(new SelectList(estados, "ID", "descripcion"))
                     .SelectedIndex(0)
                 )
+
+        <div class="editor-label"> @Html.LabelFor(model => model.precio) </div>
+        <div class="editor-field"> @Html.EditorFor(model => model.precio) </div>
         
     </fieldset>
 }

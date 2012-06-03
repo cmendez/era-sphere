@@ -12,7 +12,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
     public class Provincia: DBable
     {
         [Required]
-        public string Nombre { get; set; }
+        public string nombre { get; set; }
 
         //[Required]
         [ForeignKey("ciudad")]

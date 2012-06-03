@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models;
 
+using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
+using Era_sphere.Generics;
+
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
     public class HotelController : Controller
@@ -17,6 +20,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         {
             return View("IndexHotel");
         }
+
+
 
         [GridAction]
         public ActionResult Select()
@@ -62,5 +67,36 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             int id = pais_id ?? -1;
             return Json( new SelectList( hotel_logica.retornarCiudades( id ) , "ID" , "nombre" ), JsonRequestBehavior.AllowGet);
         }
+
+
+        [HttpPost]
+        public JsonResult _GetComboBoxCiudades(int? paisID)
+        {
+            return _GetCiudades(paisID);
+        }
+
+        private JsonResult _GetCiudades(int? paisID)
+        {
+            //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
+            List<Ciudad> cs = (new EraSphereContext()).paises.Find(paisID).ciudades.ToList();
+            return Json(new SelectList(cs, "ID", "nombre"), JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+        [HttpPost]
+        public JsonResult _GetComboBoxProvincias(int? ciudadID)
+        {
+            return _GetProvincias(ciudadID);
+        }
+
+        private JsonResult _GetProvincias(int? ciudadID)
+        {
+            //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
+            List<Provincia> ps = (new EraSphereContext()).ciudades.Find(ciudadID).provincias.ToList();
+            return Json(new SelectList(ps, "ID", "nombre"), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

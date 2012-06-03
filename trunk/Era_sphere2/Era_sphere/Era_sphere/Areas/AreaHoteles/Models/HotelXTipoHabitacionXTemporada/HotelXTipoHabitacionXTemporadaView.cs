@@ -9,31 +9,31 @@ using System.ComponentModel;
 using Era_sphere.Areas.AreaCargos.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
 
-namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
+namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
 {
-    public class HotelXServicioXTemporadaView
+    public class HotelXTipoHabitacionXTemporadaView
     {
-        public HotelXServicioXTemporadaView()
+        public HotelXTipoHabitacionXTemporadaView()
         {
         }
 
-        public HotelXServicioXTemporadaView(int hotelID)
+        public HotelXTipoHabitacionXTemporadaView(int hotelID)
         {
             this.hotelID = hotelID;
         }
 
-        public HotelXServicioXTemporadaView(HotelXServicioXTemporada hxsxt)
+        public HotelXTipoHabitacionXTemporadaView(HotelXTipoHabitacionXTemporada hxthxt)
         {
-            this.ID = hxsxt.ID;
+            this.ID = hxthxt.ID;
 
-            this.servicio_descripcion = hxsxt.servicio.descripcion;
-            this.tt_desc = hxsxt.temporada.tipotemporada.descripcion;
-            this.t_desc = hxsxt.temporada.descripcion;
-            this.precio = hxsxt.precio;
+            this.tipoHabitacion_descripcion = hxthxt.tipoHabitacion.descripcion;
+            this.tt_desc = hxthxt.temporada.tipotemporada.descripcion;
+            this.t_desc = hxthxt.temporada.descripcion;
+            this.precio = hxthxt.precio;
 
-            this.hotelID = hxsxt.hotelID;
-            this.servicioID = hxsxt.servicioID;
-            this.temporadaID = hxsxt.temporadaID;
+            this.hotelID = hxthxt.hotelID;
+            this.tipoHabitacionID = hxthxt.tipoHabitacionID;
+            this.temporadaID = hxthxt.temporadaID;
         }
 
         [Required]
@@ -50,14 +50,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
         [Required]
         public int hotelID { get; set; }
         [Required]
-        [DisplayName("Servicio")]
-        public int servicioID { get; set; }
+        [DisplayName("TipoHabitacion")]
+        public int tipoHabitacionID { get; set; }
         [Required]
         public int temporadaID { get; set; }
 
         
-        [DisplayName("Servicio")]
-        public string servicio_descripcion { get; set; }
+        [DisplayName("TipoHabitacion")]
+        public string tipoHabitacion_descripcion { get; set; }
         [DisplayName("Tipo de temporada")]
         public string tt_desc { get; set; }
         [DisplayName("Temporada")]
@@ -65,13 +65,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
 
 
 
-        public HotelXServicioXTemporada deserializa()
+        public HotelXTipoHabitacionXTemporada deserializa()
         {
-            return new HotelXServicioXTemporada
+            return new HotelXTipoHabitacionXTemporada
             {
                 ID = this.ID,
                 hotelID = this.hotelID,
-                servicioID = this.servicioID,
+                tipoHabitacionID = this.tipoHabitacionID,
                 temporadaID = this.temporadaID,
                 precio = this.precio
             };

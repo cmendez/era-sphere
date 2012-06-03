@@ -34,6 +34,13 @@ namespace Era_sphere.Models
                         Url = "/AreaEmpleados/Empleado"
                     }
             );
+            AreaEmpleados.Add(
+                    new SubLink
+                    {
+                        Nombre = "Asistencia Empleados",
+                        Url = "/AreaEmpleados/AsistenciaEmpleado"
+                    }
+            );
             menu.Add(
               new Link()
               {

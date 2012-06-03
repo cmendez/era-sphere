@@ -26,7 +26,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             return View("CrearEmpleado");
         }
         */
-
+        
         public ActionResult RegistrarAsistencia(int id)
         {
             AsistenciaEmpleado asistenciaEmpleado = new AsistenciaEmpleado();
@@ -39,7 +39,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             asistencia_logica.agregarAsistenciaEmpleado(asistenciaEmpleado);
             return View("Index");
         }
-
+        
         public ActionResult RegistrarSalida(int id)
         {
             AsistenciaEmpleado asistenciaEmpleado = new AsistenciaEmpleado();

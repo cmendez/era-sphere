@@ -31,11 +31,15 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
         public int capacidad_maxima { get; set; }
         
         [DisplayName("Numero de niveles")]
-        [Range(0, StringsDeValidaciones.infinito)]
+        [Range(0, 3)]
         public int num_niveles { get; set; }
         
         [DisplayName("Estado")]
         public int estadoID { get; set; }
+
+        [DisplayName("Alquiler (x hora) ($)")]
+        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        public decimal? precio { get; set; }
 
         public AmbienteView() { }
 
@@ -49,6 +53,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             capacidad_maxima = ambiente.capacidad_maxima;
             estadoID = ambiente.estadoID;
             num_niveles = ambiente.num_niveles;
+            precio = ambiente.precio;
         }
 
         public Ambiente deserializa(InterfazLogicaAmbiente logica)
@@ -64,6 +69,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
             estadoID = this.estadoID,
             estado = logica.context_publico.estado_espacio_rentable.Find(estadoID),
             num_niveles = this.num_niveles,
+            precio = this.precio
             };
 
         }

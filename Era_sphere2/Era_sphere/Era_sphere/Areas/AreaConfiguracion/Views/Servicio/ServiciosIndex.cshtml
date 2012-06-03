@@ -20,7 +20,7 @@
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.PopUp)
+                            .Mode(GridEditMode.InLine)
                             .TemplateName("ServicioViewTemplate"))
 
         .DataKeys(key => key.Add(c => c.ID))

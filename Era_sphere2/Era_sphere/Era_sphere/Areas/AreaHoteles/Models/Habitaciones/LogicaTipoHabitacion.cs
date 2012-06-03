@@ -67,6 +67,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             //recorer checkedrecord y agregar comodidades
             //tipo_habitacion.comodidades;
         }
+
+        public List<TipoHabitacion> retornarTipoHabitaciones2()
+        {
+            return database_table.retornarTodos();
+        }
     }
     
 }

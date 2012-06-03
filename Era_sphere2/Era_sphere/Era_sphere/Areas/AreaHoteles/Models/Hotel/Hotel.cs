@@ -31,14 +31,20 @@ namespace Era_sphere.Areas.AreaHoteles.Models
        
         public string fax { get; set; }
 
-        public string provincia { get; set; }
+        //public string provincia { get; set; }
         //[InverseProperty("hotel")]
         public virtual ICollection<Piso> lista_pisos { get; set; } 
 
        //public Ciudad ciudad { get; set; }
         [ForeignKey("pais")]
-        public int paisID;
+        public int paisID { get; set; }
         public virtual Pais pais { get; set; }
+        [ForeignKey("ciudad")]
+        public int ciudadID { get; set; }
+        public virtual Ciudad ciudad { get; set; }
+        [ForeignKey("provincia")]
+        public int? provinciaID { get; set; }
+        public virtual Provincia provincia { get; set; } 
         //public ICollection<Piso> pisos_hotel { get; set; }
 
         public virtual ICollection<TipoServicioXHotel> tiposerviciosxhoteles { get; set; }

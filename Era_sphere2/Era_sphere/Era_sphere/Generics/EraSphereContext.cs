@@ -13,8 +13,8 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public void seed(){
-            seedHotel();
             seedUbigeo();
+            seedHotel();
             seedEstadoEspacioRentable();
             seedEstadoCliente();
             seedTipoPersona();

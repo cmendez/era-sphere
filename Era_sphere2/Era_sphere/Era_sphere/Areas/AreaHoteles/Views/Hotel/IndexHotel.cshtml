@@ -7,7 +7,9 @@
 @{
     ViewBag.Title = "IndexHotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var paises = (new EraSphereContext()).paises.ToList();
+    //var paises = (new EraSphereContext()).paises.ToList();
+    //var ciudades = (new EraSphereContext()).ciudades.ToList();
+    //var provincias = (new EraSphereContext()).provincias.ToList();
 }
 
 
@@ -32,11 +34,14 @@
         .Columns(columns =>
         {
             columns.Bound(p => p.ID);
+            columns.Bound(p => p.descripcion);
             columns.Bound(p => p.razon_social);
             //  columns.Bound(p => p.pais_nombre);
             //  columns.Bound(p => p.ciudad_nombre);
-            columns.Bound(p => p.provincia);
-            columns.ForeignKey(p => p.paisID, paises, "ID", "nombre");
+            //columns.Bound(p => p.provincia);
+            columns.Bound(p => p.pais_nombre);
+            columns.Bound(p => p.ciudad_nombre);
+            columns.Bound(p => p.provincia_nombre);
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
@@ -46,7 +51,7 @@
 
         .Pageable()
         .Sortable()
-
+        
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()

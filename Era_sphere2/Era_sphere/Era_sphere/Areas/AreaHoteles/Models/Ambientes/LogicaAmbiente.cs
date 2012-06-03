@@ -44,6 +44,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
         public void modificarAmbiente(AmbienteView ambiente_view)
         {
             Ambiente ambiente = ambiente_view.deserializa(this);
+            database_table.modificarElemento(ambiente, ambiente.ID);
             return;
         }
 

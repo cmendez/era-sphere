@@ -30,14 +30,17 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
 
         public List<HotelXServicioXTemporadaView> retornarServiciosXTemporada(int hid)
         {
-            List<HotelXServicioXTemporada> hxpxts = database_table.retornarTodos();
-            hxpxts.Where(e => e.hotelID == hid);
-            List<HotelXServicioXTemporadaView> hptvs = new List<HotelXServicioXTemporadaView>();
-            foreach (HotelXServicioXTemporada e in hxpxts)
+            List<HotelXServicioXTemporada> hxsxts = database_table.retornarTodos();
+            hxsxts = hxsxts.Where(e => e.hotelID == hid).ToList();
+            List<HotelXServicioXTemporadaView> hstvs = new List<HotelXServicioXTemporadaView>();
+            foreach (HotelXServicioXTemporada e in hxsxts)
             {
-                hptvs.Add(new HotelXServicioXTemporadaView(e));
+                e.servicio = hxsxt_context.servicios.Find(e.servicioID);
+                e.temporada = hxsxt_context.temporadas.Find(e.temporadaID);
+                e.temporada.tipotemporada = hxsxt_context.tipostemporada.Find(e.temporada.tipotemporadaID);
+                hstvs.Add(new HotelXServicioXTemporadaView(e));
             }
-            return hptvs;
+            return hstvs;
         }
 
         public void agregarServicioXTemporada(int id, HotelXServicioXTemporadaView pxtv)
@@ -53,8 +56,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
 
         public void modificarServicioXTemporada(int id, HotelXServicioXTemporadaView pxtv)
         {
-            HotelXServicioXTemporada hpt = pxtv.deserializa();
-            database_table.modificarElemento(hpt, hpt.ID);
+            HotelXServicioXTemporada hst = pxtv.deserializa();
+            database_table.modificarElemento(hst, hst.ID);
             return;            
         }
 

@@ -11,7 +11,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
     public class LogicaUbigeo : InterfazLogicaUbigeo
     {
         EraSphereContext pais_context = new EraSphereContext();
-        public EraSphereContext context_publico { get { return pais_context; } }
+        //public EraSphereContext context_publico { get { return pais_context; } }
         DBGenericQueriesUtil<Pais> database_table;
 
         public LogicaUbigeo()
@@ -33,6 +33,16 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
             foreach (Pais pais in paises) paises_view.Add(new PaisView(pais));
 
             return paises_view;
+        }
+
+        public List<Ciudad> retornarCiudades()
+        {
+            return pais_context.ciudades.ToList();
+        }
+
+        public List<Provincia> retornarProvincias()
+        {
+            return pais_context.provincias.ToList();
         }
     }
 }

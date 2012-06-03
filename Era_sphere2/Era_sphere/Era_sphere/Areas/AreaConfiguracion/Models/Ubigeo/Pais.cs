@@ -19,5 +19,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
         public double? IGV { get; set; }
 
         public virtual ICollection<Ciudad> ciudades { get; set; }
+
     }
 }

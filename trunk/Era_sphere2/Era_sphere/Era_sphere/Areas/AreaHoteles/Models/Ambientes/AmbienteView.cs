@@ -53,7 +53,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
 
         public Ambiente deserializa(InterfazLogicaAmbiente logica)
         {
-            if (this.estadoID == 0) this.estadoID = 1;
             return new Ambiente
             {
             ID = this.ID,

@@ -32,7 +32,21 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             this.ID = tipo.ID;
             this.tiene_hora = tipo.tiene_hora;
             this.tiene_productos_asociados = tipo.tiene_productos_asociados;
-            
+            this.tiene_repeticiones = tipo.tiene_repeticiones;
+            this.nombre = tipo.nombre;
+            this.descripcion = tipo.descripcion;
+        }
+
+        public TipoServicio deserializa(LogicaServicios logica)
+        {
+            return new TipoServicio
+            {
+                ID = this.ID,
+                tiene_hora = this.tiene_repeticiones,
+                tiene_productos_asociados = this.tiene_productos_asociados,
+                nombre = this.nombre,
+                descripcion = this.descripcion,
+            };
         }
     }
 }

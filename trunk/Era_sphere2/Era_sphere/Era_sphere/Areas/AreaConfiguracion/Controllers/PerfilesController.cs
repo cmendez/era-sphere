@@ -26,6 +26,27 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View("Index", new GridModel(perfil_logica.retornarPerfiles()));
         }
 
+        [GridAction]
+        public ActionResult DamePerfil(int perfilID) {
+
+            var perfil = perfil_logica.retornarPerfil(perfilID);
+            return new JsonResult() { Data = perfil };
+        }
+
+       
+        [GridAction]
+        public ActionResult Update(Perfil perfil)
+        {
+            perfil_logica.modificarPerfil(perfil);
+            return View("Index", new GridModel(perfil_logica.retornarPerfiles()));
+        }
+
+        [GridAction]
+        public ActionResult Delete(int id)
+        {
+            perfil_logica.eliminarPerfil(id);
+            return View("Index", new GridModel(perfil_logica.retornarPerfiles()));
+        }
 
 
         [HttpPost]

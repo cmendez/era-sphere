@@ -20,16 +20,22 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         }
 
         public ActionResult Create()
-        {
-//validar que solo se pueda crear una cadena
-            List<Cadena> lista = cadena_logica.retornarCadenas();
-            if (lista.Count > 1)
-            {
-                Response.Write("<script>alert('Errorrrrrrr')</script>"); //este de aca no se muestra T_T
-                return RedirectToAction("Index");
-            }
+        {    
             return View(); //devuelve el view de cadena, CREATE.CSHTML
         }
+
+
+
+
+        [HttpPost]
+        public JsonResult CreateCadena()
+        {
+            List<Cadena> lista = cadena_logica.retornarCadenas();
+            if (lista.Count > 1) return Json(new { flag = "1" });
+            return Json(new { flag = "0" });
+        }
+
+
         [HttpPost]
         public ActionResult Create(Cadena cadena)
         {

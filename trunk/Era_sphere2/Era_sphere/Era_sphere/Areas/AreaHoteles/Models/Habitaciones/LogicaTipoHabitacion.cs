@@ -26,12 +26,17 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             foreach (TipoHabitacion tipoHabitacion in tipoHabitaciones) tipoHabitacion_view.Add(new TipoHabitacionView(tipoHabitacion));
             return tipoHabitacion_view;
         }
-
+        
         public TipoHabitacionView retornarTipoHabitacion(int tipohabitacion_id)
         {
             TipoHabitacion tipoHabitacion = database_table.retornarUnSoloElemento(tipohabitacion_id);
             TipoHabitacionView tipoHabitacion_view = new TipoHabitacionView(tipoHabitacion);
             return tipoHabitacion_view;
+        }
+
+        public TipoHabitacion retornarObjTipoHabitacion(int tipohabitacion_id)
+        {
+            return database_table.retornarUnSoloElemento(tipohabitacion_id);
         }
 
         public void modificarTipoHabitacion(TipoHabitacionView tipoHabitacion_view)

@@ -6,6 +6,8 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "TipoHabitacionComodidades";
+    var id = ViewBag.id;
+    
     
 }
 <div class="block big" style="position: relative">
@@ -25,7 +27,7 @@
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp)
                             .TemplateName("BuscarComodidades")
-                            
+                            //.AdditionalViewData(cad)
                             )
         .Columns(columns =>
         {
@@ -43,7 +45,7 @@
                 .DataBinding(dataBinding => dataBinding
             .Ajax()
         //    .Select("Select", "TipoHabitacion")
-            .Insert("Insert", "Comodidades")
+            .Insert("Asociar", "TipoHabitacion",new {idTH=id})
             .Delete("Delete", "Comodidades")
         )
            

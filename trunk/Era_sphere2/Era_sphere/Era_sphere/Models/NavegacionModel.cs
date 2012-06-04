@@ -118,8 +118,8 @@ namespace Era_sphere.Models
 
             AreaConfiguracion.Add(new SubLink
             {
-                Nombre = "Servicios",
-                Url = "/AreaConfiguracion/Servicio"
+                Nombre = "Tipos de Servicios",
+                Url = "/AreaConfiguracion/TipoServicio"
             });
 
             AreaConfiguracion.Add(new SubLink

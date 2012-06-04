@@ -19,5 +19,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public string descripcion { get; set; }
 
         public virtual ICollection<TipoServicioXHotel> tiposerviciosxhoteles { get; set; }
+
     }
 }

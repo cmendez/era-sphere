@@ -94,47 +94,46 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         }
 
    
-        public JsonResult MostrarJuridico(int id)
+        //MODALES DE JURUDICO
+        public JsonResult MostrarJuridicoEvento(int id)
         {
-            var cliente = cliente_logica.retornarCliente(id);
-            var cliente_view = new ClienteJuridicoView(cliente);
-            string pais = cliente.pais.nombre;
-            string estado = cliente.estado.descripcion;
-            string ciudad = cliente.ciudad.nombre;
-            return Json(new { cliente = cliente_view, estado = estado, pais = pais, ciudad = ciudad }, JsonRequestBehavior.AllowGet);
+            return Json(new { id = id });
         }
 
-        public JsonResult MostrarNatural(int id)
+        public ActionResult ClienteJuridicoShow(int id)
         {
-            var cliente = cliente_logica.retornarCliente(id);
-            var cliente_view = new ClienteNaturalView(cliente);
-            string pais = cliente.pais.nombre;
-            string estado = cliente.estado.descripcion;
-            string ciudad = cliente.ciudad.nombre;
-            return Json(new { cliente = cliente_view, estado = estado, pais = pais, ciudad = ciudad }, JsonRequestBehavior.AllowGet);
+            ClienteJuridicoView cliente = new ClienteJuridicoView(cliente_logica.retornarCliente(id));
+            return PartialView("ClienteJuridicoShowTemplate", cliente);
         }
 
-        public ActionResult ClienteJuridicoShow()
-        {
-            return View("ClienteJuridicoShowTemplate");
-        }
+        //MODALES DE NATURAL
 
         public ActionResult ClienteNaturalShow()
         {
             return View("ClienteNaturalShowTemplate");
         }
 
-        public ActionResult DetalleCliente(int id_cliente)
+        //DETALLE DEL CLIENTE
+        public ActionResult DetalleCliente(int id)
         {
+
             List<ReciboLinea> recibo_linea = new List<ReciboLinea>();
-            Cliente cliente = cliente_logica.retornarCliente(id_cliente);
-            foreach (Recibo r in cliente.recibos_cliente)
-                foreach (ReciboLinea rl in r.recibo_lineas)
-                    if (rl.de_servicio)
-                        recibo_linea.Add(rl);
-            ViewBag.estado = cliente.estado.descripcion;
-            ViewBag.puntos = cliente.puntos_cliente;
-            return View("DetalleClienteID", recibo_linea);
+            if (id > 0)
+            {
+                Cliente cliente = cliente_logica.retornarCliente(id);
+                if(cliente.recibos_cliente != null) foreach (Recibo r in cliente.recibos_cliente)
+                    if(r.recibo_lineas != null) foreach (ReciboLinea rl in r.recibo_lineas)
+                        if (rl.de_servicio)
+                            recibo_linea.Add(rl);
+                ViewBag.estado = cliente.estado.descripcion;
+                ViewBag.puntos = cliente.puntos_cliente;
+            }
+            else
+            {
+                ViewBag.estado = "";
+                ViewBag.puntos = "";
+            }
+            return View("DetalleClienteTemplate", recibo_linea);
         }
     }
 }

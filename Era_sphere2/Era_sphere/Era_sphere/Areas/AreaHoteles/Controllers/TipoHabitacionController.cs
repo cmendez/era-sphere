@@ -13,7 +13,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
     {
         //
         // GET: /AreaHoteles/TipoHabitacion/
-        InterfazLogicaTipoHabitacion tipoHabitacion_logica = new LogicaTipoHabitacion();
+        LogicaTipoHabitacion tipoHabitacion_logica = new LogicaTipoHabitacion();
         public ActionResult Index()
         {
             return View("TipoHabitacionIndex");

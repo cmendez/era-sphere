@@ -254,9 +254,6 @@
     <Compile Include="Areas\AreaHoteles\Models\EstadoEspacioRentable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\Habitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionView.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\InterfazLogicaComodidades.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\InterfazLogicaHabitacion.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\InterfazLogicaTipoHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaComodidades.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaTipoHabitacion.cs" />
@@ -1184,7 +1181,7 @@
     <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\AreaCargos\Views\Web.config" />
-    <Content Include="Areas\AreaConfiguracion\Views\Servicio\ServiciosIndex.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Servicio\TipoServiciosIndex.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteNaturalShowTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteNaturalIndexView.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />

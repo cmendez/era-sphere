@@ -18,7 +18,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         LogicaServicios servicios_logica = new LogicaServicios();
         public ActionResult Index()
         {
-            return View("TipoServiciosIndex", servicios_logica.retornarTipoServicios());
+            return View("TipoServiciosIndex");
         }
         [GridAction]
         public ActionResult Select()

@@ -13,7 +13,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
     {
         //
         // GET: /AreaHoteles/Habitacion/
-        InterfazLogicaHabitacion habitacion_logica = new LogicaHabitacion();
+        LogicaHabitacion habitacion_logica = new LogicaHabitacion();
         public ActionResult Index( int id )
         {
             Hotel hotel = (new EraSphereContext()).hoteles.Find(id);

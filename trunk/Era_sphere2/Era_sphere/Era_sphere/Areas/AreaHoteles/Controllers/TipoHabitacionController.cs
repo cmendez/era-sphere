@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models;
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -56,6 +57,20 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index", new GridModel(tipoHabitacion_logica.retornarTiposHabitacion()));
         }
 
+        public ActionResult VerComodidades(int id)
+        {
+            ViewBag.id = id;
+            return View("TipoHabitacionComodidades",(new LogicaComodidades()).retornarComodidades(id));
+        }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Asociar()
+        {
+            ComodidadView comodidad_view = new ComodidadView();
+
+            return RedirectToAction("VerComodidades");
+            //return View("Index", proveedor_logica.retornarProveedores(  ));
+        }
     }
 }

@@ -58,10 +58,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public void agregarComodidades(int tipohabitacion_id, int[] checkedRecord)
         {
             TipoHabitacion tipo_habitacion = tipohabitacion_context.tipos_habitacion.Find(tipohabitacion_id);
-            
-            tipo_habitacion.comodidades= new List<Comodidad> () ;
-            foreach (int check in checkedRecord) { 
-                  tipo_habitacion.comodidades.Add( tipohabitacion_context.comodidades.Find( check ) );
+
+            //tipo_habitacion.comodidades= new List<Comodidad> () ;
+            foreach (int check in checkedRecord)
+            {
+                tipo_habitacion.addComodidad(tipohabitacion_context.comodidades.Find(check));
             }
             //database_table.modificarElemento(tipo_habitacion, tipo_habitacion.ID);
             //recorer checkedrecord y agregar comodidades

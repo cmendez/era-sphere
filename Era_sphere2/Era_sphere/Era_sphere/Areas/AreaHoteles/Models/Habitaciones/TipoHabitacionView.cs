@@ -48,7 +48,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public decimal costo_base { get; set; }
         public string[] comodidades_descripcion { get; set; }
         public int[] comodidades_id { get; set; }
-        public TipoHabitacion deserializa(InterfazLogicaTipoHabitacion logica)
+        public TipoHabitacion deserializa(LogicaTipoHabitacion logica)
         {
 
             TipoHabitacion tipo_habitacion = new TipoHabitacion

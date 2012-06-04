@@ -15,7 +15,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         //
         // GET: /AreaHoteles/Comodidades/
 
-        InterfazLogicaComodidades comodidades_logica = new LogicaComodidades();
+        LogicaComodidades comodidades_logica = new LogicaComodidades();
 
         public ActionResult Filtrado(string desc)
         {

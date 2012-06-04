@@ -3,9 +3,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var id_hotel = @ViewData["id_hotel"];
     var nombre_hotel = @ViewData["nombre_hotel"];
-    
+    var tipo_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
 }
 @using Era_sphere.Areas.AreaHoteles.Models
+@using Era_sphere.Generics
 @model IEnumerable<HabitacionView>
 @using Telerik.Web.Mvc.UI
 
@@ -33,7 +34,7 @@
 
             columns.Bound(p => p.ID);
             columns.Bound(p => p.detalle);
-            columns.Bound(p => p.tipoHabitacion_descripcion);
+            columns.ForeignKey(p => p.tipoHabitacionID, new SelectList(tipo_habitaciones, "ID", "descripcion"));
             columns.Bound(p => p.piso_nombre);
             columns.Command(commands =>
             {
@@ -57,4 +58,4 @@
 
     </div>
     <!-- Table Wrapper End -->
-</div>
+</div><open>

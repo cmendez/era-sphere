@@ -56,6 +56,15 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             //return View("Index", proveedor_logica.retornarProveedores(  ));
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Asociar(int id)
+        {
+            ComodidadView comodidad_view = new ComodidadView();
+            return View("Index", new GridModel(comodidades_logica.retornarComodidades()));
+            //return View("Index", proveedor_logica.retornarProveedores(  ));
+        }
+
         
 
         [AcceptVerbs(HttpVerbs.Post)]

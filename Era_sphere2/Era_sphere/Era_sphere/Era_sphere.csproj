@@ -82,7 +82,7 @@
     <Compile Include="Areas\AreaConfiguracion\Controllers\MonedaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PoliticasController.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Controllers\ServicioController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Controllers\TipoServicioController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TemporadaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoDePagoController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoTemporadaController.cs" />
@@ -204,13 +204,11 @@
     <Compile Include="Areas\AreaPromociones\Models\LogicaPromocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
+    <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaReservas\AreaReservasAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaReservas\Controllers\ReservaController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaReservas\Models\InterfazLogicaReserva.cs">

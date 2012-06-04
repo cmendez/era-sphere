@@ -21,9 +21,22 @@
         </div>
         @( Html.Telerik().DropDownList()
                     .Name("tipohabitacionID")
-                    .BindTo(new SelectList(ths,"ID","descripcion"))
+                    .BindTo(new SelectList(ths, "ID", "descripcion"))
                     .Placeholder("Seleccione...")
+                    .CascadeTo("precio_base")
                )
+
+        <div class="editor-label">
+            Costo base:
+        </div>
+
+        @( Html.Telerik().DropDownList()
+                    .Name("precio_base")
+                    .DataBinding(binding => binding.Ajax().Select("_GetCostoBase", "HotelXTipoHabitacionXTemporada"))
+                    .SelectedIndex(0)
+               )
+
+
 
         <div class="editor-label">
             Tipo de temporada:

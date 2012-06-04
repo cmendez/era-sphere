@@ -37,9 +37,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Ambientes
         [DisplayName("Estado")]
         public int estadoID { get; set; }
 
+        [Required]
         [DisplayName("Alquiler (x hora) ($)")]
         [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
-        public decimal? precio { get; set; }
+        public decimal precio { get; set; }
 
         public AmbienteView() { }
 

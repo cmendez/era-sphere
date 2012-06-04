@@ -77,5 +77,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         {
             throw new NotImplementedException();
         }
+
+        public List<Servicio> retornarServicios2()
+        {
+            return context.servicios.ToList();
+        }
     }
 }

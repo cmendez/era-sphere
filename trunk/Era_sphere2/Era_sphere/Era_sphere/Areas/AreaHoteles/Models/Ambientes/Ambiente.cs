@@ -16,7 +16,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public int capacidad_maxima { get; set; }
         public int num_niveles { get; set; }
         public string detalle { get; set; }
-        public decimal? precio { get; set; }
+        public decimal precio { get; set; }
 
         [ForeignKey("piso")]
         public int pisoID { get; set; }

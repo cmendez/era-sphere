@@ -6,7 +6,7 @@ using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
 {
-    public class LogicaComodidades : InterfazLogicaComodidades
+    public class LogicaComodidades
     {
         EraSphereContext comodidad_context = new EraSphereContext();
         

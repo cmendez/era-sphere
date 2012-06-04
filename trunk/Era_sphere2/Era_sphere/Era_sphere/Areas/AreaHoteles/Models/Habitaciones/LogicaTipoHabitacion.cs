@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class LogicaTipoHabitacion:InterfazLogicaTipoHabitacion
+    public class LogicaTipoHabitacion
     {
         EraSphereContext tipohabitacion_context = new EraSphereContext();
         DBGenericQueriesUtil<TipoHabitacion> database_table;

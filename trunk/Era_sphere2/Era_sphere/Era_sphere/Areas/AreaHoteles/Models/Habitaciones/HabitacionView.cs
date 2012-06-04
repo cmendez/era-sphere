@@ -9,50 +9,53 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class HabitacionView
     {
+        [Required]
+        [DisplayName("Estado")]
+        public int estado_habitacionID { get; set; }
+
+        [Required]
+        [DisplayName("Detalle")]
+        [StringLength(50)]
+        public string detalle { get; set; }
+
+        public int ID { get; set; }
+
+        [DisplayName("Piso")]
+        public int pisoID { get; set; }
+
+        [Required]
+        [DisplayName("Tipo de habitacion")]
+        public int tipoHabitacionID { get; set; }
+
+
+        [DisplayName("Piso")]
+        public string piso_nombre { get; set; }
+
         public HabitacionView() { }
         public HabitacionView(Habitacion habitacion)
         {
             detalle = habitacion.detalle;
             ID = habitacion.ID;
-            //tipoHabitacionID = habitacion.tipoHabitacionID;
-            LogicaTipoHabitacion logica_tipo_habitacion = new LogicaTipoHabitacion();
-            TipoHabitacionView tipo_habitacion_view = logica_tipo_habitacion.retornarTipoHabitacion(tipoHabitacionID);
-            tipoHabitacion_descripcion = tipo_habitacion_view.descripcion;
+            tipoHabitacionID = habitacion.tipoHabitacionID;
             estado_habitacionID = habitacion.estadoID;
             pisoID = habitacion.pisoID;
             piso_nombre = habitacion.piso.descripcion;
         }
-        [Required]
-        [DisplayName("Estado")]
-        public int estado_habitacionID { get; set; }
-        [Required]
-        [DisplayName("Detalle")]
-        [StringLength(50)]
-        public string detalle { get; set; }
-        [DisplayName("ID Habitacion")]
-        [Required]
-        public int ID { get; set; }
-
-        public int pisoID { get; set; }
-        [Required]
-        [DisplayName("ID Tipo de habitacion")]
-        public int tipoHabitacionID { get; set; }
-        [DisplayName("Tipo de habitacion")]
-        public string tipoHabitacion_descripcion { get; set; }
-
-        public Habitacion deserializa(InterfazLogicaHabitacion logica)
+        
+        public Habitacion deserializa(LogicaHabitacion logica)
         {
             return new Habitacion
             {
                 detalle = this.detalle,
-                estadoID=this.estado_habitacionID,
+                estadoID = this.estado_habitacionID,
                 ID = this.ID,
-                //tipoHabitacionID=this.tipoHabitacionID,
-                pisoID = this.pisoID
+                tipoHabitacionID = this.tipoHabitacionID,
+                pisoID = this.pisoID,
+                piso = logica.context.pisos.Find(this.pisoID),
+                tipoHabitacion = logica.context.tipos_habitacion.Find(this.tipoHabitacionID),
+                estado = logica.context.estado_espacio_rentable.Find(this.estado_habitacionID),
             };
         }
 
-        [DisplayName("Piso")]
-        public string piso_nombre { get; set; }
     }
 }

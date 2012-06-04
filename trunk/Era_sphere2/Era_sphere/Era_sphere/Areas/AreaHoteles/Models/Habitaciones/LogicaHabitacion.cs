@@ -8,19 +8,19 @@ using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class LogicaHabitacion:InterfazLogicaHabitacion
+    public class LogicaHabitacion
     {
-        EraSphereContext habitacion_context = new EraSphereContext();
+        public EraSphereContext context = new EraSphereContext();
         DBGenericQueriesUtil<Habitacion> database_table;
         
         public LogicaHabitacion()
         {   
-            database_table = new DBGenericQueriesUtil< Habitacion >(habitacion_context, habitacion_context.habitaciones);
+            database_table = new DBGenericQueriesUtil< Habitacion >(context, context.habitaciones);
         }
 
         public List<HabitacionView> retornarHabitaciones( int id_hotel )
         {
-            IEnumerable<Habitacion> habitaciones = database_table.retornarTodos().Where( p => p.piso.hotel.ID == id_hotel );
+            var habitaciones = database_table.retornarTodos().Where( p => p.piso.hotel.ID == id_hotel );
             List<HabitacionView> habitacion_view = new List<HabitacionView>();
 
             foreach (Habitacion habitacion in habitaciones) habitacion_view.Add(new HabitacionView(habitacion));
@@ -45,8 +45,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             Habitacion habitacion_per = habitacion.deserializa(this);
             //habitacion_per.tipoHabitacion = habitacion_context.tipos_habitacion.Find(habitacion_per.tipoHabitacionID);
-            habitacion_per.estado = habitacion_context.estado_espacio_rentable.Find(habitacion.estado_habitacionID);
-            habitacion_per.piso = habitacion_context.pisos.Find(habitacion.pisoID);
             database_table.agregarElemento(habitacion_per);
         }
 

@@ -73,6 +73,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             return database_table.retornarTodos();
         }
+
+        public TipoHabitacion retornarTipoHabitacion2(int id)
+        {
+            return tipohabitacion_context.tipos_habitacion.Find(id);
+        }
     }
     
 }

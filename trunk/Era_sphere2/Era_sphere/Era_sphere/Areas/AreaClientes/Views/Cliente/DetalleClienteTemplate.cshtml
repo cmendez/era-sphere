@@ -4,21 +4,19 @@
 @using Era_sphere.Generics;
 @using Telerik.Web.Mvc.UI
 @{
-    ViewBag.Title = "ClienteNaturalIndexView";
-    string estado = ViewBag.estado;
-    int puntos_acumulados = ViewBag.puntos;
+    ViewBag.Title = "DetalleClienteTemplate";
+   var puntos_acumulados = ViewBag.puntos;
 }
 
 
- @Html.DisplayText("Estado: " + estado)
- 
+<label>Puntos acumulados</label>
+<div class="editor-field"> <input class="text-box single-line" type="text" value="@puntos_acumulados" readonly="readonly" /> </div>
+<div style="height:10px"></div>
+
  @(Html.Telerik().Grid(Model)
-        .Name("ClienteNaturalGrid")
+        .Name("DetalleClienteGrid")
         .Localizable("es-ES")
         .Filterable()
-
-                            
-                            
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
@@ -31,11 +29,5 @@
 
         .Pageable()
         .Sortable()
-                .DataBinding(dataBinding => dataBinding
-                         .Ajax()
-                    
         )
-           )
-
-        
-        @Html.DisplayText("Puntos Acumulados: " + puntos_acumulados)
+      

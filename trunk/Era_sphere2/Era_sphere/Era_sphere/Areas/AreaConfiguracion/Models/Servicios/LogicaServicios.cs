@@ -9,11 +9,13 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
     public class LogicaServicios
     {
         EraSphereContext context = new EraSphereContext();
-        DBGenericQueriesUtil<Servicio> tabla_servicios, tabla_tipo_servicios;
+        DBGenericQueriesUtil<Servicio> tabla_servicios;
+        DBGenericQueriesUtil<TipoServicio> tabla_tipo_servicios;
 
         public LogicaServicios()
         {
             tabla_servicios = new DBGenericQueriesUtil<Servicio>(context, context.servicios);
+            tabla_tipo_servicios = new DBGenericQueriesUtil<TipoServicio>(context, context.tipo_servicios);
         }
 
         public List<ServicioView> retornarServicios()
@@ -56,7 +58,22 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
 
 
-        internal object retornarTipoServicios()
+        public List<TipoServicio> retornarTipoServicios()
+        {
+            return tabla_tipo_servicios.retornarTodos();
+        }
+        public void agregarTipoServicio(TipoServicioView ts_view)
+        {
+            TipoServicio tipo = ts_view.deserializa(this);
+
+        }
+
+        internal void eliminarTipoServicio(int servicio_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void modificarTipoServicio(ServicioView p)
         {
             throw new NotImplementedException();
         }

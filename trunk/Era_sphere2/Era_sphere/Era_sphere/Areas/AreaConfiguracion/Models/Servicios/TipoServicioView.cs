@@ -36,6 +36,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             this.nombre = tipo.nombre;
             this.descripcion = tipo.descripcion;
         }
+        public TipoServicioView(){}
 
         public TipoServicio deserializa(LogicaServicios logica)
         {

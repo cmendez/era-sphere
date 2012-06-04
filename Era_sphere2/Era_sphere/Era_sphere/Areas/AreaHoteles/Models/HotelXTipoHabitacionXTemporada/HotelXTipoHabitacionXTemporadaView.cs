@@ -34,6 +34,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
             this.hotelID = hxthxt.hotelID;
             this.tipoHabitacionID = hxthxt.tipoHabitacionID;
             this.temporadaID = hxthxt.temporadaID;
+
+            this.costo_base = hxthxt.tipoHabitacion.costo_base;
         }
 
         [Required]
@@ -50,9 +52,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
         [Required]
         public int hotelID { get; set; }
         [Required]
-        [DisplayName("TipoHabitacion")]
+        [DisplayName("Tipo de habitacion")]
         public int tipoHabitacionID { get; set; }
         [Required]
+        [DisplayName("Temporada")]
         public int temporadaID { get; set; }
 
         
@@ -62,6 +65,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
         public string tt_desc { get; set; }
         [DisplayName("Temporada")]
         public string t_desc { get; set; }
+
+        public decimal costo_base { get; set; }
 
 
 
@@ -75,6 +80,15 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
                 temporadaID = this.temporadaID,
                 precio = this.precio
             };
+        }
+
+        public bool isValid()
+        {
+            bool fieldsValid = (this.tipoHabitacionID != 0) && (this.temporadaID != 0) && (this.hotelID != 0);
+            if (!fieldsValid) return false;
+            bool precioValid = (new LogicaTipoHabitacion()).retornarTipoHabitacion2(this.tipoHabitacionID).costo_base <= this.precio;
+            if (!precioValid) return false;
+            return true;
         }
     }
 }

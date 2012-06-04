@@ -53,6 +53,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
         [DisplayName("Servicio")]
         public int servicioID { get; set; }
         [Required]
+        [DisplayName("Temporada")]
         public int temporadaID { get; set; }
 
         

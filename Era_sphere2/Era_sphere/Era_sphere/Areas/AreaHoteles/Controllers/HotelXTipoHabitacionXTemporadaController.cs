@@ -8,6 +8,7 @@ using Telerik.Web.Mvc;
 
 using Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 using Era_sphere.Generics;
 
@@ -37,7 +38,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             HotelXTipoHabitacionXTemporadaView htht_view = new HotelXTipoHabitacionXTemporadaView(id);
             if (TryUpdateModel(htht_view))
             {
-                logicahtht.agregarTipoHabitacionXTemporada(id, htht_view);
+                if (htht_view.isValid())
+                    logicahtht.agregarTipoHabitacionXTemporada(id, htht_view);
 
             }
             return View("Index", new GridModel(logicahtht.retornarTipoHabitacionsXTemporada(id)));
@@ -57,7 +59,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         public ActionResult Update(HotelXTipoHabitacionXTemporadaView hxthxtv, int id_hotel)
         {
             hxthxtv.hotelID = id_hotel;
-            logicahtht.modificarTipoHabitacionXTemporada(id_hotel, hxthxtv);
+            if (hxthxtv.isValid())
+                logicahtht.modificarTipoHabitacionXTemporada(id_hotel, hxthxtv);
             return View("Index", new GridModel(logicahtht.retornarTipoHabitacionsXTemporada(id_hotel)));
         }
 
@@ -73,6 +76,13 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             List<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
             ts = ts.Where(e => e.tipotemporadaID == tipoTemporadaID).ToList();
             return Json(new SelectList(ts, "ID", "descripcion"), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult _GetCostoBase(int? tipohabitacionID)
+        {
+            List<decimal> cb = new List<decimal>();
+            cb.Add( (new EraSphereContext()).tipos_habitacion.Find(tipohabitacionID).costo_base );
+            return Json(new SelectList(cb), JsonRequestBehavior.AllowGet);
         }
 
     }

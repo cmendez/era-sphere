@@ -9,7 +9,6 @@ using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class TipoHabitacionView
-
     {
         public TipoHabitacionView() { }
         public TipoHabitacionView(TipoHabitacion tipoHabitacion)
@@ -19,20 +18,20 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             cap_max_personas = tipoHabitacion.cap_max_personas;
             ID = tipoHabitacion.ID;
             int tam = 0;
-            
-            if (tipoHabitacion.comodidades != null)
-            {
-                tam = tipoHabitacion.comodidades.Count;
-                comodidades_descripcion = new string[tam];
-                comodidades_id = new int[tam];
-                int i = 0;
-                foreach (Comodidad comodidad in tipoHabitacion.comodidades)
-                {
-                    comodidades_descripcion[i] = comodidad.descripcion;
-                    comodidades_id[i] = comodidad.ID;
-                    i++;
-                }
-            }
+
+            //if (tipoHabitacion.getComodidades() != null)
+            //{
+            //    tam = tipoHabitacion.getComodidades().Count;
+            //    comodidades_descripcion = new string[tam];
+            //    comodidades_id = new int[tam];
+            //    int i = 0;
+            //    foreach (Comodidad comodidad in tipoHabitacion.getComodidades())
+            //    {
+            //        comodidades_descripcion[i] = comodidad.descripcion;
+            //        comodidades_id[i] = comodidad.ID;
+            //        i++;
+            //    }
+            //}
 
         }
         [Required]
@@ -40,25 +39,25 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [StringLength(30)]
         public string descripcion { get; set; }
         [DisplayName("Capacidad maxima")]
-        [Range(1,20)]
+        [Range(1, 20)]
         public int cap_max_personas { get; set; }
         [DisplayName("ID tipo habitacion")]
         public int ID { get; set; }
         [DisplayName("Costo base")]
-        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        [Range(0, Era_sphere.Generics.StringsDeValidaciones.infinito)]
         public decimal costo_base { get; set; }
-        public string [] comodidades_descripcion { get; set; }
-        public int [] comodidades_id { get; set; }
+        public string[] comodidades_descripcion { get; set; }
+        public int[] comodidades_id { get; set; }
         public TipoHabitacion deserializa(InterfazLogicaTipoHabitacion logica)
         {
 
-            TipoHabitacion tipo_habitacion=new TipoHabitacion
+            TipoHabitacion tipo_habitacion = new TipoHabitacion
             {
-                descripcion=this.descripcion,
-                cap_max_personas=this.cap_max_personas,
-                ID=this.ID
+                descripcion = this.descripcion,
+                cap_max_personas = this.cap_max_personas,
+                ID = this.ID
             };
-            
+
             //for (int i = 0; i<comodidades_id.Length; i++)
             //{
             //    tipo_habitacion.comodidades=(new Era_sphere)

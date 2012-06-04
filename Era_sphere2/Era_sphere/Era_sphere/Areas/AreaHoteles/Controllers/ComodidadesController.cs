@@ -46,17 +46,17 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         [GridAction]
         public ActionResult Insert()
         {
-            Console.WriteLine("Llega");
-            Comodidad comodidad = new Comodidad();
-            if (TryUpdateModel(comodidad))
+            ComodidadView comodidad_view = new ComodidadView();
+            if (TryUpdateModel(comodidad_view))
             {
-                comodidades_logica.agregarComodidad(comodidad);
+                comodidades_logica.agregarComodidad(comodidad_view);
 
             }
             return View("Index", new GridModel(comodidades_logica.retornarComodidades()));
             //return View("Index", proveedor_logica.retornarProveedores(  ));
         }
 
+        
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
@@ -69,7 +69,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Update(Comodidad c)
+        public ActionResult Update(ComodidadView c)
         {
 
             comodidades_logica.modificarComodidad(c);
@@ -81,19 +81,19 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             ViewBag.tipohabitacion = ID;
             return View("SeleccionGrilla", comodidades_logica.retornarComodidades());
         }
-
-        public ActionResult ComodidadesSeleccion(int[] checkedRecords,int id)
+        /*
+        public ActionResult ComodidadesSeleccion(int[] checkedRecords, int id)
         {
             checkedRecords = checkedRecords ?? new int[] { };
-            
+
             //foreach (int check in checkedRecords)
             //{
             //    Comodidad comodidad = (new EraSphereContext()).comodidades.Find(check);
-            //    comodidad.tipoHabitacionID=id;
+            //    //comodidad.tipoHabitacionID=id;
             //}
-            //LogicaTipoHabitacion logicaTH = new LogicaTipoHabitacion();
-            //logicaTH.agregarComodidades(id,checkedRecords);
+            LogicaTipoHabitacion logicaTH = new LogicaTipoHabitacion();
+            logicaTH.agregarComodidades(id, checkedRecords);
             return RedirectToAction("Index", "TipoHabitacion");
-        }
+        }*/
     }
 }

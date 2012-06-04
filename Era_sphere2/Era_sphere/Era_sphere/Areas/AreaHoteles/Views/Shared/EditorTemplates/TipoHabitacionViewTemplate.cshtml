@@ -39,7 +39,7 @@
 }
 @if(Model.comodidades_id!=null){
         <div class="block_cont">
-            @(Html.Telerik().Grid(tipo_habitacion.comodidades)
+            @(Html.Telerik().Grid(tipo_habitacion.getComodidades())
             .Name("comodidadesGrid")
             .Filterable()
             .Localizable("es-ES")

@@ -8,13 +8,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
     interface InterfazLogicaComodidades
     {
 
-        List<Comodidad> retornarComodidades();
-        //Comodidad retornarComodidad (int comodidad_id);
-        void modificarComodidad(Comodidad comodidad);
-        void agregarComodidad(Comodidad comodidad);
+        List<ComodidadView> retornarComodidades();
+        ComodidadView retornarComodidad (int comodidad_id);
+        void modificarComodidad(ComodidadView comodidad);
+        void agregarComodidad(ComodidadView comodidad);
         void eliminarComodidad(int comodidad_id);
         //List<Comodidad> buscarProveedor(Comodidad comodidad);
-
+        List<ComodidadView> retornarComodidades(int tipoHabitacionID);
     }
 }
 

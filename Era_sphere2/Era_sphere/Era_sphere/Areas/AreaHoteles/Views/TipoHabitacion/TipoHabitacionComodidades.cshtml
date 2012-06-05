@@ -1,4 +1,4 @@
-﻿@using Telerik.Web.Mvc.UI
+﻿@using Telerik.Web.Mvc.UI    I
 @using Era_sphere.Areas.AreaHoteles.Models.Habitaciones
 @model IEnumerable<ComodidadView>
 
@@ -27,7 +27,7 @@
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp)
                             .TemplateName("BuscarComodidades")
-                            //.AdditionalViewData(cad)
+        //.AdditionalViewData(cad)
                             )
         .Columns(columns =>
         {
@@ -37,18 +37,18 @@
             {
                 //commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
-                
+
             });
         })
         .Pageable()
         .Sortable()
                 .DataBinding(dataBinding => dataBinding
             .Ajax()
-        //    .Select("Select", "TipoHabitacion")
-            .Insert("Asociar", "TipoHabitacion",new {idTH=id})
-            .Delete("Delete", "Comodidades")
+            //    .Select("Select", "TipoHabitacion")
+            .Insert("Asociar", "TipoHabitacion", new { idTH = id })
+            .Delete("Desasociar", "TipoHabitacion", new { idTH=id})
         )
-           
+
 )
 </div>
     <!-- Table Wrapper End -->

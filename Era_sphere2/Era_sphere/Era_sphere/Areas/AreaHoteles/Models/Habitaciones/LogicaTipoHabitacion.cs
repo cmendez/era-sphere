@@ -27,6 +27,35 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return tipoHabitacion_view;
         }
         
+        public void agregarComodidad(int comodidad_id,int tipohabitacion_id){
+            TipoHabitacion th = retornarObjTipoHabitacion(tipohabitacion_id);
+            Comodidad comodidad = tipohabitacion_context.comodidades.Find(comodidad_id);
+            th.comodidades.Add(comodidad);
+            database_table.modificarElemento(th, th.ID);
+            return;
+        }
+
+        public void eliminarComodidad(int comodidad_id, int tipohabitacion_id)
+        {
+            TipoHabitacion th = retornarObjTipoHabitacion(tipohabitacion_id);
+            Comodidad comodidad = tipohabitacion_context.comodidades.Find(comodidad_id);
+            th.comodidades.Remove(comodidad);
+            database_table.modificarElemento(th, th.ID);
+            return;
+        }
+        public List<Comodidad> retornarComodidades(int tipohabitacion_id)
+        {
+            return retornarObjTipoHabitacion(tipohabitacion_id).comodidades.ToList();
+        }
+
+        public List<ComodidadView> retornarComodidadesView(int tipohabitacion_id)
+        {
+            List<ComodidadView> comodidades_view= new List<ComodidadView>();
+            List<Comodidad> comodidades = retornarObjTipoHabitacion(tipohabitacion_id).comodidades.ToList();
+            foreach (Comodidad comodidad in comodidades) comodidades_view.Add(new ComodidadView(comodidad));
+            return comodidades_view;
+        }
+
         public TipoHabitacionView retornarTipoHabitacion(int tipohabitacion_id)
         {
             TipoHabitacion tipoHabitacion = database_table.retornarUnSoloElemento(tipohabitacion_id);

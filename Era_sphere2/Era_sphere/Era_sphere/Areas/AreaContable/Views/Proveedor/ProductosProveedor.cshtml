@@ -1,0 +1,143 @@
+﻿
+@using Era_sphere.Areas.AreaContable.Models
+@using Era_sphere.Generics;
+@using Era_sphere.Areas.AreaContable.Models.Ordenes
+@model IEnumerable<proveedor_x_productoView>
+@using Telerik.Web.Mvc.UI
+
+
+@{
+    ViewBag.Title = "ProductosProveedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Proveedor proveedor = (Proveedor)ViewData["Proveedor"];
+    var id_prov = @proveedor.ID;
+    var data = new { id_proveedor = @proveedor.ID };
+}
+
+
+<style type="text/css">
+    .t-window
+    {
+        width: 500px;
+    }
+</style>
+<div class="block big">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Proveedores : @proveedor.razon_social
+        </h3>
+    </div>
+    <div class="block_cont">
+        <div>
+            <form id="form_producto" action="#" class="form">
+            <div>
+            
+                <label> Producto :  </label>
+                           @( Html.Telerik().ComboBox()
+                            .Name("productoID")
+
+                            .Placeholder("Seleccione Producto")
+                           
+                            .DataBinding(binding => binding.Ajax().Select("ProductosRestantes", "Proveedor", data))
+                            )
+               <span class="error_producto error" style="display:none;background:red ; color:white">
+                    Seleccione producto
+               </span>
+   
+            </div>
+            <div>
+                 <label> Precio Unitario : </label>
+
+                 @(Html.Telerik().CurrencyTextBox()
+                                 .Name("precio_unitario")
+                                 .Spinners(true)
+                                 .MinValue(0)
+                        )
+                <span class="error_precio error" style="display:none ; background:red ; color:white">
+                    Seleccione precio
+                </span>
+            </div>
+                <input type="submit" value="Agregar Producto" class="t-button t-state-default submit"/>
+            </form>
+        </div>
+        <script type="text/javascript">
+
+            function isNumber(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
+            $("#form_producto").submit(
+                function (event) {
+                    $(".form .error").hide();
+                    event.preventDefault();
+                    var $form = $(this);
+                    var productoIDt = $form.find('input[name="productoID"]').val();
+                    var precio_unitariot = $form.find('input[name="precio_unitario"]').val();
+                    var link = "/AreaContable/Proveedor/InsertProductos";
+
+                    if (productoIDt == "" || precio_unitariot == "" || !isNumber(productoIDt)) {
+                        if (!isNumber(productoIDt))
+                            $(".error_producto").show();
+                        if (precio_unitariot == "")
+                            $(".error_precio").show();
+                    }
+                    else {
+
+                        $.ajax(
+                            {
+                                url: '@Url.Action("InsertProductos","Proveedor",@data )',
+                                type: 'POST',
+                                datatype : 'json',
+                                contentType: 'application/json',
+                                data:
+                                        JSON.stringify( { productoID : productoIDt, precio_unitario : precio_unitariot } ),
+                                success: function (result) {
+
+                                    $('#ProveedoresGrid').data('tGrid').ajaxRequest();
+
+                                }
+                            }
+                        )
+                    }
+                }
+            );
+        </script>
+        @(Html.Telerik().Grid(Model)
+        .Name("ProveedoresGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InLine)
+                           )
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.productoID).ReadOnly(true);
+            columns.Bound(p => p.descripcion_producto).ReadOnly(true);
+            columns.Bound(p => p.precio_unitario).Format("{0:c}");
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectProductos", "Proveedor", new { id_proveedor = @proveedor.ID })
+            .Insert("InsertProductos", "Proveedor", new { id_proveedor = @proveedor.ID })
+            .Delete("DeleteProductos", "Proveedor", new { id_proveedor = @proveedor.ID })
+            .Update("UpdateProductos", "Proveedor", new { id_proveedor = @proveedor.ID })
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

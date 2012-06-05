@@ -17,11 +17,10 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
         
         [ForeignKey("proveedor")]
         public int proveedorID { get; set; }
-
+        
         public virtual Producto producto { get; set; }
-
         public virtual Proveedor proveedor { get; set; }
 
-        public double  precioU { get; set; }
+        public double  precio_unitario { get; set; }
     }
 }

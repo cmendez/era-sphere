@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Areas.AreaContable.Models;
 using Telerik.Web.Mvc;
+using Era_sphere.Areas.AreaContable.Models.Ordenes;
+using System.Threading;
 
 namespace Era_sphere.Areas.AreaContable.Controllers
 {
@@ -12,7 +14,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
     {
         //
         // GET: /AreaContable/Proveedor/
-        InterfazLogicaProveedor proveedor_logica = new LogicaProveedor();
+        LogicaProveedor proveedor_logica = new LogicaProveedor();
         public ActionResult Index()
         {
             return View("IndexProveedor");
@@ -57,5 +59,49 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             // return RedirectToAction("proveedor");
         }
 
+        public ActionResult Productos( int id_proveedor ){
+            ViewData["Proveedor"] = proveedor_logica.context_publico.proveedores.Find( id_proveedor );
+
+            return View("ProductosProveedor",  proveedor_logica.productos_de_proveedor(id_proveedor) ) ;
+        }
+        [GridAction]
+        public ActionResult SelectProductos(int id_proveedor) {
+            int id = id_proveedor;
+            ViewData["ProveedorID"] = id;
+            ViewData["Proveedor"] = proveedor_logica.context_publico.proveedores.Find(id);
+            return View("ProductosProveedor", new GridModel( proveedor_logica.productos_de_proveedor(id)) );
+        }
+
+        [GridAction]
+        public ActionResult InsertProductos( int id_proveedor , proveedor_x_productoView producto ){
+            int id = id_proveedor;
+            ViewData["ProveedorID"] = id;
+            ViewData["Proveedor"] = proveedor_logica.context_publico.proveedores.Find(id);
+            proveedor_logica.agregarProductoAProveedor(id, producto);
+            return View("ProductosProveedor", new GridModel( proveedor_logica.productos_de_proveedor(id)));
+        }
+        [GridAction]
+        public ActionResult UpdateProductos(int id_proveedor, proveedor_x_productoView producto) {
+            int id = id_proveedor;
+            ViewData["ProveedorID"] = id;
+            ViewData["Proveedor"] = proveedor_logica.context_publico.proveedores.Find(id);
+            proveedor_logica.modificar_producto(id_proveedor, producto);
+            return View("ProductosProveedor", new GridModel( proveedor_logica.productos_de_proveedor(id) ));
+        }
+        [GridAction]
+        public ActionResult DeleteProductos(int id_proveedor, proveedor_x_productoView producto) {
+            int id = id_proveedor;
+            ViewData["ProveedorID"] = id;
+            ViewData["Proveedor"] = proveedor_logica.context_publico.proveedores.Find(id);
+
+            proveedor_logica.eliminar_producto(id_proveedor, producto);
+            return View("ProductosProveedor", new GridModel( proveedor_logica.productos_de_proveedor(id)));
+        }
+
+        public ActionResult ProductosRestantes(string producto, int id_proveedor) {
+            int id = id_proveedor;
+            Thread.Sleep(500);
+            return Json( new SelectList( proveedor_logica.productosRestantes( producto , id ), "ID" , "descripcion"));
+        } 
     }
 }

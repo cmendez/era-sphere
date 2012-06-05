@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaContable.Models.Ordenes;
 
 namespace Era_sphere.Areas.AreaContable.Models
 {
@@ -49,6 +50,75 @@ namespace Era_sphere.Areas.AreaContable.Models
             Proveedor proveedor = database_table.retornarUnSoloElemento(proveedor_id);
             ProveedorView proveedor_view = new ProveedorView(proveedor);
             return proveedor_view;
+        }
+
+        public List< proveedor_x_productoView > productos_de_proveedor( int proveedor_id ){
+            
+           
+            Proveedor proveedor = proveedor_context.proveedores.Find( proveedor_id );
+            List<proveedor_x_producto> ans = proveedor.productos.ToList();
+            List<proveedor_x_productoView> ret = new List<proveedor_x_productoView>();
+            foreach (proveedor_x_producto pp in ans) { 
+                proveedor_x_productoView ppv = new proveedor_x_productoView( pp );
+                ret.Add(ppv);
+            }
+            return ret;
+        }
+
+        public List<ProductoView> productosRestantes( string text , int proveedor_id) {
+
+            List<Producto> usados = new List<Producto>();
+            List<proveedor_x_producto> relacion = proveedor_context.proveedores.Find(proveedor_id).productos.ToList();
+            foreach (proveedor_x_producto pp in relacion) usados.Add(proveedor_context.productos.Find(pp.productoID));
+            List<Producto> resta;
+            if (text != null)
+                resta = proveedor_context.productos.Where(p => p.descripcion.StartsWith(text)).ToList();
+            else
+                resta = proveedor_context.productos.ToList();
+            foreach (var p in usados) resta.Remove(p);
+            List<ProductoView> ans = new List<ProductoView>();
+            foreach (var p in resta) ans.Add(new ProductoView(p));
+            return ans;
+        }
+
+        public void agregarProductoAProveedor(int id, proveedor_x_productoView ppv)
+        {
+            EraSphereContext context = proveedor_context;
+            proveedor_x_producto pp = new proveedor_x_producto();
+
+            IEnumerable<proveedor_x_producto> ans = from producto in context.p_x_p
+                                                    where producto.productoID == ppv.productoID && producto.proveedorID == id
+                                                    select producto;
+            List<proveedor_x_producto> ret = ans.ToList();
+            if (ret.Count != 0) {
+                ppv.ID = ret.ElementAt(0).ID;
+                modificar_producto(id, ppv);
+                return;
+            }
+                                                    
+
+            pp.precio_unitario = ppv.precio_unitario;
+            pp.proveedor = context.proveedores.Find(id);
+            pp.producto = context.productos.Find( ppv.productoID ) ;
+            DBGenericQueriesUtil<proveedor_x_producto> query = new DBGenericQueriesUtil<proveedor_x_producto>(context, context.p_x_p);
+            query.agregarElemento(pp);
+        }
+
+        internal void modificar_producto(int id_proveedor, proveedor_x_productoView producto)
+        {
+            EraSphereContext context = proveedor_context;
+            proveedor_x_producto pp = context.p_x_p.Find(producto.ID);
+            pp.precio_unitario = producto.precio_unitario;
+            DBGenericQueriesUtil<proveedor_x_producto> query = new DBGenericQueriesUtil<proveedor_x_producto>(context, context.p_x_p);
+            query.modificarElemento(pp, pp.ID);
+        }
+
+        internal void eliminar_producto(int id_proveedor, proveedor_x_productoView producto)
+        {
+            EraSphereContext context = proveedor_context;
+            proveedor_x_producto pp = context.p_x_p.Find(producto.ID);
+            context.p_x_p.Remove(pp);
+            context.SaveChanges();
         }
     }
 }

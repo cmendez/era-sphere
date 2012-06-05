@@ -5,11 +5,17 @@
 @using Telerik.Web.Mvc.UI
 
 @{
-    ViewBag.Title = "IndexProveedor";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";    
 }
 
-
+<style type="text/css">
+    .t-window
+    {
+        width: 500px;
+        margin: 0px auto;
+    }
+</style>
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
@@ -25,7 +31,9 @@
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp)
-                            .TemplateName("ProveedorViewTemplate"))
+                            .TemplateName("ProveedorViewTemplate")
+                            
+                           )
 
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
@@ -41,12 +49,15 @@
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
+                commands.Custom("addProductos")
+                            .Text("Productos")
+                            .DataRouteValues(p => p.Add( x => x.ID ).RouteKey("id_proveedor"))
+                            .Action("Productos", "Proveedor");
             });
         })
-
         .Pageable()
         .Sortable()
-
+        .PrefixUrlParameters(false)
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()

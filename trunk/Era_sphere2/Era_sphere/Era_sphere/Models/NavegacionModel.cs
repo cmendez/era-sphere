@@ -141,14 +141,18 @@ namespace Era_sphere.Models
             });
             AreaConfiguracion.Add(new SubLink()
             {
-                Nombre = "Temporadas",
+
+                Nombre = "Temporada",
                 Url = "/AreaConfiguracion/Temporada"
+
             });
 
             AreaConfiguracion.Add(new SubLink()
             {
-                Nombre = "Tipo  de temporadas",
+
+                Nombre = "Tipo Temporada",
                 Url = "/AreaConfiguracion/TipoTemporada"
+
             });
 
             
@@ -164,12 +168,18 @@ namespace Era_sphere.Models
                 );
         }
 
+        void agregarContable() {
+            List<SubLink> sub = new List<SubLink>();
+            sub.Add(new SubLink { Nombre = "Productos", Url = "/AreaContable/Producto" });
+            sub.Add(new SubLink { Nombre = "Proveedor", Url = "/AreaContable/Proveedor" });
+            menu.Add(new Link { Nombre = "Contable" , Url = "#" , Icono = "icon_pen" , Sublinks = sub});
+        }
         void agregarAreaClientes()
         {
             this.menu.Add(new Link()
             {
                 Nombre = "Clientes",
-                Url = "/../AreaClientes/Cliente",
+                Url = "/AreaClientes/Cliente",
                 Icono = "icon_pen",
                 Sublinks = new List<SubLink>()
             });
@@ -185,7 +195,8 @@ namespace Era_sphere.Models
             agregarAreaEmpleados();
             agregarAreaHotel();
             agregarConfiguracion();
-          
+            agregarContable();
+            
             this.menu.Add(new Link()
             {
                 Nombre = "Salir",

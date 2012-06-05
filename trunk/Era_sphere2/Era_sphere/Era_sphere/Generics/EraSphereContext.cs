@@ -21,8 +21,12 @@ namespace Era_sphere.Generics
             seedServicios();
             seedTipoTemporadas();
             seedTemporadas();
+
+            seedProveedores();
+            seedProductos();
             seedTipoHabitaciones();
             seedComodidades();
+
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }

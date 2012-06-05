@@ -1,0 +1,52 @@
+﻿
+@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models.Ordenes
+@using Era_sphere.Areas.AreaContable.Models
+@model proveedor_x_productoView
+@{
+  
+    var proveedor =  ViewData["Proveedor"];
+    var id = ((Proveedor)(proveedor)).ID;
+    var logica = new LogicaProveedor();
+    var data = new { id_proveedor = @id };
+}
+
+@using (Html.BeginForm())
+{
+ 
+    @Html.ValidationSummary(true)
+    <div>
+     .. @Model.descripcion_producto ..
+    @if (Model.descripcion_producto == null)
+    {
+    @Html.LabelFor(model => model.productoID)
+@( Html.Telerik().ComboBox()
+        .Name("productoID")
+        .SelectedIndex(0)
+        .Placeholder("Seleccione Producto")
+        .AutoFill(true)
+        .DataBinding(binding => binding.Ajax().Select("ProductosRestantes", "Proveedor", data).Cache(true))
+        )
+    }
+    else { 
+        @Html.LabelFor( model => model.productoID )
+        @Model.descripcion_producto;
+    }
+    @Html.ValidationMessageFor(model => model.productoID)
+    </div>
+    <div>
+    @Html.LabelFor( model => model.precio_unitario )
+ @(Html.Telerik().CurrencyTextBox()
+           .Name("precio_unitario")
+           .Spinners(true)
+           .MinValue(0)
+
+    )
+    </div>
+    <button onclick="fun()"> Boton </button>
+    <script type="text/javascript">
+        function func() {
+            alert("gg");
+        }
+    </script>
+}

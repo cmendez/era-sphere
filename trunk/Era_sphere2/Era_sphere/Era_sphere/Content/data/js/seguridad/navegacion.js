@@ -1,4 +1,6 @@
 ﻿$(document).ready(function () {
+
+
     var token = localStorage.getItem("token");
     if (token == null) {
         alert("No tienes Acceso");

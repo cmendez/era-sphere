@@ -28,5 +28,16 @@ namespace Era_sphere.Generics
             SaveChanges();
 
         }
+        public void seedComodidades()
+        {
+            List<Comodidad> cs = new List<Comodidad>()
+            {
+                new Comodidad(){descripcion="comodidad1"},
+                new Comodidad(){descripcion="comodidad2"},
+                new Comodidad(){descripcion="comodidad3"}
+            };
+            foreach(Comodidad c in cs) comodidades.Add(c);
+            SaveChanges();
+        }
     }
 }

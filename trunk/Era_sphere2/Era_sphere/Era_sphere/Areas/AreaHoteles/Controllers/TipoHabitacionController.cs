@@ -7,6 +7,7 @@ using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Generics;
+using System.Data;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -58,22 +59,32 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index", new GridModel(tipoHabitacion_logica.retornarTiposHabitacion()));
         }
 
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //[GridAction]
         public ActionResult VerComodidades(int id)
         {
             ViewBag.id = id;
-            return View("TipoHabitacionComodidades",(new LogicaComodidades()).retornarComodidades(id));
+            return View("TipoHabitacionComodidades",new LogicaTipoHabitacion().retornarComodidadesView(id));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
         public ActionResult Asociar(int id,int idTH)
         {
-            TipoHabitacion th = tipoHabitacion_logica.retornarObjTipoHabitacion(idTH);
-            Comodidad comodidad = (new EraSphereContext()).comodidades.Find(id);
-            th.comodidades.Add(comodidad);
-            comodidad.tiposHabitacion.Add(th);
-            return RedirectToAction("VerComodidades", new { id=idTH });
-            //return View("Index", proveedor_logica.retornarProveedores(  ));
+            tipoHabitacion_logica.agregarComodidad(id,idTH);
+            ViewBag.id = idTH;
+            return View("TipoHabitacionComodidades", new GridModel(new LogicaTipoHabitacion().retornarComodidadesView(idTH)));
+            
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Desasociar(int id, int idTH)
+        {
+            tipoHabitacion_logica.eliminarComodidad(id, idTH);
+            ViewBag.id = idTH;
+            return View("TipoHabitacionComodidades", new GridModel(new LogicaTipoHabitacion().retornarComodidadesView(idTH)));
+
         }
     }
 }

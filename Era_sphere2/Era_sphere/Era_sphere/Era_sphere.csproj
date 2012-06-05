@@ -127,9 +127,6 @@
     <Compile Include="Areas\AreaContable\Controllers\ProveedorController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\AreaContable\Controllers\ProveedoresController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\Orden.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs">
@@ -138,6 +135,7 @@
     <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_producto.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_productoView.cs" />
     <Compile Include="Areas\AreaContable\Models\Productos\InterfazLogicaProducto.cs">
       <SubType>Code</SubType>
     </Compile>

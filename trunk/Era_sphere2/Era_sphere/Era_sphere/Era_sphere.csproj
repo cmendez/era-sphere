@@ -1117,7 +1117,6 @@
     <Folder Include="Areas\AreaReportes\Controllers\" />
     <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
-    <Folder Include="Areas\AreaReservas\Views\Shared\" />
     <Folder Include="Scripts\ApiSeguridad\" />
   </ItemGroup>
   <ItemGroup>
@@ -1247,6 +1246,8 @@
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\AdicionalViewTemplate.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Consulta\IndexConsulta.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Consulta\ConsultaParcialView.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Reserva\IndexReserva.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Shared\EditorTemplates\ReservaViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ParticipanteViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteView.cshtml" />
     <None Include="Content\data\._.DS_Store" />

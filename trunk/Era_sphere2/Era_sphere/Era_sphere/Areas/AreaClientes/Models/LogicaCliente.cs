@@ -65,6 +65,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
             foreach (Cliente cliente in clientes) clientes_view.Add(new ClienteNaturalView(cliente));
             return clientes_view;
         }
+        
         public List<ClienteJuridicoView> retonarClientesJuridicos()
         {
             List<Cliente> clientes = database_table.retornarTodos().Where(c => c.tipoID == 2).ToList();
@@ -73,5 +74,32 @@ namespace Era_sphere.Areas.AreaClientes.Models
             foreach (Cliente cliente in clientes) clientes_view.Add(new ClienteJuridicoView(cliente));
             return clientes_view;
         }
+
+        //Metodo para autocompletar ;)
+        public List<string> retornarClientesFiltro(String cadena_nombre)
+        {
+            List<Cliente> clientes = database_table.retornarTodos();
+
+            //:_:
+            List<string> clientes_vista = new List<string>();
+            
+            foreach (Cliente cliente in clientes)
+            {
+                if ((cliente.tipoID == 1) && ( (cliente.nombre.ToUpper().Contains(cadena_nombre.ToUpper())) || (cliente.apellido_paterno.ToUpper().Contains(cadena_nombre.ToUpper())) ||
+                    (cliente.apellido_materno.ToUpper().Contains(cadena_nombre.ToUpper()))))
+                {
+                    string cadena = "" + cliente.nombre+" "+ cliente.apellido_paterno+" "+ cliente.apellido_materno;
+                    clientes_vista.Add(cadena);
+                }
+                if ((cliente.tipoID == 2) && cliente.razon_social.ToUpper().Contains(cadena_nombre.ToUpper()))
+                {
+                    clientes_vista.Add(cliente.razon_social);
+                }
+            }
+            
+            return clientes_vista;
+        }
+
+
     }
 }

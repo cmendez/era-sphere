@@ -148,5 +148,14 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             }
             return View("DetalleClienteTemplate", recibo_linea);
         }
+
+        [HttpPost]
+        public ActionResult DameClientes(string text)
+        {
+            var clientes = cliente_logica.retornarClientesFiltro(text);
+            return new JsonResult() { Data = clientes };
+        }
+
+
     }
 }

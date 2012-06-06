@@ -65,7 +65,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public void agregarTipoServicio(TipoServicioView ts_view)
         {
             TipoServicio tipo = ts_view.deserializa(this);
-
+            this.tabla_tipo_servicios.agregarElemento(tipo);
         }
 
         internal void eliminarTipoServicio(int servicio_id)

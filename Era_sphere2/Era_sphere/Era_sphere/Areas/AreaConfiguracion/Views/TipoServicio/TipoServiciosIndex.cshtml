@@ -26,18 +26,15 @@
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp)
-                            .TemplateName("AmbienteViewTemplate"))
+                            .TemplateName("TipoServicioViewTemplate"))
                             
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-            columns.Bound(p => p.ID);
-            columns.Bound(p => p.nombre);
-            columns.Bound(p => p.detalle);
-            columns.ForeignKey(p => p.pisoID, pisos, "ID", "codigo_piso");
-            columns.Bound(p => p.capacidad_maxima);
-            columns.Bound(p => p.num_niveles);
-            columns.Bound(p => p.precio);
+            columns.Bound(c => c.nombre);
+            columns.Bound(c => c.descripcion);
+            columns.Bound(c => c.tiene_hora).ClientTemplate("<input type='checkbox' name = 'checked' value = '<#= tiene_hora #>' readonly='readonly'/>")
+                .HtmlAttributes(new { style = "text-align:center" });
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
@@ -51,10 +48,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Ambiente", new { hotelID = @hotelID})
-            .Insert("Insert", "Ambiente", new { hotelID = @hotelID})
-            .Delete("Delete", "Ambiente", new { hotelID = @hotelID})
-            .Update("Update", "Ambiente", new { hotelID = @hotelID})
+            .Select("Select", "TipoServicio")
+            .Insert("Insert", "TipoServicio")
+            .Delete("Delete", "TipoServicio")
+            .Update("Update", "TipoServicio")
         )
            )
 

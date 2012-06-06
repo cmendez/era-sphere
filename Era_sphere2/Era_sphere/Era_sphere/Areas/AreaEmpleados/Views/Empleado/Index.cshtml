@@ -57,7 +57,8 @@
 
    
     <div id="dialogEditar" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 46px; height: auto; display:none" scrolltop="0" scrollleft="0">
-	<div id="main" class="container_12"><!-- Body Wrapper Begin -->
+	
+    <div id="main" class="container_12" ><!-- Body Wrapper Begin -->
 		<div id="body">
 			
             <div class="block big" style="position: relative;">
@@ -68,7 +69,7 @@
 					<h3>Mantenimento de Cliente</h3>
 					-->
 				</div>
-				<form class="form" action="">
+				<form id = "formEmpleado" class="form" action="#">
 				
                 <div class="block_cont">
                 	<div  id="datos_personales">
@@ -78,30 +79,26 @@
 						<div class="block_cont">
 							<div class="form_row" >
 								<label> Cargo: </label>
-								<select name="tipo_cargo" id="tipo_cargo" class="select">
-									<option value="none"> - </option>
-									<option value="persona_natural"> Persona natural</option>
-									<option value="persona_juridica"> Persona juridica</option>
-								</select>
-							</div>
+								<input class="input validate[required] tipRight" maxlength = 50 required type="text" style="width:300px;" name="nombre_cargo" id="nombre_cargo"/>
+                            </div>
 							<div id="cliente_natural_form">
 							<!-- empieza natural -->
 							<div class="form_row">
 							<label>Nombres(*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="nombre_cliente" id="nombre_cliente"/>
+							<input class="input validate[required] tipRight" maxlength = 50 type="text" style="width:300px;" name="nombre_cliente" id="nombre_cliente"/>
 							</div>
 							<div class="form_row">
 							<label> Apellido Paterno(*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="apellido_paterno" id="apellido_paterno"/>
+							<input class="input validate[required] tipRight" maxlength = 50 type="text" style="width:300px;" name="apellido_paterno" id="apellido_paterno"/>
 							</div>
 							<div class="form_row">
 							<label> Apellido Materno(*):</label>
-							<input class="input validate[required] tipRight" type="text" style="width:300px;" name="apellido_materno" id="apellido_materno"/>
+							<input class="input validate[required] tipRight" maxlength = 50 type="text" style="width:300px;" name="apellido_materno" id="apellido_materno"/>
 							</div>
 							<div class="form_row">
 							
                             <label> Pais:</label>
-							<input class="input tipRight" type="text" style="width:300px;" name="pais" id="pais"/>
+							<input class="input tipRight" type="text" maxlength = 50 style="width:300px;" name="pais" id="pais"/>
 							</div>
 							<!--
                             <div class="form_row">
@@ -119,11 +116,11 @@
                             -->
 							<div class="form_row">
 							<label> Direccion:</label>
-							<input class="input tipRight" type="text" style="width:400px;" name="direccion" id="direccion"/>
+							<input class="input tipRight" maxlength = 80 type="text" style="width:400px;" name="direccion" id="direccion"/>
 							</div>
 							<div class="form_row">
 							<label> Correo Electronico:</label>
-							<input class="input tipRight" type="text" style="width:400px;" name="email" id="email"/>
+							<input class="input tipRight" maxlength = 80 type="text" style="width:400px;" name="email" id="email"/>
 							</div>
 							<div id="right_form_natural" style = "top:-400px">
 								<!--
@@ -139,14 +136,24 @@
 									<input class="input tipRight" type="text" style="width: 300px;" name="ruc" id="ruc"/> 
 									</div>
 									-->
+                                    <div class="form_row">
+                                    <label> Perfil: </label>
+									<select name="perfil" id = "perfil" class="select" style="width: 300px;">
+										
+									</select>
+									</div>
+
+                                    <div class="form_row">
                                     <label> Tipo Documento: </label>
 									<select name="tipo_documento_natural" class="select" style="width: 300px;">
 										<option value="dni"> DNI </option>
 										<option value="pasaporte"> Pasaporte </option>
 									</select>
+                                    </div>
+
 									<div class="form_row">
 									<label> Nro Documento: </label>
-									<input name="nro_documento_natural" class="input tipRight" type="text" style="width: 300px"/>
+									<input name="nro_documento_natural" class="input tipRight" type="number" style="width: 300px"/>
 									</div>
 									<div class="form_row">
 									<label> Fecha de Nacimiento </label>
@@ -154,11 +161,11 @@
 									</div>
 									<div class="form_row">
 									<label> Telefono: </label>
-									<input name="telefono_natural" class="input tipRight" type="text" style="width: 300px"/>
+									<input name="telefono_natural" type = "text"  maxlength = 12 class="input tipRight"  style="width: 300px"/>
 									</div>
 									<div class="form_row">
 									<label> Celular: </label>
-									<input name="celular_natural" class="input tipRight" type="text" style="width: 300px"/>
+									<input name="celular_natural"  type = "text"  maxlength = 12 max="9999999999" class="input tipRight"  style="width: 300px"/>
 									</div>
 
 								</div>
@@ -212,10 +219,12 @@
                                 <input id="sabadoTimeOut" class="input tipRight" type="text" style="width: 35px"/>
                                 <input id="domingoTimeOut" class="input tipRight" type="text" style="width: 35px"/>
 							</div>
-                            <div class="form_row">
+                            <!--
+                                    <div class="form_row">
 									<label> Cvitae: </label>
 									<input name="telefono_natural" class="input tipRight" type="text" style="width: 300px"/>
 									</div>
+                            -->
 									<div class="form_row">
 									<label> Sueldo: </label>
 									<input name="celular_natural" class="input tipRight" type="text" style="width: 300px"/>
@@ -259,7 +268,76 @@
 
     
 <script type = "text/javascript">
+  
+   //cargar Paises
+     $("#pais").autocomplete({  
+           source: function(req, add){  
+            var jsonPais = {
+                    pais: $("#pais").val(),
+                };
+            $.ajax({
+            type: "POST",
+            data: JSON.stringify(jsonPais),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "../AreaConfiguracion/Ubigeo/DamePaises",
+            success: function (data) {
+            var suggestions = []; 
+                $.each(data, function (i, item) {
+                    suggestions.push(item.Nombre);
+                });
+                add(suggestions);
+            }
+        });
+              
+        },  
+  
+        /*
+        //define select handler  
+        select: function(e, ui) {  
+  
+            //create formatted friend  
+            var friend = ui.item.value,  
+                span = $("<span>").text(friend),  
+                a = $("<a>").addClass("remove").attr({  
+                    href: "javascript:",  
+                    title: "Remove " + friend  
+                }).text("x").appendTo(span);  
+  
+                //add friend to friend div  
+                span.insertBefore("#to");  
+            },  
+  
+            //define select handler  
+            change: function() {  
+  
+                //prevent 'to' field being updated and correct position  
+                $("#to").val("").css("top", 2);  
+            }  
+            */
+        });  
    
+    //hacemos el Ajax para llenar los perfiles
+    $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "../AreaConfiguracion/Perfiles/Select",
+            success: function (data) {
+                var result = "";
+                $.each(data["data"], function (i, item) {
+                    var nombre = item.nombrePerfil;
+                    //<option value="dni"> DNI </option>
+                   result += '<option  value = "' + i + '">' + nombre + '</option>';
+                });
+                $("#perfil").html(result);
+                
+            }
+        });
+
+    //Fin Ajax
+
+
     $('#fecha_nacimiento').datepicker({
         dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-120:+0'
     });
@@ -336,26 +414,9 @@
     $("#agregarEmpleado").click(function () {
         //ajax
         $("#mask").show();
-        $("#nombre").val(""),
-        $("#descripcion").val(""),
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            url: "../Navegacion/ListaTodoMenu",
-            success: function (data) {
-                var result = "";
-                $.each(data, function (i, item) {
-                    var nombre = item.Nombre;
-                    result += '<p><input type = "checkbox" id = "actividad-' + i + '">' + nombre + '</p>';
-                });
-                $("#listaActividades").html(result);
-            }
-        });
-
         $('#dialogEditar').dialog('open');
-        //$("#dialogEditar").load("Empleado/CrearEmpleado");
-    });
+   
+   });
 
     $('#dialogEditar').dialog({
         autoOpen: false,
@@ -367,6 +428,11 @@
         position: "top",
         buttons: {
             "Aceptar": function () {
+                 
+               var jsonCliente  = armaEntrada();
+                 
+
+                /*
                 var jsonMenu = {
                     nombre: $("#nombre").val(),
                     descripcion: $("#descripcion").val(),
@@ -385,8 +451,8 @@
                         }
                     }
                 });
-
-                $(this).dialog("close");
+                */
+                //$(this).dialog("close");
             },
             "Cancelar": function () {
                 $("#mask").hide();
@@ -395,4 +461,28 @@
         }
     });
 
+
+    function armaEntrada(){
+       /*
+        var Persona = {
+            
+        };
+
+        var jsonEmpleado {
+        
+
+        };
+        */
+        return jsonEmpleado;
+    }
+
+
+
+    function validaFormulario(){
+        //var cargo = $("#nombre_cargo").val();
+        //var nomcli = $("#nombre_cliente").val();
+        //var appat = $("#apellido_paterno").val();
+        //var apmat = $("#apellido_materno").val();
+
+    }
 </script>

@@ -8,6 +8,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
 {
     public class Empleado : Persona
     {
+
         public string estado { get; set; }
         public string tarjeta_empleado { get; set; }
         public string cad_horario { get; set; }

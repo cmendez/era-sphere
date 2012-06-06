@@ -64,27 +64,10 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         public ActionResult VerComodidades(int id)
         {
             ViewBag.id = id;
-            return View("TipoHabitacionComodidades",new LogicaTipoHabitacion().retornarComodidadesView(id));
+            return View("TipoHabitacionComodidades");
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        [GridAction]
-        public ActionResult Asociar(int id,int idTH)
-        {
-            tipoHabitacion_logica.agregarComodidad(id,idTH);
-            ViewBag.id = idTH;
-            return View("TipoHabitacionComodidades", new GridModel(new LogicaTipoHabitacion().retornarComodidadesView(idTH)));
-            
-        }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        [GridAction]
-        public ActionResult Desasociar(int id, int idTH)
-        {
-            tipoHabitacion_logica.eliminarComodidad(id, idTH);
-            ViewBag.id = idTH;
-            return View("TipoHabitacionComodidades", new GridModel(new LogicaTipoHabitacion().retornarComodidadesView(idTH)));
-
-        }
+        
     }
 }

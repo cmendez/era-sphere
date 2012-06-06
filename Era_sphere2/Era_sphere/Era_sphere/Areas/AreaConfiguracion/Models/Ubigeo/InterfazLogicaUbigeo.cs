@@ -11,5 +11,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
     {
         void modificarPais(PaisView pais);
         List<PaisView> retornarPaises();
+        List<PaisView> retornarPaisesFiltro(String nombre);
     }
 }

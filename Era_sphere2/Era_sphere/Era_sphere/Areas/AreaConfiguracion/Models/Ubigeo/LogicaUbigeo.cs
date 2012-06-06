@@ -25,6 +25,18 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
             database_table.modificarElemento(pais, pais.ID);
         }
 
+        
+       
+        public List<PaisView> retornarPaisesFiltro(String nombre )
+        {
+            List<Pais> paises = database_table.retornarTodos();
+            List<PaisView> paises_view = new List<PaisView>();
+            foreach (Pais pais in paises) 
+                if (pais.nombre.ToUpper().Contains(nombre.ToUpper())) paises_view.Add(new PaisView(pais));
+            return paises_view;
+        }
+
+
         public List<PaisView> retornarPaises()
         {
             List<Pais> paises = database_table.retornarTodos();

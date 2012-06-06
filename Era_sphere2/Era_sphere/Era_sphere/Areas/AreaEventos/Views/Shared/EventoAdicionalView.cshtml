@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "EventoAdicionalView";
     var idhotel = ViewData["idhotel"];
+    //var idevento = ViewBag.idevento;
 }
 
  @(Html.Telerik().Grid(Model)
@@ -38,9 +39,9 @@
                 .DataBinding(dataBinding => dataBinding
                          .Ajax()//.Select("_CustomCommand", "Cliente")
                     .Select("VerAdicionales", "Evento", new { idhotel = idhotel })
-                    .Insert("InsertAdicional", "Evento", new { idhotel = idhotel })
-                    .Delete("DeleteAdicional", "Evento", new { idhotel = idhotel })
-                    .Update("UpdateAdicional", "Evento", new { idhotel = idhotel })
+                    .Insert("InsertAdicional", "Evento")
+                    .Delete("DeleteAdicional", "Evento")
+                    .Update("UpdateAdicional", "Evento")
         )
            )
 

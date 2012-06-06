@@ -6,7 +6,7 @@ using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaEventos.Models.Evento
 {
-    public class LogicaEvento:InterfazLogicaEvento
+    public class LogicaEvento
     {
         EraSphereContext evento_context = new EraSphereContext();
         DBGenericQueriesUtil<Evento> database_table;
@@ -32,16 +32,20 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             return evento_view;
         }
 
+        public Evento retornarObjEvento(int evento_id)
+        {
+            return database_table.retornarUnSoloElemento(evento_id);
+        }
         public void modificarEvento(EventoView evento_view)
         {
-            Evento modif = evento_view.deserializa(this);  
+            Evento modif = evento_view.deserializa();  
             database_table.modificarElemento(modif, modif.ID);
             return;
         }
 
         public void agregarEvento(EventoView evento)
         {
-            Evento evento_per = evento.deserializa(this);
+            Evento evento_per = evento.deserializa();
             //habitacion_per.tipoHabitacion = habitacion_context.tipos_habitacion.Find(habitacion_per.tipoHabitacionID);
             //habitacion_per.estado = habitacion_context.estado_espacio_rentable.Find(habitacion.estado_habitacionID);
             //habitacion_per.piso = habitacion_context.pisos.Find(habitacion.pisoID);

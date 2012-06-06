@@ -17,22 +17,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             descripcion = tipoHabitacion.descripcion;
             cap_max_personas = tipoHabitacion.cap_max_personas;
             ID = tipoHabitacion.ID;
-            int tam = 0;
-
-            //if (tipoHabitacion.getComodidades() != null)
-            //{
-            //    tam = tipoHabitacion.getComodidades().Count;
-            //    comodidades_descripcion = new string[tam];
-            //    comodidades_id = new int[tam];
-            //    int i = 0;
-            //    foreach (Comodidad comodidad in tipoHabitacion.getComodidades())
-            //    {
-            //        comodidades_descripcion[i] = comodidad.descripcion;
-            //        comodidades_id[i] = comodidad.ID;
-            //        i++;
-            //    }
-            //}
-
+            
         }
         [Required]
         [DisplayName("Descripcion")]

@@ -6,6 +6,7 @@
 }
 
 @using Era_sphere.Areas.AreaHoteles.Models
+@using Era_sphere.Areas.AreaEventos.Models
 @model IEnumerable<HotelView>
 @using Telerik.Web.Mvc.UI
 
@@ -35,13 +36,22 @@
     Precios
     <div class="block_cont">
         <p>@Html.ActionLink("Precios de Servicios", "Index", new { controller = "HotelXServicioXTemporada" , id = @id_hotel },
-                            new { @class = "tipTop" }                      
+                            new { @class = "tipTop" }
                         )
 
         </p>
         <p>@Html.ActionLink("Alquileres de tipo de habitacion", "Index", new { controller = "HotelXTipoHabitacionXTemporada" , id = @id_hotel},
-                            new { @class = "tipTop" }                      
+                            new { @class = "tipTop" }
                         )
+        </p>
+    </div>
+    Eventos
+    <div class="block_cont">
+
+        <p>@Html.ActionLink("Eventos", "Index", new { controller = "../AreaEventos/Evento" , id = @id_hotel },
+                            new { @class = "tipTop" }
+                        )
+                        
         </p>
     </div>
     <!-- Table Wrapper End -->

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Era_sphere.Areas.AreaConfiguracion.Models.Servicios.TipoServicioView>
+@using Era_sphere.Areas.AreaHoteles.Models
+@using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "TipoServiciosIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Tipos de Servicios
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("TipoServicioGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.PopUp)
+                            .TemplateName("AmbienteViewTemplate"))
+                            
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.nombre);
+            columns.Bound(p => p.detalle);
+            columns.ForeignKey(p => p.pisoID, pisos, "ID", "codigo_piso");
+            columns.Bound(p => p.capacidad_maxima);
+            columns.Bound(p => p.num_niveles);
+            columns.Bound(p => p.precio);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Ambiente", new { hotelID = @hotelID})
+            .Insert("Insert", "Ambiente", new { hotelID = @hotelID})
+            .Delete("Delete", "Ambiente", new { hotelID = @hotelID})
+            .Update("Update", "Ambiente", new { hotelID = @hotelID})
+        )
+           )
+
+    <!-- Table Wrapper End -->
+</div>

@@ -22,12 +22,13 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         [GridAction]
         public ActionResult Insert()
         {
+            ReservaView reserva_view= new ReservaView();
+            if (TryUpdateModel(reserva_view))
+            {
+                Reserva reserva = reserva_view.deserializa(reserva_logica);
+                reserva_logica.registrarReserva(reserva);
 
-            //ReservaView reserva_view= new ReservaView();
-            //if (TryUpdateModel(reserva_view))
-            //{
-            //    reserva_view.agregarCliente(reserva_view.deserializa(this.reserva_logica));
-            //}
+            }
             return View("IndexReserva"/*, new GridModel(cliente_logica.retonarClientesNaturales())*/);
         }
 

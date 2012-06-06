@@ -163,9 +163,8 @@
     <Compile Include="Areas\AreaContable\Models\Proveedor\ProveedorView.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\AreaContable\Models\Recibo\Boleta.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Recibo\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaContable\Models\Recibo\LogicaRecibo.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\Recibo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -194,6 +193,7 @@
     <Compile Include="Areas\AreaEventos\Models\Evento\LogicaEvento.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXServicioXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadView.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionXReserva.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\HotelXServicioXTemporadaView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\HotelXServicioXTemporada.cs" />
@@ -216,6 +216,7 @@
     <Compile Include="Areas\AreaReservas\Controllers\ReservaController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\AreaReservas\Models\EstadoReserva.cs" />
     <Compile Include="Areas\AreaReservas\Models\InterfazLogicaReserva.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -223,9 +224,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaReservas\Models\Reserva.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaReservas\Models\ReservaContext.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\Perfiles\EraSphereContext.cs" />
@@ -1386,7 +1384,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50816</DevelopmentServerPort>
+          <DevelopmentServerPort>59643</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

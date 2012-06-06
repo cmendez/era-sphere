@@ -10,6 +10,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
+using Era_sphere.Areas.AreaReservas.Models;
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {
@@ -26,9 +28,13 @@ namespace Era_sphere.Areas.AreaClientes.Models
             public int id_habitacion_asisgnada { get; set; }
             public int puntos_cliente { get; set; }
             public int numero_reservas { get; set; }
-            public ICollection<Recibo> recibos_cliente { get; set; }
+            public virtual ICollection<Recibo> recibos_cliente { get; set; }
 
+            [InversePropertyAttribute("responsable_pago")]
+            public virtual ICollection<Reserva> reservas { get; set; }
 
+            [InversePropertyAttribute("huespedes")]
+            public virtual ICollection<HabitacionXReserva> habitacion_reservas { get; set; }
         }
 
 

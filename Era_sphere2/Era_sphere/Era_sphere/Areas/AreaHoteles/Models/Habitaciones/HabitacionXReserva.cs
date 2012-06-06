@@ -17,10 +17,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
             huespedes = new HashSet<Cliente>();
             servicios = new HashSet<Servicio>();
         }
-        [Key, Column(Order = 0)]
+        [Key, Column(Order = 1)]
         public int habitacionID { get; set; }
         
-        [Key, Column(Order = 1)]
+        [Key, Column(Order = 2)]
         public int reservaID { get; set; }
 
         [InversePropertyAttribute("habitacion_reservas")]

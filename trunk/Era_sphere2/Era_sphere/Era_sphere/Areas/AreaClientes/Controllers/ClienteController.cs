@@ -108,10 +108,23 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
 
         //MODALES DE NATURAL
 
-        public ActionResult ClienteNaturalShow()
+        public JsonResult MostrarNaturalEvento(int id)
         {
-            return View("ClienteNaturalShowTemplate");
+            return Json(new { id = id });
         }
+
+        public ActionResult ClienteNaturalShow(int id)
+        {
+            ClienteNaturalView cliente = new ClienteNaturalView(cliente_logica.retornarCliente(id));
+            return PartialView("ClienteNaturalShowTemplate", cliente);
+        }
+
+
+
+        //public ActionResult ClienteNaturalShow()
+        //{
+        //    return View("ClienteNaturalShowTemplate");
+        //}
 
         //DETALLE DEL CLIENTE
         public ActionResult DetalleCliente(int id)

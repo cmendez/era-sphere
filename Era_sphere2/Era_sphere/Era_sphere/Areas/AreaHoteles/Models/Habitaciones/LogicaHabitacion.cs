@@ -18,11 +18,16 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             database_table = new DBGenericQueriesUtil< Habitacion >(context, context.habitaciones);
         }
 
-        public List<HabitacionView> retornarHabitaciones( int id_hotel )
+        public List<Habitacion> retornarHabitacionesDeHotel(int id_hotel)
         {
-            var habitaciones = database_table.retornarTodos().Where( p => p.piso.hotel.ID == id_hotel );
-            List<HabitacionView> habitacion_view = new List<HabitacionView>();
+            var habitaciones = database_table.retornarTodos().Where(p => p.piso.hotel.ID == id_hotel);
+            return habitaciones.ToList();
+        }
 
+        public List<HabitacionView> retornarHabitacionesViewDeHotel( int id_hotel )
+        {
+            var habitaciones = this.retornarHabitacionesDeHotel(id_hotel);
+            var habitacion_view = new List<HabitacionView>();
             foreach (Habitacion habitacion in habitaciones) habitacion_view.Add(new HabitacionView(habitacion));
             return habitacion_view;
         }
@@ -57,5 +62,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             return database_table.buscarElementos(habitacion_campos);
         }*/
+
+        public List<Habitacion> retornarHabitacionesLibres(int hotelID, DateTime desde, DateTime hasta)
+        {
+            List<Habitacion> habs_de_hotel = this.retornarHabitacionesDeHotel(hotelID);
+            return habs_de_hotel;
+            //TODO falta hacer la consulta de verdad
+                         
+        }
     }
 }

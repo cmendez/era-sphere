@@ -33,7 +33,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         public ActionResult Select( int id_hotel )
         {
             
-            return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitaciones(id_hotel)));
+            return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel(id_hotel)));
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
@@ -46,7 +46,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
                 habitacion_logica.agregarHabitacion(habitacion_view);
 
             }
-            return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitaciones( id_hotel )));
+            return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel( id_hotel )));
             
         }
 
@@ -56,7 +56,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         {
             int habitacion_id = id ?? -1;
             habitacion_logica.eliminarHabitacion(habitacion_id);
-            return View("Index", new GridModel(habitacion_logica.retornarHabitaciones( id_hotel )));
+            return View("Index", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel( id_hotel )));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -65,7 +65,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         {
 
             habitacion_logica.modificarHabitacion(p);
-            return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitaciones( id_hotel )));
+            return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel( id_hotel )));
         }
         /*[HttpPost]
         public ActionResult TiposHabitacionComboBox()

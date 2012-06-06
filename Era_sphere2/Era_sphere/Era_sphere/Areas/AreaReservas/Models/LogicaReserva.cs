@@ -59,17 +59,15 @@ namespace Era_sphere.Areas.AreaReservas.Models
         public decimal calcularMontoInicialReserva(Reserva reserva)
         {
             decimal monto = 0;
-            /*
-            List<HabitacionXReserva> hab_x_rec = this.habitacionesDeReserva(reserva.ID);
+            
+            List<Habitacion> habs = this.habitacionesDeReserva(reserva.ID);
 
-            for (int i = 0; i < hab_x_rec.Count(); i++)
-            {
-                HabitacionXReserva habitacion = reserva.lista_habitaciones_reservadas.ElementAt(i);
+            foreach(var habitacion in habs){
             //    monto += habitacion.tipoHabitacion.costo_base;
             }
 
             //tenemos el costo base de las habitaciones, ahora determinar si se anhadió comodidades
-
+            /* EDIT: ahora parece que no hay mas comodidades
             for (int i = 0; i < reserva.lista_habitaciones_reservadas.Count(); i++)
             {
                 HabitacionXReserva habi =  reserva.lista_habitaciones_reservadas.ElementAt(i);
@@ -132,12 +130,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             var query = from u in context.habitacion_x_reservas
                         where u.reservaID == reservaID
-                        select u.habitacionID;
-            List<int> hab_ids = query.ToList();
-            List<Habitacion> habitaciones = new List<Habitacion>();
-            foreach (var id in hab_ids)
-                habitaciones.Add(context.habitaciones.Find(id));
-            return habitaciones;
+                        select context.habitaciones.Find(u.habitacionID);
+            return query.ToList();
         }
     }
 }

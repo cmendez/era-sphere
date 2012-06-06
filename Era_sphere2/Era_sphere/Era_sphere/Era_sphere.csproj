@@ -206,6 +206,9 @@
     <Compile Include="Areas\AreaPromociones\Models\LogicaPromocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
+    <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
+    <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaView.cs" />
+    <Compile Include="Areas\AreaReservas\Models\Consultas\LogicaConsulta.cs" />
     <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaReservas\AreaReservasAreaRegistration.cs">
       <SubType>Code</SubType>
@@ -1104,7 +1107,6 @@
     <Folder Include="Areas\AreaReportes\Controllers\" />
     <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
-    <Folder Include="Areas\AreaReservas\Models\Consultas\" />
     <Folder Include="Areas\AreaReservas\Views\Shared\" />
     <Folder Include="Scripts\ApiSeguridad\" />
   </ItemGroup>

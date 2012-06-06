@@ -5,98 +5,77 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
+@{
+    EraSphereContext context = new EraSphereContext();
+    string pais_nombre = context.paises.Find(Model.paisID).nombre;
+    string ciudad_nombre = context.ciudades.Find(Model.ciudadID).nombre;
+    string estado_nombre = context.estados_cliente.Find(Model.id_estado).descripcion;
+}
+
+
 <div id="detalle-cliente-natural">
 
     <fieldset>
         <legend>Cliente Natural</legend>
         
         <div class="editor-label"> @Html.LabelFor(model => model.nombre) </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_nombre" readonly="readonly"/>
-        </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.nombre, new {@readonly = "readonly"})  </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.apellido_paterno) </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_apellido_paterno" readonly="readonly"/>
-        </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.apellido_paterno, new {@readonly = "readonly"})  </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.apellido_materno) </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_apellido_materno" readonly="readonly"/>
-        </div>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ruc)
-        </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_ruc" readonly="readonly"/>
-        </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.apellido_materno, new {@readonly = "readonly"})  </div>     
+
+        <div class="editor-label"> @Html.LabelFor(model => model.documento_identidad) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.documento_identidad, new {@readonly = "readonly"})  </div>     
+
+
+        <div class="editor-label"> @Html.LabelFor(model => model.ruc) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.ruc, new {@readonly = "readonly"})  </div> 
 
         <div class="editor-label"> @Html.LabelFor(model => model.paisID) </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_paisID" readonly="readonly"/>
-        </div>
+         <div class="editor-field"> <input class="text-box single-line" type="text" value="@pais_nombre" readonly="readonly" /> </div>
 
          <div class="editor-label"> @Html.LabelFor(model => model.ciudadID) </div>
-         <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_ciudadID" readonly="readonly"/>
-        </div>
+         <div class="editor-field"> <input class="text-box single-line" type="text" value="@ciudad_nombre" readonly="readonly" /> </div>
 
-         <div class="editor-label">
-            @Html.LabelFor(model => model.telefono)
-        </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_telefono" readonly="readonly"/>
-        </div>
+         <div class="editor-label"> @Html.LabelFor(model => model.telefono) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.telefono, new {@readonly = "readonly"}) </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.celular)
-        </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_celular" readonly="readonly"/>
-        </div>
+        <div class="editor-label"> @Html.LabelFor(model => model.celular) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.celular, new {@readonly = "readonly"}) </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.direccion)
-        </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_direccion" readonly="readonly"/>
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.correo_electronico)
-        </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_correo_electronico" readonly="readonly"/>
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.id_estado)
-        </div>
-         <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_id_estado" readonly="readonly"/>
-        </div>
+        <div class="editor-label"> @Html.LabelFor(model => model.direccion) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.direccion, new {@readonly = "readonly"}) </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.id_habitacion)
-        </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_id_habitacion" readonly="readonly"/>
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.usuario)
-        </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_usuario" readonly="readonly"/>
-        </div>
-              <div class="editor-label">
-            @Html.LabelFor(model => model.tarjeta_cliente)
-        </div>
-        <div class="editor-field">
-            <input class="text-box single-line" type="text" id="_tarjeta_cliente" readonly="readonly"/>
-        </div>
+        <div class="editor-label"> @Html.LabelFor(model => model.correo_electronico) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.correo_electronico, new {@readonly = "readonly"}) </div>
 
-        
+        <div class="editor-label"> @Html.LabelFor(model => model.id_estado) </div>
+        <div class="editor-field"> <input class="text-box single-line" type="text" value="@estado_nombre" readonly="readonly" /> </div>
+
+        <div class="editor-label"> @Html.LabelFor(model => model.id_habitacion) </div>
+         <div class="editor-field"> @Html.TextBoxFor(model => model.id_habitacion, new {@readonly = "readonly"}) </div>
+
+        <div class="editor-label"> @Html.LabelFor(model => model.usuario) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.usuario, new {@readonly = "readonly"}) </div>
+
+        <div class="editor-label"> @Html.LabelFor(model => model.tarjeta_cliente)</div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.tarjeta_cliente, new {@readonly = "readonly"}) </div>
+
+
           </fieldset>
         
+        <button id="mostrar-detalle" class="t-button t-state-default" onclick="$('#MostrarDetalleNaturalPopup').data('tWindow').center().open();">
+            Mostrar consumo
+        </button>
+        
+        @{Html.Telerik().Window().Name("MostrarDetalleNaturalPopup")
+        .Title("Detalle de consumo de Cliente").LoadContentFrom("DetalleCliente", "Cliente", new {id = Model.ID})
+            .Modal(true)
+            .Visible(false)
+            .Width(300).Resizable().Draggable(true).Width(600).Height(300).Render();}
         
          </div>
 

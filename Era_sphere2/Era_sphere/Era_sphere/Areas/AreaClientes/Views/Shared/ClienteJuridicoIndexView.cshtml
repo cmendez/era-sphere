@@ -52,9 +52,10 @@
 
            
 @(Html.Telerik().Window()
-    .Name("DetalleJuridico").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).Height(500).Content(
+    .Name("DetalleJuridico").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).Height(600).Content(
         @<text>
             <div id="detalle-cliente-juridico"></div>
         </text>
-    ))
+    )
+    .Draggable(true))
 

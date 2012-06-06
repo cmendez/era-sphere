@@ -31,7 +31,8 @@
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
                 commands.Custom("mostrar_natural").Text("Mostrar").
-                    DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("MostrarNatural", "Cliente");
+                    DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("MostrarNaturalEvento", "Cliente");
+           
                 
             }).Width(160);
         })
@@ -49,5 +50,10 @@
            )
 
 
-           @(Html.Telerik().Window()
-    .Name("DetalleNatural").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).LoadContentFrom("ClienteNaturalShow", "Cliente"))
+@(Html.Telerik().Window()
+    .Name("DetalleNatural").Visible(false).Title("Detalle del cliente").Modal(true).Width(500).Height(600).Content(
+        @<text>
+            <div id="detalle-cliente-natural"></div>
+        </text>
+    )
+    .Draggable(true))

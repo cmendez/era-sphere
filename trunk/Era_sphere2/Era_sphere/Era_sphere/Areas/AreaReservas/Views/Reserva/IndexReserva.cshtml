@@ -45,7 +45,7 @@
         .Columns(columns =>
         {
             columns.Bound(p => p.responsable_pago);
-            columns.Bound(p => p.responsable_pago.documento_identidad).Title("Documento");
+            columns.Bound(p => p.documento_identidad).Title("Documento");
             columns.Bound(p => p.ID);
           
         }).Pageable().Sortable()

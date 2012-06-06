@@ -25,8 +25,7 @@ namespace Era_sphere.Generics
             seedProveedores();
             seedProductos();
             seedTipoHabitaciones();
-            seedComodidades();
-
+            seedClientes();
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }

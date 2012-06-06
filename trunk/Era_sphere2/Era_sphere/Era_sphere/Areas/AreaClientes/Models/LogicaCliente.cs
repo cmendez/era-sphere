@@ -88,16 +88,23 @@ namespace Era_sphere.Areas.AreaClientes.Models
                 if ((cliente.tipoID == 1) && ( (cliente.nombre.ToUpper().Contains(cadena_nombre.ToUpper())) || (cliente.apellido_paterno.ToUpper().Contains(cadena_nombre.ToUpper())) ||
                     (cliente.apellido_materno.ToUpper().Contains(cadena_nombre.ToUpper()))))
                 {
-                    string cadena = "" + cliente.nombre+" "+ cliente.apellido_paterno+" "+ cliente.apellido_materno;
-                    clientes_vista.Add(cadena);
+                    clientes_vista.Add(toString(cliente));
                 }
                 if ((cliente.tipoID == 2) && cliente.razon_social.ToUpper().Contains(cadena_nombre.ToUpper()))
                 {
-                    clientes_vista.Add(cliente.razon_social);
+                    clientes_vista.Add(toString(cliente));
                 }
             }
             
             return clientes_vista;
+        }
+
+        public static string toString(Cliente cliente)
+        {
+            string res;
+            if (cliente.tipoID == 1) res = cliente.nombre + " " + cliente.apellido_paterno + " " + cliente.apellido_materno + ", D" + cliente.documento_identidad;
+            else res = cliente.razon_social + " R" + cliente.ruc;
+            return res;
         }
 
 

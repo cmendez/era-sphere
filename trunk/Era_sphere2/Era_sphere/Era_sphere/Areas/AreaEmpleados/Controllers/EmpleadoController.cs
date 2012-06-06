@@ -33,5 +33,12 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             return View("Index", new GridModel(perfil_empleado.retornarEmpleados()));
         }
 
+        [GridAction]
+        public ActionResult AddEmpleado(Empleado empleado)
+        {
+            perfil_empleado.agregarEmpleado(empleado);
+            return View("Index", new GridModel(perfil_empleado.retornarEmpleados()));
+        }
+
     }
 }

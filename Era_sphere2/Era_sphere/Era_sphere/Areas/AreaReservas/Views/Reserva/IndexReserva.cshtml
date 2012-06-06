@@ -1,0 +1,67 @@
+﻿@using Era_sphere.Areas.AreaReservas
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI
+@model IEnumerable<ReservaView>
+@{
+    ViewBag.Title = "IndexHotel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   // var paises = (new EraSphereContext()).paises.ToList();
+   // var ciudades = (new EraSphereContext()).ciudades.ToList();
+   // var estados = (new EraSphereContext()).estados_cliente.ToList();
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Gestionar Reservas
+        </h3>
+    </div>
+   
+    <div class="block_cont">
+      
+      <label> Responsable Pago:</label>
+	         @(Html.Telerik().AutoComplete()
+                .Name("cliente_autocompleta")
+                .DataBinding(binding => binding.Ajax().Select("DameClientes", "../AreaClientes/Cliente"))
+                .HighlightFirstMatch(true)
+                .AutoFill(true)
+        )
+	 
+
+
+      @(Html.Telerik().Grid(Model)
+        .Name("ReservaGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                            .Mode(GridEditMode.PopUp)
+                            .TemplateName("ReservaViewTemplate"))
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.responsable_pago);
+            columns.Bound(p => p.responsable_pago.documento_identidad).Title("Documento");
+            columns.Bound(p => p.ID);
+          
+        }).Pageable().Sortable()
+       
+        .DataBinding(dataBinding => dataBinding    
+            .Ajax()
+            .Insert("Insert", "Reserva")
+            
+           
+        )
+           )
+
+
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>
+
+   

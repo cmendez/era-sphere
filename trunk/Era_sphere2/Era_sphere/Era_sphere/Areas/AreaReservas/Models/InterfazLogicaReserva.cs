@@ -8,7 +8,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
 {
     public interface InterfazLogicaReserva
     {
-        List<Reserva> retornarReservas();
+        /*
+        List<ReservaView> retornarReservas();
         Reserva retornarReserva(int reserva_id);
         void modificarReserva(Reserva reserva); //anular reserva se encuentra contemplada en este punto
         void registrarReserva(Reserva reserva);
@@ -17,5 +18,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
         //puedo buscar una reserva según clientes
         List<Reserva> buscarReserva(Cliente cliente);
         //falta agregar más funciones especificas para interactuar con clientes, pagos, comodidades, habitaciones    
+    
+         * 
+         */ 
     }
 }

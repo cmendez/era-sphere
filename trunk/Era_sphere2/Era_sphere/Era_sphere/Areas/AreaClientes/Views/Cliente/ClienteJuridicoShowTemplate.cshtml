@@ -20,7 +20,7 @@
         <div class="editor-field"> @Html.TextBoxFor(model => model.razon_social, new {@readonly = "readonly"}) </div>
         
         <div class="editor-label"> @Html.LabelFor(model => model.ruc) </div>
-        <div class="editor-field"> @Html.TextBoxFor(model => model.ruc) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.ruc, new {@readonly = "readonly"}) </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.paisID) </div>
         <div class="editor-field"> <input class="text-box single-line" type="text" value="@pais_nombre" readonly="readonly" /> </div>

@@ -16,19 +16,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public int cap_max_personas { get; set; }
         public string descripcion { get; set; }
         public decimal costo_base { get; set; }
-        public virtual ICollection<Comodidad> comodidades { get; set; }
-
+        public int numero_camas { get; set; }
         public virtual ICollection<Habitacion> lista_habitaciones { get; set; }
 
-        public ICollection<Comodidad> getComodidades()
-        {
-            return comodidades;
-        }
-        public void addComodidad(Comodidad comodidad)
-        {
-            //if(comodidades==null) comodidades=new List<Comodidad> ();
-            comodidades.Add(comodidad);
-
-        }
     }
 }

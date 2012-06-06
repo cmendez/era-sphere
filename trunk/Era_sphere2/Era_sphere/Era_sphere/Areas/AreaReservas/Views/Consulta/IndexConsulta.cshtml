@@ -1,0 +1,57 @@
+﻿@using Era_sphere.Areas.AreaReservas.Models
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI
+@model IEnumerable<ConsultaLineaView>
+@{
+    ViewBag.Title = "IndexHotel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
+   // var ciudades = (new EraSphereContext()).ciudades.ToList();
+   // var estados = (new EraSphereContext()).estados_cliente.ToList();
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+           Consulta Habitaciones
+        </h3>
+    </div>
+    
+    <div class="block_cont">
+       @{
+           Html.RenderPartial("ConsultaParcialView");
+          }
+   
+
+        @(Html.Telerik().Grid(Model)
+        .Name("ConsultaGrid")
+        .Localizable("es-ES")
+        .Filterable()
+       
+        .DataKeys(key =>key.Add(c=>c.habitacionID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.numero_habitacion);
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(habitaciones, "ID", "descripcion"));
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(habitaciones, "ID", "numero_camas")).Title(@"Número de camas");
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(habitaciones, "ID", "costo_base")).Title("Precio");
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(habitaciones,"ID", "cap_max_personas")).Title("Capacidad");
+            
+        })
+
+        .Pageable()
+        .Sortable()
+             
+        )
+           
+
+    </div>
+
+
+   
+    <!-- Table Wrapper End -->
+</div>
+

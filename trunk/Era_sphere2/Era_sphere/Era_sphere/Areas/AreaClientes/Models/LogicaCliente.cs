@@ -39,7 +39,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
 
         public void agregarCliente(Cliente cliente)
         {
-            database_table.agregarElemento(cliente);
+            //if (cliente_context.clientes.Where(c => c.documento_identidad == cliente.documento_identidad).Count() > 0)
+            //{
+            //    //MENSAJE DE ERROR URGENTE :) 
+            //}
+            //else
+                database_table.agregarElemento(cliente);
         }
 
         public void eliminarCliente(int cliente_id)
@@ -51,6 +56,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
         {
             return database_table.buscarElementos(cliente_campos);
         }
+
         public List<ClienteNaturalView> retonarClientesNaturales()
         {
             List<Cliente> clientes = database_table.retornarTodos().Where(c => c.tipoID == 1).ToList();

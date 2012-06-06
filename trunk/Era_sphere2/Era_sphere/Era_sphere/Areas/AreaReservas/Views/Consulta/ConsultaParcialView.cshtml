@@ -1,0 +1,45 @@
+﻿@model ConsultaView
+@using Era_sphere.Areas.AreaReservas.Models
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI
+@{
+    ViewBag.Title = "ConsultaParcialView";
+    //var paises = (new EraSphereContext()).paises.ToList();
+    //var ciudades = (new EraSphereContext()).ciudades.ToList();
+  
+}
+
+@Html.ValidationSummary(true)
+    <fieldset>
+
+    <div class="editor-label"> @Html.LabelFor(model => model.fecha_inicio) </div>
+    <div class="editor-field">
+                               @Html.Telerik().DatePickerFor(model => model.fecha_inicio) </div>
+ 
+
+    <div class="editor-label"> @Html.LabelFor(model => model.fecha_fin) </div>
+    <div class="editor-field">
+                               @Html.Telerik().DatePickerFor(model => model.fecha_fin) </div>
+
+    <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_total) </div>
+    <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_total, new {@readonly = "readonly"}) </div>
+        
+    <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_piso) </div>
+    <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_piso, new { @readonly = "readonly" }) </div>
+
+    <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_tipo) </div>
+    <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_tipo, new { @readonly = "readonly" }) </div>
+
+    </fieldset>
+
+    <div style="height: 10px;">
+    </div>
+
+
+   <button id="buscar-habitaciones" class="t-button t-state-default" onclick="$('#MostrarBusqueda').data('tWindow').center().open();">
+            Buscar
+  </button>
+
+  <div style="height: 10px;">
+    </div>
+

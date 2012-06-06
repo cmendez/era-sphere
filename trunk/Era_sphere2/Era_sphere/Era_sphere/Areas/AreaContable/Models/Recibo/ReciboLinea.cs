@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Era_sphere.Areas.AreaContable.Models.Recibo
 {
-    public class ReciboLinea: DBable
+    public abstract class ReciboLinea: DBable
     {
         [ForeignKey("recibo")]
         public int reciboID { get; set; }
@@ -37,5 +37,6 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
             this.unidades = unidades;
             this.pagado = false;
         }
+        public ReciboLinea() { }
     }
 }

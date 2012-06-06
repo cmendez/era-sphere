@@ -35,10 +35,6 @@
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
-                commands.Custom("SeleccionGrilla")
-                    .Text("Comodidades")
-                    .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
-                             .Action("VerComodidades", "TipoHabitacion");
                                 
             });
         })

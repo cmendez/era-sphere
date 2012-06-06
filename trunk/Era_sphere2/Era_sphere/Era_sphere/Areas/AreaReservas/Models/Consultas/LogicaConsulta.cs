@@ -28,12 +28,12 @@ namespace Era_sphere.Areas.AreaReservas.Models
             return numero_habitacion_piso;
         }
 
-
-        public void habitacionesDisponiblesTotales (Consulta consulta, DateTime fecha_inicio, DateTime fecha_fin)
+        
+        public void asignarHabitacionesDisponiblesTotales (Consulta consulta)
         {
             int id_hotel = consulta.hotelID;
             LogicaHabitacion logica_habitacion = new LogicaHabitacion();
-            consulta.habitaciones_resultantes = logica_habitacion.retornarHabitacionesLibres(id_hotel,fecha_inicio,fecha_fin);
+            consulta.habitaciones_resultantes = logica_habitacion.retornarHabitacionesLibres(id_hotel,consulta.fecha_inicio,consulta.fecha_fin);
         
         }
         

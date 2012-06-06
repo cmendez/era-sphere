@@ -1236,7 +1236,6 @@
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AreaContable\Views\Web.config" />
-
     <Content Include="Areas\AreaContable\Views\Proveedor\ProductosProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProveedorProductoViewTemplate.cshtml" />
@@ -1246,10 +1245,10 @@
     <Content Include="Areas\AreaEventos\Views\Evento\EventoLlenarDatos.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoAdicionalView.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\AdicionalViewTemplate.cshtml" />
-
     <Content Include="Areas\AreaReservas\Views\Consulta\IndexConsulta.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Consulta\ConsultaParcialView.cshtml" />
-
+    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ParticipanteViewTemplate.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

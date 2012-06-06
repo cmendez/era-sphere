@@ -48,6 +48,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Adicionales
             return adicional_view;
         }
 
+        
+
         public Adicional retornarObjAdicional(int adicional_id)
         {
             return database_table.retornarUnSoloElemento(adicional_id);
@@ -75,8 +77,10 @@ namespace Era_sphere.Areas.AreaEventos.Models.Adicionales
         {
             return database_table.buscarElementos(tipohabitacion_campos);
         }*/
-       
 
-       
+
+
+
+        
     }
 }

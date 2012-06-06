@@ -33,7 +33,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Participante
             return database_table.retornarTodos().Where(p => p.eventoID == evento_id).ToList();
         }
 
-        public List< ParticipanteView > retornarParticipanteView(int evento_id)
+        public List< ParticipanteView > retornarParticipantesView(int evento_id)
         {
             List<ParticipanteView> participante_view = new List<ParticipanteView>();
             var participantes = database_table.retornarTodos().Where(p => p.eventoID == evento_id);

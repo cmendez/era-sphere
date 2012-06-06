@@ -1,6 +1,12 @@
-﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Fiscal.MonedaView
+﻿@{
+    ViewBag.Title = "TipoServicioViewTemplate";
+}
+
+
+@model Era_sphere.Areas.AreaConfiguracion.Models.Servicios.TipoServicioView
 @using Era_sphere.Areas.AreaConfiguracion.Models
 @using Telerik.Web.Mvc.UI
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 @using (Html.BeginForm())
@@ -10,26 +16,39 @@
     
         <legend></legend>
         <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+        <div class="editor-label">
             @Html.LabelFor(model => model.descripcion)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.descripcion)
             @Html.ValidationMessageFor(model => model.descripcion)
         </div>
+
         <div class="editor-label">
-            @Html.LabelFor(model => model.simbolo)
+            @Html.LabelFor(model => model.tiene_hora)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.simbolo)
-            @Html.ValidationMessageFor(model => model.simbolo)
+            @Html.EditorFor(model => model.tiene_hora)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.tc)
+            @Html.LabelFor(model => model.tiene_productos_asociados)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.tc)
-            @Html.ValidationMessageFor(model => model.tc)
+            @Html.EditorFor(model => model.tiene_productos_asociados)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tiene_repeticiones)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tiene_repeticiones)
         </div>
   
     </fieldset>

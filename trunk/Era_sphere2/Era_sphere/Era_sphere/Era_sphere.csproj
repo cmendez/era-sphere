@@ -1250,6 +1250,7 @@
     <Content Include="Areas\AreaReservas\Views\Shared\EditorTemplates\ReservaViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ParticipanteViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteView.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

@@ -10,15 +10,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
     public class TipoServicioView
     {
         public int ID { get; set; }
-        [Required]
         [DisplayName("Tiene productos asociados")]
         public bool tiene_productos_asociados { get; set; }
         
-        [Required]
         [DisplayName("Se desarrolla en una hora fija")]
         public bool tiene_hora { get; set; }
         
-        [Required]
         [DisplayName("Puede admitir repeticiones")]
         public bool tiene_repeticiones { get; set; }
 

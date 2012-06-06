@@ -4,9 +4,8 @@
     ViewBag.Title = "BuscarComodidades";
     List<ComodidadView> comodidades =(new Era_sphere.Areas.AreaHoteles.Models.Habitaciones.LogicaComodidades()).retornarComodidades();  
     //Era_sphere.Areas.AreaHoteles.Models.LogicaTipoHabitacion lth= new Era_sphere.Areas.AreaHoteles.Models.LogicaTipoHabitacion();
-   
+           
      
-}
     //List <Comodidad> comodidades=new List<Comodidad> ();
     //foreach (ComodidadView view in comodidades_view)  ;
     //var comodidades = (new Era_sphere.Areas.AreaHoteles.Models.Habitaciones.LogicaComodidades()).retonarLista();
@@ -21,8 +20,7 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <fieldset>
-        
+    <fieldset>    
         <p>
             <label for="ComboBox_Categories-input">
                 Comodidades:</label>

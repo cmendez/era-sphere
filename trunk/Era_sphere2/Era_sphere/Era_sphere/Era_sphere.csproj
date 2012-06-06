@@ -181,7 +181,11 @@
     <Compile Include="Areas\AreaEmpleados\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\InterfazLogicaEmpleado.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\LogicaEmpleado.cs" />
+    <Compile Include="Areas\AreaEventos\Controllers\EventoController.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\Adicional.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Adicionales\AdicionalView.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Adicionales\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Adicionales\LogicaAdicional.cs" />
     <Compile Include="Areas\AreaEventos\Models\EventoXAmbiente\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEventos\Models\EventoXAmbiente\EventoXAmbiente.cs" />
     <Compile Include="Areas\AreaEventos\Models\EventoXAmbiente\EventoXAmbienteView.cs" />
@@ -189,8 +193,11 @@
     <Compile Include="Areas\AreaEventos\Models\Evento\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\EventoView.cs" />
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs" />
-    <Compile Include="Areas\AreaEventos\Models\Evento\InterfazLogicaEvento.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\LogicaEvento.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Participante\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Participante\LogicaParticipante.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Participante\ParticipanteView.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Participante\Participante.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXServicioXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionXReserva.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadView.cs" />
@@ -318,7 +325,6 @@
     <Content Include="Areas\AreaContable\Models\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Models\Views\Shared\ProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Models\Views\Shared\ProveedorViewTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Models\Views\Web.config" />
     <Content Include="Areas\AreaReservas\Views\Web.config" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.xml" />
@@ -1106,9 +1112,7 @@
     <Folder Include="Areas\AreaContable\Models\Views\Proveedor_x_Producto\" />
     <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
-    <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
-    <Folder Include="Areas\AreaEventos\Views\Shared\" />
     <Folder Include="Areas\AreaReportes\Controllers\" />
     <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
@@ -1232,8 +1236,20 @@
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AreaContable\Views\Web.config" />
+
+    <Content Include="Areas\AreaContable\Views\Proveedor\ProductosProveedor.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProductoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProveedorProductoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProveedorViewTemplate.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Evento\EventoIndex.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\EventoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Evento\EventoLlenarDatos.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EventoAdicionalView.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\AdicionalViewTemplate.cshtml" />
+
     <Content Include="Areas\AreaReservas\Views\Consulta\IndexConsulta.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Consulta\ConsultaParcialView.cshtml" />
+
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

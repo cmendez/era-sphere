@@ -24,7 +24,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
             this.amb_descripcion = eventoxambiente.ambiente.descripcion;
             this.amb_detalle = eventoxambiente.ambiente.detalle;
             this.amb_num_niveles = eventoxambiente.ambiente.num_niveles;
-            this.hotelID = eventoxambiente.evento.hotelID;
+            //this.hotelID = eventoxambiente.evento.hotelID;
         }
 
         public int ID { set; get; }

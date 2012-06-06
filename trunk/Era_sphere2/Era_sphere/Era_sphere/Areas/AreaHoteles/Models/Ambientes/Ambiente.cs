@@ -25,5 +25,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [ForeignKey("estado")]
         public int estadoID { get; set; }
         public virtual EstadoEspacioRentable estado { get; set; }
+        public virtual ICollection<Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbiente> eventoXAmbiente { get; set; }
     }
 }

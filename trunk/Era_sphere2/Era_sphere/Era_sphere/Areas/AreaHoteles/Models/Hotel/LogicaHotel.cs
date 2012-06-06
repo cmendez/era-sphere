@@ -52,6 +52,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return hotel_view;
         }
 
+        public Hotel retornarObjHotel(int hotel_id)
+        {
+            return database_table.retornarUnSoloElemento(hotel_id);
+        }
+
 
         public Ciudad retornarCiudad(int ciudad_id)
         {

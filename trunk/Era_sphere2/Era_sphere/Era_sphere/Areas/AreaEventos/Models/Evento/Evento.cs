@@ -17,11 +17,13 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         
         public int num_participantes { get; set; }
 
-        [ForeignKey("hotel")]
-        public int hotelID { get; set; }
-        [Required]
-        public virtual Hotel hotel { get; set; }
+        //[ForeignKey("hotel")]
+        //public int hotelID { get; set; }
+        //[Required]
+        //public virtual Hotel hotel { get; set; }
 
-        protected virtual ICollection<Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbiente> eventoXAmbiente { get; set; }
+        public virtual ICollection<Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbiente> eventoXAmbiente { get; set; }
+
+        public virtual ICollection<Era_sphere.Areas.AreaEventos.Models.Participante.Participante> participantes { get; set; }
     }
 }

@@ -32,7 +32,6 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         [GridAction]
         public ActionResult Select( int id_hotel )
         {
-            
             return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel(id_hotel)));
         }
         [AcceptVerbs(HttpVerbs.Post)]

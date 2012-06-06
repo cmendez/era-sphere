@@ -21,15 +21,25 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
 
         //nose si falta precio
 
-        [Key, Column(Order = 1, TypeName = "int")]
         [ForeignKey("evento")]
         public int eventoID { get; set; }
-        public Era_sphere.Areas.AreaEventos.Models.Evento.Evento evento { get; set; }
 
-        [Key, Column(Order = 2, TypeName = "int")]
         [ForeignKey("ambiente")]
         public int ambienteID { get; set; }
-        public Ambiente ambiente { get; set; }
+
+        public virtual Era_sphere.Areas.AreaEventos.Models.Evento.Evento evento { get; set; }
+
+        public virtual Ambiente ambiente{ get; set; }
+
+        //[Key, Column(Order = 1, TypeName = "int")]
+        //[ForeignKey("evento")]
+        //public int eventoID { get; set; }
+        //public Era_sphere.Areas.AreaEventos.Models.Evento.Evento evento { get; set; }
+
+        //[Key, Column(Order = 2, TypeName = "int")]
+        //[ForeignKey("ambiente")]
+        //public int ambienteID { get; set; }
+        //public Ambiente ambiente { get; set; }
     }
     
 }

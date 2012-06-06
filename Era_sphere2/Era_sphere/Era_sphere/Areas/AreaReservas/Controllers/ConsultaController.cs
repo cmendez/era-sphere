@@ -14,19 +14,18 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
 
         LogicaConsulta consulta_logica = new LogicaConsulta();
 
-        public ActionResult Index()
+        //ID : id del hotel
+        public ActionResult Index(int ID)
         {
-            return View("IndexConsulta");
+            return View("IndexConsulta", new ConsultaView { hotelID = ID });
         }
 
-        [HttpPost]
-        public ActionResult Buscar()
+        
+        public ActionResult Buscar(DateTime fecha_inicio, DateTime fecha_fin, int hotelID)
         {
-            
-            
-            return PartialView("IndexConsulta");//no segura :)
-
-
+            Consulta resultado = new Consulta { fecha_inicio = fecha_inicio, fecha_fin = fecha_fin, hotelID = hotelID };
+            consulta_logica.asignarHabitacionesDisponiblesTotales(resultado);
+            return View("IndexConsulta", new ConsultaView(resultado));
         }
 
     }

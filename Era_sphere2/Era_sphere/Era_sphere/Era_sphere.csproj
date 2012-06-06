@@ -172,6 +172,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaContable\Models\Productos\Producto.cs" />
+    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaServicio.cs" />
     <Compile Include="Areas\AreaEmpleados\Controllers\AsistenciaEmpleadoController.cs" />
     <Compile Include="Areas\AreaEmpleados\Controllers\EmpleadoController.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\AsistenciaEmpleado.cs" />
@@ -1213,7 +1214,6 @@
     <Content Include="Areas\AreaContable\Models\Views\Proveedores\Index.cshtml" />
     <Content Include="Areas\AreaContable\Models\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\HotelXServicioXTemporada\Index.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\TipoHabitacion\TipoHabitacionComodidades.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\BuscarComodidades.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\DetalleClienteTemplate.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\AsistenciaEmpleado\Index.cshtml" />

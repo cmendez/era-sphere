@@ -16,6 +16,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
     {
         public Servicio() {
             habitacion_reservas = new HashSet<HabitacionXReserva>();
+            recibos_linea = new HashSet<ReciboLineaServicio>();
         }
 
         public string descripcion { get; set; }
@@ -33,10 +34,13 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [InversePropertyAttribute("servicios")]
         public virtual ICollection<HabitacionXReserva> habitacion_reservas { get; set; }
 
+        public virtual ICollection<ReciboLineaServicio> recibos_linea { get; set; }
         
         public override List<ReciboLinea> generarReciboLineas()
         {
-            var lista = new List<ReciboLinea>();
+            return null;
+            /*if (recibos_linea.Count() > 0) return recibos_linea;
+            var lista = new List<ReciboLineaServicio>();
             ReciboLinea rec = new ReciboLinea(descripcion, 0, this.repeticiones);
             lista.Add(rec);
             if (tipo_servicio.tiene_productos_asociados)
@@ -44,7 +48,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                    foreach (var pxs in productos)
                        lista.Add(new ReciboLinea(pxs.producto.descripcion, 1, pxs.unidades));
             }
-            return lista;
+            return lista;*/
         }
     }
 }

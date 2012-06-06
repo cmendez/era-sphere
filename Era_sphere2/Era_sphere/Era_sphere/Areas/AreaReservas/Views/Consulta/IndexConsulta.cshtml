@@ -1,7 +1,7 @@
 ﻿@using Era_sphere.Areas.AreaReservas.Models
 @using Era_sphere.Generics;
 @using Telerik.Web.Mvc.UI
-@model IEnumerable<ConsultaLineaView>
+@model ConsultaView
 @{
     ViewBag.Title = "IndexHotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,15 +21,43 @@
     </div>
     
     <div class="block_cont">
-       @{
-           Html.RenderPartial("ConsultaParcialView");
-          }
+    @using (Html.BeginForm("Buscar", "Consulta")){
+      @Html.ValidationSummary(true)
+        <fieldset>
+
+        <div class="editor-label"> @Html.LabelFor(model => model.fecha_inicio) </div>
+        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_inicio) </div>
+ 
+
+        <div class="editor-label"> @Html.LabelFor(model => model.fecha_fin) </div>
+        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_fin) </div>
+
+        <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_total) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_total, new {@readonly = "readonly"}) </div>
+        
+        <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_piso) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_piso, new { @readonly = "readonly" }) </div>
+
+        <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_tipo) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_tipo, new { @readonly = "readonly" }) </div>
+
+        @Html.HiddenFor(model => model.hotelID)
+        </fieldset>
+
+        <input type="submit" id="buscar-cliente-submit" value="Buscar" />
+    }
+
+     <div style="height: 10px;">
+    </div>
+  <div style="height: 10px;">
+    </div>
+
    
 
-        @(Html.Telerik().Grid(Model)
+
+        @(Html.Telerik().Grid(Model.resultados)
         .Name("ConsultaGrid")
         .Localizable("es-ES")
-        .Filterable()
        
         .DataKeys(key =>key.Add(c=>c.habitacionID))
         .Columns(columns =>
@@ -54,4 +82,5 @@
    
     <!-- Table Wrapper End -->
 </div>
+
 

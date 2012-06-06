@@ -54,5 +54,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
             LogicaRecibo log_rec = new LogicaRecibo();
             reciboID = log_rec.nuevoRecibo();
         }
+        public void agregarServicio(){
+
+        }
     }
 }

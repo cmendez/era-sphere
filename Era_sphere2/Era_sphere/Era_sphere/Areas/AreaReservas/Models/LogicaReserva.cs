@@ -4,60 +4,141 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Areas.AreaClientes.Models;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
+using Era_sphere.Areas.AreaHoteles.Models;
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+
 
 namespace Era_sphere.Areas.AreaReservas.Models
 {
-    public class LogicaReserva: InterfazLogicaReserva
+    public class LogicaReserva
     {
-        ReservaContext reserva_context = new ReservaContext();
-        DBGenericQueriesUtil<Reserva> database_table;
+        public EraSphereContext context = new EraSphereContext();
+        DBGenericQueriesUtil<Reserva> tabla_reserva;
 
         public LogicaReserva()
         {
-            database_table = new DBGenericQueriesUtil<Reserva>(reserva_context, reserva_context.Reservas);
+            tabla_reserva = new DBGenericQueriesUtil<Reserva>(context, context.Reservas);
         }
 
+
+        //inicio métodos básicos
         public List<Reserva> retornarReservas()
         {
-            return database_table.retornarTodos();
+            return tabla_reserva.retornarTodos();
         }
 
         public Reserva retornarReserva(int reserva_id)
         {
-            return database_table.retornarUnSoloElemento(reserva_id);
+            return tabla_reserva.retornarUnSoloElemento(reserva_id);
         }
 
         public void modificarReserva(Reserva reserva) //anular reserva se encuentra contemplada en este punto
         {
-            database_table.modificarElemento(reserva,reserva.ID);
+            tabla_reserva.modificarElemento(reserva,reserva.ID);
         }
 
         public void registrarReserva(Reserva reserva)
         {
-            database_table.agregarElemento(reserva);
+            tabla_reserva.agregarElemento(reserva);
         }
 
         public void eliminarReserva(int reserva_id)
         {
-            database_table.eliminarElemento(reserva_id);
+            tabla_reserva.eliminarElemento(reserva_id);
         }
 
         public List<Reserva> buscarReserva(Reserva reserva)
         {
-            return database_table.buscarElementos(reserva);
+            return tabla_reserva.buscarElementos(reserva);
         }
         
-        //puedo buscar una reserva según clientes
-        public List<Reserva> buscarReserva(Cliente cliente)
+        //fin de metodos basicos
+
+
+        public decimal calcularMontoInicialReserva(Reserva reserva)
         {
-            var query =
+            decimal monto = 0;
+            /*
+            List<HabitacionXReserva> hab_x_rec = this.habitacionesDeReserva(reserva.ID);
+
+            for (int i = 0; i < hab_x_rec.Count(); i++)
+            {
+                HabitacionXReserva habitacion = reserva.lista_habitaciones_reservadas.ElementAt(i);
+            //    monto += habitacion.tipoHabitacion.costo_base;
+            }
+
+            //tenemos el costo base de las habitaciones, ahora determinar si se anhadió comodidades
+
+            for (int i = 0; i < reserva.lista_habitaciones_reservadas.Count(); i++)
+            {
+                HabitacionXReserva habi =  reserva.lista_habitaciones_reservadas.ElementAt(i);
+                monto += 0; //reserva.lista_comodidades.ElementAt(i).
+            }
+
+            */
+            return monto;
+                
+        }
+
+
+
+        public decimal calcularDiasEstadia(Reserva reserva)
+        {
+            TimeSpan span = reserva.check_out.Value.Subtract(reserva.check_in.Value);
+            int dias_transcurridos = (int)(span.TotalDays);
+
+            return dias_transcurridos;
+        }
+        
+
+        public decimal calcularMontoCancelarReserva(Reserva reserva)
+        {
+            LogicaCadena cadena_context = new LogicaCadena();
+            Cadena cadena = cadena_context.retornarCadena(1);
+
+            decimal monto = reserva.costo_inicial * cadena.porc_ret;
+            
+            return monto;
+        }
+
+
+        public void asignacion_habitaciones_reservadas(Reserva reserva)
+        {
+           /* for (int i = 0; i < reserva.lista_habitaciones.Count(); i++)
+            {
+                if (reserva.lista_habitaciones.ElementAt(i).estado.descripcion == "clicked")
+                {
+                    reserva.lista_habitaciones_reservadas.Add(reserva.lista_habitaciones.ElementAt(i));
+                }
+            }*/
+        
+        }
+
+        //puedo buscar una reserva según clientes
+        public List<Reserva> buscarReservaCliente(Cliente cliente)
+        {
+            /*var query =
             from u in reserva_context.Reservas
             where u.responsable_pago.ID == cliente.ID
             select u;
 
-            return query.ToList();
+            return query.ToList();*/
+            return new List<Reserva>();
         }
         //falta agregar más funciones especificas para interactuar con clientes, pagos, comodidades, habitaciones   
     
+        public List<Habitacion> habitacionesDeReserva(int reservaID)
+        {
+            var query = from u in context.habitacion_x_reservas
+                        where u.reservaID == reservaID
+                        select u.habitacionID;
+            List<int> hab_ids = query.ToList();
+            List<Habitacion> habitaciones = new List<Habitacion>();
+            foreach (var id in hab_ids)
+                habitaciones.Add(context.habitaciones.Find(id));
+            return habitaciones;
+        }
     }
 }
+        

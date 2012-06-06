@@ -5,59 +5,54 @@ using System.Web;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaClientes.Models;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Era_sphere.Areas.AreaHoteles.Models;
-
+using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
+using Era_sphere.Areas.AreaContable.Models.Recibo;
 
 namespace Era_sphere.Areas.AreaReservas.Models
 {
-    public class Reserva: DBable
+    public class Reserva : DBable
     {
-        public enum Estado
-        {
+        [ForeignKey("estado")]
+        public int estadoID { get; set; }
+        public virtual EstadoReserva estado { get; set; }
 
-            Sin_checkIn,
-            checkedIn,
-            checkedOut,
-            Anulada
-        };
-
-        [DisplayName("Estado")]
-        public Estado estado { get; set; }
-
-        [DisplayName("Día de Check In")]
+        //[DisplayName("Día de Check In")]
         public DateTime? check_in { get; set; }
 
-        [DisplayName("Día de Check Out")]
+        //[DisplayName("Día de Check Out")]
         public DateTime? check_out { get; set; }
 
-        [DisplayName("Monto Inicial")]
         public decimal costo_inicial { get; set; }
 
-        [DisplayName("Monto a cancelar")]
         public decimal precio_derecho_reserva { get; set; }
 
-        [DisplayName("Número de habitaciones")]
         public int num_habitaciones { get; set; }
 
-        //[DisplayName("Tarjeta cliente")]
-        public ICollection<Cliente> lista_huespedes { get; set; } //huespedes asignados
+        [ForeignKey("responsable_pago")]
+        public int responsable_pagoID { get; set; }
+        public virtual Cliente responsable_pago { get; set; }
 
-        public ICollection<Habitacion> lista_habitaciones { get; set; }
-        
+        public DateTime dia_creacion = DateTime.Now;
 
-        //[DisplayName("Tarjeta cliente")]
-        public Cliente responsable_pago { get; set; }
-
-       //[DisplayName("Tarjeta cliente")]
-        public DateTime? dia_creacion { get; set; }
-
-       //[DisplayName("Tarjeta cliente")]
         public decimal costo_final { get; set; }
 
-        [DisplayName("Reserva N°")]
+        //        [DisplayName("Reserva N°")]
         public string codigo_reserva {get; set;}
 
-        [DisplayName("Días de Estadía")]
+        //       [DisplayName("Días de Estadía")]
         public int dias_estadia { get; set; }
+
+        
+        public int reciboID { get; set; }
+
+        //Crea una nueva reserva y de paso crea el recibo que lo refiere y que es persiste aunque reserva muera
+        public Reserva()
+        {
+            LogicaRecibo log_rec = new LogicaRecibo();
+            reciboID = log_rec.nuevoRecibo();
+        }
     }
 }

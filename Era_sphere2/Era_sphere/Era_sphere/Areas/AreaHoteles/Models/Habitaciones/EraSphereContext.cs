@@ -14,6 +14,7 @@ namespace Era_sphere.Generics
         public DbSet<Habitacion> habitaciones { get; set; }
         public DbSet<Comodidad> comodidades { get; set; }
         public DbSet<TipoHabitacion> tipos_habitacion { get; set; }
+        public DbSet<HabitacionXReserva> habitacion_x_reservas { get; set; }
 
         public void seedTipoHabitaciones()
         {

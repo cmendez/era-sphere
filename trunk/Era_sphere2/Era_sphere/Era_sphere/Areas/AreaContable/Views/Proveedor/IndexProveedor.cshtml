@@ -53,7 +53,11 @@
                             .Text("Productos")
                             .DataRouteValues(p => p.Add( x => x.ID ).RouteKey("id_proveedor"))
                             .Action("Productos", "Proveedor");
-            });
+                commands.Custom("addHoteles")
+                            .Text("Hoteles")
+                            .DataRouteValues(p => p.Add(x => x.ID).RouteKey("id_proveedor"))
+                            .Action("Hoteles", "Proveedor");
+            }).Title("Acciones");
         })
         .Pageable()
         .Sortable()

@@ -1,0 +1,19 @@
+﻿
+@using Era_sphere.Areas.AreaContable.Models;
+@using Telerik.Web.Mvc.UI;
+@{
+    int id = (int)ViewData["id"];
+    var data = new { id_proveedor = id };
+}
+
+<label> Hotel : </label>
+
+@(
+ Html.Telerik().ComboBox()
+        .Name("hotel")
+        .Placeholder("Seleccione Hotel")
+        .DataBinding( binding =>
+                        binding.Ajax()
+                               .Select("HotelesRestantes","Proveedor",data)
+                       )
+)

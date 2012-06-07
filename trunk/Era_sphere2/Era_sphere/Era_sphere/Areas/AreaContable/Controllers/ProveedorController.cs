@@ -7,6 +7,7 @@ using Era_sphere.Areas.AreaContable.Models;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaContable.Models.Ordenes;
 using System.Threading;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaContable.Controllers
 {
@@ -58,7 +59,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return View("Index", new GridModel(proveedor_logica.retornarProveedores()));
             // return RedirectToAction("proveedor");
         }
-
+        #region Productos
         public ActionResult Productos( int id_proveedor ){
             ViewData["Proveedor"] = proveedor_logica.context_publico.proveedores.Find( id_proveedor );
 
@@ -78,7 +79,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             ViewData["ProveedorID"] = id;
             ViewData["Proveedor"] = proveedor_logica.context_publico.proveedores.Find(id);
             proveedor_logica.agregarProductoAProveedor(id, producto);
-            return View("ProductosProveedor", new GridModel( proveedor_logica.productos_de_proveedor(id)));
+            return Json( new{ msg = "ok" } );
         }
         [GridAction]
         public ActionResult UpdateProductos(int id_proveedor, proveedor_x_productoView producto) {
@@ -102,6 +103,63 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             int id = id_proveedor;
             Thread.Sleep(500);
             return Json( new SelectList( proveedor_logica.productosRestantes( producto , id ), "ID" , "descripcion"));
-        } 
+        }
+
+        #endregion
+        #region Hotel
+        public ActionResult Hoteles(int id_proveedor) {
+            inicializa_proveedor(id_proveedor);
+            return View("HotelesProveedor", proveedor_logica.hoteles_de_proveedor( id_proveedor )); 
+        }
+
+        public ActionResult InsertHoteles(int id_proveedor, int id_hotel) {
+            inicializa_proveedor(id_proveedor);
+            bool hay_error = false;
+            string msg = "feliz";
+            try
+            {
+                proveedor_logica.agregar_hotel_proveedor(id_proveedor, id_hotel);
+            }
+            catch (Exception e) { 
+                hay_error = true;
+                msg = e.ToString();
+            }
+            return Json(new { error = hay_error , msg = msg } );
+        }
+
+        [GridAction]
+        public ActionResult DeleteHoteles(int id_proveedor, HotelView hotel) {
+            ModelState.Clear();
+            inicializa_proveedor(id_proveedor);
+            proveedor_logica.elimina_hotel(id_proveedor, hotel);
+            return View("HotelesProveedor", new GridModel(proveedor_logica.hoteles_de_proveedor(id_proveedor)));
+        }
+        [GridAction]
+        public ActionResult SelectHoteles(int id_proveedor) {
+            inicializa_proveedor(id_proveedor);
+            return default_action_hotel(id_proveedor);
+        }
+
+        public ActionResult HotelesRestantes(string hotel , int id_proveedor) {
+            inicializa_proveedor(id_proveedor);
+            Thread.Sleep(500);
+            return Json(new SelectList(proveedor_logica.hoteles_restantes(hotel, id_proveedor), "ID", "razon_social"));
+        }
+
+        public ActionResult SelectPartialHotel(int id_proveedor) {
+            ViewData["id"] = id_proveedor;
+            return PartialView("HotelProveedorPartial");
+        }
+
+        #endregion
+
+        #region Utils
+        void inicializa_proveedor( int id ) {
+            ViewBag.proveedor = proveedor_logica.retornarProveedor(id);
+        }
+        ViewResult default_action_hotel( int id_proveedor ) {
+            return View("HotelesProveedor", new GridModel( proveedor_logica.hoteles_de_proveedor( id_proveedor ) ));
+        }
+        #endregion
     }
 }

@@ -26,7 +26,20 @@
              
         </div>
     </fieldset>
-    <input type="submit" id="buscar-cliente-submit" value="Buscar" />
+  
+    //<input type="submit" id="buscar-cliente-submit" value="Buscar" />
+     
+   <fieldset>
+        <div class="editor-label"> @Html.LabelFor(model => model.dias_estadia) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.dias_estadia, new {@readonly = "readonly"}) </div>
+        
+        <div class="editor-label"> @Html.LabelFor(model => model.costo_inicial) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.costo_inicial, new { @readonly = "readonly" }) </div>
+
+        <div class="editor-label"> @Html.LabelFor(model => model.precio_derecho_reserva) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.precio_derecho_reserva, new { @readonly = "readonly" }) </div>
+
+   </fieldset>
 }
 
 
@@ -39,6 +52,8 @@
             .Modal(true)
             .Visible(false)
             .Width(700).Resizable().Draggable(true).Height(600))
+
+
 
 <script type="text/javascript">
     function showMantCliente() {

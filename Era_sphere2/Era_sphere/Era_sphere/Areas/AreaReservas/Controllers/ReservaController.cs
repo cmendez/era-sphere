@@ -18,6 +18,13 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return View("IndexReserva");
         }
 
+        [GridAction]
+        public ActionResult Select()
+        {
+            return View("IndexReserva", new GridModel(reserva_logica.retornarReservas()));
+
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
         public ActionResult Insert()
@@ -29,8 +36,28 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
                 reserva_logica.registrarReserva(reserva);
 
             }
-            return View("IndexReserva"/*, new GridModel(cliente_logica.retonarClientesNaturales())*/);
+            return View("IndexReserva", new GridModel(reserva_logica.retornarReservas()));
         }
 
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Delete(int? id)
+        {
+            int reserva_id = id ?? -1;
+            reserva_logica.eliminarReserva(reserva_id);
+            return View("IndexReserva", new GridModel(reserva_logica.retornarReservas()));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Update(ReservaView reserva)
+        {
+            reserva_logica.modificarReserva(reserva.deserializa(reserva_logica));
+            return View("IndexReserva", new GridModel(reserva_logica.retornarReservas()));
+        }
+
+
+        //falta metodos para llamar al modal
     }
 }

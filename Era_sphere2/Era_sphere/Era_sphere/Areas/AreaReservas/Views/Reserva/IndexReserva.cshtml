@@ -21,10 +21,7 @@
     </div>
    
     <div class="block_cont">
-      
-      
-
-
+   
 
       @(Html.Telerik().Grid(Model)
         .Name("ReservaGrid")
@@ -42,13 +39,20 @@
             columns.Bound(p => p.documento_identidad).Title("Documento");
             columns.Bound(p => p.ID);
             columns.ForeignKey(p => p.estadoID, new SelectList(estados, "ID", "descripcion"));
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
                 
         }).Pageable().Sortable()
        
         .DataBinding(dataBinding => dataBinding    
             .Ajax()
+            .Select("Select","Reserva")
             .Insert("Insert", "Reserva")
-            
+            .Delete("Delete","Reserva")
+            .Update("Update","Reserva")
            
         )
            )

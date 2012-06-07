@@ -48,6 +48,9 @@ namespace Era_sphere.Areas.AreaReservas.Models
         
         public int reciboID { get; set; }
 
+        public int hotelID { get; set; }
+
+        public int pisoID { get; set; }
         //Crea una nueva reserva y de paso crea el recibo que lo refiere y que es persiste aunque reserva muera
         public Reserva()
         {

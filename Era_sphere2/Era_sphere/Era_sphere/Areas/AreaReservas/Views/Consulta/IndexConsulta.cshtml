@@ -5,7 +5,8 @@
 @{
     ViewBag.Title = "IndexHotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
+    var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
+    var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
    // var estados = (new EraSphereContext()).estados_cliente.ToList();
 }
@@ -31,6 +32,20 @@
 
         <div class="editor-label"> @Html.LabelFor(model => model.fecha_fin) </div>
         <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_fin) </div>
+
+        <div class="editor-label"> @Html.LabelFor(model => model.pisoID) </div>
+          @( Html.Telerik().ComboBox()
+                    .Name("pisoID")
+                    .BindTo(new SelectList(pisos, "ID", "descripcion"))
+                    
+                )
+
+        <div class="editor-label"> @Html.LabelFor(model => model.tipo_habitacionID) </div>
+          @( Html.Telerik().ComboBox()
+                    .Name("tipoHabitacionID")
+                    .BindTo(new SelectList(tipos_habitaciones, "ID", "descripcion"))
+                    
+                )
 
         <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_total) </div>
         <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_total, new {@readonly = "readonly"}) </div>
@@ -63,10 +78,10 @@
         .Columns(columns =>
         {
             columns.Bound(p => p.numero_habitacion);
-            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(habitaciones, "ID", "descripcion"));
-            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(habitaciones, "ID", "numero_camas")).Title(@"Número de camas");
-            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(habitaciones, "ID", "costo_base")).Title("Precio");
-            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(habitaciones,"ID", "cap_max_personas")).Title("Capacidad");
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "descripcion"));
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "numero_camas")).Title(@"Número de camas");
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "costo_base")).Title("Precio");
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "cap_max_personas")).Title("Capacidad");
             
         })
 

@@ -61,6 +61,13 @@ namespace Era_sphere.Areas.AreaReservas
         [DisplayName(@"Número de Reserva")]
         public int ID { get; set; }
 
+
+        //ultimos agregados: DUDA en caso no se pueda utilizar el mismo partial View que las consultaas
+        public int hotelID { get; set; }
+
+        [DisplayName(@"Número de pisos")]
+        public int pisoID { get; set; }
+
         //       [DisplayName("Días de Estadía")]
 
         public ReservaView() { }
@@ -80,6 +87,9 @@ namespace Era_sphere.Areas.AreaReservas
             ID = r.ID;
             num_habitaciones = r.num_habitaciones;
             estadoID = r.estadoID;
+            //ultimos
+            hotelID = r.hotelID;
+            pisoID = r.pisoID;
         }
 
 
@@ -101,7 +111,9 @@ namespace Era_sphere.Areas.AreaReservas
                 costo_inicial = this.costo_inicial,
                 costo_final = this.costo_final,
                 estadoID = this.estadoID,
-                estado = logica_reserva.context.estados_reserva.Find(this.estadoID)
+                estado = logica_reserva.context.estados_reserva.Find(this.estadoID),
+                hotelID=this.hotelID,
+                pisoID = this.pisoID
                 
             };
 

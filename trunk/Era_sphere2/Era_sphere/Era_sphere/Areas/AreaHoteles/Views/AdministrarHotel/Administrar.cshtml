@@ -54,5 +54,20 @@
                         
         </p>
     </div>
+
+     Reservas
+    <div class="block_cont">
+
+        <p>@Html.ActionLink("Registrar reserva", "Index", new { controller = "../AreaReservas/Reserva" , id = @id_hotel },
+                            new { @class = "tipTop" }
+                        )
+                        
+        </p>
+        <p>@Html.ActionLink("Consultar habitaciones disponibles", "Index", new { controller = "../AreaReservas/Consulta" , ID = @id_hotel, partial = false },
+                            new { @class = "tipTop" }
+                        )
+                        
+        </p>
+    </div>
     <!-- Table Wrapper End -->
 </div>

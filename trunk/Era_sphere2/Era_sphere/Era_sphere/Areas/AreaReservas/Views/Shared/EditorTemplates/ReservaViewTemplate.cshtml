@@ -46,7 +46,10 @@
    </fieldset>
 }
 
-@{Html.RenderPartial("../Consulta/IndexConsulta", new ConsultaView{ resultados = new List<ConsultaLineaView>()});}
+@{
+    ViewData["partial"] = true;
+    Html.RenderPartial("../Consulta/IndexConsulta", new ConsultaView{ resultados = new List<ConsultaLineaView>()});
+}
 
  @(Html.Telerik().Window().Name("MostrarMantCliente")
         .Title("Mantenimiento de Clientes").Content(

@@ -16,7 +16,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Fiscal
         public string simbolo { get; set; }
         public decimal? tc { get; set; }
         [ForeignKey("paisOrigen")]
-        public int paisID { get; set; }
+        public int? paisID { get; set; }
 
 
         public virtual Pais paisOrigen { get; set; }

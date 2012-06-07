@@ -15,11 +15,11 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
 
         public virtual proveedor_x_producto proveedor_x_producto { get; set; }
 
-        public double cantidad { get; set; }
         public double precioU { get; set; }
+        public double cantidad { get; set; }
         public double SubTotal { get; set; }
-        public bool estado { get; set; }
-        public DateTime fechaentrega { get; set; }
+        public int estado { get; set; } // 1 Pendiente 2 Parcial 3 Total 4 cancel
+        //public DateTime fechaentrega { get; set; }
 
         
         

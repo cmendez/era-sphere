@@ -15,7 +15,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Participante
             ID = participante.ID;
             nombre = participante.nombre;
             dni = participante.dni;
-            eventoID = participante.evento.ID;
+            eventoID = participante.eventoID;
         }
         [Required]
         [MaxLength(30)]

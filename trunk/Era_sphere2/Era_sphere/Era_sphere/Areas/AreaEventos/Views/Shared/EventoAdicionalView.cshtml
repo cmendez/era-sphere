@@ -6,8 +6,8 @@
     ViewBag.Title = "EventoAdicionalView";
     var idhotel = ViewData["idhotel"];
     //var idevento = ViewBag.idevento;
+    var idEvento = ViewBag.idevento;
 }
-
  @(Html.Telerik().Grid(Model)
         .Name("EventoAdicional")
         .Localizable("es-ES")
@@ -19,7 +19,6 @@
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-            columns.Bound(p => p.ID);
             columns.Bound(p => p.nombre);
             columns.Bound(p => p.precio);
             //columns.ForeignKey(p => p.id_estado, new SelectList(estados, "ID", "descripcion"));
@@ -38,10 +37,10 @@
          //.ClientEvents(events => events.OnComplete("onComplete"))
                 .DataBinding(dataBinding => dataBinding
                          .Ajax()//.Select("_CustomCommand", "Cliente")
-                    .Select("VerAdicionales", "Evento", new { idhotel = idhotel })
-                    .Insert("InsertAdicional", "Evento")
-                    .Delete("DeleteAdicional", "Evento")
-                    .Update("UpdateAdicional", "Evento")
+                    .Select("VerAdicionales", "Evento",new{idEvento=idEvento})
+                    .Insert("InsertAdicional", "Evento", new { idEvento = idEvento })
+                    .Delete("DeleteAdicional", "Evento", new { idEvento = idEvento })
+                    .Update("UpdateAdicional", "Evento", new { idEvento = idEvento })
         )
            )
 

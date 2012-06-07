@@ -13,7 +13,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
 {
     public class LogicaEmpleado : InterfazLogicaEmpleado
     {
-        EraSphereContext empleado_context = new EraSphereContext();
+        public EraSphereContext empleado_context = new EraSphereContext();
         DBGenericQueriesUtil<Empleado> database_table;
 
 
@@ -22,9 +22,13 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
             database_table = new DBGenericQueriesUtil<Empleado>(empleado_context, empleado_context.empleados);
         }
 
-        public List<Empleado> retornarEmpleados()
+        public List<EmpleadoView> retornarEmpleados()
         {
-            return database_table.retornarTodos();
+            List<Empleado> empleados = database_table.retornarTodos();
+            List<EmpleadoView> empleados_view = new List<EmpleadoView>();
+
+            foreach (Empleado empleado in empleados) empleados_view.Add(new EmpleadoView(empleado));
+            return empleados_view;
         }
 
         public Empleado retornarEmpleado(int empleadoID)

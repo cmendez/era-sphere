@@ -36,7 +36,6 @@
             
             columns.Command(commands =>
             {
-                commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
             });
         })
@@ -50,7 +49,6 @@
             .Select("Select", "Empleado")
             .Insert("Insert", "Empleado")
             .Delete("Delete", "Empleado")
-            .Update("Update", "Empleado")
         )
     )
 
@@ -145,7 +143,7 @@
 
                                     <div class="form_row">
                                     <label> Tipo Documento: </label>
-									<select name="tipo_documento_natural" class="select" style="width: 300px;">
+									<select name="tipo_documento_natural" id = "tipo_documento" class="select" style="width: 300px;">
 										<option value="dni"> DNI </option>
 										<option value="pasaporte"> Pasaporte </option>
 									</select>
@@ -153,7 +151,7 @@
 
 									<div class="form_row">
 									<label> Nro Documento: </label>
-									<input name="nro_documento_natural" class="input tipRight" type="number" style="width: 300px"/>
+									<input name="nro_documento_natural" id = "numero_documento" class="input tipRight" type="number" style="width: 300px"/>
 									</div>
 									<div class="form_row">
 									<label> Fecha de Nacimiento </label>
@@ -161,11 +159,11 @@
 									</div>
 									<div class="form_row">
 									<label> Telefono: </label>
-									<input name="telefono_natural" type = "text"  maxlength = 12 class="input tipRight"  style="width: 300px"/>
+									<input name="telefono_natural" id = "telefono_natural" type = "text"  maxlength = 12 class="input tipRight"  style="width: 300px"/>
 									</div>
 									<div class="form_row">
 									<label> Celular: </label>
-									<input name="celular_natural"  type = "text"  maxlength = 12 max="9999999999" class="input tipRight"  style="width: 300px"/>
+									<input name="celular_natural" id = "celular_natural" type = "text"  maxlength = 12 max="9999999999" class="input tipRight"  style="width: 300px"/>
 									</div>
 
 								</div>
@@ -181,7 +179,7 @@
 						<div class="block_cont">
 							<div class="form_row" id="estado_cliente">
 							<label> Estado: </label>
-							<select name="estado" class="select">
+							<select name="estado" id = "estado" class="select">
 								<option value="activo"> ACTIVO </option>
 								<option value="noactivo"> NO ACTIVO </option>
 							</select>
@@ -191,11 +189,11 @@
                                 <p>&nbsp;L &nbsp;&nbsp; M &nbsp;&nbsp; M &nbsp;&nbsp; J &nbsp;&nbsp; V &nbsp;&nbsp;&nbsp; S &nbsp;&nbsp;&nbsp; D</p> 
 							    <input type = "checkbox" id = "chklunes" />
                                 <input type = "checkbox" id = "chkmartes" />
-                                <input type = "checkbox" id = "chklmiercoles" />
-                                <input type = "checkbox" id = "chkljueves" />
-                                <input type = "checkbox" id = "chklviernes" />
-                                <input type = "checkbox" id = "chklsabado" />
-                                <input type = "checkbox" id = "chkldomingo" />
+                                <input type = "checkbox" id = "chkmiercoles" />
+                                <input type = "checkbox" id = "chkjueves" />
+                                <input type = "checkbox" id = "chkviernes" />
+                                <input type = "checkbox" id = "chksabado" />
+                                <input type = "checkbox" id = "chkdomingo" />
 							</div>
                             <div class="form_row">
 							<label> Horario Entrada: </label>
@@ -227,7 +225,7 @@
                             -->
 									<div class="form_row">
 									<label> Sueldo: </label>
-									<input name="celular_natural" class="input tipRight" type="text" style="width: 300px"/>
+									<input name="sueldo" id = "sueldo" class="input tipRight" type="text" style="width: 300px"/>
 									</div>
 						</div>
 					</div>
@@ -238,15 +236,15 @@
 						<div class="block_cont">
 						<div class="form_row">
 						<label> Usuario:</label>
-						<input name="usuario" type="text" class="input" style="width:300px;"/>
+						<input name="usuario" id = "usuario" type="text" class="input" style="width:300px;"/>
 						</div>
 						<div class="form_row">
 						<label> Password:</label>
-						<input name="usuario" type="password" class="input" style="width:300px;"/>
+						<input name="pass1" id = "pass1" type="password" class="input" style="width:300px;"/>
 						</div>
 						<div class="form_row">
 						<label> Repetir Password:</label>
-						<input name="usuario" type="password" class="input" style="width:300px"/>
+						<input name="pass2" id = "pass2" type="password" class="input" style="width:300px"/>
 						</div>
 						</div>
 					</div>
@@ -288,33 +286,8 @@
                 });
                 add(suggestions);
             }
-        });
-              
-        },  
-  
-        /*
-        //define select handler  
-        select: function(e, ui) {  
-  
-            //create formatted friend  
-            var friend = ui.item.value,  
-                span = $("<span>").text(friend),  
-                a = $("<a>").addClass("remove").attr({  
-                    href: "javascript:",  
-                    title: "Remove " + friend  
-                }).text("x").appendTo(span);  
-  
-                //add friend to friend div  
-                span.insertBefore("#to");  
-            },  
-  
-            //define select handler  
-            change: function() {  
-  
-                //prevent 'to' field being updated and correct position  
-                $("#to").val("").css("top", 2);  
-            }  
-            */
+        });     
+        }
         });  
    
     //hacemos el Ajax para llenar los perfiles
@@ -429,30 +402,25 @@
         buttons: {
             "Aceptar": function () {
                  
-               var jsonCliente  = armaEntrada();
-                 
-
-                /*
-                var jsonMenu = {
-                    nombre: $("#nombre").val(),
-                    descripcion: $("#descripcion").val(),
-                    lista: "111"
-                };
-                $.ajax({
+               var empleado  = armaEntrada();
+               
+               $.ajax({
                     type: "POST",
-                    data: JSON.stringify(jsonMenu),
+                    data: JSON.stringify(empleado),
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
-                    url: "Empleados/nuevoEmpleado",
+                    url: "Empleado/nuevoEmpleado",
                     success: function (data) {
+                        
                         if (data.me == "") {
                             $('#EmpleadosGrid').data('tGrid').ajaxRequest();
 
                         }
+                        
                     }
                 });
-                */
-                //$(this).dialog("close");
+                
+                $(this).dialog("close");
             },
             "Cancelar": function () {
                 $("#mask").hide();
@@ -461,21 +429,101 @@
         }
     });
 
+    $("#chklunes").click(function(){
+        var cadenaHorario = "";
+        cadenaHorario += ($("#chklunes").val() == "on")?"1":"0"; 
+        cadenaHorario += ($("#chkmartes").val() == "on")?"1":"0";
+        cadenaHorario += ($("#chkmiercoles").val() == "on")?"1":"0";
+        cadenaHorario += ($("#chkjueves").val() == "on")?"1":"0";
+        cadenaHorario += ($("#chkviernes").val() == "on")?"1":"0";
+        cadenaHorario += ($("#chksabado").val() == "on")?"1":"0";
+        cadenaHorario += ($("#chkdomingo").val() == "on")?"1":"0";
+        alert ($("#chkdomingo").val());
+        //alert (cadenaHorario);
+    });
 
     function armaEntrada(){
-       /*
-        var Persona = {
-            
-        };
-
-        var jsonEmpleado {
+        //Datos Personales.
+        var nombre_empleado = $("#nombre_cliente").val();
+        var app_paterno = $("#apellido_paterno").val();
+        var app_materno = $("#apellido_materno").val();
+        var paisEmpleado = $("#pais").val();
+        var direccion = $("#direccion").val();
+        var email = $("#email").val();
+        var perfil = $("#perfil").val();
+        var tipo_documento = $("#tipo_documento").val();
+        var numero_documento = $("#numero_documento").val();
+        var fecha_nac = $("#fecha_nacimiento").val();
+        var telefono = $("#telefono_natural").val();
+        var celular = $("#celular_natural").val();
         
+        //Datos del Trabajo
+        var nombreCargo = $("#nombre_cargo").val();
+        var estado = $("#estado").val();
+        var cadenaHorario = $("#chklunes").is(':checked')?"1":"0" + $("#chkmartes").is(':checked')?"1":"0" + $("#chkmiercoles").is(':checked')?"1":"0" + $("#chkjueves").is(':checked')?"1":"0" + $("#chkviernes").is(':checked')?"1":"0" + $("#chksabado").is(':checked')?"1":"0" + $("#chkdomingo").is(':checked')?"1":"0";
+        var cadenaHoraIn = arma_cadhora($("#lunesTimeIn").val(), $("#martesTimeIn").val(), $("#miercolesTimeIn").val(), $("#juevesTimeIn").val(),$("#viernesTimeIn").val(), $("#sabadoTimeIn").val(), $("#domingoTimeIn").val());
+        var cadenaHoraOut = arma_cadhora($("#lunesTimeOut").val(), $("#martesTimeOut").val(), $("#miercolesTimeOut").val(), $("#juevesTimeOut").val(),$("#viernesTimeOut").val(), $("#sabadoTimeOut").val(), $("#domingoTimeOut").val());
+        var sueldo = $("#sueldo").val();
 
-        };
-        */
-        return jsonEmpleado;
+        //
+        var user = $("#usuario").val();
+        var pass1 = $("#pass1").val();
+        var pass2 = $("#pass2").val();
+        var password = pass1 == pass2?pass1:"";  
+        if (password == "") alert("Las Claves No Coinciden");
+            
+        var jsonEntrada = {
+                    //datos persona
+                     nombre : nombre_empleado,
+                     apellido_paterno : app_paterno,
+                     apellido_materno : app_materno,
+                     documento_identidad: numero_documento,
+                     correo_electronico : email,
+                     direccion : direccion, 
+                     telefono : telefono,
+                     celular: celular,
+                     usuario : user,
+                     password : password,   
+                     //datos Trabajo
+                     nombre_cargo: nombreCargo,
+                     estado : estado,
+                     cad_horario : cadenaHorario,
+                     cad_horasIn: cadenaHoraIn,
+                     cad_horasOut: cadenaHoraOut,
+                     sueldo : sueldo,
+                };
+     
+        return jsonEntrada;
     }
 
+
+    function arma_cadhora(lu, ma, mi , ju , vi, sa, dom){
+        var result = "";
+        result += HoraHexa(lu==""?"00:00":lu);
+        result += HoraHexa(ma==""?"00:00":ma);
+        result += HoraHexa(mi==""?"00:00":mi);
+        result += HoraHexa(ju==""?"00:00":ju);
+        result += HoraHexa(vi==""?"00:00":vi);
+        result += HoraHexa(sa==""?"00:00":sa);
+        result += HoraHexa(dom==""?"00:00":dom);
+    }
+
+    function HoraHexa( hora ){
+
+    var stringhoras = "ABCDEEFGHIJKLM";
+    var result = ""
+    var h = hora.split(":");
+    var hor = parseInt(h[0]);
+    var min = parseInt(h[1]);    
+        //horas
+        if (hor < 10)
+        result += hor;
+        else 
+        result += stringhoras[hor - 10];
+        //minutos
+        result += min/10;
+        return result;
+    }
 
 
     function validaFormulario(){

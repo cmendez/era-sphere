@@ -19,7 +19,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             return View("Index");
         }
 
-        public ActionResult CrearEmpleado() 
+        public ActionResult CrearEmpleado()
         {
             return View("CrearEmpleado");
         }
@@ -40,5 +40,46 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             return View("Index", new GridModel(perfil_empleado.retornarEmpleados()));
         }
 
+        [GridAction]
+        public ActionResult Delete(int id)
+        {
+            perfil_empleado.eliminarEmpleado(id);
+            return View("IndexCliente", new GridModel(perfil_empleado.retornarEmpleados()));
+        }
+
+        /*String nombreCargo, String estado, String cad_horario, String cad_horasIn,
+                                    String cad_horasOut, String sueld*/
+
+        [HttpPost]
+        public JsonResult nuevoEmpleado(EmpleadoView empleado)
+        {
+            /*
+            Empleado empleado = new Empleado()
+            {
+                nombre_cargo = nombreCargo,
+                estado = estado,
+                cad_horario = cad_horario,
+                cad_horasIn = cad_horasIn,
+                cad_horasOut = cad_horasOut,
+                sueldo = sueldo,
+                //Persona
+                ciudadID = 1,
+                paisID = 1,
+                tipoID = 1
+            };
+             */
+            //perfil_empleado.agregarEmpleado(empleado);   
+            perfil_empleado.agregarEmpleado(empleado);
+         return Json(new { me = "" });
+        }
+        /*
+        ActionResult nuevoEmpleado(String nombreCargo, String estado, String cad_horario, String cad_horasIn,
+                                    String cad_horasOut, String sueldo) {
+
+         Empleado empleado = new Empleado(nombreCargo, estado, cad_horario, cad_horario, cad_horasOut, sueldo);
+         perfil_empleado.agregarEmpleado(empleado);
+         return View("Index", new GridModel(perfil_empleado.retornarEmpleados()));
+        } 
+         * */
     }
 }

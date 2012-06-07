@@ -10,6 +10,8 @@ using Era_sphere.Generics;
 using Era_sphere.Areas.AreaEventos.Models.Adicionales;
 using Era_sphere.Areas.AreaEventos.Models.Participante;
 using Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente;
+using System.Threading;
+using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 
 namespace Era_sphere.Areas.AreaEventos.Controllers
 {
@@ -20,7 +22,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         LogicaEvento evento_logica = new LogicaEvento();
 
-        
+        #region evento
         public ActionResult Index(int id)
         {
             LogicaHotel logicaHotel = new LogicaHotel();
@@ -77,8 +79,10 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             ViewBag.idevento = id;
             return View("EventoLlenarDatos");
         }
+        #endregion 
 
         //Adicional
+        #region Adicional
         [GridAction]
         public ActionResult VerAdicionales(int id,int idEvento)
         {
@@ -124,9 +128,10 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             return View("EventoAdicionalView", new GridModel(logicaAdicional.retornarAdicionalesView(idEvento)));
 
         }
+        #endregion 
 
         //Participante
-
+        #region participante
         [GridAction]
         public ActionResult VerParticipantes(int id,int idEvento)
         {
@@ -172,6 +177,55 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             return View("EventoParticipanteView", new GridModel(logicaParticipante.retornarParticipantesView(idEvento)));
 
         }
-        
+        #endregion 
+
+        //EventoXAmbiente
+        #region EventoXAmbiente
+        public ActionResult AmbientesRestantes(int idHotel,int idEvento)
+        {
+            
+            Thread.Sleep(500);
+            //LogicaEventoXAmbiente logica_exa = new LogicaEventoXAmbiente();
+
+            return Json( new SelectList( evento_logica.ambientesRestantes( idHotel ,idEvento), "ID" , "descripcion"));
+        }
+
+        [GridAction]
+        public ActionResult VerAmbientes(int id, int idEvento,int idHotel)
+        {
+            
+            return PartialView("EventoAmbienteView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult DeleteAmbiente(int? id, int idEvento,int idHotel,EventoXAmbienteView ambiente)
+        {
+            int ambiente_id = id ?? -1;
+            
+            evento_logica.eliminarAmbiente(idEvento,ambiente);
+            return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult UpdateAmbiente(EventoXAmbienteView ambiente, int id, int idEvento,int idHotel)
+        {
+            //LogicaParticipante logicaParticipante = new LogicaParticipante();
+            //int idevento = participanteView.eventoID;
+            evento_logica.modificarAmbiente(idEvento, ambiente);
+            return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult InsertAmbiente(EventoXAmbienteView ambiente, int id, int idEvento,int idHotel)
+        {
+            //int idevento = id;
+            evento_logica.agregarAmbienteAEvento(idEvento, ambiente);
+            return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
+
+        }
+        #endregion 
     }
 }

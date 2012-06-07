@@ -11,7 +11,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
     public class EventoXAmbiente:DBable
     {
 
-        public int hotelID;
+        //public int hotelID;
         [Required]
         public string nombre { get; set; }
         [Required]
@@ -20,6 +20,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
         public DateTime fecha_hora_fin { get; set; }
 
         //nose si falta precio
+        [Required]
+        public decimal precio { get; set; }
 
         [ForeignKey("evento")]
         public int eventoID { get; set; }

@@ -1,0 +1,135 @@
+﻿
+@using Era_sphere.Generics;
+@model IEnumerable<Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbienteView>
+@using Telerik.Web.Mvc.UI
+
+
+@{
+    ViewBag.Title = "EventoXAmbiente";
+    
+    var idEvento = ViewBag.idevento;
+    var idHotel = ViewBag.idHotel;
+}
+
+
+<style type="text/css">
+    .t-window
+    {
+        width: 500px;
+    }
+</style>
+<div class="block big">
+    <!-- Block Begin -->
+    <div class="block_cont">
+        <div>
+            <form id="form_ambiente" action="#" class="form">
+            <div>
+            
+                <label> Producto :  </label>
+                           @( Html.Telerik().ComboBox()
+                            .Name("ambienteID")
+
+                            .Placeholder("Seleccione ambiente")
+
+                            .DataBinding(binding => binding.Ajax().Select("AmbientesRestantes", "Evento", new { idHotel=idHotel, idEvento=idEvento}))
+                            )
+               <span class="error_ambiente error" style="display:none;background:red ; color:white">
+                    Seleccione ambiente
+               </span>
+   
+            </div>
+            <div>
+                 <label> Precio : </label>
+
+                 @(Html.Telerik().CurrencyTextBox()
+                                 .Name("precio")
+                                 .Spinners(true)
+                                 .MinValue(0)
+                        )
+                <span class="error_precio error" style="display:none ; background:red ; color:white">
+                    Seleccione precio
+                </span>
+            </div>
+                <input type="submit" value="Agregar ambiente" class="t-button t-state-default submit"/>
+            </form>
+        </div>
+        <script type="text/javascript">
+
+            function isNumber(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
+            $("#form_ambiente").submit(
+                function (event) {
+                    $(".form .error").hide();
+                    event.preventDefault();
+                    var $form = $(this);
+                    var ambienteIDt = $form.find('input[name="ambienteID"]').val();
+                    var preciot = $form.find('input[name="precio"]').val();
+                    var link = "/AreaEventos/Evento/InsertAmbiente";
+
+                    if (ambienteIDt == "" || preciot == "" || !isNumber(ambienteIDt)) {
+                        if (!isNumber(productoIDt))
+                            $(".error_producto").show();
+                        if (precio_unitariot == "")
+                            $(".error_precio").show();
+                    }
+                    else {
+
+                        $.ajax(
+                            {
+                                url: '@Url.Action("InsertAmbiente","Evento",new {idEvento=idEvento} )',
+                                type: 'POST',
+                                datatype: 'json',
+                                contentType: 'application/json',
+                                data:
+                                        JSON.stringify({ ambienteID: ambienteIDt, precio: preciot }),
+                                success: function (result) {
+
+                                    $('#AmbientesGrid').data('tGrid').ajaxRequest();
+
+                                }
+                            }
+                        )
+                    }
+                }
+            );
+        </script>
+        @(Html.Telerik().Grid(Model)
+        .Name("AmbientesGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        
+        .Editable(editing => editing
+                            .Mode(GridEditMode.InLine)
+                           )
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ambienteID).ReadOnly(true);
+            columns.Bound(p => p.amb_descripcion).ReadOnly(true);
+            columns.Bound(p => p.precio).Format("{0:c}");
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("VerAmbientes", "Evento", new { idEvento = @idEvento, idHotel = @idHotel })
+            .Insert("InsertAmbiente", "Evento", new { idEvento = @idEvento, idHotel = @idHotel })
+            .Delete("DeleteAmbiente", "Evento", new { idEvento = @idEvento, idHotel = @idHotel })
+            .Update("UpdateAmbiente", "Evento", new { idEvento = @idEvento, idHotel = @idHotel })
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

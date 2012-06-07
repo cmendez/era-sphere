@@ -30,6 +30,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
             }
             return exaview;
         }
+
+        
         /*
         public void agregarServicioXTemporada(int id, HotelXServicioXTemporadaView pxtv)
         {

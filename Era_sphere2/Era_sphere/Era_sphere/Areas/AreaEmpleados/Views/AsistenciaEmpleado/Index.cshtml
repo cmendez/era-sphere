@@ -1,6 +1,6 @@
 ﻿@using Telerik.Web.Mvc.UI
 @using Telerik.Web.Mvc.Configuration
-@using Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleado
+@using Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleados
 @using Era_sphere.Areas.AreaEmpleados.Models
 @model IEnumerable<AsistenciaEmpleado>
 
@@ -24,6 +24,34 @@
 
         @(Html.ActionLink("Registrar Entrada", "RegistrarAsistencia", new { id = idusuario}, null))
         @(Html.ActionLink("Registrar Salida", "RegistrarSalida", new { id = idusuario }, null))
+
+        <p>
+        </p>
+
+        @(Html.Telerik().Grid(Model)
+        .Name("AsistenciasGrid")
+        .Filterable()
+        .Localizable("es-ES")
+
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.empleadoID);
+            columns.Bound(p => p.fechaHoraEntrada);
+            columns.Bound(p => p.fechaHoraSalida);
+            columns.Bound(p => p.s_asistencia);
+        })
+
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "AsistenciaEmpleado", new { id = idusuario })
+        )
+           )
     </div>
    
 </div>

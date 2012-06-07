@@ -20,6 +20,10 @@ namespace Era_sphere.Areas.AreaReservas.Models
         [DisplayName(@"Número de Piso")]
         public int pisoID { get; set; }
 
+        [DisplayName(@"Tipo de Habitación")]
+        public int tipo_habitacionID { get; set; }
+
+
         public int hotelID { get; set; }
 
         [DisplayName("Habitaciones Libres")]
@@ -39,6 +43,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             fecha_inicio = con.fecha_inicio;
             pisoID = con.pisoID;
             hotelID = con.pisoID;
+            tipo_habitacionID = con.tipo_habitacionID;
             habitaciones_libres_total = con.habitaciones_libres_total;
             habitaciones_libres_tipo = con.habitaciones_libres_piso;
             habitaciones_libres_piso = con.habitaciones_libres_piso;

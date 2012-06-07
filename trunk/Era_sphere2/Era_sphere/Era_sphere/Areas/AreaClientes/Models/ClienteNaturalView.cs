@@ -45,7 +45,10 @@ namespace Era_sphere.Areas.AreaClientes.Models
         [DisplayName("Apellido Materno (*)")]
         [StringLength(28)]
         public string apellido_materno {get; set;}
-        
+
+        [DisplayName("Tipo Documento")]
+        public int id_tipo_documento { get; set; }
+
         [Required]
         [DisplayName("Documento Identidad (*)")]
         [StringLength(28)]
@@ -121,6 +124,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
             puntos_cliente = cliente.puntos_cliente;
             tarjeta_cliente = cliente.tarjeta_cliente;
             id_estado = cliente.estadoID;
+            id_tipo_documento = cliente.tipo_documentoID;
             //pais = logica.context_publico.paises.Find(this.paisID);
 
            
@@ -155,6 +159,10 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     
                     estadoID = this.id_estado,
                     estado = logica.cliente_context.estados_cliente.Find(this.id_estado),
+
+                    tipo_documentoID=this.id_tipo_documento,
+                    tipo_documento = logica.cliente_context.tipos_documento.Find(this.id_tipo_documento),
+                    
                     tipoID = 1,
                     tipo = logica.cliente_context.tipos_personas.Find(1),
                   //  habitacion_asignada =

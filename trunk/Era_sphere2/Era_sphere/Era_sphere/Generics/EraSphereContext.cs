@@ -18,6 +18,7 @@ namespace Era_sphere.Generics
             seedEstadoEspacioRentable();
             seedEstadoCliente();
             seedTipoPersona();
+            seedTipoDocumentoCliente();
             seedServicios();
             seedTipoTemporadas();
             seedTemporadas();

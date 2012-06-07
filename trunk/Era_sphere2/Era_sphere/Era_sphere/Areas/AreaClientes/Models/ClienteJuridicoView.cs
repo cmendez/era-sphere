@@ -129,6 +129,8 @@ namespace Era_sphere.Areas.AreaClientes.Models
                 tarjeta_cliente = this.tarjeta_cliente,
                 tipoID = 2,
                 tipo = logica.cliente_context.tipos_personas.Find(2),
+                tipo_documentoID = 3,
+                tipo_documento = logica.cliente_context.tipos_documento.Find(3),
                 //  habitacion_asignada =
 
 

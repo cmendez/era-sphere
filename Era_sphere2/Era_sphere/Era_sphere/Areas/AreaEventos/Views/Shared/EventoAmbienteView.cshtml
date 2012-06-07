@@ -12,12 +12,12 @@
 }
 
 
-<style type="text/css">
+@*<style type="text/css">
     .t-window
     {
         width: 500px;
     }
-</style>
+</style>*@
 <div class="block big">
     <!-- Block Begin -->
     <div class="block_cont">
@@ -69,9 +69,9 @@
                     var link = "/AreaEventos/Evento/InsertAmbiente";
 
                     if (ambienteIDt == "" || preciot == "" || !isNumber(ambienteIDt)) {
-                        if (!isNumber(productoIDt))
-                            $(".error_producto").show();
-                        if (precio_unitariot == "")
+                        if (!isNumber(ambienteIDt))
+                            $(".error_ambiente").show();
+                        if (precio == "")
                             $(".error_precio").show();
                     }
                     else {
@@ -123,10 +123,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("VerAmbientes", "Evento", new { idEvento = @idEvento, idHotel = @idHotel })
-            .Insert("InsertAmbiente", "Evento", new { idEvento = @idEvento, idHotel = @idHotel })
-            .Delete("DeleteAmbiente", "Evento", new { idEvento = @idEvento, idHotel = @idHotel })
-            .Update("UpdateAmbiente", "Evento", new { idEvento = @idEvento, idHotel = @idHotel })
+            .Select("VerAmbientes", "Evento", new { idEvento = @idEvento })
+            .Insert("InsertAmbiente", "Evento", new { idEvento = @idEvento })
+            .Delete("DeleteAmbiente", "Evento", new { idEvento = @idEvento })
+            .Update("UpdateAmbiente", "Evento", new { idEvento = @idEvento })
         )
            )
 

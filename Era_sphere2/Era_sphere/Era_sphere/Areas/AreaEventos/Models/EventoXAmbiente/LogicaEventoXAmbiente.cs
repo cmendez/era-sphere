@@ -57,6 +57,11 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
             return hotel_perteneciente.razon_social;
         }
         */
-        
+
+
+        public void agregarElemento(EventoXAmbienteView exaview)
+        {
+            database_table.agregarElemento(exaview.deserializa());
+        }
     }
 }

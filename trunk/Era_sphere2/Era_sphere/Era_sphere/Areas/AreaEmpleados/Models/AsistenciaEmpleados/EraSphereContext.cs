@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
-using Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleado;
+using Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleados;
 
 namespace Era_sphere.Generics
 {

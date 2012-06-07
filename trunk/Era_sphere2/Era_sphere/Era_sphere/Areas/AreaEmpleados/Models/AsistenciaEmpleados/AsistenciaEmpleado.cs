@@ -8,15 +8,18 @@ using Era_sphere.Generics;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleado
+namespace Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleados
 {
     public class AsistenciaEmpleado : DBable
     {
-        public string empleadoID  { get; set; }
-
+        [DisplayName("Codigo Empleado")]
+        public string empleadoID { get; set; }
+        [DisplayName("Fecha y hora de entrada")]
         public DateTime? fechaHoraEntrada { get; set; }
+        [DisplayName("Fecha y hora de entrada")]
         public DateTime? fechaHoraSalida { get; set; }
-        public string asistencia { get; set; }
+        [DisplayName("Asistencia")]
+        public string s_asistencia { get; set; }
         
         
     }

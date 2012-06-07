@@ -176,10 +176,11 @@
     <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaServicio.cs" />
     <Compile Include="Areas\AreaEmpleados\Controllers\AsistenciaEmpleadoController.cs" />
     <Compile Include="Areas\AreaEmpleados\Controllers\EmpleadoController.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\AsistenciaEmpleado.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\InterfazLogicaAsistenciaEmpleado.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\LogicaAsistenciaEmpleado.cs" />
+    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\AsistenciaEmpleado.cs" />
+    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\AsistenciaEmpleadoView.cs" />
+    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\InterfazLogicaAsistenciaEmpleado.cs" />
+    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\LogicaAsistenciaEmpleado.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\InterfazLogicaEmpleado.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\LogicaEmpleado.cs" />

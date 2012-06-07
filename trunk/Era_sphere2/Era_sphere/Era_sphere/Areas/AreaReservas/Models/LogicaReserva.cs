@@ -52,7 +52,18 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             return tabla_reserva.buscarElementos(reserva);
         }
-        
+
+        public List<ReservaView> retornarReservasHotel(int hotel_id)
+        {
+            List<Reserva> reservas_aux = tabla_reserva.retornarTodos().Where(p => p.hotelID == hotel_id).ToList();
+            List<ReservaView> reserva_view = new List<ReservaView>();
+
+            foreach (Reserva reserva in reservas_aux) reserva_view.Add(new ReservaView(reserva));
+            return reserva_view;
+
+        }
+
+
         //fin de metodos basicos
 
 

@@ -12,49 +12,52 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
     {
         LogicaReserva reserva_logica = new LogicaReserva();
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             ViewBag.reservas = reserva_logica.retornarReservas();
+            ViewData["hotelID"] = id;
             return View("IndexReserva");
         }
 
         [GridAction]
-        public ActionResult Select()
+        public ActionResult Select(int id)
         {
-            return View("IndexReserva", new GridModel(reserva_logica.retornarReservas()));
+            return View("IndexReserva", new GridModel(reserva_logica.retornarReservasHotel(id)));
 
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Insert()
+        public ActionResult Insert(int id)
         {
             ReservaView reserva_view= new ReservaView();
             if (TryUpdateModel(reserva_view))
             {
+                reserva_view.estadoID = 1;
+                reserva_view.hotelID = id;
                 Reserva reserva = reserva_view.deserializa(reserva_logica);
                 reserva_logica.registrarReserva(reserva);
 
             }
-            return View("IndexReserva", new GridModel(reserva_logica.retornarReservas()));
+            return View("IndexReserva", new GridModel(reserva_logica.retornarReservasHotel(id)));
         }
 
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int id_hotel)
         {
             int reserva_id = id ?? -1;
             reserva_logica.eliminarReserva(reserva_id);
-            return View("IndexReserva", new GridModel(reserva_logica.retornarReservas()));
+            return View("IndexReserva", new GridModel(reserva_logica.retornarReservasHotel(id_hotel)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Update(ReservaView reserva)
+        public ActionResult Update(ReservaView reserva, int id_hotel)
         {
             reserva_logica.modificarReserva(reserva.deserializa(reserva_logica));
-            return View("IndexReserva", new GridModel(reserva_logica.retornarReservas()));
+            return View("IndexReserva", new GridModel(reserva_logica.retornarReservasHotel(id_hotel)));
         }
 
 

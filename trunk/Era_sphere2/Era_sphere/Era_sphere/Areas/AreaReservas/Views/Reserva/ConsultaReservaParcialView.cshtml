@@ -4,7 +4,6 @@
 @model ReservaView
 @{
     ViewBag.Title = "IndexHotel";
-    Layout = "~/Views/Shared/_Layout.cshtml";
     var habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
     //asi funciono con las consultas >.<
     var pisos = (new EraSphereContext()).pisos.Where(p => p.hotelID == Model.hotelID).ToList();

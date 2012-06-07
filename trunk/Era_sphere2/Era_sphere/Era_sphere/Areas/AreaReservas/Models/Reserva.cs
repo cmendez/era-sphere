@@ -46,7 +46,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
         public int dias_estadia { get; set; }
 
         
-        public int reciboID { get; set; }
+        //public int reciboID { get; set; }
 
         public int hotelID { get; set; }
 
@@ -54,8 +54,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
         //Crea una nueva reserva y de paso crea el recibo que lo refiere y que es persiste aunque reserva muera
         public Reserva()
         {
-            LogicaRecibo log_rec = new LogicaRecibo();
-            reciboID = log_rec.nuevoRecibo();
+            //LogicaRecibo log_rec = new LogicaRecibo();
+            //reciboID = log_rec.nuevoRecibo();
         }
         public void agregarServicio(){
 

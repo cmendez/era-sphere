@@ -1,0 +1,73 @@
+﻿@using Era_sphere.Areas.AreaContable.Models;
+@using Era_sphere.Generics;
+@model IEnumerable<ProveedorView>
+@using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //var paises = (new EraSphereContext()).paises.ToList();
+}
+
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Crear Orden de compra
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("ProveedoresGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        
+        .DataKeys(key => key.Add(p => p.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.razon_social);
+            columns.Bound(p => p.persona_contacto);
+            columns.Command(commands =>
+            {
+                commands.Custom("createOrden")
+                            .Text("Orden de Compra")
+                            .Ajax(true)
+                            .DataRouteValues(p => p.Add(x => x.ID).RouteKey("id_proveedor"))
+                            .Action("Proveedor", "Proveedor");
+            });
+        })
+        .ClientEvents(events => events.OnComplete("onComplete"))
+        .Pageable()
+        .Sortable()
+
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "OrdenCompra")
+        )
+           )
+
+<div id = "popUpOrden" style=""></div>
+    </div>
+    
+    <script type="text/javascript">
+        function onComplete(e) {
+            var proveedor = e.response.proveedor;
+            if( e.name == "createOrden" ){
+
+                $("#popUpOrden").load(
+                    '@Url.Action("crearOrdenView","OrdenCompra")' + '/' + proveedor.ID , 
+                    function(){
+
+                     var popUp = $("#popupCompra").data("tWindow");
+                     
+                    }
+                );
+               
+            }
+        }
+    </script>
+    <!-- Table Wrapper End -->
+</div>

@@ -20,7 +20,14 @@ namespace Era_sphere.Generics
         public DbSet<Orden> ordenes { get; set; }
         public DbSet<OrdenLinea> ordeneslineas { get; set; }
         public DbSet<proveedor_x_producto> p_x_p { get; set; }
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<proveedor_x_producto>().HasRequired(e => e.proveedor)
+                                                    .WithMany(t => t.productos)
+                                                    .HasForeignKey(e => e.proveedorID)
+                                                    .WillCascadeOnDelete(false);
+        }
         void seedProveedores() {
             Proveedor p = new Proveedor
             {
@@ -32,13 +39,36 @@ namespace Era_sphere.Generics
                 direccion = "direccion 1 ",
                 persona_contacto = "Persona 1"
             };
+         
+            proveedores.Add(
+                new Proveedor { 
+                    ID = 2,
+                    razon_social = "Proveedor 2",
+                    ruc = "123123123",
+                    telefono = "1212112",
+                    correo = "ff@g.g",
+                    direccion = "direccion 2",
+                    persona_contacto = "Persona 2"
+                }
+          );
+            p.productos = new List<proveedor_x_producto>();
+            foreach (var x in productos) {
+                proveedor_x_producto pp = new proveedor_x_producto
+                {
+                    ID = x.ID,
+                    precio_unitario = x.ID + 0.5,
+                    proveedor = p,
+                    producto = x
+                };
+                p_x_p.Add(pp);
+                p.productos.Add(pp);
+            }
             proveedores.Add(p);
-
         }
 
         void seedProductos() {
             for (int i = 0; i < 10; i++) {
-                productos.Add(new Producto { ID = i , descripcion = "Producto " + i } );
+                productos.Add(new Producto { ID = ( i + 1 ) , descripcion = "Producto " + ( i + 1 ) } );
             }
 
         }

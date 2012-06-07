@@ -5,6 +5,9 @@
 @model ConsultaView
 @{
     ViewBag.Title = "IndexHotel";
+    if(!(bool)(ViewData["partial"])){
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
     var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
     tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
     var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();

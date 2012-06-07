@@ -15,8 +15,9 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         LogicaConsulta consulta_logica = new LogicaConsulta();
 
         //ID : id del hotel
-        public ActionResult Index(int ID)
+        public ActionResult Index(int ID, bool partial)
         {
+            ViewData["partial"] = partial;
             return View("IndexConsulta", new ConsultaView { hotelID = ID });
         }
 

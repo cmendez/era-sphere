@@ -69,7 +69,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             };
              */
             //perfil_empleado.agregarEmpleado(empleado);   
-            perfil_empleado.agregarEmpleado(empleado);
+            //perfil_empleado.agregarEmpleado(empleado);
          return Json(new { me = "" });
         }
         /*

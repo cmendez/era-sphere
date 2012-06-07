@@ -10,15 +10,14 @@ using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
-    public class TipoServicioController : Controller
+    public class ServiciosController : Controller
     {
-        //
-        // GET: /AreaConfiguracion/Temporada/
-
+        
         LogicaServicios servicios_logica = new LogicaServicios();
-        public ActionResult Index()
+        //llamado par anhadir un servicio de reserva
+        public ActionResult IndexServicioReserva(int id_habitacion, int id_reserva)
         {
-            return View("TipoServiciosIndex", servicios_logica.retornarTipoServicios());
+            return View("ServiciosIndex", servicios_logica.retornarTipoServicios());
         }
         [GridAction]
         public ActionResult Select()

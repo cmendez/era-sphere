@@ -82,6 +82,7 @@
     <Compile Include="Areas\AreaConfiguracion\Controllers\MonedaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PoliticasController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Controllers\ServicioController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoServicioController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TemporadaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoDePagoController.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\AreaContable\Controllers\PagosController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\OrdenesController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -128,6 +130,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
+    <Compile Include="Areas\AreaContable\Models\LogicaPagos.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\Orden.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs">
       <SubType>Code</SubType>
@@ -137,6 +140,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_productoView.cs" />
+    <Compile Include="Areas\AreaContable\Models\Pagos\PagoTarjeta.cs" />
     <Compile Include="Areas\AreaContable\Models\Productos\InterfazLogicaProducto.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1252,12 +1256,10 @@
     <Content Include="Areas\AreaReservas\Views\Shared\EditorTemplates\ReservaViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ParticipanteViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteView.cshtml" />
-
     <Content Include="Areas\AreaEventos\Views\Shared\EventoAmbienteView.cshtml" />
-
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Reserva\ConsultaReservaParcialView.cshtml" />
-
+    <Content Include="Areas\AreaContable\Views\Pagos\TarjetaDeCreditoIndex.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

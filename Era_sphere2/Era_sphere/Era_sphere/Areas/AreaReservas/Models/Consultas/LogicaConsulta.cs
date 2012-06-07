@@ -34,8 +34,17 @@ namespace Era_sphere.Areas.AreaReservas.Models
             int id_hotel = consulta.hotelID;
             LogicaHabitacion logica_habitacion = new LogicaHabitacion();
             consulta.habitaciones_resultantes = logica_habitacion.retornarHabitacionesLibres(id_hotel,consulta.pisoID, consulta.tipo_habitacionID, consulta.fecha_inicio,consulta.fecha_fin);
-            consulta.habitaciones_libres_total = retornarNumeroHabitacionesDisponible(consulta);
-
+            if ((consulta.tipo_habitacionID ==0) && (consulta.pisoID == 0))
+                consulta.habitaciones_libres_total = retornarNumeroHabitacionesDisponible(consulta);
+            if ((consulta.tipo_habitacionID == 0) && (consulta.pisoID !=0))
+                consulta.habitaciones_libres_piso = retornarLibresPisos(consulta, consulta.pisoID);
+            if ((consulta.tipo_habitacionID!=0) && (consulta.pisoID ==0)) 
+                consulta.habitaciones_libres_tipo = retornarLibresTipoHabitacion(consulta, consulta.tipo_habitacionID);
+            if ((consulta.tipo_habitacionID != 0) && (consulta.pisoID != 0))
+            {
+                consulta.habitaciones_libres_tipo = retornarLibresTipoHabitacion(consulta, consulta.tipo_habitacionID);
+                consulta.habitaciones_libres_piso = retornarLibresPisos(consulta, consulta.pisoID);
+            }
         }
         
 

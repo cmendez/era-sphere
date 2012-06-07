@@ -9,6 +9,6 @@ namespace Era_sphere.Areas.AreaReservas.Models
     public class EstadoReserva:DBable
     {
         public string descripcion { get; set; }
-        public ICollection<Reserva> lista_reservas { get; set; }
+        public virtual ICollection<Reserva> lista_reservas { get; set; }
     }
 }

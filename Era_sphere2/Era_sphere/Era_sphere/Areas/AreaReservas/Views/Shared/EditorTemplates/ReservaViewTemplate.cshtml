@@ -15,9 +15,10 @@
     <label>
         Responsable Pago:</label>
     <fieldset>
+    
         <div class="editor-label">
             @(Html.Telerik().AutoComplete()
-                .Name("cliente_autocompleta")
+            .Name("responsable_pago")
                 .DataBinding(binding => binding.Ajax().Select("DameClientes", "../AreaClientes/Cliente"))
                 .HighlightFirstMatch(true)
                 .AutoFill(true).HtmlAttributes(new { style = "width:300px" })
@@ -30,6 +31,9 @@
     //<input type="submit" id="buscar-cliente-submit" value="Buscar" />
      
    <fieldset>
+   @Html.HiddenFor(model => model.hotelID)
+   @Html.HiddenFor(Model => Model.estadoID)
+
         <div class="editor-label"> @Html.LabelFor(model => model.dias_estadia) </div>
         <div class="editor-field"> @Html.TextBoxFor(model => model.dias_estadia, new {@readonly = "readonly"}) </div>
         
@@ -42,6 +46,7 @@
    </fieldset>
 }
 
+@{Html.RenderPartial("../Consulta/IndexConsulta", new ConsultaView{ resultados = new List<ConsultaLineaView>()});}
 
  @(Html.Telerik().Window().Name("MostrarMantCliente")
         .Title("Mantenimiento de Clientes").Content(

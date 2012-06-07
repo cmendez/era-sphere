@@ -5,7 +5,6 @@
 @model ConsultaView
 @{
     ViewBag.Title = "IndexHotel";
-    Layout = "~/Views/Shared/_Layout.cshtml";
     var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
     tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
     var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();
@@ -30,11 +29,16 @@
         <fieldset>
 
         <div class="editor-label"> @Html.LabelFor(model => model.fecha_inicio) </div>
-        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_inicio) </div>
+        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_inicio).Min(DateTime.Now)
+                                   @Html.ValidationMessageFor(model => model.fecha_inicio) 
+                                   
+        </div>
  
 
         <div class="editor-label"> @Html.LabelFor(model => model.fecha_fin) </div>
-        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_fin) </div>
+        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_fin).Min(DateTime.Now.AddDays(1)) 
+                                   @Html.ValidationMessageFor(model => model.fecha_fin) 
+        </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.pisoID) </div>
           @( Html.Telerik().ComboBox()

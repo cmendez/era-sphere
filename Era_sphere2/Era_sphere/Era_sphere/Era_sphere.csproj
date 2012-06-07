@@ -135,6 +135,7 @@
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLineaView.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenView.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_producto.cs">
       <SubType>Code</SubType>

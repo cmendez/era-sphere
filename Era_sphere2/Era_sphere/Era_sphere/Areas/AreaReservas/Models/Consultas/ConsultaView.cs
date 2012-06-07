@@ -10,10 +10,11 @@ namespace Era_sphere.Areas.AreaReservas.Models
 {
     public class ConsultaView
     {
-
+        [Required]
         [DisplayName("Fecha Inicio")]
         public DateTime fecha_inicio { get; set; }
 
+        [Required]
         [DisplayName("Fecha Fin")]
         public DateTime fecha_fin { get; set; }
 
@@ -45,7 +46,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             hotelID = con.hotelID;
             tipo_habitacionID = con.tipo_habitacionID;
             habitaciones_libres_total = con.habitaciones_libres_total;
-            habitaciones_libres_tipo = con.habitaciones_libres_piso;
+            habitaciones_libres_tipo = con.habitaciones_libres_tipo;
             habitaciones_libres_piso = con.habitaciones_libres_piso;
             resultados = new List<ConsultaLineaView>();
             foreach (Habitacion hab in con.habitaciones_resultantes)

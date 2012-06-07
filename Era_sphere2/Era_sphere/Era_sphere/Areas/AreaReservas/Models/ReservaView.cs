@@ -76,7 +76,8 @@ namespace Era_sphere.Areas.AreaReservas
         {
             responsable_pago = LogicaCliente.toString(r.responsable_pago);
             responsable_pagoID = r.responsable_pago.ID;
-            documento_identidad = r.responsable_pago.documento_identidad;
+            documento_identidad = r.responsable_pago.tipoID == 1 ? r.responsable_pago.documento_identidad
+                                                                 : r.responsable_pago.ruc;
             dia_creacion = r.dia_creacion;
             dias_estadia = r.dias_estadia;
             check_in = r.check_in;
@@ -131,7 +132,12 @@ namespace Era_sphere.Areas.AreaReservas
             else tipo_persona = 2; //juridico
             string documento = doc.Substring(1);
             this.documento_identidad = documento;
-            responsable_pagoID = logica_reserva.context.clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento).ID;
+            
+            if (tipo_persona ==1)
+                responsable_pagoID = logica_reserva.context.clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento).ID;
+            if (tipo_persona ==2)
+                responsable_pagoID = logica_reserva.context.clientes.First(c => c.tipoID == tipo_persona && c.ruc ==documento).ID;
+        
         }
 
     

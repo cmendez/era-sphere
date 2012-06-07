@@ -4,6 +4,7 @@
 @model IEnumerable<ReservaView>
 @{
     ViewBag.Title = "IndexHotel";
+    var hotelID = ViewData["hotelID"];
     Layout = "~/Views/Shared/_Layout.cshtml";
    // var paises = (new EraSphereContext()).paises.ToList();
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
@@ -44,16 +45,16 @@
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
             });
-                
+
         }).Pageable().Sortable()
-       
-        .DataBinding(dataBinding => dataBinding    
+
+        .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select","Reserva")
-            .Insert("Insert", "Reserva")
-            .Delete("Delete","Reserva")
-            .Update("Update","Reserva")
-           
+            .Select("Select", "Reserva", new { id = @hotelID })
+            .Insert("Insert", "Reserva", new { id = @hotelID })
+            .Delete("Delete", "Reserva", new { id_hotel = @hotelID })
+            .Update("Update", "Reserva", new { id_hotel = @hotelID })
+
         )
            )
 

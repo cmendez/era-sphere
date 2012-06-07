@@ -3,8 +3,10 @@
 @using Telerik.Web.Mvc.UI
 @model IEnumerable<ClienteNaturalView>
 @{
+    if(!(bool)(ViewData["es_partial"])){
     ViewBag.Title = "IndexHotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    }
    // var paises = (new EraSphereContext()).paises.ToList();
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
    // var estados = (new EraSphereContext()).estados_cliente.ToList();

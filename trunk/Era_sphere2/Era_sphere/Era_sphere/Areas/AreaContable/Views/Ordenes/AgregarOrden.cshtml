@@ -30,10 +30,14 @@
         .DataKeys(key => key.Add(o => o.ID))
         .Columns(columns =>
         {
-            columns.Bound(ol => ol.proveedorID);
+            columns.Bound(ol => ol.producto_desc);
+            columns.Bound(ol => ol.razon_social_prov);
+            columns.Bound(ol => ol.cantidad);
+            columns.Bound(ol => ol.precioFacturado);
+            columns.Bound(ol => ol.subTotal);
             columns.Command(commands =>
             {
-                commands.Edit().ButtonType(GridButtonType.Image);
+                //commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
             });
         })

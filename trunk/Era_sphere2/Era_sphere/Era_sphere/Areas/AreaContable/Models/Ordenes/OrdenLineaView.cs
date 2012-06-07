@@ -18,8 +18,15 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
 
         public OrdenLineaView(OrdenLinea o)
         {
-
-
+            int provid, prodid;
+            ID = o.ID;
+            provid = (new EraSphereContext()).p_x_p.Find(o.producto_x_proveedorID).proveedorID;
+            prodid = (new EraSphereContext()).p_x_p.Find(o.producto_x_proveedorID).productoID;
+            razon_social_prov = (new EraSphereContext()).proveedores.Find(provid).razon_social;
+            producto_desc = (new EraSphereContext()).productos.Find(prodid).descripcion;
+            cantidad = o.cantidad;
+            precioFacturado = o.precioU;
+            subTotal = o.SubTotal;
         }
 
         public OrdenLinea deserealizar(int ordenID)
@@ -44,29 +51,28 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
         [Required]
         [DisplayName("Proveedor")]
         public int proveedorID {get; set;}
+        [DisplayName("Proveedor")]
+        public string razon_social_prov { get; set; }
+
         [Required]
         [DisplayName("Producto")]
         public int productoID {get; set;}
+        [DisplayName("Producto")]
+        public string producto_desc { get; set; }
 
         [Required]
         [Range(1,Era_sphere.Generics.StringsDeValidaciones.infinito)]
         public int cantidad {get; set;}
 
-        //[Required]
-        //[Range(9, Era_sphere.Generics.StringsDeValidaciones.infinito)]
         [DisplayName("Precio unitario ($)")]
-        public decimal precioFacturado { get; set; }
+        public double precioFacturado { get; set; }
 
-
-
-        [DisplayName("Proveedor")]
-        public string razon_social_prov {get; set;}
-
-        [DisplayName("Producto")]
-        public string producto_desc {get; set;}
-
+        [DisplayName("Subtotal ($)")]
+        public double subTotal { get; set; }
     }
 }
+
+        //razon_social_prov = o.proveedor_x_producto.proveedor.razon_social;
 
 
         //[ForeignKey("proveedor_x_producto")]

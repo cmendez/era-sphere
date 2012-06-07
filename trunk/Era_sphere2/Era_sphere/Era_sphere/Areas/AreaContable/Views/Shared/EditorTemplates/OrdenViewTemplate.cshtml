@@ -3,6 +3,13 @@
 @using Telerik.Web.Mvc.UI
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@{
+    List<Int64> es = new List<Int64> {0,1,2};
+    
+    
+    
+}
+
 @using (Html.BeginForm())
 {    
     @Html.ValidationSummary(true)
@@ -10,40 +17,14 @@
     
         <legend></legend>
 
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.ID)
+            @Html.LabelFor(model => model.estado)
         </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.ID, new Dictionary<string, object>(){{"readonly", "true"}})
-        </div>
-
-        <!--autogenerado-->
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ntalonario)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ntalonario )
-            @Html.ValidationMessageFor(model => model.ntalonario)
-        </div> 
-
-
-@*        <div class="editor-label">
-            @Html.LabelFor(model => model.)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.simbolo)
-            @Html.ValidationMessageFor(model => model.simbolo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.tc)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.tc)
-            @Html.ValidationMessageFor(model => model.tc)
-        </div>*@
-
+        @( Html.Telerik().DropDownList()
+                    .Name("estadoID")
+                    .BindTo(new SelectList(es))
+                    .Placeholder("Seleccione...")
+               )
   
     </fieldset>
 }

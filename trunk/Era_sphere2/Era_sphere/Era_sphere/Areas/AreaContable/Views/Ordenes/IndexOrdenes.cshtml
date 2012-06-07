@@ -32,11 +32,24 @@
             columns.Bound(o => o.ID);                        
             columns.Bound(o => o.fechaRegistro);
             columns.Bound(o => o.estado);
-            columns.Command(commands =>
-            {
-                commands.Edit().ButtonType(GridButtonType.Image);
-                commands.Delete().ButtonType(GridButtonType.Image);
-            });
+            columns.Bound(o => o.nro_lineas);
+            columns.Bound(o => o.total);
+            columns.Command(
+                commands =>
+                {
+                    commands
+                        .Custom("seleccionarOrden")
+                        .Text("Seleccionar")
+                        .Action("agregar", "Ordenes").DataRouteValues(route => route.Add(o => o.ID).RouteKey("oid"));
+                        //.Action("agregar", "Ordenes").DataRouteValues(route => { route.Add(o => o.ID).RouteKey("oid"); route.Add(o => o.ID).RouteKey("oid"); }  );
+                    commands
+                        .Delete()
+                        .ButtonType(GridButtonType.Image);
+                    commands
+                        .Edit()
+                        .ButtonType(GridButtonType.Image);
+                }
+            ).Title("Editar").Width(50);
         })
 
         .Pageable()

@@ -21,8 +21,6 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("IndexHotel");
         }
 
-
-
         [GridAction]
         public ActionResult Select()
         {

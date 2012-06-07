@@ -32,6 +32,7 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
             fechaRegistro = o.fechaRegistro;
             total = o.total;
             empleado_solicitaID = o.empleado_solicitaID;
+            nro_lineas = o.nro_lineas;
         }
 
         public Orden deserealizar()
@@ -61,13 +62,17 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
         public int? empleado_solicitaID { get; set; }
 
         [Required]
+        public int estadoID { get; set; }
         [DisplayName("Estado")]
         public string estado { get; set; }
 
         [DisplayName("Fecha registro")] 
         public DateTime fechaRegistro { get; set; }
 
-        [DisplayName("Total")]
-        public decimal total { get; set; }
+        [DisplayName("N° lineas")]
+        public int nro_lineas { get; set; }
+
+        [DisplayName("Total ($)")]
+        public double total { get; set; }
     }
 }

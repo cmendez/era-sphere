@@ -19,8 +19,9 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
 
         public int estado { get; set; } //0 reg 1 parc 2 total
         public DateTime fechaRegistro { get; set; }
-        public decimal total { get; set; }
-        public decimal totalIGV { get; set; }        
+        public double total { get; set; }
+        public double totalIGV { get; set; }
 
+        public int nro_lineas { get; set; }
     }
 }

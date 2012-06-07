@@ -11,11 +11,15 @@ using Era_sphere.Generics;
 
 using Telerik.Web.Mvc;
 
+using Era_sphere.Areas.AreaContable.Models;
+
 namespace Era_sphere.Areas.AreaContable.Controllers
 { 
     public class OrdenesController : Controller
     {
         private EraSphereContext db = new EraSphereContext();
+        private static int? productoID;
+        private static int? proveedorID;
 
         //
         // GET: /AreaContable/Ordenes/
@@ -64,8 +68,83 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return View("Index", new GridModel(db.ordenes.ToList()));
         }
 
+        public ActionResult agregar()
+        {
+            Orden o = new Orden
+            {
+                estado = 1,
+                fechaRegistro = DateTime.Today,
+                totalIGV = 0,
+                total = 0,
+                ordenlineas = new List<OrdenLinea>()
+            };
+            db.ordenes.Add(o);
+            db.SaveChanges();
+
+            ViewData["oid"] = o.ID;
+
+            return View("AgregarOrden");
+        }
+
+        public ActionResult SelectLineas(int oid)
+        {
+            ICollection<OrdenLineaView> olvs = new List<OrdenLineaView>();
+            ICollection<OrdenLinea> ols = db.ordenes.Find(oid).ordenlineas;
+            foreach (OrdenLinea ol in ols) olvs.Add(new OrdenLineaView(ol));
+
+            ViewData["oid"] = oid;
+            return View("AgregarOrden", new GridModel(olvs));
+        }
+
+        public ActionResult InsertLinea(int oid)
+        {
+            OrdenLineaView olv = new OrdenLineaView();
+
+            if (TryUpdateModel(olv))
+            {
+                OrdenLinea o = olv.deserealizar(oid);
+                db.ordeneslineas.Add(o);
+                db.SaveChanges();
+            }
+
+            ICollection<OrdenLineaView> olvs = new List<OrdenLineaView>();
+            ICollection<OrdenLinea> ols = db.ordenes.Find(oid).ordenlineas;
+            foreach (OrdenLinea ol in ols) olvs.Add(new OrdenLineaView(ol));
+
+            ViewData["oid"] = oid;
+            return View("AgregarOrden", new GridModel(olvs));
+        }
+
+        public JsonResult _GetDropDownListProveedores(int? productoID)
+        {
+            OrdenesController.productoID = productoID;
+            ICollection<proveedor_x_producto> pxps = db.productos.Find(productoID).proveedores;
+            List<Proveedor> pvs = new List<Proveedor>();
+            foreach (proveedor_x_producto pxp in pxps) pvs.Add( pxp.proveedor );
+            return Json(new SelectList(pvs, "ID", "razon_social"), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult _GetDropDownListPrecio(int? proveedorID)
+        {
+            OrdenesController.proveedorID = proveedorID;
+            double p = db.productos.Find(OrdenesController.productoID).proveedores.Single(pr => pr.proveedorID == proveedorID).precio_unitario;
+            List<Decimal> pl = new List<Decimal>();
+            pl.Add(new Decimal(p));
+            return Json(new SelectList(pl), JsonRequestBehavior.AllowGet);
+        }
+
+
+
     }
 }
+
+
+
+
+            //if (db.ordenes.ToList().Count == 0) ViewData["oid"] = 0;
+            //else ViewData["oid"] = db.ordenes.OrderByDescending(o => o.ID).FirstOrDefault().ID + 1;
+
+
 
 
 

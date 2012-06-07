@@ -70,7 +70,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
             List<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
             ts = ts.Where(e => e.tipotemporadaID == tipoTemporadaID).ToList();
-            return Json(new SelectList(ts, "ID", "descripcion"), JsonRequestBehavior.AllowGet);
+            return Json(new SelectList(ts, "ID", "razon_social"), JsonRequestBehavior.AllowGet);
         }
 
     }

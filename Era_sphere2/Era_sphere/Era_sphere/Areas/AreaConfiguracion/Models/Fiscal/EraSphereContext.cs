@@ -42,5 +42,18 @@ namespace Era_sphere.Generics
             }
 
         }
+
+        void seedProvXProd()
+        {
+            List<proveedor_x_producto> pxps = new List<proveedor_x_producto>
+            {
+                new proveedor_x_producto { proveedorID = 1 , productoID = 1 , precio_unitario = 2.80 },
+                new proveedor_x_producto { proveedorID = 1 , productoID = 3 , precio_unitario = 14.82 },
+                new proveedor_x_producto { proveedorID = 1 , productoID = 4 , precio_unitario = 0.53 }
+            };
+            foreach(proveedor_x_producto pxp in pxps) p_x_p.Add(pxp);
+            SaveChanges();
+
+        }
     }
 }

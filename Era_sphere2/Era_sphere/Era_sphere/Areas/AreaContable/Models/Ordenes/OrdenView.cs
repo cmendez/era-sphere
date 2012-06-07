@@ -51,15 +51,23 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
         }
 
         [Required]
+        [DisplayName("ID")]
         public int ID { get; set; }
 
-        public int empleado_solicitaID { get; set; }
+        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        [DisplayName("N° talonario")]
+        public int ntalonario { get; set; }
+
+        public int? empleado_solicitaID { get; set; }
 
         [Required]
+        [DisplayName("Estado")]
         public string estado { get; set; }
 
+        [DisplayName("Fecha registro")] 
         public DateTime fechaRegistro { get; set; }
 
+        [DisplayName("Total")]
         public decimal total { get; set; }
     }
 }

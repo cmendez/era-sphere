@@ -187,11 +187,11 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             Thread.Sleep(500);
             //LogicaEventoXAmbiente logica_exa = new LogicaEventoXAmbiente();
 
-            return Json( new SelectList( evento_logica.ambientesRestantes( idHotel ,idEvento), "ID" , "descripcion"));
+            return Json( new SelectList( evento_logica.ambientesRestantes( idHotel ,idEvento), "ID" , "nombre"));
         }
 
         [GridAction]
-        public ActionResult VerAmbientes(int id, int idEvento,int idHotel)
+        public ActionResult VerAmbientes(int id, int idEvento)
         {
             
             return PartialView("EventoAmbienteView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
@@ -199,7 +199,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult DeleteAmbiente(int? id, int idEvento,int idHotel,EventoXAmbienteView ambiente)
+        public ActionResult DeleteAmbiente(int? id, int idEvento,EventoXAmbienteView ambiente)
         {
             int ambiente_id = id ?? -1;
             
@@ -209,7 +209,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult UpdateAmbiente(EventoXAmbienteView ambiente, int id, int idEvento,int idHotel)
+        public ActionResult UpdateAmbiente(EventoXAmbienteView ambiente, int id, int idEvento)
         {
             //LogicaParticipante logicaParticipante = new LogicaParticipante();
             //int idevento = participanteView.eventoID;
@@ -219,9 +219,11 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult InsertAmbiente(EventoXAmbienteView ambiente, int id, int idEvento,int idHotel)
+        public ActionResult InsertAmbiente(EventoXAmbienteView ambiente, int idEvento)
         {
             //int idevento = id;
+            int idambiente=ambiente.ambienteID;
+            ambiente.eventoID = idEvento;
             evento_logica.agregarAmbienteAEvento(idEvento, ambiente);
             return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
 

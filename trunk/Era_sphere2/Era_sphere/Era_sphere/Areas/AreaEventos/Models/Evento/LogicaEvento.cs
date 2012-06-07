@@ -119,7 +119,10 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
 
         public void agregarAmbienteAEvento(int idEvento, EventoXAmbienteView exaview)
         {
-            EventoXAmbiente.EventoXAmbiente exa = new EventoXAmbiente.EventoXAmbiente();
+            //EventoXAmbiente.EventoXAmbiente exa = new EventoXAmbiente.EventoXAmbiente();
+            exaview.eventoID = idEvento;
+            LogicaEventoXAmbiente logicaEAX = new LogicaEventoXAmbiente();
+            logicaEAX.agregarElemento(exaview);
 
             //IEnumerable<EventoXAmbiente.EventoXAmbiente> ans = from ambiente in context.p_x_p
             //                                        where ambiente.ambienteID == exaview.productoID && producto.proveedorID == id

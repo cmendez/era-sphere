@@ -63,9 +63,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return database_table.buscarElementos(habitacion_campos);
         }*/
 
-        public List<Habitacion> retornarHabitacionesLibres(int hotelID, DateTime desde, DateTime hasta)
+        public List<Habitacion> retornarHabitacionesLibres(int hotelID, int pisoID, int tipohabitacionID, DateTime desde, DateTime hasta)
         {
             List<Habitacion> habs_de_hotel = this.retornarHabitacionesDeHotel(hotelID);
+            if (pisoID != 0) habs_de_hotel = habs_de_hotel.Where(p => p.pisoID == pisoID).ToList();
+            if (tipohabitacionID != 0) habs_de_hotel = habs_de_hotel.Where(p => p.tipoHabitacionID == tipohabitacionID).ToList();
             return habs_de_hotel;
             //TODO falta hacer la consulta de verdad
                          

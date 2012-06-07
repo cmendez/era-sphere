@@ -29,6 +29,17 @@ namespace Era_sphere.Generics
             SaveChanges();
 
         }
+        public void seedHabitaciones()
+        {
+            new List<Habitacion>()
+            {
+                new Habitacion(){ detalle = "Hab1", tipoHabitacionID = 1, tipoHabitacion = tipos_habitacion.Find(1), estadoID = 1, estado = estado_espacio_rentable.Find(1), pisoID = 1, piso = pisos.Find(1)},
+                new Habitacion(){ detalle = "Hab2", tipoHabitacionID = 2, tipoHabitacion = tipos_habitacion.Find(2), estadoID = 1, estado = estado_espacio_rentable.Find(1), pisoID = 1, piso = pisos.Find(1)},
+                new Habitacion(){ detalle = "Hab3", tipoHabitacionID = 1, tipoHabitacion = tipos_habitacion.Find(3), estadoID = 1, estado = estado_espacio_rentable.Find(1), pisoID = 1, piso = pisos.Find(1)},
+
+            }.ForEach(p => this.habitaciones.Add(p));
+            SaveChanges();
+        }
         public void seedComodidades()
         {
             List<Comodidad> cs = new List<Comodidad>()

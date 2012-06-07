@@ -26,6 +26,7 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         {
             Consulta resultado = new Consulta { fecha_inicio = fecha_inicio, fecha_fin = fecha_fin, hotelID = hotelID, pisoID = pisoID, tipo_habitacionID = tipo_habitacionID };
             consulta_logica.asignarHabitacionesDisponiblesTotales(resultado);
+            ViewData["partial"] = false;
             return View("IndexConsulta", new ConsultaView(resultado));
         }
 

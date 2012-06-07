@@ -37,13 +37,15 @@ namespace Era_sphere.Areas.AreaClientes.Models
             database_table.modificarElemento(cliente, cliente.ID);
         }
 
+
+        
         public void agregarCliente(Cliente cliente)
         {
-            //if (cliente_context.clientes.Where(c => c.documento_identidad == cliente.documento_identidad).Count() > 0)
-            //{
-            //    //MENSAJE DE ERROR URGENTE :) 
-            //}
-            //else
+            if (cliente_context.clientes.Where(c => (c.documento_identidad == cliente.documento_identidad) && (c.tipo_documentoID == cliente.tipo_documentoID)).Count() > 0)
+            {
+               int a = 2;
+            }
+            else
                 database_table.agregarElemento(cliente);
         }
 

@@ -18,7 +18,14 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
 
         public ActionResult Index()
         {
+            ViewData["es_partial"] = false;
             return View("IndexCliente");
+        }
+
+        public ActionResult IndexPartial()
+        {
+            ViewData["es_partial"] = true;
+            return PartialView("IndexCliente");
         }
 
         [GridAction]

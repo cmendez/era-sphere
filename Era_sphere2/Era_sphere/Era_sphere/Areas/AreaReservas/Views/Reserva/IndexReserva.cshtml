@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
    // var paises = (new EraSphereContext()).paises.ToList();
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
-   // var estados = (new EraSphereContext()).estados_cliente.ToList();
+   var estados = (new EraSphereContext()).estados_reserva.ToList();
 }
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -22,14 +22,8 @@
    
     <div class="block_cont">
       
-      <label> Responsable Pago:</label>
-	         @(Html.Telerik().AutoComplete()
-                .Name("cliente_autocompleta")
-                .DataBinding(binding => binding.Ajax().Select("DameClientes", "../AreaClientes/Cliente"))
-                .HighlightFirstMatch(true)
-                .AutoFill(true)
-        )
-	 
+      
+
 
 
       @(Html.Telerik().Grid(Model)
@@ -47,7 +41,8 @@
             columns.Bound(p => p.responsable_pago);
             columns.Bound(p => p.documento_identidad).Title("Documento");
             columns.Bound(p => p.ID);
-          
+            columns.ForeignKey(p => p.estadoID, new SelectList(estados, "ID", "descripcion"));
+                
         }).Pageable().Sortable()
        
         .DataBinding(dataBinding => dataBinding    

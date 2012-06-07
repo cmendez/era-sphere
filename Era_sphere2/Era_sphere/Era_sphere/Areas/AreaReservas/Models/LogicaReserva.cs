@@ -63,7 +63,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
             List<Habitacion> habs = this.habitacionesDeReserva(reserva.ID);
 
             foreach(var habitacion in habs){
-            //    monto += habitacion.tipoHabitacion.costo_base;
+                monto += 100;
+                    //habitacion.tipoHabitacion.costo_base;
             }
 
             //tenemos el costo base de las habitaciones, ahora determinar si se anhadió comodidades

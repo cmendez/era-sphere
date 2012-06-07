@@ -32,13 +32,15 @@ namespace Era_sphere.Areas.AreaReservas
         [DisplayName(@"Número de Habitaciones")]
         public int num_habitaciones { get; set; }
 
-        public ICollection<Cliente> lista_huespedes { get; set; } //huespedes asignados
+        [DisplayName(@"Estado Reserva")]
+        public int estadoID { get; set; }
+        //public ICollection<Cliente> lista_huespedes { get; set; } //huespedes asignados
 
-        public ICollection<Habitacion> lista_habitaciones { get; set; }
+        //public ICollection<Habitacion> lista_habitaciones { get; set; }
 
-        public ICollection<Comodidad> lista_comodidades { get; set; }
+        //public ICollection<Comodidad> lista_comodidades { get; set; }
 
-        public ICollection<Servicio> lista_servicios { get; set; }
+        //public ICollection<Servicio> lista_servicios { get; set; }
 
 
         //[DisplayName("Tarjeta cliente")]
@@ -49,7 +51,7 @@ namespace Era_sphere.Areas.AreaReservas
         public int responsable_pagoID { get; set; }
 
         //[DisplayName("Tarjeta cliente")
-        public DateTime? dia_creacion { get; set; }
+        public DateTime dia_creacion { get; set; }
 
         //[DisplayName("Tarjeta cliente")]
         public decimal costo_final { get; set; }
@@ -60,6 +62,54 @@ namespace Era_sphere.Areas.AreaReservas
         public int ID { get; set; }
 
         //       [DisplayName("Días de Estadía")]
+
+        public ReservaView() { }
+
+        public ReservaView(Reserva r)
+        {
+            responsable_pago = LogicaCliente.toString(r.responsable_pago);
+            responsable_pagoID = r.responsable_pago.ID;
+            documento_identidad = r.responsable_pago.documento_identidad;
+            dia_creacion = r.dia_creacion;
+            dias_estadia = r.dias_estadia;
+            check_in = r.check_in;
+            check_out = r.check_out;
+            costo_inicial = r.costo_inicial;
+            costo_final = r.costo_final;
+            precio_derecho_reserva = r.precio_derecho_reserva;
+            ID = r.ID;
+            num_habitaciones = r.num_habitaciones;
+            estadoID = r.estadoID;
+        }
+
+
+ 
+        public Reserva deserializa(LogicaReserva logica_reserva)
+        {
+            this.hallaResponsable(logica_reserva);
+            Reserva r = new Reserva
+            {
+                responsable_pagoID = this.responsable_pagoID,
+                responsable_pago = logica_reserva.context.clientes.Find(this.responsable_pagoID),
+                precio_derecho_reserva = this.precio_derecho_reserva,
+                num_habitaciones = this.num_habitaciones,
+                ID = this.ID,
+                check_in = this.check_in,
+                check_out = this.check_out,
+                dias_estadia = this.dias_estadia,
+                dia_creacion = this.dia_creacion,
+                costo_inicial = this.costo_inicial,
+                costo_final = this.costo_final,
+                estadoID = this.estadoID,
+                estado = logica_reserva.context.estados_reserva.Find(this.estadoID)
+                
+            };
+
+            return r;
+        }
+
+
+        
 
         public void hallaResponsable(LogicaReserva logica_reserva)
         {
@@ -72,25 +122,6 @@ namespace Era_sphere.Areas.AreaReservas
             responsable_pagoID = logica_reserva.context.clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento).ID;
         }
 
-        public Reserva deserializa(LogicaReserva logica_reserva)
-        {
-            this.hallaResponsable(logica_reserva);
-            Reserva r = new Reserva
-            {
-                responsable_pagoID = this.responsable_pagoID,
-                responsable_pago = logica_reserva.context.clientes.Find(this.responsable_pagoID),
-            };
-
-            return r;
-        }
-
-        public ReservaView(Reserva r)
-        {
-            this.responsable_pago = LogicaCliente.toString(r.responsable_pago);
-            this.responsable_pagoID = r.responsable_pago.ID;
-            this.documento_identidad = r.responsable_pago.documento_identidad;
-        }
-        public ReservaView() { }
     
     }
 }

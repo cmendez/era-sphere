@@ -1,0 +1,86 @@
+﻿
+@using Telerik.Web.Mvc.UI;
+@using Era_sphere.Areas.AreaHoteles.Models;
+@model IEnumerable<HotelView>
+@{
+    ViewBag.Title = "HotelesProveedor";
+    var proveedor = ViewBag.proveedor;
+    ViewBag.provider = proveedor;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var data = new { id_proveedor = @proveedor.ID };
+    ViewBag.data = data;
+}
+
+<div class="block big">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimento de Proveedores : @proveedor.razon_social
+        </h3>
+    </div>
+    <div class="block_cont">
+        
+        <form id="form_hoteles" action="#" class="form">
+        <div id="div_combo">
+        @{ Html.RenderPartial("HotelProveedorPartial", null , new ViewDataDictionary{ { "id" , proveedor.ID } , { "provider" , proveedor } } ); }
+        </div>
+        <span id="_error" style="display:none; background:red ; color:White"> Seleccione un Hotel </span>
+        <input type=submit class="t-button t-state-default submit" id="agregar_hotel" value="Agregar Hotel"/>
+        </form>
+        <script type="text/javascript">
+            function isNumber(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+            }
+
+            $("#form_hoteles").submit(
+                function (event) {
+                    event.preventDefault();
+                    $("#_error").hide();
+                    var id_hotel_v = $("#hotel").val();
+                    if (!isNumber(id_hotel_v)) { $("#_error").show(); }
+                    else {
+                        $.ajax({
+                            type : 'POST',
+                            url: '@Url.Action("InsertHoteles","Proveedor",@data )',
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: JSON.stringify( { id_hotel : id_hotel_v } ),
+                            success: function (result) {
+                                $("#HotelesGrid").data('tGrid').ajaxRequest();
+                                $('#div_combo').load('@Url.Action("SelectPartialHotel", "Proveedor")' + '/' + @proveedor.ID );
+                           }
+                        });
+                    }
+                }
+            );
+        </script>
+        @(Html.Telerik().Grid(Model)
+        .Name("HotelesGrid")
+        .Localizable("es-ES")
+        .Filterable()
+                  .Editable(editing => editing
+                                    .Mode(GridEditMode.InLine)
+                                   )
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID).ReadOnly(true);
+            columns.Bound(p => p.descripcion).ReadOnly(true);
+            columns.Bound(p => p.pais_nombre).ReadOnly(true);
+            columns.Command(commands =>
+            {
+                commands.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+        .Pageable()
+        .Sortable()
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectHoteles", "Proveedor", new { id_proveedor = @proveedor.ID })
+            .Delete("DeleteHoteles", "Proveedor", new { id_proveedor = @proveedor.ID })    
+        )
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

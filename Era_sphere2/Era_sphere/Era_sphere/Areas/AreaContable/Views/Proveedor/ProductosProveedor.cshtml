@@ -36,10 +36,10 @@
                 <label> Producto :  </label>
                            @( Html.Telerik().ComboBox()
                             .Name("productoID")
-
                             .Placeholder("Seleccione Producto")
-                           
-                            .DataBinding(binding => binding.Ajax().Select("ProductosRestantes", "Proveedor", data))
+                            .DataBinding(binding => binding
+                                                        .Ajax()
+                                                        .Select("ProductosRestantes", "Proveedor", data))
                             )
                <span class="error_producto error" style="display:none;background:red ; color:white">
                     Seleccione producto

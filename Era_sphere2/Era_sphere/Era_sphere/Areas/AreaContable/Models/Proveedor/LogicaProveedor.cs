@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaContable.Models.Ordenes;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaContable.Models
 {
@@ -51,7 +52,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             ProveedorView proveedor_view = new ProveedorView(proveedor);
             return proveedor_view;
         }
-
+        #region Productos
         public List< proveedor_x_productoView > productos_de_proveedor( int proveedor_id ){
             
            
@@ -120,5 +121,69 @@ namespace Era_sphere.Areas.AreaContable.Models
             context.p_x_p.Remove(pp);
             context.SaveChanges();
         }
+        #endregion
+        #region Hoteles
+        public List< HotelView > hoteles_de_proveedor( int id_proveedor )
+        {
+            EraSphereContext context = proveedor_context;
+            Proveedor proveedor = context.proveedores.Find( id_proveedor );
+            List<Hotel> hoteles = proveedor.hoteles.ToList();
+            //List<Hotel> hoteles = context.hoteles.ToList();
+            List<HotelView> ans = new List<HotelView>(); 
+            foreach (var h in hoteles) { 
+                ans.Add( new HotelView( h ) ) ;
+            }
+            return ans;
+        }
+
+
+        internal void elimina_hotel(int id_proveedor, HotelView hotelv )
+        {
+            EraSphereContext context = proveedor_context;
+            Proveedor proveedor = context.proveedores.Find(id_proveedor);
+            Hotel hotel = context.hoteles.Find(hotelv.ID);
+            proveedor.hoteles.Remove(hotel);
+            save_proveedor(proveedor, id_proveedor);
+        }
+
+        internal void agregar_hotel_proveedor(int id_proveedor, int id_hotel)
+        {
+
+            EraSphereContext context = proveedor_context;
+            Proveedor proveedor = context.proveedores.Find(id_proveedor);
+            Hotel hotel = context.hoteles.Find(id_hotel);
+            proveedor.hoteles.Add(hotel);
+            save_proveedor(proveedor, id_proveedor);
+        }
+
+        internal List<HotelView> hoteles_restantes(string text, int id_proveedor)
+        {
+            EraSphereContext context = proveedor_context;
+            Proveedor proveedor = context.proveedores.Find(id_proveedor);
+            List<Hotel> usados = proveedor.hoteles.ToList() ;
+            List<Hotel> hoteles;
+            if( text != null ) {
+                hoteles = context.hoteles.Where( h => h.razon_social.StartsWith( text ) ).ToList();
+            }
+            else{
+                hoteles = context.hoteles.ToList();
+            }
+            foreach (var h in usados) hoteles.Remove(h);
+            List<HotelView> ans = new List<HotelView>();
+            foreach (var h in hoteles) ans.Add(new HotelView(h));
+            return ans;
+        }
+
+        #endregion
+
+        #region Utils
+        void save_proveedor(Proveedor proveedor , int id_proveedor ) {
+            EraSphereContext context = proveedor_context;
+            DBGenericQueriesUtil<Proveedor> query = new DBGenericQueriesUtil<Proveedor>(context, context.proveedores);
+            query.modificarElemento(proveedor, id_proveedor);
+        }
+        #endregion
+
+       
     }
 }

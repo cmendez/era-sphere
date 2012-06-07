@@ -13,6 +13,8 @@ namespace Era_sphere.Generics
     {
         public DbSet<Cliente> clientes { get; set; }
         public DbSet<EstadoCliente> estados_cliente { get; set; }
+        public DbSet<TipoDocumentoCliente> tipos_documento {get; set;}
+
 
         public void seedEstadoCliente()
         {
@@ -26,8 +28,21 @@ namespace Era_sphere.Generics
 
         }
 
+        public void seedTipoDocumentoCliente()
+        {
+            TipoDocumentoCliente tipo_documento_1 = new TipoDocumentoCliente { ID = 1, descripcion = "DNI" };
+            TipoDocumentoCliente tipo_documento_2 = new TipoDocumentoCliente { ID = 2, descripcion = "Pasaporte" };
+            TipoDocumentoCliente tipo_documento_3 = new TipoDocumentoCliente { ID = 3, descripcion = "Ruc" };
+            tipos_documento.Add(tipo_documento_1);
+            tipos_documento.Add(tipo_documento_2);
+            tipos_documento.Add(tipo_documento_3);
+            SaveChanges();
+        }
+
         public void seedClientes()
         {
+            TipoDocumentoCliente tipo_doc = tipos_documento.Find(1);
+            TipoDocumentoCliente tipo_doc_ruc = tipos_documento.Find(3);
             Pais pais = paises.Find(1);
             Ciudad ciudad = ciudades.Find(1);
             EstadoCliente sin_reserva = estados_cliente.Find(1);
@@ -44,6 +59,8 @@ namespace Era_sphere.Generics
                 tipo = natural,
                 tipoID = natural.ID,
                 tarjeta_cliente = "aaa",
+                tipo_documento = tipo_doc,
+                tipo_documentoID = tipo_doc.ID,
                 documento_identidad = "121321321",
                 apellido_materno = "hoces",
                 apellido_paterno = "lepage",
@@ -61,6 +78,8 @@ namespace Era_sphere.Generics
                 tipo = natural,
                 tipoID = natural.ID,
                 tarjeta_cliente = "asdfdsaf",
+                tipo_documento = tipo_doc,
+                tipo_documentoID = tipo_doc.ID,
                 documento_identidad = "11235813",
                 apellido_materno = "quispesaravia",
                 apellido_paterno = "tamagotchi",
@@ -78,6 +97,8 @@ namespace Era_sphere.Generics
                 tipo = juridico,
                 tipoID = juridico.ID,
                 tarjeta_cliente = "zxcvzv",
+                tipo_documento = tipo_doc,
+                tipo_documentoID = tipo_doc.ID,
                 ruc = "1234345457",
                 estado = sin_reserva,
                 estadoID = sin_reserva.ID,

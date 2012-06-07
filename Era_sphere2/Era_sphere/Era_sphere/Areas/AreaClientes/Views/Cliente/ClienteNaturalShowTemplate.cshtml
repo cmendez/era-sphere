@@ -10,6 +10,7 @@
     string pais_nombre = context.paises.Find(Model.paisID).nombre;
     string ciudad_nombre = context.ciudades.Find(Model.ciudadID).nombre;
     string estado_nombre = context.estados_cliente.Find(Model.id_estado).descripcion;
+    string tipo_documento_descripcion = context.tipos_documento.Find(Model.id_tipo_documento).descripcion;
 }
 
 
@@ -26,6 +27,9 @@
 
         <div class="editor-label"> @Html.LabelFor(model => model.apellido_materno) </div>
         <div class="editor-field"> @Html.TextBoxFor(model => model.apellido_materno, new {@readonly = "readonly"})  </div>     
+
+        <div class="editor-label"> @Html.LabelFor(model => model.id_tipo_documento) </div>
+         <div class="editor-field"> <input class="text-box single-line" type="text" value="@tipo_documento_descripcion" readonly="readonly" /> </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.documento_identidad) </div>
         <div class="editor-field"> @Html.TextBoxFor(model => model.documento_identidad, new {@readonly = "readonly"})  </div>     

@@ -76,6 +76,7 @@
     <Compile Include="Areas\AreaClientes\Models\EstadoCliente.cs" />
     <Compile Include="Areas\AreaClientes\Models\InterfazLogicaCliente.cs" />
     <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs" />
+    <Compile Include="Areas\AreaClientes\Models\TipoDocumentoCliente.cs" />
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\CadenaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\FiscalController.cs" />

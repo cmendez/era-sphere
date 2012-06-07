@@ -22,6 +22,10 @@ namespace Era_sphere.Areas.AreaClientes.Models
             public int estadoID { get; set; }
             public virtual EstadoCliente estado { get; set; }
 
+            [ForeignKey("tipo_documento")]
+            public int tipo_documentoID { get; set; }
+            public virtual TipoDocumentoCliente tipo_documento { get; set; }
+
             public string tarjeta_cliente { get; set; }
 
             public Habitacion habitacion_asignada { get; set; }

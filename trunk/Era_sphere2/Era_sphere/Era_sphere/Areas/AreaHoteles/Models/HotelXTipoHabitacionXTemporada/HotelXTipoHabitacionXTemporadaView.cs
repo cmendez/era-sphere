@@ -8,10 +8,11 @@ using System.ComponentModel;
 
 using Era_sphere.Areas.AreaCargos.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
 {
-    public class HotelXTipoHabitacionXTemporadaView
+    public class HotelXTipoHabitacionXTemporadaView : IValidatableObject
     {
         public HotelXTipoHabitacionXTemporadaView()
         {
@@ -89,6 +90,18 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
             bool precioValid = (new LogicaTipoHabitacion()).retornarTipoHabitacion2(this.tipoHabitacionID).costo_base <= this.precio;
             if (!precioValid) return false;
             return true;
+        }
+
+
+        public IEnumerable<ValidationResult>
+           Validate(ValidationContext validationContext)
+        {
+            var field = new[] { "precio" };
+
+            if (precio < (new EraSphereContext()).tipos_habitacion.Find(tipoHabitacionID).costo_base)
+            {
+                yield return new ValidationResult("El precio debe ser mayor al base", field);
+            }
         }
     }
 }

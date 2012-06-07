@@ -46,7 +46,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
         public decimal precio { get; set; }
 
 
-
         [Required]
         public int hotelID { get; set; }
         [Required]

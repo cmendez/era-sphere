@@ -10,6 +10,13 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
     public class OrdenLinea : DBable
     {
 
+
+        [ForeignKey("orden")]
+        public int ordenID { get; set; }
+        public Orden orden { get; set; }
+
+        public int nroLinea { get; set; }
+
         [ForeignKey("proveedor_x_producto")]
         public int producto_x_proveedorID { get; set; }
 
@@ -22,10 +29,6 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
         //public DateTime fechaentrega { get; set; }
 
         
-        
-        [ForeignKey("orden")]
-        public int ordenID  { get; set; }
 
-        public Orden orden { get; set; }
     }
 }

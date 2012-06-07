@@ -12,10 +12,10 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
     {
         //public int vtalon { get; set; }
 
-        public int empleado_solicitaID { get; set; }
+        public int? empleado_solicitaID { get; set; }
         public virtual Empleado empleado_solicita { get; set; }
 
-        public virtual ICollection<OrdenLinea> ordenlinea { set; get; }
+        public virtual ICollection<OrdenLinea> ordenlineas { set; get; }
 
         public int estado { get; set; } //0 reg 1 parc 2 total
         public DateTime fechaRegistro { get; set; }

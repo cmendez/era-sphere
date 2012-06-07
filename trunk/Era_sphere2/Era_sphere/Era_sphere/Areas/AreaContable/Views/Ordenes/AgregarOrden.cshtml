@@ -4,34 +4,33 @@
  
 }
 @using Era_sphere.Areas.AreaContable.Models.Ordenes
-@model IEnumerable<OrdenView>           
+@model IEnumerable<OrdenLineaView>           
 @using Telerik.Web.Mvc.UI
+@{
+    int oid = (int)ViewData["oid"];
+}
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
         <h3>
-            OC'S
+            Orden de Compra N° @oid
         </h3>
     </div>
     <div class="block_cont">
-        @Html.ActionLink("Agregar", "agregar",
-                        new { controller = "Ordenes"}
-                        , new { @class = "tipTop"})
         @(Html.Telerik().Grid(Model)
         .Name("OrdenGrid")
+        .ToolBar(commands => commands.Insert())
         .Filterable()
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp)
-                            .TemplateName("OrdenViewTemplate")
+                  .TemplateName("OrdenLineaViewTemplate")
                   )
 
         .DataKeys(key => key.Add(o => o.ID))
         .Columns(columns =>
         {
-            columns.Bound(o => o.ID);                        
-            columns.Bound(o => o.fechaRegistro);
-            columns.Bound(o => o.estado);
+            columns.Bound(ol => ol.proveedorID);
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
@@ -45,10 +44,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Ordenes")
-            .Insert("Insert", "Ordenes")
-            .Delete("Delete", "Ordenes")
-            .Update("Update", "Ordenes")
+            .Select("SelectLineas", "Ordenes", new { oid = @oid })
+            .Insert("InsertLinea", "Ordenes", new { oid = @oid })
+            .Delete("DeleteLinea", "Ordenes", new { oid = @oid })
+            .Update("UpdateLinea", "Ordenes", new { oid = @oid })
         )
            )
 

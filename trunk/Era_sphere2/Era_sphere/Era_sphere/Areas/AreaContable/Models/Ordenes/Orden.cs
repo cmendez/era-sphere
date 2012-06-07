@@ -10,22 +10,17 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
 {
     public class Orden : DBable
     {
+        //public int vtalon { get; set; }
 
-        public virtual Empleado empleado_solicita { get; set; }
         public int empleado_solicitaID { get; set; }
+        public virtual Empleado empleado_solicita { get; set; }
 
         public virtual ICollection<OrdenLinea> ordenlinea { set; get; }
-        public int ordenlineaID { get; set; }
-        
-        public bool estado { get; set; }
-        public DateTime fechapedido{get;set;}
-        public DateTime fechaentrega{get;set;}
-        public double Total { get; set; }
-        
 
-       
-
-        
+        public int estado { get; set; } //0 reg 1 parc 2 total
+        public DateTime fechaRegistro { get; set; }
+        public decimal total { get; set; }
+        public decimal totalIGV { get; set; }        
 
     }
 }

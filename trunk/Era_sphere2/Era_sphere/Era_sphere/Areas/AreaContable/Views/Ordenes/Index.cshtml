@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using Era_sphere.Areas.AreaContable.Models.Ordenes
-@model IEnumerable<Orden>
+@model IEnumerable<OrdenView>
 @using Telerik.Web.Mvc.UI           
 <h2>Index</h2>
 
@@ -42,10 +42,10 @@
     
     .DataBinding(databinding => databinding
     .Ajax()
-            .Select("Details","Orden")
-            .Insert("Create", "Orden")
-            .Delete("Delete", "Orden")
-            .Update("Edit", "Orden")            
+            .Select("Select","Ordenes")
+            .Insert("Insert", "Ordenes")
+            .Delete("Delete", "Ordenes")
+            .Update("Update", "Ordenes")            
     )
     )
 </div>

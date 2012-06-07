@@ -71,13 +71,13 @@ namespace Era_sphere.Models
                         Url = "/AreaHoteles/AdministrarHotel"
                     }
             );
-            AreaHoteles.Add(
-                    new SubLink
-                    {
-                        Nombre = "Tipos de habitaciones",
-                        Url = "/AreaHoteles/TipoHabitacion"
-                    }
-                );
+            //AreaHoteles.Add(
+            //        new SubLink
+            //        {
+            //            Nombre = "Tipos de habitaciones",
+            //            Url = "/AreaHoteles/TipoHabitacion"
+            //        }
+            //    );
 
 
              menu.Add(
@@ -155,6 +155,12 @@ namespace Era_sphere.Models
 
             });
 
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Tipos de habitaciones",
+                Url = "/AreaHoteles/TipoHabitacion"
+            } );
+
             
             menu.Add(
                 new Link()
@@ -172,6 +178,7 @@ namespace Era_sphere.Models
             List<SubLink> sub = new List<SubLink>();
             sub.Add(new SubLink { Nombre = "Productos", Url = "/AreaContable/Producto" });
             sub.Add(new SubLink { Nombre = "Proveedor", Url = "/AreaContable/Proveedor" });
+            sub.Add(new SubLink { Nombre = "OC's", Url = "/AreaContable/Ordenes" });
             menu.Add(new Link { Nombre = "Contable" , Url = "#" , Icono = "icon_pen" , Sublinks = sub});
         }
         void agregarAreaClientes()

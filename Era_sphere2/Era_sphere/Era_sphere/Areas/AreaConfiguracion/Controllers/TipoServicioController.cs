@@ -50,10 +50,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Update(ServicioView p)
+        public ActionResult Update(TipoServicioView p)
         {
 
-            servicios_logica.modificarTipoServicio(p);
+            servicios_logica.modificarTipoServicio(p.deserializa(servicios_logica));
             return View("TipoServiciosIndex", new GridModel(servicios_logica.retornarTipoServicios()));
         }
 

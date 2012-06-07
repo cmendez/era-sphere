@@ -25,7 +25,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             detalle = servicio.descripcion;
         }
 
-        public Servicio deserializa()
+        public Servicio deserializa(LogicaServicios logica)
         {
             return new Servicio
             {

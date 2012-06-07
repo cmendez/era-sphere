@@ -37,14 +37,14 @@
           @( Html.Telerik().ComboBox()
                     .Name("pisoID")
                     .BindTo(new SelectList(pisos, "ID", "descripcion"))
-                    
+                    .SelectedIndex(0)   
                 )
 
         <div class="editor-label"> @Html.LabelFor(model => model.tipo_habitacionID) </div>
           @( Html.Telerik().ComboBox()
-                    .Name("tipoHabitacionID")
+                    .Name("tipo_habitacionID")
                     .BindTo(new SelectList(tipos_habitaciones, "ID", "descripcion"))
-                    
+                    .SelectedIndex(0)
                 )
 
         <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_total) </div>

@@ -152,13 +152,18 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         }
 
         #endregion
-
         #region Utils
         void inicializa_proveedor( int id ) {
             ViewBag.proveedor = proveedor_logica.retornarProveedor(id);
         }
         ViewResult default_action_hotel( int id_proveedor ) {
             return View("HotelesProveedor", new GridModel( proveedor_logica.hoteles_de_proveedor( id_proveedor ) ));
+        }
+
+        public JsonResult Proveedor(int id_proveedor)
+        {
+            ProveedorView p = proveedor_logica.retornarProveedor(id_proveedor);
+            return Json(new { proveedor = p });
         }
         #endregion
     }

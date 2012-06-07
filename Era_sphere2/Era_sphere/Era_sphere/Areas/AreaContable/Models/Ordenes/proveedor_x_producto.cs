@@ -12,11 +12,11 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
     public class proveedor_x_producto : DBable
     {
 
-        [ForeignKey("producto")]
+ 
         public int productoID { get; set; }
         public virtual Producto producto { get; set; }
 
-        [ForeignKey("proveedor")]
+   
         public int proveedorID { get; set; }
         public virtual Proveedor proveedor { get; set; }
 

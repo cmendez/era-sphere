@@ -178,7 +178,7 @@ namespace Era_sphere.Models
             List<SubLink> sub = new List<SubLink>();
             sub.Add(new SubLink { Nombre = "Productos", Url = "/AreaContable/Producto" });
             sub.Add(new SubLink { Nombre = "Proveedor", Url = "/AreaContable/Proveedor" });
-            sub.Add(new SubLink { Nombre = "OC's", Url = "/AreaContable/Ordenes" });
+            sub.Add(new SubLink { Nombre = "OC's", Url = "/AreaContable/OrdenCompra" });
             menu.Add(new Link { Nombre = "Contable" , Url = "#" , Icono = "icon_pen" , Sublinks = sub});
         }
         void agregarAreaClientes()

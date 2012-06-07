@@ -55,7 +55,7 @@ namespace Era_sphere.Generics
             context.SaveChanges();
         }
 
-        public void agregarElemento(T elemento)
+        public int agregarElemento(T elemento)
         {
             if (elemento.ID == 0)
             {
@@ -66,6 +66,7 @@ namespace Era_sphere.Generics
             
             dbset.Add(elemento);
             context.SaveChanges();
+            return elemento.ID;
         }
 
         public void eliminarElemento(int ID)

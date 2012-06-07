@@ -24,12 +24,13 @@ namespace Era_sphere.Generics
             seedTemporadas();
             seedEstadoReserva();
             seedProveedores();
-            seedProductos();
+            
             seedProvXProd();
             seedTipoHabitaciones();
             seedClientes();
             seedPisos();
             seedHabitaciones();
+            seedOrdenCompra();
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }
@@ -41,6 +42,8 @@ namespace Era_sphere.Generics
             tipos_personas.Add(juridico);
             SaveChanges();
         }
+
+
 
     }
 

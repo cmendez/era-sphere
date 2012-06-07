@@ -1,0 +1,95 @@
+﻿@using Era_sphere.Areas.AreaContable.Models;
+@using Telerik.Web.Mvc.UI;
+@model OrdenCompraView
+@{
+    ProveedorView prov = ViewBag.proveedor;
+    OrdenCompraView oc = ViewBag.orden_compra;
+    var data = new { id_proveedor = prov.ID };
+    var data_oc = new { id_oc = oc.ordenID };
+}
+@(Html.Telerik().Window()
+    .Name("popupCompra")
+    .Visible(true)
+    .Title("Crear Orden de Compra")
+    .Modal(true)
+    .Width(600)
+    
+        .Content(@<text>
+<div id="popupOC">
+    <ul>
+        <li>
+            <label>
+                Numero de Orden: @oc.ordenID
+            </label>
+        </li>
+        <li>
+            <label>
+                Proveedor :
+            </label>
+            <span>@prov.razon_social </span></li>
+        <li>
+            <label>
+                Persona de Contacto
+            </label>
+            <span>@prov.persona_contacto </span></li>
+    </ul>
+    <form id="formProducto" class="form" action="#">
+        <label> Productos </label>
+        @(Html.Telerik()
+            .ComboBox()
+            .Name("producto_input")
+            .DataBinding( bind => bind.Ajax()
+                        .Select("ProductosProveedor","OrdenCompra", @data ))
+         )
+         <label> Cantidad: </label>
+         @(Html.Telerik().IntegerTextBox()
+            .MinValue(1)
+            .Spinners(true)
+            .Name("cantidad_input")
+         )
+
+         <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
+        value="Agregar Producto" />
+       
+    </form>
+   <script type="text/javascript">
+       $("#formProducto").submit(function (e) {
+           e.preventDefault();
+           var id_productof = $("#producto_input").val();
+           var cantidadf = $("#cantidad_input").val();
+           $.ajax({
+               type: 'POST',
+               url: '@Url.Action("InsertOCLinea" , "OrdenCompra",@data_oc)',
+               contentType: 'application/json',
+               dataType: 'json',
+               data: JSON.stringify({ id_producto: id_productof, cantidad: cantidadf }),
+               success: function (result) {
+                   $("#OCGrid").data('tGrid').ajaxRequest();
+               }
+           });
+       })
+        </script>
+    @(Html.Telerik().Grid<OCompraLineaView>()
+        .Name("OCGrid")
+        .DataKeys( d => d.Add( p => p.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(o => o.productoID).Width(100).ReadOnly(true);
+            columns.Bound(o => o.producto).Width(200).ReadOnly(true);
+            columns.Bound(o => o.cantidad).Width(50);
+            columns.Bound(o => o.precio_unitario).Width(50);
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120)
+                .Aggregate(aggregates => aggregates.Sum());
+            columns.Command(command => command.Delete().ButtonType(GridButtonType.Image));
+        })
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectOCompraLinea", "OrdenCompra", new { id_oc = @oc.ordenID })
+            .Delete("DeleteOCL", "OrdenCompra", new { id_oc = @oc.ordenID })
+        )
+    )
+    
+</div>
+</text>)
+    )

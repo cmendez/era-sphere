@@ -1,5 +1,45 @@
-﻿@{
+﻿@model IEnumerable<ParticipanteView>
+@using Era_sphere.Areas.AreaEventos.Models.Participante
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI
+@{
     ViewBag.Title = "EventoParticipanteView";
+    var idhotel = ViewData["idhotel"];
+    var idEvento = ViewBag.idevento;
 }
 
-<h2>EventoParticipanteView</h2>
+ @(Html.Telerik().Grid(Model)
+        .Name("EventoParticipante")
+        .Localizable("es-ES")
+        .Filterable()
+        .ToolBar(commands => commands.Insert())
+        .Editable(editing => editing
+                          .Mode(GridEditMode.InLine)
+                        .TemplateName("ParticipanteViewTemplate"))
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.nombre);
+            columns.Bound(p => p.dni);
+            //columns.ForeignKey(p => p.id_estado, new SelectList(estados, "ID", "descripcion"));
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+                //commands.Custom("mostrar_natural").Text("Mostrar").
+                //DataRouteValues(route => route.Add(o => o.ID).RouteKey("id")).Ajax(true).Action("MostrarNatural", "Cliente");
+
+            }).Width(160);
+        })
+
+        .Pageable()
+        .Sortable()
+         //.ClientEvents(events => events.OnComplete("onComplete"))
+                .DataBinding(dataBinding => dataBinding
+                    .Ajax()//.Select("_CustomCommand", "Cliente")
+                    .Select("VerParticipantes", "Evento", new { idEvento=idEvento})
+                    .Insert("InsertParticipante", "Evento", new { idEvento = idEvento })
+                    .Delete("DeleteParticipante", "Evento", new { idEvento = idEvento })
+                    .Update("UpdateParticipante", "Evento", new { idEvento = idEvento })
+        )
+           )

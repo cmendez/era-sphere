@@ -33,7 +33,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             int id_hotel = consulta.hotelID;
             LogicaHabitacion logica_habitacion = new LogicaHabitacion();
-            consulta.habitaciones_resultantes = logica_habitacion.retornarHabitacionesLibres(id_hotel,consulta.fecha_inicio,consulta.fecha_fin);
+            consulta.habitaciones_resultantes = logica_habitacion.retornarHabitacionesLibres(id_hotel,consulta.pisoID, consulta.tipo_habitacionID, consulta.fecha_inicio,consulta.fecha_fin);
             consulta.habitaciones_libres_total = retornarNumeroHabitacionesDisponible(consulta);
 
         }

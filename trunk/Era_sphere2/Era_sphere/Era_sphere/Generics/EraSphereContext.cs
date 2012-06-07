@@ -27,6 +27,7 @@ namespace Era_sphere.Generics
             seedTipoHabitaciones();
             seedClientes();
             seedPisos();
+            seedHabitaciones();
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }

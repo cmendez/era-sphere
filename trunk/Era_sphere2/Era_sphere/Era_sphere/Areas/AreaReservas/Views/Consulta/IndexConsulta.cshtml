@@ -1,4 +1,5 @@
 ﻿@using Era_sphere.Areas.AreaReservas.Models
+@using Era_sphere.Areas.AreaHoteles.Models
 @using Era_sphere.Generics;
 @using Telerik.Web.Mvc.UI
 @model ConsultaView
@@ -6,7 +7,9 @@
     ViewBag.Title = "IndexHotel";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
+    tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
     var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();
+    pisos.Insert(0, new Piso { ID = 0, descripcion = "Todos" });
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
    // var estados = (new EraSphereContext()).estados_cliente.ToList();
 }
@@ -37,7 +40,7 @@
           @( Html.Telerik().ComboBox()
                     .Name("pisoID")
                     .BindTo(new SelectList(pisos, "ID", "descripcion"))
-                    .SelectedIndex(0)   
+                    .SelectedIndex(0)  
                 )
 
         <div class="editor-label"> @Html.LabelFor(model => model.tipo_habitacionID) </div>
@@ -58,8 +61,7 @@
 
         @Html.HiddenFor(model => model.hotelID)
         </fieldset>
-
-        <input type="submit" id="buscar-cliente-submit" value="Buscar" />
+        <button type="submit" id="buscar-cliente-submit">Buscar</button>
     }
 
      <div style="height: 10px;">

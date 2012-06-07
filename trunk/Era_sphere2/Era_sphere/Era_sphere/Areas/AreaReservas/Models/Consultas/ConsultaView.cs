@@ -42,7 +42,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             fecha_fin = con.fecha_fin;
             fecha_inicio = con.fecha_inicio;
             pisoID = con.pisoID;
-            hotelID = con.pisoID;
+            hotelID = con.hotelID;
             tipo_habitacionID = con.tipo_habitacionID;
             habitaciones_libres_total = con.habitaciones_libres_total;
             habitaciones_libres_tipo = con.habitaciones_libres_piso;

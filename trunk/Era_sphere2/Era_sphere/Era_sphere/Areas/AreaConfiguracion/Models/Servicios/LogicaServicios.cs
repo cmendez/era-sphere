@@ -36,13 +36,13 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         public void modificarServicio(ServicioView servicio_view)
         {
-            Servicio servicio = servicio_view.deserializa();
+            Servicio servicio = servicio_view.deserializa(this);
             tabla_servicios.modificarElemento(servicio, servicio.ID);
         }
 
         public void agregarServicio(ServicioView servicio)
         {
-            tabla_servicios.agregarElemento(servicio.deserializa());
+            tabla_servicios.agregarElemento(servicio.deserializa(this));
         }
 
         public void eliminarServicio(int servicioID)
@@ -58,9 +58,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
 
 
-        public List<TipoServicio> retornarTipoServicios()
+        public List<TipoServicioView> retornarTipoServicios()
         {
-            return tabla_tipo_servicios.retornarTodos();
+            return tabla_tipo_servicios.retornarTodos().Select(p => new TipoServicioView(p)).ToList();
         }
         public void agregarTipoServicio(TipoServicioView ts_view)
         {
@@ -70,12 +70,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         internal void eliminarTipoServicio(int servicio_id)
         {
-            throw new NotImplementedException();
+            tabla_tipo_servicios.eliminarElemento(servicio_id);
         }
 
-        internal void modificarTipoServicio(ServicioView p)
+        internal void modificarTipoServicio(TipoServicio p)
         {
-            throw new NotImplementedException();
+            tabla_tipo_servicios.modificarElemento(p, p.ID);
         }
 
         public List<Servicio> retornarServicios2()

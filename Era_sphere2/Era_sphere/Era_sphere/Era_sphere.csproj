@@ -120,10 +120,8 @@
     <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Areas\AreaContable\Controllers\OrdenCompraController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\PagosController.cs" />
-    <Compile Include="Areas\AreaContable\Controllers\OrdenesController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Areas\AreaContable\Controllers\ProductoController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -132,6 +130,13 @@
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
     <Compile Include="Areas\AreaContable\Models\LogicaPagos.cs" />
+    <Compile Include="Areas\AreaContable\Models\OrdenCompra\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaContable\Models\OrdenCompra\EstadoOC.cs" />
+    <Compile Include="Areas\AreaContable\Models\OrdenCompra\LogicaOrdenCompra.cs" />
+    <Compile Include="Areas\AreaContable\Models\OrdenCompra\OCompraLinea.cs" />
+    <Compile Include="Areas\AreaContable\Models\OrdenCompra\OCompraLineaView.cs" />
+    <Compile Include="Areas\AreaContable\Models\OrdenCompra\OrdenCompra.cs" />
+    <Compile Include="Areas\AreaContable\Models\OrdenCompra\OrdenCompraView.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\Orden.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs">
       <SubType>Code</SubType>
@@ -187,6 +192,7 @@
     <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\InterfazLogicaAsistenciaEmpleado.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\LogicaAsistenciaEmpleado.cs" />
+    <Compile Include="Areas\AreaEmpleados\Models\EmpleadoView.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\InterfazLogicaEmpleado.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\LogicaEmpleado.cs" />
@@ -208,6 +214,7 @@
     <Compile Include="Areas\AreaEventos\Models\Participante\ParticipanteView.cs" />
     <Compile Include="Areas\AreaEventos\Models\Participante\Participante.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXServicioXTemporadaController.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\HotelXTipoHabitacionXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionXReserva.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\EraSphereContext.cs" />
@@ -1262,6 +1269,7 @@
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Reserva\ConsultaReservaParcialView.cshtml" />
     <Content Include="Areas\AreaContable\Views\Pagos\TarjetaDeCreditoIndex.cshtml" />
+    <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

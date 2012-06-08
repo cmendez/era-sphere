@@ -8,10 +8,11 @@ using System.ComponentModel;
 
 using Era_sphere.Areas.AreaCargos.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
 {
-    public class HotelXServicioXTemporadaView
+    public class HotelXServicioXTemporadaView : IValidatableObject
     {
         public HotelXServicioXTemporadaView()
         {
@@ -75,6 +76,25 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
                 temporadaID = this.temporadaID,
                 precio = this.precio
             };
+        }
+
+        public IEnumerable<ValidationResult>
+           Validate(ValidationContext validationContext)
+        {
+            var field = new[] { "precio" };
+            //var field2 = new[] { "tipoHabitacionID" };
+
+            //if (precio < (new EraSphereContext()).servicios.Find(servicioID).)
+            //{
+            //    yield return new ValidationResult("El precio debe ser mayor o igual al base", field);
+            //}
+
+            int nrep = (new EraSphereContext()).hxsxts.Count(hxthxt => hxthxt.hotelID == hotelID && hxthxt.servicioID == servicioID && hxthxt.temporadaID == temporadaID);
+
+            if (1 <= nrep)
+            {
+                yield return new ValidationResult("Este servicio ya fue asignado un precio en esta temporada (contradictorio)", field);
+            }
         }
     }
 }

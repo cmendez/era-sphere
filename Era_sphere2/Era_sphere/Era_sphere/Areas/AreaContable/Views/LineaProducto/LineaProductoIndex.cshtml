@@ -1,38 +1,37 @@
 ﻿@{
-    ViewBag.Title = "IndexProducto";
+    ViewBag.Title = "LineaProductoIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
- 
+    //int[] checkedRecords = (int[])ViewData["checkedRecords"]; 
 }
 @using Era_sphere.Areas.AreaContable.Models
-@model IEnumerable<ProductoView>           
+@model IEnumerable<LineaProductoView>
 @using Telerik.Web.Mvc.UI
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
         <h3>
-            Productos
+            Lineas de productos
         </h3>
     </div>
     <div class="block_cont">
         @(Html.Telerik().Grid(Model)
-        .Name("ProductosGrid")
+        .Name("LineaProductoGrid")
         .Filterable()
+        .Localizable("es-ES")
         .ToolBar(commands => commands.Insert())
-        .Editable(editing => editing
-                            .Mode(GridEditMode.PopUp)
-                            .TemplateName("ProductoViewTemplate"))
+        .Editable(editing => 
+                    editing
+                        .Mode(GridEditMode.InLine)
+                        //.TemplateName("LineaProductoViewTemplate")
+                  )
 
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
+            
             //columns.Bound(p => p.ID);
-            columns.Bound(p => p.lineaProducto_str);
-            columns.Bound(p => p.descripcion);  
-            //columns.Bound(p => p.clasProducto_desc);
-            columns.Bound(p => p.isPerecible_str);
-            columns.Bound(p => p.diasPerecible);
-            columns.Bound(p => p.unidadMedidad);                    
+            columns.Bound(p => p.descripcion);
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
@@ -46,10 +45,10 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Producto")
-            .Insert("Insert", "Producto")
-            .Delete("Delete", "Producto")
-            .Update("Update", "Producto")
+            .Select("Select", "LineaProducto")
+            .Insert("Insert", "LineaProducto")
+            .Delete("Delete", "LineaProducto")
+            .Update("Update", "LineaProducto")
         )
            )
 

@@ -20,12 +20,14 @@ namespace Era_sphere.Generics
         {
             List<TipoHabitacion> ths = new List<TipoHabitacion>()
             {
-                new TipoHabitacion() { descripcion="Simple", cap_max_personas=2, costo_base = 80.00M },
-                new TipoHabitacion() { descripcion="Doble", cap_max_personas=4, costo_base = 120.00M },
-                new TipoHabitacion() { descripcion="Deluxe", cap_max_personas=2, costo_base = 130.00M },
-                new TipoHabitacion() { descripcion="Suite Presidencial", cap_max_personas=3, costo_base = 250.00M }
+                new TipoHabitacion() { descripcion="Simple", cap_max_personas=2, costo_base = 80.00M, numero_camas = 1 },
+                new TipoHabitacion() { descripcion="Doble", cap_max_personas=4, costo_base = 120.00M, numero_camas = 2 },
+                new TipoHabitacion() { descripcion="Deluxe", cap_max_personas=2, costo_base = 130.00M, numero_camas = 2 },
+                new TipoHabitacion() { descripcion="Suite Presidencial", cap_max_personas=3, costo_base = 250.00M, numero_camas = 2 }
             };
-            foreach (TipoHabitacion th in ths) tipos_habitacion.Add(th);
+            foreach (TipoHabitacion th in ths) 
+                tipos_habitacion.Add(th);
+            
             SaveChanges();
 
         }

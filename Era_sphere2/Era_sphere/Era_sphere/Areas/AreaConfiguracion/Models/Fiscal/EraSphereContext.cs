@@ -67,9 +67,54 @@ namespace Era_sphere.Generics
         }
 
         void seedProductos() {
-            for (int i = 0; i < 10; i++) {
-                productos.Add(new Producto { ID = ( i + 1 ) , descripcion = "Producto " + ( i + 1 ) } );
-            }
+            List<Producto> ps = new List<Producto>
+            {
+                //new LineaProducto { descripcion = "Gaseosas" }, //1
+                new Producto { lineaProductoID = 1,  descripcion = "Inka Cola 1/2L",            isPerecible = false,    diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                new Producto { lineaProductoID = 1,  descripcion = "Coca Cola Zero 1/2L",       isPerecible = false,    diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                //new LineaProducto { descripcion = "Vinos" },    //2                
+                new Producto { lineaProductoID = 2,  descripcion = "Vino Blanco Tacama",        isPerecible = false,    diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                new Producto { lineaProductoID = 2,  descripcion = "Vino Rose Tacama",          isPerecible = false,    diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                new Producto { lineaProductoID = 2,  descripcion = "Vino Blanco Concha y Toro", isPerecible = false,    diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                new Producto { lineaProductoID = 2,  descripcion = "Vino Blanco Queirolo",      isPerecible = false,    diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                //new LineaProducto { descripcion = "Verduras" }, //3             
+                new Producto { lineaProductoID = 3,  descripcion = "Brocoli",                   isPerecible = true,     diasPerecible = 10, unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 3,  descripcion = "Apio",                      isPerecible = true,     diasPerecible = 9,  unidadMedidad = "UNI." },
+                new Producto { lineaProductoID = 3,  descripcion = "Zanahora",                  isPerecible = true,     diasPerecible = 10, unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 3,  descripcion = "Choclo",                    isPerecible = true,     diasPerecible = 8,  unidadMedidad = "UNI." },
+                new Producto { lineaProductoID = 3,  descripcion = "Beterraga",                 isPerecible = true,     diasPerecible = 7,  unidadMedidad = "KG." },
+                //new LineaProducto { descripcion = "Frutas" },   //4                 
+                new Producto { lineaProductoID = 4,  descripcion = "Papaya",                    isPerecible = true,     diasPerecible = 5,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 4,  descripcion = "Piña",                    isPerecible = true,     diasPerecible = 6,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 4,  descripcion = "Manzana",                    isPerecible = true,     diasPerecible = 7,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 4,  descripcion = "Durazno",                    isPerecible = true,     diasPerecible = 5,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 4,  descripcion = "Granadilla",                    isPerecible = true,     diasPerecible = 6,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 4,  descripcion = "Lúcuma",                    isPerecible = true,     diasPerecible = 8,  unidadMedidad = "KG." },   
+                //new LineaProducto { descripcion = "Carnes" },   //5
+                new Producto { lineaProductoID = 5,  descripcion = "Lomo",                    isPerecible = true,     diasPerecible = 10,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 5,  descripcion = "Bisteck",                    isPerecible = true,     diasPerecible = 9,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 5,  descripcion = "Ozobuco",                    isPerecible = true,     diasPerecible = 8,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 5,  descripcion = "Asado de tira",                    isPerecible = true,     diasPerecible = 10,  unidadMedidad = "KG." },
+                //new LineaProducto { descripcion = "Pescados" }, //6
+                new Producto { lineaProductoID = 6,  descripcion = "Cojinova",                    isPerecible = true,     diasPerecible = 4,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 6,  descripcion = "Congrio",                    isPerecible = true,     diasPerecible = 4,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 6,  descripcion = "Lenguado",                    isPerecible = true,     diasPerecible = 4,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 6,  descripcion = "Ojo de uva",                    isPerecible = true,     diasPerecible = 4,  unidadMedidad = "KG." },
+                new Producto { lineaProductoID = 6,  descripcion = "Trucha",                    isPerecible = true,     diasPerecible = 4,  unidadMedidad = "KG." },
+                //new LineaProducto { descripcion = "Cervezas" }, //7                 
+                new Producto { lineaProductoID = 7,  descripcion = "Pilsen Callao",                    isPerecible = false,     diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                new Producto { lineaProductoID = 7,  descripcion = "Barena",                    isPerecible = false,     diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                new Producto { lineaProductoID = 7,  descripcion = "Cusqueña",                    isPerecible = false,     diasPerecible = 0,  unidadMedidad = "BOTELLAS" },
+                new Producto { lineaProductoID = 7,  descripcion = "Cusqueña Lata SixPack",                    isPerecible = false,     diasPerecible = 0,  unidadMedidad = "CAJAX6" }
+
+            };
+
+            foreach (Producto p in ps) productos.Add(p);
+            SaveChanges();
+
+            //for (int i = 0; i < 10; i++) {
+            //    productos.Add(new Producto { ID = ( i + 1 ) , descripcion = "Producto " + ( i + 1 ) } );
+            //}
 
         }
 

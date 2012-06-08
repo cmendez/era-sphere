@@ -176,11 +176,22 @@ namespace Era_sphere.Models
 
         void agregarContable() {
             List<SubLink> sub = new List<SubLink>();
+            //sub.Add(new SubLink { Nombre = "Productos", Url = "/AreaContable/Producto" });
+            //sub.Add(new SubLink { Nombre = "Proveedor", Url = "/AreaContable/Proveedor" });
+            //sub.Add(new SubLink { Nombre = "OC's", Url = "/AreaContable/OrdenCompra" });
+            menu.Add(new Link { Nombre = "Contabilidad" , Url = "#" , Icono = "icon_pen" , Sublinks = sub});
+        }
+
+        /**/void agregarAlmacenes()
+        {
+            List<SubLink> sub = new List<SubLink>();
+            sub.Add(new SubLink { Nombre = "Lineas de Producto", Url = "/AreaContable/LineaProducto" });
             sub.Add(new SubLink { Nombre = "Productos", Url = "/AreaContable/Producto" });
             sub.Add(new SubLink { Nombre = "Proveedor", Url = "/AreaContable/Proveedor" });
-            sub.Add(new SubLink { Nombre = "OC's", Url = "/AreaContable/OrdenCompra" });
-            menu.Add(new Link { Nombre = "Contable" , Url = "#" , Icono = "icon_pen" , Sublinks = sub});
+            sub.Add(new SubLink { Nombre = "Compras y Recepción", Url = "/AreaContable/OrdenCompra" });
+            menu.Add(new Link { Nombre = "Almacenes", Url = "#", Icono = "icon_pen", Sublinks = sub });
         }
+
         void agregarAreaClientes()
         {
             this.menu.Add(new Link()
@@ -203,7 +214,8 @@ namespace Era_sphere.Models
             agregarAreaHotel();
             agregarConfiguracion();
             agregarContable();
-            
+            agregarAlmacenes();
+
             this.menu.Add(new Link()
             {
                 Nombre = "Salir",

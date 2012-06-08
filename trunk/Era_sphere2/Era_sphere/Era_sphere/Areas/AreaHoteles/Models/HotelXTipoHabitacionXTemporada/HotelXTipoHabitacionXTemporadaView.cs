@@ -96,11 +96,20 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
         public IEnumerable<ValidationResult>
            Validate(ValidationContext validationContext)
         {
+            //IValidatableObject
             var field = new[] { "precio" };
+            //var field2 = new[] { "tipoHabitacionID" };
 
             if (precio < (new EraSphereContext()).tipos_habitacion.Find(tipoHabitacionID).costo_base)
             {
-                yield return new ValidationResult("El precio debe ser mayor al base", field);
+                yield return new ValidationResult("El precio debe ser mayor o igual al base", field);
+            }
+
+            int nrep = (new EraSphereContext()).hxthxts.Count(hxthxt => hxthxt.hotelID == hotelID && hxthxt.tipoHabitacionID == tipoHabitacionID && hxthxt.temporadaID == temporadaID);
+
+            if (1 <= nrep)
+            {
+                yield return new ValidationResult("Este tipo de habitacion ya fue asignado un precio en esta temporada (contradictorio)", field);
             }
         }
     }

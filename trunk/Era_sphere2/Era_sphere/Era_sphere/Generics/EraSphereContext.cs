@@ -24,7 +24,8 @@ namespace Era_sphere.Generics
             seedTemporadas();
             seedEstadoReserva();
             seedProveedores();
-
+            /**/
+            seedLineasProductos();
             seedProductos();
             //seedProvXProd();
             seedOrdenCompra();

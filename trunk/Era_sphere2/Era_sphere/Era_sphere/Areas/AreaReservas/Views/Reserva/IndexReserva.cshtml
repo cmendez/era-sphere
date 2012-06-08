@@ -64,4 +64,16 @@
     <!-- Table Wrapper End -->
 </div>
 
-   
+<script type="text/javascript">
+    function onComplete(e) {
+        if (e.name == "mostrar_juridico") {
+            $("#detalle-cliente-juridico").load('@Url.Action("ClienteJuridicoShow", "Cliente")' + '/' + e.response.id);
+            var detailModal = $("#DetalleJuridico").data("tWindow");
+            detailModal.center().open();
+        } else if (e.name == "mostrar_natural") {
+            $("#detalle-cliente-natural").load('@Url.Action("ClienteNaturalShow", "Cliente")' + '/' + e.response.id);
+            var detailModal = $("#DetalleNatural").data("tWindow");
+            detailModal.center().open();
+        }
+    }
+</script>   

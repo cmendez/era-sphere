@@ -50,6 +50,8 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
 
         public int ciudadID { get; set; }
 
+        public int perfilID { get; set; }
+
         public EmpleadoView() { }
 
         public EmpleadoView(Empleado empleado)
@@ -79,6 +81,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
 
             ciudadID = empleado.ciudadID;
             paisID = empleado.paisID;
+            perfilID = empleado.perfilID;
          
         }
 
@@ -112,13 +115,16 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
                 ciudad = logica.empleado_context.ciudades.Find(this.ciudadID),
                 paisID = this.paisID,
                 pais = logica.empleado_context.paises.Find(this.paisID),
-
+                perfilID = this.perfilID,
+                //perfil = logica.empleado_context.perfiles.Find(this.perfilID),
                 tipoID = 1,
                 tipo = logica.empleado_context.tipos_personas.Find(1),
                 //  habitacion_asignada =
             };
 
         }
+
+        
 
     }
 

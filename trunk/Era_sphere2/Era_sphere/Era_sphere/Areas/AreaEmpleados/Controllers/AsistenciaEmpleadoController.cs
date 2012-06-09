@@ -18,41 +18,28 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
         {
             return View("Index");
         }
-        /*
-        public ActionResult CrearEmpleado()
-        {
-            return View("CrearEmpleado");
-        }
-        */
-        
-        public ActionResult RegistrarAsistencia(int id)
+       
+        [HttpPost]
+        public JsonResult RegistrarAsistencia(int iduser)
         {
             bool yaRegistro;
             DateTime date = DateTime.Now;
 
-            yaRegistro = asistencia_logica.validarRegistro(id, date, 1);
+            yaRegistro = asistencia_logica.validarRegistro(iduser, date, 1);
 
             if (!yaRegistro)
             {
                 AsistenciaEmpleado asistenciaEmpleado = new AsistenciaEmpleado();
               
-                asistenciaEmpleado.empleadoID = id.ToString();
+                asistenciaEmpleado.empleadoID = iduser.ToString();
                 asistenciaEmpleado.s_asistencia = "ENTRADA";
                 asistenciaEmpleado.fechaHoraEntrada = date;
-                //asistenciaEmpleado.fechaHoraSalida = null;
-
                 asistencia_logica.agregarAsistenciaEmpleado(asistenciaEmpleado);
-                //return View("Index");
-                return RedirectToAction("Index");
+                return Json(new { me = "" });
             }
             else
-            {
-                //Response.Write("<script>alert('Ya habia registrado su salida')</script>");
-                //return View("Index");
-                return RedirectToAction("Index");
-            }
-            
-            
+                return Json(new { me = "Ya ha registrado una entrada anteriormente." });
+   
         }
 
         [GridAction]
@@ -62,41 +49,31 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             return View("Index", new GridModel(asistencia_logica.retornarAsistencias(id)));
         }
         
-        public ActionResult RegistrarSalida(int id)
+        [HttpPost]
+        public JsonResult RegistrarSalida(int iduser)
         {
             bool yaRegistro, existeEntrada;
             DateTime date = DateTime.Now;
 
-            existeEntrada = asistencia_logica.existeEntrada(id, date);
+            existeEntrada = asistencia_logica.existeEntrada(iduser, date);
 
             if (!existeEntrada)
             {
-                Response.Write("<script>alert('No puede registrar salida sin haber registrado una entrada')</script>");
-                return RedirectToAction("Index");
-                //return View("Index");
+                return Json(new { me = "No puede registrar salida sin haber registrado una entrada" });
             }
             else
             {
-                yaRegistro = asistencia_logica.validarRegistro(id, date, 2);
+                yaRegistro = asistencia_logica.validarRegistro(iduser, date, 2);
 
                 if (!yaRegistro)
                 {
-                    //AsistenciaEmpleado asistenciaEmpleado = new AsistenciaEmpleado();
-
-                    //asistenciaEmpleado.empleadoID = id.ToString();
-                    //asistenciaEmpleado.asistencia = "Salida";
-                    //asistenciaEmpleado.fechaHoraSalida = date;
-
-                    //asistencia_logica.agregarAsistenciaEmpleado(asistenciaEmpleado);
-
-                    asistencia_logica.modificarAsistenciaEmpleado(id, date);
-                    return RedirectToAction("Index");
+                    
+                    asistencia_logica.modificarAsistenciaEmpleado(iduser, date);
+                    return Json(new { me = "" });
                 }
                 else
                 {
-                    //Response.Write("<script>alert('Ya habia registrado su salida')</script>");
-                    //return View("Index");
-                    return RedirectToAction("Index");
+                    return Json(new { me = "Ya ha registrado su salida" });
                 }
             }
         }

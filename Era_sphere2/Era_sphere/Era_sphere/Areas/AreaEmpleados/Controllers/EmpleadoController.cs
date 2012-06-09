@@ -28,10 +28,17 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
         [GridAction]
         public ActionResult Select()
         {
-            //ViewBag.perfiles = perfil_logica.retornarPerfiles();
-            ViewBag.empleado = le.retornarEmpleados();
             return View("Index", new GridModel(le.retornarEmpleados()));
         }
+
+        [HttpPost]
+        public JsonResult LoginResult(String user, String password)
+        {
+            var empleados = le.loginEmpleado(user, password);
+            return new JsonResult() { Data = empleados };
+        }
+
+
 
         [GridAction]
         public ActionResult AddEmpleado(Empleado empleado)
@@ -47,69 +54,13 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             return View("IndexCliente", new GridModel(le.retornarEmpleados()));
         }
 
-        /*String nombreCargo, String estado, String cad_horario, String cad_horasIn,
-                                    String cad_horasOut, String sueld*/
-
-
-        public JsonResult newEmpleado(EmpleadoView ev) {
-            Empleado e = ev.deserializa(le);
-            Empleado empleado = new Empleado()
-            {
-                nombre_cargo = ev.nombre_cargo,
-                estado = ev.estado,
-                cad_horario = ev.cad_horario,
-                cad_horasIn = ev.cad_horasIn,
-                cad_horasOut = ev.cad_horasOut,
-                sueldo = ev.sueldo,
-
-                //Persona
-                nombre = ev.nombre,
-                apellido_materno = ev.apellido_materno,
-                apellido_paterno = ev.apellido_paterno,
-                direccion = ev.direccion,
-                celular = ev.celular,
-                telefono = ev.telefono,
-              
-                ciudadID = 1,
-                paisID = 1,
-                tipoID = 1
-            };
-            
-            //le.agregarEmpleado(e);
-            return Json(new { me = "" });
-        }
-
         [HttpPost]
-        public JsonResult nuevoEmpleado(String nombreCargo, String estado, String cad_horario, String cad_horasIn,
-                                    String cad_horasOut, String sueldo)
+        public JsonResult nuevoEmpleado(EmpleadoView emp)
         {
-            
-            Empleado empleado = new Empleado()
-            {
-                nombre_cargo = nombreCargo,
-                estado = estado,
-                cad_horario = cad_horario,
-                cad_horasIn = cad_horasIn,
-                cad_horasOut = cad_horasOut,
-                sueldo = sueldo,
-                //Persona
-                ciudadID = 1,
-                paisID = 1,
-                tipoID = 1
-            };
-             
+            Empleado empleado =  emp.deserializa(le);
             le.agregarEmpleado(empleado);   
-            //perfil_empleado.agregarEmpleado(empleado);
          return Json(new { me = "" });
         }
-        /*
-        ActionResult nuevoEmpleado(String nombreCargo, String estado, String cad_horario, String cad_horasIn,
-                                    String cad_horasOut, String sueldo) {
-
-         Empleado empleado = new Empleado(nombreCargo, estado, cad_horario, cad_horario, cad_horasOut, sueldo);
-         perfil_empleado.agregarEmpleado(empleado);
-         return View("Index", new GridModel(perfil_empleado.retornarEmpleados()));
-        } 
-         * */
+       
     }
 }

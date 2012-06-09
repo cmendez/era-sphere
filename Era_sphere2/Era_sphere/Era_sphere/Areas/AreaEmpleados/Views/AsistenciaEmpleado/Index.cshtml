@@ -19,27 +19,33 @@
         </h3>
     </div>
     <div class="block_cont">
-
-    
-
+        
+         <div class = "form">
+        
+        <button class="t-button t-state-default submit" style = "display:inline" id="regentrada"> Registrar Entrada </button>
+           
+        <button class="t-button t-state-default submit" style = "display:inline; float :right" id="regsalida"> Registrar Salida </button>
+        
+    </div>
+    <p></p>
+    <div id = "log" style = "display:none; background-color:red; color:white; font-size:20px">
+            jajaja 
+    </div>
+    <!--
         @(Html.ActionLink("Registrar Entrada", "RegistrarAsistencia", new { id = idusuario}, null))
         @(Html.ActionLink("Registrar Salida", "RegistrarSalida", new { id = idusuario }, null))
-
+    -->
         <p>
         </p>
 
         @(Html.Telerik().Grid(Model)
         .Name("AsistenciasGrid")
-        .Filterable()
         .Localizable("es-ES")
 
 
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-            
-            columns.Bound(p => p.ID);
-            columns.Bound(p => p.empleadoID);
             columns.Bound(p => p.fechaHoraEntrada);
             columns.Bound(p => p.fechaHoraSalida);
             columns.Bound(p => p.s_asistencia);
@@ -54,160 +60,122 @@
            )
     </div>
    
+   <div id="dialogEntrada" title="Esta seguro que desea registrar su entrada?">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+    ya no podr&aacute; cancelar la operaci&oacute;n</p>
+    </div>
+
+     <div id="dialogSalida" title="Esta seguro que desea registrar su salida?">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+    ya no podr&aacute; cancelar la operaci&oacute;n</p>
+    </div>
+
+    
+
 </div>
-<!--
+
 <script type = "text/javascript">
-    var gridID = "PerfilesGrid";
-    var commandName = "editarPerfil";
-    var iconName = "t-edit";
-    //$("#" + gridID + " .t-grid-" + commandName + " .t-" + commandName).attr("class", "t-icon " + iconName);
-    //$(".t-icon .t-editarPerfil").attr("class", "t-icon " + iconName);
-    //attr("class", "t-icon " + iconName);
 
-    $("#agregarPerfil").click(function () {
-        //ajax
-        localStorage.setItem("estado", "agregando");
-        $("#nombre").val(""),
-        $("#descripcion").val(""),
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            url: "../Navegacion/ListaTodoMenu",
-            success: function (data) {
-                var result = "";
-                localStorage.setItem("actividades", data.length);
-                $.each(data, function (i, item) {
-                    var nombre = item.Nombre;
-                    result += '<p><input type = "checkbox" id = "actividad-' + i + '">' + nombre + '</p>';
-                });
-                $("#listaActividades").html(result);
-            }
-        });
-
-        $('#dialogEditar').dialog('open');
-    });
-
-    $('#dialogEditar').dialog({
+    $('#dialogEntrada').dialog({
         autoOpen: false,
         resizable: false,
         draggable: false,
-        width: 800,
+        width: 300,
         modal: true,
-        title: "Crear Perfil",
+        title: "!Confirmar Registro de Entrada",
         position: "center",
         buttons: {
             "Aceptar": function () {
-                if (!validarForm()) {
-                    return false;
-                } else {
-                    $("#nombreError").hide();
-                    $("#descripcionError").hide();
-                }
-                var cadLista = "";
-                for (j = 0; j < localStorage.getItem("actividades"); j++) {
-                    var nombreActividad = "#actividad-" + j;
-                    if ($(nombreActividad).is(":checked")) cadLista += "1";
-                    else cadLista += "0";
-                }
-
-                if (localStorage.getItem("estado") == "editando") {
-                    //ajax para editar
-                    var perfil = {
-                        ID: localStorage.getItem("idperfil"),
-                        nombrePerfil: $("#nombre").val(),
-                        descripcion: $("#descripcion").val(),
-                        listaVisibilidad: cadLista
-                    };
-                    $.ajax({
-                        type: "POST",
-                        data: JSON.stringify(perfil),
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        url: "Perfiles/Update",
-                        success: function (data) {
-                            $('#PerfilesGrid').data('tGrid').ajaxRequest();
+                var user = localStorage.getItem("idusuario");
+                var entrada = {
+                    iduser: parseInt(user)
+                };
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(entrada),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    url: "AsistenciaEmpleado/RegistrarAsistencia",
+                    success: function (data) {
+                        if (data.me == "") {
+                            $('#AsistenciasGrid').data('tGrid').ajaxRequest();
+                            $("#log").html("Hora de Ingreso registrado Correctamente!!");
+                            $("#log").show();
+                            $("#log").fadeOut(6000);
+                            
+                        } else {
+                            //alert(data.me);
+                            $("#log").html(data.me);
+                            $("#log").show();
+                            $("#log").fadeOut(6000); 
                         }
-                    });
-
-
-                } else if (localStorage.getItem("estado") == "agregando") {
-                    //ajax para agregar
-                    var perfil = {
-                        nombre: $("#nombre").val(),
-                        descripcion: $("#descripcion").val(),
-                        lista: cadLista
-                    };
-
-
-                    $.ajax({
-                        type: "POST",
-                        data: JSON.stringify(perfil),
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        url: "Perfiles/nuevoPerfil",
-                        success: function (data) {
-                            if (data.me == "") {
-                                $('#PerfilesGrid').data('tGrid').ajaxRequest();
-                            }
-                        }
-                    });
-                }
-
-
-
-
+                        
+                    }
+                });
                 $(this).dialog("close");
+
             },
             "Cancelar": function () {
                 $(this).dialog("close");
+                return false;
             }
         }
     });
 
-    function validarForm() {
-        var name = $("#nombre").val();
-        var desc = $("#descripcion").val();
-        var b = true;
-        if (name == "") { $(".nombreError").show(); b = false; } else { $("#nombreError").hide(); }
-        if (desc == "") { $(".descripcionError").show(); b = false; } else { $("#descripcionError").hide(); }
-        return b;
-    }
 
-    function Grid_onComplete(e) {
-        if (e.name == "editarPerfil") {
-            localStorage.setItem("estado", "editando");
-            var result = e.response;
-            var nomb = result.nombrePerfil;
-            var desc = result.descripcion;
-            var idperfil = result.ID;
-            localStorage.setItem("idperfil", idperfil);
-            var lista = result.listaVisibilidad;
-            $("#nombre").val(nomb),
-            $("#descripcion").val(desc),
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            url: "../Navegacion/ListaTodoMenu",
-            success: function (data) {
-                var result = "";
-                localStorage.setItem("actividades", data.length);
-                $.each(data, function (i, item) {
-                    var nombre = item.Nombre;
-                    if (lista[i] == "1") {
-                        result += '<p><input type = "checkbox" checked="checked" id = "actividad-' + i + '">' + nombre + '</p>';
-                    } else {
-                        result += '<p><input type = "checkbox" id = "actividad-' + i + '">' + nombre + '</p>';
+    $('#dialogSalida').dialog({
+        autoOpen: false,
+        resizable: false,
+        draggable: false,
+        width: 300,
+        modal: true,
+        title: "!Confirmar Registro de Salida",
+        position: "center",
+        buttons: {
+            "Aceptar": function () {
+                var user = localStorage.getItem("idusuario");
+                var entrada = {
+                    iduser: parseInt(user)
+                };
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(entrada),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    url: "AsistenciaEmpleado/RegistrarSalida",
+                    success: function (data) {
+                        if (data.me == "") {
+                            $('#AsistenciasGrid').data('tGrid').ajaxRequest();
+                            $("#log").html("Hora de Ingreso registrado Correctamente!!");
+                            $("#log").show();
+                            $("#log").fadeOut(6000);
+
+                        } else {
+                            //alert(data.me);
+                            $("#log").html(data.me);
+                            $("#log").show();
+                            $("#log").fadeOut(6000);
+                        }
+
                     }
-
                 });
-                $("#listaActividades").html(result);
-            }
-        });
-            $('#dialogEditar').dialog('open');
-        }
-    }
-</script>
+                $(this).dialog("close");
 
--->
+            },
+            "Cancelar": function () {
+                $(this).dialog("close");
+                return false;
+            }
+        }
+    });
+
+
+    $("#regentrada").click(function () {
+        $('#dialogEntrada').dialog('open');
+    });
+
+    $("#regsalida").click(function () {
+        $('#dialogSalida').dialog('open');
+    });
+
+</script>

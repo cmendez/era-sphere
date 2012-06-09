@@ -98,6 +98,12 @@
                             <label> Pais:</label>
 							<input class="input tipRight" type="text" maxlength = 50 style="width:300px;" name="pais" id="pais"/>
 							</div>
+
+                            <div class="form_row">
+							
+                            <label> Ciudad:</label>
+							<input class="input tipRight" type="text" maxlength = 50 style="width:300px;" name="ciudad" id="ciudad"/>
+							</div>
 							<!--
                             <div class="form_row">
 							<label> Ciudad:</label>
@@ -282,7 +288,40 @@
             success: function (data) {
             var suggestions = []; 
                 $.each(data, function (i, item) {
-                    suggestions.push(item.Nombre);
+                    var pais = {
+                        label : item.Nombre,
+                        value : item.ID
+                    }
+                    suggestions.push(pais);
+                });
+                add(suggestions);
+                console.log(suggestions);
+            }
+        });     
+        }
+        });  
+
+    
+     $("#ciudad").autocomplete({  
+           source: function(req, add){  
+            var jsonPais = {
+                    ciudad: $("#ciudad").val(),
+                    idpais : parseInt($("#pais").val())
+                };
+            $.ajax({
+            type: "POST",
+            data: JSON.stringify(jsonPais),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "../AreaConfiguracion/Ubigeo/DameCiudades",
+            success: function (data) {
+            var suggestions = []; 
+                $.each(data, function (i, item) {
+                    var ciudad = {
+                        label : item.Nombre,
+                        value : item.ID
+                    }
+                    suggestions.push(ciudad);
                 });
                 add(suggestions);
             }
@@ -301,7 +340,7 @@
                 $.each(data["data"], function (i, item) {
                     var nombre = item.nombrePerfil;
                     //<option value="dni"> DNI </option>
-                   result += '<option  value = "' + i + '">' + nombre + '</option>';
+                   result += '<option  value = "' + item.ID + '">' + nombre + '</option>';
                 });
                 $("#perfil").html(result);
                 
@@ -429,18 +468,17 @@
         }
     });
 
-    $("#chklunes").click(function(){
-        var cadenaHorario = "";
-        cadenaHorario += ($("#chklunes").val() == "on")?"1":"0"; 
-        cadenaHorario += ($("#chkmartes").val() == "on")?"1":"0";
-        cadenaHorario += ($("#chkmiercoles").val() == "on")?"1":"0";
-        cadenaHorario += ($("#chkjueves").val() == "on")?"1":"0";
-        cadenaHorario += ($("#chkviernes").val() == "on")?"1":"0";
-        cadenaHorario += ($("#chksabado").val() == "on")?"1":"0";
-        cadenaHorario += ($("#chkdomingo").val() == "on")?"1":"0";
-        alert ($("#chkdomingo").val());
-        //alert (cadenaHorario);
-    });
+    function armaHorario(){
+    var result = "";
+    result += $("#chklunes").is(':checked')?"1":"0";
+    result += $("#chkmartes").is(':checked')?"1":"0";
+    result += $("#chkmiercoles").is(':checked')?"1":"0";
+    result += $("#chkjueves").is(':checked')?"1":"0";
+    result += $("#chkviernes").is(':checked')?"1":"0";
+    result += $("#chksabado").is(':checked')?"1":"0";
+    result += $("#chkdomingo").is(':checked')?"1":"0";
+    return result;
+    }
 
     function armaEntrada(){
         //Datos Personales.
@@ -456,15 +494,18 @@
         var fecha_nac = $("#fecha_nacimiento").val();
         var telefono = $("#telefono_natural").val();
         var celular = $("#celular_natural").val();
+        var pais = $("#pais").val();
+        var ciudad = $("#ciudad").val();
         
+
         //Datos del Trabajo
         var nombreCargo = $("#nombre_cargo").val();
         var estado = $("#estado").val();
-        var cadenaHorario = $("#chklunes").is(':checked')?"1":"0" + $("#chkmartes").is(':checked')?"1":"0" + $("#chkmiercoles").is(':checked')?"1":"0" + $("#chkjueves").is(':checked')?"1":"0" + $("#chkviernes").is(':checked')?"1":"0" + $("#chksabado").is(':checked')?"1":"0" + $("#chkdomingo").is(':checked')?"1":"0";
+        var cadenaHorario = armaHorario();
         var cadenaHoraIn = arma_cadhora($("#lunesTimeIn").val(), $("#martesTimeIn").val(), $("#miercolesTimeIn").val(), $("#juevesTimeIn").val(),$("#viernesTimeIn").val(), $("#sabadoTimeIn").val(), $("#domingoTimeIn").val());
         var cadenaHoraOut = arma_cadhora($("#lunesTimeOut").val(), $("#martesTimeOut").val(), $("#miercolesTimeOut").val(), $("#juevesTimeOut").val(),$("#viernesTimeOut").val(), $("#sabadoTimeOut").val(), $("#domingoTimeOut").val());
         var sueldo = $("#sueldo").val();
-
+        var perfil = $("#perfil").val();
         //
         var user = $("#usuario").val();
         var pass1 = $("#pass1").val();
@@ -473,7 +514,7 @@
         if (password == "") alert("Las Claves No Coinciden");
             
         var jsonEntrada = {
-                    //datos persona
+            //datos persona
                      nombre : nombre_empleado,
                      apellido_paterno : app_paterno,
                      apellido_materno : app_materno,
@@ -483,7 +524,10 @@
                      telefono : telefono,
                      celular: celular,
                      usuario : user,
-                     password : password,   
+                     contrasenha : password,
+                     paisId : pais,
+                     ciudadId : ciudad,
+                     perfilId : perfil,   
                      //datos Trabajo
                      nombre_cargo: nombreCargo,
                      estado : estado,
@@ -506,6 +550,7 @@
         result += HoraHexa(vi==""?"00:00":vi);
         result += HoraHexa(sa==""?"00:00":sa);
         result += HoraHexa(dom==""?"00:00":dom);
+        return result;
     }
 
     function HoraHexa( hora ){

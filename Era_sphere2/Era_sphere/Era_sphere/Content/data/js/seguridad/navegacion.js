@@ -3,11 +3,11 @@
 
     var token = localStorage.getItem("token");
     if (token == null) {
-        alert("No tienes Acceso");
-        nsp_redirect()
+        alert("No tienes Acceso pero te dejo entrar no vale llorar");
+        //nsp_redirect()
     } else if (token == "") {
-        alert("No tienes Acceso");
-        nsp_redirect();
+        alert("No tienes Acceso pero te dejo entrar no vale llorar");
+        //nsp_redirect();
     } else {
         arma_menu(token);
     }

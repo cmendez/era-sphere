@@ -21,5 +21,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             var paises = logica_ubigeo.retornarPaisesFiltro(pais);
             return new JsonResult() { Data = paises };
         }
+
+        [HttpPost]
+        public ActionResult DameCiudades(String ciudad, int idpais)
+        {
+            var ciudades = logica_ubigeo.retornarCiudadesFiltro(ciudad, idpais);
+            return new JsonResult() { Data = ciudades };
+        }
     }
 }

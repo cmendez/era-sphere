@@ -21,18 +21,48 @@
             data: JSON.stringify(jsonLogin),
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            url: "Home/LoginResult",
+            url: "/AreaEmpleados/Empleado/LoginResult",
             success: function (data) {
+                if (data.length == 0) {
+                    $("#explain").html("Usuario o Clave incorrecto");
+                } else {
+                    var login = data[0];
+                    var idusuario = login.ID;
+                    var idperfil = login.perfilID;
+                    //nos jalamos el idperfil
+                    localStorage.setItem("usuario", login.nombre);
+                    localStorage.setItem("idusuario", idusuario);
+                    var entrada = {
+                        perfilID: idperfil
+                    };
+                    $.ajax({
+                        type: "POST",
+                        data: JSON.stringify(entrada),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/AreaConfiguracion/Perfiles/DamePerfil",
+                        success: function (data) {
+                            var np = data.nombrePerfil;
+                            var token = data.listaVisibilidad;
+                            localStorage.setItem("token", token);
+                            var url = "/Home/Sistema";
+                            $(location).attr('href', url);
+                        }
+                    });
+                }
+
+                /*
                 var token = data.token;
                 if (token == "")
-                    $("#explain").html("Usuario o Clave incorrecto");
+                $("#explain").html("Usuario o Clave incorrecto");
                 else {
-                    localStorage.setItem("token", token);
-                    var url = "/Home/Sistema";
-                    $(location).attr('href', url);
-                    localStorage.setItem("usuario", u);
-                    //$(this).load("@Url.Action("/../../Home/LoginResult")");
+                localStorage.setItem("token", token);
+                var url = "/Home/Sistema";
+                $(location).attr('href', url);
+                localStorage.setItem("usuario", u);
+                //$(this).load("@Url.Action("/../../Home/LoginResult")");
                 }
+                */
             }
         });
     });

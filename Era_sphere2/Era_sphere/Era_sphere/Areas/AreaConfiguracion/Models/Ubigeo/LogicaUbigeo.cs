@@ -36,6 +36,16 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo
             return paises_view;
         }
 
+        public List<CiudadView> retornarCiudadesFiltro(String ciudad, int idpais) { 
+            List<Ciudad> ciudades = pais_context.ciudades.ToList();
+            List<CiudadView> ciudades_view = new List<CiudadView>();
+            foreach (Ciudad city in ciudades)
+                //if ((city.paisID == idpais) && (city.nombre.ToUpper().Contains(ciudad.ToUpper())))
+                //    ciudades_view.Add(new CiudadView(city));
+                if (city.nombre.ToUpper().Contains(ciudad.ToUpper()))
+                    ciudades_view.Add(new CiudadView(city));
+            return ciudades_view;
+        }
 
         public List<PaisView> retornarPaises()
         {

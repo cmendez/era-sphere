@@ -12,7 +12,6 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
         public proveedor_x_productoView(){}
         public proveedor_x_productoView(proveedor_x_producto pp)
         {
-            // TODO: Complete member initialization
             ID = pp.ID;
             productoID = pp.productoID;
             proveedorID = pp.proveedorID;

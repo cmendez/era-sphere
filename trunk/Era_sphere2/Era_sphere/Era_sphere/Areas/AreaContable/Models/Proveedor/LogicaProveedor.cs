@@ -5,6 +5,7 @@ using System.Web;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaContable.Models.Ordenes;
 using Era_sphere.Areas.AreaHoteles.Models;
+using System.Globalization;
 
 namespace Era_sphere.Areas.AreaContable.Models
 {
@@ -96,9 +97,9 @@ namespace Era_sphere.Areas.AreaContable.Models
                 modificar_producto(id, ppv);
                 return;
             }
-                                                    
 
-            pp.precio_unitario = ppv.precio_unitario;
+
+            pp.precio_unitario = ppv.precio_unitario;// double.Parse(ppv.precio_unitario, CultureInfo.InvariantCulture);
             pp.proveedor = context.proveedores.Find(id);
             pp.producto = context.productos.Find( ppv.productoID ) ;
             DBGenericQueriesUtil<proveedor_x_producto> query = new DBGenericQueriesUtil<proveedor_x_producto>(context, context.p_x_p);
@@ -109,7 +110,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         {
             EraSphereContext context = proveedor_context;
             proveedor_x_producto pp = context.p_x_p.Find(producto.ID);
-            pp.precio_unitario = producto.precio_unitario;
+            pp.precio_unitario = producto.precio_unitario;//double.Parse(producto.precio_unitario, CultureInfo.InvariantCulture);
             DBGenericQueriesUtil<proveedor_x_producto> query = new DBGenericQueriesUtil<proveedor_x_producto>(context, context.p_x_p);
             query.modificarElemento(pp, pp.ID);
         }

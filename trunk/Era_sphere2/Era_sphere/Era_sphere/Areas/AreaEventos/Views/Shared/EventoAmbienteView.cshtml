@@ -25,7 +25,7 @@
             <form id="form_ambiente" action="#" class="form">
             <div>
             
-                <label> Producto :  </label>
+                <label> Ambiente :  </label>
                            @( Html.Telerik().ComboBox()
                             .Name("ambienteID")
 
@@ -36,6 +36,33 @@
                <span class="error_ambiente error" style="display:none;background:red ; color:white">
                     Seleccione ambiente
                </span>
+   
+            </div>
+            <div>
+                <label> Fecha hora inicio</label>
+                @(Html.Telerik().DateTimePicker()
+                    .Name("fecha_hora_inicio")
+                    .HtmlAttributes(new { id = "DateTimePicker_wrapper" })
+                    .Interval(30)
+                    
+                 )
+              <span class="error_fecha_inicio error" style="display:none;background:red ; color:white">
+                    Seleccione fecha inicio
+              </span>
+   
+            </div>
+            <div>
+                <label> Fecha hora fin </label>
+                @(Html.Telerik().DateTimePicker()
+                    .Name("fecha_hora_fin")
+                    .HtmlAttributes(new { id = "DateTimePicker_wrapper" })
+                    .Interval(30)
+                    
+                 )
+
+              <span class="error_fecha_fin error" style="display:none;background:red ; color:white">
+                    Seleccione fecha fin
+              </span>
    
             </div>
             <div>
@@ -66,13 +93,17 @@
                     var $form = $(this);
                     var ambienteIDt = $form.find('input[name="ambienteID"]').val();
                     var preciot = $form.find('input[name="precio"]').val();
+                    //var fecha_hora_iniciot = $form.find('input[name="fecha_hora_inicio"]').val();
+                    var fecha_hora_iniciot = $("#fecha_hora_inicio").val();
+                    //var fecha_hora_fint = $form.find('input[name="fecha_hora_fin"]').val();
+                    var fecha_hora_fint = $("#fecha_hora_fin").val();
                     var link = "/AreaEventos/Evento/InsertAmbiente";
 
                     if (ambienteIDt == "" || preciot == "" || !isNumber(ambienteIDt)) {
-                        if (!isNumber(ambienteIDt))
-                            $(".error_ambiente").show();
-                        if (precio == "")
-                            $(".error_precio").show();
+                        //                        if (!isNumber(ambienteIDt))
+                        //                            $(".error_ambiente").show();
+                        //                        if (precio == "")
+                        $(".error_precio").show();
                     }
                     else {
 
@@ -83,7 +114,9 @@
                                 datatype: 'json',
                                 contentType: 'application/json',
                                 data:
-                                        JSON.stringify({ ambienteID: ambienteIDt, precio: preciot }),
+                                        JSON.stringify({ ambienteID: ambienteIDt, precio: preciot, fecha_hora_inicio: fecha_hora_iniciot,
+                                            fecha_hora_fin: fecha_hora_fint
+                                        }),
                                 success: function (result) {
 
                                     $('#AmbientesGrid').data('tGrid').ajaxRequest();
@@ -109,7 +142,9 @@
         {
             columns.Bound(p => p.ambienteID).ReadOnly(true);
             columns.Bound(p => p.amb_descripcion).ReadOnly(true);
-            columns.Bound(p => p.precio).Format("{0:c}");
+            columns.Bound(p => p.amb_precio).Format("{0:c}");
+            columns.Bound(p => p.fecha_hora_inicio).ReadOnly(true);
+            columns.Bound(p => p.fecha_hora_fin).ReadOnly(true);
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

@@ -13,7 +13,6 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
         {
             this.ID = eventoxambiente.ID;
             this.fecha_hora_fin = eventoxambiente.fecha_hora_fin;
-            this.nombre = eventoxambiente.nombre;
             this.fecha_hora_inicio = eventoxambiente.fecha_hora_inicio;
             this.eventoID = eventoxambiente.eventoID;
             this.ev_nombre = eventoxambiente.evento.nombre;
@@ -24,6 +23,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
             this.amb_descripcion = eventoxambiente.ambiente.descripcion;
             this.amb_detalle = eventoxambiente.ambiente.detalle;
             this.amb_num_niveles = eventoxambiente.ambiente.num_niveles;
+            this.amb_precio = eventoxambiente.ambiente.precio;
             this.precio = eventoxambiente.precio;
             //this.hotelID = eventoxambiente.evento.hotelID;
         }
@@ -46,9 +46,9 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
 
         public int amb_num_niveles { get; set; }
 
-        public string amb_detalle { get; set; }
+        public decimal amb_precio { get; set; }
 
-        public string nombre { get; set; }
+        public string amb_detalle { get; set; }
 
         public DateTime fecha_hora_inicio { get; set; }
 
@@ -63,7 +63,6 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
             return new EventoXAmbiente
             {
                 ID = this.ID,
-                nombre = this.nombre,
                 fecha_hora_inicio = this.fecha_hora_inicio,
                 fecha_hora_fin = this.fecha_hora_fin,
                 eventoID = this.eventoID,

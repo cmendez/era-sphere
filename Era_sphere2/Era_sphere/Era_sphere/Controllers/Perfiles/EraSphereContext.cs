@@ -11,7 +11,7 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public DbSet<Perfil> perfiles { get; set; }
-        void seedPerfil() {
+        public void seedPerfil() {
             Perfil perfil = new Perfil
             {
                 descripcion = "superadmin",
@@ -20,6 +20,7 @@ namespace Era_sphere.Generics
                 nombrePerfil = "superadmin"
             };
             perfiles.Add(perfil);
+            SaveChanges();
         }
     }
 }

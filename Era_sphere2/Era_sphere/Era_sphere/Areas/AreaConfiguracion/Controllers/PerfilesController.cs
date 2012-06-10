@@ -7,6 +7,8 @@ using Era_sphere.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Perfiles;
 using Telerik.Web.Mvc;
 
+using Era_sphere.Generics;
+
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 {
     public class PerfilesController : Controller
@@ -27,9 +29,17 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         }
 
         [GridAction]
-        public ActionResult DamePerfil(int perfilID) {
-
-            var perfil = perfil_logica.retornarPerfil(perfilID);
+        public ActionResult DamePerfil(int perfilID)
+        {
+            //(new EraSphereContext()).seedPerfil();
+            //var perfil = perfil_logica.retornarPerfil(perfilID);
+            Perfil perfil = new Perfil
+            {
+                descripcion = "superadmin",
+                ID = 1,
+                listaVisibilidad = "1111111",
+                nombrePerfil = "superadmin"
+            };
             return new JsonResult() { Data = perfil };
         }
 

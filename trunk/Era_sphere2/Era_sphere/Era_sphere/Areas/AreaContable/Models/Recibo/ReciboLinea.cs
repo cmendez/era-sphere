@@ -14,7 +14,7 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
         public int reciboID { get; set; }
         public Recibo recibo { get; set; }
 
-        public int espacio_rentableID { get; set; }
+        public int? espacio_rentableID { get; set; }
 
         public decimal precio_unitario { get; set; }
 

@@ -44,5 +44,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Fiscal
             MonedaView moneda_view = new MonedaView(moneda);
             return moneda_view;
         }
+
+        public List<Moneda> retornarMonedas2()
+        {
+            return moneda_context.monedas.ToList();
+        }
     }
 }

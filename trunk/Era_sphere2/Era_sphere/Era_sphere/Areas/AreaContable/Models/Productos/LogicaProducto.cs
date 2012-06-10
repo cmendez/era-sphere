@@ -45,6 +45,11 @@ namespace Era_sphere.Areas.AreaContable.Models
             return producto_view;
         }
 
+        public List<Producto> retornarProductos2()
+        {
+            return producto_context.productos.ToList();
+        }
+
 
     }
 }

@@ -40,6 +40,10 @@
                         )
 
         </p>
+        <p>@Html.ActionLink("Precios de productos", "Index", new { controller = "HotelXProducto" , id = @id_hotel},
+                            new { @class = "tipTop" }
+                        )
+        </p>
         <p>@Html.ActionLink("Alquileres de tipo de habitacion", "Index", new { controller = "HotelXTipoHabitacionXTemporada" , id = @id_hotel},
                             new { @class = "tipTop" }
                         )

@@ -24,7 +24,7 @@ namespace Era_sphere.Generics
                     direccion = "1212121",
                     usuario = "admin",
                     password = "admin",
-                    perfilID = 39
+                    perfilID = 1
                 }
                 );
         }

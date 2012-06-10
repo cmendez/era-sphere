@@ -7,13 +7,13 @@
     var data = new { id_proveedor = prov.ID };
     var data_oc = new { id_oc = oc.ordenID };
 }
-@(Html.Telerik().Window()
+@{Html.Telerik().Window()
     .Name("popupCompra")
-    .Visible(true)
+    .Visible(false)
     .Title("Crear Orden de Compra")
     .Modal(true)
     .Width(600)
-    
+
         .Content(@<text>
 <div id="popupOC">
     <ul>
@@ -38,8 +38,8 @@
         @(Html.Telerik()
             .ComboBox()
             .Name("producto_input")
-            .DataBinding( bind => bind.Ajax()
-                        .Select("ProductosProveedor","OrdenCompra", @data ))
+            .DataBinding(bind => bind.Ajax()
+                        .Select("ProductosProveedor", "OrdenCompra", @data))
          )
          <label> Cantidad: </label>
          @(Html.Telerik().IntegerTextBox()
@@ -59,7 +59,7 @@
            var cantidadf = $("#cantidad_input").val();
            $.ajax({
                type: 'POST',
-               url: '@Url.Action("InsertOCLinea" , "OrdenCompra",@data_oc)',
+               url: '@Url.Action("InsertOCLinea", "OrdenCompra", @data_oc)',
                contentType: 'application/json',
                dataType: 'json',
                data: JSON.stringify({ id_producto: id_productof, cantidad: cantidadf }),
@@ -71,7 +71,7 @@
         </script>
     @(Html.Telerik().Grid<OCompraLineaView>()
         .Name("OCGrid")
-        .DataKeys( d => d.Add( p => p.ID))
+        .DataKeys(d => d.Add(p => p.ID))
         .Columns(columns =>
         {
             columns.Bound(o => o.productoID).Width(100).ReadOnly(true);
@@ -91,5 +91,5 @@
     )
     
 </div>
-</text>)
-    )
+</text>).Render();
+    }

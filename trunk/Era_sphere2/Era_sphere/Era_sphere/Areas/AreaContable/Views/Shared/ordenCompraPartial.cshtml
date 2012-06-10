@@ -43,7 +43,7 @@
          )
 
          <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
-        value="Agregar Producto" />
+        value="Agregar Producto" style="margin: 10px" />
        
     </form>
    <script type="text/javascript">
@@ -84,5 +84,8 @@
             .Delete("DeleteOCL", "OrdenCompra", new { id_oc = @oc.ordenID })
         )
     )
-    
+    <span class="form">
+        <button class="t-button t-state-default submit" style="float:right ; margin-top: 10px ; margin-bottom: 10px;"> Registrar </button>
+        <button class="t-button t-state-default submit" style="float:right; margin-right:10px; margin-top:10px"> Cancelar </button>
+    </span>
 </div>

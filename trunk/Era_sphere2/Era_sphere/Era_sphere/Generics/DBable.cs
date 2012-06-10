@@ -10,5 +10,6 @@ namespace Era_sphere.Generics
     {
         [Key]
         public int ID { get; set; }
+        bool eliminado { get; set; }
     }
 }

@@ -46,7 +46,11 @@ namespace Era_sphere.Areas.AreaContable.Models
 
             OrdenCompra oc = context.ordenes_compra.Find(id_oc);
             OCompraLinea ocl = context.ordenes_clinea.Find(id);
-            oc.productos.Remove( ocl );
+            DBGenericQueriesUtil<OCompraLinea> q = new DBGenericQueriesUtil<OCompraLinea>(context, context.ordenes_clinea);
+            q.eliminarElemento(id);
+            oc.productos.Remove( ocl ); 
+            DBGenericQueriesUtil<OrdenCompra> query = new DBGenericQueriesUtil<OrdenCompra>(context,context.ordenes_compra);
+            query.modificarElemento(oc, oc.ID);
             return;
            
         }
@@ -56,6 +60,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             OrdenCompra oc = context.ordenes_compra.Find(id_oc);
             OCompraLinea ocl = new OCompraLinea();
             ocl.producto = context.p_x_p.Find( id_producto );
+            ocl.cantidad = cantidad;
             ocl.precio_total = (decimal)cantidad * (decimal)ocl.producto.precio_unitario;
             ocl.orden_compra = oc;
             DBGenericQueriesUtil<OrdenCompra> q = new DBGenericQueriesUtil<OrdenCompra>(context, context.ordenes_compra);

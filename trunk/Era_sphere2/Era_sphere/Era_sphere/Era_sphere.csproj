@@ -114,6 +114,7 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioView.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioXHotel.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicio.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\CiudadView.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\InterfazLogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\LogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\PaisView.cs" />
@@ -129,6 +130,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
+    <Compile Include="Areas\AreaContable\Models\LineaProducto\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaContable\Models\LineaProducto\InterfazLogicaLineaProducto.cs" />
+    <Compile Include="Areas\AreaContable\Models\LineaProducto\LineaProducto.cs" />
+    <Compile Include="Areas\AreaContable\Models\LineaProducto\LineaProductoView.cs" />
+    <Compile Include="Areas\AreaContable\Models\LineaProducto\LogicaLineaProducto.cs" />
     <Compile Include="Areas\AreaContable\Models\LogicaPagos.cs" />
     <Compile Include="Areas\AreaContable\Models\OrdenCompra\EraSphereContext.cs" />
     <Compile Include="Areas\AreaContable\Models\OrdenCompra\EstadoOC.cs" />

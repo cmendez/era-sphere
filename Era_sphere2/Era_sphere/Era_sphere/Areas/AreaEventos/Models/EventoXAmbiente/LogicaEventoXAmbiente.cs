@@ -63,5 +63,13 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
         {
             database_table.agregarElemento(exaview.deserializa());
         }
+
+        public decimal RetornarCosto(int idEvento)
+        {
+            decimal costo = 0;
+            List <EventoXAmbienteView> listexa= retornarAmbientes(idEvento);
+            foreach (EventoXAmbienteView exa in listexa) costo += exa.amb_precio;
+            return costo;
+        }
     }
 }

@@ -81,6 +81,14 @@ namespace Era_sphere.Areas.AreaEventos.Models.Adicionales
 
 
 
-        
+
+
+        public decimal RetornarCosto(int idEvento)
+        {
+            decimal costo = 0;
+            List<Adicional> adicionales = retornarAdicionales(idEvento);
+            foreach (Adicional adicional in adicionales) costo += adicional.precio;
+            return costo;
+        }
     }
 }

@@ -1269,7 +1269,19 @@
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Reserva\ConsultaReservaParcialView.cshtml" />
     <Content Include="Areas\AreaContable\Views\Pagos\TarjetaDeCreditoIndex.cshtml" />
+
     <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\AgregarOrden.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\IndexOrdenes.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Proveedor\HotelesProveedor.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\HotelProveedorPartial.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\ordenCompraPartial.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenLineaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenViewTemplate.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EventoCalcularCostos.cshtml" />
+
+    <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
+
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

@@ -3,6 +3,7 @@ using Era_sphere.Generics;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente;
+using System;
 
 namespace Era_sphere.Areas.AreaEventos.Models.Evento
 {
@@ -117,30 +118,19 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             query.modificarElemento(exa, exa.ID);
         }
 
-        public void agregarAmbienteAEvento(int idEvento, EventoXAmbienteView exaview)
+        public void agregarAmbienteAEvento(int idEvento, EventoXAmbienteView exaview,int idAmbiente)
         {
-            //EventoXAmbiente.EventoXAmbiente exa = new EventoXAmbiente.EventoXAmbiente();
-            exaview.eventoID = idEvento;
+            EventoXAmbiente.EventoXAmbiente exa = new EventoXAmbiente.EventoXAmbiente();
+            //exaview.eventoID = idEvento;
             LogicaEventoXAmbiente logicaEAX = new LogicaEventoXAmbiente();
-            logicaEAX.agregarElemento(exaview);
-
-            //IEnumerable<EventoXAmbiente.EventoXAmbiente> ans = from ambiente in context.p_x_p
-            //                                        where ambiente.ambienteID == exaview.productoID && producto.proveedorID == id
-            //                                        select ambiente;
-            //List<proveedor_x_producto> ret = ans.ToList();
-            //if (ret.Count != 0)
-            //{
-            //    ppv.ID = ret.ElementAt(0).ID;
-            //    modificar_producto(id, ppv);
-            //    return;
-            //}
-
-
-            //pp.precio_unitario = ppv.precio_unitario;
-            //pp.proveedor = context.proveedores.Find(id);
+            exa.precio = exaview.precio;
+            exa.fecha_hora_inicio = exaview.fecha_hora_inicio;
+            exa.fecha_hora_fin = exaview.fecha_hora_fin;
+            exa.ambiente = evento_context.ambientes.Find(idAmbiente);
+            exa.evento = evento_context.eventos.Find(idEvento);
             //pp.producto = context.productos.Find(ppv.productoID);
-            //DBGenericQueriesUtil<proveedor_x_producto> query = new DBGenericQueriesUtil<proveedor_x_producto>(context, context.p_x_p);
-            //query.agregarElemento(pp);
+            DBGenericQueriesUtil<EventoXAmbiente.EventoXAmbiente> query = new DBGenericQueriesUtil<EventoXAmbiente.EventoXAmbiente>(evento_context, evento_context.eventoXAmbientes);
+            query.agregarElemento(exa);
         }
     }
 }

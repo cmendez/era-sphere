@@ -219,15 +219,32 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult InsertAmbiente(EventoXAmbienteView ambiente, int idEvento)
+        public ActionResult InsertAmbiente(EventoXAmbienteView ambiente, int idEvento,DateTime fecha_hora_inicio,DateTime fecha_hora_fin)
         {
             //int idevento = id;
             int idambiente=ambiente.ambienteID;
             ambiente.eventoID = idEvento;
-            evento_logica.agregarAmbienteAEvento(idEvento, ambiente);
+            ambiente.fecha_hora_inicio = fecha_hora_inicio;
+            ambiente.fecha_hora_fin = fecha_hora_fin;
+            evento_logica.agregarAmbienteAEvento(idEvento, ambiente,idambiente);
             return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
 
         }
         #endregion 
+
+        
+        public ActionResult CalcularCostos(int idEvento)
+        {
+            decimal costo = 0;
+
+            LogicaAdicional logicaAdicional = new LogicaAdicional();
+            costo += logicaAdicional.RetornarCosto(idEvento);
+
+            LogicaEventoXAmbiente logicaExA= new LogicaEventoXAmbiente();
+            costo += logicaExA.RetornarCosto(idEvento);
+
+            ViewBag.precio = costo;
+            return View("EventoCalcularCostos");
+        }
     }
 }

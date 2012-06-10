@@ -37,9 +37,14 @@
                            @( Html.Telerik().ComboBox()
                             .Name("productoID")
                             .Placeholder("Seleccione Producto")
+<<<<<<< .mine
+                            
+                            .DataBinding(binding => binding.Ajax().Select("ProductosRestantes", "Proveedor", data))
+=======
                             .DataBinding(binding => binding
                                                         .Ajax()
                                                         .Select("ProductosRestantes", "Proveedor", data))
+>>>>>>> .r679
                             )
                <span class="error_producto error" style="display:none;background:red ; color:white">
                     Seleccione producto

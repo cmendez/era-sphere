@@ -12,8 +12,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
     {
 
         //public int hotelID;
-        [Required]
-        public string nombre { get; set; }
+        
         [Required]
         public DateTime fecha_hora_inicio { get; set; }
         [Required]

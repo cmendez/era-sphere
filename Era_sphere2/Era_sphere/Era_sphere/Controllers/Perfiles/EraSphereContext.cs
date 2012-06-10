@@ -11,5 +11,15 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public DbSet<Perfil> perfiles { get; set; }
+        void seedPerfil() {
+            Perfil perfil = new Perfil
+            {
+                descripcion = "superadmin",
+                ID = 1,
+                listaVisibilidad = "11111111",
+                nombrePerfil = "superadmin"
+            };
+            perfiles.Add(perfil);
+        }
     }
 }

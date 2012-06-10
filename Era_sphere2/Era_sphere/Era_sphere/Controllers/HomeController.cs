@@ -25,11 +25,11 @@ namespace Era_sphere.Controllers
         {
             if (user == "admin" && password == "admin")
             {
-                return Json(new { token = "111111" });
+                return Json(new { token = "1111111" });
             }
             else if (user == "xurreta" && password == "xurreta")
             {
-                return Json(new { token = "101111" });
+                return Json(new { token = "1011111" });
             }
             else
             {

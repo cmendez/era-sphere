@@ -2,14 +2,15 @@
 @using Era_sphere.Generics;
 @model IEnumerable<ProveedorView>
 @using Telerik.Web.Mvc.UI
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    //var paises = (new EraSphereContext()).paises.ToList();
+            //var paises = (new EraSphereContext()).paises.ToList();
 }
+<section id="popUpOrden">
 
-
+Texto de Prueba
+</section>
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
@@ -22,7 +23,7 @@
         .Name("ProveedoresGrid")
         .Localizable("es-ES")
         .Filterable()
-        
+
         .DataKeys(key => key.Add(p => p.ID))
         .Columns(columns =>
         {
@@ -48,26 +49,35 @@
             .Select("Select", "OrdenCompra")
         )
            )
-
-<div id = "popUpOrden" style=""></div>
     </div>
-    
+    <div id="popupCompra"></div>
     <script type="text/javascript">
         function onComplete(e) {
             var proveedor = e.response.proveedor;
-            if( e.name == "createOrden" ){
+            if (e.name == "createOrden") {
+                //var orden = $("#popUpOrden");
+                //alert(orden);
+                $("#popupCompra").remove();
+                var url = '@Url.Action("crearOrdenView", "OrdenCompra")' + '/' + proveedor.ID
+                $("#popUpOrden").load(url, function (response, status, xhr) {
+                    //console.log(response);
+                    $("#popCompra").html(response);
+                    var pop = $("#popupCompra");
+                    var dat = pop.data("tWindow");
+                    alert(dat);
+                    dat.center().open();
 
+                });
+                /*
                 $("#popUpOrden").load(
-                    '@Url.Action("crearOrdenView","OrdenCompra")' + '/' + proveedor.ID , 
-                    function(){
-
-                     var popUp = $("#popupCompra").data("tWindow");
-                     
-                    }
+                '@Url.Action("crearOrdenView", "OrdenCompra")' + '/' + proveedor.ID
                 );
-               
+                */
+                return false;
             }
         }
+
+      
     </script>
     <!-- Table Wrapper End -->
 </div>

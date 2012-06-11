@@ -7,6 +7,7 @@ using Era_sphere.Areas.AreaContable.Models;
 using Telerik.Web.Mvc;
 using System.Threading;
 using Era_sphere.Areas.AreaContable.Models.Ordenes;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaContable.Controllers
 {
@@ -18,19 +19,46 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         //
         // GET: /AreaContable/OrdenesCompra/
 
-        public ActionResult Index()
+        public ActionResult Index( int id )
         {
+            ViewBag.id_hotel = id;
             return View();
         }
-
         [GridAction]
-        public ActionResult Select() {
-            return View(new GridModel(logica.retornar_ordenes()));
+        public ActionResult Select( int id_hotel )
+        {
+            return View(new GridModel(logica.retornar_proveedores( id_hotel) ));
         }
-        #region OrdenCompra
-        public ActionResult crearOrdenView( int id_proveedor ) {
+        #region Administrar Orden
+        [GridAction]
+        ActionResult default_admin() {
+            return View("IndexAdministracion", new GridModel(logica.retornar_ordenes_compra()));
+        }
+        public ActionResult IndexAdministracion()
+        {
+            return View( logica.retornar_ordenes_compra());
+        }
+        [GridAction]
+        public ActionResult SelectOrdenCompra() {
+            return default_admin();
+        }
+
+        public ActionResult EnviarOrdenCompra( int id_oc ) {
+            logica.enviar_orden_compra(id_oc);
+            return default_admin();
+        }
+
+        public ActionResult RegistrarOrdenCompra(int id_oc) {
+            logica.registar_orden_compra(id_oc);
+            return default_admin();
+        }
+
+        #endregion
+        #region CrearOrdenCompra
+        public ActionResult crearOrdenView( int id_proveedor , int id_hotel) {
+            ViewBag.hotel = (new LogicaHotel()).retornarHotel(id_hotel);
             ViewBag.proveedor = (new LogicaProveedor()).retornarProveedor(id_proveedor);
-            ViewBag.orden_compra = logica.retornar_orden_nueva( id_proveedor );
+            ViewBag.orden_compra = logica.retornar_orden_nueva( id_proveedor , id_hotel );
             return PartialView("ordenCompraPartial");
         }
         public ActionResult ProductosProveedor(int id_proveedor) {
@@ -62,5 +90,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return Json(new { msg = "ok" });
         }
         #endregion
+
+
     }
 }

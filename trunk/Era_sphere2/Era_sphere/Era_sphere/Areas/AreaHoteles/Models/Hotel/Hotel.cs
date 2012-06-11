@@ -47,5 +47,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         //public ICollection<Piso> pisos_hotel { get; set; }
         public virtual ICollection<TipoServicioXHotel> tiposerviciosxhoteles { get; set; }
         public virtual ICollection<Proveedor> proveedores { get; set; }
+        public virtual ICollection<OrdenCompra> ordenes_compra { get; set; }
     }
 }

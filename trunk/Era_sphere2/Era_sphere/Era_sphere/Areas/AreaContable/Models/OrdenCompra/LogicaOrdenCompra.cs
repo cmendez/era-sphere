@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaContable.Models
 {
@@ -11,25 +12,32 @@ namespace Era_sphere.Areas.AreaContable.Models
 
         EraSphereContext context = new EraSphereContext();
         DBGenericQueriesUtil<OrdenCompra> qoc;
-        DBGenericQueriesUtil<OCompraLinea> qocl; 
+        DBGenericQueriesUtil<OCompraLinea> qocl;
+        DBGenericQueriesUtil<Hotel> q_hotel;
+      
 
         public LogicaOrdenCompra(){
             qoc = new DBGenericQueriesUtil<OrdenCompra>(context, context.ordenes_compra);
             qocl = new DBGenericQueriesUtil<OCompraLinea>(context, context.ordenes_clinea);
+            q_hotel = new DBGenericQueriesUtil<Hotel>(context, context.hoteles);
         }
 
-        public List<ProveedorView> retornar_ordenes()
+        public List<ProveedorView> retornar_proveedores( int id_hotel )
         {
-            LogicaProveedor lprov = new LogicaProveedor();
-            return lprov.retornarProveedores();
+            LogicaHotel logica = new LogicaHotel();
+            List<Proveedor> list = q_hotel.retornarUnSoloElemento( id_hotel ).proveedores.ToList();
+            List<ProveedorView> proveedores = new List<ProveedorView>();
+            foreach (var x in list) { proveedores.Add(new ProveedorView(x)); }
+            return proveedores;
         }
 
-        public OrdenCompraView retornar_orden_nueva( int id_proveedor )
+        public OrdenCompraView retornar_orden_nueva( int id_proveedor , int id_hotel )
         {
             OrdenCompra Oc = new OrdenCompra();
             Oc.fecha_registro = System.DateTime.Now;
             Oc.proveedor = context.proveedores.Find( id_proveedor );
             Oc.estado_orden = context.estados_ocompra.Find(5);
+            Oc.hotel = q_hotel.retornarUnSoloElemento(id_hotel);
             DBGenericQueriesUtil<OrdenCompra> query = 
                    new DBGenericQueriesUtil<OrdenCompra>(context, context.ordenes_compra);
             int id =  query.agregarElemento(Oc);
@@ -79,15 +87,37 @@ namespace Era_sphere.Areas.AreaContable.Models
 
         internal void elimina_orden_compra(int id_oc)
         {
-            var ans = new churre();
+            qoc.eliminarElemento( id_oc );
+        }
+
+        internal List<OrdenCompraView> retornar_ordenes_compra()
+        {
+            List<OrdenCompra> list_oc = qoc.retornarTodos();
+            List<OrdenCompraView> ans = new List<OrdenCompraView>();
+            foreach (var oc in list_oc) ans.Add( new OrdenCompraView( oc ));
+            return ans;
+        }
+
+        internal void enviar_orden_compra(int id_orden)
+        {
+            var oc = qoc.retornarUnSoloElemento(id_orden);
+            oc.fecha_envio = DateTime.Now;
+            oc.estado_orden = context.estados_ocompra.Find(3);
+            qoc.modificarElemento(oc, oc.ID);
+        }
+
+        internal void registar_orden_compra(int id_oc)
+        {
             var oc = qoc.retornarUnSoloElemento(id_oc);
-            foreach (var ocl in oc.productos) {
-                qocl.eliminarElemento_logico(ocl.ID);
-            }
-            qoc.eliminarElemento_logico( id_oc );
+            oc.fecha_registro = DateTime.Now;
+            oc.estado_orden = context.estados_ocompra.Find(2);
+            qoc.modificarElemento(oc, oc.ID);
+        }
+
+        internal void cancelar_orden_compra(int id_orden) {
+            var oc = qoc.retornarUnSoloElemento(id_orden);
+            oc.estado_orden = context.estados_ocompra.Find(5);
+            qoc.modificarElemento(oc, oc.ID);
         }
     }
-    public class churre {
-        public bool ta { get; set; }
-    } 
 }

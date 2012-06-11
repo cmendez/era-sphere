@@ -1,13 +1,11 @@
-﻿@using Era_sphere.Areas.AreaContable.Models;
-@using Era_sphere.Generics;
-@model IEnumerable<ProveedorView>
-@using Telerik.Web.Mvc.UI
+﻿@using Telerik.Web.Mvc.UI;
+@using Era_sphere.Areas.AreaContable.Models
+@model IEnumerable<OrdenCompraView>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "IndexAdministracion";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    int id_hotel = ViewBag.id_hotel;
-            //var paises = (new EraSphereContext()).paises.ToList();
 }
+
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
@@ -22,19 +20,22 @@
         .Localizable("es-ES")
         .Filterable()
 
-        .DataKeys(key => key.Add(p => p.ID))
+        .DataKeys(key => key.Add(p => p.ordenID))
         .Columns(columns =>
         {
-            columns.Bound(p => p.ID);
-            columns.Bound(p => p.razon_social);
-            columns.Bound(p => p.persona_contacto);
+            columns.Bound(p => p.ordenID);
+            columns.Bound(p => p.razon_proveedor);
+            columns.Bound(p => p.nro_productos);
+            columns.Bound(p => p.estado_orden);
+            columns.Bound(p => p.fecha_registro);
+            columns.Bound(p => p.monto_total);
             columns.Command(commands =>
             {
-                commands.Custom("createOrden")
-                            .Text("Orden de Compra")
+                commands.Custom("enviarOrden")
+                            .Text("Aceptar Orden")
                             .Ajax(true)
-                            .DataRouteValues(p => p.Add(x => x.ID).RouteKey("id_proveedor"))
-                            .Action("Proveedor", "Proveedor");
+                            .DataRouteValues(p => p.Add(x => x.ordenID).RouteKey("id_orden"))
+                            .Action("EnviarOrdenCompra", "OrdenCompra");
             });
         })
         .ClientEvents(events => events.OnComplete("onComplete"))
@@ -44,7 +45,7 @@
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "OrdenCompra", new { id_hotel = @id_hotel })
+            .Select("SelectOrdenCompra", "OrdenCompra")
         )
            )
     </div>
@@ -55,10 +56,9 @@
         function onComplete(e) {
             var proveedor = e.response.proveedor;
             if (e.name == "createOrden") {
-           
-                var url = '@Url.Action("crearOrdenView", "OrdenCompra")' + '/?id_proveedor=' + proveedor.ID + '&id_hotel=' + @id_hotel;
+                var url = '@Url.Action("crearOrdenView", "OrdenCompra")' + '/' + proveedor.ID
                 var windowElement = $.telerik.window.create({
-                    name : 'popupOrden' , 
+                    name: 'popupOrden',
                     title: "Registrar orden de compra",
                     html: '',
                     actions: [],
@@ -66,8 +66,8 @@
                     modal: true,
                     resizable: true,
                     draggable: true,
-                    width : 800,
-                    height : 400 ,
+                    width: 800,
+                    height: 400,
                     onClose: function (e) {
                         e.preventDefault();
                         windowElement.data('tWindow').destroy();
@@ -76,13 +76,13 @@
                 var tdata = windowElement.data('tWindow');
                 jQuery(windowElement).attr('id', 'popupOrden');
                 tdata.center().open();
-                       
+
             }
         }
 
-       function cerrar_ventana( ){
-        $("#popupOrden").data('tWindow').close();
-       }
+        function cerrar_ventana() {
+            $("#popupOrden").data('tWindow').close();
+        }
     </script>
     <!-- Table Wrapper End -->
 </div>

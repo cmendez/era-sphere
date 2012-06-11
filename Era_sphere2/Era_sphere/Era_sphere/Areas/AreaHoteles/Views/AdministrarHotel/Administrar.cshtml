@@ -73,5 +73,20 @@
                         
         </p>
     </div>
+
+      Ordenes de compra
+    <div class="block_cont">
+
+        <p>@Html.ActionLink("Registrar Orden de Compra", "Index", new { controller = "../AreaContable/OrdenCompra" , id = @id_hotel },
+                            new { @class = "tipTop" }
+                        )
+                        
+        </p>
+        <p>@Html.ActionLink("Administrar Ordenes de compra", "Administrar", new { controller = "../AreaReservas/OrdenCompra" , ID = @id_hotel},
+                            new { @class = "tipTop" }
+                        )
+                        
+        </p>
+    </div>
     <!-- Table Wrapper End -->
 </div>

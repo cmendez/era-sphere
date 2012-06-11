@@ -52,7 +52,7 @@ namespace Era_sphere.Generics
 
     }
 
-    public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
+    public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
         protected override void Seed(EraSphereContext context){
             context.seed();
         }

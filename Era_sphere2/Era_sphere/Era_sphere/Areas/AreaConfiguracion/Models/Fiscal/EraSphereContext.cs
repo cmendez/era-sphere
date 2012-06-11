@@ -8,6 +8,7 @@ using Era_sphere.Areas.AreaConfiguracion.Models.Perfiles;
 using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Areas.AreaContable.Models.Ordenes;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Generics
 {
@@ -63,7 +64,15 @@ namespace Era_sphere.Generics
                 p_x_p.Add(pp);
                 p.productos.Add(pp);
             }
+            
             proveedores.Add(p);
+
+            foreach (var prov in proveedores)
+            {
+                prov.hoteles = new List<Hotel>();
+                prov.hoteles.Add(hoteles.First());
+            }
+
         }
 
         void seedProductos() {

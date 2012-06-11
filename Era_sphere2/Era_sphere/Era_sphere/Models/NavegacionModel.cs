@@ -188,7 +188,7 @@ namespace Era_sphere.Models
             sub.Add(new SubLink { Nombre = "Lineas de Producto", Url = "/AreaContable/LineaProducto" });
             sub.Add(new SubLink { Nombre = "Productos", Url = "/AreaContable/Producto" });
             sub.Add(new SubLink { Nombre = "Proveedor", Url = "/AreaContable/Proveedor" });
-            sub.Add(new SubLink { Nombre = "Compras y Recepción", Url = "/AreaContable/OrdenCompra" });
+            //sub.Add(new SubLink { Nombre = "Compras y Recepción", Url = "/AreaContable/OrdenCompra" });
             menu.Add(new Link { Nombre = "Almacenes", Url = "#", Icono = "icon_pen", Sublinks = sub });
         }
 

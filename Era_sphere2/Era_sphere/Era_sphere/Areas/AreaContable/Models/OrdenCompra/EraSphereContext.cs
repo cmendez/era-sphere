@@ -16,11 +16,11 @@ namespace Era_sphere.Generics
         public DbSet<OCompraLinea> ordenes_clinea { get; set; }
 
         void seedOrdenCompra() {
-            estados_ocompra.Add(new EstadoOC { ID = 5, descripcion = "Creado" });
-            estados_ocompra.Add(new EstadoOC { ID = 1, descripcion = "Registrado" });
-            estados_ocompra.Add(new EstadoOC { ID = 2, descripcion = "Enviado" });
-            estados_ocompra.Add(new EstadoOC { ID = 3, descripcion = "Atendido" });
-            estados_ocompra.Add(new EstadoOC { ID = 4, descripcion = "Cancelado" });
+            estados_ocompra.Add(new EstadoOC { ID = 1, descripcion = "Creado" });
+            estados_ocompra.Add(new EstadoOC { ID = 2, descripcion = "Registrado" });
+            estados_ocompra.Add(new EstadoOC { ID = 3, descripcion = "Enviado" });
+            estados_ocompra.Add(new EstadoOC { ID = 4, descripcion = "Atendido" });
+            estados_ocompra.Add(new EstadoOC { ID = 5, descripcion = "Cancelado" });
         }
     }
 }

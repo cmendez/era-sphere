@@ -6,6 +6,7 @@
     OrdenCompraView oc = ViewBag.orden_compra;
     var data = new { id_proveedor = prov.ID };
     var data_oc = new { id_oc = oc.ordenID };
+    Era_sphere.Areas.AreaHoteles.Models.HotelView hotel = ViewBag.hotel;
 }
 <div id="popupOC">
     <ul>
@@ -24,6 +25,10 @@
                 Persona de Contacto
             </label>
             <span>@prov.persona_contacto </span></li>
+        <li>
+            <label> Hotel </label>
+            <span> @hotel.razon_social </span>
+        </li>
     </ul>
     <form id="formProducto" class="form" action="#">
     <label>
@@ -135,6 +140,12 @@
     </span>
     <script type="text/javascript">
         $("#registrar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RegistraOrdenCompra","OrdenCompra",@data_oc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
             cerrar_ventana();
         });
         $("#eliminar").click(function () {

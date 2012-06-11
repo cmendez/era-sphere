@@ -104,7 +104,9 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             Thread.Sleep(500);
             return Json( new SelectList( proveedor_logica.productosRestantes( producto , id ), "ID" , "descripcion"));
         }
-
+        public ActionResult DetallesProductoProveedor(int id_product) {
+            return PartialView(proveedor_logica.producto_proveedor(id_product));
+        }
         #endregion
         #region Hotel
         public ActionResult Hoteles(int id_proveedor) {

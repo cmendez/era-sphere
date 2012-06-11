@@ -16,20 +16,28 @@ namespace Era_sphere.Areas.AreaContable.Models.Ordenes
             productoID = pp.productoID;
             proveedorID = pp.proveedorID;
             descripcion_producto = pp.producto.descripcion;
+            perecible_str = pp.producto.isPerecible ? "Si , vence en " + pp.producto.diasPerecible  + " dias" :"No.";
             precio_unitario = pp.precio_unitario;
         }
-        public int ID { get; set; }
+
         [Required]
-        [DisplayName("Producto") ]
-        
+        [DisplayName("ID Producto")]
         public int productoID { get; set; }
-        public int proveedorID { get; set; }
-        
-        [ReadOnly(true)]
+
         [DisplayName("Descripcion")]
         public string descripcion_producto { get; set; }
+
+
+        [DisplayName("Es Perecible?")]
+        public string perecible_str { get; set; }
+        
+        public int ID { get; set; }
+
+        public int proveedorID { get; set; }
+        
+    
         [Required]
-        [DisplayName("Precio Unitario")]
+        [DisplayName("Precio Unitario") , DataType(DataType.Currency)]
         public double precio_unitario { get; set;}
     }
 }

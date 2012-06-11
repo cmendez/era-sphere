@@ -21,18 +21,29 @@ namespace Era_sphere.Generics
 
         }
 
+        public void eliminarElemento_logico( int id ){
+            var elemento_a_eliminar = dbset.Find(id);
+            if (elemento_a_eliminar == null) throw new Exception("No existe el ID en la BD");
+            elemento_a_eliminar.eliminado = true;
+            modificarElemento(elemento_a_eliminar, id);
+        }
+
         public List<T> retornarTodos()
         {
             var res = dbset.ToList();
             if (res == null) return new List<T>();
-            else return res;
+            List<T> ans = new List<T>();
+            foreach( var item in res ) if( !item.eliminado ) ans.Add( item );
+            return ans;
         }
 
         public T retornarUnSoloElemento(int ID)
         {
             try
             {
-                return dbset.Find(ID);
+                var a = dbset.Find(ID);
+                if (a.eliminado) return null;
+                return a;
             }
             catch (Exception)
             {

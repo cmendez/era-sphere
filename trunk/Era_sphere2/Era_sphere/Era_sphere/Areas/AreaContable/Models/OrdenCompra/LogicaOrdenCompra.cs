@@ -8,9 +8,15 @@ namespace Era_sphere.Areas.AreaContable.Models
 {
     public class LogicaOrdenCompra
     {
+
         EraSphereContext context = new EraSphereContext();
+        DBGenericQueriesUtil<OrdenCompra> qoc;
+        DBGenericQueriesUtil<OCompraLinea> qocl; 
 
-
+        public LogicaOrdenCompra(){
+            qoc = new DBGenericQueriesUtil<OrdenCompra>(context, context.ordenes_compra);
+            qocl = new DBGenericQueriesUtil<OCompraLinea>(context, context.ordenes_clinea);
+        }
 
         public List<ProveedorView> retornar_ordenes()
         {
@@ -37,7 +43,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         {
             OrdenCompra oc = context.ordenes_compra.Find( id_oc );
             List<OCompraLineaView> ans = new List<OCompraLineaView>();
-            foreach (var o in oc.productos) ans.Add(new OCompraLineaView(o));
+            foreach (var o in oc.productos) if( !o.eliminado ) ans.Add(new OCompraLineaView(o));
             return ans;
         }
 
@@ -70,5 +76,18 @@ namespace Era_sphere.Areas.AreaContable.Models
             oc.productos.Add(ocl);
             q.modificarElemento(oc, oc.ID);
         }
+
+        internal void elimina_orden_compra(int id_oc)
+        {
+            var ans = new churre();
+            var oc = qoc.retornarUnSoloElemento(id_oc);
+            foreach (var ocl in oc.productos) {
+                qocl.eliminarElemento_logico(ocl.ID);
+            }
+            qoc.eliminarElemento_logico( id_oc );
+        }
     }
+    public class churre {
+        public bool ta { get; set; }
+    } 
 }

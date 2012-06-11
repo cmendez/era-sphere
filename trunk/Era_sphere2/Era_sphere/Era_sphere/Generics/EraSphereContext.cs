@@ -23,11 +23,11 @@ namespace Era_sphere.Generics
             seedTipoTemporadas();
             seedTemporadas();
             seedEstadoReserva();
-            seedProveedores();
-            /**/
             seedLineasProductos();
             seedProductos();
-            //seedProvXProd();
+            seedProveedores();
+            /**/
+            
             seedOrdenCompra();
             seedTipoHabitaciones();
             seedClientes();

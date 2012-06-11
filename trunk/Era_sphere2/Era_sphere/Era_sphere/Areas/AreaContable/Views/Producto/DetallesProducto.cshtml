@@ -1,0 +1,30 @@
+﻿@model Era_sphere.Areas.AreaContable.Models.ProductoView
+
+@{
+    ViewBag.Title = "DetallesProducto";
+}
+
+    <label class="display-label" >Descripcion</label>
+    <div class="input">
+        @Html.DisplayFor(model => model.descripcion)
+    </div>
+
+
+    <label class="display-label">Linea de Producto</label>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lineaProducto_str)
+    </div>
+    <label class="display-label"> Perecible </label> 
+   @if (Model.isPerecible)
+   {
+     
+     <div class="display-field"> Si, en @Model.diasPerecible dias</div>
+   }
+   else { 
+    <div class="display-field"> No </div>
+   }
+
+    <label class="display-label">Unidad de Medida </label>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.unidadMedidad)
+    </div>

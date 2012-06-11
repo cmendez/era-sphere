@@ -52,5 +52,9 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             producto_logica.modificarProducto(p);
             return View("Index", new GridModel(producto_logica.retornarProductos()));
         }
+        public ActionResult DetallesProducto(int id_product) {
+            ViewBag.producto = producto_logica.retornarProducto(id_product);
+            return PartialView( producto_logica.retornarProducto(id_product));
+        }
     }
 }

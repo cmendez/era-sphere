@@ -39,8 +39,14 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return Json(new SelectList( prov.productos_de_proveedor( id_proveedor ),"ID" ,"descripcion_producto" ));
         }
         public ActionResult InsertOCLinea(int id_oc, int id_producto, int cantidad) {
-            logica.insertar_linea(id_oc, id_producto, cantidad);
-            return Json(new { msg = "ok" });
+            try
+            {
+                logica.insertar_linea(id_oc, id_producto, cantidad);
+                return Json(new { msg = "ok" });
+            }
+            catch (Exception e) {
+                return Json(new { msg = "error" });
+            }
         }
         [GridAction]
         public ActionResult SelectOCompraLinea( int id_oc ){
@@ -50,6 +56,10 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         public ActionResult DeleteOCL(int id_oc, int id) {
             logica.eliminar_linea(id_oc, id);
             return View(new GridModel( logica.retornar_lineas( id_oc ) ));
+        }
+        public ActionResult DeleteOrdenCompra(int id_oc) {
+            logica.elimina_orden_compra(id_oc);
+            return Json(new { msg = "ok" });
         }
         #endregion
     }

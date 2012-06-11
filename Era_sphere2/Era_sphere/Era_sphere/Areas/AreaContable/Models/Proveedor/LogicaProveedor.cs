@@ -14,10 +14,15 @@ namespace Era_sphere.Areas.AreaContable.Models
         EraSphereContext proveedor_context = new EraSphereContext();
         public EraSphereContext context_publico { get { return proveedor_context; } }
         DBGenericQueriesUtil<Proveedor> database_table;
-
+        DBGenericQueriesUtil<Proveedor> q_prov;
+        DBGenericQueriesUtil<Producto> q_producto;
+        DBGenericQueriesUtil<proveedor_x_producto> q_pxp;
         public LogicaProveedor()
         {
+            q_producto = new DBGenericQueriesUtil<Producto>(proveedor_context, proveedor_context.productos);
+            q_pxp = new DBGenericQueriesUtil<proveedor_x_producto>(proveedor_context, proveedor_context.p_x_p);
             database_table = new DBGenericQueriesUtil<Proveedor>(proveedor_context, proveedor_context.proveedores);
+            q_prov = database_table;
         }
 
         public void agregarProveedor(ProveedorView proveedor)
@@ -57,10 +62,10 @@ namespace Era_sphere.Areas.AreaContable.Models
         public List< proveedor_x_productoView > productos_de_proveedor( int proveedor_id ){
             
            
-            Proveedor proveedor = proveedor_context.proveedores.Find( proveedor_id );
+            Proveedor proveedor = q_prov.retornarUnSoloElemento( proveedor_id );
             List<proveedor_x_producto> ans = proveedor.productos.ToList();
             List<proveedor_x_productoView> ret = new List<proveedor_x_productoView>();
-            foreach (proveedor_x_producto pp in ans) { 
+            foreach (proveedor_x_producto pp in ans) if( !pp.eliminado ){ 
                 proveedor_x_productoView ppv = new proveedor_x_productoView( pp );
                 ret.Add(ppv);
             }
@@ -70,16 +75,16 @@ namespace Era_sphere.Areas.AreaContable.Models
         public List<ProductoView> productosRestantes( string text , int proveedor_id) {
 
             List<Producto> usados = new List<Producto>();
-            List<proveedor_x_producto> relacion = proveedor_context.proveedores.Find(proveedor_id).productos.ToList();
-            foreach (proveedor_x_producto pp in relacion) usados.Add(proveedor_context.productos.Find(pp.productoID));
+            List<proveedor_x_producto> relacion = q_prov.retornarUnSoloElemento(proveedor_id).productos.ToList();
+            foreach (proveedor_x_producto pp in relacion) usados.Add(q_producto.retornarUnSoloElemento(pp.productoID));
             List<Producto> resta;
             if (text != null)
-                resta = proveedor_context.productos.Where(p => p.descripcion.StartsWith(text)).ToList();
+                resta = proveedor_context.productos.Where(p => (p.descripcion.StartsWith(text) && !p.eliminado)).ToList();
             else
-                resta = proveedor_context.productos.ToList();
+                resta = q_producto.retornarTodos();
             foreach (var p in usados) resta.Remove(p);
             List<ProductoView> ans = new List<ProductoView>();
-            foreach (var p in resta) ans.Add(new ProductoView(p));
+            foreach (var p in resta) if( !p.eliminado ) ans.Add(new ProductoView(p));
             return ans;
         }
 
@@ -88,7 +93,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             EraSphereContext context = proveedor_context;
             proveedor_x_producto pp = new proveedor_x_producto();
 
-            IEnumerable<proveedor_x_producto> ans = from producto in context.p_x_p
+            IEnumerable<proveedor_x_producto> ans = from producto in q_pxp.retornarTodos()
                                                     where producto.productoID == ppv.productoID && producto.proveedorID == id
                                                     select producto;
             List<proveedor_x_producto> ret = ans.ToList();
@@ -100,8 +105,8 @@ namespace Era_sphere.Areas.AreaContable.Models
 
 
             pp.precio_unitario = ppv.precio_unitario;// double.Parse(ppv.precio_unitario, CultureInfo.InvariantCulture);
-            pp.proveedor = context.proveedores.Find(id);
-            pp.producto = context.productos.Find( ppv.productoID ) ;
+            pp.proveedor = q_prov.retornarUnSoloElemento(id);
+            pp.producto = q_producto.retornarUnSoloElemento( ppv.productoID ) ;
             DBGenericQueriesUtil<proveedor_x_producto> query = new DBGenericQueriesUtil<proveedor_x_producto>(context, context.p_x_p);
             query.agregarElemento(pp);
         }
@@ -109,7 +114,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         internal void modificar_producto(int id_proveedor, proveedor_x_productoView producto)
         {
             EraSphereContext context = proveedor_context;
-            proveedor_x_producto pp = context.p_x_p.Find(producto.ID);
+            proveedor_x_producto pp = q_pxp.retornarUnSoloElemento(producto.ID);
             pp.precio_unitario = producto.precio_unitario;//double.Parse(producto.precio_unitario, CultureInfo.InvariantCulture);
             DBGenericQueriesUtil<proveedor_x_producto> query = new DBGenericQueriesUtil<proveedor_x_producto>(context, context.p_x_p);
             query.modificarElemento(pp, pp.ID);
@@ -118,9 +123,9 @@ namespace Era_sphere.Areas.AreaContable.Models
         internal void eliminar_producto(int id_proveedor, proveedor_x_productoView producto)
         {
             EraSphereContext context = proveedor_context;
-            proveedor_x_producto pp = context.p_x_p.Find(producto.ID);
-            context.p_x_p.Remove(pp);
-            context.SaveChanges();
+            proveedor_x_producto pp = q_pxp.retornarUnSoloElemento(producto.ID);
+            q_pxp.eliminarElemento(pp.ID);
+   
         }
         #endregion
         #region Hoteles
@@ -185,6 +190,12 @@ namespace Era_sphere.Areas.AreaContable.Models
         }
         #endregion
 
-       
+
+
+        internal proveedor_x_productoView producto_proveedor(int id_product)
+        {
+            var ans = q_pxp.retornarUnSoloElemento(id_product);
+            return new proveedor_x_productoView(ans);
+        }
     }
 }

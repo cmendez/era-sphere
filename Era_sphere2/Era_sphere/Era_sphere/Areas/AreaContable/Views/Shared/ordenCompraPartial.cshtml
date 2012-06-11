@@ -7,8 +7,6 @@
     var data = new { id_proveedor = prov.ID };
     var data_oc = new { id_oc = oc.ordenID };
 }
-
-
 <div id="popupOC">
     <ul>
         <li>
@@ -28,42 +26,83 @@
             <span>@prov.persona_contacto </span></li>
     </ul>
     <form id="formProducto" class="form" action="#">
-        <label> Productos </label>
-        @(Html.Telerik()
+    <label>
+        Productos
+    </label>
+    @(Html.Telerik()
             .ComboBox()
             .Name("producto_input")
             .DataBinding(bind => bind.Ajax()
                         .Select("ProductosProveedor", "OrdenCompra", @data))
          )
-         <label> Cantidad: </label>
-         @(Html.Telerik().IntegerTextBox()
+    <label>
+        Cantidad:
+    </label>
+    @(Html.Telerik().IntegerTextBox()
             .MinValue(1)
             .Spinners(true)
             .Name("cantidad_input")
          )
-
-         <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
-        value="Agregar Producto" style="margin: 10px" />
-       
+    <span style="margin:2px">
+    <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
+        value="Agregar Producto" style="margin: 10px;" />
+        <button class="t-button t-state-default submit" id="detalles_producto" onclick="detalles_produ(); return false;" style="margin:10px"> Detalles de Producto </button>
+        </span>
     </form>
-   <script type="text/javascript">
-       $("#formProducto").submit(function (e) {
-           e.preventDefault();
-           var id_productof = $("#producto_input").val();
-           var cantidadf = $("#cantidad_input").val();
-           $.ajax({
-               type: 'POST',
-               url: '@Url.Action("InsertOCLinea", "OrdenCompra", @data_oc)',
-               contentType: 'application/json',
-               dataType: 'json',
-               data: JSON.stringify({ id_producto: id_productof, cantidad: cantidadf }),
-               success: function (result) {
-                   $("#OCGrid").data('tGrid').ajaxRequest();
-                  
-               }
-           });
-       })
-        </script>
+    
+    <script type="text/javascript">
+        function detalles_produ() {
+            var id_prod = $("#producto_input").val();
+            if (isNaN(id_prod) || !isFinite(id_prod) || id_prod =="" ) {
+                alert("Seleccione Producto");
+                return false;
+            }
+ 
+            var url = '@Url.Action("DetallesProductoProveedor","Proveedor")' + '/' + id_prod;
+           
+            var windowElement = $.telerik.window.create({
+                title: "Detalles del producto",
+                html: '',
+                contentUrl: '',
+                modal: true,
+                resizable: true,
+                draggable: true,
+                width: 200,
+                height: 200,
+                onClose: function (e) {
+                    e.preventDefault();
+                    windowElement.data('tWindow').destroy();
+                }
+            });
+
+            var tdata = windowElement.data('tWindow');
+            tdata.ajaxRequest(url, { id_product: id_prod });
+            jQuery(windowElement).attr('id', 'popupOrden');
+            tdata.center().open();
+            return false;
+        }
+        $("#formProducto").submit(function (e) {
+            e.preventDefault();
+            var id_productof = $("#producto_input").val();
+            var cantidadf = $("#cantidad_input").val();
+            if (id_productof == "" || cantidadf == "") {
+                alert("Ingrese la cantidad y el producto");
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InsertOCLinea", "OrdenCompra", @data_oc)',
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify({ id_producto: id_productof, cantidad: cantidadf }),
+                success: function (result) {
+                    if (result.msg == "error") { alert("Ingrese los datos correctos"); }
+                    else
+                        $("#OCGrid").data('tGrid').ajaxRequest();
+                }
+            });
+        })
+    </script>
     @(Html.Telerik().Grid<OCompraLineaView>()
         .Name("OCGrid")
         .DataKeys(d => d.Add(p => p.ID))
@@ -85,7 +124,28 @@
         )
     )
     <span class="form">
-        <button class="t-button t-state-default submit" style="float:right ; margin-top: 10px ; margin-bottom: 10px;"> Registrar </button>
-        <button class="t-button t-state-default submit" style="float:right; margin-right:10px; margin-top:10px"> Cancelar </button>
+        <button id="registrar" class="t-button t-state-default submit" style="float: right;
+            margin-top: 10px; margin-bottom: 10px;">
+            Registrar
+        </button>
+        <button id="eliminar" class="t-button t-state-default submit" style="float: right;
+            margin-right: 10px; margin-top: 10px">
+            Cancelar
+        </button>
     </span>
+    <script type="text/javascript">
+        $("#registrar").click(function () {
+            cerrar_ventana();
+        });
+        $("#eliminar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteOrdenCompra", "OrdenCompra", @data_oc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
+
+            cerrar_ventana();
+        });
+    </script>
 </div>

@@ -239,6 +239,10 @@
     <Compile Include="Areas\AreaPromociones\Models\LogicaPromocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\ReporteEmpleadoController.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ObjetoReporteEmpleado.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ReporteEmpleados.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\ConsultaController.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaLineaView.cs" />
@@ -1135,8 +1139,6 @@
     <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
-    <Folder Include="Areas\AreaReportes\Controllers\" />
-    <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
     <Folder Include="Scripts\ApiSeguridad\" />
   </ItemGroup>
@@ -1273,15 +1275,9 @@
     <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteView.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoAmbienteView.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
-
     <Content Include="Areas\AreaEventos\Views\Evento\PagoEventoIndex.cshtml" />
-
     <Content Include="Areas\AreaReservas\Views\Reserva\ConsultaReservaParcialView.cshtml" />
     <Content Include="Areas\AreaContable\Views\Pagos\TarjetaDeCreditoIndex.cshtml" />
-
-
-
-
     <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
     <Content Include="Areas\AreaContable\Views\Ordenes\AgregarOrden.cshtml" />
     <Content Include="Areas\AreaContable\Views\Ordenes\IndexOrdenes.cshtml" />
@@ -1291,10 +1287,9 @@
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenLineaViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoCalcularCostos.cshtml" />
-
     <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
-
-
+    <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexReporteEmpleado.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexFormReporteEmpleado.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

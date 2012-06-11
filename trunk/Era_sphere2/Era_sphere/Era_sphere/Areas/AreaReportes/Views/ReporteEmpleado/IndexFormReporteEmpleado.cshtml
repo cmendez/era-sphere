@@ -1,0 +1,102 @@
+﻿@model Era_sphere.Areas.AreaReportes.Models.ReporteEmpleados.FormReporteEmpleado
+@using Telerik.Web.Mvc.UI
+@{
+    ViewBag.Title = "Generar reporte de asistencia de empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Reporte de asistencia de empleados
+        </h3>
+    </div>
+
+    @using (Html.BeginForm("Generar", "ReporteEmpleado", FormMethod.Post, new { @class = "form" }))
+    { 
+         @Html.ValidationSummary(true)
+        <div class="block_cont" id="formReporteAsistencia">
+        
+        <!--
+            <div id="info_adicional">
+            -->
+            <div class="small-inner" id="reporteAsistencia" style="margin-top: 0px; margin-bottom: 0px;
+                width: 930px; position: relative;">
+                <div class="titlebar innertitle">
+                    <h3>
+                        Generar Reporte de Asistencia de Empleados
+                    </h3>
+                </div>
+                <fieldset>
+                <div class="block_cont" id="block_detalle_cadena">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.nombre, new { @class = "input tipRight singleInput", })
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.apePaterno)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.apePaterno, new { @class = "input tipRight singleInput", })
+            @Html.ValidationMessageFor(model => model.apeMaterno)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.apeMaterno)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.apeMaterno, new { @class = "input tipRight singleInput", })
+            @Html.ValidationMessageFor(model => model.apeMaterno)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fechaInicio)
+        </div>
+        <div class="editor-field">
+            @Html.Telerik().DatePickerFor(model => model.fechaInicio)
+            @Html.ValidationMessageFor(model => model.fechaInicio)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fechaFin)
+        </div>
+        <div class="editor-field">
+            @Html.Telerik().DatePickerFor(model => model.fechaFin)
+            @Html.ValidationMessageFor(model => model.fechaFin)
+        </div>
+        
+
+        <p>  &nbsp; </p>
+                     <p>
+                        <input class="submit" type="submit" value="Registrar" id = "generarReporte" />
+                    </p>
+                </div>
+                </fieldset>
+            </div>
+       <!--
+        </div>
+        -->
+
+        <div>
+    @Html.ActionLink("Volver atrás", "Index")
+</div>
+        </div>
+    }
+    
+ 
+  
+</div>
+
+
+

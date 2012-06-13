@@ -6,7 +6,6 @@
     OrdenCompraView oc = ViewBag.orden_compra;
     var data = new { id_proveedor = prov.ID };
     var data_oc = new { id_oc = oc.ordenID };
-    bool is_edit = ViewBag.is_edit;
     Era_sphere.Areas.AreaHoteles.Models.HotelView hotel = ViewBag.hotel;
 }
 <div id="popupOC">
@@ -27,10 +26,9 @@
             </label>
             <span>@prov.persona_contacto </span></li>
         <li>
-            <label>
-                Hotel
-            </label>
-            <span>@hotel.razon_social </span></li>
+            <label> Hotel </label>
+            <span> @hotel.razon_social </span>
+        </li>
     </ul>
     <form id="formProducto" class="form" action="#">
     <label>
@@ -40,27 +38,23 @@
             .ComboBox()
             .Name("producto_input")
             .DataBinding(bind => bind.Ajax()
-                        .Select("ProductosProveedor", "OrdenCompra", @data)).Placeholder("Seleccione Producto")
-                        .HtmlAttributes(new { style = "width:70" })
+                        .Select("ProductosProveedor", "OrdenCompra", @data))
          )
     <label>
         Cantidad:
     </label>
     @(Html.Telerik().IntegerTextBox()
-            .Value(1)
             .MinValue(1)
             .Spinners(true)
             .Name("cantidad_input")
          )
-    <span style="margin: 2px">
-        <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
-            value="Agregar Producto" style="margin: 10px;" />
-        <button class="t-button t-state-default submit" id="detalles_producto" onclick="detalles_produ(); return false;"
-            style="margin: 10px">
-            Detalles de Producto
-        </button>
-    </span>
+    <span style="margin:2px">
+    <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
+        value="Agregar Producto" style="margin: 10px;" />
+        <button class="t-button t-state-default submit" id="detalles_producto" onclick="detalles_produ(); return false;" style="margin:10px"> Detalles de Producto </button>
+        </span>
     </form>
+    
     <script type="text/javascript">
         function detalles_produ() {
             var id_prod = $("#producto_input").val();
@@ -69,7 +63,7 @@
                 return false;
             }
 
-            var url = '@Url.Action("DetallesProductoProveedor", "Proveedor")' + '/' + id_prod;
+            var url = '@Url.Action("DetallesProductoProveedor","Proveedor")' + '/' + id_prod;
 
             var windowElement = $.telerik.window.create({
                 title: "Detalles del producto",
@@ -122,26 +116,18 @@
             columns.Bound(o => o.productoID).Width(100).ReadOnly(true);
             columns.Bound(o => o.producto).Width(200).ReadOnly(true);
             columns.Bound(o => o.cantidad).Width(50);
-            columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true);
-            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true)
-                .Aggregate(aggregates => aggregates.Sum())
-                .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
-            columns.Command(command =>
-            {
-                command.Delete().ButtonType(GridButtonType.Image);
-                command.Edit().ButtonType(GridButtonType.Image);
-            });
+            columns.Bound(o => o.precio_unitario).Width(50);
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120)
+                .Aggregate(aggregates => aggregates.Sum());
+            columns.Command(command => command.Delete().ButtonType(GridButtonType.Image));
         })
-        .ClientEvents(e => e.OnComplete("onCompleteOCL"))
+
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("SelectOCompraLinea", "OrdenCompra", new { id_oc = @oc.ordenID })
             .Delete("DeleteOCL", "OrdenCompra", new { id_oc = @oc.ordenID })
-            .Update("UpdateOCL", "OrdenCompra")
         )
     )
-    @if (!is_edit)
-    {
     <span class="form">
         <button id="registrar" class="t-button t-state-default submit" style="float: right;
             margin-top: 10px; margin-bottom: 10px;">
@@ -152,28 +138,11 @@
             Cancelar
         </button>
     </span>
-    }
-    else
-    { 
-        <span class="form">
-         <button id="aceptar" class="t-button t-state-default submit" style="float: right; margin:10px">
-         Aceptar</button>
-        </span>
-    }
     <script type="text/javascript">
-        function onCompleteOCL(e) {
-
-            if (e.name == "update" || e.name == "delete") {
-                var res = e.response;
-                if (res.msg != "ok" && e.name == "update") { alert(res.msg); }
-                $("#OCGrid").data("tGrid").ajaxRequest();
-            }
-        }
-        $("#aceptar").click(function () { cerrar_ventana(); })
         $("#registrar").click(function () {
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("RegistrarOrdenCompra", "OrdenCompra", @data_oc)',
+                url: '@Url.Action("RegistraOrdenCompra","OrdenCompra",@data_oc)',
                 contentType: 'application/json',
                 dataType: 'json'
             });

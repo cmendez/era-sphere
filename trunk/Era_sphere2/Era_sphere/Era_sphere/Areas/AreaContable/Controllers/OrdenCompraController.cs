@@ -29,26 +29,22 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         {
             return View(new GridModel(logica.retornar_proveedores( id_hotel) ));
         }
-        #region Administrar Orden
-
-        [GridAction]
-        ActionResult default_admin( int id_hotel ) {
-            return View("IndexAdministracion", new GridModel(logica.retornar_ordenes_compra( id_hotel)));
-        }
-        public ActionResult IndexAdministracion( int id )
-        {
-            return View( logica.retornar_ordenes_compra( id ));
-        }
-        [GridAction]
-        public ActionResult SelectRegistradas(int id_hotel) {
-            return View("IndexAdministracion", new GridModel( logica.retornar_ordenes_compra_registradas( id_hotel) ) );
-        }
-        #endregion
         #region CrearOrdenCompra
+
+        public ActionResult detallesOrdenView(int id_oc) { 
+            OrdenCompraView oc = logica.retornar_orden( id_oc );
+            ViewBag.orden_compra = oc;
+            ViewBag.hotel = (new LogicaHotel()).retornarHotel(oc.hotelID);
+            ViewBag.proveedor = (new LogicaProveedor()).retornarProveedor(oc.proveedorID);
+            ViewBag.is_edit = true;
+            return PartialView("ordenCompraPartial");
+        }
+
         public ActionResult crearOrdenView( int id_proveedor , int id_hotel) {
             ViewBag.hotel = (new LogicaHotel()).retornarHotel(id_hotel);
             ViewBag.proveedor = (new LogicaProveedor()).retornarProveedor(id_proveedor);
             ViewBag.orden_compra = logica.retornar_orden_nueva( id_proveedor , id_hotel );
+            ViewBag.is_edit = false;
             return PartialView("ordenCompraPartial");
         }
         public ActionResult ProductosProveedor(int id_proveedor) {
@@ -78,6 +74,23 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         public ActionResult DeleteOrdenCompra(int id_oc) {
             logica.elimina_orden_compra(id_oc);
             return Json(new { msg = "ok" });
+        }
+
+        public ActionResult RegistrarOrdenCompra(int id_oc) { 
+            logica.registar_orden_compra( id_oc );
+            return Json(new{ msg = "ok"});
+        }
+        public ActionResult UpdateOCL(OCompraLineaView ocl) {
+            string message="ok";
+            try
+            {
+                logica.modificar_orden_compra_linea(ocl);
+            }
+            catch (Exception e)
+            {
+                message = e.Message;
+            }
+            return Json(new { msg = message });
         }
         #endregion
 

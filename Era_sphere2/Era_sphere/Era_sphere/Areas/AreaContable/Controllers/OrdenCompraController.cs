@@ -30,29 +30,19 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return View(new GridModel(logica.retornar_proveedores( id_hotel) ));
         }
         #region Administrar Orden
+
         [GridAction]
-        ActionResult default_admin() {
-            return View("IndexAdministracion", new GridModel(logica.retornar_ordenes_compra()));
+        ActionResult default_admin( int id_hotel ) {
+            return View("IndexAdministracion", new GridModel(logica.retornar_ordenes_compra( id_hotel)));
         }
-        public ActionResult IndexAdministracion()
+        public ActionResult IndexAdministracion( int id )
         {
-            return View( logica.retornar_ordenes_compra());
+            return View( logica.retornar_ordenes_compra( id ));
         }
         [GridAction]
-        public ActionResult SelectOrdenCompra() {
-            return default_admin();
+        public ActionResult SelectRegistradas(int id_hotel) {
+            return View("IndexAdministracion", new GridModel( logica.retornar_ordenes_compra_registradas( id_hotel) ) );
         }
-
-        public ActionResult EnviarOrdenCompra( int id_oc ) {
-            logica.enviar_orden_compra(id_oc);
-            return default_admin();
-        }
-
-        public ActionResult RegistrarOrdenCompra(int id_oc) {
-            logica.registar_orden_compra(id_oc);
-            return default_admin();
-        }
-
         #endregion
         #region CrearOrdenCompra
         public ActionResult crearOrdenView( int id_proveedor , int id_hotel) {

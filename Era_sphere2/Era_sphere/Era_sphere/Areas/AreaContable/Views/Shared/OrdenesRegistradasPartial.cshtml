@@ -1,31 +1,78 @@
-﻿Somos las ordenes Registradas (:
+﻿
 @using Telerik.Web.Mvc.UI
 @model IEnumerable<Era_sphere.Areas.AreaContable.Models.OrdenCompraView>
-           @{
-               var a = 1;
-               ViewBag.x = 1;
-               }
+@{
+    var id_hotel = ViewBag.id;
+}
 @{Html.Telerik().Grid(Model)
-        .Name("ProveedoresGrid")
+        .Name("RegistradasGrid")
         .Localizable("es-ES")
         .Filterable()
+        .HtmlAttributes( new{ style = "z-index:100"})
         .DataKeys(key => key.Add(p => p.ordenID))
         .Columns(columns =>
         {
-            columns.Bound(p => p.ordenID);
-            columns.Bound(p => p.razon_proveedor);
-            columns.Bound(p => p.nro_productos);
+            columns.Bound(p => p.ordenID).Width(10);
+            columns.Bound(p => p.razon_proveedor).Width(100);
+            columns.Bound(p => p.nro_productos).Width(20).Title("Productos");
             columns.Bound(p => p.estado_orden);
-            columns.Bound(p => p.fecha_registro);
-            columns.Bound(p => p.monto_total);
-            columns.Command(command => command.Delete());
+            columns.Bound(p => p.fecha_registro).Format("{0:d}");
+            columns.Bound(p => p.monto_total).Format("{0:c}");
+            columns.Command(command =>
+            {
+                command.Delete().ButtonType(GridButtonType.Image);
+
+                command.Custom("EditarOrden").Text("Editar")
+                                .Ajax(true).Action("DetallesOrdenC", "AdministrarOC");
+                command.Custom("AceptarOrdenR").Ajax(true).Text("Aceptar")
+                                .Action("DetallesOrdenC", "AdministrarOC");
+            });
         })
-        .ClientEvents(events => events.OnComplete("onComplete"))
+        .ClientEvents(events => events.OnComplete("registradas_complete"))
         .Pageable()
-        .Sortable()
+        .Sortable( sort => sort.OrderBy( order => order.Add( p => p.fecha_registro).Descending() ))
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("SelectRegistradas", "OrdenCompra", new { id_hotel = 1 })
-            .Delete("#","#")
+            .Select("SelectRegistradas", "AdministrarOC", new { id_hotel = 1 })
+            .Delete("EliminarOrdenCompra", "AdministrarOC")
         ).Render();
+}
+@(Html.Telerik().Window().Name("fake-windi").Visible(false))
+<script type="text/javascript">
+    function registradas_complete(e) {
+        if (e.name == "EditarOrden") {
+            var orden = e.response.orden_compra;
+
+            var url = '@Url.Action("detallesOrdenView", "OrdenCompra")' + '/?id_oc=' +
+                             orden.ordenID;
+            var windowElement = $.telerik.window.create({
+                name: 'popupOrden',
+                title: "Editar orden de compra",
+                html: '',
+                actions: [],
+                contentUrl: url,
+                modal: true,
+                resizable: true,
+                draggable: true,
+                width: 800,
+                height: 400,
+                onClose: function (e) {
+                    e.preventDefault();
+                    windowElement.data('tWindow').destroy();
+                }
+            });
+            var tdata = windowElement.data('tWindow');
+            jQuery(windowElement).attr('id', 'popupOrden');
+            tdata.center().open();
+
         }
+        else if (e.name == "delete") {
+            $("#RegistradasGrid").data('tGrid').ajaxRequest();
+        }
+    }
+
+    function cerrar_ventana() {
+        $("#popupOrden").data('tWindow').close();
+        $("#RegistradasGrid").data('tGrid').ajaxRequest();
+    }
+</script>

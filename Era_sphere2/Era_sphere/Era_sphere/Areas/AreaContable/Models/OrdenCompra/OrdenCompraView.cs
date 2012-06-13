@@ -20,7 +20,11 @@ namespace Era_sphere.Areas.AreaContable.Models
             razon_proveedor = oc.proveedor.razon_social;
             monto_total = oc.monto_total;
             comentarios = oc.comentarios;
+            hotelID = oc.hotelID;
+            estadoID = oc.estado_ordenID;
         }
+        public int estadoID { get; set; }
+        public int hotelID { get; set; }
         [DisplayName("#Orden")]
         public int ordenID { get; set; }
         [DisplayName("# Productos")]

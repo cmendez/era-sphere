@@ -1,4 +1,5 @@
-﻿@using Telerik.Web.Mvc.UI;
+﻿
+@using Telerik.Web.Mvc.UI;
 @using Era_sphere.Areas.AreaContable.Models
 @model IEnumerable<OrdenCompraView>
 @{
@@ -12,32 +13,10 @@
         </h3>
         <span class="toggle"></span>
     </div>
-    <div class="block_cont" id="registradas-partial">
-    @(Html.Telerik().Grid(Model)
-        .Name("Ordenes_grid")
-        .Localizable("es-ES")
-        .Filterable()
-        .DataKeys(key => key.Add(p => p.ordenID))
-        .Columns(columns =>
-        {
-            columns.Bound(p => p.ordenID);
-            columns.Bound(p => p.razon_proveedor);
-            columns.Bound(p => p.nro_productos);
-            columns.Bound(p => p.estado_orden);
-            columns.Bound(p => p.fecha_registro);
-            columns.Bound(p => p.monto_total);
-            columns.Command(command => command.Delete());
-        })
-        .ClientEvents(events => events.OnComplete("onComplete"))
-        .Pageable()
-        .Sortable()
-        .DataBinding(dataBinding => dataBinding
-            .Ajax()
-            .Select("SelectRegistradas", "OrdenCompra", new { id_hotel = 1 })
-            .Delete("#","#")
-        )
-        )
+     <div class="block_cont">
+    @{ Html.RenderPartial("OrdenesRegistradasPartial"); }
     </div>
+    
 </div>
 <div class="block big">
     <div class="titlebar">
@@ -47,7 +26,7 @@
         <span class="toggle show"></span>
     </div>
     <div class="block_cont" style="display:none">
-    
+    @{ Html.RenderPartial("OrdenesAceptadasPartial"); }
     </div>
 </div>
 <div class="block big">
@@ -58,7 +37,7 @@
         <span  class="toggle show"></span>
     </div>
     <div class="block_cont" style="display:none">
-   
+    @{ Html.RenderPartial("OrdenesAtendidasPartial"); }
     </div>
 </div>
 <div class="block big">
@@ -69,10 +48,8 @@
         <span  class="toggle show"></span>
     </div>
     <div class="block_cont" style="display:none">
+
+    @{ Html.RenderPartial("OrdenesCanceladasPartial"); }
  
     </div>
 </div>
-
-<script>
- 
-</script>

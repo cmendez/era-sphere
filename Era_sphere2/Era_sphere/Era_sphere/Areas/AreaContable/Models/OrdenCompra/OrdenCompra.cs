@@ -26,5 +26,11 @@ namespace Era_sphere.Areas.AreaContable.Models
         public string comentarios { get; set; }
         public int hotelID { get; set; }
         public virtual Hotel hotel { get; set; }
+
+        public void update_precio_total()
+        {
+            monto_total = 0;
+            foreach (var p in productos) monto_total += p.precio_total;
+        }
     }
 }

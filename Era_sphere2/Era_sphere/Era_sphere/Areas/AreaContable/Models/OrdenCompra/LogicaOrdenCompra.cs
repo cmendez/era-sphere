@@ -37,7 +37,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             OrdenCompra Oc = new OrdenCompra();
             Oc.fecha_registro = System.DateTime.Now;
             Oc.proveedor = context.proveedores.Find(id_proveedor);
-            Oc.estado_orden = context.estados_ocompra.Find(5);
+            Oc.estado_orden = context.estados_ocompra.Find(1);
             Oc.hotel = q_hotel.retornarUnSoloElemento(id_hotel);
             DBGenericQueriesUtil<OrdenCompra> query =
                    new DBGenericQueriesUtil<OrdenCompra>(context, context.ordenes_compra);
@@ -65,6 +65,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             q.eliminarElemento(id);
             oc.productos.Remove(ocl);
             DBGenericQueriesUtil<OrdenCompra> query = new DBGenericQueriesUtil<OrdenCompra>(context, context.ordenes_compra);
+            oc.update_precio_total();
             query.modificarElemento(oc, oc.ID);
             return;
 
@@ -78,11 +79,13 @@ namespace Era_sphere.Areas.AreaContable.Models
             ocl.cantidad = cantidad;
             ocl.precio_total = (decimal)cantidad * (decimal)ocl.producto.precio_unitario;
             ocl.orden_compra = oc;
+            
             DBGenericQueriesUtil<OrdenCompra> q = new DBGenericQueriesUtil<OrdenCompra>(context, context.ordenes_compra);
             DBGenericQueriesUtil<OCompraLinea> ql = new DBGenericQueriesUtil<OCompraLinea>(context, context.ordenes_clinea);
             int id = ql.agregarElemento(ocl);
             ocl = context.ordenes_clinea.Find(id);
             oc.productos.Add(ocl);
+            oc.update_precio_total();
             q.modificarElemento(oc, oc.ID);
         }
 
@@ -93,7 +96,7 @@ namespace Era_sphere.Areas.AreaContable.Models
 
         internal List<OrdenCompraView> retornar_ordenes_compra(int id_hotel)
         {
-            return new List<OrdenCompraView>{
+      /*      return new List<OrdenCompraView>{
                                 new OrdenCompraView{ ordenID = 1, fecha_envio = DateTime.Now , fecha_llegada = DateTime.Now , 
                                                      estado_orden = "estado 1" , monto_total = (decimal)10.2 , fecha_registro = DateTime.Now ,
                                                      nro_productos = 10 , razon_proveedor = "Proveedor 1" , proveedorID = 12 ,
@@ -108,7 +111,7 @@ namespace Era_sphere.Areas.AreaContable.Models
                                                      estado_orden = "estado 3" , monto_total = (decimal)130.2 , fecha_registro = DateTime.Now ,
                                                      nro_productos = 10 , razon_proveedor = "Proveedor 3" , proveedorID = 12 ,
                                                      comentarios = "Este es un test - 3"},
-            };
+            };*/
             List<OrdenCompra> list_oc = qoc.retornarTodos().Where(oc => oc.hotelID == id_hotel).ToList();
             List<OrdenCompraView> ans = new List<OrdenCompraView>();
             foreach (var oc in list_oc) ans.Add(new OrdenCompraView(oc));
@@ -140,7 +143,26 @@ namespace Era_sphere.Areas.AreaContable.Models
 
         internal List<OrdenCompraView> retornar_ordenes_compra_registradas(int id_hotel)
         {
-            return retornar_ordenes_compra( id_hotel);
+            return retornar_ordenes_compra( id_hotel).Where( oc => oc.estadoID == 2 ).ToList();
+        }
+
+        internal void modificar_orden_compra_linea(OCompraLineaView ocl_view)
+        {
+            OCompraLinea ocl_model = qocl.retornarUnSoloElemento(ocl_view.ID);
+            if (ocl_view.cantidad <= 0) throw new Exception("Ingrese un numero mayor que 0");
+            ocl_model.cantidad = ocl_view.cantidad;
+            
+            ocl_model.precio_total = ocl_model.cantidad * (decimal)ocl_model.producto.precio_unitario;
+            OrdenCompra oc = ocl_model.orden_compra;
+            oc.update_precio_total();
+            qocl.modificarElemento(ocl_model, ocl_model.ID);
+            qoc.modificarElemento(oc, oc.ID);
+        }
+
+        internal OrdenCompraView retornar_orden(int id)
+        {
+            var oc = qoc.retornarUnSoloElemento(id);
+            return new OrdenCompraView(oc);
         }
     }
 }

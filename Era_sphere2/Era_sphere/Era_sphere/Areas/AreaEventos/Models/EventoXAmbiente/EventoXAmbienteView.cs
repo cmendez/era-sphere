@@ -9,7 +9,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
     {
         public EventoXAmbienteView() { }
 
-        public EventoXAmbienteView(EventoXAmbiente eventoxambiente)
+         public EventoXAmbienteView(EventoXAmbiente eventoxambiente)
         {
             this.ID = eventoxambiente.ID;
             this.fecha_hora_fin = eventoxambiente.fecha_hora_fin;

@@ -1,62 +1,40 @@
-﻿
-@using Era_sphere.Generics;
+﻿@using Era_sphere.Generics;
 @model IEnumerable<Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbienteView>
 @using Telerik.Web.Mvc.UI
 
 
 @{
     ViewBag.Title = "EventoXAmbiente";
-    
     var idEvento = ViewBag.idevento;
     var idHotel = ViewBag.idHotel;
+    ViewBag.idHotel =idHotel;
+
 }
 
-
-@*<style type="text/css">
-    .t-window
-    {
-        width: 500px;
-    }
-</style>*@
 <div class="block big">
     <!-- Block Begin -->
     <div class="block_cont">
         <div>
-            <form id="form_ambiente" action="#" class="form">
-            <div>
-            
-                <label> Ambiente :  </label>
-                           @( Html.Telerik().ComboBox()
-                            .Name("ambienteID")
+<form id="form_ambiente" action="#" class="form">
 
-                            .Placeholder("Seleccione ambiente")
-
-                            .DataBinding(binding => binding.Ajax().Select("AmbientesRestantes", "Evento", new { idHotel=idHotel, idEvento=idEvento}))
-                            )
-               <span class="error_ambiente error" style="display:none;background:red ; color:white">
-                    Seleccione ambiente
-               </span>
-   
-            </div>
             <div>
                 <label> Fecha hora inicio</label>
                 @(Html.Telerik().DateTimePicker()
                     .Name("fecha_hora_inicio")
-                    .HtmlAttributes(new { id = "DateTimePicker_wrapper" })
-                    .Interval(30)
+                    .ClientEvents(events => events.OnChange("Prueba"))
+                    .Interval(60)
                     
                  )
               <span class="error_fecha_inicio error" style="display:none;background:red ; color:white">
                     Seleccione fecha inicio
               </span>
-   
             </div>
             <div>
                 <label> Fecha hora fin </label>
                 @(Html.Telerik().DateTimePicker()
                     .Name("fecha_hora_fin")
-                    .HtmlAttributes(new { id = "DateTimePicker_wrapper" })
-                    .Interval(30)
+                    .ClientEvents(events => events.OnChange("Prueba"))
+                    .Interval(60)
                     
                  )
 
@@ -65,24 +43,26 @@
               </span>
    
             </div>
-            <div>
-                 <label> Precio : </label>
-
-                 @(Html.Telerik().CurrencyTextBox()
-                                 .Name("precio")
-                                 .Spinners(true)
-                                 .MinValue(0)
-                        )
-                <span class="error_precio error" style="display:none ; background:red ; color:white">
-                    Seleccione precio
-                </span>
+            <p>
+                
+            </p>
+            <div id="traer">
             </div>
-                <input type="submit" value="Agregar ambiente" class="t-button t-state-default submit"/>
-            </form>
-        </div>
-        <script type="text/javascript">
+            
+    </form>
+</div>
+            <p>
+                
+    <script type="text/javascript">
+                     
 
-            function isNumber(n) {
+        function Prueba() {
+            var fecha_hora_fint = $("#fecha_hora_fin").val();
+            var fecha_hora_iniciot = $("#fecha_hora_inicio").val();
+            if(fecha_hora_fint!="" && fecha_hora_iniciot!="") 
+            $('#traer').load('@Url.Action("CargarAmbientes", "Evento", new { idEvento = idEvento })', { fecha_hora_inicio: fecha_hora_iniciot, fecha_hora_fin: fecha_hora_fint, idHotel: @idHotel });
+        }
+    function isNumber(n) {
                 return !isNaN(parseFloat(n)) && isFinite(n);
             }
 
@@ -92,18 +72,15 @@
                     event.preventDefault();
                     var $form = $(this);
                     var ambienteIDt = $form.find('input[name="ambienteID"]').val();
-                    var preciot = $form.find('input[name="precio"]').val();
-                    //var fecha_hora_iniciot = $form.find('input[name="fecha_hora_inicio"]').val();
                     var fecha_hora_iniciot = $("#fecha_hora_inicio").val();
-                    //var fecha_hora_fint = $form.find('input[name="fecha_hora_fin"]').val();
                     var fecha_hora_fint = $("#fecha_hora_fin").val();
                     var link = "/AreaEventos/Evento/InsertAmbiente";
 
-                    if (ambienteIDt == "" || preciot == "" || !isNumber(ambienteIDt)) {
+                    if (ambienteIDt == "" || !isNumber(ambienteIDt)) {
                         //                        if (!isNumber(ambienteIDt))
                         //                            $(".error_ambiente").show();
                         //                        if (precio == "")
-                        $(".error_precio").show();
+                        ;
                     }
                     else {
 
@@ -111,10 +88,11 @@
                             {
                                 url: '@Url.Action("InsertAmbiente","Evento",new {idEvento=idEvento} )',
                                 type: 'POST',
+
                                 datatype: 'json',
                                 contentType: 'application/json',
                                 data:
-                                        JSON.stringify({ ambienteID: ambienteIDt, precio: preciot, fecha_hora_inicio: fecha_hora_iniciot,
+                                        JSON.stringify({ ambienteID: ambienteIDt, fecha_hora_inicio: fecha_hora_iniciot,
                                             fecha_hora_fin: fecha_hora_fint
                                         }),
                                 success: function (result) {
@@ -127,15 +105,14 @@
                     }
                 }
             );
-        </script>
+                    
+    </script>
+        
         @(Html.Telerik().Grid(Model)
         .Name("AmbientesGrid")
         .Localizable("es-ES")
         .Filterable()
-        
-        .Editable(editing => editing
-                            .Mode(GridEditMode.InLine)
-                           )
+        //.ToolBar(commands => commands.Insert())
 
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
@@ -147,7 +124,6 @@
             columns.Bound(p => p.fecha_hora_fin).ReadOnly(true);
             columns.Command(commands =>
             {
-                commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
             });
         })
@@ -155,14 +131,20 @@
         .Pageable()
         .Sortable()
 
-
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("VerAmbientes", "Evento", new { idEvento = @idEvento })
-            .Insert("InsertAmbiente", "Evento", new { idEvento = @idEvento })
             .Delete("DeleteAmbiente", "Evento", new { idEvento = @idEvento })
-            .Update("UpdateAmbiente", "Evento", new { idEvento = @idEvento })
+            
         )
+        .Resizable(config =>
+        {
+            config.Columns(true);
+        })
+        .Reorderable(config =>
+        {
+            config.Columns(true);
+        })
            )
 
     </div>

@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
+using Era_sphere.Areas.AreaEventos.Models.Evento;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -48,5 +49,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public virtual ICollection<TipoServicioXHotel> tiposerviciosxhoteles { get; set; }
         public virtual ICollection<Proveedor> proveedores { get; set; }
         public virtual ICollection<OrdenCompra> ordenes_compra { get; set; }
+        
     }
 }

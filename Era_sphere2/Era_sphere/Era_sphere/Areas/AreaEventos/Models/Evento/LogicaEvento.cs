@@ -20,10 +20,14 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
 
         public List<EventoView> retornarEventos( int id_hotel )
         {
-            IEnumerable<Evento> eventos = database_table.retornarTodos();//Where( p => p.piso.hotel.ID == id_hotel );
+            IEnumerable<Evento> eventos = database_table.retornarTodos();
+            
+
             List<EventoView> evento_view = new List<EventoView>();
 
-            foreach (Evento evento in eventos) evento_view.Add(new EventoView(evento));
+            foreach (Evento evento in eventos) 
+                if(evento.hotel==id_hotel)
+                    evento_view.Add(new EventoView(evento));
             return evento_view;
         }
 

@@ -1288,8 +1288,14 @@
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoCalcularCostos.cshtml" />
     <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
+
+    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\EventoAmbienteTemplate.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Evento\PruebaHtml.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Evento\CargarAmbiente.cshtml" />
+
     <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexReporteEmpleado.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexFormReporteEmpleado.cshtml" />
+
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

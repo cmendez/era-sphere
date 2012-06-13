@@ -16,7 +16,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             nombre = evento.nombre;
             precio_total = evento.precio_total;
             num_participantes = evento.num_participantes;
-            //idHotel = evento.hotelID;
+            Hotel = evento.hotel;
         }
         [Required]
         [MaxLength(30)]
@@ -33,9 +33,9 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         [DisplayName("ID evento")]
         [Required]
         public int ID { get; set; }
-        //[DisplayName("ID hotel")]
+        [DisplayName("ID hotel")]
         //[Required]
-        //public int idHotel { get; set; }
+        public int Hotel { get; set; }
         public Evento deserializa()
         {
             return new Evento
@@ -44,7 +44,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
                 nombre=this.nombre,
                 precio_total=this.precio_total,
                 num_participantes=this.num_participantes,
-              //  hotelID=this.idHotel
+                hotel=this.Hotel
             };
         }
 

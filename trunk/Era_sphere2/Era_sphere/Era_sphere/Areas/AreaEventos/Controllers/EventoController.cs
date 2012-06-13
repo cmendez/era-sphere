@@ -30,13 +30,13 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             Hotel hotel = logicaHotel.retornarObjHotel(id);
             ViewData["id_hotel"] = id;
             ViewData["nombre_hotel"] = hotel.razon_social;
-            return View("EventoIndex",evento_logica.retornarEventos(id));
+            return View("EventoIndex");
         }
 
         [GridAction]
         public ActionResult Select(int id_hotel)
         {
-            return View("EventoAdicionalView", new GridModel(evento_logica.retornarEventos(id_hotel)));
+            return View("EventoIndex", new GridModel(evento_logica.retornarEventos(id_hotel)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -48,7 +48,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             
             if (TryUpdateModel(evento_view))
             {
-                //evento_view.idHotel =id_hotel;
+                evento_view.Hotel =id_hotel;
                 evento_logica.agregarEvento(evento_view);
 
             }
@@ -69,6 +69,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         [GridAction]
         public ActionResult Update(EventoView p, int id_hotel)
         {
+            p.Hotel = id_hotel;
             evento_logica.modificarEvento(p);
             return View("EventoIndex", new GridModel(evento_logica.retornarEventos(id_hotel)));
         }
@@ -76,6 +77,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         public ActionResult DetalleEvento(int id, int idhotel)
         {
             ViewBag.idhotel = idhotel;
+            //ViewBag.idhotel = 1;
             ViewBag.idevento = id;
             return View("EventoLlenarDatos");
         }
@@ -199,10 +201,8 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult DeleteAmbiente(int? id, int idEvento,EventoXAmbienteView ambiente)
-        {
-            int ambiente_id = id ?? -1;
-            
+        public ActionResult DeleteAmbiente( int idEvento,EventoXAmbienteView ambiente)
+        {   
             evento_logica.eliminarAmbiente(idEvento,ambiente);
             return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
         }
@@ -229,6 +229,14 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             evento_logica.agregarAmbienteAEvento(idEvento, ambiente,idambiente);
             return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
 
+        }
+        
+        public ActionResult CargarAmbientes(int idEvento,DateTime fecha_hora_inicio,DateTime fecha_hora_fin,int idHotel){
+
+            ViewBag.idEvento = idEvento;
+            ViewBag.fecha_inicio = fecha_hora_inicio;
+            LogicaAmbiente logica_ambiente = new LogicaAmbiente();
+            return PartialView("CargarAmbiente", logica_ambiente.retornarAmbientes(idHotel));
         }
         #endregion 
 

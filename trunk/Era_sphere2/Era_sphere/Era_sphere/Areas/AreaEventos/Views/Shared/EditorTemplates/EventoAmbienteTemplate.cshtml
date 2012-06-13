@@ -1,0 +1,90 @@
+﻿@model Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbienteView
+@using Telerik.Web.Mvc.UI;
+
+@{
+    ViewBag.Title = "EventoAmbienteTemplate";
+    var idEvento = ViewBag.idevento;
+    var idHotel = ViewBag.idHotel;
+}
+
+@using (Html.BeginForm())
+{
+    
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Buscar Ambiente</legend>
+    <div>
+            @*<form id="form_ambiente" action="#" class="form">
+            <div>
+            
+                <label> Ambiente :  </label>
+                           @( Html.Telerik().ComboBox()
+                            .Name("ambienteID")
+                            .Placeholder("Seleccione ambiente")
+                            .DataBinding(binding => binding.Ajax().Select("AmbientesRestantes", "Evento", new { idHotel=idHotel, idEvento=idEvento}))
+                            )
+               <span class="error_ambiente error" style="display:none;background:red ; color:white">
+                    Seleccione ambiente
+               </span>
+            </div>*@
+            <div>
+                <label> Fecha hora inicio</label>
+                @(Html.Telerik().DateTimePicker()
+                    .Name("fecha_hora_inicio")
+                    .HtmlAttributes(new { id = "DateTimePicker_wrapper" })
+                    .Interval(30)
+                 )
+              <span class="error_fecha_inicio error" style="display:none;background:red ; color:white">
+                    Seleccione fecha inicio
+              </span>
+   
+            </div>
+            <div>
+                <label> Fecha hora fin </label>
+                @(Html.Telerik().DateTimePicker()
+                    .Name("fecha_hora_fin")
+                    .HtmlAttributes(new { id = "DateTimePicker_wrapper" })
+                    .Interval(30)
+                    
+                 )
+
+              <span class="error_fecha_fin error" style="display:none;background:red ; color:white">
+                    Seleccione fecha fin
+              </span>
+   
+            </div>
+
+            <p>
+                <button class="t-button t-state-default" onclick="BuscarAmbientes()">Buscar Ambientes</button>
+                <script type="text/javascript">
+                    function BuscarAmbientes() {
+                        var fecha_hora_fint = $("#fecha_hora_fin").val();
+                        alert("gggg");
+                        $('#result').load('@Url.Action("CargarAmbientes", "Evento",new {idEvento=idEvento})', { fecha_hora_fin:fecha_hora_fint } );
+                    }
+                </script>
+            </p>
+            <div id="result">
+            </div>
+                
+
+        @*<div class="editor-label"> @Html.LabelFor(model => model.pisoID) </div>
+        @(Html.Telerik().ComboBox()
+
+            .Name("pisoID")
+            .BindTo(new SelectList(pisos, "ID", "codigo_piso"))
+            .SelectedIndex(0)
+        )
+
+        <div class="editor-label"> @Html.LabelFor(model => model.estadoID) </div>
+        @( Html.Telerik().ComboBox()
+                    .Name("estadoID")
+                    .BindTo(new SelectList(estados, "ID", "descripcion"))
+                    .SelectedIndex(0)
+                )
+
+        <div class="editor-label"> @Html.LabelFor(model => model.precio) </div>
+        <div class="editor-field"> @Html.EditorFor(model => model.precio) </div>*@
+        
+    </fieldset>
+}

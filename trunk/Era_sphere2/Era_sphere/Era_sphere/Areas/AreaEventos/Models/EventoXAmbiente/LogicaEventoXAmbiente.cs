@@ -67,8 +67,11 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
         public decimal RetornarCosto(int idEvento)
         {
             decimal costo = 0;
-            List <EventoXAmbienteView> listexa= retornarAmbientes(idEvento);
-            foreach (EventoXAmbienteView exa in listexa) costo += exa.amb_precio;
+            List <EventoXAmbienteView> listexa= retornarAmbientes(idEvento);    
+            foreach (EventoXAmbienteView exa in listexa) {
+                decimal dif= (decimal)exa.fecha_hora_fin.Subtract(exa.fecha_hora_inicio).TotalHours ;
+                costo += exa.amb_precio*(dif);
+            }
             return costo;
         }
     }

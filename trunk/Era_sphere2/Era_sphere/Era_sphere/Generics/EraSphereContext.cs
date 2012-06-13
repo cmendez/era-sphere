@@ -13,6 +13,7 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public void seed(){
+            seedTipoDocumentoCliente();
             seedUbigeo();
             seedHotel();
             seedEstadoEspacioRentable();
@@ -30,12 +31,20 @@ namespace Era_sphere.Generics
             
             seedOrdenCompra();
             seedTipoHabitaciones();
+
+            seedComodidades();
+            seedPisos();
+            
+            seedOrdenCompra();
+
             seedClientes();
+
             seedPisos();
             seedHabitaciones();
             seedOrdenCompra();
             //seedPerfil();
             seedEmpleados();
+
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }
@@ -52,7 +61,8 @@ namespace Era_sphere.Generics
 
     }
 
-    public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
+    //public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
+    public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
         protected override void Seed(EraSphereContext context){
             context.seed();
         }

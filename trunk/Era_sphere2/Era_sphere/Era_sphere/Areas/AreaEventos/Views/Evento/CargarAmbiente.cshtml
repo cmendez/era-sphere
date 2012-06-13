@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Era_sphere.Areas.AreaHoteles.Models.Ambientes.AmbienteView>
+@using Telerik.Web.Mvc.UI
+@{
+    ViewBag.Title = "CargarAmbiente";
+}
+<label>Seleccionar ambiente</label>
+@(Html.Telerik().ComboBox()
+
+            .Name("ambienteID")
+            .BindTo(new SelectList(Model, "ID", "nombre"))
+            .SelectedIndex(0)
+        )
+<input type="submit" value="Agregar ambiente" class="t-button t-state-default submit"/>

@@ -5,21 +5,18 @@
     ViewBag.Title = "IndexAdministracion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-<div class="block big" style="position: relative">
-    <!-- Block Begin -->
+<div class="block big">
     <div class="titlebar">
         <h3>
-            Compras y recepción
+            Ordenes Registradas
         </h3>
+        <span class="toggle"></span>
     </div>
-    <div class="block_cont">
-        @(Html.Telerik().Grid(Model)
-        .Name("ProveedoresGrid")
+    <div class="block_cont" id="registradas-partial">
+    @(Html.Telerik().Grid(Model)
+        .Name("Ordenes_grid")
         .Localizable("es-ES")
         .Filterable()
-
         .DataKeys(key => key.Add(p => p.ordenID))
         .Columns(columns =>
         {
@@ -29,60 +26,53 @@
             columns.Bound(p => p.estado_orden);
             columns.Bound(p => p.fecha_registro);
             columns.Bound(p => p.monto_total);
-            columns.Command(commands =>
-            {
-                commands.Custom("enviarOrden")
-                            .Text("Aceptar Orden")
-                            .Ajax(true)
-                            .DataRouteValues(p => p.Add(x => x.ordenID).RouteKey("id_orden"))
-                            .Action("EnviarOrdenCompra", "OrdenCompra");
-            });
+            columns.Command(command => command.Delete());
         })
         .ClientEvents(events => events.OnComplete("onComplete"))
         .Pageable()
         .Sortable()
-
-
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("SelectOrdenCompra", "OrdenCompra")
+            .Select("SelectRegistradas", "OrdenCompra", new { id_hotel = 1 })
+            .Delete("#","#")
         )
-           )
+        )
     </div>
-@(Html.Telerik().Window().Name("name-fake").Visible(false)
-)
-
-    <script type="text/javascript">
-        function onComplete(e) {
-            var proveedor = e.response.proveedor;
-            if (e.name == "createOrden") {
-                var url = '@Url.Action("crearOrdenView", "OrdenCompra")' + '/' + proveedor.ID
-                var windowElement = $.telerik.window.create({
-                    name: 'popupOrden',
-                    title: "Registrar orden de compra",
-                    html: '',
-                    actions: [],
-                    contentUrl: url,
-                    modal: true,
-                    resizable: true,
-                    draggable: true,
-                    width: 800,
-                    height: 400,
-                    onClose: function (e) {
-                        e.preventDefault();
-                        windowElement.data('tWindow').destroy();
-                    }
-                });
-                var tdata = windowElement.data('tWindow');
-                jQuery(windowElement).attr('id', 'popupOrden');
-                tdata.center().open();
-
-            }
-        }
-
-        function cerrar_ventana() {
-            $("#popupOrden").data('tWindow').close();
-        }
-    </script>
-    <!-- Table Wrapper End -->
 </div>
+<div class="block big">
+    <div class="titlebar">
+        <h3>
+            Ordenes Aceptadas
+        </h3>
+        <span class="toggle show"></span>
+    </div>
+    <div class="block_cont" style="display:none">
+    
+    </div>
+</div>
+<div class="block big">
+    <div class="titlebar">
+        <h3>
+            Ordenes Atendidas
+        </h3>
+        <span  class="toggle show"></span>
+    </div>
+    <div class="block_cont" style="display:none">
+   
+    </div>
+</div>
+<div class="block big">
+    <div class="titlebar">
+        <h3>
+            Ordenes Canceladas
+        </h3>
+        <span  class="toggle show"></span>
+    </div>
+    <div class="block_cont" style="display:none">
+ 
+    </div>
+</div>
+
+<script>
+ 
+</script>

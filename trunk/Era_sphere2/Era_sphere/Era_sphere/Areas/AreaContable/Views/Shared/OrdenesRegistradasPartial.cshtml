@@ -1,0 +1,31 @@
+﻿Somos las ordenes Registradas (:
+@using Telerik.Web.Mvc.UI
+@model IEnumerable<Era_sphere.Areas.AreaContable.Models.OrdenCompraView>
+           @{
+               var a = 1;
+               ViewBag.x = 1;
+               }
+@{Html.Telerik().Grid(Model)
+        .Name("ProveedoresGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .DataKeys(key => key.Add(p => p.ordenID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ordenID);
+            columns.Bound(p => p.razon_proveedor);
+            columns.Bound(p => p.nro_productos);
+            columns.Bound(p => p.estado_orden);
+            columns.Bound(p => p.fecha_registro);
+            columns.Bound(p => p.monto_total);
+            columns.Command(command => command.Delete());
+        })
+        .ClientEvents(events => events.OnComplete("onComplete"))
+        .Pageable()
+        .Sortable()
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectRegistradas", "OrdenCompra", new { id_hotel = 1 })
+            .Delete("#","#")
+        ).Render();
+        }

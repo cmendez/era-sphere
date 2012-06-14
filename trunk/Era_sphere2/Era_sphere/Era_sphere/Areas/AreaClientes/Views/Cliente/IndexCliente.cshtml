@@ -2,6 +2,70 @@
 @using Era_sphere.Generics;
 @using Telerik.Web.Mvc.UI
 @model IEnumerable<ClienteNaturalView>
+           
+           <script type="text/javascript">
+               function onComplete(e) {
+                   if (e.name == "mostrar_juridico") {
+                       $("#detalle-cliente-juridico").load('@Url.Action("ClienteJuridicoShow", "Cliente")' + '/' + e.response.id);
+                       var detailModal = $("#DetalleJuridico").data("tWindow");
+                       detailModal.center().open();
+                   } else if (e.name == "mostrar_natural") {
+                       $("#detalle-cliente-natural").load('@Url.Action("ClienteNaturalShow", "Cliente")' + '/' + e.response.id);
+                       var detailModal = $("#DetalleNatural").data("tWindow");
+                       detailModal.center().open();
+                   }
+               }
+
+               var detieneProceso = false;
+
+               function guardar(e) {
+                   var tipo_documento_id = e.values.id_tipo_documento;
+                   var documento = e.values.documento_identidad;
+                   var tarjeta_cliente = e.values.tarjeta_cliente;
+                   detieneProceso = false;
+                   jQuery.ajax({
+                       url: '@Url.Action("ValidaClientes", "Cliente")' + "?id_tipo_documento=" + tipo_documento_id + "&documento=" + documento + "&tarjeta_cliente=" + tarjeta_cliente,
+
+                       success: function (result) {
+
+                           if (result == 1) {
+                               alert("Existe un cliente con el mismo documento ó tarjeta de cliente, No se registra al cliente");
+                               detieneProceso = true;
+                           }
+                       },
+                       async: false
+                   });
+
+                   if (detieneProceso == true)
+                       e.preventDefault();
+
+               }
+
+
+               function guardarJuridico(e) {
+                   var ruc = e.values.ruc;
+                   var tarjeta_cliente = e.values.tarjeta_cliente;
+                   detieneProceso = false;
+                   jQuery.ajax({
+                       url: '@Url.Action("ValidaClientesJuridicos", "Cliente")' + "?ruc=" + ruc + "&tarjeta_cliente=" + tarjeta_cliente,
+
+                       success: function (result) {
+
+                           if (result == 1) {
+                               alert("Existe un Cliente Jurídico con el mismo RUC ó tarjeta de cliente, No se registra al cliente");
+                               detieneProceso = true;
+                           }
+                       },
+                       async: false
+                   });
+
+                   if (detieneProceso == true)
+                       e.preventDefault();
+
+               }
+
+</script>
+
 @{
     if(!(bool)(ViewData["es_partial"])){
     ViewBag.Title = "IndexHotel";
@@ -46,65 +110,3 @@
     <!-- Table Wrapper End -->
 </div>
 
-<script type="text/javascript">
-    function onComplete(e) {
-        if (e.name == "mostrar_juridico") {
-            $("#detalle-cliente-juridico").load('@Url.Action("ClienteJuridicoShow", "Cliente")' + '/' + e.response.id);
-            var detailModal = $("#DetalleJuridico").data("tWindow");
-            detailModal.center().open();
-        } else if (e.name == "mostrar_natural") {
-            $("#detalle-cliente-natural").load('@Url.Action("ClienteNaturalShow", "Cliente")' + '/' + e.response.id);
-            var detailModal = $("#DetalleNatural").data("tWindow");
-            detailModal.center().open();
-        }
-    }
-
-    var detieneProceso = false; 
-
-    function guardar(e) {
-        var tipo_documento_id = e.values.id_tipo_documento;
-        var documento = e.values.documento_identidad;
-        var tarjeta_cliente = e.values.tarjeta_cliente;
-        detieneProceso = false;
-        jQuery.ajax({
-            url: '@Url.Action("ValidaClientes", "Cliente")' + "?id_tipo_documento=" + tipo_documento_id + "&documento=" + documento + "&tarjeta_cliente="+tarjeta_cliente,
-
-            success: function (result) {
-
-                if (result == 1) {
-                    alert("Existe un cliente con el mismo documento ó tarjeta de cliente, No se registra al cliente");
-                    detieneProceso = true;
-                }
-            },
-            async: false
-        });
-
-        if (detieneProceso == true)
-            e.preventDefault(); 
-       
-    }
-
-
-    function guardarJuridico(e) {
-        var ruc = e.values.ruc;
-        var tarjeta_cliente = e.values.tarjeta_cliente;
-        detieneProceso = false;
-        jQuery.ajax({
-            url: '@Url.Action("ValidaClientesJuridicos", "Cliente")' + "?ruc=" + ruc + "&tarjeta_cliente=" + tarjeta_cliente,
-
-            success: function (result) {
-
-                if (result == 1) {
-                    alert("Existe un Cliente Jurídico con el mismo RUC ó tarjeta de cliente, No se registra al cliente");
-                    detieneProceso = true;
-                }
-            },
-            async: false
-        });
-
-        if (detieneProceso == true)
-            e.preventDefault();
-
-    }
-
-</script>

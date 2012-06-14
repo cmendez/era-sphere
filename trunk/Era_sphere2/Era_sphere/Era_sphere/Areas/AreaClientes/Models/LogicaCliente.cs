@@ -197,6 +197,27 @@ namespace Era_sphere.Areas.AreaClientes.Models
             }
         }
 
+        public void cambiarEstadoAnularReserva(int id_cliente_reserva)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = retornarClientes();
+
+            for (int i = 0; i < clientes.Count(); i++)
+            {
+                if (id_cliente_reserva == clientes[i].ID)
+                {
+
+                    if (clientes[i].reservas.Where(x => x.estado.descripcion != "Anulada").ToList().Count() == 0)
+                    {
+                        clientes[i].estadoID = 1;
+                        clientes[i].estado = cliente_context.estados_cliente.Find(1);
+                        modificarCliente(clientes[i]);
+                        break;
+                    }
+                }
+            }
+        }
+
         //para asignar una habitación a un cliente
         public void asignarHabitacionCliente(Reserva reserva)
         {

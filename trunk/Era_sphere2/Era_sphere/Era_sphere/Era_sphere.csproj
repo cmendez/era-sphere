@@ -337,6 +337,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Navegacion\NavegacionController.cs" />
+    <Compile Include="Generics\DateTimeUtils.cs" />
     <Compile Include="Generics\DBable.cs" />
     <Compile Include="Generics\DBGenericQueriesUtil.cs" />
     <Compile Include="Generics\EnumExtensions.cs" />

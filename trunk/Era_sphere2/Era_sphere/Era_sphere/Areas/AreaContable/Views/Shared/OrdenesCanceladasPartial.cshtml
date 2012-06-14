@@ -1,1 +1,30 @@
-﻿Hola somos las ordenes canceladas )X
+﻿@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models
+@model IEnumerable<OrdenCompraView>
+@{
+    int id_hotel = ViewBag.id;    
+}
+
+@{
+    Html.Telerik().Grid(Model)
+        .Name("CanceladasGrid")
+        .Localizable("es-Es")
+        .Filterable()
+        .Sortable()
+        .HtmlAttributes(new { style = "z-index:100" })
+        .DataKeys(key => key.Add(oc => oc.ordenID))
+        .Columns(col =>
+        {
+            col.Bound(oc => oc.ordenID);
+            col.Bound(oc => oc.razon_proveedor);
+            col.Bound(oc => oc.estado_orden);
+            col.Command(com => com.Delete().ButtonType(GridButtonType.Image));
+
+        })
+
+        .DataBinding(bind => bind.Ajax()
+            .Select("SelectOrdenes", "AdministrarOC",
+            new { id_hotel = @id_hotel, estado_orden = 5 })
+            .Delete("EliminarOrdenCompra", "AdministrarOC", new { estado_orden = 5 })
+            ).Render();
+    }

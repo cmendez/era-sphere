@@ -117,9 +117,14 @@ namespace Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleados
             List<AsistenciaEmpleado> asistencias = database_table.retornarTodos();
             List<AsistenciaEmpleadoView> asistencias_view = new List<AsistenciaEmpleadoView>();
 
-            asistencias.Where(a => (Int32.Parse(a.empleadoID) == id));
+            //asistencias.Where(a => (Int32.Parse(a.empleadoID) == id));
 
-            foreach (AsistenciaEmpleado asistencia in asistencias) asistencias_view.Add(new AsistenciaEmpleadoView(asistencia));
+
+            foreach (AsistenciaEmpleado asistencia in asistencias)
+            {
+                if (Int32.Parse(asistencia.empleadoID) == id)
+                    asistencias_view.Add(new AsistenciaEmpleadoView(asistencia));
+            }
             return asistencias_view;
         }
 

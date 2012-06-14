@@ -68,11 +68,12 @@ namespace Era_sphere.Areas.AreaReservas
         [DisplayName(@"Número de pisos")]
         public int pisoID { get; set; }
 
+        public List<ConsultaLineaView> habitaciones { get; set; }
         //       [DisplayName("Días de Estadía")]
 
         public ReservaView() { }
 
-        public ReservaView(Reserva r)
+        public ReservaView(Reserva r, LogicaReserva logica)
         {
             responsable_pago = LogicaCliente.toString(r.responsable_pago);
             responsable_pagoID = r.responsable_pago.ID;
@@ -91,6 +92,7 @@ namespace Era_sphere.Areas.AreaReservas
             //ultimos
             hotelID = r.hotelID;
             pisoID = r.pisoID;
+            habitaciones = logica.getHabitaciones(r.ID);
         }
 
 

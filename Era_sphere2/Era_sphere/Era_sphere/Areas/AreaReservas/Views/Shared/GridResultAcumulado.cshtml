@@ -24,7 +24,7 @@
             columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "cap_max_personas")).Title("Capacidad");
             columns.Template(
                  @<text>
-                    <button onclick="quitaHabitacion(@item.habitacionID);">Quitar</button>
+                    <button class="btn_quitar" onclick="quitaHabitacion(@item.habitacionID);">Quitar</button>
                     
                 </text>
             ).Width(50).HtmlAttributes(new { style = "text-align:center" });

@@ -226,7 +226,6 @@
     <Compile Include="Areas\AreaEventos\Models\Participante\Participante.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXServicioXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXTipoHabitacionXTemporadaController.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\Habitaciones\HabitacionXReserva.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\HotelXServicioXTemporadaView.cs" />
@@ -252,6 +251,7 @@
     <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaLineaView.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaView.cs" />
+    <Compile Include="Areas\AreaReservas\Models\HabitacionXReserva.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\LogicaConsulta.cs" />
     <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaReservas\AreaReservasAreaRegistration.cs">

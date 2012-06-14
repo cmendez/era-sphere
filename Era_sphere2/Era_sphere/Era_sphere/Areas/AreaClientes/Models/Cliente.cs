@@ -12,6 +12,7 @@ using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaReservas.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Areas.AreaReservas.Models.Consultas;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {

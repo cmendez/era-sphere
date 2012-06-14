@@ -2,6 +2,20 @@
 @using Era_sphere.Areas.AreaHoteles.Models
 @using Era_sphere.Generics;
 @using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "IndexHotel";
+    bool partial = (bool)(ViewData["partial"]);
+    if(!partial){
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
+    tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
+    var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();
+    pisos.Insert(0, new Piso { ID = 0, descripcion = "Todos" });
+    ViewData["habitaciones_seleccionadas"] = new List<ConsultaLineaView>();
+}
+
 @model ConsultaView
            
            <script type="text/javascript">
@@ -16,7 +30,8 @@
                        fecha_fin: fecha_fin,
                        pisoID: pisoID,
                        tipo_habitacionID: tipo_habitacionID,
-                       hotelID: hotelID
+                       hotelID: hotelID,
+                       partial: "@partial"
                    };
                    $("#grid-result").load('@Url.Action("Buscar", "Consulta")', data);
                }
@@ -42,7 +57,6 @@
                    var nuevo = []
                    for (i in hab_ids) if (hab_ids[i] != id) nuevo.push(hab_ids[i]);
                    hab_ids = nuevo;
-                   console.log(hab_ids);
                    recargaAcumulado();
                }
                function validaFecha(){
@@ -57,18 +71,7 @@
 </script>
 
 
-@{
-    ViewBag.Title = "IndexHotel";
-    bool partial = (bool)(ViewData["partial"]);
-    if(!partial){
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-    var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
-    tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
-    var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();
-    pisos.Insert(0, new Piso { ID = 0, descripcion = "Todos" });
-    ViewData["habitaciones_seleccionadas"] = new List<ConsultaLineaView>();
-}
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
@@ -83,7 +86,7 @@
         </h3>
     </div>
     
-    <div class="block_cont">
+    <div id="todo" class="block_cont">
    
       @Html.ValidationSummary(true)
         <fieldset>

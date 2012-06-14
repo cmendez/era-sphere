@@ -23,11 +23,11 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Buscar(DateTime fecha_inicio, DateTime fecha_fin, int hotelID, int tipo_habitacionID, int pisoID)
+        public ActionResult Buscar(DateTime fecha_inicio, DateTime fecha_fin, int hotelID, int tipo_habitacionID, int pisoID, bool partial)
         {
             Consulta resultado = new Consulta { fecha_inicio = fecha_inicio, fecha_fin = fecha_fin, hotelID = hotelID, pisoID = pisoID, tipo_habitacionID = tipo_habitacionID };
             consulta_logica.asignarHabitacionesDisponiblesTotales(resultado);
-            ViewData["partial"] = false;
+            ViewData["partial"] = partial;
             return PartialView("GridResultConsulta", new ConsultaView(resultado));
         }
 
@@ -43,5 +43,6 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         {
             return Json(new { id = id }, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

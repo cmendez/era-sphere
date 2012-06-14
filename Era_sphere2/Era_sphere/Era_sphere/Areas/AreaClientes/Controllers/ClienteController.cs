@@ -164,5 +164,27 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         }
 
 
+        public int ValidaClientes(int id_tipo_documento, string documento, string tarjeta_cliente)
+        {
+
+            var clientes = cliente_logica.retornarClientes().Where(c => ((c.tipo_documentoID == id_tipo_documento) && (c.documento_identidad == documento)) ||(c.tarjeta_cliente== tarjeta_cliente));
+            if (clientes.Count() == 0)
+                return 0;
+            else
+                return 1;
+        }
+
+        public int ValidaClientesJuridicos(string ruc, string tarjeta_cliente)
+        {
+
+            var clientes = cliente_logica.retornarClientes().Where(c => (c.ruc == ruc) || (c.tarjeta_cliente == tarjeta_cliente));
+            if (clientes.Count() == 0)
+                return 0;
+            else
+                return 1;
+        }
+
+
+
     }
 }

@@ -7,6 +7,7 @@ using Era_sphere.Generics;
 using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Areas.AreaContable.Models.Recibo;
 
 
 namespace Era_sphere.Areas.AreaReservas.Models
@@ -41,11 +42,22 @@ namespace Era_sphere.Areas.AreaReservas.Models
         public void registrarReserva(Reserva reserva)
         {
             tabla_reserva.agregarElemento(reserva);
+            LogicaCliente logica_cliente = new LogicaCliente();
+            logica_cliente.cambiarEstadoCliente(reserva);
+           //incluye lista de reservas
+            reserva.responsable_pago.reservas.Add(reserva);
+
+
+            //reserva.responsable_pago.estadoID = 2;
+            //reserva.responsable_pago.numero_reservas += 1;
         }
 
         public void eliminarReserva(int reserva_id)
         {
+            int cliente_id = retornarReserva(reserva_id).responsable_pagoID;
+            LogicaCliente logica_cliente = new LogicaCliente();
             tabla_reserva.eliminarElemento(reserva_id);
+            logica_cliente.cambiarEstadoEliminarReserva(cliente_id);
         }
 
         public List<Reserva> buscarReserva(Reserva reserva)
@@ -145,6 +157,77 @@ namespace Era_sphere.Areas.AreaReservas.Models
                         select context.habitaciones.Find(u.habitacionID);
             return query.ToList();
         }
+
+
+        //cambios de estados propios de la reserva
+
+        public void cambiarEstadoReservaAnular(Reserva reserva)
+        {
+            //List<Reserva> reservas = new List<Reserva>();
+            //LogicaReserva logica_reserva = new LogicaReserva();
+            //reservas = logica_reserva.retornarReservas();
+            //for (int i = 0; i < reservas.Count(); i++)
+            //{
+            //    if (reservas[i].ID == reserva.ID)
+            //    {
+                    reserva.estadoID = 4;
+                    reserva.estado = context.estados_reserva.Find(4);
+                    modificarReserva(reserva);
+                    LogicaCadena cadena_context = new LogicaCadena();
+                    Cadena cadena = cadena_context.retornarCadena(1);
+
+                    if (DateTime.Now.Subtract(reserva.dia_creacion).Days < cadena.d_ant_ret)
+                    {
+                        ReciboLinea recibo = new ReciboLinea();
+                        recibo.detalle = "Devolución de monto adelantado de reserva";
+                        recibo.fecha = DateTime.Now;
+                        recibo.precio_unitario = (-1)*reserva.precio_derecho_reserva;
+                        recibo.unidades = 1;
+                        //llamar un popup de recibo gg
+                    }
+          
+
+                        //    }
+            //}
+            
+        }
+
+
+        public void cambiarEstadoReservaCheckIn(Reserva reserva)
+        {
+            //List<Reserva> reservas = new List<Reserva>();
+            //LogicaReserva logica_reserva = new LogicaReserva();
+            //reservas = logica_reserva.retornarReservas();
+            //for (int i = 0; i < reservas.Count(); i++)
+            //{
+            //    if (reservas[i].ID == reserva.ID)
+            //    {
+            reserva.estadoID = 2;
+            reserva.estado = context.estados_reserva.Find(2);
+            modificarReserva(reserva);
+            //    }
+            //}
+
+        }
+
+        public void cambiarEstadoCheckOut(Reserva reserva)
+        {
+            //List<Reserva> reservas = new List<Reserva>();
+            //LogicaReserva logica_reserva = new LogicaReserva();
+            //reservas = logica_reserva.retornarReservas();
+            //for (int i = 0; i < reservas.Count(); i++)
+            //{
+            //    if (reservas[i].ID == reserva.ID)
+            //    {
+            reserva.estadoID = 3;
+            reserva.estado = context.estados_reserva.Find(3);
+            modificarReserva(reserva);
+            //    }
+            //}
+
+        }
+
+
     }
 }
         

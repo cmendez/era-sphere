@@ -154,7 +154,7 @@
     <value>Y</value>
   </data>
   <data name="FilterClear" xml:space="preserve">
-    <value>Limpiar filtro</value>
+    <value>Limpiar</value>
   </data>
   <data name="FilterDateEq" xml:space="preserve">
     <value>Es igual a</value>
@@ -220,7 +220,7 @@
     <value>No es igual a</value>
   </data>
   <data name="DeleteConfirmation" xml:space="preserve">
-    <value>¿Está seguro de que quiere eliminar este registro?</value>
+    <value>¿Está seguro de que quiere eliminar este registro? Tenga en cuenta que al eliminarlo se pueden eliminar las dependencias del mismo.</value>
   </data>
   <data name="FilterBoolIsFalse" xml:space="preserve">
     <value>No</value>

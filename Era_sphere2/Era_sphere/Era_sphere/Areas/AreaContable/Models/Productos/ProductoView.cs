@@ -50,7 +50,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         //****?
         [Required]
         [DisplayName("Linea")]
-        public int? lineaProductoID { get; set; }
+        public int lineaProductoID { get; set; }
         [DisplayName("Linea")]
         public string lineaProducto_str { get; set; }
 

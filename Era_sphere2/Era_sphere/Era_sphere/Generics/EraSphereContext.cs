@@ -15,6 +15,7 @@ namespace Era_sphere.Generics
         public void seed(){
             seedTipoDocumentoCliente();
             seedUbigeo();
+            /*Carlos L.*/ seedMonedas();
             seedHotel();
             seedEstadoEspacioRentable();
             seedEstadoCliente();

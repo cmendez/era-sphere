@@ -82,12 +82,6 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
            Validate(ValidationContext validationContext)
         {
             var field = new[] { "precio" };
-            //var field2 = new[] { "tipoHabitacionID" };
-
-            //if (precio < (new EraSphereContext()).servicios.Find(servicioID).)
-            //{
-            //    yield return new ValidationResult("El precio debe ser mayor o igual al base", field);
-            //}
 
             int nrep = (new EraSphereContext()).hxsxts.Count(hxthxt => hxthxt.hotelID == hotelID && hxthxt.servicioID == servicioID && hxthxt.temporadaID == temporadaID);
 

@@ -3,10 +3,12 @@
 @using Era_sphere.Areas.AreaHoteles.Models.HotelXProductoNM
 @using Era_sphere.Areas.AreaContable.Models;
 @using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
+@using Era_sphere.Generics;
 @using Telerik.Web.Mvc.UI
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 @{
+    List<LineaProducto> lps = (new EraSphereContext()).lineasproducto.ToList();
     List<Producto> ps = (new LogicaProducto()).retornarProductos2();
     List<Moneda> mns = (new LogicaMoneda()).retornarMonedas2();
 }
@@ -18,11 +20,21 @@
         <legend></legend>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.linea_prodID)
+        </div>
+        @( Html.Telerik().DropDownList()
+                    .Name("linea_prodID")
+                    .BindTo(new SelectList(lps,"ID","descripcion"))
+                    .CascadeTo("productoID")
+                    .Placeholder("Seleccione...")
+               )
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.productoID)
         </div>
         @( Html.Telerik().DropDownList()
                     .Name("productoID")
-                    .BindTo(new SelectList(ps,"ID","descripcion"))
+                    .DataBinding(binding => binding.Ajax().Select("_GetProductos", "HotelXProducto"))
                     .Placeholder("Seleccione...")
                )
 

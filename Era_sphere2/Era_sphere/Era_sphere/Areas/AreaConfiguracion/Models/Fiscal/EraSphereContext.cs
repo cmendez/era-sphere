@@ -143,5 +143,17 @@ namespace Era_sphere.Generics
             //SaveChanges();
 
         }
+
+        void seedMonedas()
+        {
+            List<Moneda> mns = new List<Moneda>
+            {
+                new Moneda { descripcion = "Dólares Americanos", simbolo = "USD$", tc = 1.00M , paisID = 2 },
+                new Moneda { descripcion = "Nuevos Soles", simbolo = "S/.", tc = 2.60M , paisID = 12 },
+                new Moneda { descripcion = "Pesos chilenos", simbolo = "CLP$", tc = 500.7860M , paisID = 7 }
+            };
+            foreach (Moneda m in mns) this.monedas.Add(m);
+            SaveChanges();
+        }
     }
 }

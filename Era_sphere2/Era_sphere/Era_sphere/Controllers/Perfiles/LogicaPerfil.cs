@@ -12,7 +12,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Perfiles
 {
     public class LogicaPerfil: InterfazLogicaPerfil
     {
-        PerfilContext perfil_context = new PerfilContext();
+        EraSphereContext perfil_context = new EraSphereContext();
         DBGenericQueriesUtil<Perfil> database_table;
         
         public LogicaPerfil()

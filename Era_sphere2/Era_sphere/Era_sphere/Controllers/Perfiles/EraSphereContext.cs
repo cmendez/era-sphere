@@ -16,7 +16,7 @@ namespace Era_sphere.Generics
             {
                 descripcion = "superadmin",
                 ID = 1,
-                listaVisibilidad = "11111111",
+                listaVisibilidad = "1111111",
                 nombrePerfil = "superadmin"
             };
             perfiles.Add(perfil);

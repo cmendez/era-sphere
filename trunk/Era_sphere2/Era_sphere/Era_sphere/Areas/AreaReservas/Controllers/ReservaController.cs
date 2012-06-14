@@ -68,6 +68,12 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             reserva_logica.refrescaHabitaciones(hab_ids, reserva_id);
             return null;
         }
-        //falta metodos para llamar al modal
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AnulaReserva(int reserva_id)
+        {
+            reserva_logica.cambiarEstadoReservaAnular(reserva_logica.retornarReserva(reserva_id));
+            return null;
+        }
     }
 }

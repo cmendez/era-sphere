@@ -54,8 +54,12 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             {
                 foreach (Empleado empl in listaEmpleados)
                 {
-                    if (empl.nombre.Contains(formReporte.nombre))
-                        listaEmpleadosFiltrada.Add(empl);
+                    try
+                    {
+                        if (empl.nombre.Contains(formReporte.nombre))
+                            listaEmpleadosFiltrada.Add(empl);
+                    }
+                    catch { }
                 }
             }
 
@@ -63,8 +67,13 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             {
                 foreach (Empleado empl in listaEmpleados)
                 {
-                    if (empl.apellido_paterno.Contains(formReporte.apePaterno))
-                        listaEmpleadosFiltrada.Add(empl);
+                    try
+                    {
+                        if ((empl.apellido_paterno.Contains(formReporte.apePaterno)) && (!listaEmpleadosFiltrada.Contains(empl)))
+                            listaEmpleadosFiltrada.Add(empl);
+                    }
+                    catch 
+                    { }
                 }
             }
 
@@ -72,8 +81,12 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             {
                 foreach (Empleado empl in listaEmpleados)
                 {
-                    if (empl.apellido_materno.Contains(formReporte.apeMaterno))
-                        listaEmpleadosFiltrada.Add(empl);
+                    try
+                    {
+                        if ((empl.apellido_materno.Contains(formReporte.apeMaterno)) && (!listaEmpleadosFiltrada.Contains(empl)))
+                            listaEmpleadosFiltrada.Add(empl);
+                    }
+                    catch { }
                 }
             }
 
@@ -118,6 +131,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                     foreach (AsistenciaEmpleado asisEmp in listaAsistencias)
                     {
                         if ((asisEmp.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaFin.ToString()) < 0) ||                                          (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f2))
+                            if (!listaAsistenciasFiltrada.Contains(asisEmp))
                                 listaAsistenciasFiltrada.Add(asisEmp);
                     }
 

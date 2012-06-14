@@ -45,6 +45,8 @@ namespace Era_sphere.Generics
             seedPerfil();
             seedEmpleados();
 
+            seedCadena();
+
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }

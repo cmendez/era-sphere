@@ -20,7 +20,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         public string nombreCadena { get; set; }
 
         [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
-            [Required(ErrorMessage = "El campo razón social es obligatorio")]
+        [Required(ErrorMessage = "El campo razón social es obligatorio")]
         [DisplayName("Razón social")]
         public string rsocial { get; set; }
 

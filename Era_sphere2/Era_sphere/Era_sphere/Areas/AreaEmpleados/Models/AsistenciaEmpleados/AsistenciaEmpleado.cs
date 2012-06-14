@@ -8,7 +8,6 @@ using Era_sphere.Generics;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleados
 {

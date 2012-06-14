@@ -21,6 +21,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         // GET: /AreaEventos/Evento/
 
         LogicaEvento evento_logica = new LogicaEvento();
+        LogicaEventoXAmbiente exa_logica = new LogicaEventoXAmbiente();
 
         #region evento
         public ActionResult Index(int id)
@@ -196,7 +197,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         public ActionResult VerAmbientes(int id, int idEvento)
         {
             
-            return PartialView("EventoAmbienteView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
+            return PartialView("EventoAmbienteView", new GridModel(exa_logica.retornarAmbientes(idEvento)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -204,7 +205,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         public ActionResult DeleteAmbiente( int idEvento,EventoXAmbienteView ambiente)
         {   
             evento_logica.eliminarAmbiente(idEvento,ambiente);
-            return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
+            return View("EventoEventoView", new GridModel(exa_logica.retornarAmbientes(idEvento)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -214,7 +215,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             //LogicaParticipante logicaParticipante = new LogicaParticipante();
             //int idevento = participanteView.eventoID;
             evento_logica.modificarAmbiente(idEvento, ambiente);
-            return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
+            return View("EventoEventoView", new GridModel(exa_logica.retornarAmbientes(idEvento)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -227,7 +228,8 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             ambiente.fecha_hora_inicio = fecha_hora_inicio;
             ambiente.fecha_hora_fin = fecha_hora_fin;
             evento_logica.agregarAmbienteAEvento(idEvento, ambiente,idambiente);
-            return View("EventoEventoView", new GridModel(evento_logica.retornarAmbientes(idEvento)));
+
+            return View("EventoEventoView", new GridModel(exa_logica.retornarAmbientes(idEvento)));
 
         }
         
@@ -235,8 +237,8 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
             ViewBag.idEvento = idEvento;
             ViewBag.fecha_inicio = fecha_hora_inicio;
-            LogicaAmbiente logica_ambiente = new LogicaAmbiente();
-            return PartialView("CargarAmbiente", logica_ambiente.retornarAmbientes(idHotel));
+            LogicaEventoXAmbiente lexa=new LogicaEventoXAmbiente();
+            return PartialView("CargarAmbiente", lexa.retonarAmbienteHotel(idHotel,idEvento,fecha_hora_inicio,fecha_hora_fin));
         }
         #endregion 
 

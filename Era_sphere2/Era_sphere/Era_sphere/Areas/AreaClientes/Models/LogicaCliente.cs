@@ -107,8 +107,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public static string toString(Cliente cliente)
         {
             string res;
-            if (cliente.tipoID == 1) res = cliente.nombre + " " + cliente.apellido_paterno + " " + cliente.apellido_materno + ", Documento - " + cliente.documento_identidad;
-            else res = cliente.razon_social + " RUC - " + cliente.ruc;
+            if (cliente.tipoID == 1)
+            {
+                res = cliente.nombre + " " + cliente.apellido_paterno + " " + cliente.apellido_materno + ", "
+                      + cliente.tipo_documento.descripcion + ": " + cliente.documento_identidad;
+            }
+            else res = cliente.razon_social + ", RUC: " + cliente.ruc;
             return res;
         }
 

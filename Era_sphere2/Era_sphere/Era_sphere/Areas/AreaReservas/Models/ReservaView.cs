@@ -126,15 +126,21 @@ namespace Era_sphere.Areas.AreaReservas
 
         public void hallaResponsable(LogicaReserva logica_reserva)
         {
-            string doc = responsable_pago.Substring(responsable_pago.LastIndexOf(' ') + 1);
-            int tipo_persona;
-            if (doc[0] == 'D') tipo_persona = 1; //natural
-            else tipo_persona = 2; //juridico
-            string documento = doc.Substring(1);
+            string tipo = responsable_pago.Substring(responsable_pago.LastIndexOf(',') + 2);
+            string documento = responsable_pago.Substring(responsable_pago.LastIndexOf(' ') + 1);
+            int tipo_persona, tipo_documentoID;
+            if (tipo[0] == 'D') tipo_persona = tipo_documentoID = 1;
+            else if(tipo[0] == 'P'){
+                tipo_persona = 1;
+                tipo_documentoID = 2; 
+            }else{
+                tipo_persona = 2;
+                tipo_documentoID = 3;
+            }
             this.documento_identidad = documento;
             
             if (tipo_persona ==1)
-                responsable_pagoID = logica_reserva.context.clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento).ID;
+                responsable_pagoID = logica_reserva.context.clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento && c.tipo_documentoID == tipo_documentoID).ID;
             if (tipo_persona ==2)
                 responsable_pagoID = logica_reserva.context.clientes.First(c => c.tipoID == tipo_persona && c.ruc ==documento).ID;
         

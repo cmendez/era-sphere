@@ -37,14 +37,21 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public decimal costo_final { get; set; }
 
-        public string codigo_reserva {get; set;}
-
         public int dias_estadia { get; set; }
 
         public int hotelID { get; set; }
 
         public int pisoID { get; set; }
-        
+
+        public string codigo_reserva
+        {
+            get
+            {
+                string res = "" + this.ID;
+                while (res.Length < 6) res = "0" + res;
+                return "R" + res;
+            }
+        }
         
         //Crea una nueva reserva y de paso crea el recibo que lo refiere y que es persiste aunque reserva muera
         public Reserva()
@@ -52,9 +59,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             //LogicaRecibo log_rec = new LogicaRecibo();
             //reciboID = log_rec.nuevoRecibo();
         }
-        public void agregarServicio(){
-
-        }
+        
 
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Era_sphere.Areas.AreaReservas.Models;
+using Era_sphere.Areas.AreaReservas.Models.Consultas;
 
 namespace Era_sphere.Generics
 {
@@ -12,6 +13,7 @@ namespace Era_sphere.Generics
     {
         public DbSet<Reserva> Reservas { get; set; }
         public DbSet<EstadoReserva> estados_reserva{ get; set; }
+        public DbSet<HabitacionXReserva> habitacion_x_reserva { get; set; }
 
         public void seedEstadoReserva()
         {

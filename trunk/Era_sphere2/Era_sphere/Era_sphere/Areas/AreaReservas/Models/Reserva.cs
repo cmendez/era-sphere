@@ -19,10 +19,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
         public int estadoID { get; set; }
         public virtual EstadoReserva estado { get; set; }
 
-        //[DisplayName("Día de Check In")]
         public DateTime? check_in { get; set; }
 
-        //[DisplayName("Día de Check Out")]
         public DateTime? check_out { get; set; }
 
         public decimal costo_inicial { get; set; }
@@ -39,18 +37,15 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public decimal costo_final { get; set; }
 
-        //        [DisplayName("Reserva N°")]
         public string codigo_reserva {get; set;}
 
-        //       [DisplayName("Días de Estadía")]
         public int dias_estadia { get; set; }
-
-        
-        //public int reciboID { get; set; }
 
         public int hotelID { get; set; }
 
         public int pisoID { get; set; }
+        
+        
         //Crea una nueva reserva y de paso crea el recibo que lo refiere y que es persiste aunque reserva muera
         public Reserva()
         {
@@ -60,5 +55,6 @@ namespace Era_sphere.Areas.AreaReservas.Models
         public void agregarServicio(){
 
         }
+
     }
 }

@@ -9,6 +9,7 @@
     tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
     var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();
     pisos.Insert(0, new Piso { ID = 0, descripcion = "Todos" });
+    bool partial = (bool)(ViewData["partial"]);
 }
 
 @(Html.Telerik().Grid(Model.resultados)
@@ -24,15 +25,18 @@
             columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "numero_camas")).Title(@"Número de camas");
             columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "costo_base")).Title("Precio");
             columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "cap_max_personas")).Title("Capacidad");
-            columns.Template(
-                 @<text>
+            if (partial)
+            {
+                columns.Template(
+                     @<text>
                     <button onclick="agregaHabitacion(@item.habitacionID);">Agregar</button>
                     
                 </text>
-            ).Width(50).HtmlAttributes(new { style = "text-align:center" });  
+                ).Width(50).HtmlAttributes(new { style = "text-align:center" });
+            } 
         })
 
         .Pageable()
         .Sortable()
         )
-        )
+        

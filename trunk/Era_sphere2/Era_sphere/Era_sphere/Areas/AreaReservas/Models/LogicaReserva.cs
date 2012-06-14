@@ -8,6 +8,7 @@ using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
+using Era_sphere.Areas.AreaReservas.Models.Consultas;
 
 
 namespace Era_sphere.Areas.AreaReservas.Models
@@ -16,12 +17,47 @@ namespace Era_sphere.Areas.AreaReservas.Models
     {
         public EraSphereContext context = new EraSphereContext();
         DBGenericQueriesUtil<Reserva> tabla_reserva;
-
+        DBGenericQueriesUtil<HabitacionXReserva> tabla_habitacion_x_reserva;
         public LogicaReserva()
         {
             tabla_reserva = new DBGenericQueriesUtil<Reserva>(context, context.Reservas);
+            tabla_habitacion_x_reserva = new DBGenericQueriesUtil<HabitacionXReserva>(context, context.habitacion_x_reserva);
+        }
+        public int hallaIDCruce(Reserva r, Habitacion h)
+        {
+            return context.habitacion_x_reserva.FirstOrDefault(x => x.habitacionID == h.ID && x.reservaID == r.ID).ID;
         }
 
+        public List<ConsultaLineaView> getHabitaciones(int reserva_id)
+        {
+            List<int> hxr = context.habitacion_x_reserva.Where(x => x.reservaID == reserva_id).Select(x => x.habitacionID).ToList();
+            List<ConsultaLineaView> res = new List<ConsultaLineaView>();
+            foreach(int hid in hxr){
+                Habitacion h = context.habitaciones.Find(hid);
+                res.Add(new ConsultaLineaView { habitacionID = hid, numero_habitacion = h.detalle, tipo_habitacionID = h.tipoHabitacionID });
+            }
+            return res;
+        }
+        public void agregaRelacion(Reserva r, Habitacion h)
+        {
+            tabla_habitacion_x_reserva.agregarElemento(new HabitacionXReserva(h.ID, r.ID));
+        }
+        public void refrescaHabitaciones(List<int> hab_ids, int reserva_id)
+        {
+            Reserva r = context.Reservas.Find(reserva_id);
+            List<HabitacionXReserva> habitaciones = context.habitacion_x_reserva.Where(x => x.reservaID == reserva_id).ToList();
+            List<HabitacionXReserva> a_eliminar = new List<HabitacionXReserva>();
+            foreach (var x in habitaciones)
+                if (!hab_ids.Contains(x.habitacionID)) a_eliminar.Add(x);
+            foreach (var x in a_eliminar) tabla_habitacion_x_reserva.eliminarElemento(x.ID);
+
+            foreach (var id in hab_ids)
+            {
+                bool dentro = false;
+                foreach (var x in habitaciones) if (x.habitacionID == id) dentro = true;
+                if (!dentro) agregaRelacion(r, context.habitaciones.Find(id));
+            }
+        }
 
         //inicio métodos básicos
         public List<Reserva> retornarReservas()
@@ -70,7 +106,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             List<Reserva> reservas_aux = tabla_reserva.retornarTodos().Where(p => p.hotelID == hotel_id).ToList();
             List<ReservaView> reserva_view = new List<ReservaView>();
 
-            foreach (Reserva reserva in reservas_aux) reserva_view.Add(new ReservaView(reserva));
+            foreach (Reserva reserva in reservas_aux) reserva_view.Add(new ReservaView(reserva, this));
             return reserva_view;
 
         }
@@ -152,7 +188,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
     
         public List<Habitacion> habitacionesDeReserva(int reservaID)
         {
-            var query = from u in context.habitacion_x_reservas
+            var query = from u in context.habitacion_x_reserva
                         where u.reservaID == reservaID
                         select context.habitaciones.Find(u.habitacionID);
             return query.ToList();

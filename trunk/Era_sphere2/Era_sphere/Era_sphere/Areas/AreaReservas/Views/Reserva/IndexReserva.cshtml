@@ -13,6 +13,56 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
+<script type="text/javascript">
+    var antes = []; var first = true;
+    var id = -1;
+    function generarCruces(e) {
+        var grid = $("#ReservaGrid").data("tGrid");
+        if (!('data' in grid)) return;
+        var despues = grid.data;
+        console.log(despues);
+        if (first || despues.length == 0) {
+            antes = despues;
+            first = false;
+            return;
+        }
+        id = -1;
+        if (despues.length > antes.length && despues.length >= 1) id = despues[despues.length - 1].ID;
+        antes = despues;
+        if (id == -1) return;
+        console.log(id);
+        $.ajax({
+            url: '@Url.Action("RefrescaHabitaciones", "Reserva")',
+            traditional: true,
+                       data: { hab_ids: hab_ids, reserva_id : id },
+                       type: "POST",
+                       success: function (data) { },
+                       async: true
+         });
+         id = -1;
+         grid.ajaxRequest();
+    }
+    function edita(e) {
+        if (e.mode == "edit") {
+
+            console.log(e);
+            hab_ids = [];
+            for (i in e.dataItem.habitaciones) hab_ids.push(e.dataItem.habitaciones[i].habitacionID);
+            console.log(hab_ids);
+            $.ajax({
+                       url: '@Url.Action("SubConsulta", "Consulta")',
+                       traditional: true,
+                       data: { hab_ids: hab_ids },
+                       type: "POST",
+                       success: function (data) { document.getElementById("todo").innerHTML = data; },
+                       async: false
+                   });
+                   $("#todo").find("button.btn_quitar").hide();
+        }
+    }
+</script>
+
+
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
@@ -47,7 +97,11 @@
             });
 
         }).Pageable().Sortable()
-
+        .ClientEvents(events =>
+            {
+                events.OnDataBound("generarCruces");
+                events.OnEdit("edita");
+            })
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("Select", "Reserva", new { id = @hotelID })

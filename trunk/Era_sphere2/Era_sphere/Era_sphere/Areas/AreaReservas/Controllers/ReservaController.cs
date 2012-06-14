@@ -60,7 +60,14 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return View("IndexReserva", new GridModel(reserva_logica.retornarReservasHotel(id_hotel)));
         }
 
-
+        
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult RefrescaHabitaciones(List<int> hab_ids, int reserva_id)
+        {
+            hab_ids = hab_ids ?? new List<int>();
+            reserva_logica.refrescaHabitaciones(hab_ids, reserva_id);
+            return null;
+        }
         //falta metodos para llamar al modal
     }
 }

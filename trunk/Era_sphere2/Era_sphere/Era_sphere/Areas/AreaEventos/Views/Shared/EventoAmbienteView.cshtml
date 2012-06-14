@@ -70,11 +70,9 @@
 
         function Informacion(e){
             var $form = $(this);
-            var ambienteIDt = $form.find('input[name="ambienteID"]').val();
+            var ambiente = $("#ambienteID-input").val();
             
-            alert("hh "+ambienteIDt);
-            
-            $('#inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ambienteID: e.value});
+            $('#inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ambiente: ambiente});
         }
     function isNumber(n) {
                 return !isNaN(parseFloat(n)) && isFinite(n);

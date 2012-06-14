@@ -9,7 +9,8 @@
             .Name("ambienteID")
             .BindTo(new SelectList(Model, "ID", "nombre"))
             .SelectedIndex(0)
-            
+            .ClientEvents(events => events.OnClose("Informacion"))
+            .Placeholder("Seleccione")
             
         )
 <input type="submit" value="Agregar ambiente" class="t-button t-state-default submit"/>

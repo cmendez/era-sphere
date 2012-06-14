@@ -26,7 +26,15 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Descripcion")]
         public string descripcion { get; set; }
 
-        public List<Campo> campos { get; set; }
+        [DisplayName("Campo Adicional 1")]
+        public string campo1 { get; set; }
+        [DisplayName("Campo Adicional 2")]
+        public string campo2 { get; set; }
+        [DisplayName("Campo Adicional 3")]
+        public string campo3 { get; set; }
+        [DisplayName("Campo Adicional 4")]
+        public string campo4 { get; set; }
+
         public TipoServicioView(TipoServicio tipo)
         {
             this.ID = tipo.ID;
@@ -35,9 +43,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             this.tiene_repeticiones = tipo.tiene_repeticiones;
             this.nombre = tipo.nombre;
             this.descripcion = tipo.descripcion;
-            this.campos = new List<Campo>();
-            if (tipo.campos != null)
-                foreach (var i in tipo.campos) this.campos.Add(i);
+            this.campo1 = tipo.campo1;
+            this.campo2 = tipo.campo2;
+            this.campo3 = tipo.campo3;
+            this.campo4 = tipo.campo4;
         }
         public TipoServicioView(){}
 
@@ -51,6 +60,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                 tiene_productos_asociados = this.tiene_productos_asociados,
                 nombre = this.nombre,
                 descripcion = this.descripcion,
+                campo1 = this.campo1,
+                campo2 = this.campo2,
+                campo3 = this.campo3,
+                campo4 = this.campo4,  
             };
         }
     }

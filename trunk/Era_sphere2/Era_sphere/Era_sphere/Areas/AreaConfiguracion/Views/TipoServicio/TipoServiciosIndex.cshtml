@@ -33,10 +33,12 @@
         .Columns(columns =>
         {
             columns.Bound(c => c.nombre);
-            columns.Bound(c => c.descripcion);
-            columns.ForeignKey(c => c.tiene_hora, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" });
-            columns.ForeignKey(c => c.tiene_productos_asociados, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" });
-            columns.ForeignKey(c => c.tiene_repeticiones, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" });
+            columns.ForeignKey(c => c.tiene_hora, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" }).Title("Hora");
+            columns.ForeignKey(c => c.tiene_productos_asociados, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" }).Title("Productos");
+            columns.ForeignKey(c => c.tiene_repeticiones, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" }).Title("Repeticiones");
+            columns.Bound(c => c.campo1).Title("Campo 1");
+            columns.Bound(c => c.campo2).Title("Campo 2");
+            columns.Bound(c => c.campo3).Title("Campo 3");
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

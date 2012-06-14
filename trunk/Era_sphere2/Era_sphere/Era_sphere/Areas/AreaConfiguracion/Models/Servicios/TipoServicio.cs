@@ -18,7 +18,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public string nombre { get; set; }
         public string descripcion { get; set; }
 
+        public string campo1 { get; set; }
+        public string campo2 { get; set; }
+        public string campo3 { get; set; }
+
         public virtual ICollection<TipoServicioXHotel> tiposerviciosxhoteles { get; set; }
-        public virtual ICollection<Campo> campos { get; set; }
+       
     }
 }

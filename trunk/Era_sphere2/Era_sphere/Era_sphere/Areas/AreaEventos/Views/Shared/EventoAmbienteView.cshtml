@@ -4,6 +4,7 @@
 
 
 @{
+    //$('#inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ambienteID: ambienteIDt});
     ViewBag.Title = "EventoXAmbiente";
     var idEvento = ViewBag.idevento;
     var idHotel = ViewBag.idHotel;
@@ -21,6 +22,7 @@
                 <label> Fecha hora inicio</label>
                 @(Html.Telerik().DateTimePicker()
                     .Name("fecha_hora_inicio")
+                    .Min(DateTime.Now)
                     .ClientEvents(events => events.OnChange("Prueba"))
                     .Interval(60)
                     
@@ -35,6 +37,7 @@
                     .Name("fecha_hora_fin")
                     .ClientEvents(events => events.OnChange("Prueba"))
                     .Interval(60)
+                    .Min(DateTime.Now)
                     
                  )
 
@@ -43,24 +46,35 @@
               </span>
    
             </div>
-            <p>
-                
-            </p>
-            <div id="traer">
-            </div>
+            
+             <table>
+             <tr>
+                <td> <div id="traer"> </div> </td>
+                <td> <div id="inf"> </div></td>
+             </tr>
+            </table>
             
     </form>
 </div>
             <p>
                 
     <script type="text/javascript">
-                     
 
         function Prueba() {
             var fecha_hora_fint = $("#fecha_hora_fin").val();
             var fecha_hora_iniciot = $("#fecha_hora_inicio").val();
+            
             if(fecha_hora_fint!="" && fecha_hora_iniciot!="") 
             $('#traer').load('@Url.Action("CargarAmbientes", "Evento", new { idEvento = idEvento })', { fecha_hora_inicio: fecha_hora_iniciot, fecha_hora_fin: fecha_hora_fint, idHotel: @idHotel });
+        }
+
+        function Informacion(e){
+            var $form = $(this);
+            var ambienteIDt = $form.find('input[name="ambienteID"]').val();
+            
+            alert("hh "+ambienteIDt);
+            
+            $('#inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ambienteID: e.value});
         }
     function isNumber(n) {
                 return !isNaN(parseFloat(n)) && isFinite(n);
@@ -98,7 +112,7 @@
                                 success: function (result) {
 
                                     $('#AmbientesGrid').data('tGrid').ajaxRequest();
-
+                                    
                                 }
                             }
                         )

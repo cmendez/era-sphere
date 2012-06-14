@@ -63,5 +63,9 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index", new GridModel(logica_ambiente.retornarAmbientes(hotelID)));
         }
 
+        public ActionResult RetornarAmbiente(int ambienteID)
+        {
+            return View("AmbienteInformación", (new LogicaAmbiente()).retornarAmbiente(ambienteID));
+        }
     }
 }

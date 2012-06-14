@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
 {
@@ -10,11 +12,12 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
     {
         EraSphereContext exa_context = new EraSphereContext();
         DBGenericQueriesUtil<EventoXAmbiente> database_table;
-        //DBGenericQueriesUtil<Hotel> database_table_hotel;
+        DBGenericQueriesUtil<Ambiente> database_table_ambiente;
 
         public LogicaEventoXAmbiente()
         {
             database_table = new DBGenericQueriesUtil<EventoXAmbiente>(exa_context, exa_context.eventoXAmbientes);
+            database_table_ambiente = new DBGenericQueriesUtil<Ambiente>(exa_context, exa_context.ambientes);
             //database_table_hotel = new DBGenericQueriesUtil<Hotel>(hxsxt_context, hxsxt_context.hoteles);
         }
 
@@ -22,7 +25,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
         public List<EventoXAmbienteView> retornarAmbientes(int eventoid)
         {
             List<EventoXAmbiente> exa = database_table.retornarTodos();
-            exa.Where(e => e.eventoID == eventoid);
+            exa = exa.Where(e => e.eventoID == eventoid).ToList();
             List<EventoXAmbienteView> exaview = new List<EventoXAmbienteView>();
             foreach (EventoXAmbiente e in exa)
             {
@@ -32,33 +35,6 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
         }
 
         
-        /*
-        public void agregarServicioXTemporada(int id, HotelXServicioXTemporadaView pxtv)
-        {
-            database_table.agregarElemento(pxtv.deserializa());
-        }
-
-        public void eliminarServicioXTemporada(int id, int servicioXTemporada_id)
-        {
-            database_table.eliminarElemento(servicioXTemporada_id);
-            return;
-        }
-
-        public void modificarServicioXTemporada(int id, HotelXServicioXTemporadaView pxtv)
-        {
-            HotelXServicioXTemporada hpt = pxtv.deserializa();
-            database_table.modificarElemento(hpt, hpt.ID);
-            return;
-        }
-
-        public string retornaNombreHotel(int hotel_id)
-        {
-            Hotel hotel_perteneciente = database_table_hotel.retornarUnSoloElemento(hotel_id);
-            return hotel_perteneciente.razon_social;
-        }
-        */
-
-
         public void agregarElemento(EventoXAmbienteView exaview)
         {
             database_table.agregarElemento(exaview.deserializa());
@@ -74,5 +50,24 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
             }
             return costo;
         }
+
+        public List<AmbienteView> retonarAmbienteHotel(int idHotel,int idEvento,DateTime fecha_hora_inicio,DateTime fecha_hora_fin)
+        {
+            List<AmbienteView> libres = (new LogicaAmbiente()).retornarAmbientes(idHotel);
+            
+            List<EventoXAmbiente> ambientes =database_table.retornarTodos().Where(e=>e.ambiente.piso.hotelID==idHotel).ToList() ;
+            
+            foreach (EventoXAmbiente ambiente in ambientes) {
+                if (DateTimeUtils.tieneInterseccion(ambiente.fecha_hora_inicio, ambiente.fecha_hora_fin, fecha_hora_inicio, fecha_hora_fin))
+                {
+                    AmbienteView elemento=libres.Find(item=>item.ID==ambiente.ID);
+                    libres.Remove(elemento);
+                }
+            }
+
+            return libres;
+        }
+
+
     }
 }

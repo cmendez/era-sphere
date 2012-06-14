@@ -44,6 +44,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             this.campo1 = tipo.campo1;
             this.campo2 = tipo.campo2;
             this.campo3 = tipo.campo3;
+            
         }
         public TipoServicioView(){}
 
@@ -60,6 +61,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                 campo1 = this.campo1,
                 campo2 = this.campo2,
                 campo3 = this.campo3,
+            
             };
         }
     }

@@ -32,8 +32,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public string campo2 { get; set; }
         [DisplayName("Campo Adicional 3")]
         public string campo3 { get; set; }
-        [DisplayName("Campo Adicional 4")]
-        public string campo4 { get; set; }
 
         public TipoServicioView(TipoServicio tipo)
         {
@@ -46,7 +44,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             this.campo1 = tipo.campo1;
             this.campo2 = tipo.campo2;
             this.campo3 = tipo.campo3;
-            this.campo4 = tipo.campo4;
         }
         public TipoServicioView(){}
 
@@ -63,7 +60,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                 campo1 = this.campo1,
                 campo2 = this.campo2,
                 campo3 = this.campo3,
-                campo4 = this.campo4,  
             };
         }
     }

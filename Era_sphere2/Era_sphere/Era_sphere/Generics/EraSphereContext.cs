@@ -40,7 +40,6 @@ namespace Era_sphere.Generics
 
             seedClientes();
 
-            seedPisos();
             seedHabitaciones();
             seedOrdenCompra();
             seedPerfil();

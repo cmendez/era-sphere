@@ -30,6 +30,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public List<ConsultaLineaView> getHabitaciones(int reserva_id)
         {
+            List<HabitacionXReserva> aux = context.habitacion_x_reserva.ToList();
             List<int> hxr = context.habitacion_x_reserva.Where(x => x.reservaID == reserva_id).Select(x => x.habitacionID).ToList();
             List<ConsultaLineaView> res = new List<ConsultaLineaView>();
             foreach(int hid in hxr){
@@ -40,7 +41,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
         }
         public void agregaRelacion(Reserva r, Habitacion h)
         {
-            tabla_habitacion_x_reserva.agregarElemento(new HabitacionXReserva(h.ID, r.ID));
+            tabla_habitacion_x_reserva.agregarElemento(new HabitacionXReserva(r.ID, h.ID));
+            List<HabitacionXReserva> aux = context.habitacion_x_reserva.ToList();
         }
         public void refrescaHabitaciones(List<int> hab_ids, int reserva_id)
         {

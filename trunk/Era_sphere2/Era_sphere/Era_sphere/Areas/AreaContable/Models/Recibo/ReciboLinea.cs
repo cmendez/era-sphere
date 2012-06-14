@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Era_sphere.Areas.AreaContable.Models.Recibo
 {
-    public abstract class ReciboLinea: DBable
+    public class ReciboLinea: DBable
     {
         [ForeignKey("recibo")]
         public int reciboID { get; set; }

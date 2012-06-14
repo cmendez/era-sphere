@@ -65,6 +65,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\GridLocalization.es-ES.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridLocalization.es-ES.resx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
     <Compile Include="Areas\AreaCargos\Models\Costeable.cs" />
     <Compile Include="Areas\AreaClientes\AreaClientesAreaRegistration.cs" />
@@ -1288,14 +1293,11 @@
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoCalcularCostos.cshtml" />
     <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
-
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\EventoAmbienteTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Evento\PruebaHtml.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Evento\CargarAmbiente.cshtml" />
-
     <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexReporteEmpleado.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexFormReporteEmpleado.cshtml" />
-
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />
@@ -1379,6 +1381,7 @@
     </Content>
     <Content Include="App_GlobalResources\GridLocalization.es-ES.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GridLocalization.es-ES.designer.cs</LastGenOutput>
     </Content>
     <Content Include="App_GlobalResources\GridLocalization.fr-FR.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>

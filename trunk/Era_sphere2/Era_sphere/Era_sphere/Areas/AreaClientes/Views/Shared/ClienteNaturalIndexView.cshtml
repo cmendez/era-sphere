@@ -46,8 +46,11 @@
                     .Insert("InsertNatural", "Cliente")
                     .Delete("DeleteNatural", "Cliente")
                     .Update("UpdateNatural", "Cliente")
+               
         )
+        .ClientEvents(events => events.OnSave("guardar"))
            )
+           
 
 
 @(Html.Telerik().Window()

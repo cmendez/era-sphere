@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Data;
 using System.ComponentModel;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaReservas.Models;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {
@@ -41,17 +42,19 @@ namespace Era_sphere.Areas.AreaClientes.Models
         
         public void agregarCliente(Cliente cliente)
         {
-            if (cliente_context.clientes.Where(c => (c.documento_identidad == cliente.documento_identidad) && (c.tipo_documentoID == cliente.tipo_documentoID)).Count() > 0)
-            {
-               int a = 2;
-            }
-            else
+            //if (cliente_context.clientes.Where(c => (c.documento_identidad == cliente.documento_identidad) && (c.tipo_documentoID == cliente.tipo_documentoID)).Count() > 0)
+            //{
+               
+            //    //llamar a una alerta ;)
+            //    int a = 2;
+            //}
+            //else
                 database_table.agregarElemento(cliente);
         }
 
         public void eliminarCliente(int cliente_id)
         {
-            database_table.eliminarElemento(cliente_id);
+            database_table.eliminarElemento_logico(cliente_id);
         }
 
         public List<Cliente> buscarCliente(Cliente cliente_campos)
@@ -104,10 +107,104 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public static string toString(Cliente cliente)
         {
             string res;
-            if (cliente.tipoID == 1) res = cliente.nombre + " " + cliente.apellido_paterno + " " + cliente.apellido_materno + ", D" + cliente.documento_identidad;
-            else res = cliente.razon_social + " R" + cliente.ruc;
+            if (cliente.tipoID == 1) res = cliente.nombre + " " + cliente.apellido_paterno + " " + cliente.apellido_materno + ", Documento - " + cliente.documento_identidad;
+            else res = cliente.razon_social + " RUC - " + cliente.ruc;
             return res;
         }
+
+
+        public void cambiarEstadoCliente(Reserva reserva)
+        {
+            
+            
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = retornarClientes();
+
+            for (int i = 0; i < clientes.Count(); i++)
+            {
+                if ((reserva.responsable_pago.ID == clientes[i].ID) && (reserva.estado.ID == 1))
+                {
+                    clientes[i].estadoID = 2;
+                    clientes[i].estado = cliente_context.estados_cliente.Find(2);
+                    modificarCliente(clientes[i]);
+                    break;
+                }
+
+            }
+        }
+
+        public void cambiarEstadoCheckIn(Reserva reserva)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = retornarClientes();
+
+            for (int i = 0; i < clientes.Count(); i++)
+            {
+                
+                if ((reserva.responsable_pago.ID == clientes[i].ID) && (reserva.estado.ID == 2))
+                {
+                    clientes[i].estadoID = 3;
+                    clientes[i].estado = cliente_context.estados_cliente.Find(3);
+                    modificarCliente(clientes[i]);
+                    break;
+                }
+             }
+        }
+
+
+        public void cambiarEstadoCheckOut(Reserva reserva)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = retornarClientes();
+
+            for (int i = 0; i < clientes.Count(); i++)
+            {
+                if ((reserva.responsable_pago.ID == clientes[i].ID) && ((reserva.estado.ID == 3) || (reserva.estado.ID == 4)))
+                {
+
+                    // falta condicion para que se pueda determinar si se debe cambiar a sin reserva o con reserva
+                    clientes[i].estadoID = 1;
+                    clientes[i].estado = cliente_context.estados_cliente.Find(1);
+                    modificarCliente(clientes[i]);
+                    break;
+                }
+            }
+        }
+
+
+        public void cambiarEstadoEliminarReserva(int id_cliente_reserva)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = retornarClientes();
+
+            for (int i = 0; i < clientes.Count(); i++)
+            {
+                if (id_cliente_reserva == clientes[i].ID)
+                {
+
+                    if (clientes[i].reservas.Count()==0)
+                    {
+                        clientes[i].estadoID = 1;
+                        clientes[i].estado = cliente_context.estados_cliente.Find(1);
+                        modificarCliente(clientes[i]);
+                        break;
+                    }
+                }
+            }
+        }
+
+        //para asignar una habitación a un cliente
+        public void asignarHabitacionCliente(Reserva reserva)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = retornarClientes();
+            
+
+        }
+
+
+
+  
 
 
     }

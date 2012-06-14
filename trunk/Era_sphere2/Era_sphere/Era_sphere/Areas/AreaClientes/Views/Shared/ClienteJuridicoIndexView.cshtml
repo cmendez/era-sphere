@@ -48,6 +48,7 @@
             .Delete("DeleteJuridico", "Cliente")
             .Update("UpdateJuridico", "Cliente")
         )
+              .ClientEvents(events => events.OnSave("guardarJuridico"))
            )
 
            

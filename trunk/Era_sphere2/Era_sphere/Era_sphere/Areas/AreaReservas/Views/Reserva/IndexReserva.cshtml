@@ -20,7 +20,6 @@
         var grid = $("#ReservaGrid").data("tGrid");
         if (!('data' in grid)) return;
         var despues = grid.data;
-        console.log(despues);
         if (first || despues.length == 0) {
             antes = despues;
             first = false;
@@ -30,7 +29,6 @@
         if (despues.length > antes.length && despues.length >= 1) id = despues[despues.length - 1].ID;
         antes = despues;
         if (id == -1) return;
-        console.log(id);
         $.ajax({
             url: '@Url.Action("RefrescaHabitaciones", "Reserva")',
             traditional: true,
@@ -44,11 +42,8 @@
     }
     function edita(e) {
         if (e.mode == "edit") {
-
-            console.log(e);
             hab_ids = [];
             for (i in e.dataItem.habitaciones) hab_ids.push(e.dataItem.habitaciones[i].habitacionID);
-            console.log(hab_ids);
             $.ajax({
                        url: '@Url.Action("SubConsulta", "Consulta")',
                        traditional: true,
@@ -60,15 +55,10 @@
                    $("#todo").find("button.btn_quitar").hide();
         }
      }
-     function anulaReserva(id) {
-         $.ajax({
-             url: '@Url.Action("AnulaReserva", "Reserva")',
-             data: { reserva_id: id },
-             type: "POST",
-             success: function (data) { $("#ReservaGrid").data("tGrid").asyncRequest(); },
-             async: true
-         });
-
+     function completado(e) {
+         if (e.name == "Anular") {
+             $("#ReservaGrid").data("tGrid").rebind();
+         }
      }
 </script>
 
@@ -100,33 +90,36 @@
             columns.Bound(p => p.documento_identidad).Title("Documento");
             columns.Bound(p => p.ID);
             columns.ForeignKey(p => p.estadoID, new SelectList(estados, "ID", "descripcion"));
-            columns.Template(
-                @<text>
-                    <button class="btn_anular" onclick="anulaReserva(@item.ID);">Anual</button>
-                </text>
-            );
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
-
+                commands
+                    .Custom("Anular")
+                    .Text("Anular")
+                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
+                    .Ajax(true)
+                    .Action("AnulaReserva", "Reserva")
+                .HtmlAttributes(new { style = "text-align: center" });
             });
 
-        }).Pageable().Sortable()
-                              .ClientEvents(events =>
-                              {
-                                  events.OnDataBound("generarCruces");
-                                  events.OnEdit("edita");
-                              })
-                              .DataBinding(dataBinding => dataBinding
-                                  .Ajax()
-                                  .Select("Select", "Reserva", new { id = @hotelID })
-                                  .Insert("Insert", "Reserva", new { id = @hotelID })
-                                  .Delete("Delete", "Reserva", new { id_hotel = @hotelID })
-                                  .Update("Update", "Reserva", new { id_hotel = @hotelID })
 
-                              )
-                                 )
+        }).Pageable().Sortable()
+                                                            .ClientEvents(events =>
+                                                            {
+                                                                events.OnDataBound("generarCruces");
+                                                                events.OnEdit("edita");
+                                                                events.OnComplete("completado");
+                                                            })
+                                                            .DataBinding(dataBinding => dataBinding
+                                                                .Ajax()
+                                                                .Select("Select", "Reserva", new { id = @hotelID })
+                                                                .Insert("Insert", "Reserva", new { id = @hotelID })
+                                                                .Delete("Delete", "Reserva", new { id_hotel = @hotelID })
+                                                                .Update("Update", "Reserva", new { id_hotel = @hotelID })
+
+                                                            )
+                                                               )
 
 
 

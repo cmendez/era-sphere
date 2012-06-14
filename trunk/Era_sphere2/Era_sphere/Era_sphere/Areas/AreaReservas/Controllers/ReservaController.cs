@@ -70,10 +70,10 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AnulaReserva(int reserva_id)
+        public JsonResult AnulaReserva(int reserva_id)
         {
             reserva_logica.cambiarEstadoReservaAnular(reserva_logica.retornarReserva(reserva_id));
-            return null;
+            return Json(new {reserva_id = reserva_id});
         }
     }
 }

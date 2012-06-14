@@ -32,6 +32,7 @@
         .DataKeys(key => key.Add(v => v.ID))
         .Columns(columns =>
         {
+            columns.Bound(v => v.linea_prod_str);
             columns.Bound(v => v.producto_str);
             columns.Bound(v => v.moneda_str);
             columns.Bound(v => v.precio);

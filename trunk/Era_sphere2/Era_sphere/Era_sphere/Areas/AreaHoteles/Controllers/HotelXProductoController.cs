@@ -8,6 +8,8 @@ using Telerik.Web.Mvc;
 
 using Era_sphere.Areas.AreaHoteles.Models.HotelXProductoNM;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
+using Era_sphere.Areas.AreaContable.Models;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -57,6 +59,15 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             hxpv.hotelID = id_hotel;
             logicahp.modificarProducto(id_hotel, hxpv);
             return View("Index", new GridModel(logicahp.retornarProductos(id_hotel)));
+        }
+
+        [HttpPost]
+        public JsonResult _GetProductos(int? linea_prodID)
+        {
+            //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
+            List<Producto> ps = (new EraSphereContext()).productos.ToList();
+            ps = ps.Where(e => e.lineaProductoID == linea_prodID).ToList();
+            return Json(new SelectList(ps, "ID", "descripcion"), JsonRequestBehavior.AllowGet);
         }
     }
 }

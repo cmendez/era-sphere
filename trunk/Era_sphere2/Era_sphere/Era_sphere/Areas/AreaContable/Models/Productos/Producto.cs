@@ -12,7 +12,7 @@ namespace Era_sphere.Areas.AreaContable.Models
     public class Producto : DBable
     {
         [ForeignKey("lineaProducto")]
-        public int? lineaProductoID { get; set; }
+        public int lineaProductoID { get; set; }
         public virtual LineaProducto lineaProducto { get; set; }
 
         public String descripcion { get; set; }

@@ -28,6 +28,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXProductoNM
             this.ID = hxp.ID;
 
             this.hotelID = hxp.hotelID;
+            this.linea_prodID = (new EraSphereContext()).productos.Find(hxp.productoID).lineaProductoID;
+            this.linea_prod_str = (new EraSphereContext()).lineasproducto.Find(this.linea_prodID).descripcion;
             this.productoID = hxp.productoID;
             this.producto_str = (new EraSphereContext()).productos.Find(hxp.productoID).descripcion;
             this.monedaID = hxp.monedaID;
@@ -43,6 +45,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXProductoNM
         //HotelXProducto
         [Required]
         public int hotelID { get; set; }
+
+        [DisplayName("Linea de producto")]
+        public int linea_prodID { get; set; }
+        [DisplayName("Linea de producto")]
+        public string linea_prod_str { get; set; }
 
         [Required]
         [DisplayName("Producto")]

@@ -11,5 +11,27 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public DbSet<Cadena> cadenas { get; set; }
+
+        void seedCadena() {
+            cadenas.Add(
+                new Cadena
+                {
+
+                    nombreCadena = "Default",
+                    rsocial = "Default",
+                    ruc = "11111111111",
+                    url = "Default",
+                    adel_minimo = 0,
+                    d_ant_ret = 0,
+                    porc_ret = 0,
+                    ptos_x_dolar = 0,
+                    hostname = "",
+                    port = "",
+                    username = "",
+                    password = ""
+
+                }
+                );
+        }
     }
 }

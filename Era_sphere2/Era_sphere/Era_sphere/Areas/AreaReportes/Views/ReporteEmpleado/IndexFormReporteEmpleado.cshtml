@@ -16,7 +16,7 @@
         var inicio = new Date(dfecha_inicio.value());
         var fin = new Date(dfecha_fin.value());
         if (fin <= inicio) {
-            alert("error fin debe ser mayor a inicio");
+            alert("Error: la fecha fin debe ser mayor a la fecha de inicio");
             fin.setDate(inicio.getDate() + 1); //aumenta en un dia
         }
         dfecha_fin.value(fin);
@@ -76,7 +76,7 @@
             @Html.LabelFor(model => model.fechaInicio)
         </div>
         <div class="editor-field">
-            @Html.Telerik().DatePickerFor(model => model.fechaInicio).ClientEvents(
+            @Html.Telerik().DatePickerFor(model => model.fechaInicio).Value(DateTime.Now).ClientEvents(
                                         events => events.OnChange("validaFecha"))
             @Html.ValidationMessageFor(model => model.fechaInicio)
         </div>
@@ -85,7 +85,7 @@
             @Html.LabelFor(model => model.fechaFin)
         </div>
         <div class="editor-field">
-            @Html.Telerik().DatePickerFor(model => model.fechaFin).ClientEvents(
+            @Html.Telerik().DatePickerFor(model => model.fechaFin).Value(DateTime.Now.AddDays(1)).ClientEvents(
                                         events => events.OnChange("validaFecha"))
             @Html.ValidationMessageFor(model => model.fechaFin)
         </div>

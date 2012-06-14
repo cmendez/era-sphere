@@ -1273,7 +1273,6 @@
     <Content Include="Areas\AreaEventos\Views\Shared\EventoAdicionalView.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\AdicionalViewTemplate.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Consulta\IndexConsulta.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Consulta\ConsultaParcialView.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Reserva\IndexReserva.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Shared\EditorTemplates\ReservaViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ParticipanteViewTemplate.cshtml" />
@@ -1283,7 +1282,9 @@
     <Content Include="Areas\AreaEventos\Views\Evento\PagoEventoIndex.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Reserva\ConsultaReservaParcialView.cshtml" />
     <Content Include="Areas\AreaContable\Views\Pagos\TarjetaDeCreditoIndex.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Shared\GridResultConsulta.cshtml" />
     <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Shared\GridResultAcumulado.cshtml" />
     <Content Include="Areas\AreaContable\Views\Ordenes\AgregarOrden.cshtml" />
     <Content Include="Areas\AreaContable\Views\Ordenes\IndexOrdenes.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedor\HotelesProveedor.cshtml" />

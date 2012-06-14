@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Era_sphere.Areas.AreaHoteles.Models;
+using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaReservas.Models
 {
     public class LogicaConsulta
     {
-        //public EraSphereContext cliente_context = new EraSphereContext();
+        public EraSphereContext context = new EraSphereContext();
         //DBGenericQueriesUtil<Cliente> database_table;
 
         public int retornarNumeroHabitacionesDisponible(Consulta c)

@@ -10,22 +10,22 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
 {
     public class ReciboLinea: DBable
     {
-        [ForeignKey("recibo")]
-        public int reciboID { get; set; }
-        public Recibo recibo { get; set; }
+         //[ForeignKey("recibo")]
+        //public int reciboID { get; set; }
+        //public Recibo recibo { get; set; }
 
         public int? espacio_rentableID { get; set; }
 
-        public decimal precio_unitario { get; set; }
+        public decimal precio_unitario { get; set; }//
 
         [DisplayName("Detalle")]
-        public string detalle { get; set; }
+        public string detalle { get; set; }//
         [DisplayName("Unidades")]
-        public int unidades { get; set; }
-        public bool pagado { get; set; }
+        public int unidades { get; set; }//
+        public bool pagado { get; set; }//
         public DateTime fecha { get; set; }
         [DisplayName("Puntos")]
-        public int puntos { get; set; }
+        public int puntos { get; set; }//
         public bool de_servicio { get; set; }
         [DisplayName("Precio final")]
         public decimal precio_final { get { return precio_unitario * unidades; } }
@@ -37,6 +37,7 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
             this.unidades = unidades;
             this.pagado = false;
         }
+
         public ReciboLinea() { }
     }
 }

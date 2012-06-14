@@ -60,6 +60,10 @@
              $("#ReservaGrid").data("tGrid").rebind();
          }
      }
+     function guardar(e) {
+         var fin = e.values.fecha_fin;
+         
+     }
 </script>
 
 
@@ -76,7 +80,7 @@
 
       @(Html.Telerik().Grid(Model)
         .Name("ReservaGrid")
-        .Localizable("es-ES")
+        .Localizable("en-US")
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
@@ -110,6 +114,7 @@
                                                                 events.OnDataBound("generarCruces");
                                                                 events.OnEdit("edita");
                                                                 events.OnComplete("completado");
+                                                                events.OnSave("guardar");
                                                             })
                                                             .DataBinding(dataBinding => dataBinding
                                                                 .Ajax()

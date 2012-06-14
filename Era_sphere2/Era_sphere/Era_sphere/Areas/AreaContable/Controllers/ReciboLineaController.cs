@@ -22,7 +22,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return View();
         }
 
-        public ActionResult ReciboLineaReserva(ICollection<ReciboLinea> recibos)
+        public ActionResult ReciboReserva(ICollection<ReciboLinea> recibos)
         {
             return View();
         }

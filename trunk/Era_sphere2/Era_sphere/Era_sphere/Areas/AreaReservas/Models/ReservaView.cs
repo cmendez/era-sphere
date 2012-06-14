@@ -39,12 +39,7 @@ namespace Era_sphere.Areas.AreaReservas
 
         //public ICollection<Habitacion> lista_habitaciones { get; set; }
 
-        //public ICollection<Comodidad> lista_comodidades { get; set; }
 
-        //public ICollection<Servicio> lista_servicios { get; set; }
-
-
-        //[DisplayName("Tarjeta cliente")]
         [DisplayName("Responsable Pago")]
         public string responsable_pago { get; set; }
 

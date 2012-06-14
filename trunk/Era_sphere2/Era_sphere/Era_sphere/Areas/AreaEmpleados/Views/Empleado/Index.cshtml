@@ -83,26 +83,26 @@
 							<div id="cliente_natural_form">
 							<!-- empieza natural -->
 							<div class="form_row">
-							<label>Nombres(*):</label>
+							<label>Nombres(*): <span id = "reqnombre" style = "color:red; display:none" > *Requerido </span></label>
 							<input class="input validate[required] tipRight" maxlength = 50 type="text" style="width:300px;" name="nombre_cliente" id="nombre_cliente"/>
 							</div>
 							<div class="form_row">
-							<label> Apellido Paterno(*):</label>
+							<label> Apellido Paterno(*):<span id = "reqpaterno" style = "color:red; display:none" > *Requerido </span></label>
 							<input class="input validate[required] tipRight" maxlength = 50 type="text" style="width:300px;" name="apellido_paterno" id="apellido_paterno"/>
 							</div>
 							<div class="form_row">
-							<label> Apellido Materno(*):</label>
+							<label> Apellido Materno(*):<span id = "reqmaterno" style = "color:red; display:none" > *Requerido </span></label>
 							<input class="input validate[required] tipRight" maxlength = 50 type="text" style="width:300px;" name="apellido_materno" id="apellido_materno"/>
 							</div>
 							<div class="form_row">
 							
-                            <label> Pais:</label>
+                            <label> Pais:<span id = "reqpais" style = "color:red; display:none" > *Requerido </span></label>
 							<input class="input tipRight" type="text" maxlength = 50 style="width:300px;" name="pais" id="pais"/>
 							</div>
 
                             <div class="form_row">
 							
-                            <label> Ciudad:</label>
+                            <label> Ciudad: <span id = "reqciudad" style = "color:red; display:none" > *Requerido </span></label>
 							<input class="input tipRight" type="text" maxlength = 50 style="width:300px;" name="ciudad" id="ciudad"/>
 							</div>
 							<!--
@@ -142,7 +142,7 @@
 									</div>
 									-->
                                     <div class="form_row">
-                                    <label> Perfil: </label>
+                                    <label> Perfil: <span id = "reqperfil" style = "color:red; display:none" > *Requerido </span></label>
 									<select name="perfil" id = "perfil" class="select" style="width: 300px;">
 										
 									</select>
@@ -161,7 +161,7 @@
 									<input name="nro_documento_natural" id = "numero_documento" class="input tipRight" type="number" style="width: 300px"/>
 									</div>
 									<div class="form_row">
-									<label> Fecha de Nacimiento </label>
+									<label> Fecha de Nacimiento <span id = "reqfecha" style = "color:red; display:none" > *Requerido </span></label>
 									<input class="input validate[required] tipTop" id="fecha_nacimiento" type="date" style="width: 290px;" name="inputtext" placeholder="" original-title=".tipTop - top tooltip by tipsy">
 									</div>
 									<div class="form_row">
@@ -242,15 +242,15 @@
 						</div>
 						<div class="block_cont">
 						<div class="form_row">
-						<label> Usuario:</label>
+						<label> Usuario:<span id = "requsuario" style = "color:red; display:none" > *Requerido </span></label>
 						<input name="usuario" id = "usuario" type="text" class="input" style="width:300px;"/>
 						</div>
 						<div class="form_row">
-						<label> Password:</label>
+						<label> Password:<span id = "reqpass1" style = "color:red; display:none" > *Requerido </span></label>
 						<input name="pass1" id = "pass1" type="password" class="input" style="width:300px;"/>
 						</div>
 						<div class="form_row">
-						<label> Repetir Password:</label>
+						<label> Repetir Password:<span id = "reqpass2" style = "color:red; display:none" > *Requerido </span></label>
 						<input name="pass2" id = "pass2" type="password" class="input" style="width:300px"/>
 						</div>
 						</div>
@@ -426,6 +426,10 @@
 
     $("#agregarEmpleado").click(function () {
         //ajax
+        $('#formEmpleado').each(function(){
+            this.reset();
+        });
+        init();
         $("#mask").show();
         $('#dialogEditar').dialog('open');
    
@@ -441,8 +445,8 @@
         position: "top",
         buttons: {
             "Aceptar": function () {
-                 
-               var empleado  = armaEntrada();
+                if (validaFormulario()) {
+                     var empleado  = armaEntrada();
                
                $.ajax({
                     type: "POST",
@@ -459,8 +463,10 @@
                         
                     }
                 });
-                
-                $(this).dialog("close");
+                $("#mask").hide();  
+                 $(this).dialog("close");
+                }
+             
             },
             "Cancelar": function () {
                 $("#mask").hide();
@@ -512,8 +518,8 @@
         var pass1 = $("#pass1").val();
         var pass2 = $("#pass2").val();
         var password = pass1 == pass2?pass1:"";  
-        if (password == "") alert("Las Claves No Coinciden");
-            
+        //if (password == "") alert("Las Claves No Coinciden");
+       
         var jsonEntrada = {
             //datos persona
                      nombre : nombre_empleado,
@@ -571,12 +577,87 @@
         return result;
     }
 
+    function init(){
+        $("#reqnombre").hide();
+        $("#reqpaterno").hide();
+        $("#reqmaterno").hide();
+        $("#reqfecha").hide();
+        $("#reqpais").hide();
+        $("#reqciudad").hide();
+        $("#requsuario").hide();
+        $("#reqpass1").hide();
+        $("#reqpass2").hide();
+    }
 
     function validaFormulario(){
-        //var cargo = $("#nombre_cargo").val();
-        //var nomcli = $("#nombre_cliente").val();
-        //var appat = $("#apellido_paterno").val();
-        //var apmat = $("#apellido_materno").val();
+        //PERSONALES
+        var yeti = true;
+        var nombre_empleado = $("#nombre_cliente").val();
+        if (nombre_empleado == "") {
+           $("#reqnombre").show();
+           yeti = false;
+        }
+        var app_paterno = $("#apellido_paterno").val();
+         if (app_paterno == "") {
+          $("#reqpaterno").show();
+           yeti = false;
+        }
+        var app_materno = $("#apellido_materno").val();
+         if (app_materno == "") {
+          $("#reqmaterno").show();
+           yeti = false;
+        }
 
+        var direccion = $("#direccion").val();
+        var email = $("#email").val();
+       
+        var perfil = $("#perfil").val();
+        if (perfil == "") {
+          $("#reqperfil").show();
+           yeti = false;
+        }
+        var tipo_documento = $("#tipo_documento").val();
+        var numero_documento = $("#numero_documento").val();
+        var fecha_nac = $("#fecha_nacimiento").val();
+        if (fecha_nac == "") {
+          $("#reqfecha").show();
+           yeti = false;
+        }
+        var telefono = $("#telefono_natural").val();
+        var celular = $("#celular_natural").val();
+        var pais = $("#pais").val();
+        if (pais == "") {
+          $("#reqpais").show();
+           yeti = false;
+        }
+        var ciudad = $("#ciudad").val();
+        if (ciudad == "") {
+          $("#reqciudad").show();
+           yeti = false;
+        }
+
+        //
+        var user = $("#usuario").val();
+         if (user == "") {
+          $("#requsuario").show();
+           yeti = false;
+        }
+        var pass1 = $("#pass1").val();
+         if (pass1 == "") {
+          $("#reqpass1").show();
+           yeti = false;
+        }
+        var pass2 = $("#pass2").val();
+         if (pass2 == "") {
+          $("#reqpass2").show();
+           yeti = false;
+        }
+        var password = pass1 == pass2?pass1:""; 
+        if (password == "") {
+            $("#reqpass1").html("Las claves deben coincidir");
+            $("#reqpass2").html("Las claves deben coincidir");
+            yeti = false;
+        }
+        return yeti;
     }
 </script>

@@ -16,7 +16,7 @@ namespace Era_sphere.Generics
             empleados.Add(
                 new Empleado { 
                     ID = 1,
-                    nombre = "empleado 1",
+                    nombre = "xurreta",
                     tipo = tipos_personas.First(),
                     documento_identidad = "121212",
                     pais = paises.Find(1),

@@ -42,7 +42,7 @@ namespace Era_sphere.Generics
             seedPisos();
             seedHabitaciones();
             seedOrdenCompra();
-            //seedPerfil();
+            seedPerfil();
             seedEmpleados();
 
         }

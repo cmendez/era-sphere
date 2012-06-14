@@ -136,6 +136,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
+    <Compile Include="Areas\AreaContable\Controllers\ReciboLineaController.cs" />
     <Compile Include="Areas\AreaContable\Models\LineaProducto\EraSphereContext.cs" />
     <Compile Include="Areas\AreaContable\Models\LineaProducto\InterfazLogicaLineaProducto.cs" />
     <Compile Include="Areas\AreaContable\Models\LineaProducto\LineaProducto.cs" />
@@ -1300,6 +1301,7 @@
     <Content Include="Areas\AreaEventos\Views\Evento\CargarAmbiente.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexReporteEmpleado.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexFormReporteEmpleado.cshtml" />
+    <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

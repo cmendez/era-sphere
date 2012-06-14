@@ -59,12 +59,14 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return View("Index", new GridModel(proveedor_logica.retornarProveedores()));
             // return RedirectToAction("proveedor");
         }
+
         #region Productos
         public ActionResult Productos( int id_proveedor ){
             ViewData["Proveedor"] = proveedor_logica.context_publico.proveedores.Find( id_proveedor );
 
             return View("ProductosProveedor",  proveedor_logica.productos_de_proveedor(id_proveedor) ) ;
         }
+
         [GridAction]
         public ActionResult SelectProductos(int id_proveedor) {
             int id = id_proveedor;

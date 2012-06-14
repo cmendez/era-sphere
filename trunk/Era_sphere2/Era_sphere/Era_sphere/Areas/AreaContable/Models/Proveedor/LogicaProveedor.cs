@@ -58,6 +58,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             ProveedorView proveedor_view = new ProveedorView(proveedor);
             return proveedor_view;
         }
+
         #region Productos
         public List< proveedor_x_productoView > productos_de_proveedor( int proveedor_id ){
             

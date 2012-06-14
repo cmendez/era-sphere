@@ -8,6 +8,7 @@ using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 using Era_sphere.Areas.AreaReservas.Models;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace Era_sphere.Areas.AreaReservas

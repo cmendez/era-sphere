@@ -93,19 +93,17 @@
         <div class="editor-label"> @Html.LabelFor(model => model.fecha_inicio) </div>
         <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_inicio).Min(DateTime.Now).Value(DateTime.Now).ClientEvents(
                                         events => events.OnChange("validaFecha"))
-                                   @{
-            //Html.ValidationMessageFor(model => model.fecha_inicio) 
-                                   }
+                                   @Html.ValidationMessageFor(model => model.fecha_inicio) 
+                                   
                                    
         </div>
  
 
         <div class="editor-label"> @Html.LabelFor(model => model.fecha_fin) </div>
         <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_fin).Min(DateTime.Now.AddDays(1)).Value(DateTime.Now.AddDays(1)).ClientEvents(
-                                        events => events.OnChange("validaFecha"))
-                                        @{
-                                       //Html.ValidationMessageFor(model => model.fecha_fin) 
-                                   }
+                      events => events.OnChange("validaFecha"))
+                                        @Html.ValidationMessageFor(model => model.fecha_fin) 
+                                   
         </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.pisoID) </div>

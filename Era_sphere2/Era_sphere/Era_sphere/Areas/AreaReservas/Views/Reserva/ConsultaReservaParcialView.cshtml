@@ -27,12 +27,12 @@
       @Html.ValidationSummary(true)
         <fieldset>
 
-        <div class="editor-label"> @Html.LabelFor(model => model.check_in) </div>
-        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.check_in) </div>
+        <div class="editor-label"> @Html.LabelFor(model => model.fecha_inicio) </div>
+        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_inicio) </div>
  
 
-        <div class="editor-label"> @Html.LabelFor(model => model.check_out) </div>
-        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.check_out) </div>
+        <div class="editor-label"> @Html.LabelFor(model => model.fecha_fin) </div>
+        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_fin) </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.pisoID) </div>
           @( Html.Telerik().ComboBox()

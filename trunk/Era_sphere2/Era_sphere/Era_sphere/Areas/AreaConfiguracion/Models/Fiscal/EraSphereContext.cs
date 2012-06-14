@@ -8,6 +8,8 @@ using Era_sphere.Areas.AreaConfiguracion.Models.Perfiles;
 using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Areas.AreaContable.Models.Ordenes;
+using Era_sphere.Areas.AreaClientes.Models;
+using Era_sphere.Areas.AreaReservas.Models;
 using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Generics
@@ -28,6 +30,8 @@ namespace Era_sphere.Generics
                                                     .WithMany(t => t.productos)
                                                     .HasForeignKey(e => e.proveedorID)
                                                     .WillCascadeOnDelete(false);
+            
+           
         }
         void seedProveedores() {
             Proveedor p = new Proveedor

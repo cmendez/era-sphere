@@ -4,7 +4,7 @@
 @model IEnumerable<ReservaView>
 @{
     ViewBag.Title = "IndexHotel";
-    var hotelID = ViewData["hotelID"];
+    var hotelID = (int)ViewData["hotelID"];
     Layout = "~/Views/Shared/_Layout.cshtml";
    // var paises = (new EraSphereContext()).paises.ToList();
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
@@ -76,4 +76,4 @@
             detailModal.center().open();
         }
     }
-</script>   
+</script> 

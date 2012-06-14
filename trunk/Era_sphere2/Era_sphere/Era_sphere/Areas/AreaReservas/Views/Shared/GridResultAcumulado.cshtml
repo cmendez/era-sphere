@@ -1,0 +1,34 @@
+﻿@model ConsultaView
+@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaReservas.Models
+@using Era_sphere.Areas.AreaHoteles.Models
+@using Era_sphere.Generics
+
+@{
+    var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
+    tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
+    var pisos = (new EraSphereContext()).pisos.ToList();
+    pisos.Insert(0, new Piso { ID = 0, descripcion = "Todos" });
+}
+
+@(Html.Telerik().Grid(Model.resultados)
+        .Name("ConsultaAcumuladoGrid")
+        .Localizable("es-ES")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.habitacionID).Hidden();
+            columns.Bound(p => p.numero_habitacion);
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "descripcion"));
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "numero_camas")).Title(@"Número de camas");
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "costo_base")).Title("Precio");
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "cap_max_personas")).Title("Capacidad");
+            columns.Template(
+                 @<text>
+                    <button onclick="quitaHabitacion(@item.habitacionID);">Quitar</button>
+                    
+                </text>
+            ).Width(50).HtmlAttributes(new { style = "text-align:center" });
+        })
+        .Pageable()
+        .Sortable()
+        )

@@ -1,9 +1,13 @@
-﻿@{
-    ViewBag.Title = "ReservaViewTemplate";
-}
-@using Era_sphere.Areas.AreaReservas.Models
+﻿@using Era_sphere.Areas.AreaReservas.Models
 @using Telerik.Web.Mvc.UI
 @model Era_sphere.Areas.AreaReservas.ReservaView
+  
+
+@{
+    ViewBag.Title = "ReservaViewTemplate";
+    int hotel_id = (int)ViewData["hotelID"];
+    Model.hotelID = hotel_id;
+}
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>           
@@ -28,11 +32,9 @@
         </div>
     </fieldset>
   
-    //<input type="submit" id="buscar-cliente-submit" value="Buscar" />
-     
    <fieldset>
    @Html.HiddenFor(model => model.hotelID)
-   @Html.HiddenFor(Model => Model.estadoID)
+   @Html.HiddenFor(model => model.estadoID)
 
         <div class="editor-label"> @Html.LabelFor(model => model.dias_estadia) </div>
         <div class="editor-field"> @Html.TextBoxFor(model => model.dias_estadia, new {@readonly = "readonly"}) </div>
@@ -48,7 +50,7 @@
 
 @{
     ViewData["partial"] = true;
-    Html.RenderPartial("../Consulta/IndexConsulta", new ConsultaView{ resultados = new List<ConsultaLineaView>()});
+    Html.RenderPartial("../Consulta/IndexConsulta", new ConsultaView{ resultados = new List<ConsultaLineaView>(), hotelID = @hotel_id });
 }
 
  @(Html.Telerik().Window().Name("MostrarMantCliente")

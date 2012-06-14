@@ -4,74 +4,94 @@
 @using Era_sphere.Areas.AreaEmpleados.Models
 @model IEnumerable<AsistenciaEmpleado>
 
-           
-@{
+          
+    @{
     ViewBag.Title = "Index";
     int idusuario = 1;
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    }
 
-<div class="block big" style="position: relative">
+
+
+    <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
-        <h3>
-            Asistencia de empleados
-        </h3>
+    <h3>
+    Asistencia de empleados
+    </h3>
     </div>
     <div class="block_cont">
         
-         <div class = "form">
+    <div class = "form">
         
-        <button class="t-button t-state-default submit" style = "display:inline" id="regentrada"> Registrar Entrada </button>
+    <button class="t-button t-state-default submit" style = "display:inline" id="regentrada"> Registrar Entrada </button>
            
-        <button class="t-button t-state-default submit" style = "display:inline; float :right" id="regsalida"> Registrar Salida </button>
+    <button class="t-button t-state-default submit" style = "display:inline; float :right" id="regsalida"> Registrar Salida </button>
         
     </div>
     <p></p>
     <div id = "log" style = "display:none; background-color:red; color:white; font-size:20px">
-            jajaja 
+    jajaja 
     </div>
 
-        <p>
-        </p>
+    <p>
+    </p>
 
-        @(Html.Telerik().Grid(Model)
-        .Name("AsistenciasGrid")
-        .Localizable("es-ES")
-
-
-        .DataKeys(key => key.Add(c => c.ID))
-        .Columns(columns =>
-        {
-            columns.Bound(p => p.fechaHoraEntrada);
-            columns.Bound(p => p.fechaHoraSalida);
-            columns.Bound(p => p.s_asistencia);
-        })
+    @(Html.Telerik().Grid(Model)
+    .Name("AsistenciasGrid")
+    .Localizable("es-ES")
 
 
+    .DataKeys(key => key.Add(c => c.ID))
+    .Columns(columns =>
+    {
+    columns.Bound(p => p.fechaHoraEntrada);
+    columns.Bound(p => p.fechaHoraSalida);
+    columns.Bound(p => p.s_asistencia);
+    })
 
-        .DataBinding(dataBinding => dataBinding
-            .Ajax()
-            .Select("Select", "AsistenciaEmpleado", new { id = idusuario })
-        )
-           )
+
+    //var id = localStorage.getItem("idusuario");
+    .DataBinding(dataBinding => dataBinding
+    .Ajax()
+    .Select("Select", "AsistenciaEmpleado", new { id = idusuario })
+    )
+    )
     </div>
    
-   <div id="dialogEntrada" title="Esta seguro que desea registrar su entrada?">
-	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+    <div id="dialogEntrada" title="Esta seguro que desea registrar su entrada?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
     Ya no podr&aacute; cancelar la operaci&oacute;n</p>
     </div>
 
-     <div id="dialogSalida" title="Esta seguro que desea registrar su salida?">
-	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+    <div id="dialogSalida" title="Esta seguro que desea registrar su salida?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
     Ya no podr&aacute; cancelar la operaci&oacute;n</p>
     </div>
 
     
 
-</div>
+    </div>
 
-<script type = "text/javascript">
+    <script type = "text/javascript">
+    /*
+    var user = localStorage.getItem("idusuario");
+    var entrada = {
+    id: parseInt(user)
+    };
+    $.ajax({
+    type: "POST",
+    data: JSON.stringify(entrada),
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    url: "AsistenciaEmpleado/Select",
+    success: function (data) {
+    //$('#AsistenciasGrid').data('tGrid').ajaxRequest();
+    }
+    });
+    */
+
+    //$('#AsistenciasGrid').data('tGrid').ajaxRequest();
 
     $('#dialogEntrada').dialog({
         autoOpen: false,

@@ -9,6 +9,7 @@ using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaReservas.Models.Consultas;
+using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 
 
 namespace Era_sphere.Areas.AreaReservas.Models
@@ -18,6 +19,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
         public EraSphereContext context = new EraSphereContext();
         DBGenericQueriesUtil<Reserva> tabla_reserva;
         DBGenericQueriesUtil<HabitacionXReserva> tabla_habitacion_x_reserva;
+        DBGenericQueriesUtil<ServicioXReserva> tabla_servicio_x_reserva;
+
         public LogicaReserva()
         {
             tabla_reserva = new DBGenericQueriesUtil<Reserva>(context, context.Reservas);
@@ -30,7 +33,6 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public List<ConsultaLineaView> getHabitaciones(int reserva_id)
         {
-            List<HabitacionXReserva> aux = context.habitacion_x_reserva.ToList();
             List<int> hxr = context.habitacion_x_reserva.Where(x => x.reservaID == reserva_id).Select(x => x.habitacionID).ToList();
             List<ConsultaLineaView> res = new List<ConsultaLineaView>();
             foreach(int hid in hxr){
@@ -255,6 +257,26 @@ namespace Era_sphere.Areas.AreaReservas.Models
         }
 
 
+
+        public List<ServicioView> getServicios(int reserva_id)
+        {
+            List<ServicioXReserva> cruce = context.servicioxreservas.Where(x => x.reservaID == reserva_id).ToList();
+            List<ServicioView> res = new List<ServicioView>();
+            foreach(var s in cruce) 
+                res.Add(new ServicioView(context.servicios.Find(s.servicioID)));
+            return res;
+        }
+
+        public void agregaServicio(int reserva_id, Servicio s)
+        {
+            tabla_servicio_x_reserva.agregarElemento(new ServicioXReserva { reservaID = reserva_id, servicioID = s.ID });
+        }
+        public void anularServicio(int servicio_id)
+        {
+            Servicio s = context.servicios.Find(servicio_id);
+            s.eliminado = true;
+            //FALTA
+        }
     }
 }
         

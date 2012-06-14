@@ -15,10 +15,10 @@ namespace Era_sphere.Areas.AreaReservas
     public class ReservaView
     {
         [DisplayName(@"Día de Check In")]
-        public DateTime? check_in { get; set; }
+        public DateTime? fecha_inicio { get; set; }
 
         [DisplayName(@"Día de Check Out")]
-        public DateTime? check_out { get; set; }
+        public DateTime? fecha_fin { get; set; }
 
         [DisplayName(@"Monto inicial")]
         public decimal costo_inicial { get; set; }
@@ -79,6 +79,9 @@ namespace Era_sphere.Areas.AreaReservas
                 return "R" + res;
             } 
         }
+
+        public List<ServicioView> servicios { get; set; }
+
         public ReservaView() { }
 
         public ReservaView(Reserva r, LogicaReserva logica)
@@ -89,8 +92,8 @@ namespace Era_sphere.Areas.AreaReservas
                                                                  : r.responsable_pago.ruc;
             dia_creacion = r.dia_creacion;
             dias_estadia = r.dias_estadia;
-            check_in = r.check_in;
-            check_out = r.check_out;
+            fecha_inicio = r.check_in;
+            fecha_fin = r.check_out;
             costo_inicial = r.costo_inicial;
             costo_final = r.costo_final;
             precio_derecho_reserva = r.precio_derecho_reserva;
@@ -101,6 +104,9 @@ namespace Era_sphere.Areas.AreaReservas
             hotelID = r.hotelID;
             pisoID = r.pisoID;
             habitaciones = logica.getHabitaciones(r.ID);
+            servicios = new List<ServicioView>();
+            foreach(var s in logica.getServicios(r.ID))
+                servicios.Add(s);
         }
 
 
@@ -115,8 +121,8 @@ namespace Era_sphere.Areas.AreaReservas
                 precio_derecho_reserva = this.precio_derecho_reserva,
                 num_habitaciones = this.num_habitaciones,
                 ID = this.ID,
-                check_in = this.check_in,
-                check_out = this.check_out,
+                check_in = this.fecha_inicio,
+                check_out = this.fecha_fin,
                 dias_estadia = this.dias_estadia,
                 dia_creacion = this.dia_creacion,
                 costo_inicial = this.costo_inicial,

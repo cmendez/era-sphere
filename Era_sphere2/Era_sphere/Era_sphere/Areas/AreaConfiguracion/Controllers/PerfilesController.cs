@@ -32,7 +32,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         public ActionResult DamePerfil(int perfilID)
         {
             //(new EraSphereContext()).seedPerfil();
-            //var perfil = perfil_logica.retornarPerfil(perfilID);
+            var perfil = perfil_logica.retornarPerfil(perfilID);
+            /*
             Perfil perfil = new Perfil
             {
                 descripcion = "superadmin",
@@ -40,6 +41,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
                 listaVisibilidad = "1111111",
                 nombrePerfil = "superadmin"
             };
+             * */
             return new JsonResult() { Data = perfil };
         }
 

@@ -26,6 +26,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Descripcion")]
         public string descripcion { get; set; }
 
+        public List<Campo> campos { get; set; }
         public TipoServicioView(TipoServicio tipo)
         {
             this.ID = tipo.ID;
@@ -34,6 +35,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             this.tiene_repeticiones = tipo.tiene_repeticiones;
             this.nombre = tipo.nombre;
             this.descripcion = tipo.descripcion;
+            this.campos = new List<Campo>();
+            if (tipo.campos != null)
+                foreach (var i in tipo.campos) this.campos.Add(i);
         }
         public TipoServicioView(){}
 

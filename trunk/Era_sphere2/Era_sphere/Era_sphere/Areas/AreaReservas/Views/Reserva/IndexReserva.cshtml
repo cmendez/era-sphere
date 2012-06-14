@@ -88,7 +88,7 @@
         {
             columns.Bound(p => p.responsable_pago);
             columns.Bound(p => p.documento_identidad).Title("Documento");
-            columns.Bound(p => p.ID);
+            columns.Bound(p => p.codigo);
             columns.ForeignKey(p => p.estadoID, new SelectList(estados, "ID", "descripcion"));
             columns.Command(commands =>
             {

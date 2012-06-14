@@ -58,7 +58,7 @@ namespace Era_sphere.Areas.AreaReservas
 
         public string documento_identidad { get; set; }
   
-        [DisplayName(@"Número de Reserva")]
+        
         public int ID { get; set; }
 
 
@@ -71,6 +71,14 @@ namespace Era_sphere.Areas.AreaReservas
         public List<ConsultaLineaView> habitaciones { get; set; }
         //       [DisplayName("Días de Estadía")]
 
+        [DisplayName(@"Número de Reserva")]
+        public string codigo { 
+            get {
+                string res = "" + this.ID;
+                while (res.Length < 6) res = "0" + res;
+                return "R" + res;
+            } 
+        }
         public ReservaView() { }
 
         public ReservaView(Reserva r, LogicaReserva logica)
@@ -148,6 +156,7 @@ namespace Era_sphere.Areas.AreaReservas
         
         }
 
-    
+
+
     }
 }

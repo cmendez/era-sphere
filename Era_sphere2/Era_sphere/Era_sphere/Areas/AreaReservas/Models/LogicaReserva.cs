@@ -31,6 +31,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
             return context.habitacion_x_reserva.FirstOrDefault(x => x.habitacionID == h.ID && x.reservaID == r.ID).ID;
         }
 
+
+
         public List<ConsultaLineaView> getHabitaciones(int reserva_id)
         {
             List<int> hxr = context.habitacion_x_reserva.Where(x => x.reservaID == reserva_id).Select(x => x.habitacionID).ToList();
@@ -79,14 +81,15 @@ namespace Era_sphere.Areas.AreaReservas.Models
             tabla_reserva.modificarElemento(reserva,reserva.ID);
         }
 
-        public void registrarReserva(Reserva reserva)
+
+         public void registrarReserva(Reserva reserva)
         {
             tabla_reserva.agregarElemento(reserva);
             LogicaCliente logica_cliente = new LogicaCliente();
             logica_cliente.cambiarEstadoCliente(reserva);
            //incluye lista de reservas
             reserva.responsable_pago.reservas.Add(reserva);
-
+            
 
             //reserva.responsable_pago.estadoID = 2;
             //reserva.responsable_pago.numero_reservas += 1;
@@ -126,26 +129,17 @@ namespace Era_sphere.Areas.AreaReservas.Models
             List<Habitacion> habs = this.habitacionesDeReserva(reserva.ID);
 
             foreach(var habitacion in habs){
-                monto += 100;
+                monto += habitacion.tipoHabitacion.costo_base;
                     //habitacion.tipoHabitacion.costo_base;
             }
 
-            //tenemos el costo base de las habitaciones, ahora determinar si se anhadió comodidades
-            /* EDIT: ahora parece que no hay mas comodidades
-            for (int i = 0; i < reserva.lista_habitaciones_reservadas.Count(); i++)
-            {
-                HabitacionXReserva habi =  reserva.lista_habitaciones_reservadas.ElementAt(i);
-                monto += 0; //reserva.lista_comodidades.ElementAt(i).
-            }
-
-            */
             return monto;
                 
         }
 
 
 
-        public decimal calcularDiasEstadia(Reserva reserva)
+        public int calcularDiasEstadia(Reserva reserva)
         {
             TimeSpan span = reserva.check_out.Value.Subtract(reserva.check_in.Value);
             int dias_transcurridos = (int)(span.TotalDays);
@@ -165,15 +159,12 @@ namespace Era_sphere.Areas.AreaReservas.Models
         }
 
 
-        public void asignacion_habitaciones_reservadas(Reserva reserva)
+        public void cacularDatosReserva(int reserva_id)
         {
-           /* for (int i = 0; i < reserva.lista_habitaciones.Count(); i++)
-            {
-                if (reserva.lista_habitaciones.ElementAt(i).estado.descripcion == "clicked")
-                {
-                    reserva.lista_habitaciones_reservadas.Add(reserva.lista_habitaciones.ElementAt(i));
-                }
-            }*/
+            Reserva reserva = retornarReserva(reserva_id);
+            reserva.dias_estadia = calcularDiasEstadia(reserva);
+            reserva.costo_inicial = calcularMontoInicialReserva(reserva);
+            reserva.precio_derecho_reserva = calcularMontoCancelarReserva(reserva);
         
         }
 
@@ -192,14 +183,32 @@ namespace Era_sphere.Areas.AreaReservas.Models
     
         public List<Habitacion> habitacionesDeReserva(int reservaID)
         {
-            var query = from u in context.habitacion_x_reserva
-                        where u.reservaID == reservaID
-                        select context.habitaciones.Find(u.habitacionID);
-            return query.ToList();
+            List<HabitacionXReserva> todos = context.habitacion_x_reserva.Where(x => x.reservaID == reservaID).ToList();
+            List<Habitacion> res = new List<Habitacion>();
+            foreach (HabitacionXReserva hid in todos)
+            {
+                Habitacion h = context.habitaciones.Find(hid.habitacionID);
+                res.Add(h);
+            }
+            return res;
         }
 
 
         //cambios de estados propios de la reserva
+
+        public void eliminarReservaCliente(int id_reserva)
+        {
+            Reserva reserva = retornarReserva(id_reserva);
+            LogicaCliente cliente_logica = new LogicaCliente();
+            Cliente cliente = cliente_logica.retornarCliente(reserva.responsable_pagoID);
+
+            for (int i = 0; i < cliente.reservas.Count(); i++)
+            {
+                if (cliente.reservas.ElementAt(i).ID == id_reserva)
+                    cliente.reservas.Remove(reserva);
+            }
+            
+        }
 
         public void cambiarEstadoReservaAnular(Reserva reserva)
         {
@@ -208,7 +217,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
                     modificarReserva(reserva);
                     LogicaCadena cadena_context = new LogicaCadena();
                     Cadena cadena = cadena_context.retornarCadena(1);
-
+                    LogicaCliente logica_cliente = new LogicaCliente();
+                    
                     if (DateTime.Now.Subtract(reserva.dia_creacion).Days < cadena.d_ant_ret)
                     {
                         ReciboLinea recibo = new ReciboLinea();
@@ -218,6 +228,9 @@ namespace Era_sphere.Areas.AreaReservas.Models
                         recibo.unidades = 1;
                         //llamar un popup de recibo gg
                     }
+                    //ahora parece sin reserva en caso sea la unica reserva que tenga
+                    eliminarReservaCliente(reserva.ID);
+                    logica_cliente.cambiarEstadoAnularReserva(reserva.responsable_pagoID);
             
         }
 

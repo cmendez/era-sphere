@@ -66,6 +66,8 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         {
             hab_ids = hab_ids ?? new List<int>();
             reserva_logica.refrescaHabitaciones(hab_ids, reserva_id);
+            reserva_logica.cacularDatosReserva(reserva_id);
+
             return null;
         }
 
@@ -74,6 +76,7 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         {
             reserva_logica.cambiarEstadoReservaAnular(reserva_logica.retornarReserva(reserva_id));
             return Json(new {reserva_id = reserva_id});
+
         }
     }
 }

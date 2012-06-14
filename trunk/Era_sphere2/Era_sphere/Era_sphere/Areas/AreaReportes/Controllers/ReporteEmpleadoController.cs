@@ -24,6 +24,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
 
             ReporteEmpleado reporte = new ReporteEmpleado();
             List<Empleado> listaEmpleados = (new EraSphereContext()).empleados.ToList();
+            List<Empleado> listaEmpleadosFiltrada = new List<Empleado>();
             List<AsistenciaEmpleado> listaAsistencias = (new EraSphereContext()).asistenciaEmpleado.ToList();
             List<AsistenciaEmpleado> listaAsistenciasFiltrada = new List<AsistenciaEmpleado>();
             List<ObjetoReporteEmpleado> listaFinal = new List<ObjetoReporteEmpleado>();
@@ -47,23 +48,46 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
 
             //USAR DATOS DEL FORMULARIO PARA SABER QUE QUIERE EL USUARIO EN SU REPORTE
 
+            //listaEmpleados.Where(e => e.nombre.Contains(formReporte.nombre));
             //probar cuando ya pueda registrar varios empleados, y sino no funciona bien, usar listaEmpleadosFiltrada
-            if (formReporte.nombre != null)
-                listaEmpleados.Where(e => e.nombre.Contains(formReporte.nombre));
+            if (formReporte.nombre != null)           
+            {
+                foreach (Empleado empl in listaEmpleados)
+                {
+                    if (empl.nombre.Contains(formReporte.nombre))
+                        listaEmpleadosFiltrada.Add(empl);
+                }
+            }
 
             if (formReporte.apePaterno != null)
+            {
+                foreach (Empleado empl in listaEmpleados)
+                {
+                    if (empl.apellido_paterno.Contains(formReporte.apePaterno))
+                        listaEmpleadosFiltrada.Add(empl);
+                }
+            }
+
+            if (formReporte.apeMaterno != null)
+            {
+                foreach (Empleado empl in listaEmpleados)
+                {
+                    if (empl.apellido_materno.Contains(formReporte.apeMaterno))
+                        listaEmpleadosFiltrada.Add(empl);
+                }
+            }
+
+            /*if (formReporte.apePaterno != null)
                 listaEmpleados.Where(e => e.apellido_paterno.Contains(formReporte.apePaterno));
 
             if (formReporte.apeMaterno != null)
-                listaEmpleados.Where(e => e.apellido_materno.Contains(formReporte.apeMaterno));
+                listaEmpleados.Where(e => e.apellido_materno.Contains(formReporte.apeMaterno));*/
 
             //formReporte.fechaInicio.AddMinutes(43);
 
             //try catch
             try
             {
-                
-
                 if (formReporte.fechaInicio.ToString() != "01/01/0001 12:00:00 a.m.")
                 {
                     string f1 = formReporte.fechaInicio.ToShortDateString();
@@ -103,7 +127,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                 
                 foreach (AsistenciaEmpleado asistencia in listaAsistenciasFiltrada)
                 {
-                    foreach (Empleado empleados in listaEmpleados)
+                    foreach (Empleado empleados in listaEmpleadosFiltrada)
                     {
                         if (Int32.Parse(asistencia.empleadoID) == empleados.ID)
                         {

@@ -12,11 +12,16 @@ namespace Era_sphere.Areas.AreaReportes.Models.ReporteEmpleados
 {
     public class FormReporteEmpleado
     {
+        [DisplayName("Nombre")]
         public string nombre { get; set; }
+        [DisplayName("Apellido paterno")]
         public string apePaterno { get; set; }
+        [DisplayName("Apellido materno")]
         public string apeMaterno { get; set; }
+        [DisplayName("Fecha inicio")]
         public DateTime fechaInicio { get; set; }
+        [DisplayName("Fecha fin")]
         public DateTime fechaFin { get; set; }
-        //public int comboboxAsistencia 
+        //public int comboboxAsistencia  
     }
 }

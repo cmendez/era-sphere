@@ -41,8 +41,8 @@
                     
                  )
 
-              <span class="error_fecha_fin error" style="display:none;background:red ; color:white">
-                    Seleccione fecha fin
+              <span class="error_fecha_fin_error" style="display:none;background:red ; color:white">
+                    La fecha de fin no puede ser menor que la fecha de inicio
               </span>
    
             </div>
@@ -88,11 +88,14 @@
                     var fecha_hora_fint = $("#fecha_hora_fin").val();
                     var link = "/AreaEventos/Evento/InsertAmbiente";
 
-                    if (ambienteIDt == "" || !isNumber(ambienteIDt)) {
+                    if (ambienteIDt == "" || !isNumber(ambienteIDt) || (fecha_hora_iniciot > fecha_hora_fint)) {
                         //                        if (!isNumber(ambienteIDt))
                         //                            $(".error_ambiente").show();
                         //                        if (precio == "")
                         ;
+                        if(fecha_hora_iniciot > fecha_hora_fint){
+                            $(".error_fecha_fin_error").show();                        
+                        }
                     }
                     else {
 

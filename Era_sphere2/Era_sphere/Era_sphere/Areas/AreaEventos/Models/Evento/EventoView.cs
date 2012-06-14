@@ -20,15 +20,17 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         }
         [Required]
         [MaxLength(30)]
-        [DisplayName("nombre")]
+        [DisplayName("Nombre")]
         public string nombre { get; set; }
         [Required]
         //falta limite
         [DisplayName("Precio")]
+        [Range(1, 100000)]
         public decimal precio_total { get; set; }
         [Required]
         //falta limite
         [DisplayName("Cantidad de participantes")]
+        [Range(1, 1000)]
         public int num_participantes { get; set; }
         [DisplayName("ID evento")]
         [Required]

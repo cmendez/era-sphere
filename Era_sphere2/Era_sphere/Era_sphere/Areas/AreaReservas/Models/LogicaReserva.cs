@@ -199,13 +199,6 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public void cambiarEstadoReservaAnular(Reserva reserva)
         {
-            //List<Reserva> reservas = new List<Reserva>();
-            //LogicaReserva logica_reserva = new LogicaReserva();
-            //reservas = logica_reserva.retornarReservas();
-            //for (int i = 0; i < reservas.Count(); i++)
-            //{
-            //    if (reservas[i].ID == reserva.ID)
-            //    {
                     reserva.estadoID = 4;
                     reserva.estado = context.estados_reserva.Find(4);
                     modificarReserva(reserva);
@@ -221,10 +214,6 @@ namespace Era_sphere.Areas.AreaReservas.Models
                         recibo.unidades = 1;
                         //llamar un popup de recibo gg
                     }
-          
-
-                        //    }
-            //}
             
         }
 

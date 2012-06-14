@@ -8,7 +8,7 @@
         .Name("RegistradasGrid")
         .Localizable("es-ES")
         .Filterable()
-        .HtmlAttributes( new{ style = "z-index:100"})
+        .HtmlAttributes(new { style = "z-index:100" })
         .DataKeys(key => key.Add(p => p.ordenID))
         .Columns(columns =>
         {
@@ -16,7 +16,7 @@
             columns.Bound(p => p.razon_proveedor).Width(100);
             columns.Bound(p => p.nro_productos).Width(20).Title("Productos");
             columns.Bound(p => p.estado_orden);
-            columns.Bound(p => p.fecha_registro).Format("{0:d}");
+            columns.Bound(p => p.fecha_registro);
             columns.Bound(p => p.monto_total).Format("{0:c}");
             columns.Command(command =>
             {
@@ -30,11 +30,11 @@
         })
         .ClientEvents(events => events.OnComplete("registradas_complete"))
         .Pageable()
-        .Sortable( sort => sort.OrderBy( order => order.Add( p => p.fecha_registro).Descending() ))
+        .Sortable(sort => sort.OrderBy(order => order.Add(p => p.fecha_registro).Descending()))
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("SelectRegistradas", "AdministrarOC", new { id_hotel = 1 })
-            .Delete("EliminarOrdenCompra", "AdministrarOC")
+            .Select("SelectOrdenes", "AdministrarOC", new { id_hotel = @id_hotel, estado_orden = 2 })
+            .Delete("EliminarOrdenCompra", "AdministrarOC", new {  estado_orden = 2 })
         ).Render();
 }
 @(Html.Telerik().Window().Name("fake-windi").Visible(false))
@@ -67,6 +67,21 @@
 
         }
         else if (e.name == "delete") {
+            $("#RegistradasGrid").data('tGrid').ajaxRequest();
+        }
+        else if (e.name == "AceptarOrdenR") {
+            var orden = e.response.orden_compra;
+            var url_dat = '@Url.Action("aceptarOrdenCompra","AdministrarOC")' + '/?id_oc=' + orden.ordenID;
+            $.ajax({
+                type : 'POST',
+                dataType : 'json',
+                contentType : 'application/json',
+                url: url_dat,
+                success : function ( data ){
+                    alert(data.msg);
+                    reload_all();
+                } 
+            }); 
             $("#RegistradasGrid").data('tGrid').ajaxRequest();
         }
     }

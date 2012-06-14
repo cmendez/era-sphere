@@ -1,1 +1,78 @@
-﻿Hola, somos las ordenes Aceptadas (:
+﻿
+@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models
+@model IEnumerable<OrdenCompraView>
+@{
+    int id_hotel = ViewBag.id;
+    }
+
+
+@{Html.Telerik().Grid(Model)
+      .Name("AceptadasGrid")
+      .Localizable("es-ES")
+      .Filterable()
+      .Pageable()
+      .HtmlAttributes(new { style = "z-index:100" })
+      .DataKeys(key => key.Add(p => p.ordenID))
+      .Columns(col => {
+          col.Bound(oc => oc.ordenID);
+          col.Bound(oc => oc.razon_proveedor);
+          col.Bound(oc => oc.nro_productos);
+          col.Bound(oc => oc.estado_orden);
+          col.Bound(oc => oc.fecha_registro);
+          col.Bound(oc => oc.fecha_envio);
+          col.Bound(oc => oc.monto_total).Format("{0:c}");
+          col.Command(com =>
+          {
+              com.Custom("agregarEntrega").Text("Entrega").Ajax(true)
+                  .Action("DetallesOrdenC","AdministrarOC");
+              com.Custom("cancelarOrden").Text("Cancelar").Ajax(true)
+                  .Action("DetallesOrdenC","AdministrarOC");
+              com.Custom("detallesGeneral").Text("Detalles").Ajax(true);
+              com.Custom("terminarEntrega").Text("Atendido").Ajax(true)
+                  .Action("DetallesOrdenC", "AdministrarOC");
+          });
+      })
+      .ClientEvents( ev => ev.OnComplete("aceptadas_complete") )
+      .DataBinding(bind => bind.Ajax()
+                .Select("SelectOrdenes", "AdministrarOC", 
+                new { id_hotel = @id_hotel , estado_orden = 3 })
+                ).Render() ;
+    }
+
+<script type="text/javascript">
+    function aceptadas_complete(e) {
+        if (e.name == "terminarEntrega") {
+            alert("entra");
+            var oc = e.response.orden_compra;
+            var url_v = '@Url.Action("terminarOrdenCompra","AdministrarOC")';
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: url_v,
+                contentType: 'application/json',
+                data: JSON.stringify({ id_oc: oc.ordenID }),
+                success: function (data) {
+                    alert(data.msg);
+                    reload_all();
+                }
+            });
+           
+        }
+        else if( e.name == "cancelarOrden"){
+            var oc = e.response.orden_compra;
+            var url_v = '@Url.Action("cancelarOrdenCompra","AdministrarOC")';
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url : url_v,
+                contentType: 'application/json',
+                data : JSON.stringify({ id_oc : oc.ordenID }),
+                success : function (data){
+                    alert(data.msg);
+                    reload_all();
+                }
+            });
+        }
+    }
+</script>

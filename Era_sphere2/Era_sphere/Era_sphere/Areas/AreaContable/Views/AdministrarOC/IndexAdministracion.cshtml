@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "IndexAdministracion";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int id_hotel = ViewBag.id_hotel;
 }
 <div class="block big">
     <div class="titlebar">
@@ -14,7 +15,7 @@
         <span class="toggle"></span>
     </div>
      <div class="block_cont">
-    @{ Html.RenderPartial("OrdenesRegistradasPartial"); }
+    @{ Html.RenderPartial("OrdenesRegistradasPartial",null, new ViewDataDictionary{ {"id" , @id_hotel}}); }
     </div>
     
 </div>
@@ -26,7 +27,7 @@
         <span class="toggle show"></span>
     </div>
     <div class="block_cont" style="display:none">
-    @{ Html.RenderPartial("OrdenesAceptadasPartial"); }
+    @{ Html.RenderPartial("OrdenesAceptadasPartial", null, new ViewDataDictionary{ {"id" , @id_hotel }}); }
     </div>
 </div>
 <div class="block big">
@@ -37,7 +38,7 @@
         <span  class="toggle show"></span>
     </div>
     <div class="block_cont" style="display:none">
-    @{ Html.RenderPartial("OrdenesAtendidasPartial"); }
+    @{ Html.RenderPartial("OrdenesAtendidasPartial", null , new ViewDataDictionary{ {"id" , @id_hotel} }); }
     </div>
 </div>
 <div class="block big">
@@ -49,7 +50,15 @@
     </div>
     <div class="block_cont" style="display:none">
 
-    @{ Html.RenderPartial("OrdenesCanceladasPartial"); }
+    @{ Html.RenderPartial("OrdenesCanceladasPartial", null , new ViewDataDictionary{ { "id" , @id_hotel }}); }
  
     </div>
+    <script type="text/javascript">
+        function reload_all() {
+            $("#CanceladasGrid").data("tGrid").ajaxRequest();
+            $("#AtendidasGrid").data("tGrid").ajaxRequest();
+            $("#AceptadasGrid").data("tGrid").ajaxRequest();
+            $("#RegistradasGrid").data("tGrid").ajaxRequest();
+        }
+    </script>
 </div>

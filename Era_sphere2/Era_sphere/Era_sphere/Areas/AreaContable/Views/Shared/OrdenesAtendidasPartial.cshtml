@@ -1,1 +1,53 @@
-﻿Hola somos las ordendes Atendidas (X
+﻿@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models
+@model IEnumerable<OrdenCompraView>
+@{
+    int id_hotel = ViewBag.id;
+    }
+
+@{ Html.Telerik().Grid(Model)
+    .Name("AtendidasGrid")
+    .Localizable("es-ES")
+    .Filterable()
+    .Pageable()
+    .HtmlAttributes(new { style = "z-index:100" })
+    .DataKeys(key => key.Add(p => p.ordenID))
+    .Columns(col =>
+    {
+        col.Bound(p => p.ordenID);
+        col.Bound(p => p.razon_proveedor);
+        col.Bound(p => p.nro_productos);
+        col.Bound(p => p.estado_orden);
+        col.Bound(p => p.fecha_registro);
+        col.Bound(p => p.fecha_envio);
+        col.Bound(p => p.fecha_llegada);
+        col.Command(com => com.Custom("cancelarOC").Ajax(true)
+                .Action("DetallesOC", "AdministrarOC"));
+    })
+    .ClientEvents( ev => ev.OnComplete("atendidas_complete") )
+    .DataBinding(bind => bind.Ajax()
+        .Select("SelectOrdenes", "AdministrarOC", 
+        new{ id_hotel = @id_hotel, estado_orden = 4 } )
+    ).Render();
+}
+    <script type="text/javascript">
+        function atendidas_complete(e) {
+            if (e.name == "cancelarOC") {
+                var oc = e.response.orden_compra;
+                var url_v = '@Url.Action("cancelarOrdenCompra","AdministrarOC")';
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: url_v,
+                    contentType: 'application/json',
+                    data: JSON.stringify({ id_oc: oc.ordenID }),
+                    success: function (data) {
+                        alert(data.msg);
+                        reload_all();
+                    }
+                });
+            }
+        }
+    </script>
+        
+            

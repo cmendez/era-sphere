@@ -118,7 +118,15 @@ namespace Era_sphere.Areas.AreaContable.Models
             return ans;
         }
 
-        internal void enviar_orden_compra(int id_orden)
+        internal void terminar_orden_compra(int id)
+        {
+            var oc = qoc.retornarUnSoloElemento(id);
+            oc.fecha_llegada = DateTime.Now;
+            oc.estado_orden = context.estados_ocompra.Find(4);
+            qoc.modificarElemento(oc, oc.ID);
+        }
+
+        internal void aceptar_orden_compra(int id_orden)
         {
             var oc = qoc.retornarUnSoloElemento(id_orden);
             oc.fecha_envio = DateTime.Now;
@@ -141,7 +149,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             qoc.modificarElemento(oc, oc.ID);
         }
 
-        internal List<OrdenCompraView> retornar_ordenes_compra_registradas(int id_hotel)
+        internal List<OrdenCompraView> retornar_ordenes_compra_estado(int id_hotel)
         {
             return retornar_ordenes_compra( id_hotel).Where( oc => oc.estadoID == 2 ).ToList();
         }
@@ -164,5 +172,12 @@ namespace Era_sphere.Areas.AreaContable.Models
             var oc = qoc.retornarUnSoloElemento(id);
             return new OrdenCompraView(oc);
         }
+        internal List<OrdenCompraView>retornar_ordenes_compra_estado(int id_hotel, int estado_orden)
+        {
+            List<OrdenCompraView> ans = retornar_ordenes_compra(id_hotel).Where( oc => oc.estadoID == estado_orden ).ToList();
+            return ans;
+        }
+
+
     }
 }

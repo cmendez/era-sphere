@@ -8,7 +8,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
     public class ServicioXReserva : DBable
     {
-        public int servicioID;
-        public int reservaID;
+        public int servicioID { get; set; }
+        public int reservaID { get; set; }
     }
 }

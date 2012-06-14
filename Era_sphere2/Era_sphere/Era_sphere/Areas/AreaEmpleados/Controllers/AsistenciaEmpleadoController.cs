@@ -38,7 +38,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
                 return Json(new { me = "" });
             }
             else
-                return Json(new { me = "Ya ha registrado una entrada anteriormente." });
+                return Json(new { me = "Ya ha registrado su entrada anteriormente." });
    
         }
 
@@ -59,7 +59,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
 
             if (!existeEntrada)
             {
-                return Json(new { me = "No puede registrar salida sin haber registrado una entrada" });
+                return Json(new { me = "No puede registrar una salida sin haber registrado una entrada" });
             }
             else
             {
@@ -73,7 +73,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
                 }
                 else
                 {
-                    return Json(new { me = "Ya ha registrado su salida" });
+                    return Json(new { me = "Ya ha registrado su salida anteriormente" });
                 }
             }
         }

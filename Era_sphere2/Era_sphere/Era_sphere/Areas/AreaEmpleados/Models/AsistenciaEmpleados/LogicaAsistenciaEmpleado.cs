@@ -122,7 +122,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleados
 
             foreach (AsistenciaEmpleado asistencia in asistencias)
             {
-                if (Int32.Parse(asistencia.empleadoID) == id)
+                //if (Int32.Parse(asistencia.empleadoID) == id)
                     asistencias_view.Add(new AsistenciaEmpleadoView(asistencia));
             }
             return asistencias_view;

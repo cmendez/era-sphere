@@ -2,163 +2,158 @@
 @using Era_sphere.Areas.AreaHoteles.Models
 @using Era_sphere.Generics;
 @using Telerik.Web.Mvc.UI
-
 @{
     ViewBag.Title = "IndexHotel";
     bool partial = (bool)(ViewData["partial"]);
-    if(!partial){
+    if (!partial)
+    {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
     var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
     tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
-    var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();
+    var pisos = (new EraSphereContext()).pisos.Where(p => p.hotelID == Model.hotelID).ToList();
     pisos.Insert(0, new Piso { ID = 0, descripcion = "Todos" });
     ViewData["habitaciones_seleccionadas"] = new List<ConsultaLineaView>();
 }
-
 @model ConsultaView
-           
-           <script type="text/javascript">
-               var hab_ids = [];
-               function Busca() {
-                   var fecha_inicio = $("#fecha_inicio").val();
-                   var fecha_fin = $("#fecha_fin").val();
-                   var pisoID = $("#pisoID").val();
-                   var tipo_habitacionID = $("#tipo_habitacionID").val();
-                   var hotelID = $("#hotelID").val();
-                   var data = { fecha_inicio: fecha_inicio,
-                       fecha_fin: fecha_fin,
-                       pisoID: pisoID,
-                       tipo_habitacionID: tipo_habitacionID,
-                       hotelID: hotelID,
-                       partial: "@partial"
-                   };
-                   $("#grid-result").load('@Url.Action("Buscar", "Consulta")', data);
-               }
-               function recargaAcumulado() {
-                   $.ajax({
-                       url: '@Url.Action("SubConsulta", "Consulta")',
-                       traditional: true,
-                       data: { hab_ids: hab_ids },
-                       type: "POST",
-                       success: function (data) { document.getElementById("grid-acumulado").innerHTML = data; },
-                       async: false
-                   });
-               }
-               function agregaHabitacion(id) {
-                   var existe = false;
-                   for (a in hab_ids) if (hab_ids[a] == id) existe = true;
-                   if (!existe)
-                       hab_ids.push(parseInt(id));
-                   recargaAcumulado();
-               }
-               function quitaHabitacion(id) {
-                   var pos = -1;
-                   var nuevo = []
-                   for (i in hab_ids) if (hab_ids[i] != id) nuevo.push(hab_ids[i]);
-                   hab_ids = nuevo;
-                   recargaAcumulado();
-               }
-               function validaFecha(){
-                   var dfecha_inicio = $("#fecha_inicio").data("tDatePicker");
-                   var dfecha_fin = $("#fecha_fin").data("tDatePicker");
-                   var inicio = new Date(dfecha_inicio.value());
-                   var fin = new Date(dfecha_fin.value());
-                   if (fin <= inicio)
-                       fin.setDate(inicio.getDate() + 1);
-                   dfecha_fin.value(fin);
-               }
+<script type="text/javascript">
+    var hab_ids = [];
+    function Busca() {
+        var fecha_inicio = $("#fecha_inicio").val();
+        var fecha_fin = $("#fecha_fin").val();
+        var pisoID = $("#pisoID").val();
+        var tipo_habitacionID = $("#tipo_habitacionID").val();
+        var hotelID = $("#hotelID").val();
+        var data = { fecha_inicio: fecha_inicio,
+            fecha_fin: fecha_fin,
+            pisoID: pisoID,
+            tipo_habitacionID: tipo_habitacionID,
+            hotelID: hotelID,
+            partial: "@partial"
+        };
+        $("#grid-result").load('@Url.Action("Buscar", "Consulta")', data);
+    }
+    function recargaAcumulado() {
+        $.ajax({
+            url: '@Url.Action("SubConsulta", "Consulta")',
+            traditional: true,
+            data: { hab_ids: hab_ids },
+            type: "POST",
+            success: function (data) { document.getElementById("grid-acumulado").innerHTML = data; },
+            async: false
+        });
+    }
+    function agregaHabitacion(id) {
+        var existe = false;
+        for (a in hab_ids) if (hab_ids[a] == id) existe = true;
+        if (!existe)
+            hab_ids.push(parseInt(id));
+        recargaAcumulado();
+    }
+    function quitaHabitacion(id) {
+        var pos = -1;
+        var nuevo = []
+        for (i in hab_ids) if (hab_ids[i] != id) nuevo.push(hab_ids[i]);
+        hab_ids = nuevo;
+        recargaAcumulado();
+    }
+    function validaFecha() {
+        var dfecha_inicio = $("#fecha_inicio").data("tDatePicker");
+        var dfecha_fin = $("#fecha_fin").data("tDatePicker");
+        var inicio = new Date(dfecha_inicio.value());
+        var fin = new Date(dfecha_fin.value());
+        if (fin <= inicio)
+            fin.setDate(inicio.getDate() + 1);
+        dfecha_fin.value(fin);
+    }
 </script>
-
-
-
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/MicrosoftAjax.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/MicrosoftMvcAjax.js")" type="text/javascript"></script>
-
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
         <h3>
-           Consulta Habitaciones
+            Consulta Habitaciones
         </h3>
     </div>
-    
-    <div id="todo" class="block_cont">
-   
-        <fieldset>
-
-        <div class="editor-label"> @Html.LabelFor(model => model.fecha_inicio) </div>
-        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_inicio).Min(DateTime.Now).Value(DateTime.Now).ClientEvents(
+    <div class="block_cont">
+        
+            <div class="editor-label">
+                @Html.LabelFor(model => model.fecha_inicio)
+            </div>
+            <div class="editor-field">
+                @Html.Telerik().DatePickerFor(model => model.fecha_inicio).Name("FechaInicio").Min(DateTime.Now).Value(DateTime.Now).ClientEvents(
                                         events => events.OnChange("validaFecha"))
-                                   @Html.ValidationMessageFor(model => model.fecha_inicio) 
-                                   
-                                   
-        </div>
- 
-
-        <div class="editor-label"> @Html.LabelFor(model => model.fecha_fin) </div>
-        <div class="editor-field"> @Html.Telerik().DatePickerFor(model => model.fecha_fin).Min(DateTime.Now.AddDays(1)).Value(DateTime.Now.AddDays(1)).ClientEvents(
+                @Html.ValidationMessageFor(model => model.fecha_inicio)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.fecha_fin)
+            </div>
+            <div class="editor-field">
+                @Html.Telerik().DatePickerFor(model => model.fecha_fin).Name("FechaFin").Min(DateTime.Now.AddDays(1)).Value(DateTime.Now.AddDays(1)).ClientEvents(
                       events => events.OnChange("validaFecha"))
-                                        @Html.ValidationMessageFor(model => model.fecha_fin) 
-                                   
-        </div>
-
-        <div class="editor-label"> @Html.LabelFor(model => model.pisoID) </div>
-          @( Html.Telerik().ComboBox()
+                @Html.ValidationMessageFor(model => model.fecha_fin)
+            </div>
+            <div id="todo">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.pisoID)
+                </div>
+                @( Html.Telerik().ComboBox()
                     .Name("pisoID")
                     .BindTo(new SelectList(pisos, "ID", "descripcion"))
                     .SelectedIndex(0)
                 )
-
-        <div class="editor-label"> @Html.LabelFor(model => model.tipo_habitacionID) </div>
-          @( Html.Telerik().ComboBox()
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.tipo_habitacionID)
+                </div>
+                @( Html.Telerik().ComboBox()
                     .Name("tipo_habitacionID")
                     .BindTo(new SelectList(tipos_habitaciones, "ID", "descripcion"))
                     .SelectedIndex(0)
                 )
-
-        <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_total) </div>
-        <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_total, new { @readonly = "readonly" }) </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.habitaciones_libres_total)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.habitaciones_libres_total, new { @readonly = "readonly" })
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.habitaciones_libres_piso)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.habitaciones_libres_piso, new { @readonly = "readonly" })
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.habitaciones_libres_tipo)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.habitaciones_libres_tipo, new { @readonly = "readonly" })
+                </div>
+            @Html.HiddenFor(model => model.hotelID)
         
-        <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_piso) </div>
-        <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_piso, new { @readonly = "readonly" }) </div>
-
-        <div class="editor-label"> @Html.LabelFor(model => model.habitaciones_libres_tipo) </div>
-        <div class="editor-field"> @Html.TextBoxFor(model => model.habitaciones_libres_tipo, new { @readonly = "readonly" }) </div>
-
-        @Html.HiddenFor(model => model.hotelID)
-        </fieldset>
-        <button type="button" id="buscar-cliente-submit" onclick="Busca();">Buscar</button>
-    
-
-     <div style="height: 10px;">
-    </div>
-  <div style="height: 10px;">
-    </div>
-
-   
-
-   <div id="grid-result">
-        @{Html.RenderPartial("GridResultConsulta", new ConsultaView{resultados = new List<ConsultaLineaView>()});}
-   </div>        
-   <div style="height:10px;"></div>
-   @{
-       if (partial)
-       {
-       <div id="grid-acumulado">
-        @{Html.RenderPartial("GridResultAcumulado", new ConsultaView { resultados = new List<ConsultaLineaView>() });}
-       
-       </div>   
+        <button type="button" id="buscar-cliente-submit" onclick="Busca();">
+            Buscar</button>
+        <div style="height: 10px;">
+        </div>
+        <div style="height: 10px;">
+        </div>
+        <div id="grid-result">
+            @{Html.RenderPartial("GridResultConsulta", new ConsultaView { resultados = new List<ConsultaLineaView>() });}
+        </div>
+        <div style="height: 10px;">
+        </div>
+        @{
+            if (partial)
+            {
+            <div id="grid-acumulado">
+                @{Html.RenderPartial("GridResultAcumulado", new ConsultaView { resultados = new List<ConsultaLineaView>() });}
+            </div>   
+            }
         }
-   }
+        </div>
     </div>
-
-
-   
-    <!-- Table Wrapper End -->
 </div>
-
-
+<!-- Table Wrapper End -->

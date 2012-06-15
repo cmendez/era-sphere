@@ -16,6 +16,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Descripcion")]
         public string detalle { get; set; }
 
+        public int tipo_servicioID { get; set; }
+
 
         public ServicioView() { }
 
@@ -23,6 +25,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         {
             ID = servicio.ID;
             detalle = servicio.descripcion;
+            tipo_servicioID = servicio.tipo_servicioID; 
         }
 
         public Servicio deserializa(LogicaServicios logica)
@@ -30,7 +33,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             return new Servicio
             {
                 ID = this.ID,
-                descripcion = this.detalle
+                descripcion = this.detalle,
+                tipo_servicioID = this.tipo_servicioID,
+                tipo_servicio = logica.context.tipo_servicios.Find(this.tipo_servicioID),
             };
 
         }

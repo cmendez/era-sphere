@@ -8,7 +8,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
     public class LogicaServicios
     {
-        EraSphereContext context = new EraSphereContext();
+        public EraSphereContext context = new EraSphereContext();
         DBGenericQueriesUtil<Servicio> tabla_servicios;
         DBGenericQueriesUtil<TipoServicio> tabla_tipo_servicios;
 

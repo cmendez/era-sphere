@@ -108,7 +108,7 @@
                     .Action("AnulaReserva", "Reserva")
                 .HtmlAttributes(new { style = "text-align: center" });
             });
-
+            columns.Template(@<text><label>as</label></text>);
 
         }).Pageable().Sortable()
                                                             .ClientEvents(events =>

@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
+using Era_sphere.Areas.AreaReservas.Models;
+using Era_sphere.Areas.AreaReservas;
 
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
@@ -14,19 +16,20 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
     {
         
         LogicaServicios servicios_logica = new LogicaServicios();
+        LogicaReserva reserva_logica = new LogicaReserva();
         //llamado par anhadir un servicio de reserva
-        public ActionResult IndexServicioReserva(int id_habitacion, int id_reserva)
+        public ActionResult IndexServicioReserva(int id_reserva)
         {
-            return View("ServiciosIndex", servicios_logica.retornarTipoServicios());
+            return View("ServiciosDeReservaIndex", new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica));
         }
         [GridAction]
-        public ActionResult Select()
+        public ActionResult SelectReserva(int id_reserva)
         {
-            return View("ServiciosIndex", new GridModel(servicios_logica.retornarServicios()));
+            return View("ServiciosIndex", new GridModel(new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica).servicios));
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Insert()
+        public ActionResult Insert(int id_reserva)
         {
 
             ServicioView servicio_view = new ServicioView();
@@ -35,26 +38,18 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
                 servicios_logica.agregarServicio(servicio_view);
 
             }
-            return View("ServiciosIndex", new GridModel(servicios_logica.retornarServicios()));
+            return View("ServiciosIndex", new GridModel(new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica).servicios));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int id_reserva)
         {
             int servicio_id = id ?? -1;
             servicios_logica.eliminarServicio(servicio_id);
-            return View("ServiciosIndex", new GridModel(servicios_logica.retornarServicios()));
+            return View("ServiciosIndex", new GridModel(new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica).servicios));
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        [GridAction]
-        public ActionResult Update(ServicioView p)
-        {
-
-            servicios_logica.modificarServicio(p);
-            return View("ServiciosIndex", new GridModel(servicios_logica.retornarServicios()));
-        }
 
     }
 }

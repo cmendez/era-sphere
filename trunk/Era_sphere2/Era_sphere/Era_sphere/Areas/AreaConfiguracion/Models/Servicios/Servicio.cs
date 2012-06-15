@@ -22,7 +22,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public string descripcion { get; set; }
 
         [ForeignKey("tipo_servicio")]
-        public int? tipo_servicioID { get; set; }
+        public int tipo_servicioID { get; set; }
         public TipoServicio tipo_servicio { get; set; }
 
         public virtual ICollection<ProductoXServicio> productos { get; set; }

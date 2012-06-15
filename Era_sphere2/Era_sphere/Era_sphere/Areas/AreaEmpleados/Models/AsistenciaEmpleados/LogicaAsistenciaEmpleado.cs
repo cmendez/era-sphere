@@ -124,7 +124,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleados
             {
                //YETI CON ESTO SOLO MOSTRARA LAS ASISTENCIAS DEL EMPLEADO QUE ESTE LOGEADO, NO DE TODOS
                 
-                if (Int32.Parse(asistencia.empleadoID) == id)
+             //   if (Int32.Parse(asistencia.empleadoID) == id)
                     asistencias_view.Add(new AsistenciaEmpleadoView(asistencia));
             }
             return asistencias_view;

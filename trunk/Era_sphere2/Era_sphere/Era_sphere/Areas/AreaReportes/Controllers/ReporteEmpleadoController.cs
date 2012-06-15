@@ -29,10 +29,10 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             List<AsistenciaEmpleado> listaAsistenciasFiltrada = new List<AsistenciaEmpleado>();
             List<ObjetoReporteEmpleado> listaFinal = new List<ObjetoReporteEmpleado>();
 
-            reporte.cabecera = new String[2, 4]
+            reporte.cabecera = new String[2, 6]
                 {
-                    {"Codigo","Nombre Completo","Fecha","Asistencia"},
-                    {"","","",""}
+                    {"Codigo","Nombre Completo","Fecha", "Hora Entrada", "Hora Salida", "Asistencia"},
+                    {"","","","","",""}
                  
                 };
 
@@ -90,6 +90,11 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                 }
             }
 
+            if (listaEmpleadosFiltrada.Count == 0)
+            {
+                listaEmpleadosFiltrada = listaEmpleados;
+            }
+
             /*if (formReporte.apePaterno != null)
                 listaEmpleados.Where(e => e.apellido_paterno.Contains(formReporte.apePaterno));
 
@@ -101,42 +106,26 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             //try catch
             try
             {
-                if (formReporte.fechaInicio.ToString() != "01/01/0001 12:00:00 a.m.")
-                {
-                    string f1 = formReporte.fechaInicio.ToShortDateString();
-                                        
-                    if (listaAsistencias[0].fechaHoraEntrada.ToString().CompareTo(formReporte.fechaInicio.ToString()) > 0)
-                    { bool b = true; };
-                    if (listaAsistencias[0].fechaHoraEntrada.ToString().CompareTo(formReporte.fechaInicio.ToString()) < 0)
-                    { bool b = false; };
-                    if (listaAsistencias[0].fechaHoraEntrada.Value.ToShortDateString() == f1)
-                    { bool b = false; };
-
-                    
+                     string f1 = formReporte.fechaInicio.ToShortDateString();
 
                     foreach (AsistenciaEmpleado asisEmp in listaAsistencias)
                     {
-                        if ((asisEmp.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaInicio.ToString()) > 0) ||                                         (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f1))
-                                listaAsistenciasFiltrada.Add(asisEmp);
+                        if ((asisEmp.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaInicio.ToString()) > 0) ||          
+                                (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f1))
+                        {
+
+                                string f2 = formReporte.fechaFin.ToShortDateString();
+
+                                 if ((asisEmp.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaFin.ToString()) < 0) ||     
+                                      (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f2))
+                                       /* if (!listaAsistenciasFiltrada.Contains(asisEmp))
+                                            listaAsistenciasFiltrada.Add(asisEmp);*/
+                                     listaAsistenciasFiltrada.Add(asisEmp);
+                        }
                     }
                     
-                   /* listaAsistencias.Where(a => (a.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaInicio.ToString()) > 0) ||                                                (a.fechaHoraEntrada.Value.ToShortDateString() == f1));*/
 
-                }
 
-                if (formReporte.fechaFin.ToString() != "01/01/0001 12:00:00 a.m.")
-                {
-                    string f2 = formReporte.fechaFin.ToShortDateString();
-
-                    foreach (AsistenciaEmpleado asisEmp in listaAsistencias)
-                    {
-                        if ((asisEmp.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaFin.ToString()) < 0) ||                                          (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f2))
-                            if (!listaAsistenciasFiltrada.Contains(asisEmp))
-                                listaAsistenciasFiltrada.Add(asisEmp);
-                    }
-
-                /*    listaAsistencias.Where(a => (a.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaFin.ToString()) < 0) ||                                                   (a.fechaHoraEntrada.Value.ToShortDateString() == f2)); */
-                }
                 ObjetoReporteEmpleado objReporteEmp;
                 
                 foreach (AsistenciaEmpleado asistencia in listaAsistenciasFiltrada)
@@ -146,10 +135,61 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                         if (Int32.Parse(asistencia.empleadoID) == empleados.ID)
                         {
                             objReporteEmp = new ObjetoReporteEmpleado();
-                            objReporteEmp.empleadoID = empleados.ID.ToString();
-                            objReporteEmp.nombreCompleto = empleados.nombre + " " + empleados.apellido_paterno + " " +                                                                         empleados.apellido_materno;
-                            objReporteEmp.fecha = asistencia.fechaHoraEntrada;
-                            objReporteEmp.asistencia = asistencia.s_asistencia;
+                            try
+                            {
+                                objReporteEmp.empleadoID = empleados.ID.ToString();
+                            }
+                            catch 
+                            {
+                                objReporteEmp.empleadoID = "";
+                            }
+
+                            try
+                            {
+                                objReporteEmp.nombreCompleto = empleados.nombre + " " + empleados.apellido_paterno + " " + empleados.apellido_materno;
+                            }
+                            catch
+                            {
+                                objReporteEmp.nombreCompleto = "";
+                            }
+
+                            try
+                            {
+                                objReporteEmp.fecha = asistencia.fechaHoraEntrada.Value.ToShortDateString();
+                            }
+                            catch
+                            {
+                                objReporteEmp.fecha = "";
+                            }
+
+                            try
+                            {
+                                objReporteEmp.horaEntrada = asistencia.fechaHoraEntrada.Value.ToShortTimeString();
+                            }
+                            catch
+                            {
+                                objReporteEmp.horaEntrada = "";
+                            }
+
+                            try
+                            {
+                                objReporteEmp.horaSalida = asistencia.fechaHoraSalida.Value.ToShortTimeString();
+                            }
+                            catch
+                            {
+                                objReporteEmp.horaSalida = "";
+                            }
+
+                            try
+                            {
+                                objReporteEmp.asistencia = asistencia.s_asistencia;
+                            }
+                            catch
+                            {
+                                objReporteEmp.asistencia = "";
+                            }
+                                                      
+                            
                             listaFinal.Add(objReporteEmp);
                             break;
                         }
@@ -160,8 +200,10 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                 {
                     reporte.contenido[i][0] = listaFinal[i].empleadoID;
                     reporte.contenido[i][1] = listaFinal[i].nombreCompleto;
-                    reporte.contenido[i][2] = listaFinal[i].fecha.ToString();
-                    reporte.contenido[i][3] = listaFinal[i].asistencia;
+                    reporte.contenido[i][2] = listaFinal[i].fecha;
+                    reporte.contenido[i][3] = listaFinal[i].horaEntrada;
+                    reporte.contenido[i][4] = listaFinal[i].horaSalida;
+                    reporte.contenido[i][5] = listaFinal[i].asistencia;
                 }
 
             }
@@ -169,10 +211,12 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             {
                 for (int i = 10; i < x + 10; i++)
                 {
-                    reporte.contenido[i][0] = "cod =  " + i.ToString();
-                    reporte.contenido[i][1] = "nomb = " + i.ToString();
-                    reporte.contenido[i][2] = "fecha = " + i.ToString();
-                    reporte.contenido[i][3] = "asist = " + i.ToString();
+                    reporte.contenido[i][0] = "ERROR";
+                    reporte.contenido[i][1] = "EN LA";
+                    reporte.contenido[i][2] = "GENERACION";
+                    reporte.contenido[i][3] = "DEL";
+                    reporte.contenido[i][4] = "REPORTE";
+                    reporte.contenido[i][5] = "!!!!";
                 }
 
             }

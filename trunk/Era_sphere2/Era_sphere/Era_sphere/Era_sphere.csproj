@@ -121,6 +121,7 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioXCampo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioXHotel.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicio.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporadaList.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\CiudadView.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\InterfazLogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\LogicaUbigeo.cs" />
@@ -274,6 +275,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaReservas\Models\ReservaView.cs" />
+    <Compile Include="Controllers\PDFController.cs" />
     <Compile Include="Controllers\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\InterfazLogicaTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\LogicaTemporada.cs" />
@@ -1333,6 +1335,8 @@
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\Home\Mantenimiento.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\PDF\PDFView.cshtml" />
+    <Content Include="Views\PDF\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\EditorLocalization.bg-BG.resx">
@@ -1448,6 +1452,12 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ASP_MVC3_PDF_Reporting_src\PdfReportGenerator\PdfReportGenerator.csproj">
+      <Project>{DF00196A-3B96-4BCD-8C4E-879DB8EDFE95}</Project>
+      <Name>PdfReportGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -1465,7 +1475,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52708</DevelopmentServerPort>
+          <DevelopmentServerPort>64968</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

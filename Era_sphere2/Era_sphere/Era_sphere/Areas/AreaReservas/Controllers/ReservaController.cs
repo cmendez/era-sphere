@@ -78,5 +78,11 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return Json(new {reserva_id = reserva_id});
 
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult Nada(int reserva_id)
+        {
+            return Json(new { reserva_id = reserva_id });
+        }
     }
 }

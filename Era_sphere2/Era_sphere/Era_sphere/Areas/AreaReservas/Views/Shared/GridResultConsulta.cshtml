@@ -33,7 +33,7 @@
         .Name("ConsultaGrid")
         .Localizable("es-ES")
         .Editable(editing => editing.Mode(GridEditMode.InForm))
-        .DataKeys(key =>key.Add(c=>c.habitacionID))
+        .DataKeys(key => key.Add(c => c.habitacionID))
         .Columns(columns =>
         {
             columns.Bound(p => p.habitacionID).Hidden();
@@ -50,10 +50,10 @@
                     
                 </text>
                 ).Width(50).HtmlAttributes(new { style = "text-align:center" });
-            } 
+            }
         })
 
         .Pageable()
-        .Sortable()
+        .Sortable().Footer(false)
         )
         

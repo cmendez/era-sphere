@@ -66,8 +66,6 @@
         
         inicio = new Date($.telerik.formatString(format, inicio));
         fin = new Date($.telerik.formatString(format, fin));
-        console.log(inicio);
-        console.log(fin);
         if (fin <= inicio){
             fin.setDate(inicio.getDate() + 1);
             hab_ids = [];

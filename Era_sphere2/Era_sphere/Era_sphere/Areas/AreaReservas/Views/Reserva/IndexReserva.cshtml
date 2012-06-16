@@ -60,10 +60,9 @@
      function completado(e) {
          if (e.name == "Anular") {
              $("#ReservaGrid").data("tGrid").rebind();
-         }
-         else if (e.name == "insert") {
-             var grid = $("#ReservaGrid").data("tGrid");
-             grid.ajaxRequest();
+         } else if (e.name == "Servicios") {
+             $("#mantenimiento_servicio_form").load('@Url.Action("IndexServicioReserva", "../AreaConfiguracion/Servicios")' + '?id_reserva=' + e.response.reserva_id);
+             $("#ServicioDeReserva").data("tWindow").center().open();
          }
      }
 </script>
@@ -107,8 +106,13 @@
                     .Ajax(true)
                     .Action("AnulaReserva", "Reserva")
                 .HtmlAttributes(new { style = "text-align: center" });
+                commands
+                    .Custom("Servicios")
+                    .Text("Servicios")
+                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
+                    .Ajax(true)
+                    .Action("Nada", "Reserva");
             });
-            columns.Template(@<text><label>as</label></text>);
 
         }).Pageable().Sortable()
                                                             .ClientEvents(events =>
@@ -133,8 +137,13 @@
     <!-- Table Wrapper End -->
 </div>
 
+@(Html.Telerik().Window()
+    .Name("ServicioDeReserva").Title("Servicios de Reserva")
+    .Content(@<text><div id="mantenimiento_servicio_form"></div></text>).Visible(false).Width(800).Height(600).Scrollable(true)
+    )
 <script type="text/javascript">
     function onComplete(e) {
+        console.log(e.name);
         if (e.name == "mostrar_juridico") {
             $("#detalle-cliente-juridico").load('@Url.Action("ClienteJuridicoShow", "Cliente")' + '/' + e.response.id);
             var detailModal = $("#DetalleJuridico").data("tWindow");

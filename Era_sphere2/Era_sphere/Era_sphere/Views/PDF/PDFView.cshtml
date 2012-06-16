@@ -1,0 +1,36 @@
+﻿﻿@using Era_sphere.Areas.AreaConfiguracion.Models.Temporada
+   @model List<TipoTemporada>
+   <br />
+   <table cellpadding="3" cellspacing="3">
+       <tr border="1" bgcolor="#777777" color="#ffffff">
+           <td width="20%" align="center">
+               ID
+           </td>
+           <td width="50%" align="center">
+              Descripción
+          </td>          
+      </tr>
+      @{
+           var OddColor = "#DDEEEE";
+           var evenColor = "#EEFFFF";
+           var Odd = OddColor;
+       }
+       @foreach (TipoTemporada tipotemporada in Model)
+       {
+           <tr border="1" bgcolor="@Odd">
+               <td>@tipotemporada.ID
+               </td>
+               <td>@tipotemporada.descripcion
+               </td>
+           </tr>
+           if (Odd == OddColor)
+           {
+               Odd = evenColor;
+           }
+           else
+           {
+               Odd = OddColor;
+           }
+   
+       }
+   </table>

@@ -35,7 +35,7 @@
                        data: { hab_ids: hab_ids, reserva_id : id },
                        type: "POST",
                        success: function (data) { },
-                       async: true
+                       async: false
          });
          id = -1;
          grid.ajaxRequest();
@@ -61,10 +61,10 @@
          if (e.name == "Anular") {
              $("#ReservaGrid").data("tGrid").rebind();
          }
-     }
-     function guardar(e) {
-         var fin = e.values.fecha_fin;
-         
+         else if (e.name == "insert") {
+             var grid = $("#ReservaGrid").data("tGrid");
+             grid.ajaxRequest();
+         }
      }
 </script>
 
@@ -116,7 +116,6 @@
                                                                 events.OnDataBound("generarCruces");
                                                                 events.OnEdit("edita");
                                                                 events.OnComplete("completado");
-                                                                events.OnSave("guardar");
                                                             })
                                                             .DataBinding(dataBinding => dataBinding
                                                                 .Ajax()

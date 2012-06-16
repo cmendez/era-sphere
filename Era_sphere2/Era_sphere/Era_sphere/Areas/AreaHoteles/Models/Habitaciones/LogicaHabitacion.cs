@@ -5,6 +5,7 @@ using System.Web;
 using Era_sphere.Generics;
 using System.ComponentModel;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Areas.AreaReservas.Models;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -68,7 +69,16 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             List<Habitacion> habs_de_hotel = this.retornarHabitacionesDeHotel(hotelID);
             if (pisoID != 0) habs_de_hotel = habs_de_hotel.Where(p => p.pisoID == pisoID).ToList();
             if (tipohabitacionID != 0) habs_de_hotel = habs_de_hotel.Where(p => p.tipoHabitacionID == tipohabitacionID).ToList();
-            return habs_de_hotel;
+            List<Reserva> reservas2 = context.Reservas.ToList();
+            List<Reserva> reservas = context.Reservas.Where(r => r.estado.descripcion != "Anulada" &&
+                                                            (desde >= r.check_in && desde < r.check_out ||
+                                                              r.check_in >= desde && r.check_in < hasta)).ToList();
+            HashSet<int> habitaciones_malas = new HashSet<int>();
+            foreach(var r in reservas){
+                 var aux = context.habitacion_x_reserva.Where(x => x.reservaID == r.ID).Select(x => x.habitacionID).ToList();
+                habitaciones_malas.UnionWith(aux);
+            }
+            return habs_de_hotel.Where(r => !habitaciones_malas.Contains(r.ID)).ToList();
             //TODO falta hacer la consulta de verdad
                          
         }

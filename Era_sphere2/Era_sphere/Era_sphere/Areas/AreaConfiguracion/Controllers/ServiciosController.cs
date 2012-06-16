@@ -50,6 +50,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View("ServiciosIndex", new GridModel(new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica).servicios));
         }
 
-        
+        public ActionResult Crear()
+        {
+            return PartialView("CrearServicio");
+        }
     }
 }

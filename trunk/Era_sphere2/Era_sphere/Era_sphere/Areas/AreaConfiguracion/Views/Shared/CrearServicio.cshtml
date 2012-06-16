@@ -1,0 +1,30 @@
+﻿@using Era_sphere.Areas.AreaConfiguracion.Models.Servicios
+@using Era_sphere.Generics
+@using Telerik.Web.Mvc.UI
+@model ServicioView
+@{
+    EraSphereContext context = new EraSphereContext();
+    
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    function nuevoServicio() {
+
+
+        $("#ServicioForm").data("tWindow").close();
+    }
+</script>
+
+<div class="block big" style="position: relative">
+    <label>Servicio:</label>
+
+
+
+    <button onclick="nuevoServicio();">Registrar</button>
+    
+</div>
+
+

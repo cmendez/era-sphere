@@ -84,5 +84,7 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         {
             return Json(new { reserva_id = reserva_id });
         }
+
+        
     }
 }

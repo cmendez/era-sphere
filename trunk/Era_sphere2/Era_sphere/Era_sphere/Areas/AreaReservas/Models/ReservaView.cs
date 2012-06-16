@@ -16,10 +16,10 @@ namespace Era_sphere.Areas.AreaReservas
     public class ReservaView
     {
         [DisplayName(@"Día de Check In")]
-        public DateTime? fecha_inicio { get; set; }
+        public DateTime? FechaInicio { get; set; }
 
         [DisplayName(@"Día de Check Out")]
-        public DateTime? fecha_fin { get; set; }
+        public DateTime? FechaFin { get; set; }
 
         [DisplayName(@"Monto inicial")]
         public decimal costo_inicial { get; set; }
@@ -39,7 +39,7 @@ namespace Era_sphere.Areas.AreaReservas
 
         //public ICollection<Habitacion> lista_habitaciones { get; set; }
 
-
+        [Required]
         [DisplayName("Responsable Pago")]
         public string responsable_pago { get; set; }
 
@@ -88,8 +88,8 @@ namespace Era_sphere.Areas.AreaReservas
                                                                  : r.responsable_pago.ruc;
             dia_creacion = r.dia_creacion;
             dias_estadia = r.dias_estadia;
-            fecha_inicio = r.check_in;
-            fecha_fin = r.check_out;
+            FechaInicio = r.check_in;
+            FechaFin = r.check_out;
             costo_inicial = r.costo_inicial;
             costo_final = r.costo_final;
             precio_derecho_reserva = r.precio_derecho_reserva;
@@ -117,8 +117,8 @@ namespace Era_sphere.Areas.AreaReservas
                 precio_derecho_reserva = this.precio_derecho_reserva,
                 num_habitaciones = this.num_habitaciones,
                 ID = this.ID,
-                check_in = this.fecha_inicio,
-                check_out = this.fecha_fin,
+                check_in = this.FechaInicio,
+                check_out = this.FechaFin,
                 dias_estadia = this.dias_estadia,
                 dia_creacion = this.dia_creacion,
                 costo_inicial = this.costo_inicial,

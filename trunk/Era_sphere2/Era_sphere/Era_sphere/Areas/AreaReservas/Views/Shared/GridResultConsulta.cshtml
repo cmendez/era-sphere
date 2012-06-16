@@ -11,7 +11,24 @@
     pisos.Insert(0, new Piso { ID = 0, descripcion = "Todos" });
     bool partial = (bool)(ViewData["partial"]);
 }
-
+ <div class="editor-label">
+                    @Html.LabelFor(model => model.habitaciones_libres_total)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.habitaciones_libres_total, new { @readonly = "readonly" })
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.habitaciones_libres_piso)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.habitaciones_libres_piso, new { @readonly = "readonly" })
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.habitaciones_libres_tipo)
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.habitaciones_libres_tipo, new { @readonly = "readonly" })
+                </div>
 @(Html.Telerik().Grid(Model.resultados)
         .Name("ConsultaGrid")
         .Localizable("es-ES")

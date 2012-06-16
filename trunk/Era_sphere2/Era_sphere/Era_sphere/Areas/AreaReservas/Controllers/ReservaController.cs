@@ -62,13 +62,13 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
 
         
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult RefrescaHabitaciones(List<int> hab_ids, int reserva_id)
+        public JsonResult RefrescaHabitaciones(List<int> hab_ids, int reserva_id)
         {
             hab_ids = hab_ids ?? new List<int>();
             reserva_logica.refrescaHabitaciones(hab_ids, reserva_id);
             reserva_logica.cacularDatosReserva(reserva_id);
 
-            return null;
+            return Json(new {data = true});
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

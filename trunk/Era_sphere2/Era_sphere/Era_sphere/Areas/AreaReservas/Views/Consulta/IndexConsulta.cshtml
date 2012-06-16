@@ -19,8 +19,8 @@
 <script type="text/javascript">
     var hab_ids = [];
     function Busca() {
-        var fecha_inicio = $("#fecha_inicio").val();
-        var fecha_fin = $("#fecha_fin").val();
+        var fecha_inicio = $("#FechaInicio").val();
+        var fecha_fin = $("#FechaFin").val();
         var pisoID = $("#pisoID").val();
         var tipo_habitacionID = $("#tipo_habitacionID").val();
         var hotelID = $("#hotelID").val();
@@ -58,12 +58,21 @@
         recargaAcumulado();
     }
     function validaFecha() {
-        var dfecha_inicio = $("#fecha_inicio").data("tDatePicker");
-        var dfecha_fin = $("#fecha_fin").data("tDatePicker");
-        var inicio = new Date(dfecha_inicio.value());
-        var fin = new Date(dfecha_fin.value());
-        if (fin <= inicio)
+        var dfecha_inicio = $("#FechaInicio").data("tDatePicker");
+        var dfecha_fin = $("#FechaFin").data("tDatePicker");
+        var format = '{0:MM/dd/yyyy}';
+        var inicio = (dfecha_inicio.value());
+        var fin = (dfecha_fin.value());
+        
+        inicio = new Date($.telerik.formatString(format, inicio));
+        fin = new Date($.telerik.formatString(format, fin));
+        console.log(inicio);
+        console.log(fin);
+        if (fin <= inicio){
             fin.setDate(inicio.getDate() + 1);
+            hab_ids = [];
+            recargaAcumulado();
+        }
         dfecha_fin.value(fin);
     }
 </script>
@@ -114,24 +123,7 @@
                     .BindTo(new SelectList(tipos_habitaciones, "ID", "descripcion"))
                     .SelectedIndex(0)
                 )
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.habitaciones_libres_total)
-                </div>
-                <div class="editor-field">
-                    @Html.TextBoxFor(model => model.habitaciones_libres_total, new { @readonly = "readonly" })
-                </div>
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.habitaciones_libres_piso)
-                </div>
-                <div class="editor-field">
-                    @Html.TextBoxFor(model => model.habitaciones_libres_piso, new { @readonly = "readonly" })
-                </div>
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.habitaciones_libres_tipo)
-                </div>
-                <div class="editor-field">
-                    @Html.TextBoxFor(model => model.habitaciones_libres_tipo, new { @readonly = "readonly" })
-                </div>
+               
             @Html.HiddenFor(model => model.hotelID)
         
         <button type="button" id="buscar-cliente-submit" onclick="Busca();">

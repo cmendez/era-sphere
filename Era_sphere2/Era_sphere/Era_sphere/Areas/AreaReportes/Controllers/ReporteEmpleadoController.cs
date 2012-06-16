@@ -20,7 +20,12 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
         [HttpPost]
         public ActionResult Generar(FormReporteEmpleado formReporte)
         {
-            int x = 10;
+            int x,y,z,s;
+
+            x = 0;
+            y = 0;
+            z = 0;
+            s = 0;
 
             ReporteEmpleado reporte = new ReporteEmpleado();
             List<Empleado> listaEmpleados = (new EraSphereContext()).empleados.ToList();
@@ -50,6 +55,20 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
 
             //listaEmpleados.Where(e => e.nombre.Contains(formReporte.nombre));
             //probar cuando ya pueda registrar varios empleados, y sino no funciona bien, usar listaEmpleadosFiltrada
+
+
+            if (formReporte.nombre != null)
+                x = 4;
+
+            if (formReporte.apePaterno != null)
+                y = 2;
+
+            if (formReporte.apeMaterno != null)
+                z = 1;
+
+            s = x + y + z; /*Logica: cada campo del formulario representa un "bit" imaginario, donde la combinacion de los 3 nos                                dara una suma que puede ir de 0 a 8 (2^3)*/
+
+            /*
             if (formReporte.nombre != null)           
             {
                 foreach (Empleado empl in listaEmpleados)
@@ -95,29 +114,128 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                 listaEmpleadosFiltrada = listaEmpleados;
             }
 
-            /*if (formReporte.apePaterno != null)
-                listaEmpleados.Where(e => e.apellido_paterno.Contains(formReporte.apePaterno));
+            */
 
-            if (formReporte.apeMaterno != null)
-                listaEmpleados.Where(e => e.apellido_materno.Contains(formReporte.apeMaterno));*/
-
-            //formReporte.fechaInicio.AddMinutes(43);
 
             //try catch
             try
             {
-                     string f1 = formReporte.fechaInicio.ToShortDateString();
+                    //filtrar lista de empleados mediante filtros de nombre y apellidos
+
+                switch (s)
+                { 
+                    case 0: //listar TODOS
+                        listaEmpleadosFiltrada = listaEmpleados;
+                        break;
+
+                    case 1: //filtrar por apellido materno
+                        foreach (Empleado empl in listaEmpleados)
+                        {
+                            try
+                            {
+                                if (empl.apellido_materno.Contains(formReporte.apeMaterno))
+                                    listaEmpleadosFiltrada.Add(empl);
+                            }
+                            catch { }
+                        }
+                        break;
+
+                    case 2: //filtar por apellido paterno
+                        foreach (Empleado empl in listaEmpleados)
+                        {
+                            try
+                            {
+                                if (empl.apellido_paterno.Contains(formReporte.apePaterno))
+                                    listaEmpleadosFiltrada.Add(empl);
+                            }
+                            catch { }
+                        }
+                        break;
+
+                    case 3: //por apellidos paterno y materno
+                        foreach (Empleado empl in listaEmpleados)
+                        {
+                            try
+                            {
+                                if ((empl.apellido_materno.Contains(formReporte.apeMaterno)) && (empl.apellido_paterno.Contains                                        (formReporte.apePaterno)))
+                                        listaEmpleadosFiltrada.Add(empl);
+                            }
+                            catch { }
+                        }
+                        break;
+
+                    case 4: //por nombre
+                        foreach (Empleado empl in listaEmpleados)
+                        {
+                            try
+                            {
+                                if (empl.nombre.Contains(formReporte.nombre))
+                                    listaEmpleadosFiltrada.Add(empl);
+                            }
+                            catch { }
+                        }
+                        break;
+
+                    case 5: //por nombre y apellido materno
+                        foreach (Empleado empl in listaEmpleados)
+                        {
+                            try
+                            {
+                                if ((empl.apellido_materno.Contains(formReporte.apeMaterno)) && (empl.nombre.Contains                                         (formReporte.nombre)))
+                                        listaEmpleadosFiltrada.Add(empl);
+                            }
+                            catch { }
+                        }
+                        break;
+
+                    case 6: //por nombre y apellido paterno
+                        foreach (Empleado empl in listaEmpleados)
+                        {
+                            try
+                            {
+                                if ((empl.apellido_paterno.Contains(formReporte.apePaterno)) && (empl.nombre.Contains                                                   (formReporte.nombre)))
+                                        listaEmpleadosFiltrada.Add(empl);
+                            }
+                            catch { }
+                        }
+                        break;
+
+                    case 7: //por nombre, apellido paterno y materno
+                        foreach (Empleado empl in listaEmpleados)
+                        {
+                            try
+                            {
+                                if ((empl.apellido_materno.Contains(formReporte.apeMaterno)) && (empl.nombre.Contains                                                   (formReporte.nombre)) && (empl.apellido_paterno.Contains(formReporte.apePaterno)))
+                                        listaEmpleadosFiltrada.Add(empl);
+                            }
+                            catch { }
+                        }
+                        break;
+
+                
+                }
+
+                    
+
+                    //filtrar listaasistencias mediante filtros de fechas inicio y fin
+                    string f1 = formReporte.fechaInicio.ToShortDateString();
 
                     foreach (AsistenciaEmpleado asisEmp in listaAsistencias)
                     {
-                        if ((asisEmp.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaInicio.ToString()) > 0) ||          
-                                (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f1))
+                        //string t;
+                        /*if (DateTime.Compare((DateTime)asisEmp.fechaHoraEntrada, (DateTime)formReporte.fechaInicio) > 0)
+                            t = " > ";
+                        if (DateTime.Compare((DateTime)asisEmp.fechaHoraEntrada, (DateTime)formReporte.fechaInicio) < 0)
+                            t = " < ";
+                        */
+                        //string aux = asisEmp.fechaHoraEntrada.Value.ToShortDateString();
+                        /*int n = asisEmp.fechaHoraEntrada.Value.ToShortDateString().CompareTo(formReporte.fechaInicio.ToShortDateString());*/
+                        if ((DateTime.Compare((DateTime)asisEmp.fechaHoraEntrada, (DateTime)formReporte.fechaInicio) > 0) ||                                          (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f1))
                         {
 
                                 string f2 = formReporte.fechaFin.ToShortDateString();
 
-                                 if ((asisEmp.fechaHoraEntrada.ToString().CompareTo(formReporte.fechaFin.ToString()) < 0) ||     
-                                      (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f2))
+                                if ((DateTime.Compare((DateTime)asisEmp.fechaHoraEntrada, (DateTime)formReporte.fechaFin) < 0) ||                                           (asisEmp.fechaHoraEntrada.Value.ToShortDateString() == f2))
                                        /* if (!listaAsistenciasFiltrada.Contains(asisEmp))
                                             listaAsistenciasFiltrada.Add(asisEmp);*/
                                      listaAsistenciasFiltrada.Add(asisEmp);
@@ -125,6 +243,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                     }
                     
 
+                //hacemos el cruce entre asistencias y empleados
 
                 ObjetoReporteEmpleado objReporteEmp;
                 
@@ -195,7 +314,11 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                         }
                     }
                 }
+                //persons.Sort((p1,p2)=>string.Compare(p1.Name,p2.Name,true));
 
+                listaFinal.Sort((p1, p2) => string.Compare(p1.empleadoID.ToString(), p2.empleadoID.ToString()));
+
+                //llenamos el reporte
              for (int i = 0; i < listaFinal.Count; i++)
                 {
                     reporte.contenido[i][0] = listaFinal[i].empleadoID;
@@ -209,7 +332,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             }
             catch 
             {
-                for (int i = 10; i < x + 10; i++)
+                for (int i = 10; i < 20; i++)
                 {
                     reporte.contenido[i][0] = "ERROR";
                     reporte.contenido[i][1] = "EN LA";

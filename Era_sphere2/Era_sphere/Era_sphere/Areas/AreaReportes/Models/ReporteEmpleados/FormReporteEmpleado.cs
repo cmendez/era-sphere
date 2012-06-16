@@ -12,10 +12,13 @@ namespace Era_sphere.Areas.AreaReportes.Models.ReporteEmpleados
 {
     public class FormReporteEmpleado
     {
+        [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
         [DisplayName("Nombre")]
         public string nombre { get; set; }
+        [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
         [DisplayName("Apellido paterno")]
         public string apePaterno { get; set; }
+        [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
         [DisplayName("Apellido materno")]
         public string apeMaterno { get; set; }
         [DisplayName("Fecha inicio")]

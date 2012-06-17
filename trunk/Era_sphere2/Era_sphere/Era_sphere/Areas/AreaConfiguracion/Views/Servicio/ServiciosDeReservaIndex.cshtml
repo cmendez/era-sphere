@@ -1,0 +1,67 @@
+﻿@using Era_sphere.Areas.AreaReservas
+@using Era_sphere.Generics
+@using Telerik.Web.Mvc.UI
+@model ReservaView
+@{
+    ViewBag.Title = "Servicios De Reserva";
+    EraSphereContext context = new EraSphereContext();
+    var tipos_servicios = context.tipo_servicios.ToList();
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var servicio;
+    function nuevoServicioDeReserva(reserva_id) {
+        $("#servicio_form").load('@Url.Action("Crear", "Servicios")');
+        $("#ServicioForm").data("tWindow").center().open();
+    }
+</script>
+
+@(Html.Telerik().Window()
+    .Name("ServicioForm")
+    .Content(@<text><div id="servicio_form"></div></text>).Visible(false).Width(500).Height(650)
+    )
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Mantenimiento de servicios de reserva
+        </h3>
+    </div>
+    <button onclick="nuevoServicioDeReserva(@Model.ID);">Registrar</button>
+    <div class="block_cont">
+       @(Html.Telerik().Grid(Model.servicios)
+        .Name("ServiciosReservaGrid")
+        .Localizable("es-ES")
+        .Filterable()
+
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.detalle);
+            columns.ForeignKey(p => p.tipo_servicioID, new SelectList(tipos_servicios, "ID", "nombre"));
+            columns.Command(commands =>
+            {
+                commands.Delete().ButtonType(GridButtonType.Image);
+                
+            }).Width(160);
+        })
+
+        .Pageable()
+        .Sortable()
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax().Select("_CustomCommand", "Cliente")
+            .Select("SelectReserva", "Servicios", new { id_reserva = Model.ID })
+            .Delete("DeleteReserva", "Servicios", new { id_reserva = Model.ID })
+        )
+           )
+    </div>
+    
+</div>
+
+

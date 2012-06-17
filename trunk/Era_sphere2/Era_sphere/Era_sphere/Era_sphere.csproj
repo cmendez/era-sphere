@@ -1308,6 +1308,8 @@
     <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml" />
     <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\CrearServicio.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Servicio\ServicioDeReservaIndex.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Servicio\ServiciosDeReservaIndex.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

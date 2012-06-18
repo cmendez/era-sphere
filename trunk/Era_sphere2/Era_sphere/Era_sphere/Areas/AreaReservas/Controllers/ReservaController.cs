@@ -85,6 +85,28 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return Json(new { reserva_id = reserva_id });
         }
 
-        
+        public ActionResult habitacionesCliente(int reserva_id)
+        {
+            List<HabitacionXReservaXClienteLineaView> lineas = new List<HabitacionXReservaXClienteLineaView>();
+            return PartialView("ReservaHabitacionClienteView", new HabitacionXReservaXClienteView(reserva_id,lineas));
+        }
+
+        [GridAction]
+        public ActionResult SelectClienteHabitacion(int id_reserva)
+        {
+            return PartialView("ReservaHabitacionClienteView", new GridModel(reserva_logica.retornarHabitacionReservaCliente(id_reserva)));
+
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult DeleteClienteHabitacion(int? id, int id_reserva)
+        {
+            int reserva_id = id ?? -1;
+            reserva_logica.eliminarReserva(reserva_id);
+            return PartialView("ReservaHabitacionClienteView", new GridModel(reserva_logica.retornarHabitacionReservaCliente(id_reserva)));
+        }
+
     }
 }

@@ -270,6 +270,62 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         }
 
+        // newbie
+
+
+        //public List<Habitacion> retornarListaHabitacionesReserva(int id_reserva)
+        //{
+        //    Reserva reserva = retornarReserva(id_reserva);
+        //    List<Habitacion> lista = new List<Habitacion>();
+
+        //    lista = habitacionesDeReserva(id_reserva);
+
+            
+        //    return null;
+        //}
+
+        //
+
+        public void agregarLinea(int id_reserva, int id_habitacion, int id_cliente)
+        {
+            Reserva reserva = retornarReserva(id_reserva);
+            LogicaHabitacion logica_habitacion = new LogicaHabitacion();
+            Habitacion habitacion = logica_habitacion.retornarHabitacion(id_habitacion).deserializa(logica_habitacion);
+
+            int id_habitacion_reserva = hallaIDCruce(reserva, habitacion);
+            HabitacionXReserva habitacion_reserva = tabla_habitacion_x_reserva.retornarUnSoloElemento(id_habitacion_reserva);
+               asignarRelacionTriple(id_cliente, habitacion_reserva);               
+        
+        }
+
+
+        public void asignarRelacionTriple(int id_cliente, HabitacionXReserva habitacion_reserva)
+        {
+            LogicaCliente cliente_logica = new LogicaCliente();
+            Cliente cliente = cliente_logica .retornarCliente(id_cliente);
+
+            habitacion_reserva.huespedes.Add(cliente);
+
+        }
+
+        public List<HabitacionXReservaXClienteLineaView> retornarHabitacionReservaCliente(int id_reserva)
+        {
+
+            List<HabitacionXReserva> habitaciones_reserva = tabla_habitacion_x_reserva.retornarTodos().Where(c => c.reservaID == id_reserva).ToList();
+            List<HabitacionXReservaXClienteLineaView> lista_lineas = new List<HabitacionXReservaXClienteLineaView>();
+
+            for (int i = 0; i < habitaciones_reserva.Count(); i++)
+            {
+                for (int j = 0; j < habitaciones_reserva[i].huespedes.Count(); j++)
+                {
+                    lista_lineas.Add(new HabitacionXReservaXClienteLineaView(habitaciones_reserva[i].huespedes.ElementAt(j).ID, habitaciones_reserva[i].ID));
+
+                }
+            }
+
+
+            return lista_lineas;
+        }
 
 
         public List<ServicioView> getServicios(int reserva_id)

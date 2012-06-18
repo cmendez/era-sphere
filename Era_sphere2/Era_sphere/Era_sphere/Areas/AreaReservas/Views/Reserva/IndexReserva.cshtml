@@ -64,6 +64,12 @@
              $("#mantenimiento_servicio_form").load('@Url.Action("IndexServicioReserva", "../AreaConfiguracion/Servicios")' + '?id_reserva=' + e.response.reserva_id);
              $("#ServicioDeReserva").data("tWindow").center().open();
          }
+         if (e.name == "AsignarHuespedes")
+         {
+             $("#mantenimiento_huespedes").load('@Url.Action("habitacionesCliente", "Reserva")' + '?reserva_id=' + e.response.reserva_id);
+             $("#AsignarHuespedes").data("tWindow").center().open();
+
+         }
      }
 </script>
 
@@ -112,6 +118,12 @@
                     .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
                     .Ajax(true)
                     .Action("Nada", "Reserva");
+                commands
+                    .Custom("AsignarHuespedes")
+                    .Text("Asignar Huespedes")
+                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
+                    .Ajax(true)
+                    .Action("Nada", "Reserva");
             });
 
         }).Pageable().Sortable()
@@ -140,6 +152,11 @@
 @(Html.Telerik().Window()
     .Name("ServicioDeReserva").Title("Servicios de Reserva")
     .Content(@<text><div id="mantenimiento_servicio_form"></div></text>).Visible(false).Width(800).Height(600).Scrollable(true)
+    )
+
+    @(Html.Telerik().Window()
+    .Name("AsignarHuespedes").Title("Asignar Huesped a Habitación Reservada")
+    .Content(@<text><div id="mantenimiento_huespedes"></div></text>).Visible(false).Width(800).Height(600).Scrollable(true)
     )
 <script type="text/javascript">
     function onComplete(e) {

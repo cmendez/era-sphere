@@ -47,14 +47,24 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             servicios_logica.eliminarServicio(servicio_id);
             return View("ServiciosIndex", new GridModel(new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica).servicios));
         }
-        
+
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult Crear()
         {
+            ViewData["edit"] = false;
             return PartialView("CrearServicio");
         }
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult Mostrar(int servicio_id)
+        {
+            ViewData["edit"] = true;
+            return PartialView("CrearServicio", servicios_logica.retornarServicio(servicio_id)); 
+        }
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public JsonResult Nada(int servicio_id)
         {
-            return Json(new { servicio_id = servicio_id });
+            return Json(new { servicio_id = servicio_id }, JsonRequestBehavior.AllowGet);
         }
     }
 }

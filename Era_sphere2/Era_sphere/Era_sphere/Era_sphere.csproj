@@ -1288,7 +1288,6 @@
     <Content Include="Areas\AreaEventos\Views\Shared\EventoAmbienteView.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Evento\PagoEventoIndex.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Reserva\ConsultaReservaParcialView.cshtml" />
     <Content Include="Areas\AreaContable\Views\Pagos\TarjetaDeCreditoIndex.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Shared\GridResultConsulta.cshtml" />
     <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />

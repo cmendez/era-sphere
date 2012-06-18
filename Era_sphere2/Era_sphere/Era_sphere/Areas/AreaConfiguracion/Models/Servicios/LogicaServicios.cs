@@ -40,10 +40,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             tabla_servicios.modificarElemento(servicio, servicio.ID);
         }
 
-        public void agregarServicio(ServicioView servicio)
-        {
-            tabla_servicios.agregarElemento(servicio.deserializa(this));
-        }
+       
 
         public void eliminarServicio(int servicioID)
         {
@@ -81,6 +78,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public List<Servicio> retornarServicios2()
         {
             return context.servicios.ToList();
+        }
+
+        public void agregarServicio(Servicio s)
+        {
+            tabla_servicios.agregarElemento(s);
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
     public class TipoServicio : DBable
     {
         public bool tiene_productos_asociados { get; set; }
-        public bool tiene_hora { get; set; }
         public bool tiene_repeticiones { get; set; }    
         
         public string nombre { get; set; }

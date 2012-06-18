@@ -15,8 +15,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
     public class Servicio : Costeable
     {
         public Servicio() {
-            //habitacion_reservas = new HashSet<HabitacionXReserva>();
-            //recibos_linea = new HashSet<ReciboLineaServicio>();
         }
 
         public string descripcion { get; set; }
@@ -27,12 +25,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         public virtual ICollection<ProductoXServicio> productos { get; set; }
 
-        public DateTime? fecha { get; set; }
-        public int hora { get; set; }
+        public DateTime? fecha_y_hora { get; set; }
         public int repeticiones { get; set; }
 
-        //[InversePropertyAttribute("servicios")]
-        //public virtual ICollection<HabitacionXReserva> habitacion_reservas { get; set; }
+        public string campo1 { get; set; }
+        public string campo2 { get; set; }
+        public string campo3 { get; set; }
 
         public virtual ICollection<ReciboLineaServicio> recibos_linea { get; set; }
         

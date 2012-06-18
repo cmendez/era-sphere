@@ -13,9 +13,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Tiene productos asociados")]
         public bool tiene_productos_asociados { get; set; }
         
-        [DisplayName("Se desarrolla en una hora fija")]
-        public bool tiene_hora { get; set; }
-        
         [DisplayName("Puede admitir repeticiones")]
         public bool tiene_repeticiones { get; set; }
 
@@ -36,7 +33,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public TipoServicioView(TipoServicio tipo)
         {
             this.ID = tipo.ID;
-            this.tiene_hora = tipo.tiene_hora;
             this.tiene_productos_asociados = tipo.tiene_productos_asociados;
             this.tiene_repeticiones = tipo.tiene_repeticiones;
             this.nombre = tipo.nombre;
@@ -53,14 +49,13 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             return new TipoServicio
             {
                 ID = this.ID,
-                tiene_hora = this.tiene_hora,
                 tiene_repeticiones = this.tiene_repeticiones,
                 tiene_productos_asociados = this.tiene_productos_asociados,
                 nombre = this.nombre,
                 descripcion = this.descripcion,
-                campo1 = this.campo1,
-                campo2 = this.campo2,
-                campo3 = this.campo3,
+                campo1 = this.campo1 ?? "",
+                campo2 = this.campo2 ?? "",
+                campo3 = this.campo3 ?? "",
             
             };
         }

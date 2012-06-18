@@ -68,13 +68,6 @@ namespace Era_sphere.Generics
 
         public int agregarElemento(T elemento)
         {
-            if (elemento.ID == 0)
-            {
-                var todos = (from u in dbset select u.ID).ToList();
-                int maxi = todos.Count > 0 ? todos.Max() : 0;
-                elemento.ID = maxi + 1;
-            }
-            
             dbset.Add(elemento);
             context.SaveChanges();
             return elemento.ID;

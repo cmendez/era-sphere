@@ -7,6 +7,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
+    public class ProductEntry {
+        public int unidades {get; set;}
+        public int productoID {get; set;}
+    }
     public class ServicioView
     {
         public int ID { get; set; }
@@ -17,15 +21,28 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public string detalle { get; set; }
 
         public int tipo_servicioID { get; set; }
+        public DateTime? fecha_y_hora { get; set; }
+        public int repeticiones { get; set; }
 
+        public string campo1 { get; set; }
+        public string campo2 { get; set; }
+        public string campo3 { get; set; }
 
+        public List<ProductEntry> productos { get; set; }
+
+         
         public ServicioView() { }
 
         public ServicioView(Servicio servicio)
         {
             ID = servicio.ID;
             detalle = servicio.descripcion;
-            tipo_servicioID = servicio.tipo_servicioID; 
+            tipo_servicioID = servicio.tipo_servicioID;
+            fecha_y_hora = servicio.fecha_y_hora;
+            repeticiones = servicio.repeticiones;
+            campo1 = servicio.campo1;
+            campo2 = servicio.campo2;
+            campo3 = servicio.campo3;
         }
 
         public Servicio deserializa(LogicaServicios logica)
@@ -36,6 +53,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                 descripcion = this.detalle,
                 tipo_servicioID = this.tipo_servicioID,
                 tipo_servicio = logica.context.tipo_servicios.Find(this.tipo_servicioID),
+                fecha_y_hora = this.fecha_y_hora,
+                repeticiones = this.repeticiones,
+                campo1 = this.campo1,
+                campo2 = this.campo2,
+                campo3 = this.campo3,
             };
 
         }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
+using System.Web.Helpers;
 
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
@@ -57,5 +58,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View("TipoServiciosIndex", new GridModel(servicios_logica.retornarTipoServicios()));
         }
 
+        public JsonResult ObtieneTipo(int tipo_id)
+        {
+            return Json(new { tipo = new TipoServicioView(servicios_logica.context.tipo_servicios.Find(tipo_id)) });
+        }
     }
 }

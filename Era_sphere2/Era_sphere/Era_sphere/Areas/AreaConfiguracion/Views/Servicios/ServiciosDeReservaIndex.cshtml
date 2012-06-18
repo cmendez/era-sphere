@@ -13,15 +13,31 @@
 
 <script type="text/javascript">
     var servicio;
-    function nuevoServicioDeReserva(reserva_id) {
+    var reserva_id;
+    function nuevoServicioDeReserva(_reserva_id) {
+        servicio = null;
+        reserva_id = _reserva_id;
         $("#servicio_form").load('@Url.Action("Crear", "Servicios")');
-        $("#ServicioForm").data("tWindow").center().open();
+        $("#ServicioForm").data("tWindow").center().open();  
+    }
+    function registraNuevo(e) {
+        if (servicio != null) {
+            servicio.id_reserva = reserva_id;
+            $.ajax({
+                url: '@Url.Action("InsertServicioDeReserva", "Servicios")',
+                traditional: true,
+                data: servicio,
+                type: "POST",
+                success: function (data) { $("#ServiciosReservaGrid").data("tGrid").ajaxRequest(); },
+                async: true
+            });
+        }
     }
 </script>
 
 @(Html.Telerik().Window()
     .Name("ServicioForm")
-    .Content(@<text><div id="servicio_form"></div></text>).Visible(false).Width(500).Height(650)
+    .Content(@<text><div id="servicio_form"></div></text>).Visible(false).Width(500).Height(650).Title("Servicios").Modal(true).ClientEvents(events => events.OnClose("registraNuevo"))
     )
 
 <div class="block big" style="position: relative">

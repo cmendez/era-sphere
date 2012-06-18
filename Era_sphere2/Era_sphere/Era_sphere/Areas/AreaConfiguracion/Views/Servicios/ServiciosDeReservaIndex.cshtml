@@ -63,7 +63,11 @@
             columns.Command(commands =>
             {
                 commands.Delete().ButtonType(GridButtonType.Image);
-                
+                commands.Custom("Nada")
+                    .Text("Mostrar")
+                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("servicio_id"))
+                    .Ajax(true)
+                    .Action("Nada", "Servicios");
             }).Width(160);
         })
 

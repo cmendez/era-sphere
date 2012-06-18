@@ -52,5 +52,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
             return PartialView("CrearServicio");
         }
+        public JsonResult Nada(int servicio_id)
+        {
+            return Json(new { servicio_id = servicio_id });
+        }
     }
 }

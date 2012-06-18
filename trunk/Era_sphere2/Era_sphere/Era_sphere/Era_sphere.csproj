@@ -261,6 +261,8 @@
     <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaLineaView.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaView.cs" />
+    <Compile Include="Areas\AreaReservas\Models\HabitacionXClientes\HabitacionXReservaXClienteLineaView.cs" />
+    <Compile Include="Areas\AreaReservas\Models\HabitacionXClientes\HabitacionXReservaXClienteView.cs" />
     <Compile Include="Areas\AreaReservas\Models\HabitacionXReserva.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\LogicaConsulta.cs" />
     <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />

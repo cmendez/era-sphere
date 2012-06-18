@@ -33,6 +33,17 @@
             });
         }
     }
+    function completadoWi(e) {
+
+        if (e.name == "Mostrar") {
+            $("#servicio_form").load('@Url.Action("Mostrar", "Servicios")', { servicio_id: e.response.servicio_id },
+                function (data) {
+                    
+                }
+            );
+            $("#ServicioForm").data("tWindow").center().open();
+        }
+    }
 </script>
 
 @(Html.Telerik().Window()
@@ -63,7 +74,7 @@
             columns.Command(commands =>
             {
                 commands.Delete().ButtonType(GridButtonType.Image);
-                commands.Custom("Nada")
+                commands.Custom("Mostrar")
                     .Text("Mostrar")
                     .DataRouteValues(route => route.Add(o => o.ID).RouteKey("servicio_id"))
                     .Ajax(true)
@@ -73,7 +84,7 @@
 
         .Pageable()
         .Sortable()
-
+        .ClientEvents(events => events.OnComplete("completadoWi"))
         .DataBinding(dataBinding => dataBinding
             .Ajax().Select("_CustomCommand", "Cliente")
             .Select("SelectReserva", "Servicios", new { id_reserva = Model.ID })

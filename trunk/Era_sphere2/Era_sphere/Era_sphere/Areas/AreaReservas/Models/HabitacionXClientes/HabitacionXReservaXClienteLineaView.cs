@@ -22,6 +22,9 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public int clienteID { get; set; }
 
+        public int clienteID2 { get { return clienteID; } }
+
+        public int clienteID3 { get { return clienteID; } }
 
         [DisplayName(@"Habitación")]
         public int habitacionID { get; set; }

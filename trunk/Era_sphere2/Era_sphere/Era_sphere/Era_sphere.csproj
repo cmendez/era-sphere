@@ -118,7 +118,6 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\ServicioView.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\ServicioXReserva.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioView.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioXCampo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioXHotel.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicio.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporadaList.cs" />
@@ -358,6 +357,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Areas\AreaContable\Models\Views\Producto\IndexProducto.cshtml" />
     <Content Include="Areas\AreaContable\Models\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Models\Views\Shared\ProductoViewTemplate.cshtml" />
@@ -1308,8 +1310,7 @@
     <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml" />
     <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\CrearServicio.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Servicio\ServicioDeReservaIndex.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Servicio\ServiciosDeReservaIndex.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Shared\ProductosDeReservaView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

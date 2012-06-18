@@ -25,6 +25,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             tabla_reserva = new DBGenericQueriesUtil<Reserva>(context, context.Reservas);
             tabla_habitacion_x_reserva = new DBGenericQueriesUtil<HabitacionXReserva>(context, context.habitacion_x_reserva);
+            tabla_servicio_x_reserva = new DBGenericQueriesUtil<ServicioXReserva>(context, context.servicioxreservas);
         }
         public int hallaIDCruce(Reserva r, Habitacion h)
         {
@@ -280,9 +281,14 @@ namespace Era_sphere.Areas.AreaReservas.Models
             return res;
         }
 
-        public void agregaServicio(int reserva_id, Servicio s)
+        public void agregaRelacionServicioXReserva(int reserva_id, Servicio s)
         {
             tabla_servicio_x_reserva.agregarElemento(new ServicioXReserva { reservaID = reserva_id, servicioID = s.ID });
+        }
+        public void eliminaRelacionServicioXReserva(int reserva_id, int servicio_id)
+        {
+            ServicioXReserva x = context.servicioxreservas.First(w => w.reservaID == reserva_id && w.servicioID == servicio_id);
+            tabla_servicio_x_reserva.eliminarElemento(x.ID);
         }
         public void anularServicio(int servicio_id)
         {

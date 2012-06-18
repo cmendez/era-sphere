@@ -29,27 +29,25 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Insert(int id_reserva)
+        public JsonResult InsertServicioDeReserva(ServicioView servicio_view, int id_reserva)
         {
-
-            ServicioView servicio_view = new ServicioView();
-            if (TryUpdateModel(servicio_view))
-            {
-                servicios_logica.agregarServicio(servicio_view);
-
-            }
-            return View("ServiciosIndex", new GridModel(new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica).servicios));
+            Servicio s = servicio_view.deserializa(servicios_logica);
+            servicios_logica.agregarServicio(s);
+            reserva_logica.agregaRelacionServicioXReserva(id_reserva, s);
+            return Json(new { ok = true });
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Delete(int? id, int id_reserva)
+        public ActionResult DeleteReserva(int id, int id_reserva)
         {
-            int servicio_id = id ?? -1;
+            var todos = servicios_logica.retornarServicios();
+            int servicio_id = id;
+            reserva_logica.eliminaRelacionServicioXReserva(servicio_id, id_reserva);
             servicios_logica.eliminarServicio(servicio_id);
             return View("ServiciosIndex", new GridModel(new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica).servicios));
         }
-
+        
         public ActionResult Crear()
         {
             return PartialView("CrearServicio");

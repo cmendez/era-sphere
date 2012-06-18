@@ -33,7 +33,6 @@
         .Columns(columns =>
         {
             columns.Bound(c => c.nombre);
-            columns.ForeignKey(c => c.tiene_hora, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" }).Title("Hora");
             columns.ForeignKey(c => c.tiene_productos_asociados, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" }).Title("Productos");
             columns.ForeignKey(c => c.tiene_repeticiones, new SelectList(sn, "ID", "nombre")).HtmlAttributes(new { style = "text-align:center" }).Title("Repeticiones");
             columns.Bound(c => c.campo1).Title("Campo 1");

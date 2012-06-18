@@ -94,15 +94,15 @@
         .Name("clientesHabitacionGrid")
         .Localizable("es-ES")
 
-                                        .DataKeys(key => {key.Add(c => c.clienteID); })
+                                                .DataKeys(key => { key.Add(c => c.habitacionID); key.Add(c => c.clienteID); })
         .Columns(columns =>
         {
             columns.ForeignKey(p => p.habitacionID, new SelectList(habitaciones, "ID", "detalle")).Title(@"Número de habitacion");
             columns.ForeignKey(p => p.clienteID, new SelectList(clientes, "ID", "nombre")).Title("Nombre");
-            columns.ForeignKey(p => p.clienteID, new SelectList(clientes, "ID", "apellido_paterno")).Title("Apellido Paterno");
-            columns.ForeignKey(p => p.clienteID, new SelectList(clientes, "ID", "apellido_materno")).Title("Apellido Materno");
+            columns.ForeignKey(p => p.clienteID2, new SelectList(clientes, "ID", "apellido_paterno")).Title("Apellido Paterno");
+            columns.ForeignKey(p => p.clienteID3, new SelectList(clientes, "ID", "apellido_materno")).Title("Apellido Materno");
             columns.Command(commands =>
-                             commands.Delete().ButtonType(GridButtonType.Image));
+                             commands.Delete().ButtonType(GridButtonType.ImageAndText));
             
             
         })
@@ -111,8 +111,8 @@
         .Sortable()
         .DataBinding(dataBinding => dataBinding
         .Ajax()
-       // .Select("SelectClienteHabitacion", "Reserva", new { id_reserva = Model.reservaID })
-       // .Delete("DeleteClienteHabitacion", "Reserva", new { id_reserva = Model.reservaID })
+        .Select("SelectClienteHabitacion", "Reserva", new { id_reserva = Model.reservaID })
+        .Delete("DeleteClienteHabitacion", "Reserva", new { id_reserva = Model.reservaID })
                                                                 
 
                                                             )

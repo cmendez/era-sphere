@@ -40,7 +40,7 @@
     function agregarHuesped() {
         if(hab_id == 0)
             alert("Seleccione una habitacion valida");
-        var huesped_raw = $("#responsable_pago").data("tAutoComplete").value();
+        var huesped_raw = $("#huesped_autocompletar").data("tAutoComplete").value();
         $.ajax({
             url: '@Url.Action("ObtieneDatosCliente", "../AreaClientes/Cliente")',
             data: { cliente_raw: huesped_raw },
@@ -108,7 +108,7 @@
     
                 <div class="editor-label">
                     @(Html.Telerik().AutoComplete()
-                    .Name("responsable_pago")
+                    .Name("huesped_autocompletar")
                     .DataBinding(binding => binding.Ajax().Select("DameClientes", "../AreaClientes/Cliente"))
                     .HighlightFirstMatch(true)
                     .AutoFill(true).HtmlAttributes(new { style = "width:300px" })
@@ -134,6 +134,7 @@
         .Localizable("es-ES")
 
                                                 .DataKeys(key => { key.Add(c => c.habitacionID); key.Add(c => c.clienteID); })
+        
         .Columns(columns =>
         {
             columns.ForeignKey(p => p.habitacionID, new SelectList(habitaciones, "ID", "detalle")).Title(@"Número de habitacion");

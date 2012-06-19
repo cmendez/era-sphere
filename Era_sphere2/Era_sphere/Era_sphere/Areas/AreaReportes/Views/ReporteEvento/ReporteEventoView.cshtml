@@ -1,0 +1,56 @@
+﻿﻿@using Era_sphere.Areas.AreaReportes.Models.ReporteEvento;
+   @model List<ReporteEvento>
+   <br />
+   <table cellpadding="3" cellspacing="3">
+       <tr border="1" bgcolor="#777777" color="#ffffff">
+           <td width="50%" align="center">
+               Hotel
+           </td>
+           <td width="50%" align="center">
+              Evento
+          </td>
+          <td width="50%" align="center">
+              Número de Ambientes
+          </td>          
+          <td width="50%" align="center">
+              Número de Participantes
+          </td>
+          <td width="50%" align="center">
+              Número de Servicios
+          </td>
+          <td width="50%" align="center">
+              Precio total
+          </td>
+      </tr>
+      @{
+           var OddColor = "#DDEEEE";
+           var evenColor = "#EEFFFF";
+           var Odd = OddColor;
+       }
+       @foreach (ReporteEvento re in Model)
+       {
+           <tr border="1" bgcolor="@Odd">
+               <td>@re.hotel
+               </td>
+               <td>@re.evento
+               </td>
+               <td>@re.numAmb
+               </td>
+               <td>@re.numPart
+               </td>
+               <td>@re.numServ
+               </td>
+               <td>@re.precioTotal
+               </td>
+           </tr>
+           if (Odd == OddColor)
+           {
+               Odd = evenColor;
+           }
+           else
+           {
+               Odd = OddColor;
+           }
+   
+       }
+   </table>

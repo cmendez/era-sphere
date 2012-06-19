@@ -255,9 +255,11 @@
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReporteEmpleadoController.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\ReporteEventoController.cs" />
     <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs" />
     <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ObjetoReporteEmpleado.cs" />
     <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ReporteEmpleados.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEvento\ReporteEvento.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\CheckInCheckOutController.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\ConsultaController.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
@@ -1327,6 +1329,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

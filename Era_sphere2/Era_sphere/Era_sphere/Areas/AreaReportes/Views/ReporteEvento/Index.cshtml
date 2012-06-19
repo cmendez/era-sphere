@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    <div class="titlebar">
+        <h3>
+            Reporte pe CTM!
+        </h3>
+    </div>
+    <div class="block_cont">
+        
+        <h2>Presiona el puto link para sacar tu reporte de mierda que me rompe las bolas</h2>
+        @Html.ActionLink("Mostrar PDF", "MostrarPDF", null,  new { target = "_blank" })
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

@@ -17,15 +17,14 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             precio_total = evento.precio_total;
             num_participantes = evento.num_participantes;
             Hotel = evento.hotel;
+            estadoID = evento.estado_eventoID;
+            
         }
         [Required]
         [MaxLength(30)]
         [DisplayName("Nombre")]
         public string nombre { get; set; }
-        [Required]
-        //falta limite
-        [DisplayName("Precio")]
-        [Range(1, 100000)]
+        [DisplayName("Precio total")]
         public decimal precio_total { get; set; }
         [Required]
         //falta limite
@@ -36,6 +35,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         [Required]
         public int ID { get; set; }
         [DisplayName("ID hotel")]
+        public int estadoID { get; set; }
         //[Required]
         public int Hotel { get; set; }
         public Evento deserializa()
@@ -46,7 +46,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
                 nombre=this.nombre,
                 precio_total=this.precio_total,
                 num_participantes=this.num_participantes,
-                hotel=this.Hotel
+                hotel=this.Hotel,
+                estado_eventoID=this.estadoID
             };
         }
 

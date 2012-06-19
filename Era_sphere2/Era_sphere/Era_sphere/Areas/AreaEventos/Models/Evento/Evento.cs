@@ -25,6 +25,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         public virtual ICollection<Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbiente> eventoXAmbiente { get; set; }
 
         public virtual ICollection<Era_sphere.Areas.AreaEventos.Models.Participante.Participante> participantes { get; set; }
-
+        
+        public int estado_eventoID { get; set; }
+        
     }
 }

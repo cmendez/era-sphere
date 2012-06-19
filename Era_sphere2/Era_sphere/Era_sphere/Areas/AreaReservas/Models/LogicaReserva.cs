@@ -31,7 +31,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             return context.habitacion_x_reserva.FirstOrDefault(x => x.habitacionID == h.ID && x.reservaID == r.ID).ID;
         }
-
+        
 
 
         public List<ConsultaLineaView> getHabitaciones(int reserva_id)

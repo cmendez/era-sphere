@@ -35,20 +35,21 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         }
 
         [GridAction]
-        public ActionResult Select(int id_hotel)
+        public ActionResult Select(int id_hotel,int estado)
         {
-            return View("EventoIndex", new GridModel(evento_logica.retornarEventos(id_hotel)));
+            return View("EventoIndex", new GridModel(evento_logica.retornarEventos(id_hotel).Where(e => e.estadoID == estado)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Insert(int id_hotel)
+        public ActionResult Insert(int id_hotel, int estado)
         {
 
             EventoView evento_view= new EventoView();
             
             if (TryUpdateModel(evento_view))
             {
+                evento_view.estadoID = estado;
                 evento_view.Hotel =id_hotel;
                 evento_logica.agregarEvento(evento_view);
 
@@ -254,7 +255,13 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             costo += logicaExA.RetornarCosto(idEvento);
 
             ViewBag.precio = costo;
+
             return View("EventoCalcularCostos");
+        }
+
+        public ActionResult Prueba(int id)
+        {
+            return View("PruebaHtml");
         }
     }
 }

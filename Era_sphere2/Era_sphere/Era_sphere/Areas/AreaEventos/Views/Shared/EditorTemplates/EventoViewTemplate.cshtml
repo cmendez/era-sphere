@@ -3,17 +3,15 @@
 @using Era_sphere.Areas.AreaEventos.Models.Evento;
 @{  
     ViewBag.Title = "EventoViewTemplate";
-    //var id = Model.ID;
-    //TipoHabitacion tipo_habitacion = (new Era_sphere.Generics.EraSphereContext()).tipos_habitacion.Find(id);
-    
+    /*@using (Html.BeginForm())
+    {*/    
 }
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
 
-@using (Html.BeginForm())
-{
+
     @Html.ValidationSummary(true)
     <fieldset>
         
@@ -31,13 +29,15 @@
             @Html.EditorFor(model => model.num_participantes)
             @Html.ValidationMessageFor(model => model.num_participantes)
         </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.precio_total)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.precio_total) 
-            @Html.ValidationMessageFor(model => model.precio_total)
-        </div>
      </fieldset>
 
-}
+        
+        @{Html.Telerik().Window().Name("MostrarDetalleNaturalPopup")
+        .Title("Buscar cliente").LoadContentFrom("Prueba", "Evento", new {id = 1})
+            .Modal(true)
+            .Visible(false)
+            .Width(300).Resizable().Draggable(true).Width(600).Height(300).Render();}
+
+        <button id="mostrar-detalle" class="t-button t-state-default" onclick="$('#MostrarDetalleNaturalPopup').data('tWindow').center().open();">
+            Mostrar consumo
+        </button>

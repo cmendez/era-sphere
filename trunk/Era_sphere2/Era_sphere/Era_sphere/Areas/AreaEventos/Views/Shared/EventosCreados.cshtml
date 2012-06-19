@@ -23,11 +23,10 @@
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-            
             //columns.Bound(p => p.ID);
             columns.Bound(p =>p.nombre);
-            columns.Bound(p => p.clienteID);
-            
+            columns.Bound(p => p.cliente_nombre);
+            columns.Bound(p => p.dni);
             columns.Bound(p => p.num_participantes);
             columns.Bound(p => p.precio_total);
             columns.Command(commands =>
@@ -44,7 +43,6 @@
 
         .Pageable()
         .Sortable()
-
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("Select", "Evento", new { id_hotel = idhotel ,estado=1})

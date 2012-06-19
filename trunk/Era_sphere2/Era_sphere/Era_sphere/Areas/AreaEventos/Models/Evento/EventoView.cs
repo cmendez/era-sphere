@@ -20,25 +20,43 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             num_participantes = evento.num_participantes;
             Hotel = evento.hotel;
             estadoID = evento.estado_eventoID;
-            clienteID = evento.clienteID;
+            detalle = evento.detalle;
+            
+            int pos=detalle.IndexOf(':');
+            int natural=detalle.IndexOf("DNI");
+            int pos2 = detalle.IndexOf(',');
+            dni = detalle.Substring(pos+1) ;
+            cliente_nombre = detalle.Substring(0,pos2);
+            
+            //List<Cliente> c = (new LogicaCliente()).retornarClientes().Where(e => e.documento_identidad == dni ).ToList();
+            //if (c.Count > 0)
+            //    clienteID = c.ElementAt(0).ID;
+            //else
+            //{
+            //    c = (new LogicaCliente()).retornarClientes().Where(e => e.ruc == dni).ToList();
+            //    clienteID = c.ElementAt(0).ID;
+            //}
+            //List<Cliente> c=(new LogicaCliente()).retornarClientes().Where(e => e.documento_identidad == dni || e.ruc==dni).ToList();
             //Cliente cliente = (new EraSphereContext()).clientes.Find(clienteID);
             //cliente_nombre = cliente.nombre;
             //cliente_apellido = cliente.apellido_paterno + " " + cliente.apellido_materno;
             //cliente_nombre = evento.cliente_reserva.nombre;
             //cliente_apellido = evento.cliente_reserva.apellido_materno;
         }
+        public string dni { get; set; }
         [Required]
         [MaxLength(30)]
         [DisplayName("Nombre")]
         public string nombre { get; set; }
         [DisplayName("Precio total")]
         public decimal precio_total { get; set; }
-        [DisplayName("Nombres")]
+        [DisplayName("Cliente")]
         public string cliente_nombre { get; set; }
         [DisplayName("Apellidos")]
         public string cliente_apellido { get; set; }
-        [DisplayName("ClienteID")]
-        public string clienteID { get; set; }
+        [DisplayName("detalle")]
+        public string detalle { get; set; }
+        
         [Required]
         //falta limite
         [DisplayName("Cantidad de participantes")]
@@ -62,8 +80,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
                 num_participantes=this.num_participantes,
                 hotel=this.Hotel,
                 estado_eventoID=this.estadoID,
-                clienteID=this.clienteID
-          //      clienteID=this.clienteID
+                detalle=this.detalle,
+                dni=this.dni,
             };
         }
 

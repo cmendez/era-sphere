@@ -55,6 +55,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
                 evento_logica.agregarEvento(evento_view);
 
             }
+
             return View("EventoIndex", new GridModel(evento_logica.retornarEventos(id_hotel)));
 
         }

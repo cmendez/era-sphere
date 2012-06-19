@@ -289,8 +289,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
         public void agregarLinea(int id_reserva, int id_habitacion, int id_cliente)
         {
             Reserva reserva = retornarReserva(id_reserva);
-            LogicaHabitacion logica_habitacion = new LogicaHabitacion();
-            Habitacion habitacion = logica_habitacion.retornarHabitacion(id_habitacion).deserializa(logica_habitacion);
+            Habitacion habitacion = context.habitaciones.Find(id_habitacion);
 
             int id_habitacion_reserva = hallaIDCruce(reserva, habitacion);
             HabitacionXReserva habitacion_reserva = tabla_habitacion_x_reserva.retornarUnSoloElemento(id_habitacion_reserva);
@@ -301,11 +300,10 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public void asignarRelacionTriple(int id_cliente, HabitacionXReserva habitacion_reserva)
         {
-            LogicaCliente cliente_logica = new LogicaCliente();
-            Cliente cliente = cliente_logica .retornarCliente(id_cliente);
+            Cliente cliente = context.clientes.Find(id_cliente);
 
             habitacion_reserva.huespedes.Add(cliente);
-
+            tabla_habitacion_x_reserva.modificarElemento(habitacion_reserva, habitacion_reserva.ID);
         }
 
         public List<HabitacionXReservaXClienteLineaView> retornarHabitacionReservaCliente(int id_reserva)

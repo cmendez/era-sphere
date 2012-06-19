@@ -151,20 +151,20 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     password = this.contrasenha,
                     id_habitacion_asisgnada = this.id_habitacion,
                     ciudadID = this.ciudadID,
-                    ciudad = logica.cliente_context.ciudades.Find(this.ciudadID),
+                    ciudad = logica.context.ciudades.Find(this.ciudadID),
                     paisID = this.paisID,
-                    pais = logica.cliente_context.paises.Find(this.paisID),
+                    pais = logica.context.paises.Find(this.paisID),
                     puntos_cliente = this.puntos_cliente,
                     tarjeta_cliente = this.tarjeta_cliente,
                     
                     estadoID = this.id_estado,
-                    estado = logica.cliente_context.estados_cliente.Find(this.id_estado),
+                    estado = logica.context.estados_cliente.Find(this.id_estado),
 
                     tipo_documentoID=this.id_tipo_documento,
-                    tipo_documento = logica.cliente_context.tipos_documento.Find(this.id_tipo_documento),
+                    tipo_documento = logica.context.tipos_documento.Find(this.id_tipo_documento),
                     
                     tipoID = 1,
-                    tipo = logica.cliente_context.tipos_personas.Find(1),
+                    tipo = logica.context.tipos_personas.Find(1),
                   //  habitacion_asignada =
                  
 

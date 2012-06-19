@@ -221,6 +221,7 @@
     <Compile Include="Areas\AreaEventos\Models\EventoXAmbiente\EventoXAmbienteView.cs" />
     <Compile Include="Areas\AreaEventos\Models\EventoXAmbiente\LogicaEventoXAmbiente.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaEventos\Models\Evento\EstadoEvento.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\EventoView.cs" />
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\LogicaEvento.cs" />
@@ -257,6 +258,7 @@
     <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs" />
     <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ObjetoReporteEmpleado.cs" />
     <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ReporteEmpleados.cs" />
+    <Compile Include="Areas\AreaReservas\Controllers\CheckInCheckOutController.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\ConsultaController.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaLineaView.cs" />
@@ -1321,6 +1323,10 @@
     <Content Include="Areas\AreaHoteles\Views\HotelXProducto\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\ProductosDeReservaView.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Reserva\ReservaHabitacionClienteView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

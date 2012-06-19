@@ -125,6 +125,13 @@
 
    
     <!-- Table Wrapper End -->
-</div>
 
 
+
+<script type="text/javascript">
+    function showMantCliente() {
+        $("#mant-cliente-div").load('@Url.Action("IndexPartial", "../AreaClientes/Cliente")');
+        var detailModal = $("#MostrarMantCliente").data("tWindow");
+        detailModal.center().open();
+    }
+</script>

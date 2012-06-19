@@ -136,5 +136,15 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             DBGenericQueriesUtil<EventoXAmbiente.EventoXAmbiente> query = new DBGenericQueriesUtil<EventoXAmbiente.EventoXAmbiente>(evento_context, evento_context.eventoXAmbientes);
             query.agregarElemento(exa);
         }
+
+        internal void modificarEvento(int idEvento, decimal costo)
+        {
+            
+            Evento evento = evento_context.eventos.Find(idEvento);
+            evento.precio_total = costo;
+            DBGenericQueriesUtil<Evento> query = new DBGenericQueriesUtil<Evento>(evento_context, evento_context.eventos);
+            query.modificarElemento(evento, evento.ID);
+
+        }
     }
 }

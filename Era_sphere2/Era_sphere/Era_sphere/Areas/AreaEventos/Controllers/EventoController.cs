@@ -12,6 +12,7 @@ using Era_sphere.Areas.AreaEventos.Models.Participante;
 using Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente;
 using System.Threading;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
+using Era_sphere.Areas.AreaClientes.Models;
 
 namespace Era_sphere.Areas.AreaEventos.Controllers
 {
@@ -255,6 +256,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             costo += logicaExA.RetornarCosto(idEvento);
 
             ViewBag.precio = costo;
+            evento_logica.modificarEvento(idEvento, costo);
 
             return View("EventoCalcularCostos");
         }
@@ -263,5 +265,21 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         {
             return View("PruebaHtml");
         }
+
+        #region cliente
+        public ActionResult BuscarCliente()
+        {
+            return PartialView("EventoCliente");
+        }
+
+        public JsonResult TraerClientes(int clienteID)
+        {
+            if (clienteID==1){
+                return Json(new SelectList((new LogicaCliente()).retonarClientesNaturales(), "ID", "nombre"), JsonRequestBehavior.AllowGet);
+            }
+            return Json(new SelectList((new LogicaCliente()).retonarClientesJuridicos(), "ID", "nombre"), JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
     }
 }

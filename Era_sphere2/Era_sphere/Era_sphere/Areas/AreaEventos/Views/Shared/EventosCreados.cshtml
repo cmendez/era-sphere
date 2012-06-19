@@ -26,6 +26,8 @@
             
             //columns.Bound(p => p.ID);
             columns.Bound(p =>p.nombre);
+            columns.Bound(p => p.clienteID);
+            
             columns.Bound(p => p.num_participantes);
             columns.Bound(p => p.precio_total);
             columns.Command(commands =>

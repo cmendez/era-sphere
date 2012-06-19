@@ -1,0 +1,46 @@
+﻿@using Telerik.Web.Mvc.UI
+
+@{
+    ViewBag.Title = "EventoCliente";
+    Dictionary<int, string> list=new Dictionary<int,string>();
+    list.Add(1,"natural");
+    list.Add(2, "juridica");
+   
+}
+<div>
+<label>Cliente :</label>
+
+    <div class="editor-label">
+        @(Html.Telerik().AutoComplete()
+        .Name("clienteID")
+            .DataBinding(binding => binding.Ajax().Select("DameClientes", "../AreaClientes/Cliente"))
+            .HighlightFirstMatch(true)
+            .AutoFill(true).HtmlAttributes(new { style = "width:300px" })
+            )
+
+             
+    </div>
+</div>
+<button id="mostrar-mant-cliente" class="t-button t-state-default" onclick="showMantCliente();">
+               Ir a mantenimiento de clientes
+            </button>
+
+ @(Html.Telerik().Window().Name("MostrarMantCliente")
+        .Title("Mantenimiento de Clientes").Content(
+            @<text>
+                <div id="mant-cliente-div"></div>
+            </text>
+        )
+            .Modal(true)
+            .Visible(false)
+            .Width(700).Resizable().Draggable(true).Height(600))
+
+
+
+<script type="text/javascript">
+    function showMantCliente() {
+        $("#mant-cliente-div").load('@Url.Action("IndexPartial", "../AreaClientes/Cliente")');
+        var detailModal = $("#MostrarMantCliente").data("tWindow");
+        detailModal.center().open();
+    }
+</script>

@@ -29,6 +29,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
         }
         public int hallaIDCruce(Reserva r, Habitacion h)
         {
+            var todos = context.habitacion_x_reserva.ToList();
             return context.habitacion_x_reserva.FirstOrDefault(x => x.habitacionID == h.ID && x.reservaID == r.ID).ID;
         }
         
@@ -53,16 +54,17 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             Reserva r = context.Reservas.Find(reserva_id);
             List<HabitacionXReserva> habitaciones = context.habitacion_x_reserva.Where(x => x.reservaID == reserva_id).ToList();
-            List<HabitacionXReserva> a_eliminar = new List<HabitacionXReserva>();
-            foreach (var x in habitaciones)
-                if (!hab_ids.Contains(x.habitacionID)) a_eliminar.Add(x);
-            foreach (var x in a_eliminar) tabla_habitacion_x_reserva.eliminarElemento(x.ID);
+            //List<HabitacionXReserva> a_eliminar = new List<HabitacionXReserva>();
+            //foreach (var x in habitaciones)
+            //    if (!hab_ids.Contains(x.habitacionID)) a_eliminar.Add(x);
+            //foreach (var x in a_eliminar) tabla_habitacion_x_reserva.eliminarElemento(x.ID);
 
             foreach (var id in hab_ids)
             {
-                bool dentro = false;
-                foreach (var x in habitaciones) if (x.habitacionID == id) dentro = true;
-                if (!dentro) agregaRelacion(r, context.habitaciones.Find(id));
+                //bool dentro = false;
+                //foreach (var x in habitaciones) if (x.habitacionID == id) dentro = true;
+                //if (!dentro) 
+                agregaRelacion(r, context.habitaciones.Find(id));
             }
         }
 

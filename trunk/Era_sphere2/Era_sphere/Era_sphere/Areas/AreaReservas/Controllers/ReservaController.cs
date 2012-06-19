@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Areas.AreaReservas.Models;
 using Telerik.Web.Mvc;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaReservas.Controllers
 {
@@ -85,6 +86,13 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return Json(new { reserva_id = reserva_id });
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult ObtieneDatosHabitacion(int habitacion_id)
+        {
+            Habitacion h = reserva_logica.context.habitaciones.Find(habitacion_id);
+            return Json(new { num_camas = h.tipoHabitacion.numero_camas, capacidad = h.tipoHabitacion.cap_max_personas });
+        }
+
         public ActionResult habitacionesCliente(int reserva_id)
         {
             List<HabitacionXReservaXClienteLineaView> lineas = new List<HabitacionXReservaXClienteLineaView>();
@@ -95,6 +103,13 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         public ActionResult SelectClienteHabitacion(int id_reserva)
         {
             return PartialView("ReservaHabitacionClienteView", new GridModel(reserva_logica.retornarHabitacionReservaCliente(id_reserva)));
+
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult InsertClienteHabitacion(int id_cliente, int id_reserva, int id_habitacion)
+        {
+            reserva_logica.agregarLinea(id_reserva, id_cliente, id_habitacion);
+            return Json(new {ok = true});
 
         }
 

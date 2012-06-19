@@ -12,12 +12,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
 {
     public class LogicaCliente : InterfazLogicaCliente
     {
-        public EraSphereContext cliente_context=new EraSphereContext();
+        public EraSphereContext context=new EraSphereContext();
         DBGenericQueriesUtil<Cliente> database_table;
 
         public LogicaCliente()
         {
-            database_table = new DBGenericQueriesUtil<Cliente>(cliente_context, cliente_context.clientes);
+            database_table = new DBGenericQueriesUtil<Cliente>(context, context.clientes);
         }
 
         public List<Cliente> retornarClientes()
@@ -129,7 +129,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
                 if ((reserva.responsable_pago.ID == clientes[i].ID) && (reserva.estado.ID == 1))
                 {
                     clientes[i].estadoID = 2;
-                    clientes[i].estado = cliente_context.estados_cliente.Find(2);
+                    clientes[i].estado = context.estados_cliente.Find(2);
                     modificarCliente(clientes[i]);
                     break;
                 }
@@ -148,7 +148,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
                 if ((reserva.responsable_pago.ID == clientes[i].ID) && (reserva.estado.ID == 2))
                 {
                     clientes[i].estadoID = 3;
-                    clientes[i].estado = cliente_context.estados_cliente.Find(3);
+                    clientes[i].estado = context.estados_cliente.Find(3);
                     modificarCliente(clientes[i]);
                     break;
                 }
@@ -168,7 +168,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
 
                     // falta condicion para que se pueda determinar si se debe cambiar a sin reserva o con reserva
                     clientes[i].estadoID = 1;
-                    clientes[i].estado = cliente_context.estados_cliente.Find(1);
+                    clientes[i].estado = context.estados_cliente.Find(1);
                     modificarCliente(clientes[i]);
                     break;
                 }
@@ -189,7 +189,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     if (clientes[i].reservas.Count()==0)
                     {
                         clientes[i].estadoID = 1;
-                        clientes[i].estado = cliente_context.estados_cliente.Find(1);
+                        clientes[i].estado = context.estados_cliente.Find(1);
                         modificarCliente(clientes[i]);
                         break;
                     }
@@ -210,7 +210,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     if (clientes[i].reservas.Where(x => x.estado.descripcion != "Anulada").ToList().Count() == 0)
                     {
                         clientes[i].estadoID = 1;
-                        clientes[i].estado = cliente_context.estados_cliente.Find(1);
+                        clientes[i].estado = context.estados_cliente.Find(1);
                         modificarCliente(clientes[i]);
                         break;
                     }
@@ -228,7 +228,30 @@ namespace Era_sphere.Areas.AreaClientes.Models
         }
 
 
-
+        public int toCliente(string cliente_raw)
+        {
+            string tipo = cliente_raw.Substring(cliente_raw.LastIndexOf(',') + 2);
+            string documento = cliente_raw.Substring(cliente_raw.LastIndexOf(' ') + 1);
+            int tipo_persona, tipo_documentoID;
+            if (tipo[0] == 'D') tipo_persona = tipo_documentoID = 1;
+            else if (tipo[0] == 'P')
+            {
+                tipo_persona = 1;
+                tipo_documentoID = 2;
+            }
+            else
+            {
+                tipo_persona = 2;
+                tipo_documentoID = 3;
+            }
+            var documento_identidad = documento;
+            int clienteID = 0;
+            if (tipo_persona == 1)
+                clienteID = context.clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento && c.tipo_documentoID == tipo_documentoID).ID;
+            if (tipo_persona == 2)
+                clienteID = context.clientes.First(c => c.tipoID == tipo_persona && c.ruc == documento).ID;
+            return clienteID;
+        }
   
 
 

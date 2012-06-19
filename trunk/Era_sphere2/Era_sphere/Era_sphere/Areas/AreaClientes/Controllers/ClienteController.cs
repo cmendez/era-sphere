@@ -184,7 +184,12 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
                 return 1;
         }
 
-
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult ObtieneDatosCliente(string cliente_raw)
+        {
+            int clienteId = cliente_logica.toCliente(cliente_raw);
+            return Json(new { id = clienteId });
+        }
 
     }
 }

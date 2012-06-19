@@ -138,6 +138,7 @@ namespace Era_sphere.Areas.AreaReservas
 
         public void hallaResponsable(LogicaReserva logica_reserva)
         {
+            //COPIAR EN LOGICA CLIENTE
             string tipo = responsable_pago.Substring(responsable_pago.LastIndexOf(',') + 2);
             string documento = responsable_pago.Substring(responsable_pago.LastIndexOf(' ') + 1);
             int tipo_persona, tipo_documentoID;

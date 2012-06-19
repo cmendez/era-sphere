@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Era_sphere.Generics;
 
-namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
+namespace Era_sphere.Areas.AreaEventos.Models.Evento
 {
     public class Adicional:DBable
     {

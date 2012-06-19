@@ -5,6 +5,7 @@ using System.Web;
 using Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Era_sphere.Areas.AreaEventos.Models.Evento;
 
 namespace Era_sphere.Areas.AreaEventos.Models.Adicionales
 {

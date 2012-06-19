@@ -13,7 +13,9 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
     {
         
         public string nombre { get; set; }
-        
+
+        public string dni { get; set; }
+
         public decimal precio_total { get; set; }
         
         public int num_participantes { get; set; }
@@ -26,6 +28,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         public virtual ICollection<Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbiente> eventoXAmbiente { get; set; }
 
         public virtual ICollection<Era_sphere.Areas.AreaEventos.Models.Participante.Participante> participantes { get; set; }
+
+        public virtual ICollection<Adicional> adicionales { get; set; }
         
         public int estado_eventoID { get; set; }
         
@@ -33,8 +37,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         //public int cliente_eventoID { get; set; }
         //public virtual Cliente cliente_evento { get; set; }
         ////[ForeignKey("cliente")]
-        public string clienteID { get; set; }
-
+        public string detalle { get; set; }
+        
         //public virtual Cliente cliente { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel;
 
 namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
 {
@@ -39,21 +40,21 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
         public decimal ev_precio_total { get; set; }
 
         public int ev_num_participantes { get; set; }
-
+        
         public string amb_descripcion { get; set; }
-
+        [DisplayName(@"Capacidad máxima")]
         public int amb_capacidad_maxima { get; set; }
-
+        [DisplayName("Cantidad de niveles")]
         public int amb_num_niveles { get; set; }
-
+        [DisplayName("Precio por hora")]
         public decimal amb_precio { get; set; }
-
+        [DisplayName("Ambiente")]
         public string amb_detalle { get; set; }
-
+        [DisplayName("Fecha hora inicio")]
         public DateTime fecha_hora_inicio { get; set; }
-
+        [DisplayName("Fecha hora fin")]
         public DateTime fecha_hora_fin { get; set; }
-
+        
         public decimal precio { get; set; }
         
 

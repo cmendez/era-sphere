@@ -20,7 +20,7 @@ namespace Era_sphere.Generics
             /*List<Servicio> ss = new List<Servicio>
             {
                 new Servicio { descripcion = "Botella 1/2L Coca Cola" },
-                new Servicio { descripcion =  "Desayuno Premium"}
+                new Servicio { descripcion =  "Premium"}
             };
 
             foreach (Servicio s in ss) servicios.Add(s);

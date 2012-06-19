@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     //int[] checkedRecords = (int[])ViewData["checkedRecords"]; 
     var idhotel = ViewData["id_hotel"];
+    ViewBag.idhotel = idhotel;
 }
 @using Era_sphere.Areas.AreaHoteles.Models
 @model IEnumerable<Era_sphere.Areas.AreaEventos.Models.Evento.EventoView>
@@ -10,53 +11,17 @@
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
-    <div class="titlebar">
-        <h3>
-            Eventos
-        </h3>
-    </div>
-    <div class="block_cont">
-        @(Html.Telerik().Grid(Model)
-        .Name("Evento")
-        .Filterable()
-        .Localizable("es-ES")
-        .ToolBar(commands => commands.Insert())
-        .Editable(editing => editing
-                            .Mode(GridEditMode.PopUp)
-                            .TemplateName("EventoViewTemplate"))
-
-        .DataKeys(key => key.Add(c => c.ID))
-        .Columns(columns =>
-        {
-            
-            //columns.Bound(p => p.ID);
-            columns.Bound(p =>p.nombre);
-            columns.Bound(p => p.num_participantes);
-            columns.Bound(p => p.precio_total);
-            columns.Command(commands =>
-            {
-                commands.Edit().ButtonType(GridButtonType.Image);
-                commands.Delete().ButtonType(GridButtonType.Image);
-                commands.Custom("Detalle Evento")
-                    .Text("Detalle Evento")
-                    .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
-                             .Action("DetalleEvento", "Evento", new { idhotel=idhotel});
-                                
-            });
-        })
-
-        .Pageable()
-        .Sortable()
-
-        .DataBinding(dataBinding => dataBinding
-            .Ajax()
-            .Select("Select", "Evento", new { id_hotel = idhotel })
-            .Insert("Insert", "Evento", new { id_hotel = idhotel })
-            .Delete("Delete", "Evento", new { id_hotel = idhotel })
-            .Update("Update", "Evento", new { id_hotel = idhotel })
-        )
+    
+            @{
+                Html.RenderPartial("EventosPPagado"); 
+            }
+    
+        @{
+            Html.RenderPartial("EventosCreados");
+                       
            
-)
-    </div>
-    <!-- Table Wrapper End -->
+            }
+    
+<!-- Table Wrapper End -->
+
 </div>

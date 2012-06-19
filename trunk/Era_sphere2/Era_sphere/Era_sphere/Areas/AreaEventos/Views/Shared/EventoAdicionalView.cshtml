@@ -12,6 +12,7 @@
         .Name("EventoAdicional")
         .Localizable("es-ES")
         .Filterable()
+        .ClientEvents(events => events.OnDataBound("CalcularCostos"))
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
                           .Mode(GridEditMode.InLine)

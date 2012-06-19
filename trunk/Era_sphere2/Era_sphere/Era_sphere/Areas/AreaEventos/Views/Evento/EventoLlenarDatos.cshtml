@@ -64,7 +64,7 @@
            
                     }
     <p>
-        <button class="t-button t-state-default" onclick="CalcularCostos()">Calcular costos</button>
+        @*<button class="t-button t-state-default" onclick="CalcularCostos()">Calcular costos</button>*@
             <script type="text/javascript">
                 function CalcularCostos() {
                     $('#result').load('@Url.Action("CalcularCostos","Evento")',{idEvento:@idEvento});

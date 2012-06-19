@@ -8,6 +8,7 @@ using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente;
 
 namespace Era_sphere.Areas.AreaHoteles.Controllers
 {
@@ -63,9 +64,10 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index", new GridModel(logica_ambiente.retornarAmbientes(hotelID)));
         }
 
-        public ActionResult RetornarAmbiente(int ambienteID)
+        public ActionResult RetornarAmbiente(int ID)
         {
-            return View("AmbienteInformación", (new LogicaAmbiente()).retornarAmbiente(ambienteID));
+            
+            return PartialView("AmbienteInformación", (new LogicaAmbiente()).retornarAmbiente(ID));
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaHoteles.Models;
+using Era_sphere.Areas.AreaClientes.Models;
 
 namespace Era_sphere.Areas.AreaEventos.Models.Evento
 {
@@ -28,5 +29,12 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         
         public int estado_eventoID { get; set; }
         
+        //[ForeignKey("cliente_evento")]
+        //public int cliente_eventoID { get; set; }
+        //public virtual Cliente cliente_evento { get; set; }
+        ////[ForeignKey("cliente")]
+        public string clienteID { get; set; }
+
+        //public virtual Cliente cliente { get; set; }
     }
 }

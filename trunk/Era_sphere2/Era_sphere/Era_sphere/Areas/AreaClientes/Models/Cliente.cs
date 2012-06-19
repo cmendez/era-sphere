@@ -13,6 +13,7 @@ using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaReservas.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaReservas.Models.Consultas;
+using Era_sphere.Areas.AreaEventos.Models.Evento;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {
@@ -40,6 +41,9 @@ namespace Era_sphere.Areas.AreaClientes.Models
 
             [InversePropertyAttribute("huespedes")]
             public virtual ICollection<HabitacionXReserva> habitacion_reservas { get; set; }
+
+            //[InversePropertyAttribute("cliente_evento")]
+            //public virtual ICollection<Evento> eventos_cliente { get; set; }
         }
 
 

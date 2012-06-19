@@ -11,16 +11,14 @@
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
-    
+            @{
+            Html.RenderPartial("EventosCreados");
+            }
+
             @{
                 Html.RenderPartial("EventosPPagado"); 
             }
-    
-        @{
-            Html.RenderPartial("EventosCreados");
-                       
-           
-            }
+        
     
 <!-- Table Wrapper End -->
 

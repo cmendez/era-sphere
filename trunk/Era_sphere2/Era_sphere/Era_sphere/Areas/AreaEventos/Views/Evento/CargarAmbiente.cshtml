@@ -9,7 +9,9 @@
             .Name("ambienteID")
             .BindTo(new SelectList(Model, "ID", "nombre"))
             .SelectedIndex(0)
-            .ClientEvents(events => events.OnClose("Informacion"))
+
+
+            .ClientEvents(events => events.OnChange("Informacion"))
             .Placeholder("Seleccione")
             
         )

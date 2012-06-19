@@ -56,7 +56,7 @@
             
     </form>
 </div>
-            <p>
+            
                 
     <script type="text/javascript">
 
@@ -69,21 +69,20 @@
         }
 
         function Informacion(e){
-            var $form = $(this);
-            var ambiente = $("#ambienteID-input").val();
-            
-            $('#inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ambiente: ambiente});
+            var ambientet = $("#ambienteID-input").val();
+            alert(ambientet);
+            $('inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ID: ambientet})
         }
-    function isNumber(n) {
-                return !isNaN(parseFloat(n)) && isFinite(n);
-            }
-
+        function isNumber(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        }
             $("#form_ambiente").submit(
                 function (event) {
                     $(".form .error").hide();
                     event.preventDefault();
                     var $form = $(this);
                     var ambienteIDt = $form.find('input[name="ambienteID"]').val();
+                    //alert(ambienteIDt);
                     var fecha_hora_iniciot = $("#fecha_hora_inicio").val();
                     var fecha_hora_fint = $("#fecha_hora_fin").val();
                     var link = "/AreaEventos/Evento/InsertAmbiente";
@@ -128,7 +127,7 @@
         .Localizable("es-ES")
         .Filterable()
         //.ToolBar(commands => commands.Insert())
-
+        .ClientEvents(events => events.OnDataBound("CalcularCostos"))
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {

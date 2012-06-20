@@ -56,6 +56,11 @@
             },
         });
     }
+    function onDelete(e){
+        e.values.id_reserva = @Model.reservaID;
+        e.values.id_cliente = e.dataItem.clienteID;
+        e.values.id_habitacion = e.dataItem.habitacionID; 
+    }
 </script>
 <div class="block big" style="position: relative">
     <!-- Block Begin
@@ -109,7 +114,7 @@
                 <div class="editor-label">
                     @(Html.Telerik().AutoComplete()
                     .Name("huesped_autocompletar")
-                    .DataBinding(binding => binding.Ajax().Select("DameClientes", "../AreaClientes/Cliente"))
+                    .DataBinding(binding => binding.Ajax().Select("DameClientesNatural", "../AreaClientes/Cliente"))
                     .HighlightFirstMatch(true)
                     .AutoFill(true).HtmlAttributes(new { style = "width:300px" })
                     )
@@ -141,18 +146,16 @@
             columns.ForeignKey(p => p.clienteID, new SelectList(clientes, "ID", "nombre")).Title("Nombre");
             columns.ForeignKey(p => p.clienteID2, new SelectList(clientes, "ID", "apellido_paterno")).Title("Apellido Paterno");
             columns.ForeignKey(p => p.clienteID3, new SelectList(clientes, "ID", "apellido_materno")).Title("Apellido Materno");
-            columns.Template(@<text>
-                <button onclick="Eliminar(@item.clienteID, @Model.reservaID, @item.habitacionID);">Eliminar</button>
-                </text>);
+            columns.Command(commands => commands.Delete());
             
         })
-
+        .ClientEvents(events => events.OnDelete("onDelete"))
         .Pageable()
         .Sortable()
         .DataBinding(dataBinding => dataBinding
         .Ajax()
         .Select("SelectClienteHabitacion", "Reserva", new { id_reserva = Model.reservaID })
-                                                                
+        .Delete("DeleteClienteHabitacion", "Reserva")                                                      
 
                                                             )
              

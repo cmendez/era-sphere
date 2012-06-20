@@ -10,9 +10,10 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
 {
     public class ReciboLinea: DBable
     {
-         //[ForeignKey("recibo")]
-        //public int reciboID { get; set; }
-        //public Recibo recibo { get; set; }
+        //Este es el comprobante con el que se pago' esta boleta linea
+        [ForeignKey("recibo")]
+        public int reciboID { get; set; }
+        public Recibo recibo { get; set; }
 
         public int? espacio_rentableID { get; set; }
 

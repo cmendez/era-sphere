@@ -1329,6 +1329,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Shared\EditorTemplates\CheckInViewTemplate.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />

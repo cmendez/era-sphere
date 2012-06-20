@@ -11,7 +11,6 @@
     var clientes = (new EraSphereContext()).clientes.ToList();
     //asi funciono con las consultas >.<
     
-    
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
    // var estados = (new EraSphereContext()).estados_cliente.ToList();
 }
@@ -47,7 +46,8 @@
             type: "POST",
             success: function (data) {
                 id_cliente = data.id;
-                $.ajax({
+                if(id_cliente == 0) alert("Ingrese un cliente valido");
+                else $.ajax({
                     url: '@Url.Action("InsertClienteHabitacion", "Reserva")',
                     data: {id_cliente : id_cliente, id_reserva: reserva_id, id_habitacion: hab_id},
                     type: "POST",
@@ -141,9 +141,9 @@
             columns.ForeignKey(p => p.clienteID, new SelectList(clientes, "ID", "nombre")).Title("Nombre");
             columns.ForeignKey(p => p.clienteID2, new SelectList(clientes, "ID", "apellido_paterno")).Title("Apellido Paterno");
             columns.ForeignKey(p => p.clienteID3, new SelectList(clientes, "ID", "apellido_materno")).Title("Apellido Materno");
-            columns.Command(commands =>
-                             commands.Delete().ButtonType(GridButtonType.ImageAndText));
-            
+            columns.Template(@<text>
+                <button onclick="Eliminar(@item.clienteID, @Model.reservaID, @item.habitacionID);">Eliminar</button>
+                </text>);
             
         })
 
@@ -152,7 +152,6 @@
         .DataBinding(dataBinding => dataBinding
         .Ajax()
         .Select("SelectClienteHabitacion", "Reserva", new { id_reserva = Model.reservaID })
-        .Delete("DeleteClienteHabitacion", "Reserva", new { id_reserva = Model.reservaID })
                                                                 
 
                                                             )

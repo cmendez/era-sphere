@@ -19,5 +19,11 @@ namespace Era_sphere.Areas.AreaContable.Models
             //codigo para insetar la linea de Entrega
         }
 
+
+        internal EntregaOCView crearEOC(int id_ordendecompra)
+        {
+            return new EntregaOCView();
+            
+        }
     }
 }

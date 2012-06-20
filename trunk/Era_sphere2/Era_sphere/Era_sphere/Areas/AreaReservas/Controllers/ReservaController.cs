@@ -108,7 +108,7 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult InsertClienteHabitacion(int id_cliente, int id_reserva, int id_habitacion)
         {
-            reserva_logica.agregarLinea(id_reserva, id_cliente, id_habitacion);
+            reserva_logica.agregarLinea(id_reserva, id_habitacion, id_cliente);
             return Json(new {ok = true});
 
         }

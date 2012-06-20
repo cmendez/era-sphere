@@ -230,27 +230,31 @@ namespace Era_sphere.Areas.AreaClientes.Models
 
         public int toCliente(string cliente_raw)
         {
-            string tipo = cliente_raw.Substring(cliente_raw.LastIndexOf(',') + 2);
-            string documento = cliente_raw.Substring(cliente_raw.LastIndexOf(' ') + 1);
-            int tipo_persona, tipo_documentoID;
-            if (tipo[0] == 'D') tipo_persona = tipo_documentoID = 1;
-            else if (tipo[0] == 'P')
+            try
             {
-                tipo_persona = 1;
-                tipo_documentoID = 2;
+                string tipo = cliente_raw.Substring(cliente_raw.LastIndexOf(',') + 2);
+                string documento = cliente_raw.Substring(cliente_raw.LastIndexOf(' ') + 1);
+                int tipo_persona, tipo_documentoID;
+                if (tipo[0] == 'D') tipo_persona = tipo_documentoID = 1;
+                else if (tipo[0] == 'P')
+                {
+                    tipo_persona = 1;
+                    tipo_documentoID = 2;
+                }
+                else
+                {
+                    tipo_persona = 2;
+                    tipo_documentoID = 3;
+                }
+                var documento_identidad = documento;
+                int clienteID = 0;
+                if (tipo_persona == 1)
+                    clienteID = context.clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento && c.tipo_documentoID == tipo_documentoID).ID;
+                if (tipo_persona == 2)
+                    clienteID = context.clientes.First(c => c.tipoID == tipo_persona && c.ruc == documento).ID;
+                return clienteID;
             }
-            else
-            {
-                tipo_persona = 2;
-                tipo_documentoID = 3;
-            }
-            var documento_identidad = documento;
-            int clienteID = 0;
-            if (tipo_persona == 1)
-                clienteID = context.clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento && c.tipo_documentoID == tipo_documentoID).ID;
-            if (tipo_persona == 2)
-                clienteID = context.clientes.First(c => c.tipoID == tipo_persona && c.ruc == documento).ID;
-            return clienteID;
+            catch (Exception e) { return 0; }
         }
   
 

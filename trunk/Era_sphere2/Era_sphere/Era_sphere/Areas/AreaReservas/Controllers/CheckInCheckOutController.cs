@@ -35,7 +35,14 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return Json(new { reserva_id = reserva_id });
         }
 
-       
+        //newbie
+        public ActionResult CheckIn(int reserva_id)
+        {
+            
+            return PartialView("CheckInViewTemplate", new ReservaView(reserva_id));
+        }
+
+
 
     }
 }

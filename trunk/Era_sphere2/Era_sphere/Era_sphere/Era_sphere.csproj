@@ -1311,13 +1311,23 @@
     <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml" />
     <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\CrearServicio.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\HotelXProducto\Index.cshtml" />
     <Content Include="Areas\AreaContable\Views\AdministrarOC\IndexAdministracion.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesAceptadasPartial.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesAtendidasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesCanceladasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesRegistradasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\EntregaOC\Index.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\EntregaOCPartial.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Shared\ProductosDeReservaView.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Reserva\ReservaHabitacionClienteView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckInViewTemplate.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

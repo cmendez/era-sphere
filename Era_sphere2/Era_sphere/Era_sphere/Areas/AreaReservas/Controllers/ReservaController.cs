@@ -116,10 +116,9 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult DeleteClienteHabitacion(int? id, int id_reserva)
+        public ActionResult DeleteClienteHabitacion(int id_cliente, int id_reserva, int id_habitacion)
         {
-            int reserva_id = id ?? -1;
-            reserva_logica.eliminarReserva(reserva_id);
+            reserva_logica.eliminarLinea(id_reserva, id_habitacion, id_cliente);
             return PartialView("ReservaHabitacionClienteView", new GridModel(reserva_logica.retornarHabitacionReservaCliente(id_reserva)));
         }
 

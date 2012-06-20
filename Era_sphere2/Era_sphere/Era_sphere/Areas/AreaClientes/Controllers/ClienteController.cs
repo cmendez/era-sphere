@@ -163,6 +163,13 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             return new JsonResult() { Data = clientes };
         }
 
+        [HttpPost]
+        public ActionResult DameClientesNatural(string text)
+        {
+            var clientes = cliente_logica.retornarClientesNaturalFiltro(text);
+            return new JsonResult() { Data = clientes };
+        }
+
 
         public int ValidaClientes(int id_tipo_documento, string documento, string tarjeta_cliente)
         {

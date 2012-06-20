@@ -103,6 +103,24 @@ namespace Era_sphere.Areas.AreaClientes.Models
             
             return clientes_vista;
         }
+        public List<string> retornarClientesNaturalFiltro(String cadena_nombre)
+        {
+            List<Cliente> clientes = database_table.retornarTodos();
+
+            //:_:
+            List<string> clientes_vista = new List<string>();
+
+            foreach (Cliente cliente in clientes)
+            {
+                if ((cliente.tipoID == 1) && ((cliente.nombre.ToUpper().Contains(cadena_nombre.ToUpper())) || (cliente.apellido_paterno.ToUpper().Contains(cadena_nombre.ToUpper())) ||
+                    (cliente.apellido_materno.ToUpper().Contains(cadena_nombre.ToUpper()))))
+                {
+                    clientes_vista.Add(toString(cliente));
+                }
+            }
+
+            return clientes_vista;
+        }
 
         public static string toString(Cliente cliente)
         {

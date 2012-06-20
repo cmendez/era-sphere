@@ -298,13 +298,27 @@ namespace Era_sphere.Areas.AreaReservas.Models
                asignarRelacionTriple(id_cliente, habitacion_reserva);               
         
         }
+        public void eliminarLinea(int id_reserva, int id_habitacion, int id_cliente)
+        {
+            Reserva reserva = retornarReserva(id_reserva);
+            Habitacion habitacion = context.habitaciones.Find(id_habitacion);
 
+            int id_habitacion_reserva = hallaIDCruce(reserva, habitacion);
+            HabitacionXReserva habitacion_reserva = tabla_habitacion_x_reserva.retornarUnSoloElemento(id_habitacion_reserva);
+            this.eliminaRelacionTriple(id_cliente, habitacion_reserva);     
+        }
 
         public void asignarRelacionTriple(int id_cliente, HabitacionXReserva habitacion_reserva)
         {
             Cliente cliente = context.clientes.Find(id_cliente);
 
             habitacion_reserva.huespedes.Add(cliente);
+            tabla_habitacion_x_reserva.modificarElemento(habitacion_reserva, habitacion_reserva.ID);
+        }
+        public void eliminaRelacionTriple(int id_cliente, HabitacionXReserva habitacion_reserva)
+        {
+            Cliente cliente = context.clientes.Find(id_cliente);
+            habitacion_reserva.huespedes.Remove(cliente);
             tabla_habitacion_x_reserva.modificarElemento(habitacion_reserva, habitacion_reserva.ID);
         }
 

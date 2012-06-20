@@ -33,7 +33,7 @@ namespace Era_sphere.Controllers
 
         List<TipoTemporada> tipostemporada = database_table.retornarTodos();
         
-            return this.ViewPdf("PDF CSM!!!", "PDFView", tipostemporada);
+            return this.ViewPdf("PDF", "PDFView", tipostemporada);
         }
         
     }

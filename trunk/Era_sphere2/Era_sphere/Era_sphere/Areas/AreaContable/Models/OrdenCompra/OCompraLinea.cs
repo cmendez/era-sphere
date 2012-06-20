@@ -16,6 +16,8 @@ namespace Era_sphere.Areas.AreaContable.Models
         public int productoID { get; set; }
         public virtual proveedor_x_producto producto { get; set; }
         public int cantidad { get; set;  }
+        public int cantidad_recibida { get; set; }
         public decimal precio_total { get; set; }
+        public virtual ICollection<EOCLinea> entregas { get; set; }
     }
 }

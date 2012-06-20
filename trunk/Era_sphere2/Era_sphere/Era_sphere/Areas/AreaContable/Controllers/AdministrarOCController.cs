@@ -64,6 +64,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             catch (Exception ex) { msg = ex.Message;  }
             return Json(new { msg = msg });
         }
+        //public ActionResult 
         #endregion
 
     }

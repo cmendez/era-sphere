@@ -14,9 +14,11 @@ namespace Era_sphere.Areas.AreaContable.Models
             productoID = ocl.productoID;
             producto = ocl.producto.producto.descripcion;
             cantidad = ocl.cantidad;
+            cantidad_recibida = ocl.cantidad_recibida;
             precio_total = ocl.precio_total;
             precio_unitario = (decimal)ocl.producto.precio_unitario;
             ID = ocl.ID;
+            //falta incluir la colección de ENTREGAS
         }
 
         public int ID { get; set; }
@@ -27,8 +29,10 @@ namespace Era_sphere.Areas.AreaContable.Models
         public int productoID { get; set; }
         [DisplayName("Producto")]
         public string producto { get; set; }
-        [DisplayName("Cantidad")]
+        [DisplayName("Cantidad Ordenada")]
         public int cantidad { get; set; }
+        [DisplayName("Cantidad Recibida")]
+        public int cantidad_recibida {get; set;}
         [DisplayName("Precio Total")]
         public decimal precio_total { get; set; }
     }

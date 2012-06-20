@@ -23,9 +23,8 @@ namespace Era_sphere.Generics
         public DbSet<Orden> ordenes { get; set; }
         public DbSet<OrdenLinea> ordeneslineas { get; set; }
         public DbSet<proveedor_x_producto> p_x_p { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        void crear_fiscal(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<proveedor_x_producto>().HasRequired(e => e.proveedor)
                                                     .WithMany(t => t.productos)
                                                     .HasForeignKey(e => e.proveedorID)

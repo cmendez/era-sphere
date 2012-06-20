@@ -35,13 +35,12 @@ namespace Era_sphere.Generics
 
             seedComodidades();
             seedPisos();
-            
-            seedOrdenCompra();
+   
 
             seedClientes();
 
             seedHabitaciones();
-            seedOrdenCompra();
+    
             seedPerfil();
             seedEmpleados();
 
@@ -59,12 +58,17 @@ namespace Era_sphere.Generics
             SaveChanges();
         }
 
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            crear_fiscal(modelBuilder);
+            crear_orden_compra(modelBuilder);
+        }
 
     }
 
-    public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
-    //public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
+    //public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
+    public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
         protected override void Seed(EraSphereContext context){
             context.seed();
         }

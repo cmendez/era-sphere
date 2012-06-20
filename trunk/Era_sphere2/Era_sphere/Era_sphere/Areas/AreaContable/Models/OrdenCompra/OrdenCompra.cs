@@ -15,6 +15,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             productos = new List<OCompraLinea>();
         }
         virtual public ICollection<OCompraLinea> productos { get; set; }
+        virtual public ICollection<EntregaOC> entregas { get; set; }
         public int estado_ordenID { get; set; }
         virtual public EstadoOC estado_orden { get; set; }
         public DateTime? fecha_llegada { get; set; }

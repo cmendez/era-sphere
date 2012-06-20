@@ -160,6 +160,14 @@ namespace Era_sphere.Areas.AreaReservas
         }
 
 
+        //opt
+        public ReservaView(int reserva_id)
+        {
+            this.ID = reserva_id;
+        
+        }
+
+
 
     }
 }

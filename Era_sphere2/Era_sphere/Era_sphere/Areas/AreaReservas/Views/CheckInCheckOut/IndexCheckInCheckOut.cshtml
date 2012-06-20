@@ -12,6 +12,7 @@
 }
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
@@ -21,7 +22,7 @@
     </div>
     <div class="block_cont">
         @(Html.Telerik().Grid(Model)
-        .Name("ReservaGrid")
+        .Name("CheckInCheckOutGrid")
         .Localizable("es-ES")
         .Filterable()
       
@@ -59,6 +60,11 @@
 
         }).Pageable().Sortable()
 
+        .ClientEvents(events =>
+        {
+            events.OnComplete("completado");
+        })
+        
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("Select", "CheckInCheckOut", new { id = @hotelID })
@@ -73,27 +79,19 @@
     </div> 
     <!-- Table Wrapper End -->
 </div>
+
 @(Html.Telerik().Window()
-    .Name("ServicioDeReserva").Title("Servicios de Reserva")
-    .Content(@<text><div id="mantenimiento_servicio_form">
-    </div></text>).Visible(false).Width(800).Height(600).Scrollable(true)
-    )
-@(Html.Telerik().Window()
-    .Name("AsignarHuespedes").Title("Asignar Huesped a Habitación Reservada")
-    .Content(@<text><div id="mantenimiento_huespedes">
-    </div></text>).Visible(false).Width(800).Height(600).Scrollable(true)
+    .Name("CheckIn").Title("Check-In")
+    .Content(@<text><div id="RegitrarCheckIn">
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true)
     )
 <script type="text/javascript">
-    function onComplete(e) {
-        console.log(e.name);
-        if (e.name == "mostrar_juridico") {
-            $("#detalle-cliente-juridico").load('@Url.Action("ClienteJuridicoShow", "Cliente")' + '/' + e.response.id);
-            var detailModal = $("#DetalleJuridico").data("tWindow");
-            detailModal.center().open();
-        } else if (e.name == "mostrar_natural") {
-            $("#detalle-cliente-natural").load('@Url.Action("ClienteNaturalShow", "Cliente")' + '/' + e.response.id);
-            var detailModal = $("#DetalleNatural").data("tWindow");
-            detailModal.center().open();
-        }
+   
+    function completado(e) {
+        if (e.name == "Check-In") {
+            $("#RegitrarCheckIn").load('@Url.Action("CheckIn", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
+            $("#CheckIn").data("tWindow").center().open();
+        } 
+        
     }
 </script>

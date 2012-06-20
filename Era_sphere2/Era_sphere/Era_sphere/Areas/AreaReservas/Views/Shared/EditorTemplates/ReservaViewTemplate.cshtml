@@ -25,7 +25,7 @@
             .Name("responsable_pago")
                 .DataBinding(binding => binding.Ajax().Select("DameClientes", "../AreaClientes/Cliente"))
                 .HighlightFirstMatch(true)
-                .AutoFill(true).HtmlAttributes(new { style = "width:300px" })
+                .AutoFill(true).HtmlAttributes(new { style = "width:300px" }).Filterable(filter => filter.FilterMode(AutoCompleteFilterMode.Contains))
              )
 
              

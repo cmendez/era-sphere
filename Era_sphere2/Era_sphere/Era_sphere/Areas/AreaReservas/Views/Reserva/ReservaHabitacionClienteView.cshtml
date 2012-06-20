@@ -116,7 +116,7 @@
                     .Name("huesped_autocompletar")
                     .DataBinding(binding => binding.Ajax().Select("DameClientesNatural", "../AreaClientes/Cliente"))
                     .HighlightFirstMatch(true)
-                    .AutoFill(true).HtmlAttributes(new { style = "width:300px" })
+                            .AutoFill(true).HtmlAttributes(new { style = "width:300px" }).Filterable(filter => filter.FilterMode(AutoCompleteFilterMode.Contains))
                     )
 
                 </div>

@@ -140,6 +140,7 @@
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\ReciboLineaController.cs" />
+    <Compile Include="Areas\AreaContable\Models\EntregaOC\ComboEntregaItem.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\EntregaOC.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\EntregaOCView.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\EOCLinea.cs" />

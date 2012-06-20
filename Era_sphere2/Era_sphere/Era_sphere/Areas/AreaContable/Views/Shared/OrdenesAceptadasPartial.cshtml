@@ -33,7 +33,7 @@
                   .Action("DetallesOrdenC", "AdministrarOC");
           });
       })
-      .ClientEvents( ev => ev.OnComplete("aceptadas_complete") )
+      .ClientEvents( ev => ev.OnComplete("aceptadas_complete") ).Pageable().Sortable()
       .DataBinding(bind => bind.Ajax()
                 .Select("SelectOrdenes", "AdministrarOC", 
                 new { id_hotel = @id_hotel , estado_orden = 3 })
@@ -73,6 +73,29 @@
                     reload_all();
                 }
             });
+        }
+        else if (e.name == "agregarEntrega") {
+            var oc = e.response.orden_compra;
+            var url = '@Url.Action("crearEntregaOC", "EntregaOC")' + '/?id_ordendecompra=' + oc.ordenID + '&id_proveedor=' + proveedor.ID;
+            var windowElement = $.telerik.window.create({
+                name : 'popupEOrdenCompra' , 
+                title: "Registrar Entrega de Orden de Compra",
+                html: '',
+                actions: [],
+                contentUrl: url,
+                modal: true,
+                resizable: true,
+                draggable: true,
+                width : 800,
+                height : 600 ,
+                onClose: function (e) {
+                    e.preventDefault();
+                    windowElement.data('tWindow').destroy();
+                }
+            });
+            var tdata = windowElement.data('tWindow');
+            jQuery(windowElement).attr('id', 'popupEOrdenCompra');
+            tdata.center().open();
         }
     }
 </script>

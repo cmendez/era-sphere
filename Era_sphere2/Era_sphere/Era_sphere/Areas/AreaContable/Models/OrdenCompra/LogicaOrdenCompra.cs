@@ -14,7 +14,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         DBGenericQueriesUtil<OrdenCompra> qoc;
         DBGenericQueriesUtil<OCompraLinea> qocl;
         DBGenericQueriesUtil<Hotel> q_hotel;
-
+        
 
         public LogicaOrdenCompra()
         {

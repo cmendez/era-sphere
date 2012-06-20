@@ -27,8 +27,10 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         [DisplayName("Fecha de fin")]
         public DateTime fecha_fin { get; set; }
 
-        //[DisplayName("Ascociado a")]
-        //public string asociado_a { get; set; }
+        [DisplayName("Ascociado a")]
+        public int relacionpromocionID { get; set; }
+
+        public RelacionPromocion relacionpromocion { get; set; }
 
         //[DisplayName("Estado")]
         //public string estado { get; set; }

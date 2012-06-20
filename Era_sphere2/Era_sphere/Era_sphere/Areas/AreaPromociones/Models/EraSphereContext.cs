@@ -12,6 +12,19 @@ namespace Era_sphere.Generics
     public partial class EraSphereContext : DbContext
     {
         public DbSet<Promocion> promociones { get; set; }
-        
+        public DbSet<RelacionPromocion> relacionespromocion { get; set; }
+
+        public void seedRelacionesPromocion()
+        {
+            List<RelacionPromocion> rps = new List<RelacionPromocion>
+            {
+                new RelacionPromocion { descripcion = "Evento" },
+                new RelacionPromocion { descripcion = "Reserva" }
+            };
+            foreach (RelacionPromocion rp in rps) relacionespromocion.Add(rp);
+            SaveChanges();
+        }
+
+
     }
 }

@@ -14,6 +14,17 @@ namespace Era_sphere.Generics
     {
         public DbSet<Ambiente> ambientes { get; set; }
 
+        public void seedAmbientes()
+        {
+            List<Ambiente> ambs = new List<Ambiente>
+            {
+                //new Ambiente { descripcion = "San Valentin" },
+                //new Ambiente { descripcion = "Fiestas Patrias" },
+                //new Ambiente { descripcion = "Navidad" }
+            };
+            foreach (Ambiente amb in ambs) ambientes.Add(amb);
+            SaveChanges();
+        }
         
     }
 }

@@ -262,6 +262,7 @@
     <Compile Include="Areas\AreaPromociones\Models\LogicaPromocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
+    <Compile Include="Areas\AreaPromociones\Models\RelacionPromocion.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReporteEmpleadoController.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReporteEventoController.cs" />
     <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs" />

@@ -62,12 +62,17 @@
      Reservas
     <div class="block_cont">
 
-        <p>@Html.ActionLink("Registrar reserva", "Index", new { controller = "../AreaReservas/Reserva" , id = @id_hotel },
+        <p>@Html.ActionLink("Gestionar reservas", "Index", new { controller = "../AreaReservas/Reserva" , id = @id_hotel },
                             new { @class = "tipTop" }
                         )
                         
         </p>
         <p>@Html.ActionLink("Consultar habitaciones disponibles", "Index", new { controller = "../AreaReservas/Consulta" , ID = @id_hotel, partial = false },
+                            new { @class = "tipTop" }
+                        )
+                        
+        </p>
+        <p>@Html.ActionLink("Check-in y check-out", "Index", new { controller = "../AreaReservas/CheckInCheckOut", ID = @id_hotel, partial = false },
                             new { @class = "tipTop" }
                         )
                         

@@ -20,7 +20,9 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         }
         public ActionResult crearEntregaOC(int id_ordendecompra, int id_proveedor)
         {
-            //faltan asignar parámetros para ViewBag
+            ViewBag.proveedor = (new LogicaProveedor()).retornarProveedor(id_proveedor);
+            ViewBag.entregaoc = logica.crearEOC(id_ordendecompra);
+            ViewBag.oc = (new LogicaOrdenCompra()).retornar_orden(id_ordendecompra);
             return PartialView("EntregaOCPartial");
         }
         public ActionResult LineaOC(int id_oc)

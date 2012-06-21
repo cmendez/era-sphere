@@ -22,7 +22,7 @@
             campo1 : $("#campo1").val(),
             campo2 : $("#campo2").val(),
             campo3 : $("#campo3").val(),
-            es_precio_fijado: $("#es_precio_fijado").val(),
+            es_precio_fijado: $("#es_precio_fijado").is(":checked") ? true : false, 
             precio_fijado: parseFloat($("#precio_fijado").val()),
             precio_normal: parseFloat($("#precio_normal").val())
         };

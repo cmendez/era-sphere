@@ -344,6 +344,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
         }
         public void eliminaRelacionServicioXReserva(int reserva_id, int servicio_id)
         {
+            List<ServicioXReserva> cruce = context.servicioxreservas.Where(w => w.reservaID == reserva_id).ToList();
             ServicioXReserva x = context.servicioxreservas.First(w => w.reservaID == reserva_id && w.servicioID == servicio_id);
             tabla_servicio_x_reserva.eliminarElemento(x.ID);
         }

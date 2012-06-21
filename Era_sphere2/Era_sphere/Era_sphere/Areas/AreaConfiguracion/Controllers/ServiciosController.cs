@@ -32,7 +32,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         public JsonResult InsertServicioDeReserva(ServicioView servicio_view, int id_reserva)
         {
             Servicio s = servicio_view.deserializa(servicios_logica);
-            servicios_logica.agregarServicio(s);
+            reserva_logica.context.servicios.Add(s);
             reserva_logica.agregaRelacionServicioXReserva(id_reserva, s);
             return Json(new { ok = true });
         }

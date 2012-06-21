@@ -10,10 +10,11 @@ using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
+using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaReservas.Models
 {
-    public class Reserva : DBable
+    public class Reserva : DBable, Costeable
     {
         [ForeignKey("estado")]
         public int estadoID { get; set; }
@@ -59,7 +60,37 @@ namespace Era_sphere.Areas.AreaReservas.Models
             //LogicaRecibo log_rec = new LogicaRecibo();
             //reciboID = log_rec.nuevoRecibo();
         }
-        
 
+
+
+        public List<ReciboLinea> getReciboLineas()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int getHotelID()
+        {
+            return hotelID;
+        }
+
+        public int getPagadorID()
+        {
+            return responsable_pagoID;
+        }
+
+        public void generaReciboLineas()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void setEspacioRentableNombre()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void getEspacioRentableNombre()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

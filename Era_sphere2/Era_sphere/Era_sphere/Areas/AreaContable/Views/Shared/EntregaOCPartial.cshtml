@@ -7,6 +7,7 @@
     OrdenCompraView oc = ViewBag.oc;
     var data_eoc = new { id_eoc = eoc.entregaID };
     var data = new { id_oc=oc.ordenID};
+    bool is_edit = ViewBag.is_edit;
 }
 <div id="popupEOC">
     <ul>
@@ -101,6 +102,8 @@
     )
 
     <span class="form">
+     @if (is_edit == false)
+     {
         <button id="registrar" class="t-button t-state-default submit" style="float: right;
             margin-top: 10px; margin-bottom: 10px;">
             Registrar
@@ -109,9 +112,18 @@
             margin-right: 10px; margin-top: 10px">
             Cancelar
         </button>
+     }
+     else
+     {
+        <button id="cerrar" class="t-button t-state-default submit" style="float: right;
+            margin-right: 10px; margin-top: 10px">
+            Aceptar
+        </button>
+     }
     </span>
     
     <script type="text/javascript">
+        
         function onCompleteEOCL(e) {
 
             if (e.name == "update" || e.name == "delete") {
@@ -124,12 +136,6 @@
         }
         $("#aceptar").click(function () { cerrar_ventana_entrega(); })
         $("#registrar").click(function () {
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("RegistrarEOC", "EntregaOC", @data_eoc)',
-                contentType: 'application/json',
-                dataType: 'json'
-            });
             cerrar_ventana_entrega();
         });
         $("#eliminar").click(function () {
@@ -142,7 +148,7 @@
 
             cerrar_ventana_entrega();
         });
-        
+        $("#cerrar").click(function () { cerrar_ventana_entrega(); })
     </script>
 
 </div>

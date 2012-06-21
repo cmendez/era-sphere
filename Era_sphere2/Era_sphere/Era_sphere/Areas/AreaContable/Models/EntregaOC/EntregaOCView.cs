@@ -16,7 +16,11 @@ namespace Era_sphere.Areas.AreaContable.Models
             nro_productos = eoc.productos.Count; //ICollection <EOCLinea> productos          
             ordencompraID = eoc.orden_compraID; //virtual OrdenCompra y orden_compraID
             nombre_proveedor = eoc.orden_compra.proveedor.razon_social; // nombre del proveedor
+            proveedorID = eoc.orden_compra.proveedorID;
         }
+        [DisplayName("ID proveedor")]
+        public int proveedorID { get; set; }
+
         [DisplayName("#Entrega")]
         public int entregaID { get; set; }
         [DisplayName("# Productos")]

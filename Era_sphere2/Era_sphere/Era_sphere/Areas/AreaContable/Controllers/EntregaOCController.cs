@@ -21,6 +21,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         }
         public ActionResult crearEntregaOC(int id_ordendecompra, int id_proveedor)
         {
+            ViewBag.is_edit = false;
             ViewBag.proveedor = (new LogicaProveedor()).retornarProveedor(id_proveedor);
             ViewBag.entregaoc = logica.crearEOC(id_ordendecompra);
             ViewBag.oc = (new LogicaOrdenCompra()).retornar_orden(id_ordendecompra);
@@ -81,14 +82,24 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return View(new GridModel( entregas ));
         }
         [GridAction]
-        public ActionResult DeleteEntrega(int id_oc) {
-            logica.eliminar_entrega(id_oc);
-            return View(new GridModel());
+        public ActionResult DeleteEntrega( int id , int id_oc) {
+            logica.eliminar_entrega(id);
+            List<EntregaOCView> entregas = logica.retornar_entregas(id_oc);
+            return View(new GridModel(entregas));
         }
 
         public ActionResult DetalleEOC(int id_eoc) {
             var eoc = logica.retornar_entrega(id_eoc);
             return Json(new { eoc = eoc});
+        }
+
+        public ActionResult editarEntregaOC(int id_eoc) {
+            ViewBag.is_edit = true;
+            var eoc = logica.retornar_entrega(id_eoc);
+            ViewBag.proveedor = (new LogicaProveedor()).retornarProveedor(eoc.proveedorID);
+            ViewBag.entregaoc = eoc;
+            ViewBag.oc = (new LogicaOrdenCompra()).retornar_orden(eoc.ordencompraID);
+            return PartialView("EntregaOCPartial");
         }
     }
 }

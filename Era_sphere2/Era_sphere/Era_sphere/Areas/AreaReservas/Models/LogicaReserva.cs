@@ -332,7 +332,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             {
                 for (int j = 0; j < habitaciones_reserva[i].huespedes.Count(); j++)
                 {
-                    lista_lineas.Add(new HabitacionXReservaXClienteLineaView(habitaciones_reserva[i].huespedes.ElementAt(j).ID, habitaciones_reserva[i].ID));
+                    lista_lineas.Add(new HabitacionXReservaXClienteLineaView(habitaciones_reserva[i].huespedes.ElementAt(j).ID, habitaciones_reserva[i].habitacionID));
 
                 }
             }

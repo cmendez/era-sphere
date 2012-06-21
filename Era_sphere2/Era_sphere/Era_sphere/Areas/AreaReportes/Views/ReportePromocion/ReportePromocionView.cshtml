@@ -9,16 +9,16 @@
            <td width="50%" align="center">
               Descripcion
           </td>
-          <td width="35%" align="center">
+          <td width="40%" align="center">
               Puntos requeridos
           </td>          
-          <td width="35%" align="center">
+          <td width="40%" align="center">
               Descuento
           </td>
-          <td width="30%" align="center">
+          <td width="40%" align="center">
               Fecha de inicio
           </td>
-          <td width="30%" align="center">
+          <td width="40%" align="center">
               Fecha de fin
           </td>
           <td width="40%" align="center">
@@ -32,6 +32,8 @@
        }
        @foreach (ReportePromocion rp in Model)
        {
+           string format = "dd/MM/yyyy";
+           
            <tr border="1" bgcolor="@Odd">
                <td align="center">@rp.nombre
                </td>
@@ -41,9 +43,9 @@
                </td>
                <td align="center">@rp.descuento %
                </td>
-               <td align="center">@rp.fecha_inicio
+               <td align="center">@rp.fecha_inicio.ToString(format)
                </td>
-               <td align="center">@rp.fecha_fin
+               <td align="center">@rp.fecha_fin.ToString(format)
                </td>
                <td align="center">@rp.relacionpromocion
                </td>

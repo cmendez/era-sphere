@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "check_in";
     var hotelID = Model.hotelID;
+    string estado_nombre = (new EraSphereContext()).estados_reserva.Find(Model.estadoID).descripcion;
    // var paises = (new EraSphereContext()).paises.ToList();
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
    var estados = (new EraSphereContext()).estados_reserva.ToList();
@@ -64,15 +65,11 @@
    <fieldset>
    
 
-        <div class="editor-label"> @Html.Label("Cliente") </div>
+        <div class="editor-label"> @Html.Label("Responsable de pago") </div>
         <div class="editor-field"> @Html.TextBoxFor(model => model.responsable_pago, new {@readonly = "readonly"}) </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.estadoID) </div>
-            @( Html.Telerik().ComboBox()
-                    .Name("estadoID")
-                    .BindTo(new SelectList(estados, "ID", "descripcion"))
-                    .SelectedIndex(0)
-                )
+         <div class="editor-field"> <input class="text-box single-line" type="text" value="@estado_nombre" readonly="readonly" /> </div>
       
 
             <div class="editor-label"> @Html.LabelFor(model => model.FechaInicio) </div>

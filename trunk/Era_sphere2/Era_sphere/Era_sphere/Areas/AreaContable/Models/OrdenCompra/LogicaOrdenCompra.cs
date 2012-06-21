@@ -92,6 +92,9 @@ namespace Era_sphere.Areas.AreaContable.Models
 
         internal void elimina_orden_compra(int id_oc)
         {
+            var list = ( from item in qoc.retornarUnSoloElemento(id_oc).productos 
+                       select item.ID ).ToList();
+            foreach (var item in list ) qocl.eliminarElemento(item);
             qoc.eliminarElemento(id_oc);
         }
 

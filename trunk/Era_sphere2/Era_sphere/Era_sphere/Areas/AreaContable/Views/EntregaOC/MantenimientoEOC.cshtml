@@ -31,9 +31,38 @@
     )
 </div>
 <script type="text/javascript">
+
     function mantenimiento_complete(e) {
+        alert(e.name);
         if (e.name == "detallesEOC") {
-            var eoc = e.response.eoc;
+            var oc = e.response.eoc;
+            var url = '@Url.Action("editarEntregaOC", "EntregaOC")' + '/?id_eoc=' + oc.entregaID;
+            var windowElement = $.telerik.window.create({
+                title: "Editar Entrega Orden Compra",
+                html: '',
+                contentUrl: url,
+                modal: true,
+                resizable: true,
+                draggable: true,
+                width: 800,
+                height: 600,
+                onClose: function (e) {
+                    e.preventDefault();
+                    windowElement.data('tWindow').destroy();
+                }
+            });
+            jQuery(windowElement).attr('id', 'mantenimientoEOC');
+            var tdata = windowElement.data('tWindow');
+            tdata.center().open();
         }
+        else if (e.name == 'delete') { 
+            $('#ResumenEntrega').data('tGrid').ajaxRequest();        
+        }
+    }
+
+    function cerrar_ventana_entrega() {
+        $("#mantenimientoEOC").data('tWindow').close();
+        $("#EOCGrid").data("tGrid").ajaxRequest();
+        $("#ResumenEntrega").data("tGrid").ajaxRequest();
     }
 </script>

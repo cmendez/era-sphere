@@ -23,9 +23,9 @@
             campo2 : $("#campo2").val(),
             campo3 : $("#campo3").val(),
             es_precio_fijado: $("#es_precio_fijado").val(),
-            precio_fijado: parseFloat($("#precio_fijado").val())
+            precio_fijado: parseFloat($("#precio_fijado").val()),
+            precio_normal: parseFloat($("#precio_normal").val())
         };
-        console.log(servicio.precio_fijado);
         if(servicio.tipo_servicioID == ""){
          servicio = null;
          alert("Debe especificar un tipo de servicio");
@@ -58,9 +58,10 @@
         $.ajax({
             url: '@Url.Action("ObtieneTipo", "TipoServicio")',
             traditional: true,
-            data: { tipo_id: e.value },
+            data: { tipo_id: e.value, hotel_id: hotel_id },
             success: function (data) {
                 resetForm();
+                precio_normal = data.precio_normal;
                 data = data.tipo;
                 if (data.tiene_repeticiones) $("#repeticion").show();
                 if (data.tiene_productos_asociados) $("#productos_table").show();
@@ -76,6 +77,7 @@
                     $("#campo_3").show();
                     document.getElementById("label_campo3").innerHTML = (data.campo3);
                 }
+                $("#precio_normal").val(precio_normal);
             },
             type: "POST",
             async: true
@@ -134,6 +136,10 @@
     <div id="productos_table" style="display:none">
     </div>
 
+    <div id="precio_normal_div">
+        <div class="editor-label"> @Html.LabelFor(model => model.precio_normal)</div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.precio_normal, new { @readonly = "readonly" }) </div>
+    </div>
     <div id="precio_fijado_div">
         <div class="editor-label"> @Html.LabelFor(model => model.es_precio_fijado)</div>
         <div class="editor-field"> @Html.CheckBoxFor(model => model.es_precio_fijado) </div>

@@ -250,7 +250,7 @@
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXTipoServicioXTemporadaView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXTipoServicioXTemporada.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\InterfazLogicaHotelXServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\LogicaHotelXServicioXTemporada.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\LogicaHotelXTipoServicioXTemporada.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\HotelXTipoHabitacionXTemporada.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\HotelXTipoHabitacionXTemporadaView.cs" />

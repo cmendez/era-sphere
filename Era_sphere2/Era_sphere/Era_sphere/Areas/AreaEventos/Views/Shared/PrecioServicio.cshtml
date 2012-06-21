@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "PrecioServicio";
+    var precio=ViewBag.precio;
+}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        if (!(@precio >0.0)) {
+            $("#pu").hide();
+            $("#fijado").show();
+            $("#repeticiones").hide();
+        }
+        else {
+            $("#fijado").hide();
+            $("#repeticiones").show();
+        }
+        
+    });
+</script>
+
+<div id="pu">
+<label>Precio unitario:</label>
+@precio
+</div>

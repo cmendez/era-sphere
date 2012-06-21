@@ -15,7 +15,8 @@ namespace Era_sphere.Areas.AreaClientes.Models
         
         //llega una habitacion
         [DisplayName("Habitación Asignada")]
-        public int id_habitacion { get; set; }
+        public string habitacion_asignada { get; set; }
+        //public int id_habitacion_asignada { get; set; }
         
         [DisplayName("Estado")]
         public int id_estado { get; set; }
@@ -118,7 +119,8 @@ namespace Era_sphere.Areas.AreaClientes.Models
             direccion = cliente.direccion;
             usuario = cliente.usuario;
             contrasenha = cliente.password;
-            id_habitacion = cliente.id_habitacion_asisgnada;  
+            habitacion_asignada = cliente.habitacion_asignada;
+            
             ciudadID = cliente.ciudadID;
             paisID = cliente.paisID;
             puntos_cliente = cliente.puntos_cliente;
@@ -149,7 +151,8 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     direccion = this.direccion,
                     usuario = this.usuario,
                     password = this.contrasenha,
-                    id_habitacion_asisgnada = this.id_habitacion,
+                    habitacion_asignada = this.habitacion_asignada,
+                    //id_habitacion_asisgnada = this.id_habitacion,
                     ciudadID = this.ciudadID,
                     ciudad = logica.context.ciudades.Find(this.ciudadID),
                     paisID = this.paisID,

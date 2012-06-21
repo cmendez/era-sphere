@@ -61,7 +61,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
                 Habitacion h = context.habitaciones.Find(id);
                 agregaRelacion(r, h);
                 r.registraReciboLinea(new AreaContable.Models.Recibo.ReciboLinea("   " + "Habitacion " + h.detalle,
-                              new TipoHabitacionView(h.tipoHabitacion, r.hotelID).costo , 1, DateTime.Now, false, r.dias_estadia));
+                              new TipoHabitacionView(h.tipoHabitacion, r.hotelID).costo * r.dias_estadia , 1, DateTime.Now, false, r.dias_estadia));
             }
         }
 

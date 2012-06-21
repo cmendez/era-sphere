@@ -7,6 +7,7 @@ using System.Data;
 using System.ComponentModel;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaReservas.Models;
+using Era_sphere.Areas.AreaReservas.Models.Consultas;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {
@@ -171,6 +172,54 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     break;
                 }
              }
+
+            if (reserva.estado.ID == 2)
+            {
+                asignarHabitacionesHuespedesReserva(reserva);
+            }
+        
+        
+        }
+
+
+        public void asignarHabitacionesHuespedesReserva(Reserva reserva)
+        {
+            LogicaReserva reserva_logica = new LogicaReserva();
+            List<HabitacionXReserva> habitaciones_reserva = context.habitacion_x_reserva.Where(x => x.reservaID == reserva.ID).ToList();
+
+            for (int i = 0; i < habitaciones_reserva.Count(); i++)
+            {
+                string habitacion = context.habitaciones.Find(habitaciones_reserva[i].habitacionID).detalle;
+
+                for (int j = 0; j < habitaciones_reserva[i].huespedes.Count(); j++)
+                {
+                    habitaciones_reserva[i].huespedes.ElementAt(j).estadoID = 3;
+                    habitaciones_reserva[i].huespedes.ElementAt(j).estado = context.estados_cliente.Find(3);
+                    habitaciones_reserva[i].huespedes.ElementAt(j).habitacion_asignada = habitacion;
+                    modificarCliente(habitaciones_reserva[i].huespedes.ElementAt(j));
+
+                }
+            }
+        }
+
+
+
+        public void DesasignarHabitacionesHuespedesReserva(Reserva reserva)
+        {
+            LogicaReserva reserva_logica = new LogicaReserva();
+            List<HabitacionXReserva> habitaciones_reserva = context.habitacion_x_reserva.Where(x => x.reservaID == reserva.ID).ToList();
+
+            for (int i = 0; i < habitaciones_reserva.Count(); i++)
+            {
+                
+
+                for (int j = 0; j < habitaciones_reserva[i].huespedes.Count(); j++)
+                {
+                    cambiarEstadoCheckOutCliente(habitaciones_reserva[i].huespedes.ElementAt(j).ID, reserva);
+                   
+
+                }
+            }
         }
 
 
@@ -191,6 +240,29 @@ namespace Era_sphere.Areas.AreaClientes.Models
                     break;
                 }
             }
+
+            DesasignarHabitacionesHuespedesReserva(reserva);
+        }
+
+
+        //bicho prueba
+        public void cambiarEstadoCheckOutCliente(int id_cliente, Reserva reserva)
+        {
+            Cliente cliente = retornarCliente(id_cliente);
+          
+
+         
+                if ((reserva.estado.ID == 3) || (reserva.estado.ID == 4))
+                {
+
+                    // falta condicion para que se pueda determinar si se debe cambiar a sin reserva o con reserva
+                    cliente.estadoID = 1;
+                    cliente.estado = context.estados_cliente.Find(1);
+                    cliente.habitacion_asignada = "-";
+                    modificarCliente(cliente);
+                   
+                }
+            
         }
 
 
@@ -236,14 +308,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
             }
         }
 
-        //para asignar una habitación a un cliente
-        public void asignarHabitacionCliente(Reserva reserva)
-        {
-            List<Cliente> clientes = new List<Cliente>();
-            clientes = retornarClientes();
-            
 
-        }
 
 
         public int toCliente(string cliente_raw)

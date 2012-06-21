@@ -38,10 +38,38 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         //newbie
         public ActionResult CheckIn(int reserva_id)
         {
+            LogicaReserva reserva_logica = new LogicaReserva();
+            ReservaView reserva_view = new ReservaView(reserva_logica.retornarReserva(reserva_id), reserva_logica);
             
-            return PartialView("CheckInViewTemplate", new ReservaView(reserva_id));
+            return PartialView("CheckInViewTemplate", reserva_view);
         }
 
+
+        public ActionResult CheckOut(int reserva_id)
+        {
+            LogicaReserva reserva_logica = new LogicaReserva();
+            ReservaView reserva_view = new ReservaView(reserva_logica.retornarReserva(reserva_id), reserva_logica);
+
+            return PartialView("CheckOutViewTemplate", reserva_view);
+        }
+
+
+        public JsonResult RealizarCheckIn(int reserva_id)
+        {
+            Reserva reserva = reserva_logica.retornarReserva(reserva_id);
+            reserva_logica.cambiarEstadoReservaCheckIn(reserva);
+
+            return Json(new { OK = true });
+        }
+
+
+        public JsonResult RealizarCheckOut(int reserva_id)
+        {
+            Reserva reserva = reserva_logica.retornarReserva(reserva_id);
+            reserva_logica.cambiarEstadoCheckOut(reserva);
+
+            return Json(new { OK = true });
+        }
 
 
     }

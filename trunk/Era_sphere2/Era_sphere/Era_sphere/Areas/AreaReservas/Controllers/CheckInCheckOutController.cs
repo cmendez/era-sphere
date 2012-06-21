@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Areas.AreaReservas.Models;
 using Telerik.Web.Mvc;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaReservas.Controllers
 {
@@ -58,7 +59,6 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         {
             Reserva reserva = reserva_logica.retornarReserva(reserva_id);
             reserva_logica.cambiarEstadoReservaCheckIn(reserva);
-
             return Json(new { OK = true });
         }
 

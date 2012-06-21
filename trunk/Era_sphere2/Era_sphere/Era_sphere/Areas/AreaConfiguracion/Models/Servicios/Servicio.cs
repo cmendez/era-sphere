@@ -62,7 +62,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public void generaReciboLineas()
         {
             ReciboLinea linea = new ReciboLinea(tipo_servicio.nombre + ": " + this.descripcion, precio_final, 0, DateTime.Now, false);
-           
+            registraReciboLinea(linea);
 
         }
 

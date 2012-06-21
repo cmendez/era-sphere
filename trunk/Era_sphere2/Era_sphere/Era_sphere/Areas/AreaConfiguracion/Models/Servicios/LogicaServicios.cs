@@ -94,6 +94,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public void agregarServicio(Servicio s)
         {
             tabla_servicios.agregarElemento(s);
+            s.generaReciboLineas();
         }
 
         #region evento

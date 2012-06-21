@@ -265,10 +265,20 @@
     <Compile Include="Areas\AreaPromociones\Models\RelacionPromocion.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReporteEmpleadoController.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReporteEventoController.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ObjetoReporteEmpleado.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ReporteEmpleados.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteEvento\ReporteEvento.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\ReportePromocionController.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ObjetoReporteEmpleado.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ReporteEmpleados.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReportes\Models\ReporteEvento\ReporteEvento.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaReportes\Models\ReportePromocion\ReportePromocion.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\CheckInCheckOutController.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\ConsultaController.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
@@ -1332,6 +1342,8 @@
     <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
     <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckOutViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\HotelXTipoHabitacionXTemporada\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReportePromocion\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

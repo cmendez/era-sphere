@@ -12,7 +12,7 @@ using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
-    public class Servicio : Costeable
+    public class Servicio : DBable, Costeable
     {
         public Servicio() {
         }
@@ -34,19 +34,29 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         public virtual ICollection<ReciboLineaServicio> recibos_linea { get; set; }
         
-        public override List<ReciboLinea> generarReciboLineas()
+        //si su precio es fijado, usa el valor dado por precio_fijado
+        public bool es_precio_fijado {get; set;}
+        public decimal precio_fijado {get; set;}
+        
+
+        public List<ReciboLinea> getReciboLineas()
         {
-            return null;
-            /*if (recibos_linea.Count() > 0) return recibos_linea;
-            var lista = new List<ReciboLineaServicio>();
-            ReciboLinea rec = new ReciboLinea(descripcion, 0, this.repeticiones);
-            lista.Add(rec);
-            if (tipo_servicio.tiene_productos_asociados)
-            {
-                   foreach (var pxs in productos)
-                       lista.Add(new ReciboLinea(pxs.producto.descripcion, 1, pxs.unidades));
-            }
-            return lista;*/
+            throw new NotImplementedException();
+        }
+
+        public int getHotelID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int getPagadorID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void generaReciboLineas()
+        {
+            throw new NotImplementedException();
         }
     }
 }

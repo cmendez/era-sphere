@@ -71,7 +71,7 @@
       <DependentUpon>GridLocalization.es-ES.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
-    <Compile Include="Areas\AreaCargos\Models\Costeable.cs" />
+    <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
     <Compile Include="Areas\AreaClientes\AreaClientesAreaRegistration.cs" />
     <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs" />
     <Compile Include="Areas\AreaClientes\Models\Cliente.cs" />
@@ -238,7 +238,7 @@
     <Compile Include="Areas\AreaEventos\Models\Participante\ParticipanteView.cs" />
     <Compile Include="Areas\AreaEventos\Models\Participante\Participante.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXProductoController.cs" />
-    <Compile Include="Areas\AreaHoteles\Controllers\HotelXServicioXTemporadaController.cs" />
+    <Compile Include="Areas\AreaHoteles\Controllers\HotelXTipoServicioXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXTipoHabitacionXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\EraSphereContext.cs" />
@@ -246,11 +246,11 @@
     <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\HotelXProductoView.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\InterfazLogicaHotelXProducto.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\LogicaHotelXProducto.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\HotelXServicioXTemporadaView.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\HotelXServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\InterfazLogicaHotelXServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\LogicaHotelXServicioXTemporada.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXTipoServicioXTemporadaView.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXTipoServicioXTemporada.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\InterfazLogicaHotelXServicioXTemporada.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\LogicaHotelXServicioXTemporada.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\HotelXTipoHabitacionXTemporada.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\HotelXTipoHabitacionXTemporadaView.cs" />
@@ -1167,6 +1167,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AreaCargos\Controllers\" />
+    <Folder Include="Areas\AreaCargos\Models\" />
     <Folder Include="Areas\AreaCargos\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Models\Ambientes\" />
     <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
@@ -1250,9 +1251,9 @@
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteNaturalShowTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteNaturalIndexView.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXServicioXTemporadaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXTipoServicioXTemporadaViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\HotelXServicioXTemporada\Index.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\HotelXTipoServicioXTemporada\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\BuscarComodidades.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\DetalleClienteTemplate.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\AsistenciaEmpleado\Index.cshtml" />
@@ -1310,7 +1311,6 @@
     <Content Include="Areas\AreaEventos\Views\Evento\CargarAmbiente.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexReporteEmpleado.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexFormReporteEmpleado.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml" />
     <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\CrearServicio.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\HotelXProducto\Index.cshtml" />

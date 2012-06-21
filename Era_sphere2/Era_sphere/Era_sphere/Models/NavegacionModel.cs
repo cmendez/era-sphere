@@ -200,6 +200,36 @@ namespace Era_sphere.Models
             menu.Add(new Link { Nombre = "Almacenes", Url = "#", Icono = "icon_pen", Sublinks = sub });
         }
 
+        void agregarReportes()
+        {
+            List<SubLink> AreaReportes = new List<SubLink>();
+
+            AreaReportes.Add(new SubLink
+            {
+                Nombre = "Reporte de Promociones",
+                Url = "/AreaReportes/ReportePromocion"
+            });
+
+
+            AreaReportes.Add(new SubLink
+            {
+                Nombre = "Reporte de Eventos",
+                Url = "/AreaReportes/ReporteEvento"
+            });
+        
+            menu.Add(
+                new Link()
+                {
+                    Nombre = "Reportes",
+                    Url = "#",
+                    Icono = "icon_pen",
+                    Sublinks = AreaReportes
+
+                }
+                );
+        }
+
+
         void agregarAreaClientes()
         {
             this.menu.Add(new Link()
@@ -221,8 +251,9 @@ namespace Era_sphere.Models
             agregarAreaEmpleados();
             agregarAreaHotel();
             agregarConfiguracion();
-            agregarContable();
+            //agregarContable();
             agregarAlmacenes();
+            agregarReportes();
 
             this.menu.Add(new Link()
             {

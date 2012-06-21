@@ -19,7 +19,7 @@
                 com.Delete().ButtonType(GridButtonType.Image);
             });
         })
-        .ClientEvents( ev => ev.OnComplete( "manteniento_complete" ))
+        .ClientEvents( ev => ev.OnComplete( "mantenimiento_complete" ))
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("SelectEntregas", "EntregaOC", new { id_oc = @oc.ordenID })

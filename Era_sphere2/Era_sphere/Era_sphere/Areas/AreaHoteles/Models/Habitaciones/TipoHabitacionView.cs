@@ -5,19 +5,21 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class TipoHabitacionView
     {
         public TipoHabitacionView() { }
-        public TipoHabitacionView(TipoHabitacion tipoHabitacion)
+        public TipoHabitacionView(TipoHabitacion tipoHabitacion, int hotelID = 0)
         {
             costo_base = tipoHabitacion.costo_base;
             descripcion = tipoHabitacion.descripcion;
             cap_max_personas = tipoHabitacion.cap_max_personas;
             ID = tipoHabitacion.ID;
-            
+            this.hotelID = hotelID;
+            numero_camas = tipoHabitacion.numero_camas;
         }
         [Required]
         [DisplayName("Descripcion")]
@@ -31,6 +33,20 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [DisplayName("Costo base")]
         [Range(0, Era_sphere.Generics.StringsDeValidaciones.infinito)]
         public decimal costo_base { get; set; }
+
+        public int hotelID {get; set;}
+        public int numero_camas { get; set; }
+        [DisplayName("Precio por noche")]
+        public decimal costo
+        {
+            get
+            {
+                if (ID == 0) return 0;
+                LogicaHotelXTipoHabitacionXTemporada logica = new LogicaHotelXTipoHabitacionXTemporada();
+                return logica.getPrecioTipoHabitacion(hotelID, ID, DateTime.Now);
+            }
+        }
+
         public string[] comodidades_descripcion { get; set; }
         public int[] comodidades_id { get; set; }
         public TipoHabitacion deserializa(LogicaTipoHabitacion logica)

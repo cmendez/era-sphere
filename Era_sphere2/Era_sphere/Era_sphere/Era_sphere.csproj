@@ -1331,6 +1331,7 @@
     <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
     <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckOutViewTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\HotelXTipoHabitacionXTemporada\Index.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

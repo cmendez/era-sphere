@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
 
 namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
 {
@@ -59,6 +60,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
             HotelXTipoHabitacionXTemporada hpt = hxthxt.deserializa();
             database_table.modificarElemento(hpt, hpt.ID);
             return;            
+        }
+
+        public decimal getPrecioTipoHabitacion(int hotelID, int tipo_habitacionID, DateTime fecha)
+        {
+            LogicaTemporada lt = new LogicaTemporada();
+            Temporada temporada = lt.retornarTemporada(fecha);
+            var res = this.hxthxt_context.hxthxts.FirstOrDefault(x => x.hotelID == hotelID && x.temporadaID == temporada.ID && x.tipoHabitacionID == tipo_habitacionID);
+            return res == null ? this.hxthxt_context.tipos_habitacion.Find(tipo_habitacionID).costo_base : res.precio;
         }
     }
 }

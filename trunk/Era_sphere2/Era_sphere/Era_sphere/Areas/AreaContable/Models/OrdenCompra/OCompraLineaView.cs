@@ -16,7 +16,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             cantidad = ocl.cantidad;
             cantidad_recibida = ocl.cantidad_recibida;
             precio_total = ocl.precio_total;
-            precio_unitario = (decimal)ocl.producto.precio_unitario;
+            precio_unitario = (decimal)ocl.precio_unitario;
             ID = ocl.ID;
             //falta incluir la colección de ENTREGAS
         }

@@ -78,6 +78,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             ocl.producto = context.p_x_p.Find(id_producto);
             ocl.cantidad = cantidad;
             ocl.precio_total = (decimal)cantidad * (decimal)ocl.producto.precio_unitario;
+            ocl.precio_unitario = (decimal)ocl.producto.precio_unitario;
             ocl.orden_compra = oc;
             
             DBGenericQueriesUtil<OrdenCompra> q = new DBGenericQueriesUtil<OrdenCompra>(context, context.ordenes_compra);
@@ -160,7 +161,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             if (ocl_view.cantidad <= 0) throw new Exception("Ingrese un numero mayor que 0");
             ocl_model.cantidad = ocl_view.cantidad;
             
-            ocl_model.precio_total = ocl_model.cantidad * (decimal)ocl_model.producto.precio_unitario;
+            ocl_model.precio_total = ocl_model.cantidad * (decimal)ocl_model.precio_unitario;
             OrdenCompra oc = ocl_model.orden_compra;
             oc.update_precio_total();
             qocl.modificarElemento(ocl_model, ocl_model.ID);

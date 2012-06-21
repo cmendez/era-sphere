@@ -1,0 +1,39 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models
+@{
+    var oc = ViewBag.oc;
+}
+<div>
+ @(Html.Telerik().Grid<EntregaOCView>()
+        .Name("EOCGrid")
+        .Localizable("es-ES")
+        .DataKeys(d => d.Add(p => p.entregaID))
+        .Columns(columns =>
+        {
+            columns.Bound(o => o.entregaID).Width(100).ReadOnly(true);
+            columns.Bound(o => o.fecha_entrega).Width(200).ReadOnly(true);
+            columns.Bound(o => o.nombre_proveedor).Width(50);
+            columns.Command( com => {
+                com.Custom("detallesEOC").Ajax(true).Action("DetalleEOC","EntregaOC").Text("Editar")
+                    .DataRouteValues( data => data.Add( o => o.entregaID ).RouteKey("id_eoc"));
+                com.Delete().ButtonType(GridButtonType.Image);
+            });
+        })
+        .ClientEvents( ev => ev.OnComplete( "manteniento_complete" ))
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectEntregas", "EntregaOC", new { id_oc = @oc.ordenID })
+            .Delete("DeleteEntrega", "EntregaOC", new { id_oc = @oc.ordenID })
+        ).Filterable()
+        .Groupable()
+        .Resizable( reorder => reorder.Columns(true))
+        .Resizable( re => re.Columns(true) ).Pageable()
+    )
+</div>
+<script type="text/javascript">
+    function mantenimiento_complete(e) {
+        if (e.name == "detallesEOC") {
+            var eoc = e.response.eoc;
+        }
+    }
+</script>

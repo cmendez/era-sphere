@@ -1,0 +1,77 @@
+﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Servicios.ServicioView
+@using Telerik.Web.Mvc.UI;
+
+
+@{
+    ViewBag.Title = "ServicioViewTemplate";
+    var servicios = (new Era_sphere.Generics.EraSphereContext()).tipo_servicios;
+    var idEvento = ViewBag.idevento;
+    var idHotel = ViewBag.idHotel;
+    ViewBag.idHotel = idHotel;
+    ViewBag.idEvento = idEvento;
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+
+    function traerPrecio(e) {
+        event.preventDefault();
+        //alert(e.Index);
+        //var tipo_servicio=e.Index;
+        //var comboInstance = document.getElementById('tipo_servicioID-input');
+        //alert(comboInstance.value())
+        var tipo_serviciot = parseInt($("#tipo_servicioID").data("tComboBox").value());
+        
+        
+        
+        
+        $("#ff").load('@Url.Action("ServicioPrecio", "Evento")', { idEvento: @idEvento, idHotel:  @idHotel, tipo_servicio: tipo_serviciot });
+
+    }
+    </script>
+
+@Html.ValidationSummary(true)
+
+        
+    <div class="editor-label">
+        @Html.LabelFor(model => model.detalle)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.detalle)
+        @Html.ValidationMessageFor(model => model.detalle)
+    </div>
+    
+    <p>
+        <label> Tipo de servicio : </label>
+        @( Html.Telerik().ComboBox()
+            .Name("tipo_servicioID")
+            .ClientEvents(events => events.OnClose("traerPrecio"))
+            .BindTo(new SelectList(servicios, "ID", "descripcion"))
+            .Placeholder("Tipo de servicio")
+        )
+    </p>
+    <div id="ff"></div>
+    <div style="display:none" id="repeticiones">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.repeticiones)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.repeticiones)
+            @Html.ValidationMessageFor(model => model.repeticiones)
+        </div>
+    </div>
+    <div style="display:none" id="fijado">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.precio_fijado)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.precio_fijado)
+            @Html.ValidationMessageFor(model => model.precio_fijado)
+        </div>
+    </div>
+    
+    
+    
+
+

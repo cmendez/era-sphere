@@ -216,7 +216,13 @@ namespace Era_sphere.Models
                 Nombre = "Reporte de Eventos",
                 Url = "/AreaReportes/ReporteEvento"
             });
-        
+
+            AreaReportes.Add(new SubLink
+            {
+                Nombre = "Reporte de Clientes",
+                Url = "/AreaReportes/ReporteCliente"
+            });
+
             menu.Add(
                 new Link()
                 {

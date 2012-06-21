@@ -58,7 +58,7 @@ namespace Era_sphere.Generics
                 ciudadID = ciudad.ID,
                 tipo = natural,
                 tipoID = natural.ID,
-                tarjeta_cliente = "aaa",
+                tarjeta_cliente = "7364492389",
                 tipo_documento = tipo_doc,
                 tipo_documentoID = tipo_doc.ID,
                 documento_identidad = "121321321",
@@ -66,6 +66,7 @@ namespace Era_sphere.Generics
                 apellido_paterno = "lepage",
                 estado = sin_reserva,
                 estadoID = sin_reserva.ID,
+                usuario = "xurrepompom"
             };
             Cliente c2 = new Cliente
             {
@@ -77,7 +78,7 @@ namespace Era_sphere.Generics
                 ciudadID = ciudad.ID,
                 tipo = natural,
                 tipoID = natural.ID,
-                tarjeta_cliente = "asdfdsaf",
+                tarjeta_cliente = "1827492811",
                 tipo_documento = tipo_doc,
                 tipo_documentoID = tipo_doc.ID,
                 documento_identidad = "11235813",
@@ -85,6 +86,7 @@ namespace Era_sphere.Generics
                 apellido_paterno = "tamagotchi",
                 estado = sin_reserva,
                 estadoID = sin_reserva.ID,
+                usuario = "aquispesaravia"
             };
             Cliente c3 = new Cliente
             {
@@ -96,12 +98,13 @@ namespace Era_sphere.Generics
                 ciudadID = ciudad.ID,
                 tipo = juridico,
                 tipoID = juridico.ID,
-                tarjeta_cliente = "zxcvzv",
+                tarjeta_cliente = "1009399482",
                 tipo_documento = tipo_doc,
                 tipo_documentoID = tipo_doc.ID,
                 ruc = "1234345457",
                 estado = sin_reserva,
                 estadoID = sin_reserva.ID,
+                usuario = "piticlin"
             };
             clientes.Add(c1);
             clientes.Add(c2);

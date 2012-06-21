@@ -15,6 +15,8 @@ namespace Era_sphere.Areas.AreaCargos.Models
         int getHotelID();
         int getPagadorID();
         void generaReciboLineas();
+        void setEspacioRentableNombre();
+        void getEspacioRentableNombre();
         //void addReciboPagado();
     }
 }

@@ -37,6 +37,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Precio normal unitario")]
         public decimal precio_normal { get; set; }
          
+        [DisplayName("Precio a pagar")]
+        
         public ServicioView() { }
 
         public ServicioView(Servicio servicio)

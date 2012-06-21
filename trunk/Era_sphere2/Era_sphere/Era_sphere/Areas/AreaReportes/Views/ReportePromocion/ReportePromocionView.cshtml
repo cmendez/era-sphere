@@ -1,25 +1,28 @@
-﻿﻿@using Era_sphere.Areas.AreaReportes.Models.ReporteEvento;
-   @model List<ReporteEvento>
+﻿﻿@using Era_sphere.Areas.AreaReportes.Models.ReportePromocion;
+   @model List<ReportePromocion>
    <br />
    <table cellpadding="3" cellspacing="3">
        <tr border="1" bgcolor="#777777" color="#ffffff">
            <td width="50%" align="center">
-              Hotel
+              Nombre
            </td>
            <td width="50%" align="center">
-              Evento
+              Descripcion
           </td>
-          <td width="30%" align="center">
-              Número de Ambientes
+          <td width="35%" align="center">
+              Puntos requeridos
           </td>          
           <td width="35%" align="center">
-              Número de Participantes
+              Descuento
           </td>
           <td width="30%" align="center">
-              Número de Servicios
+              Fecha de inicio
           </td>
           <td width="30%" align="center">
-              Precio total
+              Fecha de fin
+          </td>
+          <td width="40%" align="center">
+              Asociado a
           </td>
       </tr>
       @{
@@ -27,20 +30,22 @@
            var evenColor = "#EEFFFF";
            var Odd = OddColor;
        }
-       @foreach (ReporteEvento re in Model)
+       @foreach (ReportePromocion rp in Model)
        {
            <tr border="1" bgcolor="@Odd">
-               <td align="center">@re.hotel
+               <td align="center">@rp.nombre
                </td>
-               <td align="center">@re.evento
+               <td align="center">@rp.descripcion
                </td>
-               <td align="center">@re.numAmb
+               <td align="center">@rp.puntos_requeridos
                </td>
-               <td align="center">@re.numPart
+               <td align="center">@rp.descuento %
                </td>
-               <td align="center">@re.numServ
+               <td align="center">@rp.fecha_inicio
                </td>
-               <td align="center">@re.precioTotal
+               <td align="center">@rp.fecha_fin
+               </td>
+               <td align="center">@rp.relacionpromocion
                </td>
            </tr>
            if (Odd == OddColor)

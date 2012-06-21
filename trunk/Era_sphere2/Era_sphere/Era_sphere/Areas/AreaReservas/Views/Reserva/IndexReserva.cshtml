@@ -47,7 +47,7 @@
             $.ajax({
                        url: '@Url.Action("SubConsulta", "Consulta")',
                        traditional: true,
-                       data: { hab_ids: hab_ids },
+                       data: { hab_ids: hab_ids, hotel_id : @ViewData["hotelID"] },
                        type: "POST",
                        success: function (data) { document.getElementById("todo").innerHTML = data; },
                        async: false

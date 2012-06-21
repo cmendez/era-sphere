@@ -23,6 +23,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Participante
         public string nombre { get; set; }
         [Required]
         //falta limite
+        [MinLength(8)]
+        [MaxLength(8)]
         [DisplayName("Dni")]
         public string dni{ get; set; }
         [Required]

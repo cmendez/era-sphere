@@ -23,16 +23,21 @@
             @Html.EditorFor(model => model.nombre)
             @Html.ValidationMessageFor(model => model.nombre)
         </div>
+      
+      
         <div class="editor-label">
-            @Html.LabelFor(model => model.num_participantes)
+            @Html.LabelFor(model => model.fecha_inicio)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.num_participantes)
-            @Html.ValidationMessageFor(model => model.num_participantes)
+        <div>
+            @(Html.Telerik().DateTimePicker()
+                    .Name("fecha_inicio")
+                    .HtmlAttributes(new { id = "DateTimePicker_wrapper" })
+                    .Interval(30)
+                    .Value(DateTime.Now)
+                    .Min(DateTime.Now)
+             )
         </div>
-     
 
-        
         @*@{Html.Telerik().Window().Name("MostrarDetalleNaturalPopup")
         .Title("Buscar cliente").LoadContentFrom("Prueba", "Evento", new {id = 1})
             .Modal(true)

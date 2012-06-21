@@ -69,5 +69,14 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
         }
 
 
+
+        internal int retonarCapacidad(int idEvento)
+        {
+            int cantidad=0;
+            List<EventoXAmbiente> ambientes = database_table.retornarTodos().Where(e => e.eventoID==idEvento).ToList();
+            foreach (EventoXAmbiente amb in ambientes)
+                cantidad += amb.ambiente.capacidad_maxima;
+            return cantidad;
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Tipo de servicio")]
         public int tipo_servicioID { get; set; }
         public DateTime? fecha_y_hora { get; set; }
+        [DisplayName("Repeticiones")]
         public int repeticiones { get; set; }
 
         public string campo1 { get; set; }
@@ -38,8 +39,14 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Precio normal unitario")]
         public decimal precio_normal { get; set; }
 
+
+        public int eventoID { get; set; }
+
+
+
         [DisplayName("Precio final")]
         public decimal precio_final { get; set; }
+
 
         public ServicioView() { }
 
@@ -56,7 +63,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             es_precio_fijado = servicio.es_precio_fijado;
             precio_fijado = servicio.precio_fijado;
             precio_normal = servicio.precio_normal;
+
+            eventoID = servicio.eventoID;
+
             precio_final = servicio.precio_final;
+
         }
 
         public Servicio deserializa(LogicaServicios logica)
@@ -74,7 +85,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                 campo3 = this.campo3,
                 precio_fijado = this.precio_fijado,
                 es_precio_fijado = this.es_precio_fijado,
-                precio_normal = this.precio_normal
+                precio_normal = this.precio_normal,
+                eventoID=this.eventoID
             };
 
         }

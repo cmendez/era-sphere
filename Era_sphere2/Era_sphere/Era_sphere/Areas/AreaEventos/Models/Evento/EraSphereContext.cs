@@ -19,5 +19,6 @@ namespace Era_sphere.Generics
             estados_evento.Add(new EstadoEvento { ID = 4, descripcion = "PTotal" });
             estados_evento.Add(new EstadoEvento { ID = 5, descripcion = "Cancelado" });
         }
+        
     }
 }

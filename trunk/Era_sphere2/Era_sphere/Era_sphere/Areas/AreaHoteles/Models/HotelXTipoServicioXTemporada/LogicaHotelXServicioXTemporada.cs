@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
 
 namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
 {
@@ -70,6 +71,14 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
         internal System.Web.Mvc.IView retornarHotelXServiciosXTemporada(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public decimal getPrecioTipoServicio(int tipo_servicioID, int hotelID, DateTime fecha)
+        {
+            LogicaTemporada lt = new LogicaTemporada();
+            Temporada temporada = lt.retornarTemporada(fecha);
+            var res = hxsxt_context.hxsxts.FirstOrDefault(x => x.hotelID == hotelID && x.temporadaID == temporada.ID && x.tipo_servicioID == tipo_servicioID);
+            return res == null ? 0 : res.precio;
         }
     }
 }

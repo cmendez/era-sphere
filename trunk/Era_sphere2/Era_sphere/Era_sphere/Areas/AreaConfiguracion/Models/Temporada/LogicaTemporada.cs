@@ -58,5 +58,16 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
         {
             return database_table.retornarTodos();
         }
+
+        public Temporada retornarTemporada(DateTime fecha)
+        {
+            List<Temporada> validos = retornarTemporadas2().Where(t => t.fecha_inicio <= fecha && t.fecha_fin >= fecha).ToList();
+            Temporada res = validos[0];
+            for(int i = 1; i < validos.Count(); i++){
+                int cmp = (res.fecha_fin - res.fecha_inicio).CompareTo(validos[i].fecha_fin - validos[i].fecha_inicio);
+                if (cmp == 1 || cmp == 0 && validos[i].fecha_inicio > res.fecha_inicio) res = validos[i];
+            }
+            return res;
+        }
     }
 }

@@ -47,7 +47,7 @@
                             data: JSON.stringify( { id_hotel : id_hotel_v } ),
                             success: function (result) {
                                 $("#HotelesGrid").data('tGrid').ajaxRequest();
-                                $('#div_combo').load('@Url.Action("SelectPartialHotel", "Proveedor")' + '/' + @proveedor.ID );
+                                $('#div_combo').load('@Url.Action("SelectPartialHotel", "Proveedor")' + '/?id_proveedor=' + @proveedor.ID );
                            }
                         });
                     }

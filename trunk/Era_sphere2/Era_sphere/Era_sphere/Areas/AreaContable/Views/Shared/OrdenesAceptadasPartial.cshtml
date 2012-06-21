@@ -76,9 +76,8 @@
         }
         else if (e.name == "agregarEntrega") {
             var oc = e.response.orden_compra;
-            var url = '@Url.Action("crearEntregaOC", "EntregaOC")' + '/?id_ordendecompra=' + oc.ordenID + '&id_proveedor=' + proveedor.ID;
-            var windowElement = $.telerik.window.create({
-                name : 'popupEOrdenCompra' , 
+            var url = '@Url.Action("crearEntregaOC", "EntregaOC")' + '/?id_ordendecompra=' + oc.ordenID + '&id_proveedor=' + oc.proveedorID;
+            var windowElement = $.telerik.window.create({ 
                 title: "Registrar Entrega de Orden de Compra",
                 html: '',
                 actions: [],
@@ -93,9 +92,13 @@
                     windowElement.data('tWindow').destroy();
                 }
             });
+            jQuery(windowElement).attr('id', 'popupEntrega');
             var tdata = windowElement.data('tWindow');
-            jQuery(windowElement).attr('id', 'popupEOrdenCompra');
             tdata.center().open();
         }
+    }
+    function cerrar_ventana_entrega(){
+        $("#popupEntrega").data('tWindow').close();
+        $("#AceptadasGrid").data('tGrid').ajaxRequest();
     }
 </script>

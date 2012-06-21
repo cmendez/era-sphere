@@ -4,14 +4,14 @@
 @{
     ProveedorView provee = ViewBag.proveedor;
     EntregaOCView eoc = ViewBag.entregaoc;
-    OrdenCompraView oc = ViewBag.ordendecompra;
+    OrdenCompraView oc = ViewBag.oc;
     var data_eoc = new { id_eoc = eoc.entregaID };
     var data = new { id_oc=oc.ordenID};
 }
 <div id="popupEOC">
     <ul>
         <li>
-            <label>Numero de Entrega de Orden de Compra: @data_eoc</label>
+            <label>Numero de Entrega de Orden de Compra: @eoc.entregaID</label>
             
         </li>
         <li>
@@ -27,11 +27,12 @@
         @(Html.Telerik()
               .ComboBox()
               .Name("productoatendido_input")
-              .DataBinding(bind=>bind.Ajax()
-                  .Select("LineaOC", "EntregaOC", @data))
+              .DataBinding(bind => bind.Ajax()
+                  .Select("LineaOCRestante", "EntregaOC", @data))
               .Placeholder("Seleccione un producto a atender")
-              .HtmlAttributes(new {style= "width:200"})
-         )
+              .DropDownHtmlAttributes(new { style = "width:500px" })
+              .HtmlAttributes(new { style = "width:500px"})
+         )  
         <label>Cantidad atendida:</label>
         @(Html.Telerik()
               .IntegerTextBox()
@@ -46,7 +47,7 @@
     </span>
     </form>
     <script type="text/javascript">
-        $("#formProducto").submit(function (e) {
+        $("#formAtencionProducto").submit(function (e) {
             e.preventDefault();
             var id_productof = $("#productoatendido_input").val();
             var cantidadf = $("#cantidadatendida_input").val();
@@ -56,20 +57,23 @@
             }
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("InsertEOCLinea", "EntregaOC", @data_eoc)',
+                url: '@Url.Action("InsertEOCL", "EntregaOC", @data_eoc)',
                 contentType: 'application/json',
                 dataType: 'json',
                 data: JSON.stringify({ id_productoa: id_productof, cantidada: cantidadf }),
                 success: function (result) {
-                    if (result.msg == "error") { alert("Ingrese los datos correctos"); }
+                    if (result.msg != "ok") { alert(result.msg); }
                     else
                         $("#EOCGrid").data('tGrid').ajaxRequest();
+                    $("#productoatendido_input").data("tComboBox").value("Seleccione un producto a atender");
+                    $("#productoatendido_input").data("tComboBox").reload();
+
                 }
             });
         })        
     </script>
     @(Html.Telerik().Grid<EOCLineaView>()
-        .Name("OCGrid")
+        .Name("EOCGrid")
         .DataKeys(d => d.Add(p => p.ID))
         .Columns(columns =>
         {
@@ -86,17 +90,59 @@
                 command.Edit().ButtonType(GridButtonType.Image);
             });
         })
-        .ClientEvents(e => e.OnComplete("onCompleteOCL"))
+        .ClientEvents(e => e.OnComplete("onCompleteEOCL"))
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("SelectEOCompraLinea", "OrdenCompra", new { id_oc = @oc.ordenID })
-            .Delete("DeleteEOCL", "OrdenCompra", new { id_oc = @oc.ordenID })
-            .Update("UpdateEOCL", "OrdenCompra")
+            .Select("SelectEOCL", "EntregaOC", @data_eoc)
+            .Delete("DeleteEOCL", "EntregaOC")
+            .Update("UpdateEOCL", "EntregaOC")
         )
+
     )
 
+    <span class="form">
+        <button id="registrar" class="t-button t-state-default submit" style="float: right;
+            margin-top: 10px; margin-bottom: 10px;">
+            Registrar
+        </button>
+        <button id="eliminar" class="t-button t-state-default submit" style="float: right;
+            margin-right: 10px; margin-top: 10px">
+            Cancelar
+        </button>
+    </span>
+    
+    <script type="text/javascript">
+        function onCompleteEOCL(e) {
 
+            if (e.name == "update" || e.name == "delete") {
+                var res = e.response;
+                if (res.msg != "ok" && e.name == "update") { alert(res.msg); }
+                $("#EOCGrid").data('tGrid').rebind();
+                $("#productoatendido_input").data("tComboBox").value("Seleccione un producto a atender");
+                $("#productoatendido_input").data("tComboBox").reload();
+            }
+        }
+        $("#aceptar").click(function () { cerrar_ventana_entrega(); })
+        $("#registrar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RegistrarEOC", "EntregaOC", @data_eoc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
+            cerrar_ventana_entrega();
+        });
+        $("#eliminar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteEOC", "EntregaOC", @data_eoc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
 
-
+            cerrar_ventana_entrega();
+        });
+        
+    </script>
 
 </div>

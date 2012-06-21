@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "check_out";
     var hotelID = Model.hotelID;
+  
    // var paises = (new EraSphereContext()).paises.ToList();
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
    var estados = (new EraSphereContext()).estados_reserva.ToList();
@@ -65,7 +66,7 @@
    <fieldset>
    
 
-        <div class="editor-label"> @Html.Label("Cliente") </div>
+        <div class="editor-label"> @Html.Label("Responsable de Pago") </div>
         <div class="editor-field"> @Html.TextBoxFor(model => model.responsable_pago, new {@readonly = "readonly"}) </div>
 
      

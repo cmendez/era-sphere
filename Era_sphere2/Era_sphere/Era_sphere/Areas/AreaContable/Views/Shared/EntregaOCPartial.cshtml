@@ -9,6 +9,37 @@
     var data = new { id_oc=oc.ordenID};
     bool is_edit = ViewBag.is_edit;
 }
+
+
+    <script type="text/javascript">
+
+        function onCompleteEOCL(e) {
+            alert(e.name);
+            if (e.name == "update" || e.name == "delete") {
+                var res = e.response;
+                if (res.msg != "ok" && e.name == "update") { alert(res.msg); }
+                $("#EOCGrid").data('tGrid').rebind();
+                $("#productoatendido_input").data("tComboBox").value("Seleccione un producto a atender");
+                $("#productoatendido_input").data("tComboBox").reload();
+            }
+        }
+        $("#aceptar").click(function () { cerrar_ventana_entrega(); })
+        $("#registrar").click(function () {
+            cerrar_ventana_entrega();
+        });
+        $("#eliminar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteEOC", "EntregaOC", @data_eoc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
+
+            cerrar_ventana_entrega();
+        });
+        $("#cerrar").click(function () { cerrar_ventana_entrega(); })
+    </script>
+
 <div id="popupEOC">
     <ul>
         <li>
@@ -85,14 +116,14 @@
             columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true).Title("PU");
             columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
                 .Aggregate(aggregates => aggregates.Sum())
-                .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
-            columns.Command(command =>
+                .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>"); 
+           columns.Command(command =>
             {
                 command.Delete().ButtonType(GridButtonType.Image);
                 command.Edit().ButtonType(GridButtonType.Image);
             });
         })
-        .ClientEvents(e => e.OnComplete("onCompleteEOCL"))
+        .ClientEvents(e => e.OnComplete("onCompleteEOCL")) 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("SelectEOCL", "EntregaOC", @data_eoc)
@@ -123,33 +154,5 @@
      }
     </span>
     
-    <script type="text/javascript">
-        
-        function onCompleteEOCL(e) {
-
-            if (e.name == "update" || e.name == "delete") {
-                var res = e.response;
-                if (res.msg != "ok" && e.name == "update") { alert(res.msg); }
-                $("#EOCGrid").data('tGrid').rebind();
-                $("#productoatendido_input").data("tComboBox").value("Seleccione un producto a atender");
-                $("#productoatendido_input").data("tComboBox").reload();
-            }
-        }
-        $("#aceptar").click(function () { cerrar_ventana_entrega(); })
-        $("#registrar").click(function () {
-            cerrar_ventana_entrega();
-        });
-        $("#eliminar").click(function () {
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("DeleteEOC", "EntregaOC", @data_eoc)',
-                contentType: 'application/json',
-                dataType: 'json'
-            });
-
-            cerrar_ventana_entrega();
-        });
-        $("#cerrar").click(function () { cerrar_ventana_entrega(); })
-    </script>
 
 </div>

@@ -9,5 +9,6 @@ namespace Era_sphere.Areas.AreaPromociones.Models
     public class RelacionPromocion:DBable
     {
         public string descripcion { get; set; }
+        public virtual ICollection<Promocion> lista_promociones { get; set; }
     }
 }

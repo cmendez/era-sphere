@@ -39,12 +39,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
 
         [Required]
         [DisplayName("Apellido Paterno (*)")]
-        [StringLength(28)]
+        [StringLength(30)]
         public string apellido_paterno {get; set;}
 
         [Required]
         [DisplayName("Apellido Materno (*)")]
-        [StringLength(28)]
+        [StringLength(30)]
         public string apellido_materno {get; set;}
 
         [DisplayName("Tipo Documento")]
@@ -64,15 +64,17 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public string direccion {get; set;}
 
         [DisplayName(@"Teléfono")]
+        [StringLength(28)]
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string telefono {get; set;}
 
         [DisplayName("Celular")]
+        [StringLength(28)]
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string celular {get; set;}
 
         [DisplayName("Usuario")]
-        [StringLength(50)]
+        [StringLength(28)]
         public string usuario { get; set;}
 
         [DisplayName("Password")]

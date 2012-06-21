@@ -10,12 +10,12 @@
         .DataKeys(d => d.Add(p => p.ID))
         .Columns(columns =>
         {
-            columns.Bound(o => o.productoID).Width(100).ReadOnly(true);
-            columns.Bound(o => o.producto).Width(200).ReadOnly(true);
-            columns.Bound(o => o.cantidad).Width(50);
-            columns.Bound(o => o.cantidad_recibida).Width(50);
-            columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true);
-            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true)
+            columns.Bound(o => o.productoID).Width(8).ReadOnly(true).Title("Id");
+            columns.Bound(o => o.producto).Width(350).ReadOnly(true);            
+            columns.Bound(o => o.cantidad).Width(35).Title("Cant. Ordenada");
+            columns.Bound(o => o.cantidad_recibida).Width(35).Title("Cant. Recibida");
+            columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true).Title("PU").Format("{0:c}");
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
                 .Aggregate(aggregates => aggregates.Sum())
                 .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
         })

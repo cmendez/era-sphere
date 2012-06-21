@@ -13,29 +13,28 @@
     <ul>
         <li>
             <label>
-                Numero de Orden: @oc.ordenID
+                Numero de Orden de Compra: @oc.ordenID
             </label>
         </li>
         <li>
             <label>
-                Proveedor :
+                Proveedor: 
             </label>
             <span>@prov.razon_social </span></li>
         <li>
             <label>
-                Persona de Contacto
+                Persona de Contacto: 
             </label>
             <span>@prov.persona_contacto </span></li>
         <li>
             <label>
-                Hotel
+                Hotel: 
             </label>
             <span>@hotel.razon_social </span></li>
     </ul>
     <form id="formProducto" class="form" action="#">
     <label>
-        Productos
-    </label>
+        Productos:     
     @(Html.Telerik()
             .ComboBox()
             .Name("producto_input")
@@ -43,22 +42,23 @@
                         .Select("ProductosProveedor", "OrdenCompra", @data)).Placeholder("Seleccione Producto")
                         .HtmlAttributes(new { style = "width:70" })
          )
-    <label>
-        Cantidad:
     </label>
+    <label>
+        Cantidad:   
     @(Html.Telerik().IntegerTextBox()
             .Value(1)
             .MinValue(1)
             .Spinners(true)
             .Name("cantidad_input")
          )
+    </label>
     <span style="margin: 2px">
-        <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
-            value="Agregar Producto" style="margin: 10px;" />
         <button class="t-button t-state-default submit" id="detalles_producto" onclick="detalles_produ(); return false;"
-            style="margin: 10px">
+            style="margin: 8px">
             Detalles de Producto
         </button>
+        <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
+            value="Agregar Producto" style="margin: 10px;" />        
     </span>
     </form>
     <script type="text/javascript">
@@ -78,8 +78,8 @@
                 modal: true,
                 resizable: true,
                 draggable: true,
-                width: 200,
-                height: 200,
+                width: 250,
+                height: 150,
                 onClose: function (e) {
                     e.preventDefault();
                     windowElement.data('tWindow').destroy();
@@ -119,11 +119,11 @@
         .DataKeys(d => d.Add(p => p.ID))
         .Columns(columns =>
         {
-            columns.Bound(o => o.productoID).Width(100).ReadOnly(true);
-            columns.Bound(o => o.producto).Width(200).ReadOnly(true);
-            columns.Bound(o => o.cantidad).Width(50);
-            columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true);
-            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true)
+            columns.Bound(o => o.productoID).Width(10).ReadOnly(true).Title("Id");
+            columns.Bound(o => o.producto).Width(250).ReadOnly(true);
+            columns.Bound(o => o.cantidad).Width(50).Title("Cant.");
+            columns.Bound(o => o.precio_unitario).Format("{0:c}").Width(50).ReadOnly(true).Title("PU");
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
                 .Aggregate(aggregates => aggregates.Sum())
                 .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
             columns.Command(command =>

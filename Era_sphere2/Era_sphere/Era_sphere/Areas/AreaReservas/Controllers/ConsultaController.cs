@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Areas.AreaReservas.Models;
 using System.Web.Helpers;
+using Era_sphere.Areas.AreaHoteles.Models;
 
 namespace Era_sphere.Areas.AreaReservas.Controllers
 {
@@ -32,12 +33,27 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult SubConsulta(List<int> hab_ids)
+        public ActionResult SubConsulta(List<int> hab_ids, int hotel_id)
         {
             hab_ids = hab_ids ?? new List<int>();
             Consulta res = new Consulta();
+            res.hotelID = hotel_id;
             res.habitaciones_resultantes = consulta_logica.context.habitaciones.Where(p => hab_ids.Contains(p.ID)).ToList();
             return PartialView("GridResultAcumulado", new ConsultaView(res));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult SubConsultaPrecio(List<int> hab_ids, int hotel_id, DateTime fecha_inicio, DateTime fecha_fin)
+        {
+            hab_ids = hab_ids ?? new List<int>();
+            var habitaciones_resultantes = consulta_logica.context.habitaciones.Where(p => hab_ids.Contains(p.ID)).ToList();
+            decimal costo_inicial = 0;
+            foreach (var h in habitaciones_resultantes)
+                costo_inicial += (new TipoHabitacionView(h.tipoHabitacion, hotel_id)).costo;
+            TimeSpan span = fecha_fin - fecha_inicio;
+            int dias = (int)(Math.Ceiling((double)(span.Days)));
+            costo_inicial *= (decimal)(dias);
+            decimal precio_derecho_reserva = consulta_logica.context.cadenas.ToList()[0].adel_minimo / 100.0m * costo_inicial;
+            return Json(new { costo_inicial = costo_inicial, precio_derecho_reserva = precio_derecho_reserva, dias_estadia = dias });
         }
         public JsonResult Nada(int id)
         {

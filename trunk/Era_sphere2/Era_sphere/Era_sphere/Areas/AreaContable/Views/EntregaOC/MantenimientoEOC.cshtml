@@ -3,6 +3,46 @@
 @{
     var oc = ViewBag.oc;
 }
+
+<script type="text/javascript">
+
+    function mantenimiento_complete(e) {
+        alert(e.name);
+        if (e.name == "detallesEOC") {
+            var oc = e.response.eoc;
+            var url = '@Url.Action("editarEntregaOC", "EntregaOC")' + '/?id_eoc=' + oc.entregaID;
+            var windowElement = $.telerik.window.create({
+                title: "Editar Entrega Orden Compra",
+                html: '',
+                contentUrl: url,
+                modal: true,
+                resizable: true,
+                draggable: true,
+                width: 650,
+                height: 550,
+                onClose: function (e) {
+                    e.preventDefault();
+                    windowElement.data('tWindow').destroy();
+                }
+            });
+            jQuery(windowElement).attr('id', 'mantenimientoEOC');
+            var tdata = windowElement.data('tWindow');
+            tdata.center().open();
+        }
+        else if (e.name == 'delete') {
+            $('#ResumenEntrega').data('tGrid').ajaxRequest();
+        }
+    }
+
+    function cerrar_ventana_entrega() {
+        try { $("#mantenimientoEOC").data('tWindow').close(); } catch (e) { }
+        try { $("#EOCGrid").data("tGrid").ajaxRequest(); } catch (e) { }
+        try { $("#ResumenEntrega").data("tGrid").ajaxRequest(); } catch (e) { }
+        try { $("#popupEntrega").data('tWindow').close(); } catch (e) { }
+        try { $("#AceptadasGrid").data('tGrid').ajaxRequest(); } catch (e) { }
+    }
+</script>
+
 <div>
  @(Html.Telerik().Grid<EntregaOCView>()
         .Name("EOCGrid")
@@ -31,39 +71,3 @@
         .Resizable( re => re.Columns(true) ).Pageable()
     )
 </div>
-<script type="text/javascript">
-
-    function mantenimiento_complete(e) {
-        alert(e.name);
-        if (e.name == "detallesEOC") {
-            var oc = e.response.eoc;
-            var url = '@Url.Action("editarEntregaOC", "EntregaOC")' + '/?id_eoc=' + oc.entregaID;
-            var windowElement = $.telerik.window.create({
-                title: "Editar Entrega Orden Compra",
-                html: '',
-                contentUrl: url,
-                modal: true,
-                resizable: true,
-                draggable: true,
-                width: 650,
-                height: 550,
-                onClose: function (e) {
-                    e.preventDefault();
-                    windowElement.data('tWindow').destroy();
-                }
-            });
-            jQuery(windowElement).attr('id', 'mantenimientoEOC');
-            var tdata = windowElement.data('tWindow');
-            tdata.center().open();
-        }
-        else if (e.name == 'delete') { 
-            $('#ResumenEntrega').data('tGrid').ajaxRequest();        
-        }
-    }
-
-    function cerrar_ventana_entrega() {
-        $("#mantenimientoEOC").data('tWindow').close();
-        $("#EOCGrid").data("tGrid").ajaxRequest();
-        $("#ResumenEntrega").data("tGrid").ajaxRequest();
-    }
-</script>

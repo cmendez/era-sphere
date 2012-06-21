@@ -21,8 +21,11 @@
             repeticiones : parseInt($("#repeticiones").data("tTextBox").value()),
             campo1 : $("#campo1").val(),
             campo2 : $("#campo2").val(),
-            campo3 : $("#campo3").val()
+            campo3 : $("#campo3").val(),
+            es_precio_fijado: $("#es_precio_fijado").val(),
+            precio_fijado: parseFloat($("#precio_fijado").val())
         };
+        console.log(servicio.precio_fijado);
         if(servicio.tipo_servicioID == ""){
          servicio = null;
          alert("Debe especificar un tipo de servicio");
@@ -129,7 +132,13 @@
     </div>
 
     <div id="productos_table" style="display:none">
-        
+    </div>
+
+    <div id="precio_fijado_div">
+        <div class="editor-label"> @Html.LabelFor(model => model.es_precio_fijado)</div>
+        <div class="editor-field"> @Html.CheckBoxFor(model => model.es_precio_fijado) </div>
+        <div class="editor-label"> @Html.LabelFor(model => model.precio_fijado)</div>
+        <div class="editor-field"> @Html.EditorFor(model => model.precio_fijado) </div>
     </div>
     @if(!edit){
         <button onclick="nuevoServicio();">Registrar</button>

@@ -18,6 +18,7 @@ namespace Era_sphere.Generics
         {
             List<TipoTemporada> tts = new List<TipoTemporada>
             {
+                new TipoTemporada { descripcion = "Siempre"},
                 new TipoTemporada { descripcion = "San Valentin" },
                 new TipoTemporada { descripcion = "Fiestas Patrias" },
                 new TipoTemporada { descripcion = "Navidad" }
@@ -30,9 +31,10 @@ namespace Era_sphere.Generics
         {
             List<Temporada> ts = new List<Temporada>
             {
-                new Temporada { descripcion = "San Valentin '12", fecha_inicio = DateTime.Parse("2012-02-09"), fecha_fin = DateTime.Parse("2012-02-14"), tipotemporadaID = 1 },
-                new Temporada { descripcion = "San Valentin '13", fecha_inicio = DateTime.Parse("2013-02-09"), fecha_fin = DateTime.Parse("2013-02-14"), tipotemporadaID = 1 },
-                new Temporada { descripcion = "Navidad '09", fecha_inicio = DateTime.Parse("2009-12-21"), fecha_fin = DateTime.Parse("2009-12-25"), tipotemporadaID = 3 }
+                new Temporada { descripcion = "Siempre", fecha_inicio = DateTime.Parse("2012-01-01"), fecha_fin = DateTime.Parse("2050-12-31"), tipotemporadaID = 1},
+                new Temporada { descripcion = "San Valentin '12", fecha_inicio = DateTime.Parse("2012-02-09"), fecha_fin = DateTime.Parse("2012-02-14"), tipotemporadaID = 2 },
+                new Temporada { descripcion = "San Valentin '13", fecha_inicio = DateTime.Parse("2013-02-09"), fecha_fin = DateTime.Parse("2013-02-14"), tipotemporadaID = 2 },
+                new Temporada { descripcion = "Navidad '09", fecha_inicio = DateTime.Parse("2009-12-21"), fecha_fin = DateTime.Parse("2009-12-25"), tipotemporadaID = 4 }
             };
             foreach (Temporada t in ts) temporadas.Add(t);
             SaveChanges();

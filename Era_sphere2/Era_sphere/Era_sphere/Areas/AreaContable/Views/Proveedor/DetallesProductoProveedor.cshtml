@@ -1,21 +1,14 @@
 ﻿@model Era_sphere.Areas.AreaContable.Models.Ordenes.proveedor_x_productoView
+        
+    <h4>@Html.DisplayFor(model => model.descripcion_producto)</h4>
+    <br />
+    <div class="display-label"><p><b>ID Producto: </b>@Html.DisplayFor(model => model.productoID)</p></div> 
+    <br />
+    <div class="display-label"><p><b>Descripcion: </b>@Html.DisplayFor(model => model.descripcion_producto)</p></div>
+    <br />
 
-    <div class="display-label">ID Producto</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.productoID)
-    </div>
+    <div class="display-label"><p><b>Precio Unitario</b> @Html.DisplayFor(model => model.precio_unitario)</p></div>
+    <br />
 
-    <div class="display-label">Descripcion</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.descripcion_producto)
-    </div>
-
-    <div class="display-label">Precio Unitario</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.precio_unitario)
-    </div>
-    <div class="display-label"> Es perecible ? </div>
-    <div class="display-field">
-        @Html.DisplayFor(mode=>mode.perecible_str)
-    </div> 
-    
+    <div class="display-label"><p><b>¿Es perecible?: </b>@Html.DisplayFor(mode=>mode.perecible_str)</p></div>
+     

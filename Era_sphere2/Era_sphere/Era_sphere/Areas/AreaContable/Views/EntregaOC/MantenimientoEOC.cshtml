@@ -10,9 +10,10 @@
         .DataKeys(d => d.Add(p => p.entregaID))
         .Columns(columns =>
         {
-            columns.Bound(o => o.entregaID).Width(100).ReadOnly(true);
-            columns.Bound(o => o.fecha_entrega).Width(200).ReadOnly(true);
-            columns.Bound(o => o.nombre_proveedor).Width(50);
+            columns.Bound(o => o.entregaID).Width(10).ReadOnly(true).Title("Id");
+            columns.Bound(o => o.ordencompraID).Width(10).ReadOnly(true).Title("Orden de Compra");            
+            columns.Bound(o => o.nombre_proveedor).Width(100).Title("Proveedor ");
+            columns.Bound(o => o.fecha_entrega).Width(150).Title("Fecha Entrega").ReadOnly(true);           
             columns.Command( com => {
                 com.Custom("detallesEOC").Ajax(true).Action("DetalleEOC","EntregaOC").Text("Editar")
                     .DataRouteValues( data => data.Add( o => o.entregaID ).RouteKey("id_eoc"));
@@ -44,8 +45,8 @@
                 modal: true,
                 resizable: true,
                 draggable: true,
-                width: 800,
-                height: 600,
+                width: 650,
+                height: 550,
                 onClose: function (e) {
                     e.preventDefault();
                     windowElement.data('tWindow').destroy();

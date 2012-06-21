@@ -6,7 +6,15 @@
     ViewBag.Title = "IndexAdministracion";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int id_hotel = ViewBag.id_hotel;
+    
 }
+ <div class="block big">
+     <div class="block_cont">       
+        <p align="right">@Html.ActionLink("Registrar Orden de Compra", "Index", new { controller = "../AreaContable/OrdenCompra" , id = @id_hotel },
+                            new { @class = "tipTop" })                        
+        </p>
+    </div>
+</div>
 <div class="block big">
     <div class="titlebar">
         <h3>

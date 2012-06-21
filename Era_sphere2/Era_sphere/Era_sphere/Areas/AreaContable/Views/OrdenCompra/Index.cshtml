@@ -8,7 +8,15 @@
     int id_hotel = ViewBag.id_hotel;
             //var paises = (new EraSphereContext()).paises.ToList();
 }
-
+ <div class="block big">
+     <div class="block_cont">       
+        <p>@Html.ActionLink("Administrar Ordenes de compra", "IndexAdministracion", new { controller = "../AreaContable/AdministrarOC" , id = @id_hotel},
+                            new { @class = "tipTop" }
+                        )
+                        
+        </p>
+    </div>
+</div>
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
@@ -66,8 +74,8 @@
                     modal: true,
                     resizable: true,
                     draggable: true,
-                    width : 800,
-                    height : 400 ,
+                    width : 650,
+                    height : 550 ,
                     onClose: function (e) {
                         e.preventDefault();
                         windowElement.data('tWindow').destroy();

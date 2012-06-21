@@ -24,7 +24,7 @@
         </li>
     </ul>
     <form id="formAtencionProducto" class="form" action="#">
-        <label>Seleccionar producto: (Nombre del producto / cantidad atendida / cantidad pedida)</label>
+        <label>Producto: [Nombre del producto|cantidad pedida|cantidad pedida]</label>
         @(Html.Telerik()
               .ComboBox()
               .Name("productoatendido_input")
@@ -34,7 +34,7 @@
               .DropDownHtmlAttributes(new { style = "width:500px" })
               .HtmlAttributes(new { style = "width:500px"})
          )  
-        <label>Cantidad atendida:</label>
+        <label>Cantidad atendida: 
         @(Html.Telerik()
               .IntegerTextBox()
               .Value(1)
@@ -42,6 +42,7 @@
               .Spinners(true)
               .Name("cantidadatendida_input")
          )
+         </label>
         <span style="margin: 2px">
         <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
         value="Agregar Producto Atendido" style="margin: 10px;" />        
@@ -78,11 +79,11 @@
         .DataKeys(d => d.Add(p => p.ID))
         .Columns(columns =>
         {
-            columns.Bound(e => e.productoID).Width(100).ReadOnly(true);
-            columns.Bound(e => e.producto).Width(200).ReadOnly(true);
-            columns.Bound(e => e.cantidad).Width(50);
-            columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true);
-            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true)
+            columns.Bound(e => e.productoID).Width(10).ReadOnly(true).Title("Id");
+            columns.Bound(e => e.producto).Width(250).ReadOnly(true).Title("Producto");
+            columns.Bound(e => e.cantidad).Width(50).Title("Entregado");
+            columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true).Title("PU");
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
                 .Aggregate(aggregates => aggregates.Sum())
                 .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
             columns.Command(command =>

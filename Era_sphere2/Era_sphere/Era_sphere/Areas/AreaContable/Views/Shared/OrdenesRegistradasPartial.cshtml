@@ -48,14 +48,13 @@
             var windowElement = $.telerik.window.create({
                 name: 'popupOrden',
                 title: "Editar orden de compra",
-                html: '',
-                actions: [],
+                html: '',                
                 contentUrl: url,
                 modal: true,
                 resizable: true,
                 draggable: true,
-                width: 800,
-                height: 400,
+                width: 650,
+                height: 550,
                 onClose: function (e) {
                     e.preventDefault();
                     windowElement.data('tWindow').destroy();

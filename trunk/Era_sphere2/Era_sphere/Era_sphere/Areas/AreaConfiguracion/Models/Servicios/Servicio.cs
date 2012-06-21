@@ -37,8 +37,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         //si su precio es fijado, usa el valor dado por precio_fijado
         public bool es_precio_fijado {get; set;}
         public decimal precio_fijado {get; set;}
-        
 
+        public decimal precio_normal { get; set; }
         public List<ReciboLinea> getReciboLineas()
         {
             throw new NotImplementedException();

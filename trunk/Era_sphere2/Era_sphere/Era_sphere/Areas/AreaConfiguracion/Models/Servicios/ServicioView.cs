@@ -33,6 +33,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public bool es_precio_fijado { get; set; }
         [DisplayName("Precio fijado")]
         public decimal precio_fijado { get; set; }
+
+        [DisplayName("Precio normal unitario")]
+        public decimal precio_normal { get; set; }
          
         public ServicioView() { }
 
@@ -48,6 +51,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             campo3 = servicio.campo3;
             es_precio_fijado = servicio.es_precio_fijado;
             precio_fijado = servicio.precio_fijado;
+            precio_normal = servicio.precio_normal;
         }
 
         public Servicio deserializa(LogicaServicios logica)
@@ -65,6 +69,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                 campo3 = this.campo3,
                 precio_fijado = this.precio_fijado,
                 es_precio_fijado = this.es_precio_fijado,
+                precio_normal = this.precio_normal
             };
 
         }

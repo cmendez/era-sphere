@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 using System.Web.Helpers;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM;
 
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
@@ -58,9 +59,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View("TipoServiciosIndex", new GridModel(servicios_logica.retornarTipoServicios()));
         }
 
-        public JsonResult ObtieneTipo(int tipo_id)
+        public JsonResult ObtieneTipo(int tipo_id, int hotel_id)
         {
-            return Json(new { tipo = new TipoServicioView(servicios_logica.context.tipo_servicios.Find(tipo_id)) });
+            var tipo = new TipoServicioView(servicios_logica.context.tipo_servicios.Find(tipo_id));
+            LogicaHotelXTipoServicioXTemporada lx = new LogicaHotelXTipoServicioXTemporada();
+            decimal precio_normal = lx.getPrecioTipoServicio(tipo_id, hotel_id, DateTime.Now);
+            return Json(new { tipo = tipo, precio_normal =  precio_normal});
         }
     }
 }

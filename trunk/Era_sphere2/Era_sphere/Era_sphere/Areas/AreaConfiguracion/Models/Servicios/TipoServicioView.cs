@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
@@ -30,6 +31,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Campo Adicional 3")]
         public string campo3 { get; set; }
 
+        public decimal precio_normal { get; set; }
         public TipoServicioView(TipoServicio tipo)
         {
             this.ID = tipo.ID;
@@ -40,7 +42,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             this.campo1 = tipo.campo1;
             this.campo2 = tipo.campo2;
             this.campo3 = tipo.campo3;
-            
         }
         public TipoServicioView(){}
 

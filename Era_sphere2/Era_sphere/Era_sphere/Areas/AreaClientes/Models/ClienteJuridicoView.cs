@@ -45,10 +45,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public string direccion { get; set; }
 
         [DisplayName(@"Teléfono")]
+        [StringLength(28)]
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string telefono { get; set; }
 
         [DisplayName("Celular")]
+        [StringLength(28)]
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string celular { get; set; }
 

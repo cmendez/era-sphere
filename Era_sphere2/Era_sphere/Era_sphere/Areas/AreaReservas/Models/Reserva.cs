@@ -65,7 +65,16 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public List<ReciboLinea> getReciboLineas()
         {
-            throw new NotImplementedException();
+            EraSphereContext context = new EraSphereContext();
+            List<Servicio> servicios = context.servicioxreservas.Where(x => x.reservaID == ID).Select(y => context.servicios.Find(y.servicioID)).ToList();
+            List<ReciboLinea> lineas = context.recibos_linea_x_reserva.Where(x => x.reservaID == ID).Select(y => context.recibos_lineas.Find(y.recibo_lineaID)).ToList();
+            foreach (var s in servicios)
+            {
+                List<ReciboLinea> lineas2 = s.getReciboLineas();
+                lineas2.ForEach(x => x.detalle = "   " + x.detalle);
+                lineas.AddRange(lineas2);
+            }
+            return lineas;
         }
 
         public int getHotelID()
@@ -87,14 +96,11 @@ namespace Era_sphere.Areas.AreaReservas.Models
             }
         }
 
-        public void setEspacioRentableNombre()
+     
+        public string getEspacioRentableNombre()
         {
-            throw new NotImplementedException();
-        }
-
-        public void getEspacioRentableNombre()
-        {
-            throw new NotImplementedException();
+            EraSphereContext context = new EraSphereContext();
+            return context.hoteles.Find(hotelID).descripcion;
         }
 
         public void registraReciboLinea(ReciboLinea linea)
@@ -113,9 +119,5 @@ namespace Era_sphere.Areas.AreaReservas.Models
             throw new NotImplementedException();
         }
 
-        string Costeable.getEspacioRentableNombre()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

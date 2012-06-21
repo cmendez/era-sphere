@@ -10,6 +10,7 @@ using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaReservas.Models.Consultas;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
+using Era_sphere.Areas.AreaHoteles.Controllers;
 
 
 namespace Era_sphere.Areas.AreaReservas.Models
@@ -54,17 +55,13 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             Reserva r = context.Reservas.Find(reserva_id);
             List<HabitacionXReserva> habitaciones = context.habitacion_x_reserva.Where(x => x.reservaID == reserva_id).ToList();
-            //List<HabitacionXReserva> a_eliminar = new List<HabitacionXReserva>();
-            //foreach (var x in habitaciones)
-            //    if (!hab_ids.Contains(x.habitacionID)) a_eliminar.Add(x);
-            //foreach (var x in a_eliminar) tabla_habitacion_x_reserva.eliminarElemento(x.ID);
-
+            HotelXTipoHabitacionXTemporadaController aux = new HotelXTipoHabitacionXTemporadaController();
             foreach (var id in hab_ids)
             {
-                //bool dentro = false;
-                //foreach (var x in habitaciones) if (x.habitacionID == id) dentro = true;
-                //if (!dentro) 
-                agregaRelacion(r, context.habitaciones.Find(id));
+                Habitacion h = context.habitaciones.Find(id);
+                agregaRelacion(r, h);
+                r.registraReciboLinea(new AreaContable.Models.Recibo.ReciboLinea("   " + "Habitacion " + h.detalle,
+                              new TipoHabitacionView(h.tipoHabitacion, r.hotelID).costo , 1, DateTime.Now, false, r.dias_estadia));
             }
         }
 
@@ -92,7 +89,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             logica_cliente.cambiarEstadoCliente(reserva);
            //incluye lista de reservas
             reserva.responsable_pago.reservas.Add(reserva);
-            
+            reserva.generaReciboLineas();
 
             //reserva.responsable_pago.estadoID = 2;
             //reserva.responsable_pago.numero_reservas += 1;

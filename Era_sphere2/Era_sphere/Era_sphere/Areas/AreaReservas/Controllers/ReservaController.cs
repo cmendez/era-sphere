@@ -38,7 +38,7 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
                 reserva_view.hotelID = id;
                 Reserva reserva = reserva_view.deserializa(reserva_logica);
                 reserva_logica.registrarReserva(reserva);
-
+                
             }
             return View("IndexReserva", new GridModel(reserva_logica.retornarReservasHotel(id)));
         }

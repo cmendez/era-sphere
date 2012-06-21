@@ -1,0 +1,33 @@
+﻿@using Era_sphere.Areas.AreaContable.Models
+@using Telerik.Web.Mvc.UI
+@model IEnumerable<OCompraLinea>
+
+@{    
+    OrdenCompraView oc = vie;
+}
+<div id="popupDetalleEOC">
+    <ul>
+        <li>
+            <label>DETALLES DE ENTREGA DE LA ORDEN DE COMPRA</label>
+        </li>      
+    </ul>   
+   @{Html.Telerik().Grid(Model)
+        .Name("EOCL")
+        .Localizable("es-ES")
+        .Filterable()
+        .HtmlAttributes(new { style = "z-index:100" })
+        .DataKeys(key => key.Add(p => p.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.producto.producto.descripcion).Width(10).Title("Producto");
+            columns.Bound(p => p.producto.producto.unidadMedidad).Width(5).Title("Presentación");
+            columns.Bound(p => p.cantidad_recibida). Width(100).Title("Cantidad Recibida");
+            columns.Bound(p => p.cantidad).Width(20).Title("Cantidad Pedida");            
+        })        
+        .Pageable()        
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectOCompraLinea", "OrdenCompra", new { id_oc = @id_ordencompra })            
+        ).Render();
+}
+</div>

@@ -64,7 +64,11 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             catch (Exception ex) { msg = ex.Message;  }
             return Json(new { msg = msg });
         }
-        //public ActionResult 
+        public JsonResult OrdenDeCompra (int id_oc)
+        {
+            OrdenCompraView p = logica.retornar_orden(id_oc);
+            return Json(new { oc = p });
+        }
         #endregion
 
     }

@@ -30,7 +30,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         public EntregaOCView crearEOC(int id_ordendecompra)
         {
             EntregaOC entrega = new EntregaOC();
-            entrega.orden_compra = query_oc.retornarUnSoloElemento(id_ordendecompra);
+            entrega.orden_compra = query_oc.retornarUnSoloElemento(id_ordendecompra);            
             entrega.fecha_entrega = DateTime.Now;
             int id_entrega = qeoc.agregarElemento(entrega);
             entrega = qeoc.retornarUnSoloElemento(id_entrega);
@@ -49,5 +49,6 @@ namespace Era_sphere.Areas.AreaContable.Models
             foreach (var item in ans_ocl) ans.Add(new ComboEntregaItem ( item ));
             return ans;
         }
+        
     }
 }

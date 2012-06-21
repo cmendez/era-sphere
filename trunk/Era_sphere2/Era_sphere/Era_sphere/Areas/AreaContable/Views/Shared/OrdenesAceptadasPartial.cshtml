@@ -28,7 +28,7 @@
                   .Action("DetallesOrdenC","AdministrarOC");
               com.Custom("cancelarOrden").Text("Cancelar").Ajax(true)
                   .Action("DetallesOrdenC","AdministrarOC");
-              com.Custom("detallesGeneral").Text("Detalles").Ajax(true);
+              com.Custom("detallesGeneral").Text("Detalles").Ajax(true).DataRouteValues(p => p.Add(x => x.ordenID).RouteKey("id_oc")).Action("OrdenDeCompra", "AdministrarOC");
               com.Custom("terminarEntrega").Text("Atendido").Ajax(true)
                   .Action("DetallesOrdenC", "AdministrarOC");
           });

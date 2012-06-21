@@ -18,6 +18,14 @@ namespace Era_sphere.Areas.AreaContable.Models
         public int cantidad { get; set;  }
         public int cantidad_recibida { get; set; }
         public decimal precio_total { get; set; }
+        public decimal precio_unitario { get; set; }
         public virtual ICollection<EOCLinea> entregas { get; set; }
+
+        internal void calcular_recibido()
+        {
+            cantidad_recibida = 0;
+            foreach (var item in entregas)
+                 if (item.eliminado == false) cantidad_recibida += item.cantidad_entregada;
+        }
     }
 }

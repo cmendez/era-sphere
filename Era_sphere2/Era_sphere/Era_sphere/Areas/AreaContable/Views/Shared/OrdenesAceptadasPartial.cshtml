@@ -28,7 +28,8 @@
                   .Action("DetallesOrdenC","AdministrarOC");
               com.Custom("cancelarOrden").Text("Cancelar").Ajax(true)
                   .Action("DetallesOrdenC","AdministrarOC");
-              com.Custom("detallesGeneral").Text("Detalles").Ajax(true).DataRouteValues(p => p.Add(x => x.ordenID).RouteKey("id_oc")).Action("OrdenDeCompra", "AdministrarOC");
+              com.Custom("detallesGeneral").Text("Detalles").Ajax(true)
+                  .Action("DetallesOrdenC","AdministrarOC");
               com.Custom("terminarEntrega").Text("Atendido").Ajax(true)
                   .Action("DetallesOrdenC", "AdministrarOC");
           });
@@ -42,7 +43,28 @@
 
 <script type="text/javascript">
     function aceptadas_complete(e) {
-        if (e.name == "terminarEntrega") {
+        if (e.name == "detallesGeneral") {
+            var oc = e.response.orden_compra;
+            var url = '@Url.Action("DetalleOC","EntregaOC")' + '/?id_oc=' + oc.ordenID;
+            var windowElement = $.telerik.window.create({
+                title: "Detalles Entrega Orden de Compra",
+                html: '',
+                contentUrl: url,
+                modal: true,
+                resizable: true,
+                draggable: true,
+                width: 800,
+                height: 600,
+                onClose: function (e) {
+                    e.preventDefault();
+                    windowElement.data('tWindow').destroy();
+                }
+            });
+            jQuery(windowElement).attr('id', 'popupDetalles');
+            var tdata = windowElement.data('tWindow');
+            tdata.center().open();
+        }
+        else if (e.name == "terminarEntrega") {
             alert("entra");
             var oc = e.response.orden_compra;
             var url_v = '@Url.Action("terminarOrdenCompra","AdministrarOC")';
@@ -57,18 +79,18 @@
                     reload_all();
                 }
             });
-           
+
         }
-        else if( e.name == "cancelarOrden"){
+        else if (e.name == "cancelarOrden") {
             var oc = e.response.orden_compra;
             var url_v = '@Url.Action("cancelarOrdenCompra","AdministrarOC")';
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                url : url_v,
+                url: url_v,
                 contentType: 'application/json',
-                data : JSON.stringify({ id_oc : oc.ordenID }),
-                success : function (data){
+                data: JSON.stringify({ id_oc: oc.ordenID }),
+                success: function (data) {
                     alert(data.msg);
                     reload_all();
                 }
@@ -77,7 +99,7 @@
         else if (e.name == "agregarEntrega") {
             var oc = e.response.orden_compra;
             var url = '@Url.Action("crearEntregaOC", "EntregaOC")' + '/?id_ordendecompra=' + oc.ordenID + '&id_proveedor=' + oc.proveedorID;
-            var windowElement = $.telerik.window.create({ 
+            var windowElement = $.telerik.window.create({
                 title: "Registrar Entrega de Orden de Compra",
                 html: '',
                 actions: [],
@@ -85,8 +107,8 @@
                 modal: true,
                 resizable: true,
                 draggable: true,
-                width : 800,
-                height : 600 ,
+                width: 800,
+                height: 600,
                 onClose: function (e) {
                     e.preventDefault();
                     windowElement.data('tWindow').destroy();

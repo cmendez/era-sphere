@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Areas.AreaContable.Models;
 using System.Threading;
+using Telerik.Web.Mvc;
 
 namespace Era_sphere.Areas.AreaContable.Controllers
 {
@@ -25,22 +26,69 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             ViewBag.oc = (new LogicaOrdenCompra()).retornar_orden(id_ordendecompra);
             return PartialView("EntregaOCPartial");
         }
-        public ActionResult LineaOC(int id_oc)
+        public ActionResult LineaOCRestante(int id_oc)
         {
             Thread.Sleep(500);
-            LogicaOrdenCompra oc = new LogicaOrdenCompra();
-            return Json(new SelectList(oc.retornar_lineas(id_oc), "ID", "producto"));//falta poner RECIBIDOS/TOTAL
+            return Json(new SelectList(logica.retornar_lineas_restantes(id_oc), "ID", "descripcion"));//falta poner RECIBIDOS/TOTAL
         }
-        public ActionResult InsertEOCLinea(int id_eoc, int id_productoa, int cantidada)
+        public ActionResult InsertEOCL(int id_eoc, int id_productoa, int cantidada)
         {
             try{
                 logica.insertar_linea(id_eoc, id_productoa, cantidada);
-                return Json(new { sms = "bien juga'o" });
+                return Json(new { msg = "ok" });
             }
             catch (Exception e){
-                return Json(new { sms = "mal pe'" });
+                return Json(new { msg = e.Message });
             }
             
+        }
+        [GridAction]
+        public ActionResult SelectEOCL(int id_eoc) {
+            List<EOCLineaView> ans = logica.retornar_entrega_lineas(id_eoc);
+            return View("OrdenesAceptadasPartial", new GridModel( ans ) );
+        }
+        [GridAction]
+        public ActionResult DeleteEOCL(int id) {
+            string msg = "ok";
+            try { logica.elimina_entrega_linea(id); }
+            catch (Exception ex) { msg = ex.Message; }
+            return Json( new { msg = msg });
+        }
+
+        [GridAction]
+        public ActionResult UpdateEOCL(EOCLineaView entrega_linea) { 
+            string msg = "ok";
+            try{
+            logica.modificar_entrega_linea( entrega_linea );
+            } catch( Exception ex ){ msg = ex.Message; }
+            return Json( new { msg = msg }); 
+        }
+
+        public ActionResult DeleteEOC(int id_eoc) {
+            string msg = "ok";
+            try { logica.eliminar_entrega(id_eoc); }
+            catch (Exception e) { msg = e.Message;  }
+            return Json(new { msg = msg });
+        }
+
+        public ActionResult DetalleOC( int id_oc ){
+            ViewBag.oc = (new LogicaOrdenCompra()).retornar_orden(id_oc);
+            return PartialView();
+        }
+        [GridAction]
+        public ActionResult SelectEntregas(int id_oc) {
+            List<EntregaOCView> entregas = logica.retornar_entregas(id_oc);
+            return View(new GridModel( entregas ));
+        }
+        [GridAction]
+        public ActionResult DeleteEntrega(int id_oc) {
+            logica.eliminar_entrega(id_oc);
+            return View(new GridModel());
+        }
+
+        public ActionResult DetalleEOC(int id_eoc) {
+            var eoc = logica.retornar_entrega(id_eoc);
+            return Json(new { eoc = eoc});
         }
     }
 }

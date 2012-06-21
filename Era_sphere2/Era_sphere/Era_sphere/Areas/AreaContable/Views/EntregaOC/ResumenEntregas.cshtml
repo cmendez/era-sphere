@@ -1,0 +1,30 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models
+@{
+    var oc = ViewBag.oc;
+}
+<div>
+ @(Html.Telerik().Grid<OCompraLineaView>()
+        .Localizable("es-ES")
+        .Name("ResumenEntrega")
+        .DataKeys(d => d.Add(p => p.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(o => o.productoID).Width(100).ReadOnly(true);
+            columns.Bound(o => o.producto).Width(200).ReadOnly(true);
+            columns.Bound(o => o.cantidad).Width(50);
+            columns.Bound(o => o.cantidad_recibida).Width(50);
+            columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true);
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true)
+                .Aggregate(aggregates => aggregates.Sum())
+                .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
+        })
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectOCompraLinea", "OrdenCompra", new { id_oc = @oc.ordenID })
+        ).Filterable()
+        .Groupable()
+        .Resizable( reorder => reorder.Columns(true))
+        .Resizable( re => re.Columns(true) ).Pageable()
+    )
+</div>

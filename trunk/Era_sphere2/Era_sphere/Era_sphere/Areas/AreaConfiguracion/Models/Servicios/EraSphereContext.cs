@@ -14,6 +14,7 @@ namespace Era_sphere.Generics
         public DbSet<TipoServicioXHotel> tipo_servicioxhoteles { get; set; }
         public DbSet<ProductoXServicio> productoxservicios { get; set; }
         public DbSet<ServicioXReserva> servicioxreservas { get; set; }
+        public DbSet<ReciboLineaXServicio> recibo_linea_x_servicio { get; set; }
 
         public void seedServicios()
         {

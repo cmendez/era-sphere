@@ -31,17 +31,21 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public string campo1 { get; set; }
         public string campo2 { get; set; }
         public string campo3 { get; set; }
-
-        public virtual ICollection<ReciboLineaServicio> recibos_linea { get; set; }
-        
+                
         //si su precio es fijado, usa el valor dado por precio_fijado
         public bool es_precio_fijado {get; set;}
         public decimal precio_fijado {get; set;}
 
         public decimal precio_normal { get; set; }
+
+        public decimal precio_final { get { return es_precio_fijado ? precio_fijado : repeticiones * precio_normal; } }
+
+        public ICollection<ReciboLinea> recibo_lineas { get; set; }
+
         public List<ReciboLinea> getReciboLineas()
         {
-            throw new NotImplementedException();
+            EraSphereContext context = new EraSphereContext();
+            return context.recibo_linea_x_servicio.Where(x => x.servicioID == ID).Select(x => context.recibos_lineas.Find(x.recibo_lineaID)).ToList();
         }
 
         public int getHotelID()
@@ -55,6 +59,22 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         }
 
         public void generaReciboLineas()
+        {
+            ReciboLinea linea = new ReciboLinea(tipo_servicio.nombre + ": " + this.descripcion, precio_final, 0, DateTime.Now, false);
+            EraSphereContext context = new EraSphereContext();
+            context.recibos_lineas.Add(linea);
+            ReciboLineaXServicio x = new ReciboLineaXServicio { recibo_lineaID = linea.ID, servicioID = ID };
+            context.recibo_linea_x_servicio.Add(x);
+
+        }
+
+
+        public void setEspacioRentableNombre()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void getEspacioRentableNombre()
         {
             throw new NotImplementedException();
         }

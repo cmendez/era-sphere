@@ -17,8 +17,6 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
 
         public string espacio_rentable_nombre { get; set; }
 
-        public decimal precio_unitario { get; set; }
-
         [DisplayName("Detalle")]
         public string detalle { get; set; }
        
@@ -35,18 +33,16 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
         public bool de_servicio { get; set; }
         public bool de_reserva { get; set; }
         public bool de_evento { get; set; }
-        public int origenID { get; set; }
         [DisplayName("Precio final")]
-        public decimal precio_final { get { return precio_unitario * unidades; } }
-
-        public ReciboLinea(string detalle, decimal precio_unitario, int Tipo, DateTime fecha, int unidades=1)
+        public decimal precio_final { get; set; }
+        public ReciboLinea(string detalle, decimal precio_final, int Tipo, DateTime fecha, bool pagado, int unidades=1, int puntos = 0)
         {
             this.detalle = detalle;
-            this.precio_unitario = precio_unitario;
+            this.precio_final = precio_final;
             this.unidades = unidades;
             this.pagado = false;
             this.fecha = fecha;
-
+            this.puntos = puntos;
             this.de_servicio = this.de_reserva = this.de_evento = false;
             if (Tipo == 0) {this.de_servicio = true;}
             if (Tipo == 1) {this.de_reserva = true;}

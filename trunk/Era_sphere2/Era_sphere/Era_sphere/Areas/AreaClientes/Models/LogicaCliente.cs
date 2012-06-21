@@ -227,21 +227,50 @@ namespace Era_sphere.Areas.AreaClientes.Models
         {
             List<Cliente> clientes = new List<Cliente>();
             clientes = retornarClientes();
-
+            int numero_reservas_posterior= reservasPosteriores(reserva.responsable_pagoID);
             for (int i = 0; i < clientes.Count(); i++)
             {
                 if ((reserva.responsable_pago.ID == clientes[i].ID) && ((reserva.estado.ID == 3) || (reserva.estado.ID == 4)))
                 {
 
-                    // falta condicion para que se pueda determinar si se debe cambiar a sin reserva o con reserva
-                    clientes[i].estadoID = 1;
-                    clientes[i].estado = context.estados_cliente.Find(1);
-                    modificarCliente(clientes[i]);
-                    break;
+                    if (numero_reservas_posterior == 0)
+                    {
+                        // falta condicion para que se pueda determinar si se debe cambiar a sin reserva o con reserva
+                        clientes[i].estadoID = 1;
+                        clientes[i].estado = context.estados_cliente.Find(1);
+                        modificarCliente(clientes[i]);
+                        break;
+                    }
+                    else
+                    {
+                        clientes[i].estadoID = 2;
+                        clientes[i].estado = context.estados_cliente.Find(2);
+                        modificarCliente(clientes[i]);
+                        break;
+                    }
+
                 }
             }
 
             DesasignarHabitacionesHuespedesReserva(reserva);
+        }
+
+
+        public int reservasPosteriores(int cliente_id)
+        {
+
+           Cliente cliente = retornarCliente(cliente_id);
+           int numero_reservas_posteriores = 0;
+           for (int i = 0; i < cliente.reservas.Count(); i++)
+           {
+               if (cliente.reservas.ElementAt(i).estadoID == 1)
+               {
+                   numero_reservas_posteriores += 1;
+               }
+
+           }
+
+           return numero_reservas_posteriores;
         }
 
 

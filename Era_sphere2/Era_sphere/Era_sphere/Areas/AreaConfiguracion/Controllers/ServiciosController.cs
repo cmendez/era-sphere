@@ -32,8 +32,9 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         public JsonResult InsertServicioDeReserva(ServicioView servicio_view, int id_reserva)
         {
             Servicio s = servicio_view.deserializa(servicios_logica);
-            reserva_logica.context.servicios.Add(s);
-            reserva_logica.agregaRelacionServicioXReserva(id_reserva, s);
+            servicios_logica.agregarServicio(s);
+            servicios_logica.context.servicioxreservas.Add(new ServicioXReserva { reservaID = id_reserva, servicioID = s.ID });
+            servicios_logica.context.SaveChanges();
             return Json(new { ok = true });
         }
 
@@ -41,7 +42,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         [GridAction]
         public ActionResult DeleteReserva(int id, int id_reserva)
         {
-            var todos = servicios_logica.retornarServicios();
             int servicio_id = id;
             reserva_logica.eliminaRelacionServicioXReserva(servicio_id, id_reserva);
             servicios_logica.eliminarServicio(servicio_id);

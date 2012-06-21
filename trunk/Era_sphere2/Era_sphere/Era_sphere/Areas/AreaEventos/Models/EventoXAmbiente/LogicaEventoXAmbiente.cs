@@ -58,11 +58,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
             List<EventoXAmbiente> ambientes =database_table.retornarTodos().Where(e=>e.ambiente.piso.hotelID==idHotel).ToList() ;
             
             foreach (EventoXAmbiente ambiente in ambientes) {
-                if (DateTimeUtils.tieneInterseccion(ambiente.fecha_hora_inicio, ambiente.fecha_hora_fin, fecha_hora_inicio, fecha_hora_fin))
-                {
-                    AmbienteView elemento=libres.Find(item=>item.ID==ambiente.ID);
-                    libres.Remove(elemento);
-                }
+
             }
 
             return libres;

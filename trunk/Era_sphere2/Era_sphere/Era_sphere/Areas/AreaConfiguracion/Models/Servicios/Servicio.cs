@@ -7,13 +7,12 @@ using System.ComponentModel.DataAnnotations;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaContable.Models;
-using Era_sphere.Areas.AreaCargos.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaEventos.Models.Evento;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
-    public class Servicio : DBable, Costeable
+    public class Servicio : DBable//, Costeable
     {
         public Servicio() {
         }

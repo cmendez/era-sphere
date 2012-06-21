@@ -6,7 +6,6 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-using Era_sphere.Areas.AreaCargos.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Temporada;
 using Era_sphere.Generics;
 

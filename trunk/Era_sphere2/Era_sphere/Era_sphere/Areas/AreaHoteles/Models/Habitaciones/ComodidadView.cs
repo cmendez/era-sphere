@@ -17,7 +17,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
 
         }
         [Required]
-        [DisplayName("Descripcion")]
+        [DisplayName("Descripción")]
         [StringLength(30)]
         public string descripcion { get; set; }
         [DisplayName("ID comodidad")]

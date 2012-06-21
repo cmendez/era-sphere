@@ -257,7 +257,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             costo += logicaExA.RetornarCosto(idEvento);
 
             ViewBag.precio = costo;
-            evento_logica.modificarEvento(idEvento, costo);
+            //evento_logica.modificarEvento(idEvento, costo);
 
             return View("EventoCalcularCostos");
         }

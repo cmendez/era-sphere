@@ -71,6 +71,7 @@
       <DependentUpon>GridLocalization.es-ES.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
+    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXReserva.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
     <Compile Include="Areas\AreaClientes\AreaClientesAreaRegistration.cs" />
     <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs" />

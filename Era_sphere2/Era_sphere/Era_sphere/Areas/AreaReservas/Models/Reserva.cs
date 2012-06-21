@@ -10,10 +10,11 @@ using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
+using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaReservas.Models
 {
-    public class Reserva : DBable//, Costeable
+    public class Reserva : DBable, Costeable
     {
         [ForeignKey("estado")]
         public int estadoID { get; set; }
@@ -79,7 +80,11 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public void generaReciboLineas()
         {
-            throw new NotImplementedException();
+            if (precio_derecho_reserva > 0)
+            {
+                ReciboLinea paguito = new ReciboLinea("Pago del adelanto", precio_derecho_reserva, 1, DateTime.Now, false);
+                registraReciboLinea(paguito);
+            }
         }
 
         public void setEspacioRentableNombre()
@@ -88,6 +93,27 @@ namespace Era_sphere.Areas.AreaReservas.Models
         }
 
         public void getEspacioRentableNombre()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void registraReciboLinea(ReciboLinea linea)
+        {
+            EraSphereContext context = new EraSphereContext();
+            context.recibos_lineas.Add(linea);
+            context.SaveChanges();
+            ReciboLineaXReserva x = new ReciboLineaXReserva { recibo_lineaID = linea.ID, reservaID = ID };
+            context.recibos_linea_x_reserva.Add(x);
+            context.SaveChanges();
+        }
+
+
+        public void setEspacioRentableNombre(string s)
+        {
+            throw new NotImplementedException();
+        }
+
+        string Costeable.getEspacioRentableNombre()
         {
             throw new NotImplementedException();
         }

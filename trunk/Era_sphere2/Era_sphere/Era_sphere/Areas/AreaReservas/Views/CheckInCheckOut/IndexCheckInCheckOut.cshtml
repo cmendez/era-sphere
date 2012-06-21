@@ -98,12 +98,13 @@
         if (e.name == "Check-In") {
             $("#RegitrarCheckIn").load('@Url.Action("CheckIn", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
             $("#CheckIn").data("tWindow").center().open();
+            $("#CheckInCheckOutGrid").data("tGrid").ajaxRequest();
         }
         else
             if (e.name == "Check-Out") {
                 $("#RegitrarCheckOut").load('@Url.Action("CheckOut", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
                 $("#CheckOut").data("tWindow").center().open();
-
+                $("#CheckInCheckOutGrid").data("tGrid").ajaxRequest();
             }
         
     }

@@ -84,6 +84,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             cb.Add( (new EraSphereContext()).tipos_habitacion.Find(tipohabitacionID).costo_base );
             return Json(new SelectList(cb), JsonRequestBehavior.AllowGet);
         }
+       
 
     }
 }

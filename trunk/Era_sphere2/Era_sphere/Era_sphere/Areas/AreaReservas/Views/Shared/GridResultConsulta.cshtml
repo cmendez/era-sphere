@@ -5,8 +5,9 @@
 @using Era_sphere.Generics
 
 @{
-    var tipos_habitaciones = (new EraSphereContext()).tipos_habitacion.ToList();
-    tipos_habitaciones.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
+    var tipos_habitaciones2 = (new EraSphereContext()).tipos_habitacion.ToList();
+    tipos_habitaciones2.Insert(0, new TipoHabitacion { ID = 0, descripcion = "Todos" });
+    var tipos_habitaciones = tipos_habitaciones2.Select(x => new TipoHabitacionView(x, Model.hotelID)).ToList();
     var pisos = (new EraSphereContext()).pisos.Where(p=>p.hotelID==Model.hotelID).ToList();
     pisos.Insert(0, new Piso { ID = 0, descripcion = "Todos" });
     bool partial = (bool)(ViewData["partial"]);
@@ -40,7 +41,7 @@
             columns.Bound(p => p.numero_habitacion);
             columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "descripcion"));
             columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "numero_camas")).Title(@"Número de camas");
-            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "costo_base")).Title("Precio");
+            columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "costo")).Title("Precio");
             columns.ForeignKey(p => p.tipo_habitacionID, new SelectList(tipos_habitaciones, "ID", "cap_max_personas")).Title("Capacidad");
             if (partial)
             {

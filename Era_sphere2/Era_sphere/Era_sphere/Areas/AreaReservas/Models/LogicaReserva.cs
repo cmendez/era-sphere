@@ -227,7 +227,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
                         ReciboLinea recibo = new ReciboLinea();
                         recibo.detalle = "Devolución de monto adelantado de reserva";
                         recibo.fecha = DateTime.Now;
-                        recibo.precio_unitario = (-1)*reserva.precio_derecho_reserva;
+                        recibo.precio_final = (-1)*reserva.precio_derecho_reserva;
                         recibo.unidades = 1;
                         //llamar un popup de recibo gg
                     }

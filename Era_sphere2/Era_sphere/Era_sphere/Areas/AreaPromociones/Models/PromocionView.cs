@@ -38,9 +38,9 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         public DateTime fecha_fin { get; set; }
 
         [Required]
-        [DisplayName("ID Relación de la promoción")]
+        [DisplayName("Asociado a")]
         public int relacionpromocionID { get; set; }
-        [DisplayName("Relación de la promoción")]
+        //[DisplayName("Relación de la promoción")]
         public string relacionpromocion_descripcion { get; set; }
 
 

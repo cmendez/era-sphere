@@ -1,10 +1,12 @@
 ﻿@{
     ViewBag.Title = "PromocionIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var relacionespromocion = (new EraSphereContext()).relacionespromocion.ToList();
 }
 @using Era_sphere.Areas.AreaPromociones.Models
 @model IEnumerable<PromocionView>
 @using Telerik.Web.Mvc.UI
+@using Era_sphere.Generics
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
@@ -34,6 +36,7 @@
             columns.Bound(p => p.descuento);
             columns.Bound(p => p.fecha_inicio).Format("{0:dd/MM/yyyy}");
             columns.Bound(p => p.fecha_fin).Format("{0:dd/MM/yyyy}");
+            columns.ForeignKey(p => p.relacionpromocionID, relacionespromocion, "ID", "descripcion");
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

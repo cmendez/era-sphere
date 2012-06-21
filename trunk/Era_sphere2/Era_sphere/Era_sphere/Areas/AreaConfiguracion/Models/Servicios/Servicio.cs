@@ -9,6 +9,7 @@ using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Areas.AreaCargos.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
+using Era_sphere.Areas.AreaEventos.Models.Evento;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
@@ -74,9 +75,16 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             throw new NotImplementedException();
         }
 
+
+        [ForeignKey("evento")]
+        public int eventoID { get; set; }
+        public Evento evento { get; set; }
+
+
         public void getEspacioRentableNombre()
         {
             throw new NotImplementedException();
         }
+
     }
 }

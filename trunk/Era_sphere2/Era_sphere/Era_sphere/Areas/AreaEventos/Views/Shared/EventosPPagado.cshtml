@@ -24,8 +24,15 @@
             columns.Bound(p => p.dni);
             columns.Bound(p => p.num_participantes);
             columns.Bound(p => p.precio_total);
-        })
+            columns.Command(commands =>
+            {
+                commands.Custom("Pagar")
+                .Text("Detalle Evento")
+                .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
+                .Action("DetalleEvento", "Evento", new { idhotel = idhotel });
 
+            });
+        })
         .Pageable()
         .Sortable()
 

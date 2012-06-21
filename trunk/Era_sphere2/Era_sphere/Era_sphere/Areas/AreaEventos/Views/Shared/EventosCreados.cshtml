@@ -37,6 +37,10 @@
                     .Text("Detalle Evento")
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
                              .Action("DetalleEvento", "Evento", new { idhotel=idhotel});
+                commands.Custom("Pagar Evento")
+                    .Text("Pagar Evento")
+                    .DataRouteValues(route=>route.Add(c=>c.ID).RouteKey("ID"))
+                    .Action("DetalleEvento", "Evento", new { idhotel = idhotel });
                                 
             });
         })

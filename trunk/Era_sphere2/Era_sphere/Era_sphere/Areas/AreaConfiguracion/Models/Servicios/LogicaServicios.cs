@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM;
+using Era_sphere.Areas.AreaEventos.Models.Evento;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
@@ -21,6 +23,15 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public List<ServicioView> retornarServicios()
         {
             List<Servicio> servicios = tabla_servicios.retornarTodos();
+            List<ServicioView> servicios_view = new List<ServicioView>();
+
+            foreach (Servicio servicio in servicios) servicios_view.Add(new ServicioView(servicio));
+            return servicios_view;
+        }
+
+        public List<ServicioView> retornarServicios(int idEvento)
+        {
+            List<Servicio> servicios = tabla_servicios.retornarTodos().Where(e=>e.eventoID==idEvento).ToList();
             List<ServicioView> servicios_view = new List<ServicioView>();
 
             foreach (Servicio servicio in servicios) servicios_view.Add(new ServicioView(servicio));
@@ -84,5 +95,31 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         {
             tabla_servicios.agregarElemento(s);
         }
+
+        #region evento
+        public List<ServicioView> retornarServicioView(int idEvento)
+        {
+            List<ServicioView> servicio_view = new List<ServicioView>();
+            var servicios = tabla_servicios.retornarTodos().Where(p => p.eventoID == idEvento);
+            foreach (Servicio servicio in servicios) servicio_view.Add(new ServicioView(servicio));
+            return servicio_view;
+        }
+
+        internal void agregarServicio(ServicioView servicio)
+        {
+            tabla_servicios.agregarElemento(servicio.deserializa(this));
+        }
+
+        internal decimal RetonarCostos(int idEvento)
+        {
+            decimal costo = 0;
+            List<ServicioView> servicios = retornarServicios(idEvento);
+            
+            foreach (ServicioView servicio in servicios){
+                costo += servicio.precio_final;
+            }
+            return costo;
+        }
+#endregion evento
     }
 }

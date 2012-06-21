@@ -6,11 +6,13 @@ using System.ComponentModel.DataAnnotations;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaClientes.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 
 namespace Era_sphere.Areas.AreaEventos.Models.Evento
 {
     public class Evento:DBable
     {
+        public DateTime fecha_inicio { get; set; }
         
         public string nombre { get; set; }
 
@@ -38,7 +40,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         //public virtual Cliente cliente_evento { get; set; }
         ////[ForeignKey("cliente")]
         public string detalle { get; set; }
-        
+
+        public virtual ICollection<Servicio> evento_servicios { get; set; }
         //public virtual Cliente cliente { get; set; }
     }
 }

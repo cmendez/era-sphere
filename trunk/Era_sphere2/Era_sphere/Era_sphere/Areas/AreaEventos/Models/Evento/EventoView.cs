@@ -27,22 +27,12 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             int pos2 = detalle.IndexOf(',');
             dni = detalle.Substring(pos+1) ;
             cliente_nombre = detalle.Substring(0,pos2);
-            
-            //List<Cliente> c = (new LogicaCliente()).retornarClientes().Where(e => e.documento_identidad == dni ).ToList();
-            //if (c.Count > 0)
-            //    clienteID = c.ElementAt(0).ID;
-            //else
-            //{
-            //    c = (new LogicaCliente()).retornarClientes().Where(e => e.ruc == dni).ToList();
-            //    clienteID = c.ElementAt(0).ID;
-            //}
-            //List<Cliente> c=(new LogicaCliente()).retornarClientes().Where(e => e.documento_identidad == dni || e.ruc==dni).ToList();
-            //Cliente cliente = (new EraSphereContext()).clientes.Find(clienteID);
-            //cliente_nombre = cliente.nombre;
-            //cliente_apellido = cliente.apellido_paterno + " " + cliente.apellido_materno;
-            //cliente_nombre = evento.cliente_reserva.nombre;
-            //cliente_apellido = evento.cliente_reserva.apellido_materno;
+            fecha_inicio = evento.fecha_inicio;
         }
+        [Required]
+        [DisplayName("Fecha Inicio")]
+        public DateTime fecha_inicio { get; set; }
+
         public string dni { get; set; }
         [Required]
         [MaxLength(30)]
@@ -57,10 +47,10 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         [DisplayName("detalle")]
         public string detalle { get; set; }
         
-        [Required]
+        
         //falta limite
         [DisplayName("Cantidad de participantes")]
-        [Range(1, 1000)]
+        
         public int num_participantes { get; set; }
         [DisplayName("ID evento")]
         [Required]
@@ -82,6 +72,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
                 estado_eventoID=this.estadoID,
                 detalle=this.detalle,
                 dni=this.dni,
+                fecha_inicio=this.fecha_inicio
             };
         }
 

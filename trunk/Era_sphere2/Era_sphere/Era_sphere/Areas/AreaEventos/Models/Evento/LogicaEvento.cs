@@ -137,11 +137,12 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             query.agregarElemento(exa);
         }
 
-        internal void modificarEvento(int idEvento, decimal costo)
+        internal void modificarEvento(int idEvento, decimal costo,int participantes)
         {
             
             Evento evento = evento_context.eventos.Find(idEvento);
             evento.precio_total = costo;
+            evento.num_participantes = participantes;
             DBGenericQueriesUtil<Evento> query = new DBGenericQueriesUtil<Evento>(evento_context, evento_context.eventos);
             query.modificarElemento(evento, evento.ID);
 

@@ -8,6 +8,7 @@ using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 using Era_sphere.Areas.AreaReservas.Models;
 using Era_sphere.Areas.AreaReservas;
+using Era_sphere.Areas.AreaEventos.Models.Evento;
 
 
 namespace Era_sphere.Areas.AreaConfiguracion.Controllers
@@ -17,6 +18,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         
         LogicaServicios servicios_logica = new LogicaServicios();
         LogicaReserva reserva_logica = new LogicaReserva();
+        LogicaEvento reserva_evento = new LogicaEvento();
         //llamado par anhadir un servicio de reserva
         public ActionResult IndexServicioReserva(int id_reserva)
         {
@@ -66,5 +68,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         {
             return Json(new { servicio_id = servicio_id }, JsonRequestBehavior.AllowGet);
         }
+
+        //Evento
+        //public ActionResult IndexServicioEvento(int id_evento)
+        //{
+        //    return View("ServiciosDeReservaIndex", new ReservaView(reserva_logica.retornarReserva(id_reserva), reserva_logica));
+        //}
     }
 }

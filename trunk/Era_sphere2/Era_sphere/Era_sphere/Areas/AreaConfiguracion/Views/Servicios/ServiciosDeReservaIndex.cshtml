@@ -72,6 +72,7 @@
             columns.Bound(p => p.ID);
             columns.Bound(p => p.detalle);
             columns.ForeignKey(p => p.tipo_servicioID, new SelectList(tipos_servicios, "ID", "nombre"));
+            columns.Bound(p => p.precio_final);
             columns.Command(commands =>
             {
                 commands.Delete().ButtonType(GridButtonType.Image);

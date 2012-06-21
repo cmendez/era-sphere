@@ -96,6 +96,7 @@
    
     function completado(e) {
         if (e.name == "Check-In") {
+            
             $("#RegitrarCheckIn").load('@Url.Action("CheckIn", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
             $("#CheckIn").data("tWindow").center().open();
             $("#CheckInCheckOutGrid").data("tGrid").ajaxRequest();

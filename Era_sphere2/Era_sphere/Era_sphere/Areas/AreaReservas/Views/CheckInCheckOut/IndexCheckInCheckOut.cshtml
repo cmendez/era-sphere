@@ -85,13 +85,26 @@
     .Content(@<text><div id="RegitrarCheckIn">
     </div></text>).Visible(false).Width(600).Height(400).Scrollable(true)
     )
+
+
+    @(Html.Telerik().Window()
+    .Name("CheckOut").Title("Check-Out")
+    .Content(@<text><div id="RegitrarCheckOut">
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true)
+    )
 <script type="text/javascript">
    
     function completado(e) {
         if (e.name == "Check-In") {
             $("#RegitrarCheckIn").load('@Url.Action("CheckIn", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
             $("#CheckIn").data("tWindow").center().open();
-        } 
+        }
+        else
+            if (e.name == "Check-Out") {
+                $("#RegitrarCheckOut").load('@Url.Action("CheckOut", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
+                $("#CheckOut").data("tWindow").center().open();
+
+            }
         
     }
 </script>

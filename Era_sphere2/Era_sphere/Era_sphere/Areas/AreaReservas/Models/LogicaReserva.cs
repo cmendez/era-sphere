@@ -240,36 +240,23 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public void cambiarEstadoReservaCheckIn(Reserva reserva)
         {
-            //List<Reserva> reservas = new List<Reserva>();
-            //LogicaReserva logica_reserva = new LogicaReserva();
-            //reservas = logica_reserva.retornarReservas();
-            //for (int i = 0; i < reservas.Count(); i++)
-            //{
-            //    if (reservas[i].ID == reserva.ID)
-            //    {
+            LogicaCliente cliente_logica = new LogicaCliente();
             reserva.estadoID = 2;
             reserva.estado = context.estados_reserva.Find(2);
             modificarReserva(reserva);
-            //    }
-            //}
+            cliente_logica.cambiarEstadoCheckIn(reserva);
 
         }
 
+
         public void cambiarEstadoCheckOut(Reserva reserva)
         {
-            //List<Reserva> reservas = new List<Reserva>();
-            //LogicaReserva logica_reserva = new LogicaReserva();
-            //reservas = logica_reserva.retornarReservas();
-            //for (int i = 0; i < reservas.Count(); i++)
-            //{
-            //    if (reservas[i].ID == reserva.ID)
-            //    {
+            LogicaCliente cliente_logica = new LogicaCliente();
             reserva.estadoID = 3;
             reserva.estado = context.estados_reserva.Find(3);
             modificarReserva(reserva);
-            //    }
-            //}
-
+            cliente_logica.cambiarEstadoCheckOut(reserva);
+        
         }
 
         // newbie

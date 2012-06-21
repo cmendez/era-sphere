@@ -12,11 +12,12 @@ namespace Era_sphere.Areas.AreaCargos.Models
     public interface Costeable
     {
         List<ReciboLinea> getReciboLineas();
+        void registraReciboLinea(ReciboLinea r);
         int getHotelID();
         int getPagadorID();
         void generaReciboLineas();
-        void setEspacioRentableNombre();
-        void getEspacioRentableNombre();
+        void setEspacioRentableNombre(string s);
+        string getEspacioRentableNombre();
         //void addReciboPagado();
     }
 }

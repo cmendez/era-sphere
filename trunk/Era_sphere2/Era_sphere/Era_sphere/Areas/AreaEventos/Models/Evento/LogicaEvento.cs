@@ -137,7 +137,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             query.agregarElemento(exa);
         }
 
-        internal void modificarEvento(int idEvento, decimal costo,int participantes)
+        public  void modificarEvento(int idEvento, decimal costo,int participantes)
         {
             
             Evento evento = evento_context.eventos.Find(idEvento);

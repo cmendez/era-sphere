@@ -9,10 +9,11 @@ using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaContable.Models;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaEventos.Models.Evento;
+using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
-    public class Servicio : DBable//, Costeable
+    public class Servicio : DBable, Costeable
     {
         public Servicio() {
         }
@@ -61,15 +62,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public void generaReciboLineas()
         {
             ReciboLinea linea = new ReciboLinea(tipo_servicio.nombre + ": " + this.descripcion, precio_final, 0, DateTime.Now, false);
-            EraSphereContext context = new EraSphereContext();
-            context.recibos_lineas.Add(linea);
-            ReciboLineaXServicio x = new ReciboLineaXServicio { recibo_lineaID = linea.ID, servicioID = ID };
-            context.recibo_linea_x_servicio.Add(x);
+           
 
         }
 
 
-        public void setEspacioRentableNombre()
+        public void setEspacioRentableNombre(string s)
         {
             throw new NotImplementedException();
         }
@@ -80,10 +78,20 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public Evento evento { get; set; }
 
 
-        public void getEspacioRentableNombre()
+        public string getEspacioRentableNombre()
         {
             throw new NotImplementedException();
         }
 
+
+        public void registraReciboLinea(ReciboLinea linea)
+        {
+            EraSphereContext context = new EraSphereContext();
+            context.recibos_lineas.Add(linea);
+            context.SaveChanges();
+            ReciboLineaXServicio x = new ReciboLineaXServicio { recibo_lineaID = linea.ID, servicioID = ID };
+            context.recibo_linea_x_servicio.Add(x);
+            context.SaveChanges();
+        }
     }
 }

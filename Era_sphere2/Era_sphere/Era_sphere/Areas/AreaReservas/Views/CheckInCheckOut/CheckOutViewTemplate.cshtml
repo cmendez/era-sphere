@@ -105,8 +105,8 @@
         .Sortable()
         .DataBinding(dataBinding => dataBinding
             .Ajax().Select("_CustomCommand", "Cliente")
-            .Select("SelectReserva", "Servicios", new { id_reserva = Model.ID })
-            .Delete("DeleteReserva", "Servicios", new { id_reserva = Model.ID })
+            .Select("SelectReserva", "../AreaConfiguracion/Servicios", new { id_reserva = Model.ID })
+                    .Delete("DeleteReserva", "../AreaConfiguracion/Servicios", new { id_reserva = Model.ID })
         )
            )
     </div>

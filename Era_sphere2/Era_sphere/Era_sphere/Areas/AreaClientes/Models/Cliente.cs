@@ -31,7 +31,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
             public string tarjeta_cliente { get; set; }
 
             public string habitacion_asignada { get; set; }
-            public int id_habitacion_asisgnada { get; set; }
+           // public int id_habitacion_asisgnada { get; set; }
             public int puntos_cliente { get; set; }
             public int numero_reservas { get; set; }
             public virtual ICollection<Recibo> recibos_cliente { get; set; }

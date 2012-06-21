@@ -18,8 +18,8 @@ namespace Era_sphere.Generics
         {
             List<RelacionPromocion> rps = new List<RelacionPromocion>
             {
-                new RelacionPromocion { descripcion = "Evento" },
-                new RelacionPromocion { descripcion = "Reserva" }
+                new RelacionPromocion { ID = 1, descripcion = "Evento" },
+                new RelacionPromocion { ID = 2, descripcion = "Reserva" }
             };
             foreach (RelacionPromocion rp in rps) relacionespromocion.Add(rp);
             SaveChanges();

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq; 
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Areas.AreaEventos.Models.Evento;
@@ -36,7 +36,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         }
 
         [GridAction]
-        public ActionResult Select(int id_hotel,int estado)
+        public ActionResult Select(int id_hotel, int estado)
         {
             return View("EventoIndex", new GridModel(evento_logica.retornarEventos(id_hotel).Where(e => e.estadoID == estado)));
         }
@@ -46,12 +46,12 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         public ActionResult Insert(int id_hotel, int estado)
         {
 
-            EventoView evento_view= new EventoView();
-            
+            EventoView evento_view = new EventoView();
+
             if (TryUpdateModel(evento_view))
             {
                 evento_view.estadoID = estado;
-                evento_view.Hotel =id_hotel;
+                evento_view.Hotel = id_hotel;
                 evento_logica.agregarEvento(evento_view);
 
             }
@@ -85,69 +85,69 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             ViewBag.idevento = id;
             return View("EventoLlenarDatos");
         }
-        #endregion 
+        #endregion
 
         //Adicional
         #region Adicional
         [GridAction]
-        public ActionResult VerAdicionales(int id,int idEvento)
+        public ActionResult VerAdicionales(int id, int idEvento)
         {
-            
-            LogicaAdicional logicaAdicional=new LogicaAdicional();
+
+            LogicaAdicional logicaAdicional = new LogicaAdicional();
             return PartialView("EventoAdicionalView", new GridModel(logicaAdicional.retornarAdicionalesView(idEvento)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult DeleteAdicional(int? id,int idEvento)
+        public ActionResult DeleteAdicional(int? id, int idEvento)
         {
             int adicional_id = id ?? -1;
             LogicaAdicional logicaAdicional = new LogicaAdicional();
-            
+
             logicaAdicional.eliminarAdicional(adicional_id);
             return View("EventoAdicionalView", new GridModel(logicaAdicional.retornarAdicionalesView(idEvento)));//falta ya noc reo
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult UpdateAdicional(AdicionalView adicionalView, int id ,int idEvento)
+        public ActionResult UpdateAdicional(AdicionalView adicionalView, int id, int idEvento)
         {
             LogicaAdicional logicaAdicional = new LogicaAdicional();
-            adicionalView.eventoID = idEvento;      
+            adicionalView.eventoID = idEvento;
             logicaAdicional.modificarAdicional(adicionalView);
-            return View("EventoAdicionalView",new GridModel(logicaAdicional.retornarAdicionalesView(idEvento)));//falta ya no creo
+            return View("EventoAdicionalView", new GridModel(logicaAdicional.retornarAdicionalesView(idEvento)));//falta ya no creo
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult InsertAdicional( int id,int idEvento)
+        public ActionResult InsertAdicional(int id, int idEvento)
         {
             //int idevento = id;
-            AdicionalView adicional_view= new AdicionalView();
+            AdicionalView adicional_view = new AdicionalView();
             LogicaAdicional logicaAdicional = new LogicaAdicional();
             if (TryUpdateModel(adicional_view))
             {
-                adicional_view.eventoID =idEvento;
+                adicional_view.eventoID = idEvento;
                 logicaAdicional.agregarAdicional(adicional_view);
 
             }
             return View("EventoAdicionalView", new GridModel(logicaAdicional.retornarAdicionalesView(idEvento)));
 
         }
-        #endregion 
+        #endregion
 
         //Participante
         #region participante
         [GridAction]
-        public ActionResult VerParticipantes(int id,int idEvento)
+        public ActionResult VerParticipantes(int id, int idEvento)
         {
-            LogicaParticipante logicaParticipante= new LogicaParticipante();
+            LogicaParticipante logicaParticipante = new LogicaParticipante();
             return PartialView("EventoParticipanteView", new GridModel(logicaParticipante.retornarParticipantesView(idEvento)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult DeleteParticipante(int? id,int idEvento)
+        public ActionResult DeleteParticipante(int? id, int idEvento)
         {
             int participante_id = id ?? -1;
             LogicaParticipante logicaParticipante = new LogicaParticipante();
@@ -158,9 +158,9 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult UpdateParticipante(ParticipanteView participanteView, int id,int idEvento)
+        public ActionResult UpdateParticipante(ParticipanteView participanteView, int id, int idEvento)
         {
-            LogicaParticipante logicaParticipante= new LogicaParticipante();
+            LogicaParticipante logicaParticipante = new LogicaParticipante();
             //int idevento = participanteView.eventoID;
             participanteView.eventoID = idEvento;
             logicaParticipante.modificarParticipante(participanteView);
@@ -169,11 +169,11 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult InsertParticipante(int id,int idEvento)
+        public ActionResult InsertParticipante(int id, int idEvento)
         {
             //int idevento = id;
             ParticipanteView participante_view = new ParticipanteView();
-            LogicaParticipante logicaParticipante= new LogicaParticipante();
+            LogicaParticipante logicaParticipante = new LogicaParticipante();
             if (TryUpdateModel(participante_view))
             {
                 participante_view.eventoID = idEvento;
@@ -183,31 +183,31 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             return View("EventoParticipanteView", new GridModel(logicaParticipante.retornarParticipantesView(idEvento)));
 
         }
-        #endregion 
+        #endregion
 
         //EventoXAmbiente
         #region EventoXAmbiente
-        public ActionResult AmbientesRestantes(int idHotel,int idEvento)
+        public ActionResult AmbientesRestantes(int idHotel, int idEvento)
         {
-            
+
             Thread.Sleep(500);
             //LogicaEventoXAmbiente logica_exa = new LogicaEventoXAmbiente();
 
-            return Json( new SelectList( evento_logica.ambientesRestantes( idHotel ,idEvento), "ID" , "nombre"));
+            return Json(new SelectList(evento_logica.ambientesRestantes(idHotel, idEvento), "ID", "nombre"));
         }
 
         [GridAction]
         public ActionResult VerAmbientes(int id, int idEvento)
         {
-            
+
             return PartialView("EventoAmbienteView", new GridModel(exa_logica.retornarAmbientes(idEvento)));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult DeleteAmbiente( int idEvento,EventoXAmbienteView ambiente)
-        {   
-            evento_logica.eliminarAmbiente(idEvento,ambiente);
+        public ActionResult DeleteAmbiente(int idEvento, EventoXAmbienteView ambiente)
+        {
+            evento_logica.eliminarAmbiente(idEvento, ambiente);
             return View("EventoEventoView", new GridModel(exa_logica.retornarAmbientes(idEvento)));
         }
 
@@ -223,29 +223,30 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult InsertAmbiente(EventoXAmbienteView ambiente, int idEvento,DateTime fecha_hora_inicio,DateTime fecha_hora_fin)
+        public ActionResult InsertAmbiente(EventoXAmbienteView ambiente, int idEvento, DateTime fecha_hora_inicio, DateTime fecha_hora_fin)
         {
             //int idevento = id;
-            int idambiente=ambiente.ambienteID;
+            int idambiente = ambiente.ambienteID;
             ambiente.eventoID = idEvento;
             ambiente.fecha_hora_inicio = fecha_hora_inicio;
             ambiente.fecha_hora_fin = fecha_hora_fin;
-            evento_logica.agregarAmbienteAEvento(idEvento, ambiente,idambiente);
+            evento_logica.agregarAmbienteAEvento(idEvento, ambiente, idambiente);
 
             return View("EventoEventoView", new GridModel(exa_logica.retornarAmbientes(idEvento)));
 
         }
-        
-        public ActionResult CargarAmbientes(int idEvento,DateTime fecha_hora_inicio,DateTime fecha_hora_fin,int idHotel){
+
+        public ActionResult CargarAmbientes(int idEvento, DateTime fecha_hora_inicio, DateTime fecha_hora_fin, int idHotel)
+        {
 
             ViewBag.idEvento = idEvento;
             ViewBag.fecha_inicio = fecha_hora_inicio;
-            LogicaEventoXAmbiente lexa=new LogicaEventoXAmbiente();
-            return PartialView("CargarAmbiente", lexa.retonarAmbienteHotel(idHotel,idEvento,fecha_hora_inicio,fecha_hora_fin));
+            LogicaEventoXAmbiente lexa = new LogicaEventoXAmbiente();
+            return PartialView("CargarAmbiente", lexa.retonarAmbienteHotel(idHotel, idEvento, fecha_hora_inicio, fecha_hora_fin));
         }
-        #endregion 
+        #endregion
 
-        
+
         public ActionResult CalcularCostos(int idEvento)
         {
             decimal costo = 0;
@@ -253,7 +254,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             LogicaAdicional logicaAdicional = new LogicaAdicional();
             costo += logicaAdicional.RetornarCosto(idEvento);
 
-            LogicaEventoXAmbiente logicaExA= new LogicaEventoXAmbiente();
+            LogicaEventoXAmbiente logicaExA = new LogicaEventoXAmbiente();
             costo += logicaExA.RetornarCosto(idEvento);
 
             ViewBag.precio = costo;
@@ -275,7 +276,8 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         public JsonResult TraerClientes(int clienteID)
         {
-            if (clienteID==1){
+            if (clienteID == 1)
+            {
                 return Json(new SelectList((new LogicaCliente()).retonarClientesNaturales(), "ID", "nombre"), JsonRequestBehavior.AllowGet);
             }
             return Json(new SelectList((new LogicaCliente()).retonarClientesJuridicos(), "ID", "nombre"), JsonRequestBehavior.AllowGet);

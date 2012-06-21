@@ -58,7 +58,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
 
         public void eliminarComodidad(int comodidad_id)
         {
-            database_table.eliminarElemento(comodidad_id);
+            database_table.eliminarElemento_logico(comodidad_id);
         }
 
         public void modificarComodidad(ComodidadView comodidad_view)

@@ -8,7 +8,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
 {
     public class LogicaPromocion:InterfazLogicaPromocion
     {
-        EraSphereContext promocion_context = new EraSphereContext();
+        public EraSphereContext promocion_context = new EraSphereContext();
         DBGenericQueriesUtil<Promocion> database_table;
 
         public LogicaPromocion()

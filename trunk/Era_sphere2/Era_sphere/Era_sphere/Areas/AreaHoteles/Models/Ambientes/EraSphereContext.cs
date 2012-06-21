@@ -25,6 +25,5 @@ namespace Era_sphere.Generics
             foreach (Ambiente amb in ambs) ambientes.Add(amb);
             SaveChanges();
         }
-        
     }
 }

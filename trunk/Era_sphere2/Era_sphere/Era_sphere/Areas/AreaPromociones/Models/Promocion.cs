@@ -30,7 +30,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         [DisplayName("Ascociado a")]
         public int relacionpromocionID { get; set; }
 
-        public RelacionPromocion relacionpromocion { get; set; }
+        public virtual RelacionPromocion relacionpromocion { get; set; }
 
         //[DisplayName("Estado")]
         //public string estado { get; set; }

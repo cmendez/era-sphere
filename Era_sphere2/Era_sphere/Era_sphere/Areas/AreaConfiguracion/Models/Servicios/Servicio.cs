@@ -16,6 +16,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
     public class Servicio : DBable, Costeable
     {
         public Servicio() {
+            eventoID = null;
         }
 
         public string descripcion { get; set; }
@@ -74,7 +75,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
 
         [ForeignKey("evento")]
-        public int eventoID { get; set; }
+        public int? eventoID { get; set; }
         public Evento evento { get; set; }
 
 

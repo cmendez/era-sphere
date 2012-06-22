@@ -21,6 +21,7 @@ namespace Era_sphere.Generics
             seedUbigeo();
             seedMonedas();
             seedHotel();
+            seedOrdenCompra();
             seedEstadoEspacioRentable();
             seedEstadoCliente();
             seedTipoPersona();
@@ -67,12 +68,15 @@ namespace Era_sphere.Generics
             base.OnModelCreating(modelBuilder);
             crear_fiscal(modelBuilder);
             crear_orden_compra(modelBuilder);
+            //crear_eventos_servicios(modelBuilder);
         }
 
     }
 
-    public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
-    //public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
+
+
+
+    public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
         protected override void Seed(EraSphereContext context){
             context.seed();
         }

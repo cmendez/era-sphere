@@ -5,8 +5,29 @@
 @{
     int idCosteable = (int)(ViewData["idCosteable"]);
 }
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var dentro = [];
+    function Pagar() {
+        console.log(dentro);
+    }
+    function Modifica(id) {
+        var esta = false;
+        var dentro2 = [];
+        for (i in dentro)
+            if (dentro[i] == id) esta = true;
+            else dentro2.push(dentro[i]);
+
+        if (!esta)
+            dentro.push(id);
+        else
+            dentro = dentro2;
+    }
+</script>
+
 <label> Pagados </label>
 @(Html.Telerik().Grid(Model.Where(p => p.pagado == true).ToList())
     .Name("GridPagados")
@@ -31,7 +52,7 @@
     {
         columns.Template(
                 @<text>
-                    <input name="checkedLineas" type="checkbox" value="@item.ID " title="checkedLineas"/>
+                    <input name="checkedLineas" type="checkbox" value="@item.ID " title="checkedLineas" onclick="Modifica(@item.ID);"/>
                 </text>)
                 .Title("").Width(36).HtmlAttributes(new { style = "text-align:center" });
         columns.Bound(x => x.detalle);
@@ -39,3 +60,5 @@
         columns.Bound(x => x.precio_final);
     }
     ).Footer(false))
+
+<button onclick="Pagar();">Realizar pago</button>

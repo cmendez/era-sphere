@@ -64,7 +64,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             precio_fijado = servicio.precio_fijado;
             precio_normal = servicio.precio_normal;
 
-            eventoID = servicio.eventoID;
+            eventoID = servicio.eventoID ?? -1;
 
             precio_final = servicio.precio_final;
 
@@ -72,7 +72,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         public Servicio deserializa(LogicaServicios logica)
         {
-            return new Servicio
+            Servicio s =  new Servicio
             {
                 ID = this.ID,
                 descripcion = this.detalle,
@@ -86,9 +86,12 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                 precio_fijado = this.precio_fijado,
                 es_precio_fijado = this.es_precio_fijado,
                 precio_normal = this.precio_normal,
-                eventoID=this.eventoID
             };
-
+            if (eventoID > 0)
+                s.eventoID = eventoID;
+            else
+                s.eventoID = null;
+            return s;
         }
     }
 }

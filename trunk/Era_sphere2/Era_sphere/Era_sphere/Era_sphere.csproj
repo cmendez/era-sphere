@@ -1184,6 +1184,7 @@
     <Folder Include="Areas\AreaCargos\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Models\Ambientes\" />
     <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
+    <Folder Include="Areas\AreaContable\Views\Recibo\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
@@ -1347,7 +1348,7 @@
     <Content Include="Areas\AreaHoteles\Views\HotelXTipoHabitacionXTemporada\Index.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReportePromocion\Index.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
-    <Content Include="Areas\AreaContable\Models\Views\Recibo\ViewPage1.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Pagos\CorteDeCuenta.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteCliente\Index.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReporteCliente\ReporteClienteView.cshtml" />
     <None Include="Content\data\._.DS_Store" />

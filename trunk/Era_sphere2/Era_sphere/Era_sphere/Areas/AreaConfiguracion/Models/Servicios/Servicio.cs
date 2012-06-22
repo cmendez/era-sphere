@@ -47,7 +47,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public List<ReciboLinea> getReciboLineas()
         {
             EraSphereContext context = new EraSphereContext();
-            return context.recibo_linea_x_servicio.Where(x => x.servicioID == ID).Select(x => context.recibos_lineas.Find(x.recibo_lineaID)).ToList();
+            return context.recibo_linea_x_servicio.Where(x => x.servicioID == ID).ToList().Select(x => context.recibos_lineas.Find(x.recibo_lineaID)).ToList();
         }
 
         public int getHotelID()

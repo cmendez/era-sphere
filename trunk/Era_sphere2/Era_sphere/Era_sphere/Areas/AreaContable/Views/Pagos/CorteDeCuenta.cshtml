@@ -1,0 +1,41 @@
+﻿@using Era_sphere.Generics
+@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models.Recibo
+@model IEnumerable<ReciboLinea>
+@{
+    int idCosteable = (int)(ViewData["idCosteable"]);
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<label> Pagados </label>
+@(Html.Telerik().Grid(Model.Where(p => p.pagado == true).ToList())
+    .Name("GridPagados")
+    .Localizable("es-ES")
+    .Filterable()
+    .DataKeys(keys => keys.Add(c => c.ID))
+    .Columns(columns =>
+        {
+            columns.Bound(x => x.detalle);
+            columns.Bound(x => x.unidades);
+            columns.Bound(x => x.precio_final);
+        }
+        ).Footer(false)
+
+)
+<div style="height:10px"></div>
+<label> Sin pagar </label>
+@(Html.Telerik().Grid(Model.Where(p => p.pagado == false).ToList())
+    .Name("GridPorPagar")
+    .Localizable("es-ES")
+    .Columns(columns =>
+    {
+        columns.Template(
+                @<text>
+                    <input name="checkedLineas" type="checkbox" value="@item.ID " title="checkedLineas"/>
+                </text>)
+                .Title("").Width(36).HtmlAttributes(new { style = "text-align:center" });
+        columns.Bound(x => x.detalle);
+        columns.Bound(x => x.unidades).Title("Unidades/Dias");
+        columns.Bound(x => x.precio_final);
+    }
+    ).Footer(false))

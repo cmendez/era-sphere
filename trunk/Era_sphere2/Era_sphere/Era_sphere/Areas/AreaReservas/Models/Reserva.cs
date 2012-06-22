@@ -66,8 +66,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
         public List<ReciboLinea> getReciboLineas()
         {
             EraSphereContext context = new EraSphereContext();
-            List<Servicio> servicios = context.servicioxreservas.Where(x => x.reservaID == ID).Select(y => context.servicios.Find(y.servicioID)).ToList();
-            List<ReciboLinea> lineas = context.recibos_linea_x_reserva.Where(x => x.reservaID == ID).Select(y => context.recibos_lineas.Find(y.recibo_lineaID)).ToList();
+            List<Servicio> servicios = context.servicioxreservas.Where(x => x.reservaID == ID).ToList().Select(y => context.servicios.Find(y.servicioID)).ToList();
+            List<ReciboLinea> lineas = context.recibos_linea_x_reserva.Where(x => x.reservaID == ID).ToList().Select(y => context.recibos_lineas.Find(y.recibo_lineaID)).ToList();
             foreach (var s in servicios)
             {
                 List<ReciboLinea> lineas2 = s.getReciboLineas();

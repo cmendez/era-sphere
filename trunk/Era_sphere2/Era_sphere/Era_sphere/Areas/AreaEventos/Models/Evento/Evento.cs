@@ -7,11 +7,14 @@ using Era_sphere.Generics;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaClientes.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
+using Era_sphere.Areas.AreaCargos.Models;
+using Era_sphere.Areas.AreaContable.Models.Recibo;
 
 namespace Era_sphere.Areas.AreaEventos.Models.Evento
 {
-    public class Evento:DBable
+    public class Evento : DBable, Costeable
     {
+        #region atributos
         public DateTime fecha_inicio { get; set; }
         
         public string nombre { get; set; }
@@ -43,5 +46,36 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
 
         public virtual ICollection<Servicio> evento_servicios { get; set; }
         //public virtual Cliente cliente { get; set; }
+
+        #endregion
+
+        public List<ReciboLinea> getReciboLineas()
+        {
+            return new List<ReciboLinea>();
+        }
+        public void registraReciboLinea(ReciboLinea r)
+        {
+
+        }
+        public int getHotelID()
+        {
+            return 1;
+        }
+        public int getPagadorID()
+        {
+            return 2;
+        }
+        public void generaReciboLineas()
+        {
+
+        }
+        public void setEspacioRentableNombre(string s)
+        {
+
+        }
+        public string getEspacioRentableNombre()
+        {
+            return "gg";
+        }
     }
 }

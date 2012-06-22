@@ -41,7 +41,10 @@
             traditional: true,
             data: { reserva_id: reserva_id },
             type: "POST",
-            success: function (data) { $("#CheckOut").data("tWindow").close(); },
+            success: function (data) {
+                $("#CheckInCheckOutGrid").data("tGrid").ajaxRequest();
+                 $("#CheckOut").data("tWindow").close();
+            },
             async: true
         });
 

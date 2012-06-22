@@ -13,6 +13,8 @@ using Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente;
 using System.Threading;
 using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 using Era_sphere.Areas.AreaClientes.Models;
+using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM;
 
 namespace Era_sphere.Areas.AreaEventos.Controllers
 {
@@ -250,15 +252,24 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         public ActionResult CalcularCostos(int idEvento)
         {
             decimal costo = 0;
+            Evento e = (new LogicaEvento()).retornarObjEvento(idEvento);
 
-            LogicaAdicional logicaAdicional = new LogicaAdicional();
-            costo += logicaAdicional.RetornarCosto(idEvento);
+
+            LogicaServicios logicaServicio = new LogicaServicios();
+            costo += logicaServicio.RetonarCostos(idEvento);
 
             LogicaEventoXAmbiente logicaExA = new LogicaEventoXAmbiente();
             costo += logicaExA.RetornarCosto(idEvento);
 
             ViewBag.precio = costo;
-            //evento_logica.modificarEvento(idEvento, costo);
+            int num_participantes = e.participantes.Count;
+            evento_logica.modificarEvento(idEvento, costo, num_participantes);
+
+            ViewBag.participantes = num_participantes;
+
+            ViewBag.capacidad = logicaExA.retonarCapacidad(idEvento);
+
+
 
             return View("EventoCalcularCostos");
         }
@@ -283,6 +294,63 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             return Json(new SelectList((new LogicaCliente()).retonarClientesJuridicos(), "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }
         #endregion
+        #region servicios
+        [GridAction]
+        public ActionResult VerServicio(int idEvento)
+        {
+            LogicaServicios logicaServicio = new LogicaServicios();
+            return PartialView("EventoServicioView", new GridModel(logicaServicio.retornarServicioView(idEvento)));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult DeleteServicio(int? id, int idEvento)
+        {
+            int servicio_id = id ?? -1;
+            LogicaServicios logicaServicio = new LogicaServicios();
 
+            logicaServicio.eliminarServicio(servicio_id);
+            return View("EventoServicioView", new GridModel(logicaServicio.retornarServicioView(idEvento)));//falta ya noc reo
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult UpdateServicio(ServicioView servicioView, int id, int idEvento)
+        {
+            LogicaServicios logicaServicio = new LogicaServicios();
+            servicioView.eventoID = idEvento;
+            logicaServicio.modificarServicio(servicioView);
+            return View("EventoAdicionalView", new GridModel(logicaServicio.retornarServicioView(idEvento)));//falta ya no creo
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult InsertServicio(int id, int idEvento)
+        {
+            //int idevento = id;
+            Evento evento = (new LogicaEvento()).retornarObjEvento(idEvento);
+            ServicioView servicio_view = new ServicioView();
+            LogicaServicios logicaServicio = new LogicaServicios();
+            if (TryUpdateModel(servicio_view))
+            {
+                if ((double)servicio_view.precio_fijado > 0.0) servicio_view.es_precio_fijado = true;
+                servicio_view.precio_normal = (new LogicaHotelXTipoServicioXTemporada()).getPrecioTipoServicio(servicio_view.ID, evento.hotel, evento.fecha_inicio);
+                servicio_view.eventoID = idEvento;
+                logicaServicio.agregarServicio(servicio_view);
+
+            }
+            return View("EventoAdicionalView", new GridModel(logicaServicio.retornarServicioView(idEvento)));
+
+        }
+
+        public ActionResult ServicioPrecio(int idEvento, int idHotel, int tipo_servicio)
+        {
+            DateTime fecha = (new LogicaEvento()).retornarObjEvento(idEvento).fecha_inicio;
+            decimal precio = (new LogicaHotelXTipoServicioXTemporada()).getPrecioTipoServicio(tipo_servicio, idHotel, fecha);
+            ViewBag.precio = precio;
+            //ViewBag.repeticiones = (new LogicaServicios()).retornarServicio(tipo_servicio).repeticiones;
+            return PartialView("PrecioServicio");
+        }
+
+        #endregion
     }
 }

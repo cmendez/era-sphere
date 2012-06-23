@@ -113,9 +113,10 @@
                 
             }
             else if (e.name == "RealizarCorteCuenta") {
-                $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : e.response.reserva_id});
+                $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : e.response.reserva_id, cancelable : false});
                 $("#Cortecuenta").data("tWindow").center().open();
-            } 
-        
-    }
+            }
+
+        }
+   
 </script>

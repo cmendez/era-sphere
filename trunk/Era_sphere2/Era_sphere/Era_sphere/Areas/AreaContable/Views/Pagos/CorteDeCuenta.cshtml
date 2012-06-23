@@ -77,7 +77,9 @@
 
         ConfirmarPago2();
     }
+    var se_pago = false;
     function ConfirmarPago2() {
+        se_pago = false;
         if (pudo_tarjeta){
          $.ajax(
                 {
@@ -89,6 +91,7 @@
                             monto_total: monto},
                     type: "POST",
                     success: function (data) {
+                        se_pago = true;
                         $("#Cortecuenta").data("tWindow").close();
                     },
                     async: false

@@ -4,7 +4,7 @@
 @using Telerik.Web.Mvc.UI  
 @{
     ViewBag.Title = "TarjetaDeCreditoIndex";
-    List<string> tipos = new List<string> { "Visa", "Mastercard" };
+    List<string> tipos = new List<string> { "Visa", "Mastercard", "Amex"};
 
 }
          
@@ -12,7 +12,120 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <script type="text/javascript">
-    
+    function IsValidCreditCard(cardNumber, cardType) {
+        //variable to hold the validity state
+        var isValid = false;
+        //regular expression literal to check for digits only
+        var allNumberPattern = /[^\d ]/;
+        //determine if the number provided is valid (numeric only)
+        isValid = !allNumberPattern.test(cardNumber);
+
+        //if the number is valid (numeric only) then
+        //we need to go in and check if the number is correct
+        //for the type of card provided
+        if (isValid) {
+            //replace any spaces
+            var cardNumbersOnly = cardNumber.replace(/ /g, "");
+            //get the length of the cc number
+            var cardNumberLength = cardNumbersOnly.length;
+            //variable to hold length valid (boolean)
+            var isValidLength = false;
+            //variable to hold prefix validity (boolean)
+            var isValidPrefix = false;
+            var prefixPattern;
+
+            /*
+            Here we will check, for the card type provided, whether
+            the number provided has the valid prefix and length
+            */
+            switch (cardType) {
+                case "Mastercard":
+                    /*
+                    Mastercard:
+                    Prefix: 51-55
+                    Length: 16
+                    */
+                    //determine if the length is valid for mc
+                    isValidLength = (cardNumberLength == 16);
+                    //determine if the prefix is valid for mc
+                    prefixPattern = /^5[1-5]/;
+                    break;
+
+                case "Visa":
+                    /*
+                    Visa:
+                    Prefix: 4
+                    Length: 13,16
+                    */
+                    //determine if length is valid
+                    isValidLength = (cardNumberLength == 16 || cardNumberLength == 13);
+                    //determine if proper prefix
+                    prefixPattern = /^4/;
+                    break;
+
+                case "Amex":
+                    /*
+                    American Express
+                    Prefix: 34,37
+                    Length: 15
+                    */
+                    //determine valid length
+                    isValidLength = (cardNumberLength == 15);
+                    prefixPattern = /^3(4|7)/;
+                    //determine valid prefix
+                    break;
+
+                default:
+                    prefixPattern = /^$/;
+                    alert("Card type not found");
+            }
+            //test the prefix with the Regular Expression
+            isValidPrefix = prefixPattern.test(cardNumbersOnly);
+            //number is only valid thus far is the prefix & length are valid
+            isValid = isValidPrefix && isValidLength;
+        }
+
+        /*
+        Now, as long as we're still valid, now we get into
+        the real work of validating a credit card number using the Luhn formula,
+        which works with almost all card types. This formula, also known as Modula 10 or Mod 10, 
+        tells us whether the number it is applied to could be a valid number. 
+        */
+        if (isValid) {
+            var product;
+            var checkSum = 0;
+            //loop through the provided number, starting at the last
+            //number and moving forward
+            for (var i = cardNumberLength - 1; i >= 0; i--) {
+                //add the current digit to our total
+                checkSum += parseInt(cardNumbersOnly.charAt(i));
+                //move to the next digit
+                i--;
+                //multiple that number by 2
+                product = String((cardNumbersOnly.charAt(i) * 2));
+                //loop the length of the digit
+                for (var j = 0; j < product.length; j++) {
+                    //add that to our running total
+                    checkSum += parseInt(product.charAt(j));
+                }
+            }
+            //now we need to take our grand total and
+            //mod it by 10. If it returns zero (0) then
+            //its a valid number, otherwise its invalid
+            isValid = (checkSum % 10 == 0);
+        }
+        //return the status
+        return isValid;
+    }
+
+
+
+
+    function tarjeta_de_credito_valida() {
+        var tipo = $("#tipo_tarjeta").val();
+        var num_tarjeta = $("#num_tarjeta").val();
+        return IsValidCreditCard(num_tarjeta, tipo);
+    }
     
 </script>
 

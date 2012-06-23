@@ -40,13 +40,14 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
             this.detalle = detalle;
             this.precio_final = precio_final;
             this.unidades = unidades;
-            this.pagado = false;
+            this.pagado = pagado;
             this.fecha = fecha;
             this.puntos = puntos;
             this.de_servicio = this.de_reserva = this.de_evento = false;
             if (Tipo == 0) {this.de_servicio = true;}
             if (Tipo == 1) {this.de_reserva = true;}
             if (Tipo == 2) {this.de_evento = true ;}
+            if (precio_final == 0) pagado = true;
 
         }
 

@@ -136,25 +136,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
         }
 
 
-        public void cambiarEstadoCliente(Reserva reserva)
-        {
-            
-            
-            List<Cliente> clientes = new List<Cliente>();
-            clientes = retornarClientes();
-
-            for (int i = 0; i < clientes.Count(); i++)
-            {
-                if ((reserva.responsable_pago.ID == clientes[i].ID) && (reserva.estado.ID == 1))
-                {
-                    clientes[i].estadoID = 2;
-                    clientes[i].estado = context.estados_cliente.Find(2);
-                    modificarCliente(clientes[i]);
-                    break;
-                }
-
-            }
-        }
+        
 
         public void cambiarEstadoCheckIn(Reserva reserva)
         {

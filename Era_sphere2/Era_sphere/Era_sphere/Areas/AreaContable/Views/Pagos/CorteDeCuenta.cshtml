@@ -101,6 +101,10 @@
             alert("El numero del pin debe ser un numero de 3 o 4 digitos sin espacios");
             return;
         }
+        if (!tarjeta_de_credito_valida()){
+            alert("El numero de la tarjeta ingresada no es valido");
+            return;
+        }
         pudo_tarjeta = true;
         $("#TarjetaWindow").data("tWindow").close();
     }

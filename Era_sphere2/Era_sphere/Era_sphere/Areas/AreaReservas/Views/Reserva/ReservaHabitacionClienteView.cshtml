@@ -37,8 +37,10 @@
         $("#huespedes_acuales").val(capacidad);
     }
     function agregarHuesped() {
-        if(hab_id == 0)
+        if(hab_id == 0){
             alert("Seleccione una habitacion valida");
+            return;
+        }
         var huesped_raw = $("#huesped_autocompletar").data("tAutoComplete").value();
         $.ajax({
             url: '@Url.Action("ObtieneDatosCliente", "../AreaClientes/Cliente")',

@@ -1,10 +1,14 @@
 ﻿@using Era_sphere.Generics
 @using Telerik.Web.Mvc.UI
 @using Era_sphere.Areas.AreaContable.Models.Recibo
+@using Era_sphere.Areas.AreaClientes.Models;
 @model IEnumerable<ReciboLinea>
 @{
     int idCosteable = (int)(ViewData["idCosteable"]);
     int idCliente = (int)(ViewData["clienteID"]);
+    EraSphereContext context = new EraSphereContext();
+    Cliente c = context.clientes.Find(idCliente);
+    string nombre = LogicaCliente.toString(c);
 }
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -111,6 +115,9 @@
     }
 </script>
 
+<label>Pago a nombre de: </label>
+<input type="text" readonly="readonly" value=@nombre />
+
 @(Html.Telerik().Window()
     .Name("TarjetaWindow").Title("Pago con tarjeta")
     .Content(@<text><div id="tarjeta_div">
@@ -164,4 +171,8 @@
         <input type="text" id="tarjeta_text" onchange="cambioTarjeta();" />
     </div>
     <button onclick="ConfirmarPago();">Confirmar pago</button>
+
+    <div id="recibo_div">
+        
+    </div>
 </div>

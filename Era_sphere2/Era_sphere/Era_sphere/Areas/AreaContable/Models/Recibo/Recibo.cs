@@ -15,5 +15,13 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
         [ForeignKey("cliente")]
         public int clienteID { get; set; }
         public Cliente cliente { get; set; }
+        public DateTime? fecha { get; set; }
+        public decimal precio_total { get; set; }
+        public decimal precio_tarjeta { get; set; }
+        public decimal precio_contado { get; set; }
+
+        //0 es boleta y 1 es factura
+        public int tipo { get; set; }
+
     }
 }

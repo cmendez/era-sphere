@@ -1,5 +1,4 @@
-
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -64,24 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\GridLocalization.es-ES.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GridLocalization.es-ES.resx</DependentUpon>
-    </Compile>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
-<<<<<<< .mine
     <Compile Include="Areas\AreaCargos\Models\LogicaPreciable.cs" />
     <Compile Include="Areas\AreaCargos\Models\Preciable.cs" />
-=======
-
-    <Compile Include="Areas\AreaCargos\Models\LogicaPreciable.cs" />
-    <Compile Include="Areas\AreaCargos\Models\Preciable.cs" />
-
-    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXReserva.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
-
->>>>>>> .r884
     <Compile Include="Areas\AreaClientes\AreaClientesAreaRegistration.cs" />
     <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs" />
     <Compile Include="Areas\AreaClientes\Models\Cliente.cs" />
@@ -98,12 +82,7 @@
     <Compile Include="Areas\AreaConfiguracion\Controllers\MonedaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PerfilesController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\PoliticasController.cs" />
-<<<<<<< .mine
     <Compile Include="Areas\AreaConfiguracion\Controllers\ServiciosController.cs" />
-=======
-    <Compile Include="Areas\AreaConfiguracion\Controllers\ServiciosController.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Controllers\TipoServicioController.cs" />
->>>>>>> .r884
     <Compile Include="Areas\AreaConfiguracion\Controllers\TemporadaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoDePagoController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoTemporadaController.cs" />
@@ -125,7 +104,6 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePago.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePagoContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Fiscal\TipoDePagoView.cs" />
-<<<<<<< .mine
     <Compile Include="Areas\AreaConfiguracion\Models\Servicios\EraSphereContext.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -154,69 +132,21 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\CiudadView.cs" />
-=======
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\LogicaServicios.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\ProductoXServicio.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\Servicio.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\ServicioView.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\ServicioXReserva.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioView.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicioXHotel.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Servicios\TipoServicio.cs" />
->>>>>>> .r884
-    <Compile Include="Areas\AreaConfiguracion\Models\TipoTemporada\TipoTemporadaList.cs" />
-    <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\CiudadView.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\InterfazLogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\LogicaUbigeo.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\PaisView.cs" />
     <Compile Include="Areas\AreaContable\AreaContableAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< .mine
     <Compile Include="Areas\AreaContable\Controllers\AdministrarOCController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\EntregaOCController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\OrdenCompraController.cs" />
-=======
-
-    <Compile Include="Areas\AreaContable\Controllers\AdministrarOCController.cs" />
-    <Compile Include="Areas\AreaContable\Controllers\EntregaOCController.cs" />
-    <Compile Include="Areas\AreaContable\Controllers\LineaProductoController.cs" />
-
-    <Compile Include="Areas\AreaContable\Controllers\AdministrarOCController.cs" />
-    <Compile Include="Areas\AreaContable\Controllers\EntregaOCController.cs" />
-
-    <Compile Include="Areas\AreaContable\Controllers\OrdenCompraController.cs" />
-    <Compile Include="Areas\AreaContable\Controllers\PagosController.cs" />
->>>>>>> .r884
     <Compile Include="Areas\AreaContable\Controllers\ProductoController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\ProveedorController.cs">
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< .mine
-=======
-    <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
-    <Compile Include="Areas\AreaContable\Controllers\ReciboLineaController.cs" />
-    <Compile Include="Areas\AreaContable\Models\EntregaOC\ComboEntregaItem.cs" />
-    <Compile Include="Areas\AreaContable\Models\EntregaOC\EntregaOC.cs" />
-    <Compile Include="Areas\AreaContable\Models\EntregaOC\EntregaOCView.cs" />
-    <Compile Include="Areas\AreaContable\Models\EntregaOC\EOCLinea.cs" />
-    <Compile Include="Areas\AreaContable\Models\EntregaOC\EOCLineaView.cs" />
-    <Compile Include="Areas\AreaContable\Models\EntregaOC\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaContable\Models\EntregaOC\LogicaEntregaOC.cs" />
-    <Compile Include="Areas\AreaContable\Models\LineaProducto\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaContable\Models\LineaProducto\InterfazLogicaLineaProducto.cs" />
-    <Compile Include="Areas\AreaContable\Models\LineaProducto\LineaProducto.cs" />
-    <Compile Include="Areas\AreaContable\Models\LineaProducto\LineaProductoView.cs" />
-    <Compile Include="Areas\AreaContable\Models\LineaProducto\LogicaLineaProducto.cs" />
-    <Compile Include="Areas\AreaContable\Models\LogicaPagos.cs" />
-    <Compile Include="Areas\AreaContable\Models\OrdenCompra\EraSphereContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
->>>>>>> .r884
-<<<<<<< .mine
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\ComboEntregaItem.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\EntregaOC.cs" />
@@ -239,44 +169,14 @@
     <Compile Include="Areas\AreaContable\Models\OrdenCompra\OrdenCompraView.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\Orden.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs">
-=======
-    <Compile Include="Areas\AreaContable\Models\OrdenCompra\EstadoOC.cs">
->>>>>>> .r884
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< .mine
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenView.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_producto.cs">
-=======
-    <Compile Include="Areas\AreaContable\Models\OrdenCompra\LogicaOrdenCompra.cs">
->>>>>>> .r884
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< .mine
     <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_productoView.cs" />
     <Compile Include="Areas\AreaContable\Models\Productos\ClaseProducto.cs" />
-=======
-    <Compile Include="Areas\AreaContable\Models\OrdenCompra\OCompraLinea.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaContable\Models\OrdenCompra\OCompraLineaView.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaContable\Models\OrdenCompra\OrdenCompra.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaContable\Models\OrdenCompra\OrdenCompraView.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaContable\Models\Ordenes\Orden.cs" />
-    <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs" />
-    <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLineaView.cs" />
-    <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenView.cs" />
-    <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_producto.cs" />
-    <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_productoView.cs" />
-    <Compile Include="Areas\AreaContable\Models\Pagos\PagoTarjeta.cs" />
-    <Compile Include="Areas\AreaContable\Models\Productos\ClaseProducto.cs" />
->>>>>>> .r884
     <Compile Include="Areas\AreaContable\Models\Productos\InterfazLogicaProducto.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -304,17 +204,10 @@
     <Compile Include="Areas\AreaContable\Models\Proveedor\ProveedorView.cs">
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< .mine
     <Compile Include="Areas\AreaContable\Models\Productos\Producto.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\Boleta.cs">
       <SubType>Code</SubType>
     </Compile>
-=======
-    <Compile Include="Areas\AreaContable\Models\Recibo\Boleta.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\LogicaRecibo.cs" />
->>>>>>> .r884
     <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\EraSphereContext.cs">
       <SubType>Code</SubType>
@@ -333,16 +226,8 @@
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs">
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< .mine
-    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXEvento.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXReserva.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXServicio.cs" />
-
-    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXServicio.cs" />
-
     <Compile Include="Areas\AreaEmpleados\Controllers\AsistenciaEmpleadoController.cs" />
     <Compile Include="Areas\AreaEmpleados\Controllers\EmpleadoController.cs" />
-<<<<<<< .mine
     <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\AsistenciaEmpleado.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\AsistenciaEmpleadoView.cs" />
     <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\EraSphereContext.cs" />
@@ -361,18 +246,6 @@
     <Compile Include="Areas\AreaEmpleados\Models\LogicaEmpleado.cs">
       <SubType>Code</SubType>
     </Compile>
-=======
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\AsistenciaEmpleado.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\AsistenciaEmpleadoView.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\InterfazLogicaAsistenciaEmpleado.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\AsistenciaEmpleados\LogicaAsistenciaEmpleado.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\EmpleadoView.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\InterfazLogicaEmpleado.cs" />
-    <Compile Include="Areas\AreaEmpleados\Models\LogicaEmpleado.cs" />
->>>>>>> .r884
-    <Compile Include="Areas\AreaEventos\Controllers\EventoController.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\Adicional.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\AdicionalView.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\EraSphereContext.cs" />
@@ -384,12 +257,7 @@
     <Compile Include="Areas\AreaEventos\Models\Evento\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\EstadoEvento.cs" />
     <Compile Include="Areas\AreaEventos\Models\Evento\EventoView.cs" />
-<<<<<<< .mine
-=======
-    <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs" />
->>>>>>> .r884
     <Compile Include="Areas\AreaEventos\Models\Evento\LogicaEvento.cs" />
-<<<<<<< .mine
     <Compile Include="Areas\AreaEventos\Models\Participante\EraSphereContext.cs" />
     <Compile Include="Areas\AreaEventos\Models\Participante\LogicaParticipante.cs" />
     <Compile Include="Areas\AreaEventos\Models\Participante\Participante.cs" />
@@ -398,21 +266,7 @@
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXProductoController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\HotelXTipoHabitacionXTemporadaController.cs" />
     <Compile Include="Areas\AreaHoteles\Controllers\TipoHabitacionXHotelController.cs" />
-=======
-    <Compile Include="Areas\AreaEventos\Models\Participante\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaEventos\Models\Participante\LogicaParticipante.cs" />
-    <Compile Include="Areas\AreaEventos\Models\Participante\ParticipanteView.cs" />
-    <Compile Include="Areas\AreaEventos\Models\Participante\Participante.cs" />
-
-
-    <Compile Include="Areas\AreaHoteles\Controllers\HotelXProductoController.cs" />
-    <Compile Include="Areas\AreaHoteles\Controllers\HotelXTipoServicioXTemporadaController.cs" />
-
-    <Compile Include="Areas\AreaHoteles\Controllers\HotelXTipoHabitacionXTemporadaController.cs" />
-    <Compile Include="Areas\AreaHoteles\Controllers\HotelXTipoServicioXTemporadaController.cs" />
->>>>>>> .r884
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\ComodidadView.cs" />
-<<<<<<< .mine
     <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\HotelXPreciable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXPreciablexTemporada\HotelXPreciableView.cs" />
@@ -433,36 +287,6 @@
     <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\InterfazLogicaTHXHotel.cs" />
     <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\LogicaTHXHotel.cs" />
     <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\TipoHabitacionXHotel.cs" />
-=======
-
-    <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\HotelXProducto.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\HotelXProductoView.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\InterfazLogicaHotelXProducto.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXProducto\LogicaHotelXProducto.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXTipoServicioXTemporadaView.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXTipoServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\InterfazLogicaHotelXServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\LogicaHotelXTipoServicioXTemporada.cs" />
-
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\HotelXTipoHabitacionXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\HotelXTipoHabitacionXTemporadaView.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\LogicaHotelXServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXPreciable.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXPreciableView.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXPreciableXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXTipoServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXTipoServicioXTemporadaView.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\InterfazLogicaHotelXPreciable.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\InterfazLogicaHotelXServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\LogicaHotelXTipoServicioXTemporada.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\InterfazLogicaTHXHotel.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\LogicaTHXHotel.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\TipoHabitacionXHotel\TipoHabitacionXHotel.cs" />
->>>>>>> .r884
     <Compile Include="Areas\AreaPromociones\AreaPromocionesAreaRegistration.cs" />
     <Compile Include="Areas\AreaPromociones\Controllers\PromocionController.cs" />
     <Compile Include="Areas\AreaPromociones\Models\EraSphereContext.cs" />
@@ -470,76 +294,11 @@
     <Compile Include="Areas\AreaPromociones\Models\LogicaPromocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
-<<<<<<< .mine
     <Compile Include="Areas\AreaPromociones\Models\RelacionPromocion.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaLineaView.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaView.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\LogicaConsulta.cs" />
-=======
-
-    <Compile Include="Areas\AreaPromociones\Models\RelacionPromocion.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\RepExcelClienteController.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\RepExcelEventoController.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\RepExcelPromocionController.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\ReporteClienteController.cs" />
-
-    <Compile Include="Areas\AreaPromociones\Models\RelacionPromocion.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\RepExcelEventoController.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\ReporteClienteController.cs" />
-
-    <Compile Include="Areas\AreaReportes\Controllers\ReporteEmpleadoController.cs" />
-
-    <Compile Include="Areas\AreaReportes\Controllers\ReporteEventoController.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\ReportePromocionController.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelCliente\ObjetoReporteCliente.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelCliente\RepCliente.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\FormReporteEvento.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\ObjetoReporteEvento.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\RepEvento.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelPromocion\ObjetoReportePromocion.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelPromocion\RepPromocion.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteCliente\ReporteCliente.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ObjetoReporteEmpleado.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ReporteEmpleados.cs" />
-
-    <Compile Include="Areas\AreaReportes\Controllers\ReporteEventoController.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\ReportePromocionController.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\FormReporteEvento.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\ObjetoReporteEvento.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\RepEvento.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteCliente\ReporteCliente.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ObjetoReporteEmpleado.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ReporteEmpleados.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaReportes\Models\ReporteEvento\ReporteEvento.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaReportes\Models\ReportePromocion\ReportePromocion.cs" />
-    <Compile Include="Areas\AreaReservas\Controllers\CheckInCheckOutController.cs" />
-
-    <Compile Include="Areas\AreaReportes\Models\ReporteEvento\ReporteEvento.cs" />
-    <Compile Include="Areas\AreaReportes\Models\ReportePromocion\ReportePromocion.cs" />
-    <Compile Include="Areas\AreaReservas\Controllers\CheckInCheckOutController.cs" />
-    <Compile Include="Areas\AreaReservas\Controllers\ConsultaController.cs" />
-    <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
-    <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaLineaView.cs" />
-    <Compile Include="Areas\AreaReservas\Models\Consultas\ConsultaView.cs" />
-
-
-    <Compile Include="Areas\AreaReservas\Models\HabitacionXClientes\HabitacionXReservaXClienteLineaView.cs" />
-    <Compile Include="Areas\AreaReservas\Models\HabitacionXClientes\HabitacionXReservaXClienteView.cs" />
-    <Compile Include="Areas\AreaReservas\Models\HabitacionXReserva.cs" />
-
-    <Compile Include="Areas\AreaReservas\Models\Consultas\LogicaConsulta.cs" />
->>>>>>> .r884
     <Compile Include="Areas\AreaReservas\Models\EraSphereContext.cs" />
     <Compile Include="Areas\AreaReservas\AreaReservasAreaRegistration.cs">
       <SubType>Code</SubType>
@@ -643,7 +402,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< .mine
     <Content Include="Areas\AreaContable\Views\Producto\IndexProducto.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Web.config" />
@@ -653,16 +411,13 @@
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Web.config" />
-=======
-    <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Areas\AreaContable\Models\Views\Producto\IndexProducto.cshtml" />
-    <Content Include="Areas\AreaContable\Models\Views\Proveedor\IndexProveedor.cshtml" />
-    <Content Include="Areas\AreaContable\Models\Views\Shared\ProductoViewTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Models\Views\Shared\ProveedorViewTemplate.cshtml" />
->>>>>>> .r884
     <Content Include="Areas\AreaReservas\Views\Web.config" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Era_sphere.dll" />
+    <Content Include="bin\Era_sphere.pdb" />
+    <Content Include="bin\Telerik.Web.Mvc.dll" />
+    <Content Include="bin\Telerik.Web.Mvc.xml" />
     <Content Include="Content\2012.1.214\Black\editor.png" />
     <Content Include="Content\2012.1.214\Black\imagebrowser.png" />
     <Content Include="Content\2012.1.214\Black\loading.gif" />
@@ -1438,23 +1193,18 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AreaCargos\Controllers\" />
-    <Folder Include="Areas\AreaCargos\Models\" />
     <Folder Include="Areas\AreaCargos\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Models\Ambientes\" />
     <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
-<<<<<<< .mine
     <Folder Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\" />
-=======
-    <Folder Include="Areas\AreaContable\Views\Recibo\" />
->>>>>>> .r884
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
+    <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
-    <Folder Include="Areas\AreaHoteles\Models\HotelXServicioXTemporada\" />
+    <Folder Include="Areas\AreaEventos\Views\Shared\" />
+    <Folder Include="Areas\AreaReportes\Controllers\" />
+    <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
-<<<<<<< .mine
     <Folder Include="Areas\AreaReservas\Views\Shared\" />
-=======
->>>>>>> .r884
     <Folder Include="Scripts\ApiSeguridad\" />
   </ItemGroup>
   <ItemGroup>
@@ -1525,9 +1275,8 @@
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteNaturalShowTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteNaturalIndexView.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXTipoServicioXTemporadaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXServicioXTemporadaViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
-<<<<<<< .mine
     <Content Include="Areas\AreaContable\Views\Proveedores\Create.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedores\Delete.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedores\Details.cshtml" />
@@ -1543,9 +1292,6 @@
     <Content Include="Areas\AreaContable\Views\Proveedor\ProductosProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProveedorProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\TipoHabitacion\TipoHabitacionComodidades.cshtml" />
-=======
-    <Content Include="Areas\AreaHoteles\Views\HotelXTipoServicioXTemporada\Index.cshtml" />
->>>>>>> .r884
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\BuscarComodidades.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\DetalleClienteTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Views\Producto\IndexProducto.cshtml" />
@@ -1556,7 +1302,6 @@
     <Content Include="Areas\AreaContable\Views\Proveedores\Index.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Web.config" />
-<<<<<<< .mine
     <Content Include="Areas\AreaContable\Views\Proveedor\HotelesProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\HotelProveedorPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
@@ -1580,123 +1325,6 @@
     <Content Include="Areas\AreaContable\Views\EntregaOC\MantenimientoEOC.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesPagadasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\AdministrarOC\ResumenOC.cshtml" />
-=======
-    <Content Include="Areas\AreaContable\Views\Proveedor\ProductosProveedor.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProductoViewTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProveedorProductoViewTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\ProveedorViewTemplate.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Evento\EventoIndex.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\EventoViewTemplate.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Evento\EventoLlenarDatos.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventoAdicionalView.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\AdicionalViewTemplate.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Consulta\IndexConsulta.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Reserva\IndexReserva.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Shared\EditorTemplates\ReservaViewTemplate.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ParticipanteViewTemplate.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteView.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventoAmbienteView.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Pagos\TarjetaDeCreditoIndex.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Shared\GridResultConsulta.cshtml" />
-    <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Shared\GridResultAcumulado.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Ordenes\AgregarOrden.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Ordenes\IndexOrdenes.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Proveedor\HotelesProveedor.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\HotelProveedorPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\ordenCompraPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenLineaViewTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenViewTemplate.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventoCalcularCostos.cshtml" />
-    <Content Include="Areas\AreaContable\Views\OrdenCompra\Index.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\EventoAmbienteTemplate.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Evento\PruebaHtml.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Evento\CargarAmbiente.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexReporteEmpleado.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexFormReporteEmpleado.cshtml" />
-
-    <Content Include="Areas\AreaHoteles\Views\Ambiente\AmbienteInformación.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventosCreados.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventosPPagado.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventoCliente.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckInViewTemplate.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Reserva\ReservaHabitacionClienteView.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Shared\CrearServicio.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Areas\AreaConfiguracion\Views\Shared\ProductosDeReservaView.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventoServicioView.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ServicioViewTemplate.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\HotelXTipoServicioXTemporada\Index.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\PrecioServicio.cshtml" />
-    <Content Include="Areas\AreaContable\Views\AdministrarOC\IndexAdministracion.cshtml" />
-    <Content Include="Areas\AreaContable\Views\EntregaOC\DetalleOC.cshtml" />
-    <Content Include="Areas\AreaContable\Views\EntregaOC\DetallesEOC.cshtml" />
-    <Content Include="Areas\AreaContable\Views\EntregaOC\Index.cshtml" />
-    <Content Include="Areas\AreaContable\Views\EntregaOC\MantenimientoEOC.cshtml" />
-    <Content Include="Areas\AreaContable\Views\EntregaOC\ResumenEntregas.cshtml" />
-    <Content Include="Areas\AreaContable\Views\LineaProducto\LineaProductoIndex.cshtml" />
-    <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesAceptadasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesAtendidasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesCanceladasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesRegistradasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\EntregaOCPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenCompraViewTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Proveedor\DetallesProductoProveedor.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Producto\DetallesProducto.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\PagarEvento.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckOutViewTemplate.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Areas\AreaEventos\Views\Shared\EventoRecibolinea.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ReciboViewTemplate.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelCliente\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelCliente\RepExcelClienteView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelEvento\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelEvento\RepExcelEventoView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelPromocion\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelPromocion\RepExcelPromocionView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteCliente\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteCliente\ReporteClienteView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReportePromocion\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
-
-    <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Shared\CrearServicio.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\HotelXProducto\Index.cshtml" />
-    <Content Include="Areas\AreaContable\Views\AdministrarOC\IndexAdministracion.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesAceptadasPartial.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXProductoViewTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesAtendidasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesCanceladasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesRegistradasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\EntregaOC\Index.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\EntregaOCPartial.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Shared\ProductosDeReservaView.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Reserva\ReservaHabitacionClienteView.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckInViewTemplate.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckOutViewTemplate.cshtml" />
-    <Content Include="Areas\AreaHoteles\Views\HotelXTipoHabitacionXTemporada\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReportePromocion\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Pagos\CorteDeCuenta.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteCliente\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\ReporteCliente\ReporteClienteView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelEvento\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelEvento\RepExcelEventoView.cshtml" />
-
->>>>>>> .r884
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />
@@ -1725,13 +1353,6 @@
     <Content Include="Views\Home\Main.cshtml" />
     <Content Include="Views\Home\Mantenimiento.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-
-    <Content Include="Views\PDF\Index.cshtml" />
-    <Content Include="Views\PDF\PDFView.cshtml" />
-
-    <Content Include="Views\PDF\PDFView.cshtml" />
-    <Content Include="Views\PDF\Index.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\EditorLocalization.bg-BG.resx">
@@ -1787,7 +1408,6 @@
     </Content>
     <Content Include="App_GlobalResources\GridLocalization.es-ES.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>GridLocalization.es-ES.designer.cs</LastGenOutput>
     </Content>
     <Content Include="App_GlobalResources\GridLocalization.fr-FR.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
@@ -1847,12 +1467,6 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\PdfReportGenerator\PdfReportGenerator.csproj">
-      <Project>{DF00196A-3B96-4BCD-8C4E-879DB8EDFE95}</Project>
-      <Name>PdfReportGenerator</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -1870,15 +1484,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-<<<<<<< .mine
           <DevelopmentServerPort>50823</DevelopmentServerPort>
-=======
-
-          <DevelopmentServerPort>10832</DevelopmentServerPort>
-
-          <DevelopmentServerPort>64968</DevelopmentServerPort>
-
->>>>>>> .r884
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
@@ -1892,88 +1498,3 @@
     </VisualStudio>
   </ProjectExtensions>
 </Project>
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Data.Entity;
-using System.Data.Objects;
-using System.Data;
-
-namespace Era_sphere.Generics
-{
-    
-    public partial class EraSphereContext : DbContext
-    {
-        public EraSphereContext()// : base("Data Source=inti.lab.inf.pucp.edu.pe;Initial Catalog=inf2450881g4;Persist Security Info=True;User ID=inf2450881g4dba;Password=zapatilla")
-        {
-        }
-
-        public void seed(){
-            seedTipoDocumentoCliente();
-            seedUbigeo();
-            seedMonedas();
-            seedHotel();
-            seedOrdenCompra();
-            seedEstadoEspacioRentable();
-            seedEstadoCliente();
-            seedTipoPersona();
-            seedTipoDocumentoCliente();
-            seedServicios();
-            seedTipoTemporadas();
-            seedTemporadas();
-            seedEstadoReserva();
-            seedLineasProductos();
-            seedProductos();
-            seedProveedores();
-            seedRelacionesPromocion();
-            
-            seedOrdenCompra();
-            seedTipoHabitaciones();
-
-            seedComodidades();
-            seedPisos();
-   
-
-            seedClientes();
-
-            seedHabitaciones();
-    
-            seedPerfil();
-            seedEmpleados();
-
-            seedCadena();
-
-        }
-
-        public DbSet<TipoPersona> tipos_personas { get; set; }
-        public void seedTipoPersona()
-        {
-            TipoPersona natural = new TipoPersona { ID = 1, descripcion = "Natural" };
-            TipoPersona juridico = new TipoPersona { ID = 2, descripcion = "Juridico" };
-            tipos_personas.Add(natural);
-            tipos_personas.Add(juridico);
-            SaveChanges();
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            crear_fiscal(modelBuilder);
-            crear_orden_compra(modelBuilder);
-            //crear_eventos_servicios(modelBuilder);
-        }
-
-    }
-
-
-
-
-    public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
-        protected override void Seed(EraSphereContext context){
-            context.seed();
-        }
-    }
-}
-

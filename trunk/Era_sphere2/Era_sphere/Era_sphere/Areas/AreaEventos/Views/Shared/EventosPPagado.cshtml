@@ -5,6 +5,22 @@
 @model IEnumerable<Era_sphere.Areas.AreaEventos.Models.Evento.EventoView>
 @using Telerik.Web.Mvc.UI
 
+<div id="gg"></div>
+
+ @(Html.Telerik().Window().Name("PagarEvento")
+        .Title("PagarEvento").Content(
+            @<text>
+                <div id="pagar-evento-div"></div>
+            </text>
+        )
+            .Modal(true)
+            
+            .Visible(false)
+            .Width(700).Resizable().Draggable(true).Height(600))
+
+
+
+
 <div class="titlebar">
         <h3>
             Eventos Parcialmente Pagados
@@ -27,15 +43,15 @@
             columns.Command(commands =>
             {
                 commands.Custom("Pagar")
-                .Text("Detalle Evento")
-                .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
-                .Action("DetalleEvento", "Evento", new { idhotel = idhotel });
-
-            });
+                    .Text("Pagar")
+                    .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
+                    .Action("PagarEvento", "Evento", new { idhotel = idhotel });
+       
+          });
         })
         .Pageable()
         .Sortable()
-
+        .ClientEvents(events=>events.OnComplete("funcioncita"))
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("Select", "Evento", new { id_hotel = idhotel ,estado=3})
@@ -43,3 +59,4 @@
         )
 )
     </div>
+

@@ -25,6 +25,9 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         
         public int num_participantes { get; set; }
 
+        public decimal pagado { get; set; }
+
+
         //[ForeignKey("hotel")]
         public int hotel { get; set; }
         //[Required]
@@ -51,15 +54,22 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
 
         public List<ReciboLinea> getReciboLineas()
         {
-            return new List<ReciboLinea>();
+            EraSphereContext context = new EraSphereContext();
+            List<ReciboLinea> lineas = context.recibos_linea_x_evento.Where(x => x.eventoID == ID).ToList().Select(y => context.recibos_lineas.Find(y.recibo_lineaID)).ToList();
+            return lineas;
         }
-        public void registraReciboLinea(ReciboLinea r)
+        public void registraReciboLinea(ReciboLinea linea)
         {
-
+            EraSphereContext context = new EraSphereContext();
+            context.recibos_lineas.Add(linea);
+            context.SaveChanges();
+            ReciboLineaXEvento x = new ReciboLineaXEvento { recibo_lineaID = linea.ID, eventoID = ID };
+            context.recibos_linea_x_evento.Add(x);
+            context.SaveChanges();
         }
         public int getHotelID()
         {
-            return 1;
+            return hotel;
         }
         public int getPagadorID()
         {
@@ -67,7 +77,11 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         }
         public void generaReciboLineas()
         {
-
+            if (pagado > 0)
+            {
+                ReciboLinea paguito = new ReciboLinea("Pago del adelanto", pagado, 1, DateTime.Now, false);
+                registraReciboLinea(paguito);
+            }
         }
         public void setEspacioRentableNombre(string s)
         {

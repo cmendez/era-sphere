@@ -138,6 +138,15 @@ namespace Era_sphere.Areas.AreaContable.Models
             qoc.modificarElemento(oc, oc.ID);
         }
 
+        internal void pagar_orden_compra(int id_oc , string nro )
+        {
+            var oc = qoc.retornarUnSoloElemento(id_oc);
+            oc.nro_pago = nro;
+            oc.fecha_pago = DateTime.Now;
+            oc.estado_orden = context.estados_ocompra.Find(6);
+            qoc.modificarElemento(oc, oc.ID);
+        }
+
         internal void aceptar_orden_compra(int id_orden)
         {
             var oc = qoc.retornarUnSoloElemento(id_orden);
@@ -191,5 +200,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         }
 
 
+
+     
     }
 }

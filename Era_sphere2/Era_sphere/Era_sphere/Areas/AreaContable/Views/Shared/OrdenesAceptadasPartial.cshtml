@@ -89,7 +89,7 @@
         function cerrar_ventana_entrega() {
             try { $("#mantenimientoEOC").data('tWindow').close(); } catch (e) { }
             try { $("#EOCGrid").data("tGrid").ajaxRequest(); } catch (e) { }
-            try{ $("#ResumenEntrega").data("tGrid").ajaxRequest(); } catch ( e){}
+            try { $("#ResumenEntrega").data("tGrid").ajaxRequest(); } catch ( e){ }
             try { $("#popupEntrega").data('tWindow').close(); } catch (e) { }
             try { $("#AceptadasGrid").data('tGrid').ajaxRequest(); } catch (e) { }
         }

@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -64,7 +65,6 @@
   <ItemGroup>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXEvento.cs" />
-    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXReserva.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
     <Compile Include="Areas\AreaCargos\Models\LogicaPreciable.cs" />
     <Compile Include="Areas\AreaCargos\Models\Preciable.cs" />

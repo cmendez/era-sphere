@@ -19,6 +19,14 @@ namespace Era_sphere.Areas.AreaPromociones.Controllers
         //}
 
         InterfazLogicaPromocion promocion_logica = new LogicaPromocion();
+
+        [HttpPost]
+        public JsonResult getPromociones (int puntos) {
+            //var promociones = promocion_logica.retornarpromociones(puntos);
+            //return new JsonResult() { Data = promociones };
+            return null;
+        }
+
         public ActionResult Index()
         {
             return View("PromocionIndex", promocion_logica.retornarPromociones());

@@ -55,13 +55,17 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View();
         }
 
+
         public ActionResult Edit(int id=0)
         {
             try
             {
-                List<Cadena> lista = cadena_logica.retornarCadenas();
-                id = lista[lista.Count - 1].ID;
-                return View("Edit", cadena_logica.retornarCadena(id));
+                if (ModelState.IsValid)
+                {
+                    List<Cadena> lista = cadena_logica.retornarCadenas();
+                    id = lista[lista.Count - 1].ID;
+                    return View("Edit", cadena_logica.retornarCadena(id));
+                }
             }
             catch
             { }
@@ -72,12 +76,18 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         public ActionResult Edit(Cadena cadena)
         {
             try
-            { 
-                cadena_logica.modificarCadena(cadena);
+            {
+                if (ModelState.IsValid)
+                {
+                    cadena_logica.modificarCadena(cadena);
+                    return RedirectToAction("Index");
+                }
+
             }
             catch
             { }
-            return RedirectToAction("Index");
+            return View(cadena);
+            
         }
 
         [HttpPost, ActionName("Delete")]

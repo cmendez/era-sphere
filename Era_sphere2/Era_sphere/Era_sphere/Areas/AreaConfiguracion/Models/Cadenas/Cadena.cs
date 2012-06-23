@@ -34,8 +34,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 
         [MaxLength(30, ErrorMessage = "La longitud maxima es de 30 caracteres")]
         [Required(ErrorMessage = "El campo página web es obligatorio")]
-        //  [DataType(DataType.Url)] 
-        [DisplayName("Página web")]
+        //[DataType(DataType.Url)] 
+        //[DataType(DataType.Url, ErrorMessage = "Email invalido")]
+        [RegularExpression("(http|https)://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", ErrorMessage="Email invalido")]
+        [DisplayName("Página web [Formato: http://pagina.com]")]
         public string url { get; set; }
 
         //[DisplayName("Logo")]
@@ -44,12 +46,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         [DisplayName("Adelanto mínimo (%)")]
         [Range(0,100)]
         public decimal adel_minimo { get; set; }
-
-        //[DisplayName("Depósito a cancelar después de la reserver")]
-        //public int d_cancel_dps_reserva { get; set; }
-
-        //[DisplayName("Depósito a cancelar antes del check in")]
-        //public int d_cancel_antes_chk_in { get; set; }
 
         [DisplayName("Dias antes de check-in con retencion")]
         [Range(0, Generics.StringsDeValidaciones.infinito)]
@@ -60,7 +56,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         public decimal porc_ret { get; set; }
 
         [DisplayName("Puntos por dólar")]
-        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        [Range(0,Era_sphere.Generics.StringsDeValidaciones.anho)]
         public int ptos_x_dolar { get; set; }
 
         [DisplayName("Hostname")]

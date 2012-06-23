@@ -1,5 +1,4 @@
 ﻿@model Era_sphere.Areas.AreaConfiguracion.Models.Cadenas.Cadena
-@using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 @using Era_sphere.Generics;
 @{
     ViewBag.Title = "Cadenas";
@@ -23,56 +22,56 @@
                     </div>
                     <fieldset>
                     <div class="block_cont" id="block_detalle_cadena">
-        <div class="display-label" style="font-size: 11pt">Nombre de la cadena</div>
+        <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.nombreCadena)</div>
             <p>
             <div class="display-field">
                 @Html.DisplayFor(model => model.nombreCadena)
             </div>
             <p>
 
-            <div class="display-label" style="font-size: 11pt">Razón Social</div>
+            <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.rsocial)</div>
             <p>
             <div class="display-field">
                 @Html.DisplayFor(model => model.rsocial)
             </div>
             <p>
 
-            <div class="display-label" style="font-size: 11pt">RUC</div>
+            <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.ruc)</div>
             <p>
             <div class="display-field">
                 @Html.DisplayFor(model => model.ruc)
             </div>
             <p>
 
-            <div class="display-label" style="font-size: 11pt">URL</div>
+            <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.url)</div>
             <p>
             <div class="display-field">
                 @Html.DisplayFor(model => model.url)
             </div>
             <p>
 
-            <div class="display-label" style="font-size: 11pt">Adelanto minimo</div>
+            <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.adel_minimo)</div>
             <p>
             <div class="display-field">
                 @Html.DisplayFor(model => model.adel_minimo)
             </div>
             <p>
 
-            <div class="display-label" style="font-size: 11pt">Dias antes de rentencion anste del check in</div>
+            <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.d_ant_ret)</div>
             <p>
             <div class="display-field">
                 @Html.DisplayFor(model => model.d_ant_ret)
             </div>
             <p>
 
-            <div class="display-label" style="font-size: 11pt">Porcentaje retenido (del adelanto)</div>
+            <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.porc_ret)</div>
             <p>
             <div class="display-field">
                 @Html.DisplayFor(model => model.porc_ret)
             </div>
             <p>
 
-            <div class="display-label" style="font-size: 11pt">Puntos por dólar</div>
+            <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.ptos_x_dolar)</div>
             <p>
             <div class="display-field">
                 @Html.DisplayFor(model => model.ptos_x_dolar)

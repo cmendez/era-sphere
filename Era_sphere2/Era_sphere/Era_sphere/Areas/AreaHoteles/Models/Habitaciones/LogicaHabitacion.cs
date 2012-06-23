@@ -70,7 +70,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             if (pisoID != 0) habs_de_hotel = habs_de_hotel.Where(p => p.pisoID == pisoID).ToList();
             if (tipohabitacionID != 0) habs_de_hotel = habs_de_hotel.Where(p => p.tipoHabitacionID == tipohabitacionID).ToList();
             List<Reserva> reservas2 = context.Reservas.ToList();
-            List<Reserva> reservas = context.Reservas.Where(r => r.estado.descripcion != "Anulada" &&
+            List<Reserva> reservas = context.Reservas.Where(r => r.estado.descripcion != "Anulada" && r.estado.descripcion != "CheckedOut" &&
                                                             (desde >= r.check_in && desde < r.check_out ||
                                                               r.check_in >= desde && r.check_in < hasta)).ToList();
             HashSet<int> habitaciones_malas = new HashSet<int>();

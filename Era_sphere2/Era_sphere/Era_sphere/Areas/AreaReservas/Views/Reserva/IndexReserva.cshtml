@@ -47,7 +47,7 @@
             $.ajax({
                        url: '@Url.Action("SubConsulta", "Consulta")',
                        traditional: true,
-                       data: { hab_ids: hab_ids, hotel_id : @ViewData["hotelID"] },
+                       data: { hab_ids: hab_ids, hotel_id : @ViewData["hotelID"]},
                        type: "POST",
                        success: function (data) { document.getElementById("todo").innerHTML = data; },
                        async: false
@@ -70,9 +70,19 @@
              $("#AsignarHuespedes").data("tWindow").center().open();
 
          }
+         if(e.name == "insert"){
+            var id = e.response.data[e.response.data.length - 1].ID;
+            $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : id});
+            $("#Cortecuenta").data("tWindow").center().open();
+         }
      }
 </script>
 
+ @(Html.Telerik().Window()
+    .Name("Cortecuenta").Title("CorteDeCuenta")
+    .Content(@<text><div id="cortecuentadiv">
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true).ClientEvents(events => events.OnClose("verificaPago"))
+    )
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
@@ -174,6 +184,20 @@
             $("#detalle-cliente-natural").load('@Url.Action("ClienteNaturalShow", "Cliente")' + '/' + e.response.id);
             var detailModal = $("#DetalleNatural").data("tWindow");
             detailModal.center().open();
+        }
+    }
+    function verificaPago(e) {
+        if(!se_pago){
+        var data = $("#ReservaGrid").data("tGrid").data
+        var id_reserva = data[data.length - 1].ID;
+        $.ajax({
+                       url: '@Url.Action("Delete", "Reserva")',
+                       traditional: true,
+                       data: { id: id_reserva, id_hotel : @ViewData["hotelID"]},
+                       type: "POST",
+                       success: function (data) { $("#ReservaGrid").data("tGrid").ajaxRequest();},
+                       async: false
+                   });
         }
     }
 </script> 

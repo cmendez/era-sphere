@@ -35,8 +35,6 @@ namespace Era_sphere.Areas.AreaReservas.Models
             return context.habitacion_x_reserva.FirstOrDefault(x => x.habitacionID == h.ID && x.reservaID == r.ID).ID;
         }
         
-
-
         public List<ConsultaLineaView> getHabitaciones(int reserva_id)
         {
             List<int> hxr = context.habitacion_x_reserva.Where(x => x.reservaID == reserva_id).Select(x => x.habitacionID).ToList();
@@ -61,8 +59,13 @@ namespace Era_sphere.Areas.AreaReservas.Models
             {
                 Habitacion h = context.habitaciones.Find(id);
                 agregaRelacion(r, h);
-                r.registraReciboLinea(new AreaContable.Models.Recibo.ReciboLinea("   " + "Habitacion " + h.detalle,
-                              new TipoHabitacionView(h.tipoHabitacion, r.hotelID).costo * r.dias_estadia , 1, DateTime.Now, false, r.dias_estadia));
+                DateTime fecha = r.check_in.Value;
+                for (int i = 0; i < r.dias_estadia; i++)
+                {
+                    r.registraReciboLinea(new AreaContable.Models.Recibo.ReciboLinea("   " + "Habitacion " + h.detalle + " del dia " + fecha.ToString("MM/dd/yyyy"),
+                              new TipoHabitacionView(h.tipoHabitacion, r.hotelID).costo, 1, DateTime.Now, false, 1));
+                    fecha = fecha.AddDays(1);
+                }
             }
         }
 

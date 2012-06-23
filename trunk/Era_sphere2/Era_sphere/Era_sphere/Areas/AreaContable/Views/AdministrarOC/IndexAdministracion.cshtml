@@ -52,6 +52,17 @@
 <div class="block big">
     <div class="titlebar">
         <h3>
+            Ordenes Pagadas
+        </h3>
+        <span  class="toggle show"></span>
+    </div>
+    <div class="block_cont" style="display:none">
+    @{ Html.RenderPartial("OrdenesPagadasPartial", null , new ViewDataDictionary{ {"id" , @id_hotel} }); }
+    </div>
+</div>
+<div class="block big">
+    <div class="titlebar">
+        <h3>
             Ordenes Canceladas
         </h3>
         <span  class="toggle show"></span>
@@ -67,6 +78,7 @@
             $("#AtendidasGrid").data("tGrid").ajaxRequest();
             $("#AceptadasGrid").data("tGrid").ajaxRequest();
             $("#RegistradasGrid").data("tGrid").ajaxRequest();
+            $('#PagadasGrid').data('tGrid').ajaxRequest();
         }
     </script>
 </div>

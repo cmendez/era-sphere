@@ -8,8 +8,34 @@
     var data_eoc = new { id_eoc = eoc.entregaID };
     var data = new { id_oc=oc.ordenID};
     bool is_edit = ViewBag.is_edit;
-}
 
+}
+    <script type="text/javascript">
+        $("#formAtencionProducto").submit(function (e) {
+            e.preventDefault();
+            var id_productof = $("#productoatendido_input").val();
+            var cantidadf = $("#cantidadatendida_input").val();
+            if (id_productof == "" || cantidadf == "") {
+                alert("Ingrese el producto atendido y su cantidad");
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InsertEOCL", "EntregaOC", @data_eoc)',
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify({ id_productoa: id_productof, cantidada: cantidadf }),
+                success: function (result) {
+                    if (result.msg != "ok") { alert(result.msg); }
+                    else
+                        $("#EOCGrid"+'@is_edit').data('tGrid').ajaxRequest();
+                    $("#productoatendido_input").data("tComboBox").value("Seleccione un producto a atender");
+                    $("#productoatendido_input").data("tComboBox").reload();
+
+                }
+            });
+        })        
+    </script>
 
     <script type="text/javascript">
 
@@ -18,7 +44,8 @@
             if (e.name == "update" || e.name == "delete") {
                 var res = e.response;
                 if (res.msg != "ok" && e.name == "update") { alert(res.msg); }
-                $("#EOCGrid").data('tGrid').rebind();
+                alert('#EOCGrid' + '@is_edit');
+                $("#EOCGrid"+@is_edit).data('tGrid').rebind();
                 $("#productoatendido_input").data("tComboBox").value("Seleccione un producto a atender");
                 $("#productoatendido_input").data("tComboBox").reload();
             }
@@ -37,7 +64,15 @@
 
             cerrar_ventana_entrega();
         });
+
         $("#cerrar").click(function () { cerrar_ventana_entrega(); })
+                function cerrar_ventana_entrega() {
+            try { $("#mantenimientoEOC").data('tWindow').close(); } catch (e) { }
+            try { $("#EOCGrid"+@is_edit).data("tGrid").ajaxRequest(); } catch (e) { }
+            try { $("#ResumenEntrega").data("tGrid").ajaxRequest(); } catch (e) { }
+            try { $("#popupEntrega").data('tWindow').close(); } catch (e) { }
+            try { $("#AceptadasGrid").data('tGrid').ajaxRequest(); } catch (e) { }
+        }
     </script>
 
 <div id="popupEOC">
@@ -79,34 +114,9 @@
         value="Agregar Producto Atendido" style="margin: 10px;" />        
     </span>
     </form>
-    <script type="text/javascript">
-        $("#formAtencionProducto").submit(function (e) {
-            e.preventDefault();
-            var id_productof = $("#productoatendido_input").val();
-            var cantidadf = $("#cantidadatendida_input").val();
-            if (id_productof == "" || cantidadf == "") {
-                alert("Ingrese el producto atendido y su cantidad");
-                return false;
-            }
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("InsertEOCL", "EntregaOC", @data_eoc)',
-                contentType: 'application/json',
-                dataType: 'json',
-                data: JSON.stringify({ id_productoa: id_productof, cantidada: cantidadf }),
-                success: function (result) {
-                    if (result.msg != "ok") { alert(result.msg); }
-                    else
-                        $("#EOCGrid").data('tGrid').ajaxRequest();
-                    $("#productoatendido_input").data("tComboBox").value("Seleccione un producto a atender");
-                    $("#productoatendido_input").data("tComboBox").reload();
 
-                }
-            });
-        })        
-    </script>
     @(Html.Telerik().Grid<EOCLineaView>()
-        .Name("EOCGrid")
+        .Name("EOCGrid"+@is_edit)
         .DataKeys(d => d.Add(p => p.ID))
         .Columns(columns =>
         {

@@ -1,0 +1,59 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models
+@model IEnumerable<OrdenCompraView>
+@{
+    int id_hotel = ViewBag.id;
+    }
+
+@{ Html.Telerik().Grid(Model)
+    .Name("PagadasGrid")
+    .Localizable("es-ES")
+    .Filterable()
+    .Pageable()
+    .HtmlAttributes(new { style = "z-index:100" })
+    .DataKeys(key => key.Add(p => p.ordenID))
+    .Columns(col =>
+    {
+        col.Bound(p => p.ordenID);
+        col.Bound(p => p.razon_proveedor);
+        col.Bound(p => p.nro_productos);
+        col.Bound(p => p.estado_orden);
+        col.Bound(p => p.fecha_registro);
+        col.Bound(p => p.fecha_envio);
+        col.Bound(p => p.fecha_llegada);
+        col.Command(com => com.Custom("pagarOC").Ajax(true).Text("Editar")
+            .Action("DetallesOrdenC", "AdministrarOC"));
+    })
+    .ClientEvents( ev => ev.OnComplete("onCompletePagado"))
+    .DataBinding(bind => bind.Ajax()
+        .Select("SelectOrdenes", "AdministrarOC", 
+        new{ id_hotel = @id_hotel, estado_orden = 6 } )
+    ).Render();
+}
+   
+   <script type="text/javascript">
+       function onCompletePagado(e) {
+           if (e.name == 'pagarOC') {
+               var oc = e.response.orden_compra;
+               var url_v = '@Url.Action("pagarOrdenCompra", "AdministrarOC")' + '/?id_oc=' + oc.ordenID;
+               var windowElement = $.telerik.window.create({
+                   name: 'popupOrden',
+                   title: "Editar pago orden de compra",
+                   html: '',
+                   contentUrl: url_v,
+                   modal: true,
+                   resizable: true,
+                   draggable: true,
+                   width: 650,
+                   height: 550,
+                   onClose: function (e) {
+                       e.preventDefault();
+                       windowElement.data('tWindow').destroy();
+                   }
+               });
+               var tdata = windowElement.data('tWindow');
+               jQuery(windowElement).attr('id', 'pagar_oc');
+               tdata.center().open();
+           }
+       }
+   </script>

@@ -101,5 +101,10 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             ViewBag.oc = (new LogicaOrdenCompra()).retornar_orden(eoc.ordencompraID);
             return PartialView("EntregaOCPartial");
         }
+        [GridAction]
+        public ActionResult EOCLtotal(int id_oc) {
+            var list = logica.retornar_detalle_eoc(id_oc);
+            return View("ResumenOC", new GridModel( list ));
+        }
     }
 }

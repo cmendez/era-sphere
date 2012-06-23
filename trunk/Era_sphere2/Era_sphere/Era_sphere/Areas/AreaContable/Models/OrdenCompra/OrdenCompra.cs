@@ -21,6 +21,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         public DateTime? fecha_llegada { get; set; }
         public DateTime? fecha_envio { get; set; }
         public DateTime? fecha_registro { get; set; }
+        public DateTime? fecha_pago { get; set; }
         public int proveedorID { get; set; }
         virtual public Proveedor proveedor { get; set; }
         public decimal monto_total { get; set; }
@@ -33,5 +34,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             monto_total = 0;
             foreach (var p in productos) monto_total += p.precio_total;
         }
+
+        public string nro_pago { get; set; }
     }
 }

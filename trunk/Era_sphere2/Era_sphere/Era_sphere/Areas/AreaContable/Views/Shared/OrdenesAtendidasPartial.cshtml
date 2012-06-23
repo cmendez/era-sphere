@@ -3,8 +3,7 @@
 @model IEnumerable<OrdenCompraView>
 @{
     int id_hotel = ViewBag.id;
-    }
-
+}
 @{ Html.Telerik().Grid(Model)
     .Name("AtendidasGrid")
     .Localizable("es-ES")
@@ -21,20 +20,28 @@
         col.Bound(p => p.fecha_registro);
         col.Bound(p => p.fecha_envio);
         col.Bound(p => p.fecha_llegada);
-        col.Command(com => com.Custom("cancelarOC").Ajax(true)
-                .Action("DetallesOC", "AdministrarOC"));
+        col.Command(com =>
+        {
+            com.Custom("cancelarOC").Ajax(true).Text("Cancelar")
+            .Action("DetallesOrdenC", "AdministrarOC");
+            com.Custom("pagarOC").Ajax(true).Text("Pagar")
+            .Action("DetallesOrdenC", "AdministrarOC");
+        });
+
     })
-    .ClientEvents( ev => ev.OnComplete("atendidas_complete") )
+    .ClientEvents(ev => ev.OnComplete("atendidas_complete"))
     .DataBinding(bind => bind.Ajax()
-        .Select("SelectOrdenes", "AdministrarOC", 
-        new{ id_hotel = @id_hotel, estado_orden = 4 } )
+        .Select("SelectOrdenes", "AdministrarOC",
+        new { id_hotel = @id_hotel, estado_orden = 4 })
     ).Render();
 }
-    <script type="text/javascript">
+@{ Html.Telerik().Window().Name("DetallePago").Modal(true).Visible(false);}
+<script type="text/javascript">
+
         function atendidas_complete(e) {
             if (e.name == "cancelarOC") {
                 var oc = e.response.orden_compra;
-                var url_v = '@Url.Action("cancelarOrdenCompra","AdministrarOC")';
+                var url_v = '@Url.Action("cancelarOrdenCompra", "AdministrarOC")';
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -47,7 +54,33 @@
                     }
                 });
             }
+            else if (e.name == "pagarOC") {
+                var oc = e.response.orden_compra;
+                var url_v = '@Url.Action("pagarOrdenCompra", "AdministrarOC")' + '/?id_oc=' + oc.ordenID;
+                var windowElement = $.telerik.window.create({
+                    name: 'popupOrden',
+                    title: "Editar orden de compra",
+                    html: '',
+                    contentUrl: url_v,
+                    modal: true,
+                    resizable: true,
+                    draggable: true,
+                    width: 650,
+                    height: 550,
+                    onClose: function (e) {
+                        e.preventDefault();
+                        windowElement.data('tWindow').destroy();
+                    }
+                });
+                var tdata = windowElement.data('tWindow');
+                jQuery(windowElement).attr('id', 'pagar_oc');
+                tdata.center().open();
+            }
         }
-    </script>
-        
-            
+
+        function cerrar_resumen() {
+            try{ $("pagar_oc").data('tWindow').close(); } catch( e ){}
+            reload_all();       
+        }
+  
+</script>

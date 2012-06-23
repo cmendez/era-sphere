@@ -127,5 +127,16 @@ namespace Era_sphere.Areas.AreaContable.Models
             var ans = new EntregaOCView( qeoc.retornarUnSoloElemento(id_eoc) );
             return ans;
         }
+
+        internal List< EOCLineaView > retornar_detalle_eoc(int id_oc)
+        {
+            List<EOCLinea> ans = (from item in context.entrega_oc_linea
+                                      where item.eliminado == false && item.linea_oc.orden_compraID == id_oc
+                                      select item
+                                             ).ToList();
+            List<EOCLineaView> ret = new List<EOCLineaView>();
+            foreach (var item in ans) ret.Add(new EOCLineaView(item)); 
+            return ret;
+        }
     }
 }

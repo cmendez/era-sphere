@@ -71,6 +71,23 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             catch (Exception ex) { msg = ex.Message;  }
             return Json(new { msg = msg });
         }
+
+        public ActionResult pagarOrdenCompra(int id_oc)
+        {
+            string msg = "La orden " + id_oc + " fue pagada";
+            //try { logica.pagar_orden_compra(id_oc); }
+            //catch (Exception ex) { msg = ex.Message; }
+            //return Json(new { msg = msg });
+            ViewBag.id_oc = id_oc;
+            ViewBag.oc = logica.retornar_orden(id_oc);
+            return PartialView("ResumenOC");
+        }
+        public ActionResult registrarpagoOrdenCompra( int id_oc ,string nro_boleta) {
+            string msg = "ok";
+            try { logica.pagar_orden_compra(id_oc, nro_boleta); }
+            catch (Exception e) { }
+            return Json(new { msg = msg});
+        }
         public JsonResult OrdenDeCompra (int id_oc)
         {
             OrdenCompraView p = logica.retornar_orden(id_oc);

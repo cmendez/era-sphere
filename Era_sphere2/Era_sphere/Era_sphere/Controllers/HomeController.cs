@@ -38,6 +38,10 @@ namespace Era_sphere.Controllers
 
         }
 
+        public ActionResult WebCliente() {
+            return View("Cliente");
+        }
+
 
         public ActionResult Sistema()
         {

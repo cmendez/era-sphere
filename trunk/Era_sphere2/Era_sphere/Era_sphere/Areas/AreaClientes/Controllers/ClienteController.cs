@@ -148,7 +148,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         {
             List<ReciboLinea> lineas = new List<ReciboLinea>();
             List<int> recibos = cliente_logica.context.recibos.Where(x => x.clienteID == id).ToList().Select(y => y.ID).ToList();
-            lineas = cliente_logica.context.recibos_lineas.Where(x => x.pagado == true && recibos.Contains(x.reciboID.Value)).ToList();
+            lineas = cliente_logica.context.recibos_lineas.Where(x => recibos.Contains(x.reciboID.Value)).ToList();
             
             Cliente cliente = cliente_logica.retornarCliente(id);
             

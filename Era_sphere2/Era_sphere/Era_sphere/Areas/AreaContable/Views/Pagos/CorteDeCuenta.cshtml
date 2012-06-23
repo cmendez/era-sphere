@@ -11,22 +11,95 @@
 
 <script type="text/javascript">
     var dentro = [];
+    var monto = 0;
     function Pagar() {
-        console.log(dentro);
+        if (dentro.length == 0) alert("Seleccione por lo menos un detalle a pagar");
+        else {
+            var res = confirm("Esta seguro del pago?");
+            if (!res) return;
+            $('.check').attr("disabled", true);
+            $("#division_div").show();
+            $("#contado_text").val(monto);
+            $("#tarjeta_text").val(0);
+            return;
+            $.ajax(
+                {
+                    url: '@Url.Action("PagarLineas", "Pagos")',
+                    traditional: true,
+                    data: { lineas_ids: dentro },
+                    type: "POST",
+                    success: function (data) {
+                        $("#Cortecuenta").data("tWindow").close();
+                    },
+                    async: false
+                }
+            );
+        }
     }
-    function Modifica(id) {
+    function Modifica(id, precio) {
         var esta = false;
         var dentro2 = [];
         for (i in dentro)
             if (dentro[i] == id) esta = true;
             else dentro2.push(dentro[i]);
 
-        if (!esta)
-            dentro.push(id);
-        else
-            dentro = dentro2;
+            if (!esta) {
+                dentro.push(id);
+                monto += precio;
+            } else {
+                dentro = dentro2;
+                monto -= precio;
+            }
+            $("#pagar_box").val(monto);
+        }
+   function cambioContado() {
+        var contado_str = $("#contado_text").val();
+
+        var contado_val = parseFloat(contado_str);
+        if (!(contado_val < 0) && !(contado_val > 0) || contado_val < 0) contado_val = 0;
+        if (contado_val > monto) contado_val = monto;
+        $("#contado_text").val(contado_val);
+        $("#tarjeta_text").val(monto - contado_val);
+    }
+    function cambioTarjeta() {
+        var tarjeta_str = $("#tarjeta_text").val();
+        var tarjeta_val = parseFloat(tarjeta_str);
+        if (!(tarjeta_val < 0) && !(tarjeta_val > 0) || tarjeta_val < 0) tarjeta_val = 0;
+        if (tarjeta_val > monto) tarjeta_val = monto;
+        $("#contado_text").val(monto - tarjeta_val);
+        $("#tarjeta_text").val(tarjeta_val);
+    }
+
+    var pudo_tarjeta = false;
+    function ConfirmarPago() {
+        var monto_tarjeta = parseFloat($("#tarjeta_text").val());
+        if (monto_tarjeta > 0) {
+            $("#tarjeta_div").load('@Url.Action("PagoTarjetaDeCredito", "Pagos")', { monto: monto_tarjeta });
+            $("#TarjetaWindow").data("tWindow").center().open();
+        } else pudo_tarjeta = true;
+    }
+    
+    function Validar() {
+        var num_tarjeta = parseInt($("#num_tarjeta").val());
+        var pin = $("#pin").val();
+        if (!sirveInt(num_tarjeta, 16)) {
+            alert("El numero de tarjeta debe ser un numero de 16 digitos sin espacios");
+            return;
+        }
+        if (!sirveInt(pin, 3) && !sirveInt(pin, 4)) {
+            alert("El numero del pin debe ser un numero de 3 o 4 digitos sin espacios");
+            return;
+        }
+        pudo_tarjeta = true;
+        $("#TarjetaWindow").data("tWindow").close();
     }
 </script>
+
+@(Html.Telerik().Window()
+    .Name("TarjetaWindow").Title("Pago con tarjeta")
+    .Content(@<text><div id="tarjeta_div">
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true);
+    )
 
 <label> Pagados </label>
 @(Html.Telerik().Grid(Model.Where(p => p.pagado == true).ToList())
@@ -52,7 +125,7 @@
     {
         columns.Template(
                 @<text>
-                    <input name="checkedLineas" type="checkbox" value="@item.ID " title="checkedLineas" onclick="Modifica(@item.ID);"/>
+                    <input class="check" type="checkbox" value="@item.ID " title="checkedLineas" onclick="Modifica(@item.ID, @item.precio_final);"/>
                 </text>)
                 .Title("").Width(36).HtmlAttributes(new { style = "text-align:center" });
         columns.Bound(x => x.detalle);
@@ -61,4 +134,18 @@
     }
     ).Footer(false))
 
+<label>Monto a pagar:</label>
+<input type="text" readonly="readonly" id="pagar_box" value="0" />
 <button onclick="Pagar();">Realizar pago</button>
+
+<div id="division_div" style="display:none">
+    <div class="editor-label"> 
+        <label>Al contado: </label> 
+        <input type="text" id="contado_text" onchange="cambioContado();" />
+    </div>
+    <div class="editor-label"> 
+        <label>Con tarjeta: </label> 
+        <input type="text" id="tarjeta_text" onchange="cambioTarjeta();" />
+    </div>
+    <button onclick="ConfirmarPago();">Confirmar pago</button>
+</div>

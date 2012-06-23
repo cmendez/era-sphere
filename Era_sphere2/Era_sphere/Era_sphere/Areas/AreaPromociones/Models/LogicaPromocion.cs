@@ -35,9 +35,9 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         public void modificarPromocion(PromocionView promocion_view)
         {
             Promocion promocion = promocion_view.deserializa(this);
-            Promocion orig = database_table.retornarUnSoloElemento(promocion_view.ID);
-            orig.nombre = promocion.nombre ?? orig.nombre;
-            database_table.modificarElemento(orig, promocion.ID);
+            //Promocion orig = database_table.retornarUnSoloElemento(promocion_view.ID);
+            //orig.nombre = promocion.nombre ?? orig.nombre;
+            database_table.modificarElemento(promocion, promocion.ID);
         }
 
         public void agregarPromocion(PromocionView promocion)

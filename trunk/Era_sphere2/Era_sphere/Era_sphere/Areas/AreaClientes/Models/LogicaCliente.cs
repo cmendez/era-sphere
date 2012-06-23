@@ -260,17 +260,29 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public void cambiarEstadoCheckOutCliente(int id_cliente, Reserva reserva)
         {
             Cliente cliente = retornarCliente(id_cliente);
-          
 
+            int numero_reservas_posteriores;
          
                 if ((reserva.estado.ID == 3) || (reserva.estado.ID == 4))
                 {
 
-                    // falta condicion para que se pueda determinar si se debe cambiar a sin reserva o con reserva
-                    cliente.estadoID = 1;
-                    cliente.estado = context.estados_cliente.Find(1);
-                    cliente.habitacion_asignada = "-";
-                    modificarCliente(cliente);
+                    numero_reservas_posteriores = reservasPosteriores(id_cliente);
+                    if (numero_reservas_posteriores == 0)
+                    {
+                        // falta condicion para que se pueda determinar si se debe cambiar a sin reserva o con reserva
+                        cliente.estadoID = 1;
+                        cliente.estado = context.estados_cliente.Find(1);
+                        cliente.habitacion_asignada = "-";
+                        modificarCliente(cliente);
+                    }
+                    else
+                    {
+                        cliente.estadoID = 2;
+                        cliente.estado = context.estados_cliente.Find(2);
+                        cliente.habitacion_asignada = "-";
+                        modificarCliente(cliente);
+                      
+                    }
                    
                 }
             

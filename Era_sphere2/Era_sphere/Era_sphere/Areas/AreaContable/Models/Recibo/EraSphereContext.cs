@@ -16,5 +16,6 @@ namespace Era_sphere.Generics
         public DbSet<Recibo> recibos { get; set; }
         public DbSet<ReciboLinea> recibos_lineas { get; set; }
         public DbSet<ReciboLineaXReserva> recibos_linea_x_reserva { get; set; }
+        public DbSet<ReciboLineaXEvento> recibos_linea_x_evento { get; set; }
     }
 }

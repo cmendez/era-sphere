@@ -15,6 +15,7 @@ using Era_sphere.Areas.AreaHoteles.Models.Ambientes;
 using Era_sphere.Areas.AreaClientes.Models;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 using Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM;
+using Era_sphere.Areas.AreaContable.Models.Recibo;
 
 namespace Era_sphere.Areas.AreaEventos.Controllers
 {
@@ -24,6 +25,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         // GET: /AreaEventos/Evento/
 
         LogicaEvento evento_logica = new LogicaEvento();
+        
         LogicaEventoXAmbiente exa_logica = new LogicaEventoXAmbiente();
 
         #region evento
@@ -294,6 +296,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             return Json(new SelectList((new LogicaCliente()).retonarClientesJuridicos(), "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }
         #endregion
+
         #region servicios
         [GridAction]
         public ActionResult VerServicio(int idEvento)
@@ -349,6 +352,60 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             ViewBag.precio = precio;
             //ViewBag.repeticiones = (new LogicaServicios()).retornarServicio(tipo_servicio).repeticiones;
             return PartialView("PrecioServicio");
+        }
+
+        #endregion
+        
+        #region pagos
+        public JsonResult Nada(int id)
+        {
+            return Json(new { idEvento = id });
+        }
+
+        public ActionResult PagarEvento(int idEvento)
+        {
+            
+            return PartialView("PagarEvento",(new LogicaEvento()).retornarEvento(idEvento));
+        }
+        
+        [GridAction]
+        public ActionResult VerReciboLinea(int idEvento)
+        {
+            Evento evento=(new EraSphereContext()).eventos.Find(idEvento);
+            List<ReciboLinea> lineas=evento.getReciboLineas();
+            return PartialView("EventoReciboLinea", new GridModel(lineas));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult UpdateReciboLinea(int idEvento)
+        {
+            //FALTA
+            Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
+            return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult DeleteReciboLinea(int idEvento)
+        {
+            Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
+            return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        [GridAction]
+        public ActionResult InsertReciboLinea(int idEvento)
+        {
+
+            ReciboLinea linea = new ReciboLinea();
+            Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
+            if (TryUpdateModel(linea))
+            {
+                linea.fecha = DateTime.Now;
+                linea.de_evento = true;
+                linea.detalle = "Pago de evento";
+                evento.registraReciboLinea(linea);
+            }
+
+            return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
         }
 
         #endregion

@@ -5,6 +5,18 @@
 @model IEnumerable<Era_sphere.Areas.AreaEventos.Models.Evento.EventoView>
 @using Telerik.Web.Mvc.UI
 
+
+ @(Html.Telerik().Window().Name("PagarEvento")
+        .Title("PagarEvento").Content(
+            @<text>
+                <div id="pagar-evento-div"></div>
+            </text>
+        )
+            .Modal(true)
+            .Visible(false)
+            .Width(700).Resizable().Draggable(true).Height(600))
+
+
 <div class="titlebar">
         <h3>
             Eventos
@@ -21,6 +33,7 @@
                             .TemplateName("EventoViewTemplate"))
 
         .DataKeys(key => key.Add(c => c.ID))
+        .ClientEvents(events => events.OnComplete("funcioncita") )
         .Columns(columns =>
         {
             //columns.Bound(p => p.ID);
@@ -36,15 +49,17 @@
                 commands.Custom("Detalle Evento")
                     .Text("Detalle Evento")
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
-                             .Action("DetalleEvento", "Evento", new { idhotel=idhotel});
-                commands.Custom("Pagar Evento")
-                    .Text("Pagar Evento")
-                    .DataRouteValues(route=>route.Add(c=>c.ID).RouteKey("ID"))
-                    .Action("DetalleEvento", "Evento", new { idhotel = idhotel });
-                                
-            });
-        })
+                             .Action("DetalleEvento", "Evento", new { idhotel = idhotel });
+                commands.Custom("Pagar")
+                    .Text("Pagar").Ajax(true)
+                    .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
+                    .Action("Nada", "Evento");
 
+            });
+            
+                
+        })
+       
         .Pageable()
         .Sortable()
         .DataBinding(dataBinding => dataBinding
@@ -57,3 +72,19 @@
            
 )
     </div>
+
+    
+
+<script type="text/javascript">
+
+    function funcioncita(e) {
+        console.log(e.name);
+        
+        if (e.name == "Pagar") {
+            $("#pagar-evento-div").load('@Url.Action("PagarEvento", "Evento")' + '?idEvento=' + e.response.idEvento);
+            var detailModal = $("#PagarEvento").data("tWindow");
+            detailModal.center().open();
+        }
+    }
+    
+</script>

@@ -20,6 +20,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             num_participantes = evento.num_participantes;
             Hotel = evento.hotel;
             estadoID = evento.estado_eventoID;
+            pagado = evento.pagado;
             detalle = evento.detalle;
             
             int pos=detalle.IndexOf(':');
@@ -32,6 +33,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         [Required]
         [DisplayName("Fecha Inicio")]
         public DateTime fecha_inicio { get; set; }
+
+        public decimal pagado { get; set; }
 
         public string dni { get; set; }
         [Required]
@@ -72,7 +75,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
                 estado_eventoID=this.estadoID,
                 detalle=this.detalle,
                 dni=this.dni,
-                fecha_inicio=this.fecha_inicio
+                fecha_inicio=this.fecha_inicio,
+                pagado=this.pagado
             };
         }
 

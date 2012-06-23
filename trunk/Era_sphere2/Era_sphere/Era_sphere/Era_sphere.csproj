@@ -70,6 +70,11 @@
   <ItemGroup>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoServicioController.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\InterfazLogicaPerfil.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\LogicaPerfil.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\Perfil.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\PerfilContext.cs" />
     <Compile Include="Areas\AreaContable\Controllers\LineaProductoController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\PagosController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\ReciboLineaController.cs" />
@@ -350,7 +355,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaReservas\Models\ReservaView.cs" />
-    <Compile Include="Controllers\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\InterfazLogicaTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\LogicaTemporada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Temporada\Temporada.cs" />
@@ -382,10 +386,6 @@
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\LogicaTipoHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\TipoHabitacion.cs" />
     <Compile Include="Areas\AreaHoteles\Models\Habitaciones\TipoHabitacionView.cs" />
-    <Compile Include="Controllers\Perfiles\InterfazLogicaPerfil.cs" />
-    <Compile Include="Controllers\Perfiles\LogicaPerfil.cs" />
-    <Compile Include="Controllers\Perfiles\Perfil.cs" />
-    <Compile Include="Controllers\Perfiles\PerfilContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Politicas.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Ciudad.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Ubigeo\Pais.cs" />

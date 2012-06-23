@@ -22,6 +22,15 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             return View("IndexCliente");
         }
 
+        [HttpPost]
+        public JsonResult LoginResult(String user, String password)
+        {
+            
+            //var cliente = cliente_logica.loginCliente(user, password);
+            //return new JsonResult() { Data = cliente };
+            return null;
+        }
+
         public ActionResult IndexPartial()
         {
             ViewData["es_partial"] = true;

@@ -11,6 +11,7 @@ using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaReservas.Models.Consultas;
 using Era_sphere.Areas.AreaConfiguracion.Models.Servicios;
 using Era_sphere.Areas.AreaHoteles.Controllers;
+using System.Data;
 
 
 namespace Era_sphere.Areas.AreaReservas.Models
@@ -81,19 +82,38 @@ namespace Era_sphere.Areas.AreaReservas.Models
             tabla_reserva.modificarElemento(reserva,reserva.ID);
         }
 
+        public void cambiarEstadoCliente(Reserva reserva)
+        {
 
+
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = context.clientes.ToList();
+            
+            for (int i = 0; i < clientes.Count(); i++)
+            {
+                if ((reserva.responsable_pago.ID == clientes[i].ID) && (reserva.estado.ID == 1))
+                {
+                    clientes[i].estadoID = 2;
+                    clientes[i].estado = context.estados_cliente.Find(2);
+                    context.Entry(clientes[i]).State = EntityState.Modified;
+                    context.SaveChanges();
+                    break;
+                }
+
+            }
+        }
          public void registrarReserva(Reserva reserva)
         {
             tabla_reserva.agregarElemento(reserva);
-            LogicaCliente logica_cliente = new LogicaCliente();
-            logica_cliente.cambiarEstadoCliente(reserva);
+            cambiarEstadoCliente(reserva);
            //incluye lista de reservas
             reserva.responsable_pago.reservas.Add(reserva);
             reserva.generaReciboLineas();
             
             //reserva.responsable_pago.estadoID = 2;
             reserva.responsable_pago.numero_reservas++;
-            logica_cliente.modificarCliente(reserva.responsable_pago);
+            context.Entry(reserva.responsable_pago).State = EntityState.Modified;
+            context.SaveChanges();
              //logica_cliente.incrementaNumeroReservas(reserva.responsable_pago);
         }
 

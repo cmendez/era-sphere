@@ -23,12 +23,13 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         }
 
         [HttpPost]
-        public JsonResult LoginResult(String user, String password)
+        public JsonResult LoginResult(string user, string password)
         {
-            
-            //var cliente = cliente_logica.loginCliente(user, password);
-            //return new JsonResult() { Data = cliente };
-            return null;
+            Cliente cliente = cliente_logica.context.clientes.FirstOrDefault(x => x.usuario == user && x.password == x.password);
+            if (cliente == null) return Json(new { ok = false, error = "El usuario o password no es el correcto" });
+
+            return Json(new { ok = true, cliente_id = cliente.ID, tipo_id = cliente.tipoID, mensaje = "wiiii", 
+                                nombre = cliente.nombre + " " + cliente.apellido_materno + " " + cliente.apellido_paterno});
         }
 
         public ActionResult IndexPartial()

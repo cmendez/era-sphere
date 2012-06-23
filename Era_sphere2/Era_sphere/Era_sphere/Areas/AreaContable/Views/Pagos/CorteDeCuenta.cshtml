@@ -74,14 +74,25 @@
     function ConfirmarPago() {
         var monto_tarjeta = parseFloat($("#tarjeta_text").val());
         if (monto_tarjeta > 0) {
+            pudo_tarjeta = false;
             $("#tarjeta_div").load('@Url.Action("PagoTarjetaDeCredito", "Pagos")', { monto: monto_tarjeta });
             $("#TarjetaWindow").data("tWindow").center().open();
         } else pudo_tarjeta = true;
+
+        ConfirmarPago2();
     }
-    
+    function ConfirmarPago2() {
+        if (pudo_tarjeta) alert("listo!");
+    }
+    function sirveInt(x, tam) {
+        if (x.length != tam) return false;
+        for (i in x) if (x[i] < '0' || x[i] > '9') return false;
+        return true;
+    }
     function Validar() {
-        var num_tarjeta = parseInt($("#num_tarjeta").val());
+        var num_tarjeta = $("#num_tarjeta").val();
         var pin = $("#pin").val();
+      
         if (!sirveInt(num_tarjeta, 16)) {
             alert("El numero de tarjeta debe ser un numero de 16 digitos sin espacios");
             return;
@@ -98,7 +109,7 @@
 @(Html.Telerik().Window()
     .Name("TarjetaWindow").Title("Pago con tarjeta")
     .Content(@<text><div id="tarjeta_div">
-    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true);
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true)
     )
 
 <label> Pagados </label>

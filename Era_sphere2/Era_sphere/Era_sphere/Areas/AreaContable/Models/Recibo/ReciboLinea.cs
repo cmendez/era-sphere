@@ -11,9 +11,9 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
     public class ReciboLinea: DBable
     {
         //Este es el comprobante con el que se pago' esta boleta linea
-        //[ForeignKey("recibo")]
-        //public int reciboID { get; set; }
-        //public Recibo recibo { get; set; }
+        [ForeignKey("recibo")]
+        public int? reciboID { get; set; }
+        public Recibo recibo { get; set; }
 
         public string espacio_rentable_nombre { get; set; }
 
@@ -48,7 +48,7 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
             if (Tipo == 1) {this.de_reserva = true;}
             if (Tipo == 2) {this.de_evento = true ;}
             if (precio_final == 0) pagado = true;
-
+            reciboID = null;
         }
 
         public ReciboLinea() { }

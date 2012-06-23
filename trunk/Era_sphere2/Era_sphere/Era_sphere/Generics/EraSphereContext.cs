@@ -34,23 +34,16 @@ namespace Era_sphere.Generics
             seedProductos();
             seedProveedores();
             seedRelacionesPromocion();
-            
             seedOrdenCompra();
             seedTipoHabitaciones();
-
             seedComodidades();
             seedPisos();
-   
-
             seedClientes();
-
             seedHabitaciones();
-    
             seedPerfil();
             seedEmpleados();
-
             seedCadena();
-
+            seedAmbientes();
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }

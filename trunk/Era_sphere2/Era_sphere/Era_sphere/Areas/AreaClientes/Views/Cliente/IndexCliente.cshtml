@@ -19,49 +19,51 @@
                var detieneProceso = false;
 
                function guardar(e) {
-                   var tipo_documento_id = e.values.id_tipo_documento;
-                   var documento = e.values.documento_identidad;
-                   var tarjeta_cliente = e.values.tarjeta_cliente;
-                   detieneProceso = false;
-                   jQuery.ajax({
-                       url: '@Url.Action("ValidaClientes", "Cliente")' + "?id_tipo_documento=" + tipo_documento_id + "&documento=" + documento + "&tarjeta_cliente=" + tarjeta_cliente,
+                   if (e.mode == "insert") {
+                       var tipo_documento_id = e.values.id_tipo_documento;
+                       var documento = e.values.documento_identidad;
+                       var tarjeta_cliente = e.values.tarjeta_cliente;
+                       detieneProceso = false;
+                       jQuery.ajax({
+                           url: '@Url.Action("ValidaClientes", "Cliente")' + "?id_tipo_documento=" + tipo_documento_id + "&documento=" + documento + "&tarjeta_cliente=" + tarjeta_cliente,
 
-                       success: function (result) {
+                           success: function (result) {
 
-                           if (result == 1) {
-                               alert("Existe un cliente con el mismo documento ó tarjeta de cliente, No se registra al cliente");
-                               detieneProceso = true;
-                           }
-                       },
-                       async: false
-                   });
+                               if (result == 1) {
+                                   alert("Existe un cliente con el mismo documento ó tarjeta de cliente, No se registra al cliente");
+                                   detieneProceso = true;
+                               }
+                           },
+                           async: false
+                       });
 
-                   if (detieneProceso == true)
-                       e.preventDefault();
-
+                       if (detieneProceso == true)
+                           e.preventDefault();
+                   }
                }
 
 
                function guardarJuridico(e) {
-                   var ruc = e.values.ruc;
-                   var tarjeta_cliente = e.values.tarjeta_cliente;
-                   detieneProceso = false;
-                   jQuery.ajax({
-                       url: '@Url.Action("ValidaClientesJuridicos", "Cliente")' + "?ruc=" + ruc + "&tarjeta_cliente=" + tarjeta_cliente,
+                   if (e.mode == "insert") {
+                       var ruc = e.values.ruc;
+                       var tarjeta_cliente = e.values.tarjeta_cliente;
+                       detieneProceso = false;
+                       jQuery.ajax({
+                           url: '@Url.Action("ValidaClientesJuridicos", "Cliente")' + "?ruc=" + ruc + "&tarjeta_cliente=" + tarjeta_cliente,
 
-                       success: function (result) {
+                           success: function (result) {
 
-                           if (result == 1) {
-                               alert("Existe un Cliente Jurídico con el mismo RUC ó tarjeta de cliente, No se registra al cliente");
-                               detieneProceso = true;
-                           }
-                       },
-                       async: false
-                   });
+                               if (result == 1) {
+                                   alert("Existe un Cliente Jurídico con el mismo RUC ó tarjeta de cliente, No se registra al cliente");
+                                   detieneProceso = true;
+                               }
+                           },
+                           async: false
+                       });
 
-                   if (detieneProceso == true)
-                       e.preventDefault();
-
+                       if (detieneProceso == true)
+                           e.preventDefault();
+                   }
                }
 
 </script>

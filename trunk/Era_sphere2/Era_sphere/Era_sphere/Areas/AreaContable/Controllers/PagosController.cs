@@ -16,7 +16,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         //llamado par anhadir un servicio de reserva
         public ActionResult PagoTarjetaDeCredito(decimal monto)
         {
-            return View("TarjetaDeCreditoIndex", new PagoTarjeta { monto = monto });
+            return PartialView("TarjetaDeCreditoIndex", new PagoTarjeta { monto = monto });
         }
 
         public ActionResult Validar(PagoTarjeta pt)
@@ -28,6 +28,17 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             ViewData["idCosteable"] = reservaID;
             Reserva r = logica.context.Reservas.Find(reservaID);
             return PartialView("CorteDeCuenta", r.getReciboLineas());
+        }
+
+        public JsonResult PagarLineas(int[] lineas_ids)
+        {
+            var recibos_lineas = logica.context.recibos_lineas.Where(x => lineas_ids.Contains(x.ID)).ToList();
+            foreach (var r in recibos_lineas)
+            {
+                r.pagado = true;
+            }
+            logica.context.SaveChanges();
+            return Json(new {ok = true});
         }
     }
 }

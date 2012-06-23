@@ -1,0 +1,262 @@
+﻿article, header, footer, section {
+	display: block;
+}
+
+body {
+	font-size : 16px;
+	background: #FCFFF6;
+	font-family: "Helvetica", "Arial";
+	margin: 0;
+}
+
+forma fieldset {
+padding: 0 20px 20px;
+margin: 0 0 30px;
+border: 2px solid #593131;
+background: #EAE1C0;
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+
+.promocion 
+{
+    padding: 0 20px 20px;
+    margin: 0 0 30px;
+    border: 2px solid #593131;
+    background: #EAE1C0;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+ }
+ 
+ 
+ .promocion .titlepromo 
+ {
+   font-size: 24px;
+   display: block;
+ }
+ 
+ .promocion .descripcionpromo 
+ {
+     display : block;
+     font-size: 16px;
+ }
+ 
+ .promocion .fecha
+ {
+     font-size: 14px;
+     display : block;
+ }
+
+#contenedorNavegacion form {
+width: 100%;
+height: 300px;
+margin: 0 auto;
+padding: 50px 60px;
+overflow: auto;
+color: #3E4A49;
+background: -moz-linear-gradient( center bottom, #F5EEDB 0%, #FAF8F1 100% );
+background: -webkit-gradient( linear, left bottom, left top, color-stop(0,#F5EEDB), color-stop(1, #FAF8F1) );
+background: -moz-linear-gradient( center bottom, #F5EEDB 0%, #FAF8F1 100% );
+border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+-moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+-webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+
+legend {
+color: white;
+background: #8FB98B;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 0.9em;
+font-weight: bold;
+text-align: center;
+padding: 5px;
+margin: 0;
+width: 9em;
+border: 2px solid #593131;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+}
+
+li {
+	list-style: none;
+	padding-bottom: 50px;
+}
+
+.btnverde {
+	background-color: black;
+	/*background-color: #449933;*/
+}
+
+.btnrojo {
+	background-color: black;
+	/*background-color: #ff4455;*/
+}
+
+#cap_footer {
+background: #E7E1A3;
+background: #77bbff;
+background: #6688ff;
+background: #22aaff;
+background: #3F2228;
+position: absolute;
+bottom: 0px;
+width: 100%;
+height: 120px;
+z-index: -100;
+}
+
+
+#contenedorNavegacion {
+height: auto;
+border: 1px solid #CCC;
+-webkit-border-radius: 3em;
+border-radius: 3em;
+-moz-border-radius: 3em;
+background-color: white;
+background: -moz-linear-gradient( center bottom, #F5EEDB 0%, #FAF8F1 100% );
+background: -webkit-gradient( linear, left bottom, left top, color-stop(0,#F5EEDB), color-stop(1, #FAF8F1) );
+background: -moz-linear-gradient( center bottom, #F5EEDB 0%, #FAF8F1 100% );
+box-shadow: 0px 5px 20px rgba(0,0,0,0.6);
+margin-bottom: 20px;
+margin-left: 60px;
+margin-top: 60px;
+margin-right: 20px;
+width: 90%;
+min-height: 400px;
+overflow: inherit;
+}
+
+/*
+height: auto;
+border: 1px solid #CCC;
+-webkit-border-radius: 1em;
+border-radius: 1em;
+-moz-border-radius: 1em;
+background-color: white;
+box-shadow: 0px 5px 20px rgba(0,0,0,0.6);
+width: 50%;
+height: 150px;
+text-align: center;
+*/
+#formularioMantenimiento {
+
+position: absolute;
+top : 120px;
+left : 35%;
+z-index: 100;
+}
+
+#contenedorNavegacion button {
+border-radius: 0.5em;
+color: white;
+cursor: pointer;
+font-family: Helvetica, Arial;
+font-size: 1.5em;
+height: 50px;
+margin-left : 10px;
+text-align: center;
+width : 150px;
+}
+
+#footer {
+font-size: 14px;
+padding-bottom: 0;
+position: relative;
+height: 22px;
+padding-top: 7px;
+background: #333;
+width: 100%;
+}
+
+#footer #footer_copyright {
+left: 0.5em;
+position: absolute;
+color: white;
+}
+
+
+#logo {
+	no-repeat;
+	margin-top: 30px;
+	margin-left: 50px;
+}
+
+#medio {
+height: auto;
+margin-top: 0px;
+z-index: 700;
+margin-bottom: 30px;
+}
+
+#menu-principal {
+top: 20px;
+right: 0px;
+width: auto;
+height: 30px;
+position: absolute;
+padding-right: 40px;
+}
+
+#menu-principal ul {
+list-style: none;
+background: #333;
+margin: 0px;
+width: auto;
+height: inherit;
+padding: 0;
+-webkit-border-radius: 0.8em;
+border-radius: 0.8em;
+-moz-border-radius: 0.8em;
+}
+
+#menu-principal ul li, .titulo ul li {
+width: auto;
+float: left;
+}
+
+#menu-principal ul li a {
+display: block;
+padding: 6px 0px 8px;
+width: auto;
+font-size: 13px;
+font-weight: bold;
+margin: 0 10px;
+color: white;
+text-decoration: none;
+}
+
+
+#tablaResultado {
+height: auto;
+border: 1px solid #CCC;
+-webkit-border-radius: 1em;
+border-radius: 1em;
+-moz-border-radius: 1em;
+background-color: white;
+box-shadow: 0px 5px 20px rgba(0,0,0,0.6);
+width: 50%;
+height: 250px;
+text-align: center;
+position: absolute;
+top : 300px;
+left : 500px;
+z-index: 100;
+}
+
+li {
+display: list-item;
+text-align: -webkit-match-parent;
+}
+
+.title{
+	color : red;
+	margin-left: 50px;
+	font-size: 19px;
+}
+

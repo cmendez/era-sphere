@@ -75,9 +75,9 @@
     
     function nsp_redirect() {
         var url = "";
-        var path = window.location.pathname;
-        var algo = (localStorage.getItem("logout")).split("/");
-       for (j = 0; j < algo.length; j++)  url += "/..";
+        //var path = window.location.pathname;
+        //var algo = (localStorage.getItem("logout")).split("/");
+        //for (j = 0; j < algo.length; j++)  url += "/..";
         $(location).attr('href', url)
     }
 });

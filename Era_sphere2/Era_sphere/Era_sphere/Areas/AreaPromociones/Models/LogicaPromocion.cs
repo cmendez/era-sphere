@@ -10,11 +10,24 @@ namespace Era_sphere.Areas.AreaPromociones.Models
     {
         public EraSphereContext promocion_context = new EraSphereContext();
         DBGenericQueriesUtil<Promocion> database_table;
-
+        
         public LogicaPromocion()
         {
             database_table = new DBGenericQueriesUtil<Promocion>(promocion_context, promocion_context.promociones);
         }
+
+        public List<Promocion> retornarpromociones(int puntos) {
+            List<Promocion> r = new List<Promocion>();
+
+            foreach (Promocion p in promocion_context.promociones) 
+            {
+                if (p.puntos_requeridos <= puntos) { 
+                    r.Add(p);
+                }
+            }
+            return r;
+        }
+        
 
         public List<PromocionView> retornarPromociones()
         {

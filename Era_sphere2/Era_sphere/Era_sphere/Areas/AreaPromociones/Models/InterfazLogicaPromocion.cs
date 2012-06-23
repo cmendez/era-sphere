@@ -10,6 +10,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
     interface InterfazLogicaPromocion
     {
         //EraSphereContext promocion_context { get; }
+        List<Promocion> retornarpromociones(int puntos);
         void modificarPromocion(PromocionView promocion);
         void agregarPromocion(PromocionView promocion);
         void eliminarPromocion(int promocion_id);

@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
+}
+
+<style>
+    .ui-widget-overlay { opacity: .80;filter:Alpha(Opacity=80); }
+    
+  fieldset {
+        padding: 0 20px 20px;
+        margin: 0 0 30px;
+        
+        border: 0px solid #593131;
+        /*
+        background: #EAE1C0;
+        border-radius: 30px;
+        -moz-border-radius: 30px;
+        -webkit-border-radius: 30px;
+        */
+    }
+
+
+    input  
+    {
+        padding: 10px; 
+        font-size: 30px;
+        width : 210px
+    }
+</style>
+		<body>
+			<header>
+			
+			<div id = "logo"> 
+ 				<img src="../Content/Data/images/logo.png" onmousedown = "return false;"> </img>
+			</div>
+			<nav id="menu-principal">
+        	<ul>
+        		<li><a href="#" id="inicio">Inicio</a></li>
+        		<li><a href="#" id="somos">Quien&eacute;s somos?</a></li>
+                <li> <a href = "#" id = "detalle" style = "display:none">Detalle Cliente</li>
+        		<li><a href="#" id="intranet"> Intranet </a></li>
+        	</ul>
+        	</nav>
+        	
+                <div id="dialogLogin" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 46px; height: auto; display:none" scrolltop="0" scrollleft="0">
+                    <form id  = "formLoginCliente">
+                    <fieldset>
+                    <p> 
+                    <input type = "text" maxlength = 20 placeholder = "Ingrese Usuario" id = "usuario">
+                    </p>
+                     <p> 
+                      <input type = "password"  maxlength = 20 placeholder = "Ingrese Contrasenha" id = "password">
+                      </p>
+                      <p id = "explain" style = "display:none; color : red">
+                        
+                      </p>
+                    </fieldset>
+                    </form>
+                </div>
+
+                <div id="dialogConsumo" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 46px; height: auto; display:none" scrolltop="0" scrollleft="0">
+                    
+                </div>
+
+                 <div id="dialogPromociones" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 46px; height: auto; display:none" scrolltop="0" scrollleft="0">
+                    <ul>
+                        <li class = "promocion"> 
+                         <span class = "titlepromo"> Promocion 1</span>
+                         <span class = "descripcionpromo"> Descripcion aaaa</span> 
+                         <span class = "fecha"> Desde : 12/06/2012 - Hasta: 30/06/2012 </span>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li class = "promocion"> 
+                         <span class = "titlepromo"> Promocion 2</span>
+                         <span class = "descripcionpromo"> Descripcion bbbb</span> 
+                         <span class = "fecha"> Desde : 12/06/2012 - Hasta: 30/06/2012 </span>
+                        </li>
+                    </ul>
+                </div>
+
+
+        	<div id="mask" style="width: 1280px; height: 773px; display: none; opacity: 0.8; "></div>
+        	
+        	
+
+			</header>
+            <section id = "medio">	
+                <div id = "contenedorNavegacion">
+				<div id = "despidete" style = "display:none; background-color:red; color:white; font-size:20px"></div>
+			
+					<div id = "inicioContent">
+						<span class = "title"> Reserva Cliente</span>
+						
+					</div>
+
+                    <div id = "detalleContent" style = "display:none">
+                        <span class = "title"> Intranet Resort Solutions </span>
+                        <h1> Bienvenido(a) <span id = "nombreUser"> </span> </h1>
+                        <ul>
+                            <li> <a id = "consumoCliente" href = "#"> Ver Consumo </a></li>
+                            <li> <a id = "promocionesCliente" href = "#">Ver Promociones </a></li>
+                        </ul>
+                    </div>
+
+
+					<div id = "somosContent" style = "display:none">
+						<span class = "title"> Qui&eacute;nes Somos</span>
+						<p> 
+								<blockquote>
+      <p align="justify" class="sizearial-12px"><font color="#653c33">En una combinación de excepcionales niveles de comodidad y lo mejor de la hospitalidad peruana, el Sheraton Lima Hotel &amp; Convention Center es una excelente opción para las personas que viajan por negocios o por placer en el mundo de hoy. Ubicado convenientemente en la entrada al centro histórico de Lima, estamos a sólo 15 minutos del Aeropuerto Internacional Jorge Chávez.</font></p>
+      <p align="justify" class="sizearial-12px"><font color="#653c33">Conéctese con el trabajo, la familia y la diversión en nuestro "destino de conexión" del lobby, el nuevo Link@Sheraton con Microsoft. Nuestra última innovación tecnológica ofrece modernas estaciones de trabajo con acceso a Internet de alta velocidad con cable e inalámbrico, un creativo y acogedor diseño y un cálido ambiente, que permitirán a nuestros huéspedes permanecer en contacto con aquello que les es más importante.</font></p>
+      <p align="justify" class="sizearial-12px"><font color="#653c33">La tradición peruana se sumerge en un entorno contemporáneo bañado de luz natural en las áreas públicas. Disfrute de las comodidades y los servicios cinco estrellas en nuestras 431 habitaciones extra grandes y en todo el hotel, con acceso a  Internet, un centro de negocios y numerosas oportunidades recreativas.</font></p>
+      <p align="justify" class="sizearial-12px"><font color="#653c33">Comparta una noche memorable probando una amplia variedad de platos de cocina peruana e internacional en nuestros dos restaurantes y bar. Tenemos capacidad para eventos de todo tipo, desde reuniones de negocios pequeñas hasta conferencias grandes y ocasiones sociales, en nuestras extensas instalaciones para reuniones y banquetes.</font></p>
+      <p align="justify" class="sizearial-12px"><font color="#653c33">Alguna vez conocida como la "Ciudad de los Reyes," Lima está rodeada de una historia intrigante cercada de misterios de los antiguos Incas. Las calles de la ciudad, impregnadas de tradición y rebosantes de esplendor histórico, están adornadas con reliquias antiguas.</font></p>
+      <p align="justify" class="sizearial-12px"><font color="#653c33">El Sheraton Lima Hotel &amp; Convention Center es un excelente lugar para disfrutar el encanto, la calidez, la atención personal y los servicios de Lima.</font></p>
+      
+      </blockquote>
+
+						</p>
+					</div>
+
+				</div>	
+				
+
+			</section>
+		</body>	
+		<footer id = "footer" > 
+			<div id ="cap_footer"></div>
+			<article id="footer_copyright">
+			Copyright 2012 - RESORT SOLUTIONS
+			</article>
+		</footer>

@@ -338,6 +338,17 @@ namespace Era_sphere.Areas.AreaClientes.Models
         }
 
 
+        public void incrementaNumeroReservas(Cliente cliente)
+        {
+            cliente.numero_reservas++;
+            modificarCliente(cliente);
+        }
+
+        public void DecrementaNumeroReservas(Cliente cliente)
+        {
+            cliente.numero_reservas--;
+            modificarCliente(cliente);
+        }
 
 
         public int toCliente(string cliente_raw)

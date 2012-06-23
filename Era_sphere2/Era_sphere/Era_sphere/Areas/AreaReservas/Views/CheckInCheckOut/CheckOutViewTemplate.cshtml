@@ -68,9 +68,14 @@
     
    <fieldset>
    
+        <div class="editor-label"> @Html.Label("Fecha Actual:")</div>
+        <div class="editor-field"> @Html.Telerik().DatePicker().Name("Fecha_actual").Value(DateTime.Now)</div>
+
+        <div style="height: 10px;">
+        </div>
 
         <div class="editor-label"> @Html.Label("Responsable de Pago") </div>
-        <div class="editor-field"> @Html.TextBoxFor(model => model.responsable_pago, new {@readonly = "readonly"}) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.responsable_pago, new {@readonly = "readonly", style="width:250px;"}) </div>
 
      
 
@@ -88,6 +93,16 @@
                       events => events.OnChange("validaFecha"))
                 @Html.ValidationMessageFor(model => model.FechaFin)
             </div>
+
+
+            <div style="height: 10px;">
+            </div>
+
+             <div class="editor-label"> @Html.Label("Tabla de consumo de reserva:")</div>
+
+            <div style="height: 10px;">
+            </div>
+
 
 
          <div class="block_cont">
@@ -116,7 +131,8 @@
     </div>
 
 
-
+        <div style="height: 10px;">
+            </div>
 
       
         <div class="editor-label"> @Html.LabelFor(model => model.costo_final) </div>

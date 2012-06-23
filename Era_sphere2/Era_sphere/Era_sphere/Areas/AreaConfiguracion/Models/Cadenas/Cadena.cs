@@ -36,7 +36,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
         [Required(ErrorMessage = "El campo página web es obligatorio")]
         //[DataType(DataType.Url)] 
         //[DataType(DataType.Url, ErrorMessage = "Email invalido")]
-        [RegularExpression("(http|https)://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", ErrorMessage="Email invalido")]
+        [RegularExpression("(http|https)://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?", ErrorMessage="Web invalida")]
         [DisplayName("Página web [Formato: http://pagina.com]")]
         public string url { get; set; }
 

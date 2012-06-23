@@ -15,8 +15,15 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 
         public ActionResult Index(Cadena cliente_busqueda)
         {
-            ViewBag.cadenas = cadena_logica.retornarCadenas();
-            return View();
+            //ViewBag.cadenas = cadena_logica.retornarCadenas();
+            //return View();
+
+            int id = 0;
+
+            List<Cadena> lista = cadena_logica.retornarCadenas();
+            id = lista[lista.Count - 1].ID;
+            return View("Index", cadena_logica.retornarCadena(id));
+
         }
 
         public ActionResult Create()

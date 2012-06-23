@@ -264,20 +264,14 @@
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
     <Compile Include="Areas\AreaPromociones\Models\RelacionPromocion.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\RepExcelClienteController.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\RepExcelEventoController.cs" />
-    <Compile Include="Areas\AreaReportes\Controllers\RepExcelPromocionController.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReporteClienteController.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReporteEmpleadoController.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReporteEventoController.cs" />
     <Compile Include="Areas\AreaReportes\Controllers\ReportePromocionController.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelCliente\ObjetoReporteCliente.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelCliente\RepCliente.cs" />
     <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\FormReporteEvento.cs" />
     <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\ObjetoReporteEvento.cs" />
     <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\RepEvento.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelPromocion\ObjetoReportePromocion.cs" />
-    <Compile Include="Areas\AreaReportes\Models\RepExcelPromocion\RepPromocion.cs" />
     <Compile Include="Areas\AreaReportes\Models\ReporteCliente\ReporteCliente.cs" />
     <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs">
       <SubType>Code</SubType>
@@ -1363,10 +1357,6 @@
     <Content Include="Areas\AreaReportes\Views\ReporteCliente\ReporteClienteView.cshtml" />
     <Content Include="Areas\AreaReportes\Views\RepExcelEvento\Index.cshtml" />
     <Content Include="Areas\AreaReportes\Views\RepExcelEvento\RepExcelEventoView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelPromocion\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelPromocion\RepExcelPromocionView.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelCliente\Index.cshtml" />
-    <Content Include="Areas\AreaReportes\Views\RepExcelCliente\RepExcelClienteView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

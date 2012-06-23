@@ -122,6 +122,14 @@ namespace Era_sphere.Areas.AreaContable.Models
             return ans;
         }
 
+        internal List<OrdenCompraView> retornar_ordenes_compra()
+        {
+            List<OrdenCompra> list_oc = qoc.retornarTodos().ToList();
+            List<OrdenCompraView> ans = new List<OrdenCompraView>();
+            foreach (var oc in list_oc) ans.Add(new OrdenCompraView(oc));
+            return ans;
+        }
+
         internal void terminar_orden_compra(int id)
         {
             var oc = qoc.retornarUnSoloElemento(id);

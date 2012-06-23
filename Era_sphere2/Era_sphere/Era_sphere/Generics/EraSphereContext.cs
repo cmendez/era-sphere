@@ -45,12 +45,13 @@ namespace Era_sphere.Generics
             seedClientes();
 
             seedHabitaciones();
-    
+            SaveChanges();
             seedPerfil();
+            SaveChanges();
             seedEmpleados();
-
-            seedCadena();
-
+            SaveChanges();
+            //seedCadena();
+            SaveChanges();
         }
 
         public DbSet<TipoPersona> tipos_personas { get; set; }

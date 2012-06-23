@@ -9,6 +9,9 @@
     EraSphereContext context = new EraSphereContext();
     Cliente c = context.clientes.Find(idCliente);
     string nombre = LogicaCliente.toString(c);
+    List<string> tipos = new List<string>();
+    tipos.Add("Boleta");
+    tipos.Add("Factura");
 }
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -75,12 +78,15 @@
         ConfirmarPago2();
     }
     function ConfirmarPago2() {
-        if (pudo_tarjeta) alert("listo!");
+        if (pudo_tarjeta){
          $.ajax(
                 {
                     url: '@Url.Action("PagarLineas", "Pagos")',
                     traditional: true,
-                    data: { lineas_ids: dentro, clienteID : @idCliente},
+                    data: { lineas_ids: dentro, clienteID : @idCliente, tipo: $("#TipoPago").val(),
+                            monto_tarjeta: parseFloat($("#tarjeta_text").val()),
+                            monto_contado: parseFloat($("#contado_text").val()),
+                            monto_total: monto},
                     type: "POST",
                     success: function (data) {
                         $("#Cortecuenta").data("tWindow").close();
@@ -88,6 +94,7 @@
                     async: false
                 }
             );
+         }
     }
     function sirveInt(x, tam) {
         if (x.length != tam) return false;
@@ -112,6 +119,7 @@
         }
         pudo_tarjeta = true;
         $("#TarjetaWindow").data("tWindow").close();
+        ConfirmarPago2();
     }
 </script>
 
@@ -129,7 +137,7 @@
     .Name("GridPagados")
     .Localizable("es-ES")
     .Filterable()
-    .DataKeys(keys => keys.Add(c => c.ID))
+    .DataKeys(keys => keys.Add(cc => cc.ID))
     .Columns(columns =>
         {
             columns.Bound(x => x.detalle);
@@ -170,9 +178,8 @@
         <label>Con tarjeta: </label> 
         <input type="text" id="tarjeta_text" onchange="cambioTarjeta();" />
     </div>
+    
+        @Html.DropDownList("TipoPago", new SelectList(tipos))
     <button onclick="ConfirmarPago();">Confirmar pago</button>
 
-    <div id="recibo_div">
-        
-    </div>
 </div>

@@ -328,6 +328,26 @@
     <Compile Include="Areas\AreaPromociones\Models\Promocion.cs" />
     <Compile Include="Areas\AreaPromociones\Models\PromocionView.cs" />
     <Compile Include="Areas\AreaPromociones\Models\RelacionPromocion.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\RepExcelClienteController.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\RepExcelEventoController.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\RepExcelPromocionController.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\ReporteClienteController.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\ReporteEmpleadoController.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\ReporteEventoController.cs" />
+    <Compile Include="Areas\AreaReportes\Controllers\ReportePromocionController.cs" />
+    <Compile Include="Areas\AreaReportes\Models\RepExcelCliente\ObjetoReporteCliente.cs" />
+    <Compile Include="Areas\AreaReportes\Models\RepExcelCliente\RepCliente.cs" />
+    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\FormReporteEvento.cs" />
+    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\ObjetoReporteEvento.cs" />
+    <Compile Include="Areas\AreaReportes\Models\RepExcelEvento\RepEvento.cs" />
+    <Compile Include="Areas\AreaReportes\Models\RepExcelPromocion\ObjetoReportePromocion.cs" />
+    <Compile Include="Areas\AreaReportes\Models\RepExcelPromocion\RepPromocion.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteCliente\ReporteCliente.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\FormReporteEmpleado.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ObjetoReporteEmpleado.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEmpleados\ReporteEmpleados.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReporteEvento\ReporteEvento.cs" />
+    <Compile Include="Areas\AreaReportes\Models\ReportePromocion\ReportePromocion.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\CheckInCheckOutController.cs" />
     <Compile Include="Areas\AreaReservas\Controllers\ConsultaController.cs" />
     <Compile Include="Areas\AreaReservas\Models\Consultas\Consulta.cs" />
@@ -445,6 +465,7 @@
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ParticipanteViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ReciboViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ServicioViewTemplate.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\Web.config" />
     <Content Include="Areas\AreaReservas\Views\Web.config" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.xml" />
@@ -1233,8 +1254,6 @@
     <Folder Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
-    <Folder Include="Areas\AreaReportes\Controllers\" />
-    <Folder Include="Areas\AreaReportes\Models\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
     <Folder Include="Scripts\ApiSeguridad\" />
   </ItemGroup>
@@ -1246,9 +1265,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AreaConfiguracion\Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\AreaReportes\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AreaClientes\Views\Cliente\IndexCliente.cshtml" />
@@ -1394,6 +1410,20 @@
     <Content Include="Areas\AreaContable\Views\Ordenes\Edit.cshtml" />
     <Content Include="Areas\AreaContable\Views\Ordenes\Index.cshtml" />
     <Content Include="Areas\AreaContable\Views\Ordenes\IndexOrdenes.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelCliente\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelCliente\RepExcelClienteView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelEvento\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelEvento\RepExcelEventoView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelPromocion\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelPromocion\RepExcelPromocionView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteCliente\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteCliente\ReporteClienteView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexFormReporteEmpleado.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexReporteEmpleado.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReportePromocion\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />
@@ -1535,6 +1565,12 @@
     <Content Include="App_GlobalResources\UploadLocalization.zh-CN.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PdfReportGenerator\PdfReportGenerator.csproj">
+      <Project>{DF00196A-3B96-4BCD-8C4E-879DB8EDFE95}</Project>
+      <Name>PdfReportGenerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

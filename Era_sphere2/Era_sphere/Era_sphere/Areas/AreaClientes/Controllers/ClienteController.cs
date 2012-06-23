@@ -146,15 +146,15 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         //DETALLE DEL CLIENTE
         public ActionResult DetalleCliente(int id)
         {
-
-            List<ReciboLinea> recibo_linea = new List<ReciboLinea>();
+            List<ReciboLinea> lineas = new List<ReciboLinea>();
+            List<int> recibos = cliente_logica.context.recibos.Where(x => x.clienteID == id).ToList().Select(y => y.ID).ToList();
+            lineas = cliente_logica.context.recibos_lineas.Where(x => x.pagado == true && recibos.Contains(x.reciboID.Value)).ToList();
+            
+            Cliente cliente = cliente_logica.retornarCliente(id);
+            
             if (id > 0)
             {
-                Cliente cliente = cliente_logica.retornarCliente(id);
-                if(cliente.recibos_cliente != null) foreach (Recibo r in cliente.recibos_cliente)
-                    if(r.recibo_lineas != null) foreach (ReciboLinea rl in r.recibo_lineas)
-                        if (rl.de_servicio)
-                            recibo_linea.Add(rl);
+          
                 ViewBag.estado = cliente.estado.descripcion;
                 ViewBag.puntos = cliente.puntos_cliente;
             }
@@ -163,7 +163,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
                 ViewBag.estado = "";
                 ViewBag.puntos = "";
             }
-            return View("DetalleClienteTemplate", recibo_linea);
+            return View("DetalleClienteTemplate", lineas);
         }
 
         [HttpPost]

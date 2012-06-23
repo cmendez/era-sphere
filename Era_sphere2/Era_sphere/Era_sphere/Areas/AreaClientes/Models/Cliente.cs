@@ -34,7 +34,6 @@ namespace Era_sphere.Areas.AreaClientes.Models
            // public int id_habitacion_asisgnada { get; set; }
             public int puntos_cliente { get; set; }
             public int numero_reservas { get; set; }
-            public virtual ICollection<Recibo> recibos_cliente { get; set; }
 
             [InversePropertyAttribute("responsable_pago")]
             public virtual ICollection<Reserva> reservas { get; set; }
@@ -42,6 +41,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
             [InversePropertyAttribute("huespedes")]
             public virtual ICollection<HabitacionXReserva> habitacion_reservas { get; set; }
 
+            public virtual ICollection<Recibo> recibos { get; set; }
             //[InversePropertyAttribute("cliente_evento")]
             //public virtual ICollection<Evento> eventos_cliente { get; set; }
         }

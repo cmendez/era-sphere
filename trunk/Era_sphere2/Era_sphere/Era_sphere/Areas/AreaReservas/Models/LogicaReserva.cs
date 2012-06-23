@@ -90,9 +90,11 @@ namespace Era_sphere.Areas.AreaReservas.Models
            //incluye lista de reservas
             reserva.responsable_pago.reservas.Add(reserva);
             reserva.generaReciboLineas();
-
+            
             //reserva.responsable_pago.estadoID = 2;
-            //reserva.responsable_pago.numero_reservas += 1;
+            reserva.responsable_pago.numero_reservas++;
+            logica_cliente.modificarCliente(reserva.responsable_pago);
+             //logica_cliente.incrementaNumeroReservas(reserva.responsable_pago);
         }
 
         public void eliminarReserva(int reserva_id)
@@ -101,6 +103,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
             LogicaCliente logica_cliente = new LogicaCliente();
             tabla_reserva.eliminarElemento(reserva_id);
             logica_cliente.cambiarEstadoEliminarReserva(cliente_id);
+            Cliente cliente = logica_cliente.retornarCliente(cliente_id);
+            logica_cliente.DecrementaNumeroReservas(cliente); 
         }
 
         public List<Reserva> buscarReserva(Reserva reserva)
@@ -231,7 +235,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
                     //ahora parece sin reserva en caso sea la unica reserva que tenga
                     eliminarReservaCliente(reserva.ID);
                     logica_cliente.cambiarEstadoAnularReserva(reserva.responsable_pagoID);
-            
+                    reserva.responsable_pago.numero_reservas--;
         }
 
 

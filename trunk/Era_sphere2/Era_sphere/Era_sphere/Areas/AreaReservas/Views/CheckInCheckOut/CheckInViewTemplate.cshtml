@@ -68,8 +68,15 @@
    <fieldset>
    
 
+        <div class="editor-label"> @Html.Label("Fecha Actual:")</div>
+        <div class="editor-field"> @Html.Telerik().DatePicker().Name("Fecha_actual").Value(DateTime.Now)</div>
+
+        <div style="height: 10px;">
+        </div>
+
+
         <div class="editor-label"> @Html.Label("Responsable de pago") </div>
-        <div class="editor-field"> @Html.TextBoxFor(model => model.responsable_pago, new {@readonly = "readonly"}) </div>
+        <div class="editor-field"> @Html.TextBoxFor(model => model.responsable_pago, new {@readonly = "readonly", style="width:250px;"}) </div>
 
         <div class="editor-label"> @Html.LabelFor(model => model.estadoID) </div>
          <div class="editor-field"> <input class="text-box single-line" type="text" value="@estado_nombre" readonly="readonly" /> </div>

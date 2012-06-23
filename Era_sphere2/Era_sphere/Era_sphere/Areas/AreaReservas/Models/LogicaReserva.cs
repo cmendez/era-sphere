@@ -255,7 +255,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
                     //ahora parece sin reserva en caso sea la unica reserva que tenga
                     eliminarReservaCliente(reserva.ID);
                     logica_cliente.cambiarEstadoAnularReserva(reserva.responsable_pagoID);
-                    reserva.responsable_pago.numero_reservas--;
+                    logica_cliente.DecrementaNumeroReservas(reserva.responsable_pago); 
         }
 
 

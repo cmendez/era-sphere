@@ -1,0 +1,46 @@
+﻿@model Era_sphere.Areas.AreaEventos.Models.Evento.EventoView
+@{
+    ViewBag.Title = "PagarEvento";
+    ViewBag.idEvento = ViewBag.id;
+    int idEvento = Model.ID;
+    
+}
+
+<h2>PagarEvento ff</h2>
+@ViewBag.id
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('#lineas').load('@Url.Action("VerReciboLinea", "Evento",new {idEvento=idEvento})')
+    }
+</script>*@
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.nombre)
+    </div>
+    <div class="editor-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.cliente_nombre)
+    </div>
+    <div class="editor-field">
+        @Html.DisplayFor(model => model.cliente_nombre)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.dni)
+    </div>
+    <div class="editor-field">
+        @Html.DisplayFor(model => model.dni)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.precio_total)
+    </div>
+    <div class="editor-field">
+        @Html.DisplayFor(model => model.precio_total)
+    </div>
+
+    <div id="lineas"></div>
+    @{
+        Html.RenderPartial("EventoReciboLinea");
+    }
+    

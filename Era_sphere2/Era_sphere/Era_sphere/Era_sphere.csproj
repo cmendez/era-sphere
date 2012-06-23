@@ -70,8 +70,11 @@
   <ItemGroup>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoServicioController.cs" />
+    <Compile Include="Areas\AreaContable\Controllers\PagosController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\ReciboLineaController.cs" />
+    <Compile Include="Areas\AreaContable\Models\LogicaPagos.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLineaView.cs" />
+    <Compile Include="Areas\AreaContable\Models\Pagos\PagoTarjeta.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXEvento.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
     <Compile Include="Areas\AreaCargos\Models\LogicaPreciable.cs" />
@@ -1302,8 +1305,6 @@
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXServicioXTemporadaViewTemplate.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Proveedores\Create.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Proveedores\Delete.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedores\Details.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedores\Edit.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedores\Index.cshtml" />
@@ -1322,9 +1323,6 @@
     <Content Include="Areas\AreaContable\Views\Producto\IndexProducto.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedores\Create.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedores\Delete.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Proveedores\Details.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Proveedores\Edit.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Proveedores\Index.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Web.config" />
     <Content Include="Areas\AreaContable\Views\Proveedor\HotelesProveedor.cshtml" />
@@ -1380,6 +1378,19 @@
     <Content Include="Areas\AreaConfiguracion\Views\Shared\ProductosDeReservaView.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\TiposTemporada\Index.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Pagos\CorteDeCuenta.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Pagos\TarjetaDeCreditoIndex.cshtml" />
+    <Content Include="Areas\AreaContable\Views\AdministrarOC\Export.cshtml" />
+    <Content Include="Areas\AreaContable\Views\AdministrarOC\Index.cshtml" />
+    <Content Include="Areas\AreaContable\Views\AdministrarOC\ReporteCompras.cshtml" />
+    <Content Include="Areas\AreaContable\Views\LineaProducto\LineaProductoIndex.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\AgregarOrden.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Create.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Delete.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Details.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Edit.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\Index.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Ordenes\IndexOrdenes.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

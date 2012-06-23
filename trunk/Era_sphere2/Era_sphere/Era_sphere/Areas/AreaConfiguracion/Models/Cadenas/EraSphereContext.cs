@@ -20,7 +20,7 @@ namespace Era_sphere.Generics
                     nombreCadena = "Default",
                     rsocial = "Default",
                     ruc = "11111111111",
-                    url = "Default",
+                    url = "http://pagina.com",
                     adel_minimo = 0,
                     d_ant_ret = 0,
                     porc_ret = 0,

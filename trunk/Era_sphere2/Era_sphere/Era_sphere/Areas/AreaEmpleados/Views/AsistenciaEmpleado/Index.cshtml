@@ -58,6 +58,8 @@
     .Ajax()
     .Select("Select", "AsistenciaEmpleado", new { id = idusuario })
     )
+    .ClientEvents(events => events.OnCommand("Grid_onCommand"))
+    
     )
     </div>
    
@@ -76,6 +78,18 @@
     </div>
 
     <script type = "text/javascript">
+
+   function Grid_onCommand(e) {
+    if (e.name == "Select") {
+        // pass additional data to the action method using e.data and e.dataItem
+        /*
+        e.data = $.extend(e.data, {
+            orderID: e.dataItem.OrderID;
+        });
+        */
+        alert("lol");
+    }
+}
     /*
     var user = localStorage.getItem("idusuario");
     var entrada = {

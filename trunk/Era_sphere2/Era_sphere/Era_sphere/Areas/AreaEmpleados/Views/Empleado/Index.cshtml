@@ -129,7 +129,7 @@
 							<label> Correo Electronico:</label>
 							<input class="input tipRight" maxlength = 80 type="text" style="width:400px;" name="email" id="email"/>
 							</div>
-							<div id="right_form_natural" style = "top:-400px">
+							<div id="right_form_natural" style = "top:-450px">
 								<!--
                                 <div id="natural_foto">
 								<label> Foto: </label>
@@ -143,6 +143,13 @@
 									<input class="input tipRight" type="text" style="width: 300px;" name="ruc" id="ruc"/> 
 									</div>
 									-->
+                                    <div class="form_row">
+                                    <label> Hotel: <span id = "reqhotel" style = "color:red; display:none" > *Requerido </span></label>
+									<select name="hotel" id = "hotel" class="select" style="width: 300px;">
+										
+									</select>
+									</div>
+
                                     <div class="form_row">
                                     <label> Perfil: <span id = "reqperfil" style = "color:red; display:none" > *Requerido </span></label>
 									<select name="perfil" id = "perfil" class="select" style="width: 300px;">
@@ -276,6 +283,23 @@
     
 <script type = "text/javascript">
   
+  //cargar Hoteles
+   $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "../AreaHoteles/Hotel/getHoteles",
+            success: function (data) {
+                var result = "";
+                $.each(data, function (i, item) {
+                    var idhotel = item.ID;
+                    var descripcion = item.descripcion
+                    result += '<option  value = "' + idhotel + '">' + descripcion + '</option>';
+                });
+                $("#hotel").html(result);
+            }
+        });
+
    //cargar Paises
      $("#pais").autocomplete({  
            source: function(req, add){  

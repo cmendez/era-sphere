@@ -273,7 +273,6 @@
     <Compile Include="Areas\AreaEmpleados\Models\LogicaEmpleado.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\AreaEventos\Controllers\EventoController.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\Adicional.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\AdicionalView.cs" />
     <Compile Include="Areas\AreaEventos\Models\Adicionales\EraSphereContext.cs" />
@@ -1324,6 +1323,7 @@
     <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
     <Folder Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
+    <Folder Include="Areas\AreaEventos\Controllers\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
     <Folder Include="Areas\AreaReportes\Views\Shared\" />
     <Folder Include="Scripts\ApiSeguridad\" />

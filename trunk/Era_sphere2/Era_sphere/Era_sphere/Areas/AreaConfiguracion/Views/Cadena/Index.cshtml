@@ -22,6 +22,8 @@
                     </div>
                     <fieldset>
                     <div class="block_cont" id="block_detalle_cadena">
+        <div class="display-label" style="font-size: 14pt">Información de la cadena</div>
+        <p></p>
         <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.nombreCadena)</div>
             <p>
             <div class="display-field">
@@ -49,6 +51,9 @@
                 @Html.DisplayFor(model => model.url)
             </div>
             <p>
+
+       <div class="display-label" style="font-size: 14pt">Política de la cadena</div>
+        <p></p>
 
             <div class="display-label" style="font-size: 11pt">@Html.LabelFor(model => model.adel_minimo)</div>
             <p>
@@ -80,14 +85,16 @@
 
 
             <p>
-            <p>  &nbsp; </p>
+
+
+            <a href = "Cadena/Edit" button class="x-button" >Editar </a>     
                     </div>
                     </fieldset>
+    
+
+                    
                 </div>
+                                
 
-
-    <div class="block_cont">
-            <a href = "Cadena/Edit" >Editar </a>     
-    </div>
               <!-- Table Wrapper End -->
 </div>

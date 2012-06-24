@@ -20,7 +20,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         public decimal precio_total { get; set; }
         public decimal precio_unitario { get; set; }
         public virtual ICollection<EOCLinea> entregas { get; set; }
-
+        public decimal precio_recibidos { get { return cantidad_recibida * precio_unitario;  } }
         internal void calcular_recibido()
         {
             cantidad_recibida = 0;

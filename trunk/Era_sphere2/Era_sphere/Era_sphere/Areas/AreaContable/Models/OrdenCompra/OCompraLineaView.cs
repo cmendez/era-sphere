@@ -18,6 +18,7 @@ namespace Era_sphere.Areas.AreaContable.Models
             precio_total = ocl.precio_total;
             precio_unitario = (decimal)ocl.precio_unitario;
             ID = ocl.ID;
+            precio_boleta = ocl.precio_recibidos;
             //falta incluir la colección de ENTREGAS
         }
 
@@ -35,5 +36,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         public int cantidad_recibida {get; set;}
         [DisplayName("Precio Total")]
         public decimal precio_total { get; set; }
+        [DisplayName("Precio Recibidos")]
+        public decimal precio_boleta { get; set; }
     }
 }

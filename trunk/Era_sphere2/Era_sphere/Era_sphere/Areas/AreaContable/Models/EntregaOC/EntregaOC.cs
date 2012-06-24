@@ -13,5 +13,12 @@ namespace Era_sphere.Areas.AreaContable.Models
         public virtual ICollection<EOCLinea> productos { get; set;}
         public virtual OrdenCompra orden_compra { get; set; }
         public int orden_compraID { get; set; }
+
+        public decimal monto_entrega { get { 
+            decimal ans = 0;
+            foreach (var item in productos) if (item.eliminado == false)
+                    ans += item.cantidad_entregada * item.linea_oc.precio_unitario;
+            return ans;
+        } }
     }
 }

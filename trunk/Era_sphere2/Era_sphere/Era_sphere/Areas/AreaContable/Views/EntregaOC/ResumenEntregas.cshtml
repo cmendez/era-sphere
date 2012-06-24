@@ -3,19 +3,21 @@
 @{
     var oc = ViewBag.oc;
 }
-<div>
+
  @(Html.Telerik().Grid<OCompraLineaView>()
         .Localizable("es-ES")
         .Name("ResumenEntrega")
         .DataKeys(d => d.Add(p => p.ID))
+        .HtmlAttributes(new { style="margin-top:10px; z-index:10001;"})
         .Columns(columns =>
         {
             columns.Bound(o => o.productoID).Width(8).ReadOnly(true).Title("Id");
-            columns.Bound(o => o.producto).Width(350).ReadOnly(true);            
+            columns.Bound(o => o.producto).Width(350).ReadOnly(true);
             columns.Bound(o => o.cantidad).Width(35).Title("Cant. Ordenada");
             columns.Bound(o => o.cantidad_recibida).Width(35).Title("Cant. Recibida");
             columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true).Title("PU").Format("{0:c}");
-            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total Pedido");
+            columns.Bound(o => o.precio_boleta ).Format("{0:c}").Width(120).ReadOnly(true)
                 .Aggregate(aggregates => aggregates.Sum())
                 .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
         })
@@ -24,7 +26,6 @@
             .Select("SelectOCompraLinea", "OrdenCompra", new { id_oc = @oc.ordenID })
         ).Filterable()
         .Groupable()
-        .Resizable( reorder => reorder.Columns(true))
-        .Resizable( re => re.Columns(true) ).Pageable()
+        .Resizable(reorder => reorder.Columns(true))
+        .Resizable(re => re.Columns(true)).Pageable()
     )
-</div>

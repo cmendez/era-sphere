@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaEventos.Models.Participante;
+using Era_sphere.Areas.AreaEventos.Models.Evento;
 
 namespace Era_sphere.Areas.AreaEventos.Models.Participante
 {
@@ -11,10 +12,11 @@ namespace Era_sphere.Areas.AreaEventos.Models.Participante
     {
         Era_sphere.Generics.EraSphereContext participante_context = new Era_sphere.Generics.EraSphereContext();
         DBGenericQueriesUtil<Participante> database_table;
-
+        DBGenericQueriesUtil<Evento.Evento> query_ev;
         public LogicaParticipante()
         {
             database_table = new DBGenericQueriesUtil<Participante>(participante_context, participante_context.participantes);
+            query_ev = new DBGenericQueriesUtil<Evento.Evento>(participante_context, participante_context.eventos);
         }
 
         /*
@@ -63,6 +65,9 @@ namespace Era_sphere.Areas.AreaEventos.Models.Participante
 
         public void agregarParticipante(ParticipanteView participante)
         {
+            var ev = query_ev.retornarUnSoloElemento( participante.eventoID );
+            if (ev.participantes.Count >= (new EventoXAmbiente.LogicaEventoXAmbiente()).retonarCapacidad(participante.eventoID)) 
+                throw new Exception("Capacidad excedida");
             database_table.agregarElemento(participante.deserializa());
         }
 

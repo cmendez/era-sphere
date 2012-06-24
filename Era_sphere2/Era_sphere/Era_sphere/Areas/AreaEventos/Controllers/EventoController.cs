@@ -187,12 +187,16 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             //int idevento = id;
             ParticipanteView participante_view = new ParticipanteView();
             LogicaParticipante logicaParticipante = new LogicaParticipante();
-            if (TryUpdateModel(participante_view))
+            try
             {
-                participante_view.eventoID = idEvento;
-                logicaParticipante.agregarParticipante(participante_view);
+                if (TryUpdateModel(participante_view))
+                {
+                    participante_view.eventoID = idEvento;
+                    logicaParticipante.agregarParticipante(participante_view);
 
+                }
             }
+            catch (Exception e) { } 
             return View("EventoParticipanteView", new GridModel(logicaParticipante.retornarParticipantesView(idEvento)));
 
         }
@@ -280,7 +284,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
             ViewBag.capacidad = logicaExA.retonarCapacidad(idEvento);
 
-
+            ViewBag.is_full = ViewBag.capacidad <= ViewBag.participantes;
 
             return View("EventoCalcularCostos");
         }

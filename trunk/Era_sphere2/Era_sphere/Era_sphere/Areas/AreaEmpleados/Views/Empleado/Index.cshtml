@@ -278,6 +278,7 @@
  <!-- para el modal amplio ftw!! -->
  <div id="mask" style="width: 1263px; height: 900px; display: none; opacity: 0.8; "></div>
  
+ <input type="hidden" name="idpais" id="idpais" value="">
 </div>
 
     
@@ -290,7 +291,7 @@
             contentType: "application/json; charset=utf-8",
             url: "../AreaHoteles/Hotel/getHoteles",
             success: function (data) {
-                var result = "";
+                var result = '<option  value = ""> - </option>';
                 $.each(data, function (i, item) {
                     var idhotel = item.ID;
                     var descripcion = item.descripcion
@@ -299,6 +300,34 @@
                 $("#hotel").html(result);
             }
         });
+
+
+
+        /*
+         $("#pais").autocomplete({
+     source :"web/usuario/paises",
+     minlength:2,
+     select: function(event,ui){
+         $("#idpais").attr('value',ui.item.id);
+     }
+   
+   });
+        
+        */
+
+     $("#pais11").autocomplete({  
+            source: function(req, add){  
+         
+                },
+             select: function(event,ui){
+               var selectedObj = ui.item;
+			    $("#pais").val(selectedObj.label);
+			    $('#idpais').val(selectedObj.value);
+			    return false;
+            }
+     
+        });  
+
 
    //cargar Paises
      $("#pais").autocomplete({  
@@ -322,13 +351,22 @@
                     suggestions.push(pais);
                 });
                 add(suggestions);
-                console.log(suggestions);
+            },
+             select: function(event,ui){
+               var selectedObj = ui.item;
+			    $("#pais").val(selectedObj.label);
+			    $('#idpais').val(selectedObj.value);
+			    return false;
             }
         });     
         }
         });  
 
-    
+
+        $("#direccion").click(function(){
+          alert ($("#idpais").val());
+        });
+        
      $("#ciudad").autocomplete({  
            source: function(req, add){  
             var jsonPais = {
@@ -363,7 +401,7 @@
             contentType: "application/json; charset=utf-8",
             url: "../AreaConfiguracion/Perfiles/Select",
             success: function (data) {
-                var result = "";
+               var result = '<option  value = ""> - </option>';
                 $.each(data["data"], function (i, item) {
                     var nombre = item.nombrePerfil;
                     //<option value="dni"> DNI </option>
@@ -538,6 +576,8 @@
         var cadenaHoraIn = arma_cadhora($("#lunesTimeIn").val(), $("#martesTimeIn").val(), $("#miercolesTimeIn").val(), $("#juevesTimeIn").val(),$("#viernesTimeIn").val(), $("#sabadoTimeIn").val(), $("#domingoTimeIn").val());
         var cadenaHoraOut = arma_cadhora($("#lunesTimeOut").val(), $("#martesTimeOut").val(), $("#miercolesTimeOut").val(), $("#juevesTimeOut").val(),$("#viernesTimeOut").val(), $("#sabadoTimeOut").val(), $("#domingoTimeOut").val());
         var sueldo = $("#sueldo").val();
+
+        var hotel = $("#hotel").val();
         var perfil = $("#perfil").val();
         //
         var user = $("#usuario").val();
@@ -560,6 +600,7 @@
                      contrasenha : password,
                      paisId : pais,
                      ciudadId : ciudad,
+                     hotelId  : hotel,
                      perfilId : perfil,   
                      //datos Trabajo
                      nombre_cargo: nombreCargo,
@@ -642,6 +683,13 @@
           $("#reqperfil").show();
            yeti = false;
         }
+       
+        var hotel = $("#hotel").val();
+        if (hotel == "") {
+          $("#reqhotel").show();
+          yeti = false;
+        }
+       
         var tipo_documento = $("#tipo_documento").val();
         var numero_documento = $("#numero_documento").val();
         var fecha_nac = $("#fecha_nacimiento").val();

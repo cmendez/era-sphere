@@ -41,6 +41,9 @@
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPOI">
+      <HintPath>..\packages\NPOI 1.2.3 final binary\NPOI.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -70,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoServicioController.cs" />
+    <Compile Include="Areas\AreaContable\Controllers\AdministrarOCController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\InterfazLogicaPerfil.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\LogicaPerfil.cs" />

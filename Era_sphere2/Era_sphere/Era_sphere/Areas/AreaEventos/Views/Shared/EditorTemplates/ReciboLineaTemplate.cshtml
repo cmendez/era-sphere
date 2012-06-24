@@ -1,8 +1,11 @@
 ﻿@model Era_sphere.Areas.AreaContable.Models.Recibo.ReciboLinea
 @{
     ViewBag.Title = "ReciboLineaTemplate";
+    var precio = Model.precio_final;
 }
 @using Telerik.Web.Mvc.UI
+    
+
         <div class="editor-label">
             Precio
         </div>
@@ -10,19 +13,7 @@
             @Html.EditorFor(model => model.precio_final)
             @Html.ValidationMessageFor(model => model.precio_final)
         </div>
-      
-      
-        <div class="editor-label">
-            @Html.LabelFor(model => model.fecha)
-        </div>
-        <div>
-            @(Html.Telerik().DateTimePicker()
-                    .Name("fecha_inicio")
-                    .HtmlAttributes(new { id = "DateTimePicker_wrapper" })
-                    .Interval(30)
-                    .Value(DateTime.Now)
-                    .r
-             )
-        </div>
-
+        
+    
+    
 

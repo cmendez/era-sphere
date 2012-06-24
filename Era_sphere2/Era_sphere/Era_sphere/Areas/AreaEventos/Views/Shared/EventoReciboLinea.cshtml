@@ -1,33 +1,36 @@
-﻿@model IEnumerable<Era_sphere.Areas.AreaContable.Models.Recibo.ReciboLinea>
+﻿@model List<Era_sphere.Areas.AreaContable.Models.Recibo.ReciboLinea>
 @{
     ViewBag.Title = "Recibolinea";
     int idEvento = ViewBag.idEvento;
+    ViewBag.idEvento = idEvento;
 }
 @using Telerik.Web.Mvc.UI
 
 <div class="titlebar">
-        <h3>
+        <h5>
             Recibos de linea
-        </h3>
-    </div>
-    <div class="block_cont">
+        </h5>
+</div>
+<div class="block_cont">
         @(Html.Telerik().Grid(Model)
         .Name("ReciboLineaEvento")
         .Filterable()
         .Localizable("es-ES")
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
-                            .Mode(GridEditMode.InForm))
+                            .Mode(GridEditMode.InLine))
+                            //.TemplateName("ReciboLineaTemplate"))
         .DataKeys(key => key.Add(c => c.ID))
+        .ClientEvents(events => events.OnComplete("montos"))
         .Columns(columns =>
         {
 
             columns.Bound(p => p.fecha).ReadOnly();
-            columns.Bound(p => p.pagado);
+            columns.Bound(p => p.precio_final);
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);
-                //commands.Delete().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
                 });
         })
         .Pageable()
@@ -37,7 +40,7 @@
             .Ajax()
             .Select("VerReciboLinea", "Evento", new { idEvento = idEvento })
             .Insert("InsertReciboLinea", "Evento", new { idEvento = idEvento })
-         //   .Delete("DeleteReciboLinea", "Evento", new { idEvento = idEvento })
+            .Delete("DeleteReciboLinea", "Evento", new { idEvento = idEvento })
             .Update("UpdateReciboLinea", "Evento", new { idEvento = idEvento })
             
         )

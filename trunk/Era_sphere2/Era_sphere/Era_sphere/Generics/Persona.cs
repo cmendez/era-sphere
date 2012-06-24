@@ -11,11 +11,11 @@ namespace Era_sphere.Generics
 {
     public abstract class Persona: DBable
     {
-        
+        [DisplayName("Nombre")]
         public string nombre { get; set; }
-                
+        [DisplayName("Apellido paterno")]    
         public string apellido_paterno { get; set; }
-                
+        [DisplayName("Apellido materno")]     
         public string apellido_materno { get; set; }
                 
         public string documento_identidad { get; set; }

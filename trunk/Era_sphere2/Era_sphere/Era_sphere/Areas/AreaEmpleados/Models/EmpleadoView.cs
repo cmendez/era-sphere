@@ -23,9 +23,11 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
 
 
         //persona
+        [DisplayName("Nombre")]
         public string nombre { get; set; }
+        [DisplayName("Apellido paterno")]
         public string apellido_paterno { get; set; }
-
+        [DisplayName("Apellido materno")]
         public string apellido_materno { get; set; }
 
         public string documento_identidad { get; set; }

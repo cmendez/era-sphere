@@ -23,6 +23,8 @@
  
   @(Html.Telerik().Grid(Model)
         .Name("EmpleadosGrid")
+        .Localizable("es-ES")
+        .Filterable()
         .Editable(editing => editing
                             .Mode(GridEditMode.InLine))
         .DataKeys(key => key.Add(c => c.ID))

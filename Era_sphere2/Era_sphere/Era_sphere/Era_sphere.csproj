@@ -316,7 +316,7 @@
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\HotelXTipoHabitacionXTemporada.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\HotelXTipoHabitacionXTemporadaView.cs" />
-    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\LogicaHotelXServicioXTemporada.cs" />
+    <Compile Include="Areas\AreaHoteles\Models\HotelXTipoHabitacionXTemporada\LogicaHotelXTipoHabitacionXTemporada.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\EraSphereContext.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXPreciable.cs" />
     <Compile Include="Areas\AreaHoteles\Models\HotelXTipoServicioXTemporada\HotelXPreciableView.cs" />
@@ -1464,6 +1464,10 @@
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesAtendidasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesCanceladasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesRegistradasPartial.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\HotelXProducto\Index.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXProductoViewTemplate.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\HotelXTipoHabitacionXTemporada\Index.cshtml" />
+    <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXTipoHabitacionXTemporadaViewTemplate.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

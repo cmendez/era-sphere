@@ -70,6 +70,5 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
             return database_table.buscarElementos(empleado_campos);
         }
 
-
     }
 }

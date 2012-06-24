@@ -14,9 +14,17 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public virtual ICollection<Habitacion> lista_habitaciones { get; set; }
         public string descripcion { get; set; }
         public string codigo_piso { get; set; }
+        [Required]
         [ForeignKey("hotel")]
         public int hotelID { get; set; }
-        [Required]
         public virtual Hotel hotel { get; set; }
+
+        public string cod_con_descripcion
+        {
+            get
+            {
+                return codigo_piso + " - " + descripcion;
+            }
+        }
     }
 }

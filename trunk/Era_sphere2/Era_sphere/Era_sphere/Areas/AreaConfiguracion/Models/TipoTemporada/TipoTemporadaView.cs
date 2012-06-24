@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
 {
-    public class TipoTemporadaView
+    public class TipoTemporadaView : IValidatableObject
     {
 
         public int ID { get; set; }
@@ -17,7 +17,10 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
         public string descripcion { get; set; }
 
         
-        public TipoTemporadaView() { }
+        public TipoTemporadaView() 
+        {
+            ID = -1;
+        }
 
         public TipoTemporadaView(TipoTemporada tipotemporada)
         {
@@ -34,6 +37,19 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
                 descripcion = this.descripcion,
             };
 
+        }
+
+        public IEnumerable<ValidationResult>
+           Validate(ValidationContext validationContext)
+        {
+            var field_desc = new[] { "descripcion" };
+
+            int n_duplicados = (new LogicaTipoTemporada()).retornarDuplicados(this.descripcion);
+
+            if (1 <= n_duplicados)
+            {
+                yield return new ValidationResult("Ya existe un tipo de temporada con esta descripción", field_desc);
+            }
         }
 
 

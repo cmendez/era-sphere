@@ -51,7 +51,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public void eliminarPiso(int pisoID)
         {
-            database_table.eliminarElemento(pisoID);
+            database_table.eliminarElemento_logico(pisoID);
         }
 
         public List<Piso> buscarPiso(Piso piso_campos)
@@ -76,5 +76,34 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return pisos_view;
            
         }
-     }
+
+        public void registrarPisosBatch(int idHotel, int nroPisos)
+        {
+            int i;
+            Piso pisoNew = null;
+
+            for (i = 0; i < nroPisos; i++)
+            {
+                pisoNew = new Piso();
+                pisoNew.hotelID = idHotel;
+                context.pisos.Add(pisoNew);
+            }
+            context.SaveChanges(); 
+
+
+        }
+
+        public List<Piso> retornarPisos2(int hotel_id)
+        {
+            return database_table.retornarTodos().Where(p => p.hotelID == hotel_id).ToList();
+            
+        }
+
+        public void eliminarHabsPiso(int pisoID)
+        {
+            LogicaHabitacion logica_hab = new LogicaHabitacion();
+            List<Habitacion> hbs = logica_hab.retornarHabitacionesDePiso(pisoID);
+            foreach (Habitacion hb in hbs) logica_hab.eliminarHabitacion(hb.ID);
+        }
+    }
 }

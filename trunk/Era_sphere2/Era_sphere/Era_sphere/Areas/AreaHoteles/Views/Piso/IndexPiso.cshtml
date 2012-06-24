@@ -10,7 +10,7 @@
 
 @{
     var hotelID = ViewData["hotelID"];
-    }
+}
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
@@ -28,33 +28,54 @@
         .Name("PisosGrid")
         .Filterable()
         .Localizable("es-ES")
-        .ToolBar(commands => commands.Insert())
-
+        .ToolBar(toolBar => 
+                    {
+                        toolBar.Template(
+                        @<text>
+                        <label class="customer-label" for="Customers-input">
+                            <i>Registrar pisos por lote:</i>
+                        </label>
+                        @* @Html.TextBox("nroPisos")*@
+                        @(Html.Telerik().IntegerTextBox()
+                                .Name("nroPisos")
+                                .MinValue(0)
+                                .MaxValue(200)
+                                .Value(0)
+                            )
+                        @item.CustomCommandToolBarButton("regPisosBatch", "Registrar Pisos", null, null, true, GridButtonType.Text)
+                        &nbsp;
+                        &nbsp;
+                        @item.SubmitChangesButton()
+                        </text>); 
+                    }
+                )
         .Editable(editing => editing
-                            .Mode(GridEditMode.InForm)
+                            .Mode(GridEditMode.InCell)
                             .TemplateName("PisoViewTemplate"))
-                            
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-            columns.Bound(p => p.ID);
-            columns.Bound(p => p.codigo_piso);
+            //columns.Bound(p => p.ID);
+            columns.Bound(p => p.codigo_piso).ReadOnly(true);
             columns.Bound(p => p.descripcion);
             columns.Command(commands =>
             {
-                commands.Edit().ButtonType(GridButtonType.Image);
-                //commands.Delete().ButtonType(GridButtonType.Image);
+                //commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
             });
         })
-
+        .ClientEvents(clientEvents => 
+            {
+                clientEvents.OnCommand("onCommandPiso");
+            })
         .Pageable()
         .Sortable()
 
 
         .DataBinding(dataBinding => dataBinding
             .Ajax()
-            .Select("Select", "Piso", new { id = @hotelID }) 
-            .Insert("Insert", "Piso", new { id = @hotelID})
+            .Select("Select", "Piso", new { id = @hotelID })
+            .Insert("Insert", "Piso", new { id = @hotelID })
             .Delete("Delete", "Piso", new { id_hotel = @hotelID })
             .Update("Update", "Piso", new { id_hotel = @hotelID })
         )
@@ -63,3 +84,171 @@
     </div>
     <!-- Table Wrapper End -->
 </div>
+
+<script type="text/javascript">
+
+    function onCommandPiso(e) {
+        if (e.name == "regPisosBatch") {
+            var i = 0;
+            var nroPisos = $("#nroPisos").val();
+            var pisosGrid = $("#PisosGrid").data("tGrid");
+            /**/console.log(pisosGrid);
+            var ult_piso = pisosGrid.total + pisosGrid.insertedDataItems().length - pisosGrid.deletedDataItems().length;
+
+            for (var i = 1; i <= nroPisos; i++) {
+                var nroPiso_act = ult_piso + i;
+                var cod_piso_act = obtieneCodPiso(nroPiso_act);
+                var piso_n = { codigo_piso: "P" + cod_piso_act, descripcion: "Piso " + cod_piso_act };
+                pisosGrid.insertRow(piso_n);
+            }
+        }
+    }
+
+    function obtieneCodPiso(i) {
+        var ceros = "";
+        if (0    < i && i < 10)     ceros = "00";
+        if (10  <= i && i < 100)    ceros = "0";
+        if (100 <= i && i < 1000)   ceros = "";
+        return ceros + i;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+            /**/alert("total = " + pisosGrid.total);
+            /**/alert("inserted = " + pisosGrid.insertedDataItems().length);
+            /**/alert("deleted = " + pisosGrid.deletedDataItems().length);
+            
+                /**/alert("nro Piso_act = " + nroPiso_act);    
+                console.log(pisosGrid);
+
+
+
+//            $.ajax(
+//                {
+//                    type : 'POST',
+//                    datatype: 'json',
+//                    url: '@Url.Action("registrarPisosBatch","Piso")' + '/?idHotel=' + @hotelID + '&nroPisos=' + nroPisos,
+//                    contentType: 'application/json',
+//                    //data : JSON.stringify( { n : v , ... } ),
+//                    success: function(data) { 
+//                        alert(data.msg);
+//                        $('#PisosGrid').data('tGrid').ajaxRequest();
+//                    },
+//                    error: function(data) { /*error*/ }
+//                }
+//            );
+*@
+
+
+
+
+
+
+
+
+@*//    function onCompletePiso(e) {
+//        if (e.name == "bPisosBatch") {
+//            console.log(e);
+//            var hotel = e.response.hotel;
+//            console.log(hotel);
+
+
+//            var url = '@Url.Action("registrarPisosBatch", "Piso")' + '/?idHotel=' +
+//                             hotel.ID + '&nroPisos=' + $("#nroPisos").value;
+////            var windowElement = $.telerik.window.create({
+////                name: 'popupPisosBatch',
+////                title: "Registrar pisos por batch",
+////                html: '',
+////                contentUrl: url,
+////                modal: true,
+////                resizable: true,
+////                draggable: true,
+////                width: 650,
+////                height: 550,
+////                onClose: function (e) {
+////                    e.preventDefault();
+////                    windowElement.data('tWindow').destroy();
+////                }
+////            });
+////            var tdata = windowElement.data('tWindow');
+////            jQuery(windowElement).attr('id', 'popupPisosBatch');
+////            tdata.center().open();
+
+//        }
+//    }
+
+//    function cerrar_ventana() {
+//        $("#popupOrden").data('tWindow').close();
+//        $("#RegistradasGrid").data('tGrid').ajaxRequest();
+//    }
+</script>
+
+<script type="text/javascript">
+//    function onCommand(e) {
+//        alert("onCommand(e)");
+//
+
+
+    //, "registrarPisosBatch", "Piso",null, true,
+    //GridButtonType.Text)
+    //    }
+
+    //commands.Custom()
+    //    .Name("bPisosBatch")
+    //    .Ajax(true)
+    //    .Text("Agregar pisos por batch")
+    //    .Action("getHotel", "Piso")
+    //    .HtmlAttributes(new { style = "font-style: italic" });
+
+</script>
+
+
+
+
+@(Html.Telerik().Window()
+    .Name("wPisosBatch")
+    .Visible(false)
+    .Title("Agregar pisos en batch")
+    .Modal(true)
+    .Width(500)
+    .Height(200)
+    .Content(@<text>
+                <div id="customer-details">
+                    <img />
+                    <h2></h2>
+                    <em></em>
+                    <address></address>
+                    <dl>
+                        <dt>Phone:</dt>
+                        <dd></dd>
+                    </dl>
+                </div>
+        </text>)
+)
+
+@(Html.Telerik().Window().Name("fake-windi").Visible(false))*@

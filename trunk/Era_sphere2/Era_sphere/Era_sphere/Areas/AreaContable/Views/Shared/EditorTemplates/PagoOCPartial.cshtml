@@ -1,0 +1,109 @@
+﻿@using Telerik.Web.Mvc.UI
+@using Era_sphere.Areas.AreaContable.Models
+@{
+    ProveedorView prov = ViewBag.proveedor;
+    OrdenCompraView oc = ViewBag.orden_compra;
+    var data = new { id_proveedor = prov.ID };
+    var data_oc = new { id_oc = oc.ordenID };
+    bool is_edit = ViewBag.is_edit;
+    Era_sphere.Areas.AreaHoteles.Models.HotelView hotel = ViewBag.hotel;
+}
+<div id="popupPagoOC">
+    <ul>
+        <li>
+            <label>
+                Numero de Orden de Compra: @oc.ordenID
+            </label>
+        </li>
+        <li>
+            <label>
+                Proveedor: @oc.
+            </label>
+            <span>@prov.razon_social </span></li>
+        <li>
+            <label>
+                Persona de Contacto: 
+            </label>
+            <span>@prov.persona_contacto </span></li>
+        <li>
+            <label>
+                Hotel: 
+            </label>
+            <span>@hotel.razon_social </span></li>
+    </ul>
+    @(Html.Telerik().Grid<OCompraLineaView>()
+        .Name("OCGrid")
+        .DataKeys(d => d.Add(p => p.ID))
+        .Columns(columns =>
+        {            
+            columns.Bound(o => o.producto).Width(250).ReadOnly(true);
+            columns.Bound(o => o.cantidad_recibida).Width(50).Title("Cant. Atendida");
+            columns.Bound(o => o.cantidad).Width(50).Title("Cant. Ordenada");            
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
+                .Aggregate(aggregates => aggregates.Sum())
+                .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
+            columns.Command(command =>
+            {
+                command.Delete().ButtonType(GridButtonType.Image);
+                command.Edit().ButtonType(GridButtonType.Image);
+            });
+        })
+        .ClientEvents(e => e.OnComplete("onCompleteOCL"))
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectOCompraLinea", "OrdenCompra", new { id_oc = @oc.ordenID })
+            .Delete("DeleteOCL", "OrdenCompra", new { id_oc = @oc.ordenID })
+            .Update("UpdateOCL", "OrdenCompra")
+        )
+    )
+    @if (!is_edit)
+    {
+    <span class="form">
+        <button id="registrar" class="t-button t-state-default submit" style="float: right;
+            margin-top: 10px; margin-bottom: 10px;">
+            Registrar
+        </button>
+        <button id="eliminar" class="t-button t-state-default submit" style="float: right;
+            margin-right: 10px; margin-top: 10px">
+            Cancelar
+        </button>
+    </span>
+    }
+    else
+    { 
+        <span class="form">
+         <button id="aceptar" class="t-button t-state-default submit" style="float: right; margin:10px">
+         Aceptar</button>
+        </span>
+    }
+    <script type="text/javascript">
+        function onCompleteOCL(e) {
+
+            if (e.name == "update" || e.name == "delete") {
+                var res = e.response;
+                if (res.msg != "ok" && e.name == "update") { alert(res.msg); }
+                $("#OCGrid").data("tGrid").ajaxRequest();
+            }
+        }
+        $("#aceptar").click(function () { cerrar_ventana(); })
+        $("#registrar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RegistrarOrdenCompra", "OrdenCompra", @data_oc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
+            cerrar_ventana();
+        });
+        $("#eliminar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteOrdenCompra", "OrdenCompra", @data_oc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
+
+            cerrar_ventana();
+        });
+    </script>
+</div>

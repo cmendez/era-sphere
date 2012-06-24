@@ -25,50 +25,50 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
         public HotelXTipoHabitacionXTemporadaView(HotelXTipoHabitacionXTemporada hxthxt)
         {
             this.ID = hxthxt.ID;
-
-            this.tipoHabitacion_descripcion = hxthxt.tipoHabitacion.descripcion;
-            this.tt_desc = hxthxt.temporada.tipotemporada.descripcion;
-            this.t_desc = hxthxt.temporada.descripcion;
-            this.precio = hxthxt.precio;
-
             this.hotelID = hxthxt.hotelID;
+
             this.tipoHabitacionID = hxthxt.tipoHabitacionID;
-            this.temporadaID = hxthxt.temporadaID;
+            this.tipoHabitacion_descripcion = hxthxt.tipoHabitacion.descripcion;
 
             this.costo_base = hxthxt.tipoHabitacion.costo_base;
+
+            this.tipoTemporadaID = hxthxt.temporada.tipotemporada.ID;
+            this.tt_desc = hxthxt.temporada.tipotemporada.descripcion;
+
+            this.temporadaID = hxthxt.temporadaID;
+            this.t_desc = hxthxt.temporada.descripcion;
+            this.precio = hxthxt.precio;
         }
 
         [Required]
         public int ID { get; set; }
 
-
-        [Required]
-        [DisplayName("Precio ($)")]
-        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
-        public decimal precio { get; set; }
-
-
-
         [Required]
         public int hotelID { get; set; }
         [Required]
+
         [DisplayName("Tipo de habitacion")]
         public int tipoHabitacionID { get; set; }
-        [Required]
-        [DisplayName("Temporada")]
-        public int temporadaID { get; set; }
-
-        
-        [DisplayName("TipoHabitacion")]
+        [DisplayName("Tipo de habitacion")]
         public string tipoHabitacion_descripcion { get; set; }
-        [DisplayName("Tipo de temporada")]
-        public string tt_desc { get; set; }
-        [DisplayName("Temporada")]
-        public string t_desc { get; set; }
 
         public decimal costo_base { get; set; }
 
+        [DisplayName("Tipo de temporada")]
+        public int tipoTemporadaID { get; set; }
+        [DisplayName("Tipo de temporada")]
+        public string tt_desc { get; set; }
 
+        [Required]
+        [DisplayName("Temporada")]
+        public int temporadaID { get; set; }
+        [DisplayName("Temporada")]
+        public string t_desc { get; set; }
+
+        [Required]
+        [DisplayName("Precio (USD$)")]
+        [Range(0,Era_sphere.Generics.StringsDeValidaciones.infinito)]
+        public decimal precio { get; set; }
 
         public HotelXTipoHabitacionXTemporada deserializa()
         {
@@ -82,6 +82,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
             };
         }
 
+
+        //TODO
         public bool isValid()
         {
             bool fieldsValid = (this.tipoHabitacionID != 0) && (this.temporadaID != 0) && (this.hotelID != 0);

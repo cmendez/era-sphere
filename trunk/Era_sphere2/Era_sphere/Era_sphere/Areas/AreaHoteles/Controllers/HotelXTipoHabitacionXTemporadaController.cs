@@ -65,9 +65,9 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         }
 
         [HttpPost]
-        public JsonResult _GetDropDownListTemporadas(int? DropDownList_tipoTemporada)
+        public JsonResult _GetDropDownListTemporadas(int? tipoTemporadaID)
         {
-            return _GetTemporadas(DropDownList_tipoTemporada);
+            return _GetTemporadas(tipoTemporadaID);
         }
 
         private JsonResult _GetTemporadas(int? tipoTemporadaID)

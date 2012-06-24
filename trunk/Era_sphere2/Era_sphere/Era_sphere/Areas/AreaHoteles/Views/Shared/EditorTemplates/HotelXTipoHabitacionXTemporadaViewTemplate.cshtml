@@ -27,7 +27,7 @@
                )
 
         <div class="editor-label">
-            Costo base ($):
+            Costo base (USD$):
         </div>
 
         @( Html.Telerik().DropDownList()
@@ -41,8 +41,8 @@
         <div class="editor-label">
             Tipo de temporada:
         </div>
-        @( Html.Telerik().DropDownList()
-                    .Name("DropDownList_tipoTemporada")
+        @( Html.Telerik().DropDownListFor(model => model.tipoTemporadaID)
+                    .Name("tipoTemporadaID")
                     .BindTo(new SelectList(tts, "ID", "descripcion"))
                     .Placeholder("Seleccione...")
                     .CascadeTo("temporadaID")

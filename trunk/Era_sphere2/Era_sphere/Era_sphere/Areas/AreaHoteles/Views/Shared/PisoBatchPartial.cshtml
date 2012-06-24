@@ -1,0 +1,193 @@
+﻿@using Era_sphere.Areas.AreaContable.Models;
+@using Telerik.Web.Mvc.UI;
+@model OrdenCompraView
+@{
+    //ProveedorView prov = ViewBag.proveedor;
+    //OrdenCompraView oc = ViewBag.orden_compra;
+    //var data = new { id_proveedor = prov.ID };
+    //var data_oc = new { id_oc = oc.ordenID };
+    //bool is_edit = ViewBag.is_edit;
+    //Era_sphere.Areas.AreaHoteles.Models.HotelView hotel = ViewBag.hotel;
+}
+<div id="popupPisoBatch">
+    <ul>
+        <li>
+            <label>
+                Numero de Orden de Compra: 
+            </label>
+        </li>
+        <li>
+            <label>
+                Proveedor: 
+            </label>
+            <span> </span></li>
+        <li>
+            <label>
+                Persona de Contacto: 
+            </label>
+            <span> </span></li>
+        <li>
+            <label>
+                Hotel: 
+            </label>
+            <span> </span></li>
+    </ul>
+@*    <form id="formProducto" class="form" action="#">
+    <label>
+        Productos:     
+    @(Html.Telerik()
+            .ComboBox()
+            .Name("producto_input")
+            .DataBinding(bind => bind.Ajax()
+                        .Select("ProductosProveedor", "OrdenCompra", @data)).Placeholder("Seleccione Producto")
+                        .HtmlAttributes(new { style = "width:70" })
+         )
+    </label>
+    <label>
+        Cantidad:   
+    @(Html.Telerik().IntegerTextBox()
+            .Value(1)
+            .MinValue(1)
+            .Spinners(true)
+            .Name("cantidad_input")
+         )
+    </label>
+    <span style="margin: 2px">
+        <button class="t-button t-state-default submit" id="detalles_producto" onclick="detalles_produ(); return false;"
+            style="margin: 8px">
+            Detalles de Producto
+        </button>
+        <input type="submit" class="t-button t-state-default submit" id="agregar_producto"
+            value="Agregar Producto" style="margin: 10px;" />        
+    </span>
+    </form>
+    <script type="text/javascript">
+        function detalles_produ() {
+            var id_prod = $("#producto_input").val();
+            if (isNaN(id_prod) || !isFinite(id_prod) || id_prod == "") {
+                alert("Seleccione Producto");
+                return false;
+            }
+
+            var url = '@Url.Action("DetallesProductoProveedor", "Proveedor")' + '/' + id_prod;
+
+            var windowElement = $.telerik.window.create({
+                title: "Detalles del producto",
+                html: '',
+                contentUrl: '',
+                modal: true,
+                resizable: true,
+                draggable: true,
+                width: 250,
+                height: 150,
+                onClose: function (e) {
+                    e.preventDefault();
+                    windowElement.data('tWindow').destroy();
+                }
+            });
+
+            var tdata = windowElement.data('tWindow');
+            tdata.ajaxRequest(url, { id_product: id_prod });
+            jQuery(windowElement).attr('id', 'popupOrden');
+            tdata.center().open();
+            return false;
+        }
+        $("#formProducto").submit(function (e) {
+            e.preventDefault();
+            var id_productof = $("#producto_input").val();
+            var cantidadf = $("#cantidad_input").val();
+            if (id_productof == "" || cantidadf == "") {
+                alert("Ingrese la cantidad y el producto");
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InsertOCLinea", "OrdenCompra", @data_oc)',
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify({ id_producto: id_productof, cantidad: cantidadf }),
+                success: function (result) {
+                    if (result.msg == "error") { alert("Ingrese los datos correctos"); }
+                    else
+                        $("#OCGrid").data('tGrid').ajaxRequest();
+                }
+            });
+        })
+    </script>
+    @(Html.Telerik().Grid<OCompraLineaView>()
+        .Name("OCGrid")
+        .DataKeys(d => d.Add(p => p.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(o => o.productoID).Width(10).ReadOnly(true).Title("Id");
+            columns.Bound(o => o.producto).Width(250).ReadOnly(true);
+            columns.Bound(o => o.cantidad).Width(50).Title("Cant.");
+            columns.Bound(o => o.precio_unitario).Format("{0:c}").Width(50).ReadOnly(true).Title("PU");
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
+                .Aggregate(aggregates => aggregates.Sum())
+                .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
+            columns.Command(command =>
+            {
+                command.Delete().ButtonType(GridButtonType.Image);
+                command.Edit().ButtonType(GridButtonType.Image);
+            });
+        })
+        .ClientEvents(e => e.OnComplete("onCompleteOCL"))
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("SelectOCompraLinea", "OrdenCompra", new { id_oc = @oc.ordenID })
+            .Delete("DeleteOCL", "OrdenCompra", new { id_oc = @oc.ordenID })
+            .Update("UpdateOCL", "OrdenCompra")
+        )
+    )
+    @if (!is_edit)
+    {
+    <span class="form">
+        <button id="registrar" class="t-button t-state-default submit" style="float: right;
+            margin-top: 10px; margin-bottom: 10px;">
+            Registrar
+        </button>
+        <button id="eliminar" class="t-button t-state-default submit" style="float: right;
+            margin-right: 10px; margin-top: 10px">
+            Cancelar
+        </button>
+    </span>
+    }
+    else
+    { 
+        <span class="form">
+         <button id="aceptar" class="t-button t-state-default submit" style="float: right; margin:10px">
+         Aceptar</button>
+        </span>
+    }
+    <script type="text/javascript">
+        function onCompleteOCL(e) {
+
+            if (e.name == "update" || e.name == "delete") {
+                var res = e.response;
+                if (res.msg != "ok" && e.name == "update") { alert(res.msg); }
+                $("#OCGrid").data("tGrid").ajaxRequest();
+            }
+        }
+        $("#aceptar").click(function () { cerrar_ventana(); })
+        $("#registrar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RegistrarOrdenCompra", "OrdenCompra", @data_oc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
+            cerrar_ventana();
+        });
+        $("#eliminar").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteOrdenCompra", "OrdenCompra", @data_oc)',
+                contentType: 'application/json',
+                dataType: 'json'
+            });
+
+            cerrar_ventana();
+        });
+    </script>*@
+</div>

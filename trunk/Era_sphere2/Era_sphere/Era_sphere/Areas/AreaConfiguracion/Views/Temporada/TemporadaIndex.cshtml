@@ -25,6 +25,7 @@
                             .TemplateName("TemporadaViewTemplate"))
 
         .DataKeys(key => key.Add(c => c.ID))
+        .ClientEvents(events => events.OnRowDataBound("onRowDataBound"))
         .Columns(columns =>
         {
             
@@ -56,3 +57,12 @@
     </div>
     <!-- Table Wrapper End -->
 </div>
+
+<script type="text/javascript">
+    function onRowDataBound(e) {
+        if (e.dataItem.ID == 1) {
+            $(e.row).find('a.t-grid-delete').remove();
+            $(e.row).find('a.t-grid-edit').remove();
+        }
+    }
+</script>

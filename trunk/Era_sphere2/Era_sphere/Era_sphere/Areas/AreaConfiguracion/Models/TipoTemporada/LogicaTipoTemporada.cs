@@ -47,7 +47,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
 
         public void eliminarTipoTemporada(int tipotemporadaID)
         {
-            database_table.eliminarElemento(tipotemporadaID);
+            database_table.eliminarElemento_logico(tipotemporadaID);
         }
 
         public List<TipoTemporada> buscarTipoTemporada(TipoTemporada tipotemporada_campos)
@@ -66,5 +66,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Temporada
         }
 
 
+
+        public int retornarDuplicados(string descripcion)
+        {
+            List<TipoTemporada> tts = this.retornarTodos();
+            return tts.Count(e => e.descripcion == descripcion);
+        }
     }
 }

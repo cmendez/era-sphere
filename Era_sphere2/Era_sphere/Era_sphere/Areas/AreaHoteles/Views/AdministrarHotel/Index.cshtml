@@ -21,23 +21,54 @@
         .DataKeys(key => key.Add(c => c.ID))
         .Columns(columns =>
         {
-            columns.Bound(p => p.ID).Width(30);
             columns.Bound(p => p.razon_social);
-            //  columns.Bound(p => p.pais_nombre);
-            //  columns.Bound(p => p.ciudad_nombre);
-            //columns.Bound(p => p.provincia);
             columns.Command(commands => commands
                 .Custom("seleccionarHotel")
                 .Text("Seleccionar")
-                .Action("Administrar","AdministrarHotel")
+                .Action("AdministrarJson", "AdministrarHotel")
+                .Ajax(true)
+                .DataRouteValues(route =>
+                    {
+                        route.Add(p => p.ID).RouteKey("hotelID");
+                    })
                 ).Title("Seleccionar").Width(50);
         })
-
+                .ClientEvents(events => events.OnComplete("Grid_onComplete"))
         .Pageable()
         .Sortable()
-
+                 .DataBinding(dataBinding => dataBinding
+                    .Ajax()
+                    .Select("Select", "Hotel")
+                )
        )
 
     </div>
     <!-- Table Wrapper End -->
 </div>
+
+<script type="text/javascript">
+    function Grid_onComplete(e) {
+        if (e.name == 'seleccionarHotel') {
+
+            var result = e.response;
+            var idhotel = result.idHotel;
+            var perfil = localStorage.getItem("perfil");
+            var hotel = localStorage.getItem("Hotel");
+
+            if (perfil == "1") {
+                //es admin
+                var url = "/AreaHoteles/AdministrarHotel/Administrar/" + idhotel;
+                $(location).attr('href', url);
+            } else {
+                //no es admin
+            if (idhotel != hotel) {
+                alert("No tienes acceso a ese hotel");
+            } else {
+                var url = "/AreaHoteles/AdministrarHotel/Administrar/" + idhotel;
+                $(location).attr('href', url);
+                }
+            }
+            e.preventDefault();
+        }
+    }
+</script>

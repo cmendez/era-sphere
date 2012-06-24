@@ -26,5 +26,10 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             ViewData["hotel"] = logica_hotel.retornarHotel(id);
             return View();
         }
+
+        public JsonResult AdministrarJson(int id)
+        {
+            return Json(new { idHotel = id });
+        }
     }
 }

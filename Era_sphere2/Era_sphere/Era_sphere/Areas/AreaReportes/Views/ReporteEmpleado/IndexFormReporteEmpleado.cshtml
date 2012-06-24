@@ -17,7 +17,7 @@
         var fin = new Date(dfecha_fin.value());
         if (fin <= inicio) {
             alert("Error: la fecha fin debe ser mayor a la fecha de inicio");
-            fin.setDate(inicio.getDate() + 1); //aumenta en un dia
+            fin = new Date(inicio.getTime() + 86400000);
         }
         dfecha_fin.value(fin);
     }

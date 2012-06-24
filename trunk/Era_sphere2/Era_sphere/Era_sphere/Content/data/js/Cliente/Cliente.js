@@ -30,7 +30,16 @@
     $('#hotel').change(function () {
         var idhotel = $('#hotel').val();
         ///AreaReservas/Reserva/Index/1
-        $("#reserva").load("../../AreaReservas/Reserva/Cliente/" + idhotel);
+        $("#reserva").html("");
+        $("#loader").show();
+        $("#reserva").load("../../AreaReservas/Reserva/Cliente/" + idhotel,
+        function (responseText, textStatus, XMLHttpRequest) {
+            if (textStatus == "success") {
+                // all good!
+                $("#loader").hide();
+            }
+
+        });
     });
 
     $("#consumoCliente").click(function () {

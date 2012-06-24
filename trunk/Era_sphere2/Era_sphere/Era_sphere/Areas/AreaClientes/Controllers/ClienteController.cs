@@ -232,8 +232,8 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
                 cs = (new EraSphereContext()).paises.Find(paisID).ciudades.ToList();
             }
             catch (Exception e) { }
-            cs.Insert(0, (new EraSphereContext()).ciudades.Find(48));
-            cs.Add(new Ciudad { nombre = "Seleccione", ID = 0 });
+            cs.Insert(0, new Ciudad { nombre = "Seleccione", ID = 0 });
+            cs.Add((new EraSphereContext()).ciudades.Find(48));
             return Json(new SelectList(cs, "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }
 

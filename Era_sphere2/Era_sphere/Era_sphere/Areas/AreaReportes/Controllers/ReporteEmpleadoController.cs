@@ -7,6 +7,7 @@ using Era_sphere.Areas.AreaReportes.Models.ReporteEmpleados;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaEmpleados.Models;
 using Era_sphere.Areas.AreaEmpleados.Models.AsistenciaEmpleados;
+using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
 
 namespace Era_sphere.Areas.AreaReportes.Controllers
 {
@@ -33,6 +34,19 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             List<AsistenciaEmpleado> listaAsistencias = (new EraSphereContext()).asistenciaEmpleado.ToList();
             List<AsistenciaEmpleado> listaAsistenciasFiltrada = new List<AsistenciaEmpleado>();
             List<ObjetoReporteEmpleado> listaFinal = new List<ObjetoReporteEmpleado>();
+            List<Cadena> cadena = (new EraSphereContext()).cadenas.ToList();
+            DateTime date = DateTime.Now;
+            
+
+            reporte.titulo = new String[6, 5]
+            {
+                    {"","REPORTE DE ASISTENCIAS","DE EMPLEADOS", " ", ""},
+                    {"","","","",""},
+                    {"CADENA",cadena[0].nombreCadena,"","FECHA",date.ToShortDateString()},
+                    {"","","","",""},
+                    {"","","","",""},
+                    {"","","","",""}
+            };
 
             reporte.cabecera = new String[2, 6]
                 {

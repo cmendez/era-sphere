@@ -1428,6 +1428,8 @@
     <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReportePromocion\Index.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
+    <Content Include="Areas\AreaContable\Views\AdministrarOC\Export.cshtml" />
+    <Content Include="Areas\AreaContable\Views\AdministrarOC\ReporteCompras.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

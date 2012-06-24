@@ -29,6 +29,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             dni = detalle.Substring(pos+1) ;
             cliente_nombre = detalle.Substring(0,pos2);
             fecha_inicio = evento.fecha_inicio;
+            deuda = evento.precio_total - evento.pagado;
         }
         [Required]
         [DisplayName("Fecha Inicio")]
@@ -49,7 +50,8 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         public string cliente_apellido { get; set; }
         [DisplayName("detalle")]
         public string detalle { get; set; }
-        
+        [DisplayName("Deuda")]
+        public decimal deuda { get; set; }
         
         //falta limite
         [DisplayName("Cantidad de participantes")]

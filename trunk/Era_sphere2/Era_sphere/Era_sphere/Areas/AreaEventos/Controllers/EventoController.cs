@@ -54,7 +54,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
             if (TryUpdateModel(evento_view))
             {
-                evento_view.estadoID = estado;
+                evento_view.estadoID = 1;
                 evento_view.Hotel = id_hotel;
                 evento_logica.agregarEvento(evento_view);
 
@@ -89,6 +89,14 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             ViewBag.idevento = id;
             return View("EventoLlenarDatos");
         }
+        public ActionResult DetalleEventoNoEdit(int id, int idhotel)
+        {
+            ViewBag.idhotel = idhotel;
+            
+            ViewBag.idevento = id;
+            return View("EventoLlenarDatosNoEdit");
+        }
+
         #endregion
 
         //Adicional
@@ -321,6 +329,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         {
             LogicaServicios logicaServicio = new LogicaServicios();
             servicioView.eventoID = idEvento;
+            if ((double)servicioView.precio_fijado > 0.0) servicioView.es_precio_fijado = true;
             logicaServicio.modificarServicio(servicioView);
             return View("EventoAdicionalView", new GridModel(logicaServicio.retornarServicioView(idEvento)));//falta ya no creo
         }
@@ -364,10 +373,19 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
         public ActionResult PagarEvento(int idEvento)
         {
-            
+            ViewBag.reciboLinea = (new EraSphereContext()).eventos.Find(idEvento).getReciboLineas().ToList();
             return PartialView("PagarEvento",(new LogicaEvento()).retornarEvento(idEvento));
         }
-        
+
+        public ActionResult MontosEvento(int idEvento)
+        {
+            EventoView evento = (new LogicaEvento()).retornarEvento(idEvento);
+            ViewBag.precio_total = evento.precio_total;
+            ViewBag.deuda = evento.precio_total-evento.pagado;
+            ViewBag.pagado = evento.pagado;
+            return PartialView("MontosEventos");
+        }
+
         [GridAction]
         public ActionResult VerReciboLinea(int idEvento)
         {
@@ -377,17 +395,24 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult UpdateReciboLinea(int idEvento)
+        public ActionResult UpdateReciboLinea(ReciboLinea reciboLinea,int id,int idEvento)
         {
-            //FALTA
             Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
+            ReciboLinea linea = (new EraSphereContext()).recibos_lineas.Find(id);
+            evento.pagado = evento.pagado -linea.precio_final + reciboLinea.precio_final;
+            evento_logica.modificarEvento(new EventoView(evento));
+            evento.modificarReciboLinea(reciboLinea,id);
             return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
         }
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
-        public ActionResult DeleteReciboLinea(int idEvento)
+        public ActionResult DeleteReciboLinea(int id,int idEvento)
         {
             Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
+            ReciboLinea linea = (new EraSphereContext()).recibos_lineas.Find(id);
+            evento.pagado = evento.pagado - linea.precio_final;
+            evento_logica.modificarEvento(new EventoView(evento));
+            evento.eliminarReciboLinea(id);
             return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
         }
         [AcceptVerbs(HttpVerbs.Post)]
@@ -397,6 +422,8 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
             ReciboLinea linea = new ReciboLinea();
             Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
+            evento.estado_eventoID = 3;//Parcialmente pagado
+            
             if (TryUpdateModel(linea))
             {
                 linea.fecha = DateTime.Now;
@@ -404,10 +431,17 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
                 linea.detalle = "Pago de evento";
                 evento.registraReciboLinea(linea);
             }
+            evento.pagado = evento.pagado + linea.precio_final;
+            evento_logica.modificarEvento(new EventoView(evento));
 
             return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
         }
-
+        public ActionResult DetalleEventoNoEdit(int id, int idhotel)
+        {
+            ViewBag.idhotel = idhotel;
+            ViewBag.idevento = id;
+            return View("EventoLlenarDatosNoEdit");
+        }}
         #endregion
     }
 }

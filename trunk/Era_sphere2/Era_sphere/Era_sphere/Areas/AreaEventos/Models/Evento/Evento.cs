@@ -60,12 +60,31 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         }
         public void registraReciboLinea(ReciboLinea linea)
         {
+            linea.fecha = DateTime.Now;
             EraSphereContext context = new EraSphereContext();
             context.recibos_lineas.Add(linea);
             context.SaveChanges();
             ReciboLineaXEvento x = new ReciboLineaXEvento { recibo_lineaID = linea.ID, eventoID = ID };
             context.recibos_linea_x_evento.Add(x);
             context.SaveChanges();
+        }
+        public void eliminarReciboLinea(int id)
+        {
+            EraSphereContext context = new EraSphereContext();
+            ReciboLinea linea = context.recibos_lineas.Find(id);
+            context.recibos_lineas.Remove(linea);
+            context.SaveChanges();
+            ReciboLineaXEvento x = context.recibos_linea_x_evento.Find(linea.ID);
+            context.recibos_linea_x_evento.Remove(x);
+            context.SaveChanges();
+        }
+        public void modificarReciboLinea(ReciboLinea linea,int id)
+        {
+            EraSphereContext context = new EraSphereContext();
+            ReciboLinea recibo = context.recibos_lineas.Find(id);
+            recibo.precio_final = linea.precio_final;
+            DBGenericQueriesUtil<ReciboLinea> query = new DBGenericQueriesUtil<ReciboLinea>(context, context.recibos_lineas);
+            query.modificarElemento(recibo, recibo.ID);
         }
         public int getHotelID()
         {

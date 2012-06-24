@@ -1,46 +1,52 @@
 ﻿@model Era_sphere.Areas.AreaEventos.Models.Evento.EventoView
 @{
     ViewBag.Title = "PagarEvento";
-    ViewBag.idEvento = ViewBag.id;
+    ViewBag.idEvento = Model.ID;
     int idEvento = Model.ID;
-    
+    List<Era_sphere.Areas.AreaContable.Models.Recibo.ReciboLinea> recibos= ViewBag.reciboLinea;
 }
+@using Telerik.Web.Mvc.UI
 
-<h2>PagarEvento ff</h2>
-@ViewBag.id
-@*<script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
-        $('#lineas').load('@Url.Action("VerReciboLinea", "Evento",new {idEvento=idEvento})')
-    }
-</script>*@
+        $('#montosEventos').load('@Url.Action("MontosEvento", "Evento",new {idEvento=idEvento})');
+    })
 
+    function montos(){
+        $('#montosEventos').load('@Url.Action("MontosEvento", "Evento",new {idEvento=idEvento})');
+    }
+</script>
+<ul>
+<li>
     <div class="editor-label">
         @Html.LabelFor(model => model.nombre)
     </div>
     <div class="editor-field">
         @Html.DisplayFor(model => model.nombre)
     </div>
+</li>
+<li>
     <div class="editor-label">
         @Html.LabelFor(model => model.cliente_nombre)
     </div>
     <div class="editor-field">
         @Html.DisplayFor(model => model.cliente_nombre)
     </div>
+</li>
+<li>
     <div class="editor-label">
         @Html.LabelFor(model => model.dni)
     </div>
     <div class="editor-field">
         @Html.DisplayFor(model => model.dni)
     </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.precio_total)
+ </li>   
+    <div id="montosEventos" >
     </div>
-    <div class="editor-field">
-        @Html.DisplayFor(model => model.precio_total)
-    </div>
+    </ul>    
 
     <div id="lineas"></div>
     @{
-        Html.RenderPartial("EventoReciboLinea");
+        Html.RenderPartial("EventoReciboLinea",recibos);
     }
-    
+   

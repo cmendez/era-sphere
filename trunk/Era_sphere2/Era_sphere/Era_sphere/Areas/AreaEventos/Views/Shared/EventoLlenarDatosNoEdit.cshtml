@@ -1,0 +1,111 @@
+﻿@using Era_sphere.Areas.AreaEventos.Models
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI
+@model Era_sphere.Areas.AreaEventos.Models.Evento.EventoView
+@{
+    
+    var idhotel = ViewBag.idhotel;
+    var nombre = ViewBag.nombre;
+    ViewBag.Title = "EventoLlenarDatosNoEdit";
+    var idEvento = ViewBag.idevento;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.idevento = idEvento;
+    ViewBag.idHotel = idhotel;
+    List <Servicios> 
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js ")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<div class="block big" style="position: relative">
+    <!-- Block Begin -->
+    
+    
+    <table  style="width:100%">
+    <tr>
+        <td >
+            <div class="titlebar" style="margin-right:10px">
+                <h5>
+                    Servicios 
+                </h5>
+            </div>
+            <div class="block_cont" style="margin-right:10px">
+        @(Html.Telerik().Grid()
+        .Name("ServiciosReservaGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .Editable(editing => editing
+            .Mode(GridEditMode.PopUp)
+            .TemplateName("ServicioViewTemplate"))
+        .ToolBar(commands => commands.Insert())
+        .DataKeys(key => key.Add(c => c.ID))
+        .ClientEvents(events => events.OnDataBound("CalcularCostos"))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.detalle);
+            columns.ForeignKey(p => p.tipo_servicioID, new SelectList(tipos_servicios, "ID", "nombre"));
+            columns.Bound(p => p.precio_final);
+            columns.Command(commands =>
+            {
+                commands.Edit().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
+                //commands.Custom("Mostrar")
+                //    .Text("Mostrar")
+                //    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("servicio_id"))
+                //    .Ajax(true)
+                //    .Action("Nada", "Servicios");
+            }).Width(160);
+        })
+
+        .Pageable()
+        .Sortable()
+               //.ClientEvents(events => events.OnComplete("completadoWi"))
+        .DataBinding(dataBinding => dataBinding
+            .Ajax().Select("VerServicio", "Evento", new { idEvento = idEvento })
+            .Insert("InsertServicio", "Evento", new { idEvento = idEvento })
+            .Delete("DeleteServicio", "Evento", new { idEvento = idEvento })
+            .Update("UpdateServicio", "Evento", new { idEvento = idEvento })
+        )
+           )
+            </div>
+        </td>
+        <td>
+            <div class="titlebar">
+                <h5>
+                    Participantes
+                </h5>
+            </div>
+            <div class="block_cont">
+               @{
+                   Html.RenderPartial("EventoParticipanteView");
+           
+                  }
+            </div>
+        </td>
+        </tr>
+        
+    </table>
+    <br /><br /><br />
+    @*<table style="width:100%" >
+    <tr><td>*@
+    <div class="titlebar" >
+                <h5>
+                    Ambientes
+                </h5>
+            </div>
+                @{
+                    Html.RenderPartial("EventoAmbienteView");
+           
+                    }
+    <p>
+        @*<button class="t-button t-state-default" onclick="CalcularCostos()">Calcular costos</button>*@
+            <script type="text/javascript">
+                function CalcularCostos() {
+                    $('#result').load('@Url.Action("CalcularCostos","Evento")',{idEvento:@idEvento});
+                }
+            </script>
+    </p>
+    <div id="result">
+    </div> 
+
+</div>

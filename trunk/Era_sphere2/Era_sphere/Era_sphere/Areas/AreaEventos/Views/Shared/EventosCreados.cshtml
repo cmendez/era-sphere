@@ -1,10 +1,28 @@
 ﻿@{
     ViewBag.Title = "EventosCreados";
     int idhotel = ViewBag.idhotel;
+    
 }
 @model IEnumerable<Era_sphere.Areas.AreaEventos.Models.Evento.EventoView>
 @using Telerik.Web.Mvc.UI
 
+<script type="text/javascript">
+
+    function funcioncita(e) {
+        console.log(e.name);
+
+        if (e.name == "Pagar") {
+            $("#pagar-evento-div").load('@Url.Action("PagarEvento", "Evento")' + '?idEvento=' + e.response.idEvento);
+            var detailModal = $("#PagarEvento").data("tWindow");
+            detailModal.center().open();
+        }
+    }
+
+    function meCierro(e) {
+        $("#EventoCreado").data("tGrid").ajaxRequest();
+        
+    }
+</script>
 
  @(Html.Telerik().Window().Name("PagarEvento")
         .Title("PagarEvento").Content(
@@ -14,6 +32,7 @@
         )
             .Modal(true)
             .Visible(false)
+            .ClientEvents(events=>events.OnClose("meCierro"))
             .Width(700).Resizable().Draggable(true).Height(600))
 
 
@@ -74,17 +93,3 @@
     </div>
 
     
-
-<script type="text/javascript">
-
-    function funcioncita(e) {
-        console.log(e.name);
-        
-        if (e.name == "Pagar") {
-            $("#pagar-evento-div").load('@Url.Action("PagarEvento", "Evento")' + '?idEvento=' + e.response.idEvento);
-            var detailModal = $("#PagarEvento").data("tWindow");
-            detailModal.center().open();
-        }
-    }
-    
-</script>

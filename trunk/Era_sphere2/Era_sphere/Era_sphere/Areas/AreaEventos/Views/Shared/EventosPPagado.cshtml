@@ -40,12 +40,18 @@
             columns.Bound(p => p.dni);
             columns.Bound(p => p.num_participantes);
             columns.Bound(p => p.precio_total);
+            columns.Bound(p => p.pagado);
+            columns.Bound(p => p.deuda);
             columns.Command(commands =>
             {
-                commands.Custom("Pagar")
-                    .Text("Pagar")
+                commands.Custom("Detalle Evento")
+                    .Text("Detalle Evento")
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
-                    .Action("PagarEvento", "Evento", new { idhotel = idhotel });
+                    .Action("DetalleEventoNoEdit", "Evento", new { idhotel = idhotel });
+                commands.Custom("Pagar")
+                    .Text("Pagar").Ajax(true)
+                    .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
+                    .Action("Nada", "Evento");
        
           });
         })

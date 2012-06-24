@@ -94,12 +94,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
         
 
         [DisplayName(@"Pais")]
-        [Required(ErrorMessage="Especifique un pais")]
+        //[Required(ErrorMessage="Especifique un pais")]
         public int paisID { get; set; }
 
         [DisplayName("Ciudad")]
-        [Required]
-        [Range(1, 1000000, ErrorMessage="Especifique una ciudad")]
+        //[Required]
+        //[Range(1, 1000000, ErrorMessage="Especifique una ciudad")]
         public int ciudadID { get; set; }
 
         //opcional

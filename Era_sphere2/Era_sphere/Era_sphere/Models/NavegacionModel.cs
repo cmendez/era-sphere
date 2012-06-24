@@ -41,14 +41,6 @@ namespace Era_sphere.Models
                         Url = "/AreaEmpleados/AsistenciaEmpleado"
                     }
             );
-            AreaEmpleados.Add(
-                    new SubLink
-                    {
-                        Nombre = "Reporte de asistencias",
-                        Url = "/AreaReportes/ReporteEmpleado"
-                    }
-            );
-
             menu.Add(
               new Link()
               {
@@ -206,7 +198,7 @@ namespace Era_sphere.Models
 
             AreaReportes.Add(new SubLink
             {
-                Nombre = "Reporte PDF Promociones",
+                Nombre = "Reportes Promociones",
                 Url = "/AreaReportes/ReportePromocion"
             });
 
@@ -225,7 +217,7 @@ namespace Era_sphere.Models
 
             AreaReportes.Add(new SubLink
             {
-                Nombre = "Reporte Excel Promociones",
+                Nombre = "Reporte Exc Promociones",
                 Url = "/AreaReportes/RepExcelPromocion"
             });
             AreaReportes.Add(new SubLink
@@ -237,6 +229,11 @@ namespace Era_sphere.Models
             {
                 Nombre = "Reporte Excel Clientes",
                 Url = "/AreaReportes/RepExcelCliente"
+            });
+            AreaReportes.Add(new SubLink
+            {
+                Nombre = "Reporte Asistencias",
+                Url = "/AreaReportes/ReporteEmpleado"
             });
             menu.Add(
                 new Link()

@@ -122,14 +122,13 @@
             console.log(dias_dif);
             if (dias_dif > 0) {
                 alert("Aun no puede efectuar el checkin, faltan " + dias_dif + " dias para realizarlo.");
-                return;
             } else if(dias_dif < 0){
-                alert("La fecha del check-in ya paso, se procede a anular la reserva y realizar la devolucion respectiva.");
+                alert("La fecha del check-in ya paso.");
                 //falta devolver
                 return;
             }
             //entro en la fecha
-            $("#RegitrarCheckIn").load('@Url.Action("CheckIn", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
+            $("#RegitrarCheckIn").load('@Url.Action("CheckIn", "../AreaReservas/CheckInCheckOut")', { reserva_id: e.response.reserva_id, sirve: dias_dif == 0 });
             $("#CheckIn").data("tWindow").center().open();
             $("#CheckInCheckOutGrid").data("tGrid").ajaxRequest();
         }

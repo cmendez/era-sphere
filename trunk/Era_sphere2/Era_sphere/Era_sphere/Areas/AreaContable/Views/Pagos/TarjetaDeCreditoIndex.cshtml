@@ -13,7 +13,6 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <script type="text/javascript">
     function IsValidCreditCard(cardNumber, cardType) {
-        return true;
         //variable to hold the validity state
         var isValid = false;
         //regular expression literal to check for digits only
@@ -125,6 +124,7 @@
     function tarjeta_de_credito_valida() {
         var tipo = $("#tipo_tarjeta").val();
         var num_tarjeta = $("#num_tarjeta").val();
+        console.log(num_tarjeta);
         return IsValidCreditCard(num_tarjeta, tipo);
     }
     

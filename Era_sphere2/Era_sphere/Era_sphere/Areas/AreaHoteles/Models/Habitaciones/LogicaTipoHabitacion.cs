@@ -72,6 +72,12 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             return tipohabitacion_context.tipos_habitacion.Find(id);
         }
+
+        public decimal retornarCostoBase(int? tipohabitacionID)
+        {
+            if (tipohabitacionID == null) return 0;
+            return tipohabitacion_context.tipos_habitacion.Find(tipohabitacionID).costo_base;
+        }
     }
     
 }

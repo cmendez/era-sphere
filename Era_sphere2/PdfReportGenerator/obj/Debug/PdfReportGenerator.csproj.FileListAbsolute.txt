@@ -28,3 +28,9 @@ C:\Users\Carlos\Desktop\test2\Era_sphere2\PdfReportGenerator\bin\Debug\itextshar
 C:\Users\Carlos\Desktop\test2\Era_sphere2\PdfReportGenerator\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Carlos\Desktop\test2\Era_sphere2\PdfReportGenerator\obj\Debug\PdfReportGenerator.dll
 C:\Users\Carlos\Desktop\test2\Era_sphere2\PdfReportGenerator\obj\Debug\PdfReportGenerator.pdb
+C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\bin\Debug\PdfReportGenerator.dll
+C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\bin\Debug\PdfReportGenerator.pdb
+C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\bin\Debug\itextsharp.dll
+C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\obj\Debug\PdfReportGenerator.dll
+C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\obj\Debug\PdfReportGenerator.pdb

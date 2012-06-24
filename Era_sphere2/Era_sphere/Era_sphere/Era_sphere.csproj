@@ -78,6 +78,22 @@
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\LogicaPerfil.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\Perfil.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\PerfilContext.cs" />
+    <Compile Include="Areas\AreaContable\Controllers\LineaProductoController.cs" />
+    <Compile Include="Areas\AreaContable\Controllers\ReciboLineaController.cs" />
+    <Compile Include="Areas\AreaContable\Models\Ordenes\Orden.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_producto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_productoView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXEvento.cs" />
+    <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
     <Compile Include="Areas\AreaCargos\Models\LogicaPreciable.cs" />
     <Compile Include="Areas\AreaCargos\Models\Preciable.cs" />
     <Compile Include="Areas\AreaClientes\AreaClientesAreaRegistration.cs" />
@@ -154,7 +170,6 @@
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\AdministrarOCController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\EntregaOCController.cs" />
-    <Compile Include="Areas\AreaContable\Controllers\LineaProductoController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\OrdenCompraController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\OrdenesController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\PagosController.cs" />
@@ -166,7 +181,6 @@
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\ReciboController.cs" />
-    <Compile Include="Areas\AreaContable\Controllers\ReciboLineaController.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\ComboEntregaItem.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\EntregaOC.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\EntregaOCView.cs" />
@@ -187,20 +201,8 @@
     <Compile Include="Areas\AreaContable\Models\OrdenCompra\OCompraLineaView.cs" />
     <Compile Include="Areas\AreaContable\Models\OrdenCompra\OrdenCompra.cs" />
     <Compile Include="Areas\AreaContable\Models\OrdenCompra\OrdenCompraView.cs" />
-    <Compile Include="Areas\AreaContable\Models\Ordenes\Orden.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLinea.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenLineaView.cs" />
     <Compile Include="Areas\AreaContable\Models\Ordenes\OrdenView.cs" />
-    <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_producto.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Areas\AreaContable\Models\Ordenes\proveedor_x_productoView.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Areas\AreaContable\Models\Pagos\PagoTarjeta.cs" />
     <Compile Include="Areas\AreaContable\Models\Productos\ClaseProducto.cs" />
     <Compile Include="Areas\AreaContable\Models\Productos\InterfazLogicaProducto.cs">
@@ -234,7 +236,6 @@
     <Compile Include="Areas\AreaContable\Models\Recibo\Boleta.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\EraSphereContext.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -247,7 +248,6 @@
     <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLinea.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXEvento.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXReserva.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXServicio.cs" />
     <Compile Include="Areas\AreaEmpleados\AreaEmpleadosAreaRegistration.cs">

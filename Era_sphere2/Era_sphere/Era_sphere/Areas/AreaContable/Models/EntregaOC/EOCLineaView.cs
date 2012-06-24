@@ -23,6 +23,10 @@ namespace Era_sphere.Areas.AreaContable.Models
             monto_entrega = eocl.entrega.monto_entrega;
             //falta incluir la colección de ENTREGAS
         }
+
+        
+        [DisplayName("Unidad")]
+        public string unidad_medida { get; set; }
         [DisplayName("Pago Entrega")]
         public decimal monto_entrega { get; set; }
         [DisplayName("Linea")]
@@ -38,7 +42,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         public int productoID { get; set; }
         [DisplayName("Producto")]
         public string producto { get; set; }
-        [DisplayName("Entregado")]
+        [DisplayName("Cantidad Entregada")]
         public int cantidad { get; set; }
         [DisplayName("Precio Total")]
         public decimal precio_total { get; set; }

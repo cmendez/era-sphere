@@ -40,12 +40,10 @@
     <script type="text/javascript">
 
         function onCompleteEOCL(e) {
-            alert(e.name);
             if (e.name == "update" || e.name == "delete") {
                 var res = e.response;
                 if (res.msg != "ok" && e.name == "update") { alert(res.msg); }
-                alert('#EOCGrid' + '@is_edit');
-                $("#EOCGrid"+@is_edit).data('tGrid').rebind();
+                $("#EOCGrid"+'@is_edit').data('tGrid').rebind();
                 $("#productoatendido_input").data("tComboBox").value("Seleccione un producto a atender");
                 $("#productoatendido_input").data("tComboBox").reload();
             }
@@ -68,7 +66,7 @@
         $("#cerrar").click(function () { cerrar_ventana_entrega(); })
                 function cerrar_ventana_entrega() {
             try { $("#mantenimientoEOC").data('tWindow').close(); } catch (e) { }
-            try { $("#EOCGrid"+@is_edit).data("tGrid").ajaxRequest(); } catch (e) { }
+            try { $("#EOCGrid"+'@is_edit').data("tGrid").ajaxRequest(); } catch (e) { }
             try { $("#ResumenEntrega").data("tGrid").ajaxRequest(); } catch (e) { }
             try { $("#popupEntrega").data('tWindow').close(); } catch (e) { }
             try { $("#AceptadasGrid").data('tGrid').ajaxRequest(); } catch (e) { }
@@ -123,6 +121,7 @@
             columns.Bound(e => e.productoID).Width(10).ReadOnly(true).Title("Id");
             columns.Bound(e => e.producto).Width(250).ReadOnly(true).Title("Producto");
             columns.Bound(e => e.cantidad).Width(50).Title("Entregado");
+            columns.Bound(e => e.unidad_medida);
             columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true).Title("PU");
             columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
                 .Aggregate(aggregates => aggregates.Sum())

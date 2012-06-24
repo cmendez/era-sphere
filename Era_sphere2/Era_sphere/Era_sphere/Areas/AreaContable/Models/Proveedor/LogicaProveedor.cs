@@ -39,7 +39,7 @@ namespace Era_sphere.Areas.AreaContable.Models
 
         public void eliminarProveedor(int proveedor_id)
         {
-            database_table.eliminarElemento(proveedor_id);
+            database_table.eliminarElemento_logico(proveedor_id);
             return;
         }
 
@@ -96,6 +96,7 @@ namespace Era_sphere.Areas.AreaContable.Models
 
             IEnumerable<proveedor_x_producto> ans = from producto in q_pxp.retornarTodos()
                                                     where producto.productoID == ppv.productoID && producto.proveedorID == id
+                                                    && producto.eliminado == false
                                                     select producto;
             List<proveedor_x_producto> ret = ans.ToList();
             if (ret.Count != 0) {
@@ -125,7 +126,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         {
             EraSphereContext context = proveedor_context;
             proveedor_x_producto pp = q_pxp.retornarUnSoloElemento(producto.ID);
-            q_pxp.eliminarElemento(pp.ID);
+            q_pxp.eliminarElemento_logico(pp.ID);
    
         }
         #endregion

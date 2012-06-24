@@ -31,7 +31,6 @@
             tdata.center().open();
         }
         else if (e.name == "terminarEntrega") {
-            alert("entra");
             var oc = e.response.orden_compra;
             var url_v = '@Url.Action("terminarOrdenCompra","AdministrarOC")';
             $.ajax({
@@ -115,7 +114,7 @@
           {
               com.Custom("agregarEntrega").Text("Entrega").Ajax(true)
                   .Action("DetallesOrdenC","AdministrarOC");
-              com.Custom("cancelarOrden").Text("Cancelar").Ajax(true)
+              com.Custom("cancelarOC").Text("Cancelar").Ajax(true)
                   .Action("DetallesOrdenC","AdministrarOC");
               com.Custom("detallesGeneral").Text("Detalles").Ajax(true)
                   .Action("DetallesOrdenC","AdministrarOC");
@@ -123,7 +122,9 @@
                   .Action("DetallesOrdenC", "AdministrarOC");
           });
       })
-      .ClientEvents( ev => ev.OnComplete("aceptadas_complete") ).Pageable().Sortable()
+      .ClientEvents( ev => ev.OnComplete("aceptadas_complete")
+                            .OnCommand("atendidas_command")
+                            ).Pageable().Sortable()
       .DataBinding(bind => bind.Ajax()
                 .Select("SelectOrdenes", "AdministrarOC", 
                 new { id_hotel = @id_hotel , estado_orden = 3 })

@@ -29,7 +29,7 @@
         });
 
     })
-    .ClientEvents(ev => ev.OnComplete("atendidas_complete"))
+    .ClientEvents(ev => ev.OnComplete("atendidas_complete").OnCommand("atendidas_command"))
     .DataBinding(bind => bind.Ajax()
         .Select("SelectOrdenes", "AdministrarOC",
         new { id_hotel = @id_hotel, estado_orden = 4 })
@@ -37,7 +37,13 @@
 }
 @{ Html.Telerik().Window().Name("DetallePago").Modal(true).Visible(false);}
 <script type="text/javascript">
-
+    function atendidas_command(e) {
+        if (e.name == 'cancelarOC') {
+            if (!confirm('Desea cancelar esta orden de compra?')) {
+                e.preventDefault();
+            }
+        }
+    }
         function atendidas_complete(e) {
             if (e.name == "cancelarOC") {
                 var oc = e.response.orden_compra;

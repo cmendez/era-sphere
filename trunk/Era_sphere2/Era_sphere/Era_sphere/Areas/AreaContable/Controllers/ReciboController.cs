@@ -30,7 +30,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             Recibo r = context.recibos.Find(reciboId);
             //ViewData["hotelID"] = hotelID;
             ViewBag.hotelID = hotelID;
-            return this.ViewPdf("Recibo en PDF", "ReciboPDF", r);
+            return this.ViewPdf("","ReciboPDF", r);
         }
     }
 }

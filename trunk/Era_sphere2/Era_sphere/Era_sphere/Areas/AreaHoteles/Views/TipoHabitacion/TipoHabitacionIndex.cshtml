@@ -32,10 +32,10 @@
             columns.Bound(p => p.descripcion);
             columns.Bound(p => p.cap_max_personas);
             columns.Command(commands =>
-            {
+           {
                 commands.Edit().ButtonType(GridButtonType.Image);
-              //  commands.Delete().ButtonType(GridButtonType.Image);
-                                
+                commands.Delete().ButtonType(GridButtonType.Image);
+
             });
         })
 

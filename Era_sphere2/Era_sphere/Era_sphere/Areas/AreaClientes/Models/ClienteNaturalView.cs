@@ -94,6 +94,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
         
 
         [DisplayName(@"Pais")]
+        [Required]
         public int paisID { get; set; }
 
         [DisplayName("Ciudad")]

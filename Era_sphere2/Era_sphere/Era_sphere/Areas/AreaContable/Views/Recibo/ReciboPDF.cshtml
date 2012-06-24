@@ -10,10 +10,7 @@
     Cadena cad = context.cadenas.Find(1);
     Cliente cliente = context.clientes.Find(Model.clienteID);
     List<ReciboLinea> lineas = context.recibos_lineas.Where(x => x.reciboID == Model.ID).ToList();
-    //int hotelID = (int)(ViewData["hotelID"]);
-    //int reciboId = (int)(ViewData["reciboId"]);
-    //int hotelID = (int)(ViewBag.hotelID);
-    int hotelID = 1;
+    int hotelID = Model.auxID;
     Hotel h = context.hoteles.Find(hotelID);
     string id = "" + Model.ID;
     while (id.Length < 6) { id = "0" + id; }

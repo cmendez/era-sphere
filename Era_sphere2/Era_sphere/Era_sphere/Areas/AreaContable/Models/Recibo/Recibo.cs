@@ -25,6 +25,6 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
 
         public int reservaID { get; set; }
         public int eventoID { get; set; }
-
+        public int auxID { get; set; } //para mandar cualquier xurreteada
     }
 }

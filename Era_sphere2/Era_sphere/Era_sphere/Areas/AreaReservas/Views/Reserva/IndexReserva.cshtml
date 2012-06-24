@@ -8,7 +8,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
    // var paises = (new EraSphereContext()).paises.ToList();
    // var ciudades = (new EraSphereContext()).ciudades.ToList();
-   var estados = (new EraSphereContext()).estados_reserva.ToList();
+    var estados = (new EraSphereContext()).estados_reserva.ToList();
 }
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -57,9 +57,13 @@
                    $("#FechaFin").data("tDatePicker").disable();
         }
      }
+     var tamanho = 0;
      function completado(e) {
          if (e.name == "Anular") {
-             $("#ReservaGrid").data("tGrid").rebind();
+             var hubo = e.response.devolucion;
+             $("#ReservaGrid").data("tGrid").ajaxRequest();
+             if(hubo > 0) alert("Hubo una devolucion de " + hubo + " debido a la fecha de anulacion.");
+             else alert("No hubo ninguna devolucion de dinero.");
          } else if (e.name == "Servicios") {
              $("#mantenimiento_servicio_form").load('@Url.Action("IndexServicioReserva", "../AreaConfiguracion/Servicios")' + '?id_reserva=' + e.response.reserva_id);
              $("#ServicioDeReserva").data("tWindow").center().open();
@@ -71,10 +75,17 @@
 
          }
          if(e.name == "insert"){
+            var tamanho2 = e.response.data.length;
+            if(tamanho2 == null) tamanho2 = 0;
+            if(tamanho2 == tamanho) return;
             var id = e.response.data[e.response.data.length - 1].ID;
             $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : id});
             $("#Cortecuenta").data("tWindow").center().open();
          }
+     }
+     function guarda(e){
+        tamanho = $("#ReservaGrid").data("tGrid").data.length;
+        if(tamanho == null) tamanho = 0;
      }
 </script>
 
@@ -142,6 +153,7 @@
                                                                 events.OnDataBound("generarCruces");
                                                                 events.OnEdit("edita");
                                                                 events.OnComplete("completado");
+                                                                events.OnSave("guarda");
                                                             })
                                                             .DataBinding(dataBinding => dataBinding
                                                                 .Ajax()

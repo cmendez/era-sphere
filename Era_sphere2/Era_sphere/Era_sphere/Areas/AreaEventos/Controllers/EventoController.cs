@@ -90,12 +90,12 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             return View("EventoLlenarDatos");
         }
 
-        public ActionResult DetalleEventoNoEdit(int id, int idhotel)
+        public ActionResult DetalleEventoNoEdit(int idhotel,int id)
         {
             ViewBag.idhotel = idhotel;
             //ViewBag.idhotel = 1;
             ViewBag.idevento = id;
-            return View("EventoLlenarDatosNoEdit");
+            return PartialView("EventoLlenarDatosNoEdit");
         }
 
         #endregion
@@ -373,7 +373,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         #region pagos
         public JsonResult Nada(int id)
         {
-            return Json(new { idEvento = id });
+            return Json(new { idEvento = id }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult PagarEvento(int idEvento)

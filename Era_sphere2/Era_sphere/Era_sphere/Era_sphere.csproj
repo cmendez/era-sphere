@@ -1507,6 +1507,7 @@
     <Content Include="Areas\AreaContable\Views\Shared\BoletaCliente.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\FacturaCliente.cshtml" />
     <Content Include="Areas\AreaContable\Views\Recibo\ReciboPDF.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\ReciboEventoView.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />
@@ -1673,7 +1674,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50823</DevelopmentServerPort>
+          <DevelopmentServerPort>27810</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

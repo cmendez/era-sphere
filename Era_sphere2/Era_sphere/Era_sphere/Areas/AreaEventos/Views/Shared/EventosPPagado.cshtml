@@ -21,7 +21,7 @@
     <div class="block_cont">
         @(Html.Telerik().Grid(Model)
         .Name("EventoPPagado")
-        .ClientEvents(events => events.OnComplete("ppgrila"))
+        .ClientEvents(events => events.OnComplete("ppgrilla"))
         .Filterable()
         .Localizable("es-ES")
         .DataKeys(key => key.Add(c => c.ID))
@@ -37,10 +37,10 @@
             columns.Bound(p => p.deuda);
             columns.Command(commands =>
             {
-                commands.Custom("Detalle Evento")
-                    .Text("Detalle Evento")
+                commands.Custom("Detalles")
+                    .Text("Detalles").Ajax(true)
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
-                    .Action("DetalleEventoNoEdit", "Evento", new { idhotel = idhotel });
+                    .Action("Nada", "Evento");
                 commands.Custom("Pagar")
                     .Text("Pagar").Ajax(true)
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
@@ -50,7 +50,6 @@
         })
         .Pageable()
         .Sortable()
-        .ClientEvents(events=>events.OnComplete("funcioncita"))
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("Select", "Evento", new { id_hotel = idhotel ,estado=3})

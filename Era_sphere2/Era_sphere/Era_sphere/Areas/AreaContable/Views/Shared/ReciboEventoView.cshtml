@@ -1,0 +1,73 @@
+﻿@using Era_sphere.Areas.AreaContable.Models.Recibo
+@using Era_sphere.Areas.AreaClientes.Models
+@using Era_sphere.Generics
+@using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
+@using Era_sphere.Areas.AreaHoteles.Models
+@model Recibo
+@using Telerik.Web.Mvc.UI  
+@{
+    EraSphereContext context = new EraSphereContext();
+    Cadena cad = context.cadenas.Find(1);
+    Cliente cliente = context.clientes.Find(Model.clienteID);
+    List<ReciboLinea> lineas = context.recibos_lineas.Where(x => x.reciboID == Model.ID).ToList();
+    int hotelID = (int)(ViewData["hotelID"]);
+    int reciboId = (int)(ViewData["reciboId"]);
+    Hotel h = context.hoteles.Find(hotelID);
+    string id = "" + Model.ID;
+    while (id.Length < 6){ id = "0" + id;}
+}
+
+<span style="font-weight:bold">
+@if (Model.tipo == 0)
+{   //boleta
+    <label>Boleta: @id</label>
+}
+else
+{
+    <label>Factura: @id</label>
+}
+
+<br />
+<label>@cad.nombreCadena</label>
+<br />
+<label>@h.razon_social</label>
+<br />
+<label>Ruc @h.nroreg_id</label>
+<br />
+</span>
+
+<br />
+<label style="font-weight:bold"> Detalle del cliente</label>
+@if (Model.tipo == 0)
+{ //boleta
+    <label style="font-weight:bold;">Boleta</label>
+    Html.RenderPartial("BoletaCliente", cliente);
+}
+else
+{ //factura
+    <label style="font-weight:bold;">Factura</label>
+    Html.RenderPartial("FacturaCliente", cliente);
+}
+
+
+@(Html.Telerik().Grid(lineas)
+        .Name("DetalleRecibo")
+        .Localizable("es-ES")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.detalle);
+            columns.Bound(p => p.puntos);
+            columns.Bound(p => p.precio_final);
+        })
+        .Pageable()
+        .Sortable().Footer(false)
+        )
+
+
+<div class="editor-label"> 
+<label> Total: </label>
+@Html.DisplayFor(model => model.precio_total)
+</div>
+
+<br />
+@Html.ActionLink("Mostrar Recibo en PDF", "ReciboPDF", new {reciboId = reciboId, hotelID = hotelID}, new { target = "_blank" })

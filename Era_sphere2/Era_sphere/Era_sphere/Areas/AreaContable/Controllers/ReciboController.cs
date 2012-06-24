@@ -21,6 +21,14 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             ViewData["reciboId"] = reciboId;
             return PartialView("ReciboView", r);
         }
+
+        public ActionResult ReciboEvento(int reciboId,int hotelID)
+        {
+            Recibo r = context.recibos.Find(reciboId);
+            ViewData["hotelID"] = hotelID;
+            ViewData["reciboId"] = reciboId;
+            return PartialView("ReciboEventoView", r);
+        }
         public ActionResult VerRecibosReserva(int reservaID)
         {
             return PartialView("RecibosReserva", context.Reservas.Find(reservaID));

@@ -16,7 +16,20 @@
             var detailModal = $("#PagarEvento").data("tWindow");
             detailModal.center().open();
         }
-        
+
+    }
+
+    function ppgrilla(e) {
+        if (e.name == "Pagar") {
+            $("#pagar-evento-div").load('@Url.Action("PagarEvento", "Evento")' + '?idEvento=' + e.response.idEvento);
+            var detailModal = $("#PagarEvento").data("tWindow");
+            detailModal.center().open();
+        }
+        if (e.name = "Detalle Evento") {
+            $("#detalle-evento-div").load('@Url.Action("DetalleEventoNoEdit", "Evento", new {idhotel=idhotel})' + '?idEvento=' + e.response.idEvento);
+            var detailModal = $("#PagarEvento").data("tWindow");
+            detailModal.center().open();
+        }
     }
 
     function meCierro(e) {
@@ -36,6 +49,16 @@
             .ClientEvents(events=>events.OnClose("meCierro"))
             .Width(700).Resizable().Draggable(true).Height(600))
 
+@(Html.Telerik().Window().Name("DetalleEvento")
+        .Title("DetalleEvento").Content(
+            @<text>
+                <div id="detalle-evento-div"></div>
+            </text>
+        )
+            .Modal(true)
+            .Visible(false)
+            
+            .Width(700).Resizable().Draggable(true).Height(600))
 
 <div class="titlebar">
         <h3>

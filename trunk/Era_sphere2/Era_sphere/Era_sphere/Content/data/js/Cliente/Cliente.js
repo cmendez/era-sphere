@@ -17,7 +17,46 @@
     });
 
     $("#promocionesCliente").click(function () {
+
+        var jsonLogin = {
+            puntos : localStorage.getItem("PUNTOSCLIENTE")
+            //puntos: 1000
+        };
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(jsonLogin),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "/AreaPromociones/Promocion/getPromociones",
+            success: function (data) {
+                var numpromociones = data.length;
+                if (numpromociones == 0) {
+                    var result = "";
+                    result += '<li class = "promocion">';
+                    result += '<span class = "titlepromo">' + 'No tiene puntos necesarios para las promociones!' + '</span>';
+                    result += '</li>'
+                    $('#dialogPromociones').html(result);
+                } else {
+                    var result = "<ul>";
+                    for (i = 0; i < numpromociones; i++) {
+                        var promocion = data[i];
+                        result += '<li class = "promocion">';
+                        result += '<span class = "titlepromo">' + promocion.nombre + '</span>';
+                        result += '<span class = "descripcionpromo">' + promocion.descripcion + '</span>';
+                        result += '<span class = "descripcionpromo"> Descuento Total: ' + promocion.descuento + '</span>';
+                        result += '<span class = "descripcionpromo"> Puntos necesarios: ' + promocion.puntos_requeridos + '</span>';
+                        
+                        //result += '<span class = "fecha"> Desde : ' + promocion.fecha_inicio + '- Hasta: ' + promocion.fecha_fin + '</span>';
+                        result += '</li>';
+                    }
+                    result += '</ul>';
+                    $('#dialogPromociones').html(result);
+                }
+            }
+        });
+       
         $('#dialogPromociones').dialog('open');
+
     });
 
 
@@ -90,70 +129,71 @@
     });
 
 
-$('#dialogLogin').dialog({
-    autoOpen: false,
-    resizable: false,
-    draggable: false,
-    width: 300,
-    modal: true,
-    title: "Login Cliente",
-    position: "center",
-    buttons: {
-        "Ingresar": function () {
-            var u = $("#usuario").val();
-            var p = $("#password").val();
-            var jsonLogin = {
-                user: u,
-                password: p
-            };
-            $.ajax({
-                type: "POST",
-                data: JSON.stringify(jsonLogin),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                url: "/AreaClientes/Cliente/LoginResult",
-                success: function (data) {
-                    if (data.ok == true) {
-                        localStorage.setItem("loginCliente", "on");
-                        localStorage.setItem("IDCLIENTE", data.cliente_id);
-                        localStorage.setItem("TIPOCLIENTE", data.tipo_id);
-                        localStorage.setItem("NombreCliente", data.nombre);
-                        $("#nombreUser").html(data.nombre);
-                        init();
-                        $("#intranet").html("Salir");
-                        $("#detalle").show();
-                        $("#detalleContent").show();
-                        $("#dialogLogin").dialog("close");
+    $('#dialogLogin').dialog({
+        autoOpen: false,
+        resizable: false,
+        draggable: false,
+        width: 300,
+        modal: true,
+        title: "Login Cliente",
+        position: "center",
+        buttons: {
+            "Ingresar": function () {
+                var u = $("#usuario").val();
+                var p = $("#password").val();
+                var jsonLogin = {
+                    user: u,
+                    password: p
+                };
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(jsonLogin),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/AreaClientes/Cliente/LoginResult",
+                    success: function (data) {
+                        if (data.ok == true) {
+                            localStorage.setItem("loginCliente", "on");
+                            localStorage.setItem("IDCLIENTE", data.cliente_id);
+                            localStorage.setItem("TIPOCLIENTE", data.tipo_id);
+                            localStorage.setItem("NombreCliente", data.nombre);
+                            localStorage.setItem("PUNTOSCLIENTE", data.puntos);
+                            $("#nombreUser").html(data.nombre);
+                            init();
+                            $("#intranet").html("Salir");
+                            $("#detalle").show();
+                            $("#detalleContent").show();
+                            $("#dialogLogin").dialog("close");
 
-                    } else {
-                        $("#explain").html(data.error);
-                        $("#explain").show();
+                        } else {
+                            $("#explain").html(data.error);
+                            $("#explain").show();
+                        }
                     }
-                }
-            });
+                });
 
-        },
-        "Cancelar": function () {
-            $(this).dialog("close");
+            },
+            "Cancelar": function () {
+                $(this).dialog("close");
+            }
         }
-    }
-});
+    });
 
-$('#dialogConsumo').dialog({
-    autoOpen: false,
-    resizable: false,
-    draggable: false,
-    width: 800,
-    modal: true,
-    title: "Consumo Cliente",
-    position: "center",
-    buttons: {
+    $('#dialogConsumo').dialog({
+        autoOpen: false,
+        resizable: false,
+        draggable: false,
+        width: 800,
+        modal: true,
+        title: "Consumo Cliente",
+        position: "center",
+        buttons: {
 
-        "Salir": function () {
-            $(this).dialog("close");
+            "Salir": function () {
+                $(this).dialog("close");
+            }
         }
-    }
-});
+    });
 
 
 });

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Era_sphere.Areas.AreaReservas.Models;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models;
+using Era_sphere.Areas.AreaContable.Models.Recibo;
 
 namespace Era_sphere.Areas.AreaReservas.Controllers
 {
@@ -99,7 +100,13 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Nada(int reserva_id)
         {
-            return Json(new { reserva_id = reserva_id });
+            Reserva r = reserva_logica.context.Reservas.Find(reserva_id);
+            DateTime hoy = DateTime.Now.Date;
+            int dias_dif = (int)((r.check_in.Value - hoy).Days);
+            List<ReciboLinea> lineas = r.getReciboLineas();
+            bool todos = true;
+            foreach (var l in lineas) if (l.pagado == false && l.precio_final > 0) todos = false;
+            return Json(new { reserva_id = reserva_id, dias_dif = dias_dif, estado = r.estado.descripcion, pagado = todos });
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

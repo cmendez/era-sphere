@@ -42,26 +42,26 @@
                     .Text("Check-In")
                     .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
                     .Ajax(true)
-                    .Action("Nada", "CheckInCheckOut")
+                    .Action("Nada", "Reserva")
                 .HtmlAttributes(new { style = "text-align: center" });
                 commands
                     .Custom("Check-Out")
                     .Text("Check-Out")
                     .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
                     .Ajax(true)
-                    .Action("Nada", "CheckInCheckOut");
+                    .Action("Nada", "Reserva");
                 commands
                     .Custom("RealizarCorteCuenta")
                     .Text("Corte Cuenta")
                     .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
                     .Ajax(true)
-                    .Action("Nada", "CheckInCheckOut");
+                    .Action("Nada", "Reserva");
                 commands
                     .Custom("VerRecibos")
                     .Text("Ver recibos")
                     .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
                     .Ajax(true)
-                    .Action("Nada", "CheckInCheckOut");
+                    .Action("Nada", "Reserva");
             });
 
         }).Pageable().Sortable()
@@ -113,16 +113,41 @@
    
     function completado(e) {
         if (e.name == "Check-In") {
-
+            var dias_dif = e.response.dias_dif;
+            console.log(e.reponse);
+            if (e.response.estado != "Sin Check-in") {
+                alert("No se puede realizar el check-in porque su estado no es sin check-in");
+                return;
+            }
+            console.log(dias_dif);
+            if (dias_dif > 0) {
+                alert("Aun no puede efectuar el checkin, faltan " + dias_dif + " dias para realizarlo.");
+                return;
+            } else if(dias_dif < 0){
+                alert("La fecha del check-in ya paso, se procede a anular la reserva y realizar la devolucion respectiva.");
+                //falta devolver
+                return;
+            }
+            //entro en la fecha
             $("#RegitrarCheckIn").load('@Url.Action("CheckIn", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
             $("#CheckIn").data("tWindow").center().open();
             $("#CheckInCheckOutGrid").data("tGrid").ajaxRequest();
         }
         else
             if (e.name == "Check-Out") {
+                var estado = e.response.estado;
+                var pagado = e.response.pagado;
+                if (estado != "CheckedIn") {
+                    alert("La reserva no esta en estado de check-in para poder realizar el check-out.");
+                    return;
+                }
+                if (!pagado) {
+                    var listo = confirm("Aun falta items por pagar en esta reserva. Desea realizar el check-out de todos modos?");
+                    if (!listo) return;
+                }
                 $("#CheckOut").data("tWindow").center().open();
                 $("#RegitrarCheckOut").load('@Url.Action("CheckOut", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
-
+                
             }
             else if (e.name == "RealizarCorteCuenta") {
                 $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', { reservaID: e.response.reserva_id, cancelable: false });

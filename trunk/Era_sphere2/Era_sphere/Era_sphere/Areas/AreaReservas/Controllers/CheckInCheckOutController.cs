@@ -37,11 +37,11 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         }
 
         //newbie
-        public ActionResult CheckIn(int reserva_id)
+        public ActionResult CheckIn(int reserva_id, bool sirve)
         {
             LogicaReserva reserva_logica = new LogicaReserva();
             ReservaView reserva_view = new ReservaView(reserva_logica.retornarReserva(reserva_id), reserva_logica);
-            
+            ViewData["sirve"] = sirve;
             return PartialView("CheckInViewTemplate", reserva_view);
         }
 

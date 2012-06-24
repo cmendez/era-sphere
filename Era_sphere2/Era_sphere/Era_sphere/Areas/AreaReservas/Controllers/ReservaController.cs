@@ -7,6 +7,7 @@ using Era_sphere.Areas.AreaReservas.Models;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaHoteles.Models;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
+using Era_sphere.Areas.AreaPromociones.Models;
 
 namespace Era_sphere.Areas.AreaReservas.Controllers
 {
@@ -145,5 +146,13 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return PartialView("ReservaHabitacionClienteView", new GridModel(reserva_logica.retornarHabitacionReservaCliente(id_reserva)));
         }
 
+        public JsonResult AgregarPromocion(int promocionID, int reservaID)
+        {
+            Reserva r = reserva_logica.context.Reservas.Find(reservaID);
+            Promocion p = reserva_logica.context.promociones.Find(promocionID);
+            ReciboLinea linea = new ReciboLinea("Promocion " + p.nombre, -p.descuento, 1, DateTime.Now, false, 1, -p.puntos_requeridos);
+            r.registraReciboLinea(linea);
+            return Json(new { ok = true });
+        }
     }
 }

@@ -87,6 +87,13 @@
         tamanho = $("#ReservaGrid").data("tGrid").data.length;
         if(tamanho == null) tamanho = 0;
      }
+     function onCommand(e){
+        if(e.name == "Anular"){
+            if(!confirm("Desea anular la reserva?")){
+                e.preventDefault();
+            }
+        }
+     }
 </script>
 
  @(Html.Telerik().Window()
@@ -154,6 +161,7 @@
                                                                 events.OnEdit("edita");
                                                                 events.OnComplete("completado");
                                                                 events.OnSave("guarda");
+                                                                events.OnCommand("onCommand");
                                                             })
                                                             .DataBinding(dataBinding => dataBinding
                                                                 .Ajax()

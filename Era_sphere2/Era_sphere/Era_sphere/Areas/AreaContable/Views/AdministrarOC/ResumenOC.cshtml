@@ -5,33 +5,38 @@
     OrdenCompraView orden = ViewBag.oc;
 }
 
-<label> Nro. Orden Compra </label>
- @orden.ordenID
- <p></p>
+<ul>
+<li><label> Nro. Orden Compra </label>
+ @orden.ordenID</li>
+ 
+ <li>
 <label> Fecha Pedido </label>
 @( Html.Telerik().DatePicker().Name("Fechacompra").Value(orden.fecha_registro).Enable(false))
 <label> Fecha Aceptado </label>
 @( Html.Telerik().DatePicker().Name("Fechaaceptado").Value(orden.fecha_envio).Enable(false))
 <label > Fecha Atendido </label>
-@(Html.Telerik().DatePicker().Name("Fechaatendido").Value(orden.fecha_registro).Enable(false))
+@(Html.Telerik().DatePicker().Name("Fechaatendido").Value(orden.fecha_registro).Enable(false))</li>
+</ul>
 <form id="registroPago" class="form" action="#">
 <label> Nro. Boleta de Proveedor </label>
-<input class="input" type=text id="nroBoleta" placeholder="Ingrese el nro de boleta"/> 
+<input class="input" type=text id="nroBoleta" placeholder="Ingrese el nro de boleta" style="margin:10px;"/> 
 <input class="submit" type="submit" value="Registrar">
 </form>
 <div>
  @(Html.Telerik().Grid<OCompraLineaView>()
         .Localizable("es-ES")
         .Name("BoletaPagoProv")
+        .HtmlAttributes(new { style = "margin-top:10px;"})
         .DataKeys(d => d.Add(p => p.ID))
         .Columns(columns =>
         {
             columns.Bound(o => o.productoID).Width(8).ReadOnly(true).Title("Id");
-            columns.Bound(o => o.producto).Width(350).ReadOnly(true);            
+            columns.Bound(o => o.producto).Width(350).ReadOnly(true);
             columns.Bound(o => o.cantidad).Width(35).Title("Cant. Ordenada");
             columns.Bound(o => o.cantidad_recibida).Width(35).Title("Cant. Recibida");
             columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true).Title("PU").Format("{0:c}");
-            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
+            columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total");
+            columns.Bound(o => o.precio_boleta).Width(120).ReadOnly(true)
                 .Aggregate(aggregates => aggregates.Sum())
                 .ClientFooterTemplate("Total: <#= $.telerik.formatString('{0:c}', Sum) #>");
         })
@@ -40,15 +45,15 @@
             .Select("SelectOCompraLinea", "OrdenCompra", new { id_oc = @id_oc })
         ).Filterable()
         .Groupable()
-        .Resizable( reorder => reorder.Columns(true))
-        .Resizable( re => re.Columns(true) ).Pageable()
+        .Resizable(reorder => reorder.Columns(true))
+        .Resizable(re => re.Columns(true)).Pageable()
     )
 </div>
 <script type="text/javascript">
-    $('.toggle').click(function () { /* BLOCK TOGGLE */
-        $(this).toggleClass('show');
+    $('.togglecito').click(function () { /* BLOCK TOGGLE */
+        
         $(this).parent().parent().children('.block_cont').slideToggle(300);
-        $(this).parent().toggleClass('show');
+        
     });
 
     $('#registroPago').submit(function (e) {
@@ -67,12 +72,13 @@
     });
 </script>
 
-<div class="block">
+<div class="block" style="margin-top:10px;">
     <div class="titlebar">
-        <h3>
-            Ordenes Pagadas
+        <h3 class="togglecito">
+            Reporte de Entregas
+             
         </h3>
-        <span  class="toggle show"></span>
+       
     </div>
     <div class="block_cont" style="display:none;">
     @{
@@ -83,14 +89,20 @@
             .Columns(col =>
             {
                 col.Bound(o => o.ID);
-                col.Bound(o => o.precio_total);
+                col.Bound(o => o.entregaID);
+                col.Bound(o => o.fecha_entrega);
+                col.Bound( o => o.linea);
+
                 col.Bound(o => o.precio_unitario);
                 col.Bound(o => o.producto);
                 col.Bound(o => o.productoID);
+                col.Bound(o => o.precio_total);
+                col.Bound(o => o.monto_entrega);
+                
             })
             .DataBinding(data => data.Ajax().Select("EOCLtotal", "EntregaOC", new { id_oc = @id_oc }))
             .Filterable()
-            .Groupable(g => g.Groups(a => a.Add(p => p.producto))).Render();
+            .Groupable(g => g.Groups(a => a.Add(p => p.entregaID))).Render();
         }
     </div>
 </div>

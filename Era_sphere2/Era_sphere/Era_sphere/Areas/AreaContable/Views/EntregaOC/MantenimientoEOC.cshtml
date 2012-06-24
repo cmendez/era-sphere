@@ -4,6 +4,7 @@
     var oc = ViewBag.oc;
 }
 
+
 <script type="text/javascript">
 
     function mantenimiento_complete(e) {
@@ -47,27 +48,29 @@
  @(Html.Telerik().Grid<EntregaOCView>()
         .Name("EOCGrid")
         .Localizable("es-ES")
+        .HtmlAttributes(new { style = "margin-top:10px;"})
         .DataKeys(d => d.Add(p => p.entregaID))
         .Columns(columns =>
         {
             columns.Bound(o => o.entregaID).Width(10).ReadOnly(true).Title("Id");
-            columns.Bound(o => o.ordencompraID).Width(10).ReadOnly(true).Title("Orden de Compra");            
+            columns.Bound(o => o.ordencompraID).Width(10).ReadOnly(true).Title("Orden de Compra");
             columns.Bound(o => o.nombre_proveedor).Width(100).Title("Proveedor ");
-            columns.Bound(o => o.fecha_entrega).Width(150).Title("Fecha Entrega").ReadOnly(true);           
-            columns.Command( com => {
-                com.Custom("detallesEOC").Ajax(true).Action("DetalleEOC","EntregaOC").Text("Editar")
-                    .DataRouteValues( data => data.Add( o => o.entregaID ).RouteKey("id_eoc"));
+            columns.Bound(o => o.fecha_entrega).Width(150).Title("Fecha Entrega").ReadOnly(true);
+            columns.Command(com =>
+            {
+                com.Custom("detallesEOC").Ajax(true).Action("DetalleEOC", "EntregaOC").Text("Editar")
+                    .DataRouteValues(data => data.Add(o => o.entregaID).RouteKey("id_eoc"));
                 com.Delete().ButtonType(GridButtonType.Image);
             });
         })
-        .ClientEvents( ev => ev.OnComplete( "mantenimiento_complete" ))
+        .ClientEvents(ev => ev.OnComplete("mantenimiento_complete"))
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("SelectEntregas", "EntregaOC", new { id_oc = @oc.ordenID })
             .Delete("DeleteEntrega", "EntregaOC", new { id_oc = @oc.ordenID })
         ).Filterable()
         .Groupable()
-        .Resizable( reorder => reorder.Columns(true))
-        .Resizable( re => re.Columns(true) ).Pageable()
+        .Resizable(reorder => reorder.Columns(true))
+        .Resizable(re => re.Columns(true)).Pageable()
     )
 </div>

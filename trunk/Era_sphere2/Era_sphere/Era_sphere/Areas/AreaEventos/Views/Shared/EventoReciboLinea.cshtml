@@ -5,17 +5,19 @@
     ViewBag.idEvento = idEvento;
     Era_sphere.Areas.AreaEventos.Models.Evento.Evento evento = (new Era_sphere.Generics.EraSphereContext()).eventos.Find(idEvento);
     int idHotel = evento.hotel;
-    //int clienteID = evento
+    int clienteID = evento.getPagadorID();
 }
 @using Telerik.Web.Mvc.UI
 <script type="text/javascript">
-function ConfirmarPago() {
-        
+
+
+        function ConfirmarPago() {
+        console.log("configar pago");
          $.ajax(
                 {
                     url: '@Url.Action("PagarLineasEvento", "../AreaContable/Pagos")',
                     traditional: true,
-                    data: {  clienteID : 1,
+                    data: {  clienteID : @clienteID,
                             eventoID: @idEvento },
                     type: "POST",
                     success: function (data) {
@@ -75,6 +77,6 @@ function ConfirmarPago() {
             .Update("UpdateReciboLinea", "Evento", new { idEvento = idEvento })
             
         )
-
+        )
 </div>
 

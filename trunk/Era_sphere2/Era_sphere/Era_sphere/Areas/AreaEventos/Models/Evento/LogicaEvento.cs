@@ -51,6 +51,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
 
         public void agregarEvento(EventoView evento)
         {
+            
             Evento evento_per = evento.deserializa();
             //habitacion_per.tipoHabitacion = habitacion_context.tipos_habitacion.Find(habitacion_per.tipoHabitacionID);
             //habitacion_per.estado = habitacion_context.estado_espacio_rentable.Find(habitacion.estado_habitacionID);

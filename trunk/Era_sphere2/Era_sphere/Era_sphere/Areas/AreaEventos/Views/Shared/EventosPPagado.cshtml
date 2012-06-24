@@ -7,16 +7,8 @@
 
 <div id="gg"></div>
 
- @(Html.Telerik().Window().Name("PagarEvento")
-        .Title("PagarEvento").Content(
-            @<text>
-                <div id="pagar-evento-div"></div>
-            </text>
-        )
-            .Modal(true)
-            
-            .Visible(false)
-            .Width(700).Resizable().Draggable(true).Height(600))
+
+    
 
 
 
@@ -29,6 +21,7 @@
     <div class="block_cont">
         @(Html.Telerik().Grid(Model)
         .Name("EventoPPagado")
+        .ClientEvents(events => events.OnComplete("funcioncita"))
         .Filterable()
         .Localizable("es-ES")
         .DataKeys(key => key.Add(c => c.ID))

@@ -70,9 +70,9 @@
         }
 
         function Informacion(e){
-            var ambientet = $("#ambienteID-input").val();
-            //alert(ambientet);
-           @*$('inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ID: ambientet})*@
+            var ambientet = parseInt($("#ambienteID").data("tComboBox").value());
+            
+           $('inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ID: ambientet})
         }
         function isNumber(n) {
             return !isNaN(parseFloat(n)) && isFinite(n);
@@ -113,6 +113,7 @@
                                 success: function (result) {
                                     
                                     $('#AmbientesGrid').data('tGrid').ajaxRequest();
+                                    $("#ambienteID").data("tComboBox").ajaxRequest();
                                     
                                 }
                             }

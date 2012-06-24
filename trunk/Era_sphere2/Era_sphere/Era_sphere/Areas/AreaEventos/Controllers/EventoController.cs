@@ -89,13 +89,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             ViewBag.idevento = id;
             return View("EventoLlenarDatos");
         }
-        public ActionResult DetalleEventoNoEdit(int id, int idhotel)
-        {
-            ViewBag.idhotel = idhotel;
-            
-            ViewBag.idevento = id;
-            return View("EventoLlenarDatosNoEdit");
-        }
+        
 
         #endregion
 
@@ -438,4 +432,4 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         }
         }
         #endregion
-    }
+    

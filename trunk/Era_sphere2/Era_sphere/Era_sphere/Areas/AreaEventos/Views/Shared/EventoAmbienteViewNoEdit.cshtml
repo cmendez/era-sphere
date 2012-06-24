@@ -1,0 +1,57 @@
+﻿@using Era_sphere.Generics;
+@model IEnumerable<Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente.EventoXAmbienteView>
+@using Telerik.Web.Mvc.UI
+
+
+@{
+    //$('#inf').load('@Url.Action("retornarAmbiente", "../AreaHoteles/Ambiente")',{ ambienteID: ambienteIDt});
+    ViewBag.Title = "EventoXAmbiente";
+    var idEvento = ViewBag.idevento;
+    var idHotel = ViewBag.idHotel;
+    ViewBag.idHotel =idHotel;
+    ViewBag.idEvento = idEvento;
+
+}
+
+<div class="block big">
+    <!-- Block Begin -->
+    <div>
+        
+        @(Html.Telerik().Grid(Model)
+        .Name("AmbientesGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.amb_detalle).ReadOnly(true);
+            columns.Bound(p => p.amb_capacidad_maxima).ReadOnly(true);
+            columns.Bound(p => p.amb_num_niveles).ReadOnly(true);
+            columns.Bound(p => p.amb_precio).ReadOnly(true);
+            columns.Bound(p => p.fecha_hora_inicio).ReadOnly(true);
+            columns.Bound(p => p.fecha_hora_fin).ReadOnly(true);
+            
+        })
+
+        .Pageable()
+        .Sortable()
+
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("VerAmbientes", "Evento", new { idEvento = @idEvento })
+            
+            
+        )
+        .Resizable(config =>
+        {
+            config.Columns(true);
+        })
+        .Reorderable(config =>
+        {
+            config.Columns(true);
+        })
+           )
+
+    </div>
+    <!-- Table Wrapper End -->
+</div>

@@ -21,6 +21,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
 
        // [ForeignKey("perfil")]
         public int perfilID { get; set; }
+        public int hotelID  { get; set; }
        // public virtual Perfil perfil { get; set; }
 
         public Empleado() { }

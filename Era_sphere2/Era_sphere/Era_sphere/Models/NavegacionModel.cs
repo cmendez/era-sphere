@@ -217,7 +217,7 @@ namespace Era_sphere.Models
 
             AreaReportes.Add(new SubLink
             {
-                Nombre = "Reporte Exc Promociones",
+                Nombre = "Reporte Excel Promo",
                 Url = "/AreaReportes/RepExcelPromocion"
             });
             AreaReportes.Add(new SubLink
@@ -270,8 +270,9 @@ namespace Era_sphere.Models
             agregarAreaHotel();
             agregarConfiguracion();
             //agregarContable();
-            agregarAlmacenes();
+            
             agregarReportes();
+            agregarAlmacenes();
 
             this.menu.Add(new Link()
             {

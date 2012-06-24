@@ -1,0 +1,149 @@
+﻿@using Era_sphere.Areas.AreaContable.Models.Recibo
+@using Era_sphere.Areas.AreaClientes.Models
+@using Era_sphere.Generics
+@using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
+@using Era_sphere.Areas.AreaHoteles.Models
+@model Recibo
+@using Telerik.Web.Mvc.UI  
+@{
+    EraSphereContext context = new EraSphereContext();
+    Cadena cad = context.cadenas.Find(1);
+    Cliente cliente = context.clientes.Find(Model.clienteID);
+    List<ReciboLinea> lineas = context.recibos_lineas.Where(x => x.reciboID == Model.ID).ToList();
+    //int hotelID = (int)(ViewData["hotelID"]);
+    //int reciboId = (int)(ViewData["reciboId"]);
+    //int hotelID = (int)(ViewBag.hotelID);
+    int hotelID = 1;
+    Hotel h = context.hoteles.Find(hotelID);
+    string id = "" + Model.ID;
+    while (id.Length < 6) { id = "0" + id; }
+}
+
+<span style="font-weight:bold">
+@if (Model.tipo == 0)
+{   //boleta
+    <label>Boleta: @id</label>
+}
+else
+{
+    <label>Factura: @id</label>
+}
+
+<br />
+<label>@cad.nombreCadena</label>
+<br />
+<label>@h.razon_social</label>
+<br />
+<label>Ruc @h.nroreg_id</label>
+<br />
+</span>
+
+<br />
+<label style="font-weight:bold"> Detalle del cliente</label>
+@if (Model.tipo == 0)
+{
+    //boleta
+    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => cliente.nombre) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_materno) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => cliente.apellido_paterno) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => cliente.nombre) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => cliente.documento_identidad) : <label>@cliente.tipo_documento.descripcion</label></div>
+    <div class="editor-label"> @Html.DisplayFor(model => cliente.documento_identidad) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => cliente.puntos_cliente) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => cliente.puntos_cliente) </div>
+    <br />
+}
+else
+{
+    
+    //factura
+    <div class="editor-label"> @Html.LabelFor(model => cliente.razon_social) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => cliente.razon_social) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => cliente.documento_identidad) : <label>@cliente.tipo_documento.descripcion</label></div>
+    <div class="editor-label"> @Html.DisplayFor(model => cliente.ruc) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => cliente.puntos_cliente) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => cliente.puntos_cliente) </div>
+    <br />
+}
+
+
+<table cellpadding="3" cellspacing="3">
+       <tr border="1" bgcolor="#777777" color="#ffffff">
+           <td width="50%" align="center">
+              Lugar
+           </td>
+           <td width="50%" align="center">
+              Detalle
+           </td>
+           <td width="50%" align="center">
+              Puntos
+           </td>
+           <td width="50%" align="center">
+              Unidades
+           </td>
+           <td width="50%" align="center">
+              Precio final
+          </td>
+      </tr>
+      @{
+           var OddColor = "#DDEEEE";
+           var evenColor = "#EEFFFF";
+           var Odd = OddColor;
+       }
+       @foreach (ReciboLinea l in lineas)
+       {
+           <tr border="1" bgcolor="@Odd">
+               <td align="center">@l.lugar
+               </td>
+               <td align="center">@l.detalle
+               </td>
+               <td align="center">@l.puntos
+               </td>
+               <td align="center">@l.unidades
+               </td>
+               <td align="center">@l.precio_final
+               </td>
+               
+           </tr>
+           if (Odd == OddColor)
+           {
+               Odd = evenColor;
+           }
+           else
+           {
+               Odd = OddColor;
+           }
+   
+       }
+   </table>
+
+
+
+
+
+
+
+
+
+<div class="editor-label"> 
+<label> Pagado con tarjeta: </label>
+@Html.DisplayFor(model => model.precio_tarjeta)
+</div>
+
+<div class="editor-label"> 
+<label> Pagado al contado: </label>
+@Html.DisplayFor(model => model.precio_contado)
+</div>
+
+<div class="editor-label"> 
+<label> Total: </label>
+@Html.DisplayFor(model => model.precio_total)
+</div>

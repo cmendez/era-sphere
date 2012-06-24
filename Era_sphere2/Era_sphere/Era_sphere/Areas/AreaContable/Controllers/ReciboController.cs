@@ -5,9 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaContable.Models.Recibo;
+using ReportManagement;
 namespace Era_sphere.Areas.AreaContable.Controllers
 {
-    public class ReciboController : Controller
+    public class ReciboController : PdfViewController
     {
         EraSphereContext context = new EraSphereContext();
         //
@@ -17,12 +18,19 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         {
             Recibo r = context.recibos.Find(reciboId);
             ViewData["hotelID"] = hotelID;
+            ViewData["reciboId"] = reciboId;
             return PartialView("ReciboView", r);
         }
         public ActionResult VerRecibosReserva(int reservaID)
         {
             return PartialView("RecibosReserva", context.Reservas.Find(reservaID));
         }
-
+        public ActionResult ReciboPDF(int reciboId, int hotelID) 
+        {
+            Recibo r = context.recibos.Find(reciboId);
+            //ViewData["hotelID"] = hotelID;
+            ViewBag.hotelID = hotelID;
+            return this.ViewPdf("Recibo en PDF", "ReciboPDF", r);
+        }
     }
 }

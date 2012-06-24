@@ -22,6 +22,12 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return View("IndexReserva");
         }
 
+        public ActionResult Cliente(int id) {
+            ViewBag.reservas = reserva_logica.retornarReservas();
+            ViewData["hotelID"] = id;
+            return View("clienteVista");
+        }
+
         [GridAction]
         public ActionResult Select(int id)
         {

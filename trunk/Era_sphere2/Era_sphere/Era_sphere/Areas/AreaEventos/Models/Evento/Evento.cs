@@ -15,18 +15,14 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
     public class Evento : DBable, Costeable
     {
         #region atributos
-        public DateTime fecha_inicio { get; set; }
-        
+
+        public int clienteID { get; set; }
+        public DateTime fecha_inicio { get; set; }        
         public string nombre { get; set; }
-
         public string dni { get; set; }
-
-        public decimal precio_total { get; set; }
-        
+        public decimal precio_total { get; set; }        
         public int num_participantes { get; set; }
-
         public decimal pagado { get; set; }
-
 
         //[ForeignKey("hotel")]
         public int hotel { get; set; }
@@ -92,7 +88,27 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         }
         public int getPagadorID()
         {
-            return 2;
+            string tipo = this.detalle.Substring(this.detalle.LastIndexOf(',') + 2);
+            string documento = this.detalle.Substring(this.detalle.LastIndexOf(' ') + 1);
+            int tipo_persona, tipo_documentoID;
+            if (tipo[0] == 'D') tipo_persona = tipo_documentoID = 1;
+            else if (tipo[0] == 'P')
+            {
+                tipo_persona = 1;
+                tipo_documentoID = 2;
+            }
+            else
+            {
+                tipo_persona = 2;
+                tipo_documentoID = 3;
+            }
+
+            if (tipo_persona == 1)
+                clienteID = (new EraSphereContext()).clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento && c.tipo_documentoID == tipo_documentoID).ID;
+            if (tipo_persona == 2)
+                clienteID = (new EraSphereContext()).clientes.First(c => c.tipoID == tipo_persona && c.ruc == documento).ID;
+
+            return clienteID;
         }
         public void generaReciboLineas()
         {

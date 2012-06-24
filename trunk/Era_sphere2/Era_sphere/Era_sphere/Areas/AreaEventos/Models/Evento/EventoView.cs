@@ -14,6 +14,29 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         public EventoView() { }
         public EventoView(Evento evento)
         {
+            string tipo = evento.detalle.Substring(evento.detalle.LastIndexOf(',') + 2);
+            string documento = evento.detalle.Substring(evento.detalle.LastIndexOf(' ') + 1);
+            int tipo_persona, tipo_documentoID;
+            if (tipo[0] == 'D') tipo_persona = tipo_documentoID = 1;
+            else if (tipo[0] == 'P')
+            {
+                tipo_persona = 1;
+                tipo_documentoID = 2;
+            }
+            else
+            {
+                tipo_persona = 2;
+                tipo_documentoID = 3;
+            }
+            //this.documento = documento;
+
+            if (tipo_persona == 1)
+                clienteID = (new EraSphereContext()).clientes.First(c => c.tipoID == tipo_persona && c.documento_identidad == documento && c.tipo_documentoID == tipo_documentoID).ID;
+            if (tipo_persona == 2)
+                clienteID = (new EraSphereContext()).clientes.First(c => c.tipoID == tipo_persona && c.ruc == documento).ID;
+
+            //
+            
             ID = evento.ID;
             nombre = evento.nombre;
             precio_total = evento.precio_total;
@@ -31,12 +54,12 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
             fecha_inicio = evento.fecha_inicio;
             deuda = evento.precio_total - evento.pagado;
         }
+
+        public int clienteID { get; set; }
         [Required]
         [DisplayName("Fecha Inicio")]
         public DateTime fecha_inicio { get; set; }
-
         public decimal pagado { get; set; }
-
         public string dni { get; set; }
         [Required]
         [MaxLength(30)]

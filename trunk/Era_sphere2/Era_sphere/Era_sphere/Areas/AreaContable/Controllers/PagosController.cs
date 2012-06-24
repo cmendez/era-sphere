@@ -59,7 +59,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             }
 
             logica.context.SaveChanges();
-            return Json(new {ok = true});
+            return Json(new {ok = true, recibo_id = recibo.ID});
         }
     }
 }

@@ -183,7 +183,11 @@
     }
     var promocionid = 0;
     function CambioPromocion(e){
-        promocionid = e.value;
+        promocionid = parseInt(e.value);
+        for(i in promociones) if(promociones[i].ID == promocionid){
+            $("#puntos_prom").val(promociones[i].puntos_requeridos);
+            $("#descuento_prom").val(promociones[i].descuento);
+        }
     }
 
     function AgregarPromocion(e){

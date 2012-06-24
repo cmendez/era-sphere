@@ -3,6 +3,7 @@
 @using Era_sphere.Areas.AreaContable.Models.Recibo
 @using Era_sphere.Areas.AreaClientes.Models;
 @using Era_sphere.Areas.AreaHoteles.Models;
+@using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
 @model IEnumerable<ReciboLinea>
 @{
     int idHotel = (int)(ViewData["hotelID"]);
@@ -12,7 +13,9 @@
     EraSphereContext context = new EraSphereContext();
     Cliente c = context.clientes.Find(idCliente);
     Hotel h = context.hoteles.Find(idHotel);
+    List<MonedaView> monedas = (List<MonedaView>)((ViewData["Monedas"]));
     double impuesto = h.pais.IGV == null ? 0.0 : h.pais.IGV.Value / 100.0;
+    
     string nombre = LogicaCliente.toString(c);
     List<string> tipos = new List<string>();
     tipos.Add("Boleta");
@@ -28,6 +31,7 @@
     var parcial = 0;
     var igv = @impuesto;
     var mini = @Model.Where(x => x.pagado == false).ToList().Count() > 0 ? 1 : 0;
+    
     function Pagar() {
         if (dentro.length < mini) alert("Seleccione por lo menos un detalle a pagar");
         else {
@@ -45,6 +49,7 @@
            
         }
     }
+
     function Modifica(id, precio) {
         var esta = false;
         var dentro2 = [];
@@ -144,6 +149,25 @@
         $("#TarjetaWindow").data("tWindow").close();
         ConfirmarPago2();
     }
+
+
+    var temp = parseFloat($("#pagar_box").val());
+
+    function ModificarCambioFacturado()
+    { 
+        $("#pagar_box")=temp/parseFloat($("#pagar_box").val());
+    }
+
+    function ModificarCambioPagoContado()
+    {
+        $("#contado_text")=temp/parseFloat($("#Selectfacturadocontado").val());
+    }
+
+    function ModificarCambioPagoTarjeta()
+    {
+        $("#tarjeta_text")=temp/parseFloat($("#Selectfacturadotarejeta").val());
+    }
+
 </script>
 
 <label>Pago a nombre de: </label>
@@ -207,17 +231,36 @@
 <p />
 
 <label>Monto a pagar:</label>
-<input type="text" readonly="readonly" id="pagar_box" value="0" />
+<input type="text" readonly="readonly" id="pagar_box" value="0"  /> 
+<select id="Selectfacturado" onclick="ModificarCambioFacturado()">
+@foreach (MonedaView m in monedas)
+{ 
+    <option value='"'+@m.tc+>@m.simbolo  (@m.descripcion)</option>
+} 
+</select>
+
 <button onclick="Pagar();">Realizar pago</button>
 
 <div id="division_div" style="display:none">
     <div class="editor-label"> 
         <label>Al contado: </label> 
         <input type="text" id="contado_text" onchange="cambioContado();" />
+        <select id="Selectfacturadocontado" onclick="ModificarCambioPagoContado()">
+        @foreach (MonedaView m in monedas)
+        { 
+            <option value='"'+@m.tc+'"'>@m.simbolo  (@m.descripcion)</option>
+        } 
+        </select>
     </div>
     <div class="editor-label"> 
         <label>Con tarjeta: </label> 
         <input type="text" id="tarjeta_text" onchange="cambioTarjeta();" />
+        <select id="Selectfacturadotarejeta" onclick="ModificarCambioPagoTarjeta()"> 
+        @foreach (MonedaView m in monedas)
+        { 
+            <option value='"'+@m.tc+'"'>@m.simbolo  (@m.descripcion)</option>
+        } 
+        </select>
     </div>
     
         @Html.DropDownList("TipoPago", new SelectList(tipos))

@@ -11,6 +11,7 @@
     Cliente cliente = context.clientes.Find(Model.clienteID);
     List<ReciboLinea> lineas = context.recibos_lineas.Where(x => x.reciboID == Model.ID).ToList();
     int hotelID = (int)(ViewData["hotelID"]);
+    int reciboId = (int)(ViewData["reciboId"]);
     Hotel h = context.hoteles.Find(hotelID);
     string id = "" + Model.ID;
     while (id.Length < 6){ id = "0" + id;}
@@ -78,3 +79,6 @@ else
 <label> Total: </label>
 @Html.DisplayFor(model => model.precio_total)
 </div>
+
+<br />
+@Html.ActionLink("Mostrar Recibo en PDF", "ReciboPDF", new {reciboId = reciboId, hotelID = hotelID}, new { target = "_blank" })

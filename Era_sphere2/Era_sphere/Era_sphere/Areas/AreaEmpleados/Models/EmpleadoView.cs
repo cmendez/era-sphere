@@ -54,6 +54,8 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
 
         public int perfilID { get; set; }
 
+        public int hotelID { get; set; }
+
         public EmpleadoView() { }
 
         public EmpleadoView(Empleado empleado)
@@ -84,6 +86,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
             ciudadID = empleado.ciudadID;
             paisID = empleado.paisID;
             perfilID = empleado.perfilID;
+            hotelID = empleado.hotelID;
          
         }
 
@@ -118,6 +121,7 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
                 paisID = this.paisID,
                 pais = logica.empleado_context.paises.Find(this.paisID),
                 perfilID = this.perfilID,
+                hotelID = this.hotelID,
                 //perfil = logica.empleado_context.perfiles.Find(this.perfilID),
                 tipoID = 1,
                 tipo = logica.empleado_context.tipos_personas.Find(1),

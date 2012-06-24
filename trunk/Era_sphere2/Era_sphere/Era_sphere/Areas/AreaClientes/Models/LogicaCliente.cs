@@ -28,6 +28,8 @@ namespace Era_sphere.Areas.AreaClientes.Models
             return clientes;
         }
 
+
+
         public Cliente retornarCliente(int id_cliente)
         {
             Cliente cliente = database_table.retornarUnSoloElemento(id_cliente);

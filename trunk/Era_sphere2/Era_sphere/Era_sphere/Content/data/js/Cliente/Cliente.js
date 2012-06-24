@@ -8,6 +8,31 @@
     //login
     //detalle
     */
+
+    //$("#inicioContent").load("/AreaReservas/Reserva/Index/1");
+
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        url: "/AreaHoteles/Hotel/getHoteles",
+        success: function (data) {
+            var result = '<option  value = ""> - </option>';
+            $.each(data, function (i, item) {
+                var idhotel = item.ID;
+                var descripcion = item.descripcion
+                result += '<option  value = "' + idhotel + '">' + descripcion + '</option>';
+            });
+            $("#hotel").html(result);
+        }
+    });
+
+    $('#hotel').change(function () {
+        var idhotel = $('#hotel').val();
+        ///AreaReservas/Reserva/Index/1
+        $("#reserva").load("../../AreaReservas/Reserva/Cliente/" + idhotel);
+    });
+
     $("#consumoCliente").click(function () {
         //dialogConsumo
 
@@ -19,7 +44,7 @@
     $("#promocionesCliente").click(function () {
 
         var jsonLogin = {
-            puntos : localStorage.getItem("PUNTOSCLIENTE")
+            puntos: localStorage.getItem("PUNTOSCLIENTE")
             //puntos: 1000
         };
         $.ajax({
@@ -45,7 +70,7 @@
                         result += '<span class = "descripcionpromo">' + promocion.descripcion + '</span>';
                         result += '<span class = "descripcionpromo"> Descuento Total: ' + promocion.descuento + '</span>';
                         result += '<span class = "descripcionpromo"> Puntos necesarios: ' + promocion.puntos_requeridos + '</span>';
-                        
+
                         //result += '<span class = "fecha"> Desde : ' + promocion.fecha_inicio + '- Hasta: ' + promocion.fecha_fin + '</span>';
                         result += '</li>';
                     }
@@ -54,7 +79,7 @@
                 }
             }
         });
-       
+
         $('#dialogPromociones').dialog('open');
 
     });

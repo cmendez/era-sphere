@@ -32,6 +32,8 @@
                     //nos jalamos el idperfil
                     localStorage.setItem("usuario", login.nombre);
                     localStorage.setItem("idusuario", idusuario);
+                    localStorage.setItem("Hotel", login.hotelID);
+                    localStorage.setItem("perfil", idperfil);
                     var entrada = {
                         perfilID: idperfil
                     };

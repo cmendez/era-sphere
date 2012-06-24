@@ -7,7 +7,10 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
     {
         
         public string nombre { get; set; }
-        
+       
+
+
+
         public decimal precio { get; set; }
         [ForeignKey("evento")]
         public int eventoID { get; set; }

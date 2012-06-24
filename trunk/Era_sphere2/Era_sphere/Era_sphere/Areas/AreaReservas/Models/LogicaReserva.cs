@@ -238,8 +238,8 @@ namespace Era_sphere.Areas.AreaReservas.Models
             }
             
         }
-
-        public void cambiarEstadoReservaAnular(Reserva reserva)
+        //retorna 0 si no hubo una devolucion
+        public decimal cambiarEstadoReservaAnular(Reserva reserva)
         {
                     reserva.estadoID = 4;
                     reserva.estado = context.estados_reserva.Find(4);
@@ -247,15 +247,20 @@ namespace Era_sphere.Areas.AreaReservas.Models
                     LogicaCadena cadena_context = new LogicaCadena();
                     Cadena cadena = cadena_context.retornarCadena(1);
                     LogicaCliente logica_cliente = new LogicaCliente();
-                    
-                    if (DateTime.Now.Subtract(reserva.dia_creacion).Days < cadena.d_ant_ret)
+                    DateTime hoy = DateTime.Now.Date;
+                    decimal devolucion = 0;
+                    if (hoy.Subtract(reserva.dia_creacion).Days < cadena.d_ant_ret)
                     {
-                        ReciboLinea recibo = new ReciboLinea();
-                        recibo.detalle = "Devolución de monto adelantado de reserva";
-                        recibo.fecha = DateTime.Now;
-                        recibo.precio_final = (-1)*reserva.precio_derecho_reserva;
-                        recibo.unidades = 1;
+                        devolucion = reserva.precio_derecho_reserva * (1m - cadena.porc_ret / 100m);
+                        ReciboLinea recibo = new ReciboLinea("Devolución de monto adelantado de reserva con monto retenido", -devolucion, 1, DateTime.Now, true);
+                        reserva.registraReciboLinea(recibo);
                         //llamar un popup de recibo gg
+                    }
+                    else
+                    {
+                        devolucion = reserva.precio_derecho_reserva;
+                        ReciboLinea recibo = new ReciboLinea("Devolución de monto adelantado de reserva sin monto retenido", -devolucion, 1, DateTime.Now, true);
+                        reserva.registraReciboLinea(recibo);
                     }
                     //ahora parece sin reserva en caso sea la unica reserva que tenga
                     eliminarReservaCliente(reserva.ID);
@@ -263,7 +268,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
                     reserva.responsable_pago.numero_reservas--;
                     context.Entry(reserva.responsable_pago).State = EntityState.Modified;
                     context.SaveChanges();
-
+                    return devolucion;
         }
 
 

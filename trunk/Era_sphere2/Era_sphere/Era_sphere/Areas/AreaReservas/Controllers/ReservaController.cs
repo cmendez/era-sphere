@@ -91,8 +91,8 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult AnulaReserva(int reserva_id)
         {
-            reserva_logica.cambiarEstadoReservaAnular(reserva_logica.retornarReserva(reserva_id));
-            return Json(new {reserva_id = reserva_id});
+            decimal devolucion = reserva_logica.cambiarEstadoReservaAnular(reserva_logica.retornarReserva(reserva_id));
+            return Json(new { reserva_id = reserva_id, devolucion = devolucion });
 
         }
 

@@ -111,6 +111,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             context.SaveChanges();
             ReciboLineaXReserva x = new ReciboLineaXReserva { recibo_lineaID = linea.ID, reservaID = ID };
             context.recibos_linea_x_reserva.Add(x);
+            dia_creacion = DateTime.Now.Date;
             context.SaveChanges();
         }
 

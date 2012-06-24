@@ -31,6 +31,21 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             ViewData["partial"] = partial;
             return PartialView("GridResultConsulta", new ConsultaView(resultado));
         }
+        //tipo_habitacionID puede ser 0, si lo es, busca en todo
+        public JsonResult BuscarHabitaciones(DateTime fecha_inicio, DateTime fecha_fin, int hotelID, int tipo_habitacionID)
+        {
+            Consulta resultado = new Consulta { fecha_inicio = fecha_inicio, fecha_fin = fecha_fin, hotelID = hotelID, pisoID = 0, tipo_habitacionID = tipo_habitacionID };
+            consulta_logica.asignarHabitacionesDisponiblesTotales(resultado);
+            List<object> lista = new List<object>();
+            resultado.habitaciones_resultantes.ForEach(x => lista.Add(new { habitacion_id = x.ID, tipo_habitacion_id = x.tipoHabitacionID, nombre = x.detalle }));
+            return Json(new { habitaciones = lista });
+        }
+
+        public JsonResult DetalleHabitacion(int habitacionID)
+        {
+            HabitacionView view = new HabitacionView(consulta_logica.context.habitaciones.Find(habitacionID));
+            return Json(new { habitacion = view });
+        }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SubConsulta(List<int> hab_ids, int hotel_id)

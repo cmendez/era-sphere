@@ -62,7 +62,7 @@
          if (e.name == "Anular") {
              var hubo = e.response.devolucion;
              $("#ReservaGrid").data("tGrid").ajaxRequest();
-             if(hubo > 0) alert("Hubo una devolucion de " + hubo + " debido a la fecha de anulacion.");
+             if(hubo > 0) alert("Hubo una devolucion de " + hubo + " debido a la fecha de anulacion. Puede ver el detalle en el corte de cuenta.");
              else alert("No hubo ninguna devolucion de dinero.");
          } else if (e.name == "Servicios") {
              $("#mantenimiento_servicio_form").load('@Url.Action("IndexServicioReserva", "../AreaConfiguracion/Servicios")' + '?id_reserva=' + e.response.reserva_id);

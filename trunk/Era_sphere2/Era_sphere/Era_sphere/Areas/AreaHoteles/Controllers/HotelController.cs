@@ -27,6 +27,13 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             //ViewBag.proveedores = hotel_logica.retornar();
             return View("Index", new GridModel( hotel_logica.retornarHoteles()));
         }
+
+        [HttpPost]
+        public JsonResult getHoteles() {
+            var hoteles = hotel_logica.retornarHoteles();
+            return new JsonResult() { Data = hoteles };
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
         public ActionResult Insert()

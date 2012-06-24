@@ -89,7 +89,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
             return View(cadena);
             
         }
-
+        /*
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -112,6 +112,6 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        */
     }
 }

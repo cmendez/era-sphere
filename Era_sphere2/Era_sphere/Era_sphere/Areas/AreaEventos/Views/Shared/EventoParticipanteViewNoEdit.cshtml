@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ParticipanteView>
+@using Era_sphere.Areas.AreaEventos.Models.Participante
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI
+@{
+    ViewBag.Title = "EventoParticipanteView";
+    var idhotel = ViewData["idhotel"];
+    var idEvento = ViewBag.idevento;
+}
+
+ @(Html.Telerik().Grid(Model)
+        .Name("EventoParticipante")
+        .Localizable("es-ES")
+        .Filterable()
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.nombre);
+            columns.Bound(p => p.dni);
+            //columns.ForeignKey(p => p.id_estado, new SelectList(estados, "ID", "descripcion"));
+            
+        })
+
+        .Pageable()
+        .Sortable()
+         //.ClientEvents(events => events.OnComplete("onComplete"))
+                .DataBinding(dataBinding => dataBinding
+                    .Ajax()//.Select("_CustomCommand", "Cliente")
+                    .Select("VerParticipantes", "Evento", new { idEvento=idEvento})
+                    
+        )
+           )

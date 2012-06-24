@@ -1,0 +1,39 @@
+﻿@using Era_sphere.Areas.AreaReservas
+@using Era_sphere.Generics
+@using Telerik.Web.Mvc.UI
+@model IEnumerable<Era_sphere.Areas.AreaConfiguracion.Models.Servicios.ServicioView>
+@{
+    ViewBag.Title = "Servicios De Reserva";
+    EraSphereContext context = new EraSphereContext();
+    var tipos_servicios = context.tipo_servicios.ToList();
+    var idEvento = ViewBag.idevento;
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+       @(Html.Telerik().Grid(Model)
+        .Name("ServiciosReservaGrid")
+        .Localizable("es-ES")
+        .Filterable()
+        
+        .DataKeys(key => key.Add(c => c.ID))
+        
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.ID);
+            columns.Bound(p => p.detalle);
+            columns.ForeignKey(p => p.tipo_servicioID, new SelectList(tipos_servicios, "ID", "nombre"));
+            columns.Bound(p => p.precio_final);
+            
+        })
+
+        .Pageable()
+        .Sortable()
+               //.ClientEvents(events => events.OnComplete("completadoWi"))
+        .DataBinding(dataBinding => dataBinding
+            .Ajax().Select("VerServicio", "Evento", new { idEvento = idEvento })
+            
+        )
+           )

@@ -20,8 +20,6 @@
         var tipo_serviciot = parseInt($("#tipo_servicioID").data("tComboBox").value());
         
         
-        
-        
         $("#ff").load('@Url.Action("ServicioPrecio", "Evento")', { idEvento: @idEvento, idHotel:  @idHotel, tipo_servicio: tipo_serviciot });
 
     }

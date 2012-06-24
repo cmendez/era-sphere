@@ -17,6 +17,7 @@ namespace Era_sphere.Generics
         public void seedUbigeo(){
             var _paises = new List<Pais>
             {
+                
                 new Pais{nombre="Canadá"},
                 new Pais{nombre="Estados Unidos"},
                 new Pais{nombre="México"},
@@ -52,7 +53,8 @@ namespace Era_sphere.Generics
                 new Pais{nombre="San Cristóbal y Nevis"},
                 new Pais{nombre="Santa Lucía"},
                 new Pais{nombre="San Vicente y las Granadinas"},
-                new Pais{nombre="Trinidad y Tobago"}
+                new Pais{nombre="Trinidad y Tobago"},
+                new Pais{nombre="No definido"}
             };
             foreach (var p in _paises)
                 paises.Add(p);
@@ -107,7 +109,8 @@ namespace Era_sphere.Generics
                 new Ciudad { nombre = "Santiago", pais = paises.Find(7) },
                 new Ciudad { nombre = "Asunción", pais = paises.Find(11) },
                 new Ciudad { nombre = "Caracas", pais = paises.Find(15) },
-                new Ciudad { nombre = "La Habana", pais = paises.Find(21) }
+                new Ciudad { nombre = "La Habana", pais = paises.Find(21) },
+                new Ciudad { nombre = "No definido"}
 
             };
 

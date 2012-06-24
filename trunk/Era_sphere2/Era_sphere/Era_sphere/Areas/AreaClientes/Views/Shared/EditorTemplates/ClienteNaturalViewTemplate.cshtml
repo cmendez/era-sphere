@@ -81,7 +81,7 @@
                     .BindTo(new SelectList(paises, "ID", "nombre"))
                     .Placeholder("Seleccione...")
                     .CascadeTo("ciudadID")
-                    .SelectedIndex(1)
+                    .SelectedIndex(37)
                 )
 
 
@@ -91,7 +91,8 @@
                     .Placeholder("Seleccione...")
                     .DataBinding(binding => binding.Ajax().Select("_GetComboBoxCiudades", "Cliente"))
                     
-                    //.SelectedIndex(Model == null ? 0 : Model.ciudadID)
+                    //.SelectedIndex(48)
+                    //.SelectedIndex(Model.paisID ==37 : ciudadID==37)
                 )
 
 

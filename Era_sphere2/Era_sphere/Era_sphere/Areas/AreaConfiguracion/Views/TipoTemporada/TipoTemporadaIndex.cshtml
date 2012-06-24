@@ -25,10 +25,11 @@
                             .TemplateName("TipoTemporadaViewTemplate"))
 
         .DataKeys(key => key.Add(c => c.ID))
+        .ClientEvents(events => events.OnRowDataBound("onTipoTemporadaRowDataBound"))
         .Columns(columns =>
         {
-            
-            //columns.Bound(p => p.ID);
+
+            columns.Bound(p => p.ID).Hidden(true);
             columns.Bound(p => p.descripcion);
             columns.Command(commands =>
             {
@@ -53,3 +54,25 @@
     </div>
     <!-- Table Wrapper End -->
 </div>
+
+<script type="text/javascript">
+
+    function onTipoTemporadaRowDataBound(e) {
+        /**/console.log(e);
+        if (e.dataItem.ID == 1) {
+            $(e.row).find('a.t-grid-delete').remove();
+            $(e.row).find('a.t-grid-edit').remove();
+        }
+    }
+</script>
+
+
+
+
+
+@*
+    $(document).ready(
+//        function () {
+//            alert("hola");
+//        }
+//    );*@

@@ -22,9 +22,68 @@
         .Name("HabitacionGrid")
         .Localizable("es-ES")
         .Filterable()
-        .ToolBar(commands => commands.Insert())
+        .ToolBar(toolBar => 
+                    {
+                        toolBar.Template(
+                        @<text>
+                        <div id="reg controles" align=center>
+                        <label class="lote-label">
+                            Piso:
+                        </label>
+                        @(Html.Telerik().ComboBox()
+                            .Name("pisos")
+                            .DataBinding(binding => binding.Ajax().Select("_GetPisos", "Habitacion", new { hotel_id = @id_hotel } ))
+                            .AutoFill(true)
+                            .Filterable(filtering =>
+                            {
+                                filtering.FilterMode(AutoCompleteFilterMode.StartsWith);
+                            })
+                            .HtmlAttributes(new { style = "width: 150px" })
+                            .HighlightFirstMatch(true)
+                            .Placeholder("Seleccione...")
+                            .ClientEvents(events => events.OnLoad("onComboBoxLoad"))
+                         )
+                        <label class="lote-label">
+                            Tipo de habitación:
+                        </label>
+                        @(Html.Telerik().ComboBox()
+                            .Name("tipoHabs")
+                            .DataBinding(binding => binding.Ajax().Select("_GetTipoHabitaciones", "Habitacion", new { hotel_id = @id_hotel } ))
+                            .AutoFill(true)
+                            .Filterable(filtering =>
+                            {
+                                filtering.FilterMode(AutoCompleteFilterMode.StartsWith);
+                            })
+                            .HtmlAttributes(new { style = "width: 120px" })
+                            .HighlightFirstMatch(true)
+                            .Placeholder("Seleccione...")
+                            .ClientEvents(events => events.OnLoad("onComboBoxLoad"))
+                         )
+                        <label class="lote-label">
+                            Nro de habitaciones:
+                        </label>
+                        @(Html.Telerik().IntegerTextBox()
+                                .Name("nroHabs")
+                                .MinValue(0)
+                                .MaxValue(100)
+                                .Value(0)
+                            )
+                        </div>
+
+                        <br />
+                        <div id="button-registrar" align=center>
+                        @item.CustomCommandToolBarButton("regHabsBatch", "Registrar", null, null, true, GridButtonType.Text)
+                        </div>
+
+                        <br />
+                        <div id="reg botones" align=right>
+                        @item.SubmitChangesButton()
+                        </div>
+                        </text>); 
+                    }
+                )
         .Editable(editing => editing
-                            .Mode(GridEditMode.InForm)
+                            .Mode(GridEditMode.InCell)
                             .TemplateName("HabitacionViewTemplate")
                             .AdditionalViewData(new { id_hotel = @id_hotel }))
 
@@ -32,17 +91,19 @@
         .Columns(columns =>
         {
 
-            columns.Bound(p => p.ID);
-            columns.Bound(p => p.detalle);
-            columns.ForeignKey(p => p.tipoHabitacionID, new SelectList(tipo_habitaciones, "ID", "descripcion"));
-            columns.Bound(p => p.piso_nombre);
+            //columns.Bound(p => p.ID);
+            columns.Bound(p => p.piso_nombre).ReadOnly(true);
+            columns.Bound(p => p.detalle).ReadOnly(true);
+            columns.ForeignKey(p => p.tipoHabitacionID, new SelectList(tipo_habitaciones, "ID", "descripcion")).ReadOnly(true);
             columns.Command(commands =>
             {
-                commands.Edit().ButtonType(GridButtonType.Image);
-              //  commands.Delete().ButtonType(GridButtonType.Image);
+                commands.Delete().ButtonType(GridButtonType.Image);
             });
         })
-
+        .ClientEvents(clientEvents =>
+        {
+            clientEvents.OnCommand("onCommandHab");
+        })
         .Pageable()
         .Sortable()
 
@@ -54,8 +115,159 @@
             .Delete("Delete", "Habitacion", new { id_hotel = @id_hotel })
             .Update("Update", "Habitacion", new { id_hotel = @id_hotel })
         )
+
+        .Groupable(grouping => grouping.Groups(groups =>
+        {
+        })
+                    )
            )
 
     </div>
     <!-- Table Wrapper End -->
-</div><open>
+</div>
+
+
+<script type="text/javascript">
+
+    function onCommandHab(e) {
+        if (e.name == "regHabsBatch") {
+            var i = 0;
+            var pisosComboBox = $('#pisos').data('tComboBox');
+            var pisoID = pisosComboBox.value();
+            var piso_nombre = pisosComboBox.text().substring(7);
+            var nro_piso = parseInt(pisosComboBox.text().substring(1, 4),10);
+
+
+            var tipoHabComboBox = $('#tipoHabs').data('tComboBox');
+
+            var tipoHabText = tipoHabComboBox.text();
+            var tipoHabID = tipoHabComboBox.value();
+
+            var nroHabs = $('#nroHabs').val();
+
+            var habGrid = $('#HabitacionGrid').data("tGrid");
+
+            var ult_hab = obtenUltimaHabitacionDelPiso(habGrid, nro_piso);
+            
+            for (var i = 1; i <= nroHabs; i++) {
+                var nroHab_act = ult_hab + i;
+                var cod_Hab_act = obtieneCodHab(nroHab_act, nro_piso);
+                var hab_n = { pisoID : pisoID, piso_nombre : piso_nombre, detalle: 'Habitación ' + cod_Hab_act, tipoHabitacionID: tipoHabID, estado_habitacionID : 1};
+                habGrid.insertRow(hab_n);
+            }
+        }
+    }
+
+    function obtenUltimaHabitacionDelPiso(grid, nro_piso) {
+        var arrayHabs = grid.data;
+        var arrayHabsInserted = grid.insertedDataItems();
+        var arrayHabsCopy = [];
+        var i = 0;
+        /**/console.log("arrayHabs");
+        /**/console.log(arrayHabs);
+        arrayHabs.forEach(
+                function (element, index, array) {
+                    if (parseInt(element.detalle.substr(11, 3), 10) == nro_piso) {
+                        arrayHabsCopy[arrayHabsCopy.length] = element;
+                    }
+                }
+            );
+        arrayHabsInserted.forEach(
+                function (element, index, array) {
+                    /**/alert("arrayHabsInserted foreach");
+                    if (parseInt(element.detalle.substr(11, 3), 10) == nro_piso) {
+                        /**/alert("¡Habitacion encontrada!: " + element.detalle);
+                        arrayHabsCopy[arrayHabsCopy.length] = element;
+                    }
+                }
+            );
+
+        arrayHabsCopy.sort(function (a, b) {
+                                return a.detalle < b.detalle;
+                         });
+
+        /**/console.log("arrayHabsCopy");
+        /**/console.log(arrayHabsCopy);
+
+        if (arrayHabsCopy.length == 0) {
+            return 0;
+        }
+
+        var ult_hab_del_piso = parseInt((arrayHabsCopy[0].detalle.substring(14)), 10);
+        return ult_hab_del_piso;
+    }
+
+    function obtieneCodHab(nroHab_act, nro_piso) {
+        return zeroFill(nro_piso, 3) + zeroFill(nroHab_act, 2);
+    }
+
+    function zeroFill(number, width) {
+        width -= number.toString().length;
+        if (width > 0) {
+            return new Array(width + (/\./.test(number) ? 2 : 1)).join('0') + number;
+        }
+        return number + "";
+    }
+
+    function onComboBoxLoad() {
+        $(this).data("tComboBox").fill();
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+            /**/console.log(tipoHabComboBox);
+            /**/console.log(pisosComboBox);
+            /**/alert("nro_piso = " + nro_piso);
+            /**/alert("tipoHabText = " + tipoHabText);
+            /**/alert("tipoHabID = " + tipoHabID);
+
+            /**/alert("nroHabs = " + nroHabs);
+            /**/console.log(habGrid);
+
+            //var ult_hab = habGrid.total + habGrid.insertedDataItems().length - habGrid.deletedDataItems().length;
+            
+
+
+            /**/alert("nroHabs = " + nroHabs);
+            /**/alert("habGrid.total = " + habGrid.total);
+            /**/alert("habGrid.insertedDataItems().length = " + habGrid.insertedDataItems().length);
+            /**/alert("habGrid.deletedDataItems().length = " + habGrid.deletedDataItems().length);
+
+
+        /**/alert("arrayHabsCopy[0].detalle.substring(14) = " + arrayHabsCopy[0].detalle.substring(14));
+        /**/alert("ult_hab_del_piso = " + ult_hab_del_piso);
+
+                /**/console.log(arrayHabsCopy);
+                
+        /**/console.log(arrayHabs);
+        
+                        /**/alert("¡Habitacion encontrada!: " + element.detalle);
+*@

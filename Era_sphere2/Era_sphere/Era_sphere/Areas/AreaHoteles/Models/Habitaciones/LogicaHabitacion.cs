@@ -6,6 +6,7 @@ using Era_sphere.Generics;
 using System.ComponentModel;
 using Era_sphere.Areas.AreaHoteles.Models.Habitaciones;
 using Era_sphere.Areas.AreaReservas.Models;
+using Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
@@ -21,7 +22,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public List<Habitacion> retornarHabitacionesDeHotel(int id_hotel)
         {
-            var habitaciones = database_table.retornarTodos().Where(p => p.piso.hotel.ID == id_hotel);
+            var habitaciones = database_table.retornarTodos().Where(e => e.piso.hotel.ID == id_hotel);
             return habitaciones.ToList();
         }
 
@@ -56,7 +57,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public void eliminarHabitacion(int habitacion_id)
         {
-            database_table.eliminarElemento(habitacion_id);
+            database_table.eliminarElemento_logico(habitacion_id);
         }
 
         /*public List<Habitacion> buscarHabitacion(Habitacion habitacion_campos)
@@ -81,6 +82,23 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             return habs_de_hotel.Where(r => !habitaciones_malas.Contains(r.ID)).ToList();
             //TODO falta hacer la consulta de verdad
                          
+        }
+
+        public List<Piso> retornarPisos(int hotel_id)
+        {
+            return (new LogicaPiso()).retornarPisos2(hotel_id);
+        }
+
+        public IEnumerable<TipoHabitacion> retornarTiposHabitacion(int hotel_id)
+        {
+            return (new LogicaHotelXTipoHabitacionXTemporada()).retornarTiposHabitaciones(hotel_id);
+        }
+
+        public List<Habitacion> retornarHabitacionesDePiso(int pisoID)
+        {
+            List<Habitacion> hbs = database_table.retornarTodos();
+            hbs = hbs.Where(hb => hb.pisoID == pisoID).ToList();
+            return hbs;
         }
     }
 }

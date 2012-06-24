@@ -18,6 +18,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         //con esta función se retorna el nombre del hotel
         string retornaNombreHotel(int hotel_id);
         EraSphereContext context_publico { get; }
-        
+
+
+        void registrarPisosBatch(int idHotel, int nroPisos);
+
+        void eliminarHabsPiso(int p);
     }
 }

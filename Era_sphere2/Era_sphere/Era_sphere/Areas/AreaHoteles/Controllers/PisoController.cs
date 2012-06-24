@@ -65,13 +65,59 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         }
         [AcceptVerbs(HttpVerbs.Post)]
 
-        [GridAction]
-        public ActionResult Update(PisoView piso, int id_hotel)
-        {
+        //[GridAction]
+        //public ActionResult Update(PisoView piso, int id_hotel)
+        //{
 
-            logica_piso.modificarPiso(piso);
-            return View("IndexPiso", new GridModel(logica_piso.retornarPisosDeHotel(id_hotel)));
+        //    logica_piso.modificarPiso(piso);
+        //    return View("IndexPiso", new GridModel(logica_piso.retornarPisosDeHotel(id_hotel)));
      
+        //}
+
+        public ActionResult getHotel(int id)
+        {
+            var hotel = (new LogicaHotel()).retornarHotel(id);
+            return Json(new { hotel = hotel });
+        }
+
+        public ActionResult registrarPisosBatch(int idHotel,int nroPisos)
+        {
+            logica_piso.registrarPisosBatch(idHotel,nroPisos);
+            return Json(new { msg = "Hola Andre!"  });
+        }
+
+        [GridAction]
+        public ActionResult Update(int id_hotel, IEnumerable<PisoView> inserted, IEnumerable<PisoView> updated, IEnumerable<PisoView> deleted)
+        {
+            if (inserted != null)
+            {
+                foreach (var piso_view in inserted)
+                {
+                    if (TryUpdateModel(piso_view))
+                    {
+                        piso_view.id_hotel = id_hotel;
+                        logica_piso.agregarPiso(piso_view);
+                    }
+                }
+            }
+
+            if (updated != null)
+            {
+                foreach (var piso_view in updated)
+                {
+                    logica_piso.modificarPiso(piso_view); 
+                }
+            }
+
+            if (deleted != null)
+            {
+                foreach (var piso_view in deleted)
+                {
+                    logica_piso.eliminarPiso(piso_view.ID);
+                    logica_piso.eliminarHabsPiso(piso_view.ID);
+                }
+            }
+            return View("IndexPiso", new GridModel(logica_piso.retornarPisosDeHotel(id_hotel)));
         }
     }
 }

@@ -13,7 +13,7 @@ using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 {
-    public class Servicio : DBable, Costeable
+    public class Servicio : DBable//, Costeable
     {
         public Servicio() {
             eventoID = null;

@@ -59,10 +59,8 @@
 
 <script type="text/javascript">
     function onRowDataBound(e) {
-        //alert(e);
-        //console.log(e);
         if (e.dataItem.ID == 1) {
-            $(e.row).find('a.t-grid-delete').remove(); //remove Delete button
+            $(e.row).find('a.t-grid-delete').remove();
             $(e.row).find('a.t-grid-edit').remove();
         }
     }

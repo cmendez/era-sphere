@@ -9,27 +9,25 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 {
     public class HabitacionView
     {
-        [Required]
-        [DisplayName("Estado")]
-        public int estado_habitacionID { get; set; }
-
-        [Required]
-        [DisplayName("Detalle")]
-        [StringLength(50)]
-        public string detalle { get; set; }
-
         public int ID { get; set; }
 
         [DisplayName("Piso")]
         public int pisoID { get; set; }
+        [DisplayName("Piso")]
+        public string piso_nombre { get; set; }
 
         [Required]
         [DisplayName("Tipo de habitacion")]
         public int tipoHabitacionID { get; set; }
 
+        [Required]
+        [DisplayName("Habitación")]
+        [StringLength(50)]
+        public string detalle { get; set; }
 
-        [DisplayName("Piso")]
-        public string piso_nombre { get; set; }
+        [Required]
+        [DisplayName("Estado")]
+        public int estado_habitacionID { get; set; }
 
         public HabitacionView() { }
         public HabitacionView(Habitacion habitacion)

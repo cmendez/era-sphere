@@ -11,7 +11,7 @@ using Era_sphere.Generics;
 
 namespace Era_sphere.Areas.AreaHoteles.Models.HotelXProductoNM
 {
-    public class HotelXProductoView //: IValidatableObject
+    public class HotelXProductoView : IValidatableObject
     {
         public HotelXProductoView()
         {
@@ -79,17 +79,35 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXProductoNM
             };
         }
 
-        //public IEnumerable<ValidationResult>
-        //   Validate(ValidationContext validationContext)
-        //{
-        //    var field = new[] { "precio" };
+        public IEnumerable<ValidationResult>
+           Validate(ValidationContext validationContext)
+        {
+            var fieldpc = new[] { "precio" };
+            var fieldlp = new[] { "linea_prodID" };
+            var fieldp = new[] { "productoID" };
+            var fieldm = new[] { "monedaID" };
 
-        //    int nrep = (new EraSphereContext()).hxsxts.Count(hxthxt => hxthxt.hotelID == hotelID && hxthxt.servicioID == servicioID && hxthxt.temporadaID == temporadaID);
+            if (this.linea_prodID == 0)
+            {
+                yield return new ValidationResult("El campo Linea de producto es obligatorio", fieldlp);
+            }
 
-        //    if (1 <= nrep)
-        //    {
-        //        yield return new ValidationResult("Este servicio ya fue asignado un precio en esta temporada (contradictorio)", field);
-        //    }
-        //}
+            if (this.productoID == 0)
+            {
+                yield return new ValidationResult("El campo producto es obligatorio", fieldp);
+            }
+
+            if (this.monedaID == 0)
+            {
+                yield return new ValidationResult("El campo moneda es obligatorio", fieldm);
+            }
+
+            int nrep = (new EraSphereContext()).hxps.Count(hxp => hxp.hotelID == hotelID && hxp.productoID == productoID);
+
+            if (1 <= nrep)
+            {
+                yield return new ValidationResult("Este producto ya fue asignado un precio de venta (contradictorio)", fieldpc);
+            }
+        }
     }
 }

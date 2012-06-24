@@ -58,19 +58,65 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             return View("Index", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel( id_hotel )));
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        [GridAction]
-        public ActionResult Update(HabitacionView p , int id_hotel )
-        {
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //[GridAction]
+        //public ActionResult Update(HabitacionView p , int id_hotel )
+        //{
 
-            habitacion_logica.modificarHabitacion(p);
-            return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel( id_hotel )));
-        }
+        //    habitacion_logica.modificarHabitacion(p);
+        //    return View("HabitacionIndex", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel( id_hotel )));
+        //}
         /*[HttpPost]
         public ActionResult TiposHabitacionComboBox()
         {
             return Json(new SelectList(hotel_logica.retornarCiudades(id), "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }*/
+
+        [GridAction]
+        public ActionResult Update(int id_hotel, IEnumerable<HabitacionView> inserted, IEnumerable<HabitacionView> updated, IEnumerable<HabitacionView> deleted)
+        {
+            if (inserted != null)
+            {
+                foreach (var hab_view in inserted)
+                {
+                    if (TryUpdateModel(hab_view))
+                    {
+                        habitacion_logica.agregarHabitacion(hab_view);
+                    }
+                }
+            }
+
+            if (updated != null)
+            {
+                foreach (var hab_view in updated)
+                {
+                    habitacion_logica.modificarHabitacion(hab_view);
+                }
+            }
+
+            if (deleted != null)
+            {
+                foreach (var hab_view in deleted)
+                {
+                    habitacion_logica.eliminarHabitacion(hab_view.ID);
+                }
+            }
+            return View("IndexPiso", new GridModel(habitacion_logica.retornarHabitacionesViewDeHotel(id_hotel)));
+        }
+
+        [HttpPost]
+        public ActionResult _GetPisos(int hotel_id)
+        {
+            List<Piso> pss = habitacion_logica.retornarPisos(hotel_id);
+            return new JsonResult { Data = new SelectList(pss, "ID", "cod_con_descripcion") };
+        }
+
+        [HttpPost]
+        public ActionResult _GetTipoHabitaciones(int hotel_id)
+        {
+            IEnumerable<TipoHabitacion> thabs = habitacion_logica.retornarTiposHabitacion(hotel_id);
+            return new JsonResult { Data = new SelectList(thabs, "ID", "descripcion") };
+        }
         
     }
 }

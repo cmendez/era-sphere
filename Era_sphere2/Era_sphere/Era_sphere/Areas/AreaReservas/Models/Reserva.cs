@@ -14,7 +14,7 @@ using Era_sphere.Areas.AreaCargos.Models;
 
 namespace Era_sphere.Areas.AreaReservas.Models
 {
-    public class Reserva : DBable, Costeable
+    public class Reserva : DBable//, Costeable
     {
         [ForeignKey("estado")]
         public int estadoID { get; set; }

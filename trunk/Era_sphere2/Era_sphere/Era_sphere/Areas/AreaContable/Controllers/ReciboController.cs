@@ -28,8 +28,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         public ActionResult ReciboPDF(int reciboId, int hotelID) 
         {
             Recibo r = context.recibos.Find(reciboId);
-            //ViewData["hotelID"] = hotelID;
-            ViewBag.hotelID = hotelID;
+            r.auxID = hotelID;
             return this.ViewPdf("","ReciboPDF", r);
         }
     }

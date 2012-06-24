@@ -43,6 +43,22 @@ namespace Era_sphere.Areas.AreaReservas.Controllers
             return View("IndexReserva", new GridModel(reserva_logica.retornarReservasHotel(id)));
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult InsertJson(int hotel_id)
+        {
+            ReservaView reserva_view = new ReservaView();
+            int id = 0;
+            if (TryUpdateModel(reserva_view))
+            {
+                reserva_view.estadoID = 1;
+                reserva_view.hotelID = hotel_id;
+                Reserva reserva = reserva_view.deserializa(reserva_logica);
+                reserva_logica.registrarReserva(reserva);
+                id = reserva.ID;
+            }
+            return Json(new { reserva_id = id });
+        }
+
 
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]

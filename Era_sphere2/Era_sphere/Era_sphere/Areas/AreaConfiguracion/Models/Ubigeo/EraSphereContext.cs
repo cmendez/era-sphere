@@ -73,7 +73,6 @@ namespace Era_sphere.Generics
                 new Ciudad { nombre = "Yukón", pais = paises.Find(1) },
                 new Ciudad { nombre = "Nunavut", pais = paises.Find(1) },
 
-
                 new Ciudad { nombre = "Amazonas", pais = paises.Find(12) },
                 new Ciudad { nombre = "Áncash", pais = paises.Find(12) },
                 new Ciudad { nombre = "Apurímac", pais = paises.Find(12) },
@@ -98,13 +97,36 @@ namespace Era_sphere.Generics
                 new Ciudad { nombre = "San Martín", pais = paises.Find(12) },
                 new Ciudad { nombre = "Tacna", pais = paises.Find(12) },
                 new Ciudad { nombre = "Tumbes", pais = paises.Find(12) },
-                new Ciudad { nombre = "Ucayali", pais = paises.Find(12) }
+                new Ciudad { nombre = "Ucayali", pais = paises.Find(12) },
+
+                new Ciudad { nombre = "Nueva York", pais = paises.Find(2) },
+                new Ciudad { nombre = "Washington D.C.", pais = paises.Find(2) },
+                new Ciudad { nombre = "Distrito Federal", pais = paises.Find(3) },
+                new Ciudad { nombre = "Buenos Aires", pais = paises.Find(4) },
+                new Ciudad { nombre = "Rio de Janeiro", pais = paises.Find(6) },
+                new Ciudad { nombre = "Santiago", pais = paises.Find(7) },
+                new Ciudad { nombre = "Asunción", pais = paises.Find(11) },
+                new Ciudad { nombre = "Caracas", pais = paises.Find(15) },
+                new Ciudad { nombre = "La Habana", pais = paises.Find(21) }
+
             };
 
             foreach (Ciudad c in _ciudades) ciudades.Add(c);
             SaveChanges();
 
             var _provincias = new List<Provincia> {
+
+                //Nueva York
+                new Provincia { nombre = "Brooklyn", ciudad = ciudades.Find(39) },
+                //Washington
+                new Provincia { nombre = "Georgetown", ciudad = ciudades.Find(40) },
+                new Provincia { nombre = "Xochimilco", ciudad = ciudades.Find(41) },
+                new Provincia { nombre = "Palermo", ciudad = ciudades.Find(42) },
+                new Provincia { nombre = "Flamengo", ciudad = ciudades.Find(43) },
+                new Provincia { nombre = "Providencia", ciudad = ciudades.Find(44) },
+                new Provincia { nombre = "San Lorenzo", ciudad = ciudades.Find(45) },
+                new Provincia { nombre = "Sucre", ciudad = ciudades.Find(46) },
+                new Provincia { nombre = "La Habana Vieja", ciudad = ciudades.Find(47) },
 
                 //Lima
                 new Provincia { nombre = "Barranca", ciudad = ciudades.Find(28) },

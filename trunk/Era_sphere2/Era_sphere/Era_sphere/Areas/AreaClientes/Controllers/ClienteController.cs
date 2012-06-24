@@ -28,7 +28,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             Cliente cliente = cliente_logica.context.clientes.FirstOrDefault(x => x.usuario == user && x.password == x.password);
             if (cliente == null) return Json(new { ok = false, error = "El usuario o password no es el correcto" });
 
-            return Json(new { ok = true, cliente_id = cliente.ID, tipo_id = cliente.tipoID, mensaje = "wiiii", 
+            return Json(new { ok = true, puntos = cliente.puntos_cliente, cliente_id = cliente.ID, tipo_id = cliente.tipoID, error = "", 
                                 nombre = cliente.nombre + " " + cliente.apellido_materno + " " + cliente.apellido_paterno});
         }
 

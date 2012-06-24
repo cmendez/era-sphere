@@ -56,6 +56,12 @@
                     .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
                     .Ajax(true)
                     .Action("Nada", "CheckInCheckOut");
+                commands
+                    .Custom("VerRecibos")
+                    .Text("Ver recibos")
+                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
+                    .Ajax(true)
+                    .Action("Nada", "CheckInCheckOut");
             });
 
         }).Pageable().Sortable()
@@ -93,8 +99,14 @@
     </div></text>).Visible(false).Width(600).Height(400).Scrollable(true)
     )
     @(Html.Telerik().Window()
-    .Name("Cortecuenta").Title("CorteDeCuenta")
+    .Name("Cortecuenta").Title("Corte de cuenta")
     .Content(@<text><div id="cortecuentadiv">
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true)
+    )
+
+    @(Html.Telerik().Window()
+    .Name("VerRecibosWindow").Title("Ver recibos")
+    .Content(@<text><div id="verrecibosdiv">
     </div></text>).Visible(false).Width(600).Height(400).Scrollable(true)
     )
 <script type="text/javascript">
@@ -110,11 +122,14 @@
             if (e.name == "Check-Out") {
                 $("#CheckOut").data("tWindow").center().open();
                 $("#RegitrarCheckOut").load('@Url.Action("CheckOut", "../AreaReservas/CheckInCheckOut")' + '?reserva_id=' + e.response.reserva_id);
-                
+
             }
             else if (e.name == "RealizarCorteCuenta") {
-                $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : e.response.reserva_id, cancelable : false});
+                $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', { reservaID: e.response.reserva_id, cancelable: false });
                 $("#Cortecuenta").data("tWindow").center().open();
+            } else if (e.name == "VerRecibos") {
+                $("#verrecibosdiv").load('@Url.Action("VerRecibosReserva", "../AreaContable/Recibo")', { reservaID: e.response.reserva_id });
+                $("#VerRecibosWindow").data("tWindow").center().open();
             }
 
         }

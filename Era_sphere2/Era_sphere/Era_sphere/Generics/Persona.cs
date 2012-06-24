@@ -13,11 +13,12 @@ namespace Era_sphere.Generics
     {
         [DisplayName("Nombre")]
         public string nombre { get; set; }
-        [DisplayName("Apellido paterno")]    
+        [DisplayName("Apellido paterno")]
         public string apellido_paterno { get; set; }
-        [DisplayName("Apellido materno")]     
+        [DisplayName("Apellido materno")]
         public string apellido_materno { get; set; }
                 
+        [DisplayName("Documento de identidad")]
         public string documento_identidad { get; set; }
            
         public string correo_electronico { get; set; }
@@ -30,6 +31,7 @@ namespace Era_sphere.Generics
         
         public string celular { get; set; }
         
+        [DisplayName("Razon social")]
         public string razon_social { get; set; }
         
         public byte[] foto { get; set; }

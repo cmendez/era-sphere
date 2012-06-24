@@ -32,6 +32,7 @@ namespace Era_sphere.Areas.AreaClientes.Models
 
             public string habitacion_asignada { get; set; }
            // public int id_habitacion_asisgnada { get; set; }
+            [DisplayName("Puntos")]
             public int puntos_cliente { get; set; }
             public int numero_reservas { get; set; }
 

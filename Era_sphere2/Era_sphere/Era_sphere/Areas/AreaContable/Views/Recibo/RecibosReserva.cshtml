@@ -1,0 +1,37 @@
+﻿@using Era_sphere.Areas.AreaContable.Models.Recibo
+@using Era_sphere.Areas.AreaClientes.Models
+@using Era_sphere.Generics
+@using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
+@using Era_sphere.Areas.AreaHoteles.Models
+@using Era_sphere.Areas.AreaReservas.Models
+@model Reserva
+@using Telerik.Web.Mvc.UI  
+@{
+    EraSphereContext context = new EraSphereContext();
+    List<int> recibos = context.recibos.Where(x => x.reservaID == Model.ID).ToList().Select(y => y.ID).ToList();
+    int hotelID = Model.hotelID;
+    recibos.Insert(0, 0);
+}
+
+<script type="text/javascript">
+    function Cambio(e) {
+        var val = parseInt(e.value);
+        if (val != 0) {
+            $("#detalle_div").show();
+            $("#nada").hide();
+            $("#detalle_div").load('@Url.Action("ReciboIndex", "../AreaContable/Recibo")', {reciboId: val, hotelID: @hotelID});
+        }else{
+            $("#detalle_div").hide();
+            $("#nada").show();
+        }
+    }
+</script>
+<label>Seleccione el ID del recibo que quiere ver</label>
+@Html.Telerik().DropDownList().BindTo(new SelectList(recibos)).ClientEvents(e => e.OnChange("Cambio")).Name("selector")
+<div style="height:10px;"></div>
+
+<div id="detalle_div" style="display:none">
+</div>
+<div id="nada">
+    <label>Seleccione un recibo con ID mayor a 0</label>
+</div>

@@ -165,6 +165,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Areas\AreaContable\Controllers\Proveedor_x_ProductoController.cs" />
+    <Compile Include="Areas\AreaContable\Controllers\ReciboController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\ReciboLineaController.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\ComboEntregaItem.cs" />
     <Compile Include="Areas\AreaContable\Models\EntregaOC\EntregaOC.cs" />
@@ -1321,7 +1322,6 @@
     <Folder Include="Areas\AreaContable\Models\Views\Recibo\" />
     <Folder Include="Areas\AreaContable\Models\Views\Shared\" />
     <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
-    <Folder Include="Areas\AreaContable\Views\Recibo\" />
     <Folder Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
     <Folder Include="Areas\AreaEventos\Models\EventoXServicio\" />
@@ -1458,6 +1458,12 @@
     <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
     <Content Include="Areas\AreaContable\Views\AdministrarOC\ViewPage1.cshtml" />
     <Content Include="Areas\AreaContable\Views\EntregaOC\DetallesEOC.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Recibo\ReciboView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\AreaContable\Views\Recibo\RecibosReserva.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\BoletaCliente.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\FacturaCliente.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

@@ -34,8 +34,8 @@
             columns.Bound(p => p.descripcion);
             columns.Bound(p => p.puntos_requeridos);
             columns.Bound(p => p.descuento);
-            columns.Bound(p => p.fecha_inicio).Format("{0:dd/MM/yyyy}");
-            columns.Bound(p => p.fecha_fin).Format("{0:dd/MM/yyyy}");
+            columns.Bound(p => p.fecha_inicio).Format("{0:MM/dd/yyyy}");
+            columns.Bound(p => p.fecha_fin).Format("{0:MM/dd/yyyy}");
             columns.ForeignKey(p => p.relacionpromocionID, relacionespromocion, "ID", "descripcion");
             columns.Command(commands =>
             {

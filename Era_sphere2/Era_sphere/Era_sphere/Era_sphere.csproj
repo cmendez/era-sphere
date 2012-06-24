@@ -72,6 +72,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\EraSphereContext.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\InterfazLogicaPerfil.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\LogicaPerfil.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\Perfil.cs" />
+    <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\PerfilContext.cs" />
+    <Compile Include="Areas\AreaContable\Controllers\PagosController.cs" />
+    <Compile Include="Areas\AreaContable\Models\LogicaPagos.cs" />
+    <Compile Include="Areas\AreaContable\Models\Pagos\PagoTarjeta.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoServicioController.cs" />
     <Compile Include="Areas\AreaContable\Controllers\AdministrarOCController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\EraSphereContext.cs" />
@@ -463,6 +471,7 @@
     <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Web.config" />
+    <Content Include="Areas\AreaReportes\Views\Web.config" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\AdicionalViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\EventoAmbienteTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\EventoViewTemplate.cshtml" />
@@ -1254,6 +1263,14 @@
     <Folder Include="Areas\AreaCargos\Controllers\" />
     <Folder Include="Areas\AreaCargos\Views\Shared\" />
     <Folder Include="Areas\AreaConfiguracion\Models\Ambientes\" />
+    <Folder Include="Areas\AreaContable\Models\Views\Ordenes\" />
+    <Folder Include="Areas\AreaContable\Models\Views\Producto\" />
+    <Folder Include="Areas\AreaContable\Models\Views\Proveedores\" />
+    <Folder Include="Areas\AreaContable\Models\Views\Proveedor\" />
+    <Folder Include="Areas\AreaContable\Models\Views\Proveedor_x_Producto\" />
+    <Folder Include="Areas\AreaContable\Models\Views\Recibo\" />
+    <Folder Include="Areas\AreaContable\Models\Views\Shared\" />
+    <Folder Include="Areas\AreaContable\Views\Pagos\" />
     <Folder Include="Areas\AreaContable\Views\Proveedor_x_Producto\" />
     <Folder Include="Areas\AreaEmpleados\Models\AsistenciaEmpleado\" />
     <Folder Include="Areas\AreaEmpleados\Views\Shared\" />
@@ -1371,6 +1388,26 @@
     <Content Include="Areas\AreaContable\Views\EntregaOC\MantenimientoEOC.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesPagadasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\AdministrarOC\ResumenOC.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckInViewTemplate.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckOutViewTemplate.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Consulta\IndexConsulta.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Reserva\IndexReserva.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Reserva\ReservaHabitacionClienteView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelCliente\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelCliente\RepExcelClienteView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelEvento\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelEvento\RepExcelEventoView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelPromocion\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\RepExcelPromocion\RepExcelPromocionView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteCliente\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteCliente\ReporteClienteView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexFormReporteEmpleado.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEmpleado\IndexReporteEmpleado.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEvento\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReporteEvento\ReporteEventoView.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReportePromocion\Index.cshtml" />
+    <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Evento\CargarAmbiente.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Evento\EventoIndex.cshtml" />
@@ -1387,12 +1424,6 @@
     <Content Include="Areas\AreaEventos\Views\Shared\EventosPPagado.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\PagarEvento.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\PrecioServicio.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckInViewTemplate.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckOutViewTemplate.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Consulta\IndexConsulta.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Reserva\IndexReserva.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Reserva\ReservaHabitacionClienteView.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Shared\GridResultAcumulado.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Shared\GridResultConsulta.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Shared\EditorTemplates\ReservaViewTemplate.cshtml" />

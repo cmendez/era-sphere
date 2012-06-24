@@ -73,10 +73,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string celular {get; set;}
 
+        [Required]
         [DisplayName("Usuario")]
         [StringLength(28)]
         public string usuario { get; set;}
 
+        [Required]
         [DisplayName("Password")]
         [StringLength(28)]
         public string contrasenha { get; set; }

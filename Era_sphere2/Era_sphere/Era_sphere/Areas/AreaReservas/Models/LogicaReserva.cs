@@ -45,11 +45,13 @@ namespace Era_sphere.Areas.AreaReservas.Models
             }
             return res;
         }
+
         public void agregaRelacion(Reserva r, Habitacion h)
         {
             tabla_habitacion_x_reserva.agregarElemento(new HabitacionXReserva(r.ID, h.ID));
             List<HabitacionXReserva> aux = context.habitacion_x_reserva.ToList();
         }
+
         public void refrescaHabitaciones(List<int> hab_ids, int reserva_id)
         {
             Reserva r = context.Reservas.Find(reserva_id);
@@ -258,7 +260,10 @@ namespace Era_sphere.Areas.AreaReservas.Models
                     //ahora parece sin reserva en caso sea la unica reserva que tenga
                     eliminarReservaCliente(reserva.ID);
                     logica_cliente.cambiarEstadoAnularReserva(reserva.responsable_pagoID);
-                    logica_cliente.DecrementaNumeroReservas(reserva.responsable_pago); 
+                    reserva.responsable_pago.numero_reservas--;
+                    context.Entry(reserva.responsable_pago).State = EntityState.Modified;
+                    context.SaveChanges();
+
         }
 
 
@@ -326,6 +331,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
             habitacion_reserva.huespedes.Add(cliente);
             tabla_habitacion_x_reserva.modificarElemento(habitacion_reserva, habitacion_reserva.ID);
         }
+
         public void eliminaRelacionTriple(int id_cliente, HabitacionXReserva habitacion_reserva)
         {
             Cliente cliente = context.clientes.Find(id_cliente);
@@ -366,11 +372,13 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             tabla_servicio_x_reserva.agregarElemento(new ServicioXReserva { reservaID = reserva_id, servicioID = s.ID });
         }
+
         public void eliminaRelacionServicioXReserva(int servicio_id, int reserva_id)
         {
             ServicioXReserva x = context.servicioxreservas.First(w => w.reservaID == reserva_id && w.servicioID == servicio_id);
             tabla_servicio_x_reserva.eliminarElemento(x.ID);
         }
+
         public void anularServicio(int servicio_id)
         {
             Servicio s = context.servicios.Find(servicio_id);

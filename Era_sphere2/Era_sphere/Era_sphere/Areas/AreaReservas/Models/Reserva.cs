@@ -94,6 +94,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
                 ReciboLinea paguito = new ReciboLinea("Pago del adelanto", precio_derecho_reserva, 1, DateTime.Now, false);
                 registraReciboLinea(paguito);
             }
+
         }
 
      

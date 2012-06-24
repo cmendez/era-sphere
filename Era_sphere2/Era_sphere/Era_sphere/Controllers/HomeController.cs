@@ -18,7 +18,10 @@ namespace Era_sphere.Controllers
             return View();
         }
 
-
+        public ActionResult PageNotFound()
+        {
+            return View();
+        }
 
         [HttpPost]
         public JsonResult LoginResult(String user, String password)

@@ -74,8 +74,12 @@
         <div id="userbar">
 		    <div id="profile">
 				<div id="avatar">
+                    <!--
 					<img src="@Url.Content("~/Content/img/test_avatar.png")" alt="Avatar" height="44" />
-					<a href="#" id="unreadcount">12</a>
+                    -->
+					<img src="/Content/img/xurrepon.jpg" height="44"/>
+					
+                    <a href="#" id="unreadcount">12</a>
 				</div>
 				<div id="profileinfo">
 					<h3 id="username">Administrador</h3>
@@ -132,3 +136,8 @@
 
 </body>
 </html>
+
+<script type = "text/javascript">
+    $("#username").html(localStorage.getItem("nombrePerfil"));
+    $("#subline").html(localStorage.getItem("usuario"));
+</script>

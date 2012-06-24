@@ -16,6 +16,7 @@
     List<MonedaView> monedas = (List<MonedaView>)((ViewData["Monedas"]));
     double impuesto = h.pais.IGV == null ? 0.0 : h.pais.IGV.Value / 100.0;
     
+    
     string nombre = LogicaCliente.toString(c);
     List<string> tipos = new List<string>();
     tipos.Add("Boleta");
@@ -31,7 +32,7 @@
     var parcial = 0;
     var igv = @impuesto;
     var mini = @Model.Where(x => x.pagado == false).ToList().Count() > 0 ? 1 : 0;
-    
+    var tipo_cambios = @Html.Raw(Json.Encode(monedas))
     function Pagar() {
         if (dentro.length < mini) alert("Seleccione por lo menos un detalle a pagar");
         else {
@@ -46,10 +47,18 @@
             $("#division_div").show();
             $("#contado_text").val(monto);
             $("#tarjeta_text").val(0);
-           
+            
         }
     }
-
+    function actualizaValor(){
+            $("#impuesto").val(parcial * igv);
+            monto = parcial * (1 + igv);
+            $("#subtotal").val(parcial);
+            $("#pagar_box").val(monto);
+            var nuevo = 1;
+            if(tipo_cambios.length > 0) nuevo = tipo_cambios[monedaid -1].tc;
+            $("#cambio_box").val(monto * nuevo);
+    }
     function Modifica(id, precio) {
         var esta = false;
         var dentro2 = [];
@@ -64,10 +73,7 @@
                 dentro = dentro2;
                 parcial -= precio;
             }
-            $("#impuesto").val(parcial * igv);
-            monto = parcial * (1 + igv);
-            $("#subtotal").val(parcial);
-            $("#pagar_box").val(monto);
+            actualizaValor();
         }
    function cambioContado() {
         var contado_str = $("#contado_text").val();
@@ -149,7 +155,7 @@
         $("#TarjetaWindow").data("tWindow").close();
         ConfirmarPago2();
     }
-
+    var monedaid = 1;
 
     var temp = parseFloat($("#pagar_box").val());
 
@@ -166,6 +172,11 @@
     function ModificarCambioPagoTarjeta()
     {
         $("#tarjeta_text")=temp/parseFloat($("#Selectfacturadotarejeta").val());
+    }
+
+    function CambioTipoMoneda(e){
+        monedaid = parseInt(e.value);
+        actualizaValor();
     }
 
 </script>
@@ -222,7 +233,8 @@
         columns.Bound(x => x.precio_final);
     }
     ).Footer(false))
-
+<label>Todo en dolares</label>
+<br />
 <label>Subtotal: </label>
 <input type="text" readonly="readonly" id="subtotal" value="0" />
 <p />
@@ -232,35 +244,21 @@
 
 <label>Monto a pagar:</label>
 <input type="text" readonly="readonly" id="pagar_box" value="0"  /> 
-<select id="Selectfacturado" onclick="ModificarCambioFacturado()">
-@foreach (MonedaView m in monedas)
-{ 
-    <option value='"'+@m.tc+>@m.simbolo  (@m.descripcion)</option>
-} 
-</select>
 
 <button onclick="Pagar();">Realizar pago</button>
+
+<p />
+<input type="text" readonly="readonly" id="cambio_box" value="0" />
+@Html.Telerik().DropDownList().BindTo(new SelectList(monedas, "ID", "descripcion")).ClientEvents(e => e.OnChange("CambioTipoMoneda")).Name("CambioMonedaCombo")
 
 <div id="division_div" style="display:none">
     <div class="editor-label"> 
         <label>Al contado: </label> 
         <input type="text" id="contado_text" onchange="cambioContado();" />
-        <select id="Selectfacturadocontado" onclick="ModificarCambioPagoContado()">
-        @foreach (MonedaView m in monedas)
-        { 
-            <option value='"'+@m.tc+'"'>@m.simbolo  (@m.descripcion)</option>
-        } 
-        </select>
     </div>
     <div class="editor-label"> 
         <label>Con tarjeta: </label> 
         <input type="text" id="tarjeta_text" onchange="cambioTarjeta();" />
-        <select id="Selectfacturadotarejeta" onclick="ModificarCambioPagoTarjeta()"> 
-        @foreach (MonedaView m in monedas)
-        { 
-            <option value='"'+@m.tc+'"'>@m.simbolo  (@m.descripcion)</option>
-        } 
-        </select>
     </div>
     
         @Html.DropDownList("TipoPago", new SelectList(tipos))

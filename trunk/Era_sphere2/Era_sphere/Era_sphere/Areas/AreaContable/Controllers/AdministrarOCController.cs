@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Telerik.Web.Mvc;
 using Era_sphere.Areas.AreaContable.Models;
 using System.IO;
-using NPOI.HSSF.UserModel;
+//using NPOI.HSSF.UserModel;
 
 namespace Era_sphere.Areas.AreaContable.Controllers
 {
@@ -100,67 +100,67 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             return View("ReporteCompras");
         }
 
-        public ActionResult Export()
-        {            
+        //public ActionResult Export()
+        //{            
 
-            //Create new Excel workbook
-            var workbook = new HSSFWorkbook();
+        //    //Create new Excel workbook
+        //    var workbook = new HSSFWorkbook();
 
-            //Create new Excel sheet
-            var sheet = workbook.CreateSheet("Reporte de Compras");            
+        //    //Create new Excel sheet
+        //    var sheet = workbook.CreateSheet("Reporte de Compras");            
 
-            //(Optional) set the width of the columns
-            //sheet.SetColumnWidth(0, 10 * 256);
-            //sheet.SetColumnWidth(1, 50 * 256);
-            //sheet.SetColumnWidth(2, 50 * 256);
-            //sheet.SetColumnWidth(3, 50 * 256);
+        //    //(Optional) set the width of the columns
+        //    //sheet.SetColumnWidth(0, 10 * 256);
+        //    //sheet.SetColumnWidth(1, 50 * 256);
+        //    //sheet.SetColumnWidth(2, 50 * 256);
+        //    //sheet.SetColumnWidth(3, 50 * 256);
 
-            //Create a header row
-            var headerRow = sheet.CreateRow(0);
+        //    //Create a header row
+        //    var headerRow = sheet.CreateRow(0);
 
-            //Set the column names in the header row
-            headerRow.CreateCell(0).SetCellValue("Orden de Compra ID");
-            headerRow.CreateCell(1).SetCellValue("Hotel");
-            headerRow.CreateCell(2).SetCellValue("Proveedor");
-            headerRow.CreateCell(3).SetCellValue("Fecha Registro");
-            headerRow.CreateCell(4).SetCellValue("Fecha Entrega Total");
-            headerRow.CreateCell(5).SetCellValue("#Productos");
-            headerRow.CreateCell(6).SetCellValue("Estado Orden");
+        //    //Set the column names in the header row
+        //    headerRow.CreateCell(0).SetCellValue("Orden de Compra ID");
+        //    headerRow.CreateCell(1).SetCellValue("Hotel");
+        //    headerRow.CreateCell(2).SetCellValue("Proveedor");
+        //    headerRow.CreateCell(3).SetCellValue("Fecha Registro");
+        //    headerRow.CreateCell(4).SetCellValue("Fecha Entrega Total");
+        //    headerRow.CreateCell(5).SetCellValue("#Productos");
+        //    headerRow.CreateCell(6).SetCellValue("Estado Orden");
 
-            //(Optional) freeze the header row so it is not scrolled
-            sheet.CreateFreezePane(0, 1, 0, 1);
+        //    //(Optional) freeze the header row so it is not scrolled
+        //    sheet.CreateFreezePane(0, 1, 0, 1);
           
             
-            int max=logica.retornar_ordenes_compra().Count();
-            if (max == 0)
-                return Index();
+        //    int max=logica.retornar_ordenes_compra().Count();
+        //    if (max == 0)
+        //        return Index();
 
-            //Populate the sheet with values from the grid data
-            for (int i=1; i<max; i++)
-            {
-                //Create a new row
-                var row = sheet.CreateRow(i+1);
+        //    //Populate the sheet with values from the grid data
+        //    for (int i=1; i<max; i++)
+        //    {
+        //        //Create a new row
+        //        var row = sheet.CreateRow(i+1);
 
-                //Set values for the cells
-                row.CreateCell(0).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).ordenID);
-                row.CreateCell(1).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).hotel);
-                row.CreateCell(2).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).razon_proveedor);
-                row.CreateCell(3).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).fecha_registro.ToString());
-                row.CreateCell(4).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).fecha_llegada.ToString());
-                row.CreateCell(5).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).nro_productos);
-                row.CreateCell(6).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).estado_orden);
+        //        //Set values for the cells
+        //        row.CreateCell(0).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).ordenID);
+        //        row.CreateCell(1).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).hotel);
+        //        row.CreateCell(2).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).razon_proveedor);
+        //        row.CreateCell(3).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).fecha_registro.ToString());
+        //        row.CreateCell(4).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).fecha_llegada.ToString());
+        //        row.CreateCell(5).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).nro_productos);
+        //        row.CreateCell(6).SetCellValue(logica.retornar_ordenes_compra().ElementAt(i).estado_orden);
     
-            }
+        //    }
 
-            //Write the workbook to a memory stream
-            MemoryStream output = new MemoryStream();
-            workbook.Write(output);
+        //    //Write the workbook to a memory stream
+        //    MemoryStream output = new MemoryStream();
+        //    workbook.Write(output);
 
-            //Return the result to the end user
+        //    //Return the result to the end user
 
-            return File(output.ToArray(),   //The binary data of the XLS file
-                "application/vnd.ms-excel", //MIME type of Excel files
-                "ReporteCompras.xls");     //Suggested file name in the "Save as" dialog which will be displayed to the end user
-        }
+        //    return File(output.ToArray(),   //The binary data of the XLS file
+        //        "application/vnd.ms-excel", //MIME type of Excel files
+        //        "ReporteCompras.xls");     //Suggested file name in the "Save as" dialog which will be displayed to the end user
+        //}
     }
 }

@@ -249,7 +249,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
                     LogicaCliente logica_cliente = new LogicaCliente();
                     DateTime hoy = DateTime.Now.Date;
                     decimal devolucion = 0;
-                    if (hoy.Subtract(reserva.dia_creacion).Days < cadena.d_ant_ret)
+                    if (reserva.check_in.Value.Subtract(hoy).Days < cadena.d_ant_ret)
                     {
                         devolucion = reserva.precio_derecho_reserva * (1m - cadena.porc_ret / 100m);
                         ReciboLinea recibo = new ReciboLinea("Devolución de monto adelantado de reserva con monto retenido", -devolucion, 1, DateTime.Now, true);

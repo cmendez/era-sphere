@@ -38,9 +38,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             HotelXTipoHabitacionXTemporadaView htht_view = new HotelXTipoHabitacionXTemporadaView(id);
             if (TryUpdateModel(htht_view))
             {
-                if (htht_view.isValid())
-                    logicahtht.agregarTipoHabitacionXTemporada(id, htht_view);
-
+                logicahtht.agregarTipoHabitacionXTemporada(id, htht_view);
             }
             return View("Index", new GridModel(logicahtht.retornarTipoHabitacionsXTemporada(id)));
         }
@@ -81,7 +79,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         public JsonResult _GetCostoBase(int? tipohabitacionID)
         {
             List<decimal> cb = new List<decimal>();
-            cb.Add( (new EraSphereContext()).tipos_habitacion.Find(tipohabitacionID).costo_base );
+            decimal costo_base = logicahtht.retornarCostoBase(tipohabitacionID);
+            cb.Add(costo_base);
             return Json(new SelectList(cb), JsonRequestBehavior.AllowGet);
         }
        

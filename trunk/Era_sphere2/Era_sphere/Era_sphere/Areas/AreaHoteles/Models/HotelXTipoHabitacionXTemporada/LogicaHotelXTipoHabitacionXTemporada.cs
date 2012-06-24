@@ -44,6 +44,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
             return hthtvs;
         }
 
+        public List<HotelXTipoHabitacionXTemporada> retornarTipoHabitacionsXTemporada2(int hid)
+        {
+            List<HotelXTipoHabitacionXTemporada> hxthxts = database_table.retornarTodos();
+            hxthxts = hxthxts.Where(e => e.hotelID == hid).ToList();
+            return hxthxts;
+        }
+
         public void agregarTipoHabitacionXTemporada(int id, HotelXTipoHabitacionXTemporadaView hxthxt)
         {
             database_table.agregarElemento(hxthxt.deserializa());
@@ -51,7 +58,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
 
         public void eliminarTipoHabitacionXTemporada(int id, int tipoHabitacionXTemporada_id)
         {
-            database_table.eliminarElemento(tipoHabitacionXTemporada_id);
+            database_table.eliminarElemento_logico(tipoHabitacionXTemporada_id);
             return;
         }
 
@@ -81,6 +88,17 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
             }
             return thabs.Distinct();
             //return (List<TipoHabitacion>)thabs.Distinct();
+        }
+
+        public int contarDuplicados(int hotelID, int tipoHabitacionID, int temporadaID)
+        {
+            List<HotelXTipoHabitacionXTemporada> hxthxts = this.retornarTipoHabitacionsXTemporada2(hotelID);
+            return hxthxts.Count(e => e.tipoHabitacionID == tipoHabitacionID && e.temporadaID == temporadaID);
+        }
+
+        public decimal retornarCostoBase(int? tipohabitacionID)
+        {
+            return (new LogicaTipoHabitacion()).retornarCostoBase(tipohabitacionID);
         }
     }
 }

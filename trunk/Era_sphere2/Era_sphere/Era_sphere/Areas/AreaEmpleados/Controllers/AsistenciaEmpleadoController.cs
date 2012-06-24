@@ -43,10 +43,10 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
         }
 
         [GridAction]
-        public ActionResult Select(int id)
+        public ActionResult Select(string empleadoID, string s_asistencia)
         {
-            ViewBag.asistencias = asistencia_logica.retornarAsistencias(id);
-            return View("Index", new GridModel(asistencia_logica.retornarAsistencias(id)));
+            ViewBag.asistencias = asistencia_logica.retornarAsistencias(Int32.Parse(empleadoID));
+            return View("Index", new GridModel(asistencia_logica.retornarAsistencias(Int32.Parse(empleadoID))));
         }
         
         [HttpPost]

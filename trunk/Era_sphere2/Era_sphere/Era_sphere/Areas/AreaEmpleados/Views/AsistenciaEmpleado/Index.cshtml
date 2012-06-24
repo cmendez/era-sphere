@@ -56,9 +56,9 @@
     //var id = localStorage.getItem("idusuario");
     .DataBinding(dataBinding => dataBinding
     .Ajax()
-    .Select("Select", "AsistenciaEmpleado", new { id = idusuario })
+    .Select("Select", "AsistenciaEmpleado")
     )
-    .ClientEvents(events => events.OnCommand("Grid_onCommand"))
+    .ClientEvents(events => events.OnDataBinding("Grid_onDataBinding"))
     
     )
     </div>
@@ -79,17 +79,34 @@
 
     <script type = "text/javascript">
 
-   function Grid_onCommand(e) {
-    if (e.name == "Select") {
-        // pass additional data to the action method using e.data and e.dataItem
-        /*
-        e.data = $.extend(e.data, {
-            orderID: e.dataItem.OrderID;
-        });
-        */
-        alert("lol");
+    function Grid_onDataBinding(e) {
+        //var grid = $(this).data("tGrid");
+        var ID = "4";
+        var user = localStorage.getItem("idusuario");
+        var entrada = {
+            id: parseInt(user)
+        };
+        //alert(ID);
+      //  alert(user);
+        //alert(entrada);
+        e.data = {
+            // the key ("category") specifies the variable name of the action method which will contain the specified value
+            empleadoID: user,
+            s_asistencia: "PRUEBA XD"
+        };
+
+        //alert("lol");
+          /*  if (e.name == "Select") {
+                // pass additional data to the action method using e.data and e.dataItem
+                
+                e.data = $.extend(e.data, {
+                    //orderID: e.dataItem.OrderID;
+
+                });
+                
+                alert("lol");
+            }*/
     }
-}
     /*
     var user = localStorage.getItem("idusuario");
     var entrada = {
@@ -108,6 +125,11 @@
     */
 
     //$('#AsistenciasGrid').data('tGrid').ajaxRequest();
+
+    //var grid = $("#AsistenciasGrid").data("tGrid");
+
+// use the grid object - call its ajaxRequest method
+   // grid.ajaxRequest();
 
     $('#dialogEntrada').dialog({
         autoOpen: false,

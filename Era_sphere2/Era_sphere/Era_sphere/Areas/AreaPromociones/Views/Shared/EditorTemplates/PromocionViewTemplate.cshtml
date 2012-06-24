@@ -64,7 +64,7 @@
             @Html.Telerik().DatePickerFor(model => model.fecha_fin)
             @Html.ValidationMessageFor(model => model.fecha_fin)
         </div>
-        <div class="editor-label"> @Html.LabelFor(model => model.relacionpromocionID) </div>
+        <div class="editor-label"> @Html.LabelFor(model => model.hotelID) </div>
         @( Html.Telerik().ComboBox()
                     .Name("relacionpromocionID")
                     .BindTo(new SelectList(relacionespromocion, "ID", "descripcion"))

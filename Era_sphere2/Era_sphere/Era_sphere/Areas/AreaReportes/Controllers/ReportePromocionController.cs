@@ -41,7 +41,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                 //fecha_fin = p.fecha_fin;
                 //relacionpromocionID = p.relacionpromocionID;
 
-                ReportePromocion registro = new ReportePromocion(p.nombre, p.descripcion, p.puntos_requeridos, p.descuento, p.fecha_inicio, p.fecha_fin, p.relacionpromocionID);
+                ReportePromocion registro = new ReportePromocion(p.nombre, p.descripcion, p.puntos_requeridos, p.descuento, p.fecha_inicio, p.fecha_fin, p.hotelID);
                 listareportePromocion.Add(registro);
             }
             return this.ViewPdf("Reporte de Promociones", "ReportePromocionView", listareportePromocion);

@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "PromocionIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var relacionespromocion = (new EraSphereContext()).relacionespromocion.ToList();
+    var hoteles = (new EraSphereContext()).hoteles.ToList();
 }
 @using Era_sphere.Areas.AreaPromociones.Models
 @model IEnumerable<PromocionView>
@@ -36,7 +36,7 @@
             columns.Bound(p => p.descuento);
             columns.Bound(p => p.fecha_inicio).Format("{0:MM/dd/yyyy}");
             columns.Bound(p => p.fecha_fin).Format("{0:MM/dd/yyyy}");
-            columns.ForeignKey(p => p.relacionpromocionID, relacionespromocion, "ID", "descripcion");
+            columns.ForeignKey(p => p.hotelID, hoteles, "ID", "descripcion");
             columns.Command(commands =>
             {
                 commands.Edit().ButtonType(GridButtonType.Image);

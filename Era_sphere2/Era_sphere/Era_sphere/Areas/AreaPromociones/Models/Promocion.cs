@@ -28,7 +28,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         public DateTime fecha_fin { get; set; }
 
         [DisplayName("Ascociado a")]
-        public int relacionpromocionID { get; set; }
+        public int hotelID { get; set; }
 
         public virtual RelacionPromocion relacionpromocion { get; set; }
 

@@ -79,22 +79,19 @@
         @( Html.Telerik().ComboBox()
                     .Name("paisID")
                     .BindTo(new SelectList(paises, "ID", "nombre"))
-                    .Placeholder("Seleccione...")
                     .CascadeTo("ciudadID")
-                    .SelectedIndex(37)
-                )
+                    .SelectedIndex(0).Placeholder("Seleccione")
 
+                )
+                @Html.ValidationMessageFor(model => model.paisID)
 
         <div class="editor-label"> @Html.LabelFor(model => model.ciudadID) </div>
         @( Html.Telerik().ComboBox()
                     .Name("ciudadID")
-                    .Placeholder("Seleccione...")
                     .DataBinding(binding => binding.Ajax().Select("_GetComboBoxCiudades", "Cliente"))
-                    
-                    //.SelectedIndex(48)
-                    //.SelectedIndex(Model.paisID ==37 : ciudadID==37)
+                    .SelectedIndex(0)
                 )
-
+                @Html.ValidationMessageFor(model => model.ciudadID)
 
 
          <div class="editor-label">

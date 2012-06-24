@@ -50,6 +50,7 @@ namespace Era_sphere.Areas.AreaReservas
         public DateTime dia_creacion { get; set; }
 
         //[DisplayName("Tarjeta cliente")]
+        [DisplayName("Costo final")]
         public decimal costo_final { get; set; }
 
         public string documento_identidad { get; set; }
@@ -106,6 +107,7 @@ namespace Era_sphere.Areas.AreaReservas
                 servicios.Add(s);
                 
             }
+            costo_final = r.costo_final;
         }
 
 
@@ -125,7 +127,6 @@ namespace Era_sphere.Areas.AreaReservas
                 dias_estadia = this.dias_estadia,
                 dia_creacion = this.dia_creacion,
                 costo_inicial = this.costo_inicial,
-                costo_final = this.costo_final,
                 estadoID = this.estadoID,
                 estado = logica_reserva.context.estados_reserva.Find(this.estadoID),
                 hotelID=this.hotelID,

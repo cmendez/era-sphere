@@ -8,6 +8,7 @@
     int idHotel = (int)(ViewData["hotelID"]);
     int idCosteable = (int)(ViewData["idCosteable"]);
     int idCliente = (int)(ViewData["clienteID"]);
+    decimal costo_total = (decimal)(ViewData["costo_total"]);
     EraSphereContext context = new EraSphereContext();
     Cliente c = context.clientes.Find(idCliente);
     Hotel h = context.hoteles.Find(idHotel);
@@ -176,6 +177,9 @@
         ).Footer(false)
 
 )
+<div style="height:10px"></div>
+<label>Costo total hasta la fecha: </label>
+<input type="text" value="@costo_total" />
 <div style="height:10px"></div>
 <label> Sin pagar </label>
 @(Html.Telerik().Grid(Model.Where(p => p.pagado == false).ToList())

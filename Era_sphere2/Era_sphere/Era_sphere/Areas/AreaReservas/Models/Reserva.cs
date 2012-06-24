@@ -36,7 +36,20 @@ namespace Era_sphere.Areas.AreaReservas.Models
 
         public DateTime dia_creacion = DateTime.Now;
 
-        public decimal costo_final { get; set; }
+        public decimal costo_final
+        {
+            get
+            {
+                decimal impuesto;
+                try
+                {
+                    EraSphereContext context = new EraSphereContext();
+                    impuesto = (decimal)(context.hoteles.Find(this.hotelID).pais.IGV.Value);
+                }catch (Exception e) { impuesto = 0; }
+                return getReciboLineas().Where(x => x.pagado == true).ToList().Sum(x => x.precio_final) * (1 + impuesto);
+                
+            }
+        }
 
         public int dias_estadia { get; set; }
 

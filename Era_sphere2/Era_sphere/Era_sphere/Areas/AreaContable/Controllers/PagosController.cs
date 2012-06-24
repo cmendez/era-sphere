@@ -31,6 +31,8 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             Reserva r = logica.context.Reservas.Find(reservaID);
             ViewData["clienteID"] = r.responsable_pagoID;
             ViewData["hotelID"] = r.hotelID;
+            
+            ViewData["costo_total"] = r.costo_final;
             return PartialView("CorteDeCuenta", r.getReciboLineas());
         }
 

@@ -515,13 +515,13 @@
     <Content Include="Areas\AreaContable\Views\Shared\EntregaOCPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\HotelProveedorPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\ordenCompraPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesAceptadasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesAtendidasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesCanceladasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesPagadasPartial.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesRegistradasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Web.config" />
-    <Content Include="Areas\AreaContable\Views\Web.config" />
+    <Content Include="Areas\AreaContable\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\AreaEmpleados\Views\AsistenciaEmpleado\Index.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\CrearEmpleado.cshtml" />
     <Content Include="Areas\AreaEmpleados\Views\Empleado\Index.cshtml" />
@@ -535,12 +535,12 @@
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ServicioViewTemplate.cshtml" />
     <Content Include="Areas\AreaReportes\Views\Web.config" />
     <Content Include="Areas\AreaReservas\Views\Web.config" />
-    <Content Include="bin\EntityFramework.dll" />
-    <Content Include="bin\EntityFramework.xml" />
-    <Content Include="bin\Era_sphere.dll" />
-    <Content Include="bin\Era_sphere.pdb" />
-    <Content Include="bin\Telerik.Web.Mvc.dll" />
-    <Content Include="bin\Telerik.Web.Mvc.xml" />
+    <Content Include="Content\bin\EntityFramework.dll" />
+    <Content Include="Content\bin\EntityFramework.xml" />
+    <Content Include="Content\bin\Era_sphere.dll" />
+    <Content Include="Content\bin\Era_sphere.pdb" />
+    <Content Include="Content\bin\Telerik.Web.Mvc.dll" />
+    <Content Include="Content\bin\Telerik.Web.Mvc.xml" />
     <Content Include="Content\2012.1.214\Black\editor.png" />
     <Content Include="Content\2012.1.214\Black\imagebrowser.png" />
     <Content Include="Content\2012.1.214\Black\loading.gif" />
@@ -1480,14 +1480,12 @@
     <Content Include="Areas\AreaConfiguracion\Views\Servicios\ServiciosDeReservaIndex.cshtml" />
     <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
     <Content Include="Areas\AreaContable\Views\AdministrarOC\IndexAdministracion.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesAceptadasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesAtendidasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesCanceladasPartial.cshtml" />
-    <Content Include="Areas\AreaContable\Views\Shared\OrdenesRegistradasPartial.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\HotelXProducto\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\HotelXTipoHabitacionXTemporada\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXTipoHabitacionXTemporadaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Shared\OrdenesAceptadasPartial.cshtml" />
+    <None Include="Content\data\._.DS_Store" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ReciboLineaTemplate.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -1680,7 +1678,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>27810</DevelopmentServerPort>
+          <DevelopmentServerPort>52913</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

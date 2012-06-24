@@ -10,7 +10,7 @@
 
     function funcioncita(e) {
         console.log(e.name);
-
+        console.log("funcioncita");
         if (e.name == "Pagar") {
             $("#pagar-evento-div").load('@Url.Action("PagarEvento", "Evento")' + '?idEvento=' + e.response.idEvento);
             var detailModal = $("#PagarEvento").data("tWindow");
@@ -20,22 +20,30 @@
     }
 
     function ppgrilla(e) {
+        console.log("ffff");
         if (e.name == "Pagar") {
             $("#pagar-evento-div").load('@Url.Action("PagarEvento", "Evento")' + '?idEvento=' + e.response.idEvento);
             var detailModal = $("#PagarEvento").data("tWindow");
             detailModal.center().open();
         }
-        if (e.name = "Detalle Evento") {
-            $("#detalle-evento-div").load('@Url.Action("DetalleEventoNoEdit", "Evento", new {idhotel=idhotel})' + '?idEvento=' + e.response.idEvento);
-            var detailModal = $("#PagarEvento").data("tWindow");
+        if (e.name == "Detalles") {
+        console.log("idhotel "+ @idhotel);
+            $("#detalle-evento-div").load('@Url.Action("DetalleEventoNoEdit", "Evento")' + '?id=' + e.response.idEvento+"&idhotel="+@idhotel);
+            var detailModal = $("#DetalleEvento").data("tWindow");
             detailModal.center().open();
         }
     }
 
     function meCierro(e) {
+        console.log("mecierro")
         $("#EventoCreado").data("tGrid").ajaxRequest();
-        
+        $("#EventoPPagado").data("tGrid").ajaxRequest();
     }
+    function meCierro2(e){
+        console.log("mecierro2");
+        $("#EventoPPagado").data("tGrid").ajaxRequest();
+    }
+
 </script>
 
  @(Html.Telerik().Window().Name("PagarEvento")
@@ -57,8 +65,8 @@
         )
             .Modal(true)
             .Visible(false)
-            
-            .Width(700).Resizable().Draggable(true).Height(600))
+            .ClientEvents(events=>events.OnClose("meCierro"))
+            .Width(900).Resizable().Draggable(true).Height(600))
 
 <div class="titlebar">
         <h3>
@@ -92,7 +100,7 @@
                 commands.Custom("Detalle Evento")
                     .Text("Detalle Evento")
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
-                             .Action("DetalleEvento", "Evento", new { idhotel = idhotel });
+                    .Action("DetalleEvento", "Evento", new { idhotel = idhotel });
                 commands.Custom("Pagar")
                     .Text("Pagar").Ajax(true)
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))

@@ -3,8 +3,39 @@
     ViewBag.Title = "Recibolinea";
     int idEvento = ViewBag.idEvento;
     ViewBag.idEvento = idEvento;
+    Era_sphere.Areas.AreaEventos.Models.Evento.Evento evento = (new Era_sphere.Generics.EraSphereContext()).eventos.Find(idEvento);
+    int idHotel = evento.hotel;
+    //int clienteID = evento
 }
 @using Telerik.Web.Mvc.UI
+<script type="text/javascript">
+function ConfirmarPago() {
+        
+         $.ajax(
+                {
+                    url: '@Url.Action("PagarLineasEvento", "../AreaContable/Pagos")',
+                    traditional: true,
+                    data: {  clienteID : 1,
+                            eventoID: @idEvento },
+                    type: "POST",
+                    success: function (data) {
+                        //$("#Cortecuenta").data("tWindow").close();
+                        $("#recibo_evento_div").load('@Url.Action("ReciboEvento", "../AreaContable/Recibo")', {reciboId: data.recibo_id, hotelID: @idHotel});
+                        $("#ReciboEvento").data("tWindow").center().open();
+                    },
+                    async: false
+                }
+            );
+        
+    }
+</script>
+@(Html.Telerik().Window()
+    .Name("ReciboEvento").Title("Recibo")
+    .Content(@<text><div id="recibo_evento_div">
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true)
+    )
+
+    <div type="button"  onclick="ConfirmarPago()">GGGGG</div>
 
 <div class="titlebar">
         <h5>
@@ -44,5 +75,6 @@
             .Update("UpdateReciboLinea", "Evento", new { idEvento = idEvento })
             
         )
-)
+
 </div>
+

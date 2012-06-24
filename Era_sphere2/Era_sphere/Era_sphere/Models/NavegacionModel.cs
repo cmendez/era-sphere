@@ -94,40 +94,6 @@ namespace Era_sphere.Models
         void agregarConfiguracion() {
             List<SubLink> AreaConfiguracion = new List<SubLink>();
 
-            AreaConfiguracion.Add(new SubLink
-            {
-                Nombre = "Promociones",
-                Url = "/AreaPromociones/Promocion"
-            });
-
-
-            AreaConfiguracion.Add(new SubLink { 
-                Nombre = "Perfiles",
-                Url    = "/AreaConfiguracion/Perfiles"
-            });
-
-            AreaConfiguracion.Add(new SubLink { 
-                Nombre = "Monedas",
-                Url= "/AreaConfiguracion/Moneda"
-            });
-
-            AreaConfiguracion.Add(new SubLink { 
-                Nombre = "Fiscal",
-                Url = "/AreaConfiguracion/Fiscal"
-            });
-
-            AreaConfiguracion.Add(new SubLink
-            {
-                Nombre = "Tipos de Servicios",
-                Url = "/AreaConfiguracion/TipoServicio"
-            });
-
-            AreaConfiguracion.Add(new SubLink
-            {
-                Nombre = "Tipos de Pago",
-                Url = "/AreaConfiguracion/TipoDePago"
-            });
-
             AreaConfiguracion.Add(new SubLink()
             {
                 Nombre = "Cadena",
@@ -139,12 +105,56 @@ namespace Era_sphere.Models
                 Nombre = "Comodidades",
                 Url = "/AreaHoteles/Comodidades"
             });
+
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Fiscal",
+                Url = "/AreaConfiguracion/Fiscal"
+            });
+
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Monedas",
+                Url = "/AreaConfiguracion/Moneda"
+            });
+
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Perfiles",
+                Url = "/AreaConfiguracion/Perfiles"
+            });
+
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Promociones",
+                Url = "/AreaPromociones/Promocion"
+            });
+
+
             AreaConfiguracion.Add(new SubLink()
             {
 
                 Nombre = "Temporada",
                 Url = "/AreaConfiguracion/Temporada"
 
+            });
+
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Tipos de habitaciones",
+                Url = "/AreaHoteles/TipoHabitacion"
+            });
+
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Tipos de Pago",
+                Url = "/AreaConfiguracion/TipoDePago"
+            });
+
+            AreaConfiguracion.Add(new SubLink
+            {
+                Nombre = "Tipos de Servicios",
+                Url = "/AreaConfiguracion/TipoServicio"
             });
 
             AreaConfiguracion.Add(new SubLink()
@@ -155,11 +165,6 @@ namespace Era_sphere.Models
 
             });
 
-            AreaConfiguracion.Add(new SubLink
-            {
-                Nombre = "Tipos de habitaciones",
-                Url = "/AreaHoteles/TipoHabitacion"
-            } );
 
             
             menu.Add(
@@ -198,8 +203,27 @@ namespace Era_sphere.Models
 
             AreaReportes.Add(new SubLink
             {
-                Nombre = "Reportes Promociones",
-                Url = "/AreaReportes/ReportePromocion"
+                Nombre = "Reporte Asistencias",
+                Url = "/AreaReportes/ReporteEmpleado"
+            });
+
+            AreaReportes.Add(new SubLink
+            {
+                Nombre = "Reporte Excel Clientes",
+                Url = "/AreaReportes/RepExcelCliente"
+            });
+
+            AreaReportes.Add(new SubLink
+            {
+                Nombre = "Reporte Excel Eventos",
+                Url = "/AreaReportes/RepExcelEvento"
+            });
+
+
+            AreaReportes.Add(new SubLink
+            {
+                Nombre = "Reporte Excel Promo",
+                Url = "/AreaReportes/RepExcelPromocion"
             });
 
 
@@ -217,24 +241,10 @@ namespace Era_sphere.Models
 
             AreaReportes.Add(new SubLink
             {
-                Nombre = "Reporte Excel Promo",
-                Url = "/AreaReportes/RepExcelPromocion"
+                Nombre = "Reportes Promociones",
+                Url = "/AreaReportes/ReportePromocion"
             });
-            AreaReportes.Add(new SubLink
-            {
-                Nombre = "Reporte Excel Eventos",
-                Url = "/AreaReportes/RepExcelEvento"
-            });
-            AreaReportes.Add(new SubLink
-            {
-                Nombre = "Reporte Excel Clientes",
-                Url = "/AreaReportes/RepExcelCliente"
-            });
-            AreaReportes.Add(new SubLink
-            {
-                Nombre = "Reporte Asistencias",
-                Url = "/AreaReportes/ReporteEmpleado"
-            });
+
             menu.Add(
                 new Link()
                 {

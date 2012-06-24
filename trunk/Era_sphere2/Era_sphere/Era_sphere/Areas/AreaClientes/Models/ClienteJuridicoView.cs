@@ -71,9 +71,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
         public string ruc { get; set; }
 
         [DisplayName(@"Pais")]
+
+        [Required(ErrorMessage = "Especifique un pais")]
         public int paisID { get; set; }
 
         [DisplayName("Ciudad")]
+        [Range(1, 1000000, ErrorMessage = "Especifique una ciudad")]
         public int ciudadID { get; set; }
 
         //opcional

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -226,7 +226,14 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         private JsonResult _GetCiudades(int? paisID)
         {
             //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
-            List<Ciudad> cs = (new EraSphereContext()).paises.Find(paisID).ciudades.ToList();
+            List<Ciudad> cs = new List<Ciudad>();
+            try
+            {
+                cs = (new EraSphereContext()).paises.Find(paisID).ciudades.ToList();
+            }
+            catch (Exception e) { }
+            cs.Insert(0, (new EraSphereContext()).ciudades.Find(48));
+            cs.Add(new Ciudad { nombre = "Seleccione", ID = 0 });
             return Json(new SelectList(cs, "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }
 

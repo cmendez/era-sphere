@@ -26,7 +26,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         public int puntos_requeridos { get; set; }
 
         [Required]
-        [DisplayName("Descuento(%)")]
+        [DisplayName("Descuento (moneda)")]
         public int descuento { get; set; }
 
         [Required]
@@ -39,7 +39,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
 
         [Required]
         [DisplayName("Asociado a")]
-        public int relacionpromocionID { get; set; }
+        public int hotelID { get; set; }
         //[DisplayName("Relación de la promoción")]
         public string relacionpromocion_descripcion { get; set; }
 
@@ -77,7 +77,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
             descuento = promocion.descuento;
             fecha_inicio = promocion.fecha_inicio;
             fecha_fin = promocion.fecha_fin;
-            relacionpromocionID = promocion.relacionpromocionID;
+            hotelID = promocion.hotelID;
         }
 
         public Promocion deserializa(LogicaPromocion logica)
@@ -91,8 +91,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
                 descuento = this.descuento,
                 fecha_inicio = this.fecha_inicio,
                 fecha_fin = this.fecha_fin,
-                relacionpromocionID = this.relacionpromocionID,
-                relacionpromocion = logica.promocion_context.relacionespromocion.Find(relacionpromocionID)
+                hotelID = this.hotelID,
             };
 
         }

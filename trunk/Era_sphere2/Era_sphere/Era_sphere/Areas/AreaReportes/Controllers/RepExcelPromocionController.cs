@@ -33,7 +33,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
 
             foreach (Promocion p in promociones)
             {
-                ObjetoReportePromocion registro = new ObjetoReportePromocion(p.nombre, p.descripcion, p.puntos_requeridos, p.descuento, p.fecha_inicio, p.fecha_fin, p.relacionpromocionID);
+                ObjetoReportePromocion registro = new ObjetoReportePromocion(p.nombre, p.descripcion, p.puntos_requeridos, p.descuento, p.fecha_inicio, p.fecha_fin, p.hotelID);
                 listareportePromocion.Add(registro);
             }
             //

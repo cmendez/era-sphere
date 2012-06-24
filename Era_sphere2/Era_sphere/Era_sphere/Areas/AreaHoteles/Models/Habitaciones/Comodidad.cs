@@ -11,6 +11,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.Habitaciones
     public class Comodidad : DBable
     {
         [DisplayName("Descripcion")]
+        [StringLength(50)]
         public string descripcion { get; set; }
         //[ForeignKey("tipoHabitacion")]
         //public int ? tipoHabitacionID { get; set; }

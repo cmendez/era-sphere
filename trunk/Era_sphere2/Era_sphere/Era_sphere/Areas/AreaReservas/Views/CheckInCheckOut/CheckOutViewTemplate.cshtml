@@ -17,18 +17,13 @@
 <script type="text/javascript">
 
     function validaFecha() {
-        var dfecha_inicio = $("#FechaInicio").data("tDatePicker");
-        var dfecha_fin = $("#FechaFin").data("tDatePicker");
-        var format = '{0:MM/dd/yyyy}';
-        var inicio = (dfecha_inicio.value());
-        var fin = (dfecha_fin.value());
-
-        inicio = new Date($.telerik.formatString(format, inicio));
-        fin = new Date($.telerik.formatString(format, fin));
+        var dfecha_inicio = $("#fechaInicio").data("tDatePicker");
+        var dfecha_fin = $("#fechaFin").data("tDatePicker");
+        var inicio = new Date(dfecha_inicio.value());
+        var fin = new Date(dfecha_fin.value());
         if (fin <= inicio) {
-            fin.setDate(inicio.getDate() + 1);
-            hab_ids = [];
-            recargaAcumulado();
+            alert("Error: la fecha fin debe ser mayor a la fecha de inicio");
+            fin = new Date(inicio.getTime() + 86400000);
         }
         dfecha_fin.value(fin);
     }

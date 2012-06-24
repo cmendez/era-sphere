@@ -1,97 +1,139 @@
-﻿@{
-    ViewBag.Title = "Administrar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var id_hotel = (int)@ViewData["id"];
-    var razon_social = @ViewData["razon_hotel"];
-}
-
+﻿
 @using Era_sphere.Areas.AreaHoteles.Models
 @using Era_sphere.Areas.AreaEventos.Models
 @model IEnumerable<HotelView>
 @using Telerik.Web.Mvc.UI
 
-<div class="block big" style="position: relative">
-    <!-- Block Begin -->
-    <div class="titlebar">
-        <h3>
-            Acciones a administrar en : @razon_social
-        </h3>
+@{
+    ViewBag.Title = "Administrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var id_hotel = (int)@ViewData["id"];
+    var razon_social = @ViewData["razon_hotel"];
+    HotelView hotel = (HotelView)@ViewData["hotel"];
+}
+<style>
+  .navi .block_cont { height:200px;}  
+  .navi .block_cont a:link ,a:visited { text-decoration:none}
+  .navi .block_cont a:link , a:visited{ color: #3A5873 ;}
+  .navi .block_cont a:hover{ color: #71B7B5 ;}
+  
+</style>
+
+<div style="width:100%;" class="navi">
+ <div class='block small'>
+        <div class="titlebar">
+            <h3>
+                Informacion Hotel</h3>
+        </div>
+        <div class="block_cont" style = "font-variant:small-caps; font-size:14px;">
+        <ul>
+        <li> Razon Social : @hotel.razon_social </li>
+        <li> Hotel : @hotel.descripcion </li>
+        <li> Ciudad : @hotel.ciudad_nombre </li>
+        <li> Pais : @hotel.pais_nombre </li>
+        <li> @hotel.reg_id : @hotel.nroreg_id </li>
+        <li> Direccion  : @hotel.direccion </li>
+        <li> Telefono 1 : @hotel.telefono_1 </li>
+        <li> Telefono 2 : @hotel.telefono_2 </li>
+        </ul>
+        </div>
     </div>
-    Infraestructura
-    <div class="block_cont">
-        <p>@Html.ActionLink("Administrar Pisos", "Index", new { controller = "Piso" , id = @id_hotel },
-                            new { @class = "tipTop" }                      
-                        )
-
-        </p>
-        <p>@Html.ActionLink("Administrar Habitaciones", "Index",
-                            new { controller = "Habitacion" , id= @id_hotel}
-                            , new { @class = "tipTop"})
-        </p>
-        <p>@Html.ActionLink("Administrar Ambientes", "Index",
-                            new { controller = "Ambiente" , id= @id_hotel}
-                            , new { @class = "tipTop"})
-        </p>
+    <div class='block small'>
+        <div class="titlebar">
+            <h3>
+                Infraestructura</h3>
+        </div>
+        <div class="block_cont">
+        <ul>
+        <li> @Html.ActionLink("Administrar Pisos", "Index", new { controller = "Piso", id = @id_hotel },
+                            new { @class = "tipTop" }
+                        ) </li>
+        <li>@Html.ActionLink("Administrar Habitaciones", "Index",
+                            new { controller = "Habitacion", id = @id_hotel }
+                            , new { @class = "tipTop" }) </li>
+        <li> @Html.ActionLink("Administrar Ambientes", "Index",
+                            new { controller = "Ambiente", id = @id_hotel }
+                            , new { @class = "tipTop" }) </li>
+        </ul>
+        </div>
     </div>
-    Precios
-    <div class="block_cont">
-        <p>@Html.ActionLink("Precios de tipos de servicios", "Index", new { controller = "HotelXTipoServicioXTemporada" , id = @id_hotel },
+  
+    <div class='block small'>
+        <div class="titlebar">
+            <h3>
+                Eventos</h3>
+        </div>
+        <div class="block_cont">
+        <ul>
+          <li>@Html.ActionLink("Eventos", "Index", new { controller = "../AreaEventos/Evento", id = @id_hotel },
                             new { @class = "tipTop" }
                         )
-
-        </p>
-        <p>@Html.ActionLink("Precios de productos", "Index", new { controller = "HotelXProducto" , id = @id_hotel},
-                            new { @class = "tipTop" }
-                        )
-        </p>
-        <p>@Html.ActionLink("Precios de tipo de habitacion", "Index", new { controller = "HotelXTipoHabitacionXTemporada" , id = @id_hotel},
-                            new { @class = "tipTop" }
-                        )
-        </p>
+        </li>
+        </ul>
+        </div>
     </div>
-    Eventos
-    <div class="block_cont">
-
-        <p>@Html.ActionLink("Eventos", "Index", new { controller = "../AreaEventos/Evento" , id = @id_hotel },
+</div>
+<div class="navi">
+ <div class='block small'>
+        <div class="titlebar">
+            <h3>
+                Reserva</h3>
+        </div>
+        <div class="block_cont">
+        <ul>
+        <li>@Html.ActionLink("Gestionar reservas", "Index", new { controller = "../AreaReservas/Reserva", id = @id_hotel },
                             new { @class = "tipTop" }
                         )
-                        
-        </p>
+        </li>
+        <li>@Html.ActionLink("Consultar habitaciones disponibles", "Index", new { controller = "../AreaReservas/Consulta", ID = @id_hotel, partial = false },
+                            new { @class = "tipTop" }
+                        )
+        </li>
+        <li>@Html.ActionLink("Check-in y check-out", "Index", new { controller = "../AreaReservas/CheckInCheckOut", ID = @id_hotel, partial = false },
+                            new { @class = "tipTop" }
+                        )
+        </li>
+        </ul>
+        </div>
     </div>
-
-     Reservas
-    <div class="block_cont">
-
-        <p>@Html.ActionLink("Gestionar reservas", "Index", new { controller = "../AreaReservas/Reserva" , id = @id_hotel },
+    <div class='block small'>
+        <div class="titlebar">
+            <h3>
+                Orden de Compra </h3>
+        </div>
+        <div class="block_cont">
+        <ul>
+          <li>@Html.ActionLink("Registrar Orden de Compra", "Index", new { controller = "../AreaContable/OrdenCompra", id = @id_hotel },
                             new { @class = "tipTop" }
                         )
-                        
-        </p>
-        <p>@Html.ActionLink("Consultar habitaciones disponibles", "Index", new { controller = "../AreaReservas/Consulta" , ID = @id_hotel, partial = false },
+        </li>
+        <li>@Html.ActionLink("Administrar Ordenes de compra", "IndexAdministracion", new { controller = "../AreaContable/AdministrarOC", id = @id_hotel },
                             new { @class = "tipTop" }
                         )
-                        
-        </p>
-        <p>@Html.ActionLink("Check-in y check-out", "Index", new { controller = "../AreaReservas/CheckInCheckOut", ID = @id_hotel, partial = false },
-                            new { @class = "tipTop" }
-                        )
-                        
-        </p>
+        </li>
+        </ul>
+        </div>
     </div>
-
-      Ordenes de compra
-    <div class="block_cont">
-
-        <p>@Html.ActionLink("Registrar Orden de Compra", "Index", new { controller = "../AreaContable/OrdenCompra" , id = @id_hotel },
+     <div class='block small'>
+        <div class="titlebar">
+            <h3>
+                Precios</h3>
+        </div>
+        <div class="block_cont">
+        <ul>
+        <li>@Html.ActionLink("Precios de tipos de servicios", "Index", new { controller = "HotelXTipoServicioXTemporada", id = @id_hotel },
                             new { @class = "tipTop" }
                         )
-                        
-        </p>
-        <p>@Html.ActionLink("Administrar Ordenes de compra", "IndexAdministracion", new { controller = "../AreaContable/AdministrarOC" , id = @id_hotel},
+        </li>
+        <li>@Html.ActionLink("Precios de productos", "Index", new { controller = "HotelXProducto", id = @id_hotel },
                             new { @class = "tipTop" }
                         )
-                        
-        </p>
+        </li>
+        <li>@Html.ActionLink("Precios de tipo de habitacion", "Index", new { controller = "HotelXTipoHabitacionXTemporada", id = @id_hotel },
+                            new { @class = "tipTop" }
+                        )
+        </li>
+        </ul>
+        </div>
     </div>
-    <!-- Table Wrapper End -->
 </div>

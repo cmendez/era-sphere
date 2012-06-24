@@ -23,6 +23,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
             
             ViewData["id"] = id;
             ViewData["razon_hotel"] = logica_hotel.retornarHotel(id).razon_social;
+            ViewData["hotel"] = logica_hotel.retornarHotel(id);
             return View();
         }
     }

@@ -5,8 +5,23 @@
     
 }
 @using Era_sphere.Generics;
-
-@Html.LabelFor(Model=> Model.nombre)
+<h3> Detalles </h3>
+<ul>
+<li>
+Nombre : 
 @Html.DisplayTextFor(Model=>Model.nombre)
-
+</li>
+<li>
+Capacidad Maxima : 
+@Html.DisplayFor(Model => Model.capacidad_maxima)
+</li>
+<li>
+Detalle : 
+@Html.DisplayFor(Model => Model.detalle)
+</li>
+<li>
+Nro. Niveles : 
+@Html.DisplayFor(x => x.num_niveles)
+</li>
+</ul>
 

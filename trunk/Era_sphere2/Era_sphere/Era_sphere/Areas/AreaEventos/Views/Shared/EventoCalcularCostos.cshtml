@@ -4,6 +4,8 @@
     var costo = ViewBag.precio;
     var parcipante = ViewBag.participantes;
     var capacidad = ViewBag.capacidad;
+    Boolean is_full = ViewBag.is_full;
+    string x = "Capacidad Limite alcanzada";
 }
 <label>Costo :</label>
  @costo &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -11,3 +13,5 @@
  @parcipante &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
  <label>Capacidad :</label>
  @capacidad
+ &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+ @if (is_full) { @x }

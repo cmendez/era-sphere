@@ -436,12 +436,6 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
 
             return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
         }
-        public ActionResult DetalleEventoNoEdit(int id, int idhotel)
-        {
-            ViewBag.idhotel = idhotel;
-            ViewBag.idevento = id;
-            return View("EventoLlenarDatosNoEdit");
-        }}
+        }
         #endregion
     }
-}

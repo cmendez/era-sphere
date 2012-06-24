@@ -30,10 +30,11 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             ViewData["idCosteable"] = reservaID;
             Reserva r = logica.context.Reservas.Find(reservaID);
             ViewData["clienteID"] = r.responsable_pagoID;
+            ViewData["hotelID"] = r.hotelID;
             return PartialView("CorteDeCuenta", r.getReciboLineas());
         }
 
-        public JsonResult PagarLineas(int[] lineas_ids, int clienteID, string tipo, decimal monto_tarjeta, decimal monto_contado, decimal monto_total)
+        public JsonResult PagarLineas(int[] lineas_ids, int clienteID, string tipo, decimal monto_tarjeta, decimal monto_contado, decimal monto_total, int reservaID)
         {
             var recibos_lineas = logica.context.recibos_lineas.Where(x => lineas_ids.Contains(x.ID)).ToList();
             decimal puntosratio = logica.context.cadenas.Find(1).ptos_x_dolar;
@@ -57,9 +58,10 @@ namespace Era_sphere.Areas.AreaContable.Controllers
                 r.recibo = recibo;
                 r.reciboID = recibo.ID;
             }
-
+            recibo.reservaID = reservaID;
             logica.context.SaveChanges();
             return Json(new {ok = true, recibo_id = recibo.ID});
         }
+
     }
 }

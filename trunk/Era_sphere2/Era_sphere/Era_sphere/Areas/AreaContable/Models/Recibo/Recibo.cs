@@ -23,5 +23,8 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
         //0 es boleta y 1 es factura
         public int tipo { get; set; }
 
+        public int reservaID { get; set; }
+        public int eventoID { get; set; }
+
     }
 }

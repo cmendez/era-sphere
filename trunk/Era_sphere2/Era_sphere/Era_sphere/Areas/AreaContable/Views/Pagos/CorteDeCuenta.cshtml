@@ -2,12 +2,16 @@
 @using Telerik.Web.Mvc.UI
 @using Era_sphere.Areas.AreaContable.Models.Recibo
 @using Era_sphere.Areas.AreaClientes.Models;
+@using Era_sphere.Areas.AreaHoteles.Models;
 @model IEnumerable<ReciboLinea>
 @{
+    int idHotel = (int)(ViewData["hotelID"]);
     int idCosteable = (int)(ViewData["idCosteable"]);
     int idCliente = (int)(ViewData["clienteID"]);
     EraSphereContext context = new EraSphereContext();
     Cliente c = context.clientes.Find(idCliente);
+    Hotel h = context.hoteles.Find(idHotel);
+    double impuesto = h.pais.IGV == null ? 0.0 : h.pais.IGV.Value / 100.0;
     string nombre = LogicaCliente.toString(c);
     List<string> tipos = new List<string>();
     tipos.Add("Boleta");
@@ -20,6 +24,8 @@
 <script type="text/javascript">
     var dentro = [];
     var monto = 0;
+    var parcial = 0;
+    var igv = @impuesto;
     var mini = @Model.Where(x => x.pagado == false).ToList().Count() > 0 ? 1 : 0;
     function Pagar() {
         if (dentro.length < mini) alert("Seleccione por lo menos un detalle a pagar");
@@ -47,11 +53,14 @@
 
             if (!esta) {
                 dentro.push(id);
-                monto += precio;
+                parcial += precio;
             } else {
                 dentro = dentro2;
-                monto -= precio;
+                parcial -= precio;
             }
+            $("#impuesto").val(parcial * igv);
+            monto = parcial * (1 + igv);
+            $("#subtotal").val(parcial);
             $("#pagar_box").val(monto);
         }
    function cambioContado() {
@@ -94,11 +103,14 @@
                     data: { lineas_ids: dentro, clienteID : @idCliente, tipo: $("#TipoPago").val(),
                             monto_tarjeta: parseFloat($("#tarjeta_text").val()),
                             monto_contado: parseFloat($("#contado_text").val()),
-                            monto_total: monto},
+                            monto_total: monto,
+                            reservaID: @idCosteable},
                     type: "POST",
                     success: function (data) {
                         se_pago = true;
                         $("#Cortecuenta").data("tWindow").close();
+                        $("#recibo_div").load('@Url.Action("ReciboIndex", "../AreaContable/Recibo")', {reciboId: data.recibo_id, hotelID: @idHotel});
+                        $("#ReciboWindow").data("tWindow").center().open();
                     },
                     async: false
                 }
@@ -134,6 +146,12 @@
 
 <label>Pago a nombre de: </label>
 <input type="text" readonly="readonly" value=@nombre />
+
+@(Html.Telerik().Window()
+    .Name("ReciboWindow").Title("Recibo")
+    .Content(@<text><div id="recibo_div">
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true)
+    )
 
 @(Html.Telerik().Window()
     .Name("TarjetaWindow").Title("Pago con tarjeta")
@@ -175,6 +193,13 @@
         columns.Bound(x => x.precio_final);
     }
     ).Footer(false))
+
+<label>Subtotal: </label>
+<input type="text" readonly="readonly" id="subtotal" value="0" />
+<p />
+<label>IGV: </label>
+<input type="text" readonly="readonly" id="impuesto" value="0" />
+<p />
 
 <label>Monto a pagar:</label>
 <input type="text" readonly="readonly" id="pagar_box" value="0" />

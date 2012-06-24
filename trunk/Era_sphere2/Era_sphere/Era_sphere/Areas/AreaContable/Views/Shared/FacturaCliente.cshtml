@@ -1,0 +1,16 @@
+﻿@using Era_sphere.Areas.AreaClientes.Models
+@model Cliente
+@{
+    ViewBag.Title = "FacturaCliente";
+}
+
+
+    <div class="editor-label"> @Html.LabelFor(model => model.razon_social) 
+    <div class="editor-label"> @Html.DisplayFor(model => model.razon_social) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => model.documento_identidad) : <label>@Model.tipo_documento.descripcion</label></div>
+    <div class="editor-label"> @Html.DisplayFor(model => model.ruc) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => model.puntos_cliente) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => model.puntos_cliente) </div>
+    <br />

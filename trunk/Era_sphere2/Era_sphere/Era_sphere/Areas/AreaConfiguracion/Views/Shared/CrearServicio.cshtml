@@ -1,4 +1,6 @@
 ﻿@using Era_sphere.Areas.AreaConfiguracion.Models.Servicios
+@using Era_sphere.Areas.AreaReservas.Models
+@using Era_sphere.Areas.AreaHoteles.Models
 @using Era_sphere.Generics
 @using Telerik.Web.Mvc.UI
 @model ServicioView
@@ -6,6 +8,10 @@
     EraSphereContext context = new EraSphereContext();
     var tipos = context.tipo_servicios.ToList();
     bool edit = (bool)(ViewData["edit"]);
+    LogicaReserva l = new LogicaReserva();
+    int reservaID = (int)(ViewData["reservaID"]);
+    List<Habitacion> habs = l.habitacionesDeReserva(reservaID);
+    habs.Add(new Habitacion { detalle = "Ninguno" });
 }
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -24,7 +30,8 @@
             campo3 : $("#campo3").val(),
             es_precio_fijado: $("#es_precio_fijado").is(":checked") ? true : false, 
             precio_fijado: parseFloat($("#precio_fijado").val()),
-            precio_normal: parseFloat($("#precio_normal").val())
+            precio_normal: parseFloat($("#precio_normal").val()),
+            lugar: $("#lugar").val()
         };
         if(servicio.tipo_servicioID == ""){
          servicio = null;
@@ -92,6 +99,9 @@
 <div class="block big" style="position: relative">
     <label>Servicio:</label>
 
+    <div class="editor-label"> @Html.LabelFor(model => model.lugar) </div>
+    <div class="editor-field"> @Html.DropDownListFor(model => model.lugar, new SelectList(habs, "detalle", "detalle"))</div>
+
     <div class="editor-label"> @Html.LabelFor(model => model.tipo_servicioID) </div>
     <div class="editor-field">
         @{Html.Telerik().ComboBoxFor(model => model.tipo_servicioID).BindTo(new SelectList(tipos, "ID", "nombre")).Placeholder("Seleccione...").SelectedIndex(0).ClientEvents(events =>
@@ -117,7 +127,14 @@
     
     <div id="repeticion" style="display:none">
         <div class="editor-label">@Html.LabelFor(model => model.repeticiones)</div>
-        @{(Html.Telerik().IntegerTextBoxFor(model => model.repeticiones).MinValue(1).MaxValue(100).Value(1)).Enable(false).Render();}
+        @{
+            if (Model == null){
+                (Html.Telerik().IntegerTextBoxFor(model => model.repeticiones).MinValue(1).MaxValue(100).Value(1)).Enable(false).Render();
+            }else{
+                (Html.Telerik().IntegerTextBoxFor(model => model.repeticiones).MinValue(1).MaxValue(100)).Enable(false).Render();
+                
+            }
+         }
     </div>
     
     <div id="campo_1" style="display:none">
@@ -137,10 +154,12 @@
     </div>
 
     <div id="precio_normal_div">
+        <label> Este es el precio base por unidad especificado por temporada </label>
         <div class="editor-label"> @Html.LabelFor(model => model.precio_normal)</div>
         <div class="editor-field"> @Html.TextBoxFor(model => model.precio_normal, new { @readonly = "readonly" }) </div>
     </div>
     <div id="precio_fijado_div">
+        <label> Marque el checkbox si desea un costo fijo por todo el servicio</label>
         <div class="editor-label"> @Html.LabelFor(model => model.es_precio_fijado)</div>
         <div class="editor-field"> @Html.CheckBoxFor(model => model.es_precio_fijado) </div>
         <div class="editor-label"> @Html.LabelFor(model => model.precio_fijado)</div>

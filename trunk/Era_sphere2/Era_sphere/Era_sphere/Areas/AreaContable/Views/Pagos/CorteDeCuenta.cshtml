@@ -20,9 +20,15 @@
 <script type="text/javascript">
     var dentro = [];
     var monto = 0;
+    var mini = @Model.Where(x => x.pagado == false).ToList().Count() > 0 ? 1 : 0;
     function Pagar() {
-        if (dentro.length == 0) alert("Seleccione por lo menos un detalle a pagar");
+        if (dentro.length < mini) alert("Seleccione por lo menos un detalle a pagar");
         else {
+            if(mini == 0){
+                se_pago = true;
+                $("#Cortecuenta").data("tWindow").close();
+                return;
+            }
             var res = confirm("Esta seguro del pago?");
             if (!res) return;
             $('.check').attr("disabled", true);
@@ -143,6 +149,7 @@
     .DataKeys(keys => keys.Add(cc => cc.ID))
     .Columns(columns =>
         {
+            columns.Bound(x => x.lugar);
             columns.Bound(x => x.detalle);
             columns.Bound(x => x.unidades);
             columns.Bound(x => x.precio_final);
@@ -162,6 +169,7 @@
                     <input class="check" type="checkbox" value="@item.ID " title="checkedLineas" onclick="Modifica(@item.ID, @item.precio_final);"/>
                 </text>)
                 .Title("").Width(36).HtmlAttributes(new { style = "text-align:center" });
+        columns.Bound(x => x.lugar);
         columns.Bound(x => x.detalle);
         columns.Bound(x => x.unidades).Title("Unidades/Dias");
         columns.Bound(x => x.precio_final);

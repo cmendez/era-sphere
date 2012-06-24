@@ -18,7 +18,7 @@
     function nuevoServicioDeReserva(_reserva_id) {
         servicio = null;
         reserva_id = _reserva_id;
-        $("#servicio_form").load('@Url.Action("Crear", "Servicios")');
+        $("#servicio_form").load('@Url.Action("Crear", "Servicios")', {reservaID : reserva_id});
         $("#ServicioForm").data("tWindow").center().open();  
     }
     function registraNuevo(e) {
@@ -37,7 +37,7 @@
     function completadoWi(e) {
 
         if (e.name == "Mostrar") {
-            $("#servicio_form").load('@Url.Action("Mostrar", "Servicios")', { servicio_id: e.response.servicio_id },
+            $("#servicio_form").load('@Url.Action("Mostrar", "Servicios")', { servicio_id: e.response.servicio_id, reservaID : @Model.ID },
                 function (data) {
                     
                 }
@@ -73,12 +73,16 @@
             columns.Bound(p => p.detalle);
             columns.ForeignKey(p => p.tipo_servicioID, new SelectList(tipos_servicios, "ID", "nombre"));
             columns.Bound(p => p.precio_final);
+            columns.Bound(p => p.lugar);
             columns.Command(commands =>
             {
                 commands.Delete().ButtonType(GridButtonType.Image);
                 commands.Custom("Mostrar")
                     .Text("Mostrar")
-                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("servicio_id"))
+                    .DataRouteValues(route => {
+
+                        route.Add(o => o.ID).RouteKey("servicio_id");
+                    })
                     .Ajax(true)
                     .Action("Nada", "Servicios");
             }).Width(160);

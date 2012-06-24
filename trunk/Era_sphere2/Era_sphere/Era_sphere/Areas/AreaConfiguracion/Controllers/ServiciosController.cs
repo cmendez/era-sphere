@@ -51,16 +51,18 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
-        public ActionResult Crear()
+        public ActionResult Crear(int reservaID)
         {
             ViewData["edit"] = false;
+            ViewData["reservaID"] = reservaID;
             return PartialView("CrearServicio");
         }
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         [GridAction]
-        public ActionResult Mostrar(int servicio_id)
+        public ActionResult Mostrar(int servicio_id, int reservaID)
         {
             ViewData["edit"] = true;
+            ViewData["reservaID"] = reservaID;
             return PartialView("CrearServicio", servicios_logica.retornarServicio(servicio_id)); 
         }
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]

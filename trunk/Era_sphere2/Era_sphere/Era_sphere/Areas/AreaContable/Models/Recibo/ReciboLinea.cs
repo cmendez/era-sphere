@@ -35,6 +35,9 @@ namespace Era_sphere.Areas.AreaContable.Models.Recibo
         public bool de_evento { get; set; }
         [DisplayName("Precio final")]
         public decimal precio_final { get; set; }
+        [DisplayName("Lugar")]
+        public string lugar { get; set; }
+
         public ReciboLinea(string detalle, decimal precio_final, int Tipo, DateTime fecha, bool pagado, int unidades=1, int puntos = 0)
         {
             this.detalle = detalle;

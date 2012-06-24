@@ -16,13 +16,14 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
     {
         #region atributos
 
-        public int clienteID { get; set; }
+        
         public DateTime fecha_inicio { get; set; }        
         public string nombre { get; set; }
         public string dni { get; set; }
         public decimal precio_total { get; set; }        
         public int num_participantes { get; set; }
         public decimal pagado { get; set; }
+        
 
         //[ForeignKey("hotel")]
         public int hotel { get; set; }
@@ -88,6 +89,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         }
         public int getPagadorID()
         {
+            int clienteID=1;
             string tipo = this.detalle.Substring(this.detalle.LastIndexOf(',') + 2);
             string documento = this.detalle.Substring(this.detalle.LastIndexOf(' ') + 1);
             int tipo_persona, tipo_documentoID;

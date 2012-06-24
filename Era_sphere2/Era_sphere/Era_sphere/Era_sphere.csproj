@@ -499,7 +499,6 @@
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedor\IndexProveedor.cshtml" />
     <Content Include="Areas\AreaContable\Views\Proveedor\ProductosProveedor.cshtml" />
-    <Content Include="Areas\AreaContable\Views\ReciboLinea\IndexReciboLinea.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenCompraViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenLineaViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\EditorTemplates\OrdenViewTemplate.cshtml" />
@@ -1492,6 +1491,8 @@
     <Content Include="Areas\AreaEventos\Views\Shared\EventoAmbienteViewNoEdit.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoLlenarDatosNoEdit.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteViewNoEdit.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EventoServicioViewNoEdit.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\MontosEventos.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

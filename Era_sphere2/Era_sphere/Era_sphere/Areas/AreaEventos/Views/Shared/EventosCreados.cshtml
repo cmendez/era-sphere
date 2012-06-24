@@ -7,20 +7,18 @@
 @using Telerik.Web.Mvc.UI
 
 <script type="text/javascript">
-
+    
     function funcioncita(e) {
-        console.log(e.name);
-        console.log("funcioncita");
+        
         if (e.name == "Pagar") {
             $("#pagar-evento-div").load('@Url.Action("PagarEvento", "Evento")' + '?idEvento=' + e.response.idEvento);
             var detailModal = $("#PagarEvento").data("tWindow");
             detailModal.center().open();
         }
-
     }
 
     function ppgrilla(e) {
-        console.log("ffff");
+        
         if (e.name == "Pagar") {
             $("#pagar-evento-div").load('@Url.Action("PagarEvento", "Evento")' + '?idEvento=' + e.response.idEvento);
             var detailModal = $("#PagarEvento").data("tWindow");
@@ -39,10 +37,7 @@
         $("#EventoCreado").data("tGrid").ajaxRequest();
         $("#EventoPPagado").data("tGrid").ajaxRequest();
     }
-    function meCierro2(e){
-        console.log("mecierro2");
-        $("#EventoPPagado").data("tGrid").ajaxRequest();
-    }
+
 
 </script>
 

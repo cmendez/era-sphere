@@ -51,13 +51,11 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         {
 
             EventoView evento_view = new EventoView();
-
             if (TryUpdateModel(evento_view))
             {
                 evento_view.estadoID = 1;
                 evento_view.Hotel = id_hotel;
                 evento_logica.agregarEvento(evento_view);
-
             }
 
             return View("EventoIndex", new GridModel(evento_logica.retornarEventos(id_hotel)));
@@ -385,6 +383,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         public ActionResult MontosEvento(int idEvento)
         {
             EventoView evento = (new LogicaEvento()).retornarEvento(idEvento);
+            ViewBag.idEvento = idEvento;
             ViewBag.precio_total = evento.precio_total;
             ViewBag.deuda = evento.precio_total - evento.pagado;
             ViewBag.pagado = evento.pagado;

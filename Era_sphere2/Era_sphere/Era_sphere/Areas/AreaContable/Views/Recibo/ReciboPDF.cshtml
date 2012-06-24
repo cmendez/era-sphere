@@ -61,9 +61,37 @@ else
 }
 else
 {
+     
+        
+    if (cliente.tipoID == 1)
+    {
+    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre) </div>
+        <div class="editor-label"> @Html.DisplayFor(model => cliente.nombre) </div>
+        <br />
+        <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_paterno) </div>
+        <div class="editor-label"> @Html.DisplayFor(model => cliente.apellido_paterno) </div>
+        <br />
+        <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_materno) </div>
+        <div class="editor-label"> @Html.DisplayFor(model => cliente.apellido_materno) </div>
+    }
+    else
+    {
+        <div class="editor-label"> @Html.LabelFor(model => cliente.razon_social) </div>
+        <div class="editor-label"> @Html.DisplayFor(model => cliente.razon_social) </div>
+    }
     
+    
+        <br />
+        <div class="editor-label"> Ruc:</div>
+        <div class="editor-label"> @Html.DisplayFor(model => cliente.ruc) </div>
+        <br />
+        <div class="editor-label"> @Html.LabelFor(model => cliente.puntos_cliente) </div>
+        <div class="editor-label"> @Html.DisplayFor(model => cliente.puntos_cliente) </div>
+        <br />
+    
+       
     //factura
-    <div class="editor-label"> @Html.LabelFor(model => cliente.razon_social) </div>
+   @* <div class="editor-label"> @Html.LabelFor(model => cliente.razon_social) </div>
     <div class="editor-label"> @Html.DisplayFor(model => cliente.razon_social) </div>
     <br />
     <div class="editor-label"> @Html.LabelFor(model => cliente.documento_identidad) : <label>@cliente.tipo_documento.descripcion</label></div>
@@ -71,7 +99,7 @@ else
     <br />
     <div class="editor-label"> @Html.LabelFor(model => cliente.puntos_cliente) </div>
     <div class="editor-label"> @Html.DisplayFor(model => cliente.puntos_cliente) </div>
-    <br />
+    <br />*@
 }
 
 
@@ -94,9 +122,9 @@ else
           </td>
       </tr>
       @{
-           var OddColor = "#DDEEEE";
-           var evenColor = "#EEFFFF";
-           var Odd = OddColor;
+          var OddColor = "#DDEEEE";
+          var evenColor = "#EEFFFF";
+          var Odd = OddColor;
        }
        @foreach (ReciboLinea l in lineas)
        {
@@ -121,7 +149,7 @@ else
            {
                Odd = OddColor;
            }
-   
+
        }
    </table>
 

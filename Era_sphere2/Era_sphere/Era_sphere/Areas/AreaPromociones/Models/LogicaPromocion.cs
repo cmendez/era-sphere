@@ -16,16 +16,20 @@ namespace Era_sphere.Areas.AreaPromociones.Models
             database_table = new DBGenericQueriesUtil<Promocion>(promocion_context, promocion_context.promociones);
         }
 
-        public List<Promocion> retornarpromociones(int puntos) {
-            List<Promocion> r = new List<Promocion>();
+        public List<PromocionView> retornarpromociones(int puntos)
+        {
+            List<Promocion> promociones = database_table.retornarTodos();
+            List<PromocionView> promociones_view = new List<PromocionView>();
 
-            foreach (Promocion p in promocion_context.promociones) 
+
+            foreach (Promocion promocion in promocion_context.promociones) 
             {
-                if (p.puntos_requeridos <= puntos) { 
-                    r.Add(p);
+                if (promocion.puntos_requeridos <= puntos)
+                {
+                    promociones_view.Add(new PromocionView(promocion));
                 }
             }
-            return r;
+            return promociones_view;
         }
         
 

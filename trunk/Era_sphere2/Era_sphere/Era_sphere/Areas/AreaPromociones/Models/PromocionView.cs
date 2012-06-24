@@ -26,7 +26,7 @@ namespace Era_sphere.Areas.AreaPromociones.Models
         public int puntos_requeridos { get; set; }
 
         [Required]
-        [DisplayName("Descuento (moneda)")]
+        [DisplayName("Descuento (dolares)")]
         public int descuento { get; set; }
 
         [Required]

@@ -4,6 +4,7 @@
 @using Era_sphere.Areas.AreaClientes.Models;
 @using Era_sphere.Areas.AreaHoteles.Models;
 @using Era_sphere.Areas.AreaConfiguracion.Models.Fiscal;
+@using Era_sphere.Areas.AreaPromociones.Models;
 @model IEnumerable<ReciboLinea>
 @{
     int idHotel = (int)(ViewData["hotelID"]);
@@ -15,8 +16,9 @@
     Hotel h = context.hoteles.Find(idHotel);
     List<MonedaView> monedas = (List<MonedaView>)((ViewData["Monedas"]));
     double impuesto = h.pais.IGV == null ? 0.0 : h.pais.IGV.Value / 100.0;
-    
-    
+    DateTime hoy = DateTime.Now.Date;
+    List<Promocion> aux = context.promociones.ToList();
+    List<PromocionView> promociones = context.promociones.Where(x => x.hotelID == idHotel).ToList().Where(z => z.fecha_inicio <= hoy && z.fecha_fin >= hoy).ToList().Select(q => new PromocionView(q)).ToList();
     string nombre = LogicaCliente.toString(c);
     List<string> tipos = new List<string>();
     tipos.Add("Boleta");
@@ -32,7 +34,8 @@
     var parcial = 0;
     var igv = @impuesto;
     var mini = @Model.Where(x => x.pagado == false).ToList().Count() > 0 ? 1 : 0;
-    var tipo_cambios = @Html.Raw(Json.Encode(monedas))
+    var tipo_cambios = @Html.Raw(Json.Encode(monedas));
+    var promociones = @Html.Raw(Json.Encode(promociones));
     function Pagar() {
         if (dentro.length < mini) alert("Seleccione por lo menos un detalle a pagar");
         else {
@@ -178,7 +181,26 @@
         monedaid = parseInt(e.value);
         actualizaValor();
     }
+    var promocionid = 0;
+    function CambioPromocion(e){
+        promocionid = e.value;
+    }
 
+    function AgregarPromocion(e){
+        if(promocionid == 0) alert("Seleccione una promocion");
+        else{
+            $.ajax({
+                    url: '@Url.Action("AgregarPromocion", "../AreaReservas/Reserva")',
+                    data: { promocionID : promocionid, reservaID : @idCosteable},
+                    type: "POST",
+                    success: function (data) {
+                         $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', { reservaID: @idCosteable, cancelable: false });
+                    },
+                    async: true
+            });
+        }
+    }
+   
 </script>
 
 <label>Pago a nombre de: </label>
@@ -216,7 +238,20 @@
 <label>Costo total hasta la fecha: </label>
 <input type="text" value="@costo_total" />
 <div style="height:10px"></div>
+
+<label>Promociones</label>
+@Html.Telerik().DropDownList().BindTo(new SelectList(promociones, "ID", "nombre")).Name("PromocionesCombo").Placeholder("Seleccione").ClientEvents(e => e.OnChange("CambioPromocion"))  
+<br />
+<label> Puntos: </label>
+<input type="text" readonly="readonly" id="puntos_prom" value="0"/>
+<label> Descuento: </label> 
+<input type="text" readonly="readonly" id="descuento_prom" value="0"/>
+<br />
+<button onclick="AgregarPromocion();">AgregarPromocion</button>
+<br />
+
 <label> Sin pagar </label>
+<br />
 @(Html.Telerik().Grid(Model.Where(p => p.pagado == false).ToList())
     .Name("GridPorPagar")
     .Localizable("es-ES")

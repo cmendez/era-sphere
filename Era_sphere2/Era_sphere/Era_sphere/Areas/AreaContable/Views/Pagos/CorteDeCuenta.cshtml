@@ -119,12 +119,13 @@
     }
     function sirveInt(x, tam) {
         if (x.length != tam) return false;
-        for (i in x) if (x[i] < '0' || x[i] > '9') return false;
+        for(i = 0; i < tam; i++)
+         if (x.charAt(i) < '0' || x.charAt(i) > '9') {return false;}
         return true;
     }
     function Validar() {
-        var num_tarjeta = $("#num_tarjeta").val();
-        var pin = $("#pin").val();
+        var num_tarjeta = $("#num_tarjeta").val().toString();
+        var pin = $("#pin").val().toString();
       
         if (!sirveInt(num_tarjeta, 16)) {
             alert("El numero de tarjeta debe ser un numero de 16 digitos sin espacios");

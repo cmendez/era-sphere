@@ -13,7 +13,7 @@
     int hotelID = (int)(ViewData["hotelID"]);
     Hotel h = context.hoteles.Find(hotelID);
     string id = "" + Model.ID;
-    while (id.Length < 6) id = "0" + id;
+    while (id.Length < 6){ id = "0" + id;}
 }
 
 <span style="font-weight:bold">

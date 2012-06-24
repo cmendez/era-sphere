@@ -8,6 +8,7 @@ using System.ComponentModel;
 using Era_sphere.Generics;
 using Era_sphere.Areas.AreaReservas.Models;
 using Era_sphere.Areas.AreaReservas.Models.Consultas;
+using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 
 namespace Era_sphere.Areas.AreaClientes.Models
 {
@@ -375,8 +376,13 @@ namespace Era_sphere.Areas.AreaClientes.Models
             }
             catch (Exception e) { return 0; }
         }
-  
 
+
+        public List<Ciudad> retornarCiudades(int pais_id)
+        {
+            List<Ciudad> res = (new EraSphereContext()).paises.Find(pais_id).ciudades.ToList();
+            return res;
+        }
 
     }
 }

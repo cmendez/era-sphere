@@ -208,5 +208,29 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             return Json(new { id = clienteId });
         }
 
+        [HttpPost]
+        public ActionResult CiudadesComboBox(int? pais_id)
+        {
+            int id = pais_id ?? -1;
+            
+            return Json(new SelectList(cliente_logica.retornarCiudades(id), "ID", "nombre"), JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public JsonResult _GetComboBoxCiudades(int? paisID)
+        {
+            return _GetCiudades(paisID);
+        }
+
+        private JsonResult _GetCiudades(int? paisID)
+        {
+            //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
+            List<Ciudad> cs = (new EraSphereContext()).paises.Find(paisID).ciudades.ToList();
+            return Json(new SelectList(cs, "ID", "nombre"), JsonRequestBehavior.AllowGet);
+        }
+
+
+
     }
 }

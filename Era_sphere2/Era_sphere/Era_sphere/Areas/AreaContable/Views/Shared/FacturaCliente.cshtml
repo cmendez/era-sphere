@@ -4,11 +4,26 @@
     ViewBag.Title = "FacturaCliente";
 }
 
-
-    <div class="editor-label"> @Html.LabelFor(model => model.razon_social) 
-    <div class="editor-label"> @Html.DisplayFor(model => model.razon_social) </div>
+@if (Model.tipoID == 1)
+{
+<div class="editor-label"> @Html.LabelFor(model => model.nombre) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => model.nombre) </div>
     <br />
-    <div class="editor-label"> @Html.LabelFor(model => model.documento_identidad) : <label>@Model.tipo_documento.descripcion</label></div>
+    <div class="editor-label"> @Html.LabelFor(model => model.apellido_paterno) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => model.apellido_paterno) </div>
+    <br />
+    <div class="editor-label"> @Html.LabelFor(model => model.apellido_materno) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => model.apellido_materno) </div>
+}
+else
+{
+    <div class="editor-label"> @Html.LabelFor(model => model.razon_social) </div>
+    <div class="editor-label"> @Html.DisplayFor(model => model.razon_social) </div>
+}
+
+
+    <br />
+    <div class="editor-label"> Ruc:</div>
     <div class="editor-label"> @Html.DisplayFor(model => model.ruc) </div>
     <br />
     <div class="editor-label"> @Html.LabelFor(model => model.puntos_cliente) </div>

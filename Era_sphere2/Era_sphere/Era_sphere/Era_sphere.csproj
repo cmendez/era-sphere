@@ -1488,6 +1488,12 @@
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXProductoViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\HotelXTipoHabitacionXTemporada\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXTipoHabitacionXTemporadaViewTemplate.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ReciboLineaTemplate.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\AreaEventos\Views\Shared\EventoAmbienteViewNoEdit.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EventoLlenarDatosNoEdit.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteViewNoEdit.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <None Include="Content\data\._css" />
     <Content Include="Areas\AreaHoteles\Views\Hotel\IndexHotel.cshtml" />

@@ -79,7 +79,7 @@
         @( Html.Telerik().ComboBox()
                     .Name("paisID")
                     .BindTo(new SelectList(paises, "ID", "nombre"))
-                    .SelectedIndex(0)
+                    .SelectedIndex(36)
 
                 )
                 @Html.ValidationMessageFor(model => model.paisID)
@@ -88,7 +88,7 @@
         @( Html.Telerik().ComboBox()
                     .Name("ciudadID")
                     .BindTo(new SelectList(ciudades,"ID","nombre"))
-                    .SelectedIndex(0)
+                    .SelectedIndex(47)
                 )
                 @Html.ValidationMessageFor(model => model.ciudadID)
 

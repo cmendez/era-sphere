@@ -101,8 +101,11 @@ namespace Era_sphere.Areas.AreaReservas
             pisoID = r.pisoID;
             habitaciones = logica.getHabitaciones(r.ID);
             servicios = new List<ServicioView>();
-            foreach(var s in logica.getServicios(r.ID))
+            foreach (var s in logica.getServicios(r.ID))
+            {
                 servicios.Add(s);
+                
+            }
         }
 
 

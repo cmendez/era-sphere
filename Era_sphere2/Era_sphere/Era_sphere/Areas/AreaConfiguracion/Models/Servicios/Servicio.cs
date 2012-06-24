@@ -62,7 +62,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         public void generaReciboLineas()
         {
-            ReciboLinea linea = new ReciboLinea(tipo_servicio.nombre + ": " + this.descripcion, precio_final, 0, DateTime.Now, false);
+            ReciboLinea linea = new ReciboLinea("Servicio " + tipo_servicio.nombre + ": " + this.descripcion, precio_final, 0, DateTime.Now, false, repeticiones);
+            linea.lugar = lugar == null ? "Ninguno" : lugar;
             registraReciboLinea(linea);
 
         }
@@ -78,6 +79,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         public int? eventoID { get; set; }
         public Evento evento { get; set; }
 
+        public string lugar { get; set; }
 
         public string getEspacioRentableNombre()
         {

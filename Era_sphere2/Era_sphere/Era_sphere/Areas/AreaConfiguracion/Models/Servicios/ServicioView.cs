@@ -47,6 +47,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
         [DisplayName("Precio final")]
         public decimal precio_final { get; set; }
 
+        [DisplayName("Habitacion")]
+        public string lugar { get; set; }
 
         public ServicioView() { }
 
@@ -63,11 +65,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             es_precio_fijado = servicio.es_precio_fijado;
             precio_fijado = servicio.precio_fijado;
             precio_normal = servicio.precio_normal;
-
+            
             eventoID = servicio.eventoID ?? -1;
 
             precio_final = servicio.precio_final;
-
+            lugar = servicio.lugar;
         }
 
         public Servicio deserializa(LogicaServicios logica)
@@ -86,6 +88,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
                 precio_fijado = this.precio_fijado,
                 es_precio_fijado = this.es_precio_fijado,
                 precio_normal = this.precio_normal,
+                lugar = this.lugar,
             };
             if (eventoID > 0)
                 s.eventoID = eventoID;

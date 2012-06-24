@@ -34,6 +34,7 @@
             columns.Bound(o => o.producto).Width(350).ReadOnly(true);
             columns.Bound(o => o.cantidad).Width(35).Title("Cant. Ordenada");
             columns.Bound(o => o.cantidad_recibida).Width(35).Title("Cant. Recibida");
+            columns.Bound(o => o.unidad_medida);
             columns.Bound(o => o.precio_unitario).Width(50).ReadOnly(true).Title("PU").Format("{0:c}");
             columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total");
             columns.Bound(o => o.precio_boleta).Width(120).ReadOnly(true)
@@ -92,11 +93,12 @@
                 col.Bound(o => o.entregaID);
                 col.Bound(o => o.fecha_entrega);
                 col.Bound( o => o.linea);
-
+                col.Bound(o => o.unidad_medida);
                 col.Bound(o => o.precio_unitario);
                 col.Bound(o => o.producto);
                 col.Bound(o => o.productoID);
                 col.Bound(o => o.precio_total);
+                col.Bound(o => o.cantidad);
                 col.Bound(o => o.monto_entrega);
                 
             })

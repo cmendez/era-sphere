@@ -19,9 +19,11 @@ namespace Era_sphere.Areas.AreaContable.Models
             precio_unitario = (decimal)ocl.precio_unitario;
             ID = ocl.ID;
             precio_boleta = ocl.precio_recibidos;
+            unidad_medida = ocl.producto.producto.unidadMedidad;
             //falta incluir la colección de ENTREGAS
         }
-
+        [DisplayName("Unidad")]
+        public string unidad_medida { get; set; }
         public int ID { get; set; }
 
         [DisplayName("Precio Unitario")]

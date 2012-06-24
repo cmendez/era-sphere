@@ -8,7 +8,6 @@
 <script type="text/javascript">
 
     function mantenimiento_complete(e) {
-        alert(e.name);
         if (e.name == "detallesEOC") {
             var oc = e.response.eoc;
             var url = '@Url.Action("editarEntregaOC", "EntregaOC")' + '/?id_eoc=' + oc.entregaID;

@@ -122,6 +122,7 @@
             columns.Bound(o => o.productoID).Width(10).ReadOnly(true).Title("Id");
             columns.Bound(o => o.producto).Width(250).ReadOnly(true);
             columns.Bound(o => o.cantidad).Width(50).Title("Cant.");
+            columns.Bound( o => o.unidad_medida);
             columns.Bound(o => o.precio_unitario).Format("{0:c}").Width(50).ReadOnly(true).Title("PU");
             columns.Bound(o => o.precio_total).Format("{0:c}").Width(120).ReadOnly(true).Title("Total")
                 .Aggregate(aggregates => aggregates.Sum())

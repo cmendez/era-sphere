@@ -27,7 +27,7 @@ namespace Era_sphere.Areas.AreaContable.Models
         }
         public void eliminarProducto(int producto_id)
         {
-            database_table.eliminarElemento(producto_id);
+            database_table.eliminarElemento_logico(producto_id);
             return;
         }
         public List<ProductoView> retornarProductos()
@@ -47,7 +47,7 @@ namespace Era_sphere.Areas.AreaContable.Models
 
         public List<Producto> retornarProductos2()
         {
-            return producto_context.productos.ToList();
+            return producto_context.productos.Where( e => ( e.eliminado == false ) ).ToList();
         }
 
 

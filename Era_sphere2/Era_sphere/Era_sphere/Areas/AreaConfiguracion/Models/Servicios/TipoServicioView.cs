@@ -18,9 +18,11 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         [Required]
         [DisplayName("Nombre")]
+        [MaxLength(30)]
         public string nombre { get; set; }
         
         [DisplayName("Descripcion")]
+        [MaxLength(30)]
         public string descripcion { get; set; }
 
         [DisplayName("Campo Adicional 1")]

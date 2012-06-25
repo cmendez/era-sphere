@@ -53,10 +53,10 @@ namespace Era_sphere.Areas.AreaPromociones.Models
             var field = new[] { "fecha_inicio"};
             var field2 = new[] { "fecha_fin" };
 
-            //if (fecha_inicio < DateTime.Now)
-            //{
-            //    yield return new ValidationResult("La fecha de inicio debe ser mayor que la fecha actual.", field);
-            //}
+            if (fecha_inicio < DateTime.Now)
+            {
+                yield return new ValidationResult("La fecha de inicio debe ser mayor que la fecha actual.", field);
+            }
 
             if (fecha_fin < fecha_inicio)
             {

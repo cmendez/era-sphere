@@ -73,18 +73,33 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         }
 
         public ActionResult DetalleOC( int id_oc ){
-            ViewBag.oc = (new LogicaOrdenCompra()).retornar_orden(id_oc);
+            try
+            {
+                ViewBag.oc = (new LogicaOrdenCompra()).retornar_orden(id_oc);
+            }
+            catch (Exception ex) { }
             return PartialView();
         }
         [GridAction]
         public ActionResult SelectEntregas(int id_oc) {
-            List<EntregaOCView> entregas = logica.retornar_entregas(id_oc);
+            List<EntregaOCView> entregas = new List<EntregaOCView>();
+            try
+            {
+                entregas = logica.retornar_entregas(id_oc);
+            }
+            catch (Exception ex) { }
             return View(new GridModel( entregas ));
         }
         [GridAction]
         public ActionResult DeleteEntrega( int id , int id_oc) {
-            logica.eliminar_entrega(id);
-            List<EntregaOCView> entregas = logica.retornar_entregas(id_oc);
+            List<EntregaOCView> entregas = new List<EntregaOCView>();
+
+            try
+            {
+                logica.eliminar_entrega(id);
+                entregas = logica.retornar_entregas(id_oc);
+            }
+            catch (Exception ex) { }
             return View(new GridModel(entregas));
         }
 

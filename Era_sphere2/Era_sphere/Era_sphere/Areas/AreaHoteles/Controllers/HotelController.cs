@@ -83,7 +83,12 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         private JsonResult _GetCiudades(int? paisID)
         {
             //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
-            List<Ciudad> cs = (new EraSphereContext()).paises.Find(paisID).ciudades.ToList();
+            List<Ciudad> cs = new List<Ciudad>();
+            try
+            {
+                cs = (new EraSphereContext()).paises.Find(paisID).ciudades.ToList();
+            }
+            catch (Exception ex) {  }
             return Json(new SelectList(cs, "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }
 
@@ -99,7 +104,12 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         private JsonResult _GetProvincias(int? ciudadID)
         {
             //IQueryable<Temporada> ts = (new LogicaTemporada()).retornarTemporadas2();
-            List<Provincia> ps = (new EraSphereContext()).ciudades.Find(ciudadID).provincias.ToList();
+            List<Provincia> ps = new List<Provincia>();
+            try
+            {
+                ps = (new EraSphereContext()).ciudades.Find(ciudadID).provincias.ToList();
+            }
+            catch (Exception e) { }
             return Json(new SelectList(ps, "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }
 

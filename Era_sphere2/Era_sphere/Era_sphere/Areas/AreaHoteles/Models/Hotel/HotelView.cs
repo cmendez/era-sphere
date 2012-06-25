@@ -24,13 +24,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             telefono_1 = hotel.telefono_1;
             telefono_2 = hotel.telefono_2;
             fax = hotel.fax;            
-            paisID = hotel.paisID;
-            ciudadID = hotel.ciudadID;
+            paisID = hotel.paisID ?? 0 ;
+            ciudadID = hotel.ciudadID ?? 0 ;
             provinciaID = hotel.provinciaID;
 
-            pais_nombre = hotel.pais.nombre;
-            ciudad_nombre = hotel.ciudad.nombre;
-            provincia_nombre = hotel.provincia.nombre;
+            pais_nombre = hotel.pais == null ? "ninguno":hotel.pais.nombre;
+            ciudad_nombre = hotel.ciudad == null ? "ninguno":hotel.ciudad.nombre;
+            provincia_nombre = hotel.provincia == null ? "ninguno":hotel.provincia.nombre;
         }
 
         [Required]
@@ -71,13 +71,13 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         [RegularExpression(StringsDeValidaciones.telefono)]
         public string fax { get; set; }
 
-        [Required]
+       
         [DisplayName("Pais")]
         public int paisID { get; set; }
-        [Required]
+
         [DisplayName("Ciudad")]
         public int ciudadID { get; set; }
-        [Required]
+
         [DisplayName("Provincia")]
         [DisplayFormat(NullDisplayText="No aplica")]
         public int? provinciaID { get; set; }

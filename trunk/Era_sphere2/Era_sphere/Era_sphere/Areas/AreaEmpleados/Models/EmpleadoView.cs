@@ -83,8 +83,8 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
             usuario = empleado.usuario;
             contrasenha = empleado.password;
 
-            ciudadID = empleado.ciudadID;
-            paisID = empleado.paisID;
+            ciudadID = empleado.ciudadID?? 0;
+            paisID = empleado.paisID?? 0;
             perfilID = empleado.perfilID;
             hotelID = empleado.hotelID;
          

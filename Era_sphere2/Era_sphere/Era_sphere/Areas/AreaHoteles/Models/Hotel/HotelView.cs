@@ -73,6 +73,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
        
         [DisplayName("Pais")]
+        [Required]
         public int paisID { get; set; }
 
         [DisplayName("Ciudad")]

@@ -331,8 +331,13 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         public ActionResult UpdateServicio(ServicioView servicioView, int id, int idEvento)
         {
             LogicaServicios logicaServicio = new LogicaServicios();
+            EventoView evento=(new LogicaEvento()).retornarEvento(idEvento);
             servicioView.eventoID = idEvento;
             if ((double)servicioView.precio_fijado > 0.0) servicioView.es_precio_fijado = true;
+            else{ 
+                LogicaHotelXTipoServicioXTemporada lh_ts_t=new LogicaHotelXTipoServicioXTemporada();
+                servicioView.precio_normal = lh_ts_t.getPrecioTipoServicio(servicioView.tipo_servicioID, evento.Hotel, DateTime.Now);
+            }
             logicaServicio.modificarServicio(servicioView);
             return View("EventoAdicionalView", new GridModel(logicaServicio.retornarServicioView(idEvento)));//falta ya no creo
         }
@@ -348,7 +353,7 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             if (TryUpdateModel(servicio_view))
             {
                 if ((double)servicio_view.precio_fijado > 0.0) servicio_view.es_precio_fijado = true;
-                servicio_view.precio_normal = (new LogicaHotelXTipoServicioXTemporada()).getPrecioTipoServicio(servicio_view.ID, evento.hotel, evento.fecha_inicio);
+                servicio_view.precio_normal = (new LogicaHotelXTipoServicioXTemporada()).getPrecioTipoServicio(servicio_view.tipo_servicioID, evento.hotel, evento.fecha_inicio);
                 servicio_view.eventoID = idEvento;
                 logicaServicio.agregarServicio(servicio_view);
 

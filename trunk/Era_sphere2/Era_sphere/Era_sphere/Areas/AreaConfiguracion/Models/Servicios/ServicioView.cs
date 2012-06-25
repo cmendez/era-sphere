@@ -69,6 +69,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
             eventoID = servicio.eventoID ?? -1;
 
             precio_final = servicio.precio_final;
+
             lugar = servicio.lugar;
         }
 

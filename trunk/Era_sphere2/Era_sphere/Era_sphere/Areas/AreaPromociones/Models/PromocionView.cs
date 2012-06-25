@@ -23,10 +23,12 @@ namespace Era_sphere.Areas.AreaPromociones.Models
 
         [Required]
         [DisplayName("Puntos requeridos")]
+        [Range(0, 100000000)]
         public int puntos_requeridos { get; set; }
 
         [Required]
         [DisplayName("Descuento (dolares)")]
+        [Range(0, 10000000)]
         public int descuento { get; set; }
 
         [Required]

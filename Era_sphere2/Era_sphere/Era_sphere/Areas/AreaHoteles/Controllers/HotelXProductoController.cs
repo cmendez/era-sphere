@@ -47,8 +47,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         [GridAction]
         public ActionResult Delete(int? id, int id_hotel)
         {
-            int producto_id = id ?? -1;
-            logicahp.eliminarProducto(id_hotel, producto_id);
+            int hotelXProductoID = id ?? -1;
+            logicahp.eliminarProducto(hotelXProductoID);
             return View("Index", new GridModel(logicahp.retornarProductos(id_hotel)));
         }
         [AcceptVerbs(HttpVerbs.Post)]

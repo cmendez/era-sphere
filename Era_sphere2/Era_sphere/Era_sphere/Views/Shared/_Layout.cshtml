@@ -56,10 +56,10 @@
 
 	<div id="main" class="container_12"><!-- Body Wrapper Begin -->
 		<div id="header"><!-- Header Begin -->
-			<div class="grid_3"><a href="#" id="logo" class="float_left" style="width: 300px; height: 55px; margin-left: 5px;" >ERA Sphere</a></div>
+			<div class="grid_3"><a href="/Home/Sistema" id="logo" class="float_left" style="width: 300px; height: 55px; margin-left: 5px;" >ERA Sphere</a></div>
 			<div class="grid_4 push_5">
 				<div id="search"><!-- Header Search Begin -->
-					<input type="text" placeholder="Search.." id="searchinput" name="search" />
+					<input type="text" placeholder="Buscar Servicios.." id="searchinput" name="search" />
 					<input type="submit" id="searchbutton" name="search" />
 				</div><!-- Header Search End -->
 			</div>
@@ -81,6 +81,7 @@
 				<div id="profileinfo">
 					<h3 id="username">Administrador</h3>
 					<span id="subline">192.168.1.100</span>
+                    <span id = "cadenaNombre" style = "font-size: 10px; display: block"> </span>
                     <!--
                     <h1  style = "font-size: 12px" id="hotelNombre">Administrador</h1>
 					-->
@@ -133,7 +134,9 @@
 			@RenderBody()
 	</div><!-- Body Wrapper End -->
     
-   
+   <div id = "truco" style = "display:none">
+
+   </div>
     
     </div>
     
@@ -142,6 +145,88 @@
 </html>
 
 <script type = "text/javascript">
+
     $("#username").html(localStorage.getItem("nombrePerfil"));
     $("#subline").html(localStorage.getItem("usuario"));
+
+    $("#searchinput").autocomplete({
+        source: function (req, add) {
+            var t = localStorage.getItem("token");
+            var jsonMenu = {
+                token: t,
+                menu: $("#searchinput").val()
+            };
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(jsonMenu),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                url: "/Navegacion/ListaMenuToken",
+                success: function (data) {
+                    var suggestions = [];
+                    $.each(data, function (i, item) {
+                        //var pais = ""
+                        //[{"Nombre":"Promociones","Url":"/AreaPromociones/Promocion"},{"Nombre":"Reporte Excel Promo","Url":"/AreaReportes/RepExcelPromocion"},{"Nombre":"Reportes Promociones","Url":"/AreaReportes/ReportePromocion"},{"Nombre":"Lineas de Producto","Url":"/AreaContable/LineaProducto"},{"Nombre":"Productos","Url":"/AreaContable/Producto"},{"Nombre":"Proveedor","Url":"/AreaContable/Proveedor"}]
+
+                        var pais = {
+                            label: item.Nombre,
+                            value: item.Url
+                        }
+                        suggestions.push(pais);
+
+                        // suggestions.push(pais);
+                    });
+                    add(suggestions);
+                },
+                select: function (event, ui) {
+                    //var selectedObj = ui.item;
+                    //$("#pais").val(selectedObj.label);
+                    //$('#idpais').val(selectedObj.value);
+                    //return false;
+                    //alert("seleccion");
+                }
+            });
+        }
+    });
+
+
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        url: "/AreaConfiguracion/Cadena/getCadena",
+        success: function (data) {
+            $("#cadenaNombre").html(data["Data"].nombreCadena);
+        }
+    });
+
+   
+
+
+    $("#searchbutton").click(function () {
+        /*
+        $.ajax({
+        type: "POST",
+        url: $("#searchinput").val(),
+        success: function (msg) {
+        alert("aceito");
+        },
+        error: function (error, t, msg) {
+        alert(error);
+        }
+        });
+        */
+        /*
+        $("#truco").load($("#searchinput").val(),
+            function (responseText, textStatus, req) {
+                if (textStatus == "error") {
+                    alert("La ruta Ingresa no es valida, o no tiene acceso");
+                } else {
+                    $(location).attr('href', $("#searchinput").val()); 
+                }
+            });
+        */
+        $(location).attr('href', $("#searchinput").val()); 
+    });
+  
 </script>

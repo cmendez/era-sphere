@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "EventosCreados";
+    int idhotel = ViewBag.idhotel;
+}
+@model IEnumerable<Era_sphere.Areas.AreaEventos.Models.Evento.EventoView>
+@using Telerik.Web.Mvc.UI
+
+
+<div class="titlebar">
+        <h3>
+            Eventos  Pagados
+        </h3>
+    </div>
+    <div class="block_cont">
+        @(Html.Telerik().Grid(Model)
+        .Name("EventoPagado")
+        .ClientEvents(events => events.OnComplete("ppgrilla"))
+        .Filterable()
+        .Localizable("es-ES")
+        .DataKeys(key => key.Add(c => c.ID))
+        .Columns(columns =>
+        {
+            
+            columns.Bound(p =>p.nombre);
+            columns.Bound(p => p.cliente_nombre);
+            columns.Bound(p => p.dni);
+            columns.Bound(p => p.num_participantes);
+            columns.Bound(p => p.precio_total);
+            columns.Bound(p => p.pagado);
+            columns.Bound(p => p.deuda);
+            columns.Command(commands =>
+            {
+                commands.Custom("Detalles")
+                    .Text("Detalles").Ajax(true)
+                    .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
+                    .Action("Nada", "Evento");
+                
+          });
+        })
+        .Pageable()
+        .Sortable()
+        .DataBinding(dataBinding => dataBinding
+            .Ajax()
+            .Select("Select", "Evento", new { id_hotel = idhotel ,estado=4})
+            
+        )
+)
+    </div>
+

@@ -13,6 +13,7 @@
     decimal costo_total = (decimal)(ViewData["costo_total"]);
     EraSphereContext context = new EraSphereContext();
     Cliente c = context.clientes.Find(idCliente);
+    int puntos = c.puntos_cliente;
     Hotel h = context.hoteles.Find(idHotel);
     List<MonedaView> monedas = (List<MonedaView>)((ViewData["Monedas"]));
     double impuesto = h.pais.IGV == null ? 0.0 : h.pais.IGV.Value / 100.0;
@@ -32,12 +33,16 @@
     var dentro = [];
     var monto = 0;
     var parcial = 0;
+    var puntos_van = @puntos;
+    console.log(puntos_van);
     var igv = @impuesto;
     var mini = @Model.Where(x => x.pagado == false).ToList().Count() > 0 ? 1 : 0;
     var tipo_cambios = @Html.Raw(Json.Encode(monedas));
     var promociones = @Html.Raw(Json.Encode(promociones));
     function Pagar() {
-        if (dentro.length < mini) alert("Seleccione por lo menos un detalle a pagar");
+        console.log(puntos_van);
+        if(puntos_van < 0) alert("Se necesita de mas puntos para poder aplicar dichas promociones");
+        else if (dentro.length < mini) alert("Seleccione por lo menos un detalle a pagar");
         else {
             if(mini == 0){
                 se_pago = true;
@@ -62,7 +67,7 @@
             if(tipo_cambios.length > 0) nuevo = tipo_cambios[monedaid -1].tc;
             $("#cambio_box").val(monto * nuevo);
     }
-    function Modifica(id, precio) {
+    function Modifica(id, precio, puntaje) {
         var esta = false;
         var dentro2 = [];
         for (i in dentro)
@@ -72,9 +77,11 @@
             if (!esta) {
                 dentro.push(id);
                 parcial += precio;
+                puntos_van += puntaje;
             } else {
                 dentro = dentro2;
                 parcial -= precio;
+                puntos_van -= puntaje;
             }
             actualizaValor();
         }
@@ -209,7 +216,9 @@
 
 <label>Pago a nombre de: </label>
 <input type="text" readonly="readonly" value=@nombre />
-
+<br />
+<label> con @puntos puntos.</label>
+<br />
 @(Html.Telerik().Window()
     .Name("ReciboWindow").Title("Recibo")
     .Content(@<text><div id="recibo_div">
@@ -221,8 +230,9 @@
     .Content(@<text><div id="tarjeta_div">
     </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true)
     )
-
+    </br>
 <label> Pagados </label>
+<br />
 @(Html.Telerik().Grid(Model.Where(p => p.pagado == true).ToList())
     .Name("GridPagados")
     .Localizable("es-ES")
@@ -263,13 +273,14 @@
     {
         columns.Template(
                 @<text>
-                    <input class="check" type="checkbox" value="@item.ID " title="checkedLineas" onclick="Modifica(@item.ID, @item.precio_final);"/>
+                    <input class="check" type="checkbox" value="@item.ID " title="checkedLineas" onclick="Modifica(@item.ID, @item.precio_final, @item.puntos);"/>
                 </text>)
                 .Title("").Width(36).HtmlAttributes(new { style = "text-align:center" });
         columns.Bound(x => x.lugar);
         columns.Bound(x => x.detalle);
         columns.Bound(x => x.unidades).Title("Unidades/Dias");
         columns.Bound(x => x.precio_final);
+        columns.Bound(x => x.puntos).Title("Puntos necesarios");
     }
     ).Footer(false))
 <label>Todo en dolares</label>

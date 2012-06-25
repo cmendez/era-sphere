@@ -80,8 +80,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
 
         public IEnumerable<TipoHabitacion> retornarTiposHabitaciones(int hotel_id)
         {
-            List<HotelXTipoHabitacionXTemporada> hxthxts = hxthxt_context.hxthxts.ToList();
-            hxthxts = hxthxts.Where(e => e.hotelID == hotel_id).ToList();
+
+            List<HotelXTipoHabitacionXTemporada> hxthxts = this.retornarTipoHabitacionsXTemporada2(hotel_id);
             List<TipoHabitacion> thabs = new List<TipoHabitacion>();
             foreach (HotelXTipoHabitacionXTemporada hxthxt in hxthxts)
             {

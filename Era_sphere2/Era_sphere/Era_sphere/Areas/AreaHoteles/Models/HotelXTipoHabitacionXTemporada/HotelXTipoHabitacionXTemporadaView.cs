@@ -101,10 +101,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
             
             LogicaHotelXTipoHabitacionXTemporada logica = new LogicaHotelXTipoHabitacionXTemporada();
 
-            //int n_duplicaciones = logica.contarDuplicados(hotelID, tipoHabitacionID, temporadaID);
-            //costo_base = logica.retornarCostoBase(tipoHabitacionID);
-            costo_base = 0;
-            int n_duplicaciones = 0;
+            int n_duplicaciones = logica.contarDuplicados(hotelID, tipoHabitacionID, temporadaID);
+            costo_base = logica.retornarCostoBase(tipoHabitacionID);
+            //costo_base = 0;
+            //int n_duplicaciones = 0;
             if (1 <= n_duplicaciones)
             {
                 yield return new ValidationResult("Este tipo de habitacion ya fue asignado un precio en esta temporada (contradictorio)", field);

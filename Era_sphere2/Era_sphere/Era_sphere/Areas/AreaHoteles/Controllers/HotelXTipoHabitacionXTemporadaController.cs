@@ -79,10 +79,10 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         public JsonResult _GetCostoBase(int? tipohabitacionID)
         {
             List<decimal> cb = new List<decimal>();
-            //decimal costo_base = logicahtht.retornarCostoBase(tipohabitacionID);
-            //cb.Add(costo_base);
+            decimal costo_base = logicahtht.retornarCostoBase(tipohabitacionID);
+            cb.Add(costo_base);
             return Json(new SelectList(cb), JsonRequestBehavior.AllowGet);
-            return null;
+            //return null;
         }
        
 

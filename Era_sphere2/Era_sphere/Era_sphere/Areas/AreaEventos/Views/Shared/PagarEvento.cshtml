@@ -4,6 +4,7 @@
     ViewBag.idEvento = Model.ID;
     int idEvento = Model.ID;
     List<Era_sphere.Areas.AreaContable.Models.Recibo.ReciboLinea> recibos= ViewBag.reciboLinea;
+    
 }
 @using Telerik.Web.Mvc.UI
 
@@ -33,14 +34,7 @@
         @Html.DisplayFor(model => model.cliente_nombre)
     </div>
 </li>
-<li>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.dni)
-    </div>
-    <div class="editor-field">
-        @Html.DisplayFor(model => model.dni)
-    </div>
- </li>   
+
     <div id="montosEventos" >
     </div>
     </ul>    

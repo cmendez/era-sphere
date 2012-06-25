@@ -62,6 +62,7 @@ namespace Era_sphere.Generics
             crear_fiscal(modelBuilder);
             crear_orden_compra(modelBuilder);
             builderHotel(modelBuilder);
+            builderCliente(modelBuilder);
             //crear_eventos_servicios(modelBuilder);
         }
 

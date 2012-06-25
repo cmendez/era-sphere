@@ -208,6 +208,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             return Json(new { id = clienteId });
         }
 
+
         [HttpPost]
         public ActionResult CiudadesComboBox(int? pais_id)
         {
@@ -231,9 +232,7 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             {
                 cs = (new EraSphereContext()).paises.Find(paisID).ciudades.ToList();
             }
-            catch (Exception e) { }
-            cs.Insert(0, new Ciudad { nombre = "Seleccione", ID = 0 });
-            cs.Add((new EraSphereContext()).ciudades.Find(48));
+            catch (Exception ex) { }
             return Json(new SelectList(cs, "ID", "nombre"), JsonRequestBehavior.AllowGet);
         }
 

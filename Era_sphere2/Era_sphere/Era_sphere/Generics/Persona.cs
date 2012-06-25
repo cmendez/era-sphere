@@ -36,13 +36,13 @@ namespace Era_sphere.Generics
         
         public byte[] foto { get; set; }
 
-        [ForeignKey("ciudad")]
-        public int ciudadID { get; set; }
+       
+        public int? ciudadID { get; set; }
 
         public virtual Ciudad ciudad { get; set; }
 
-        [ForeignKey("pais")]
-        public int paisID { get; set; }
+  
+        public int? paisID { get; set; }
         
         public virtual Pais pais { get; set; }
         

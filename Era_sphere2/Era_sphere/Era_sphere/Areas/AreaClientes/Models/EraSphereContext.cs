@@ -111,5 +111,17 @@ namespace Era_sphere.Generics
             clientes.Add(c3);
             SaveChanges();
         }
+
+
+
+        void builderCliente(DbModelBuilder builder)
+        {
+            builder.Entity<Persona>().HasOptional(e => e.pais)
+                                    .WithOptionalDependent();
+            builder.Entity<Persona>().HasOptional(e => e.ciudad)
+                                    .WithOptionalDependent();
+        }
+
+
     }
 }

@@ -78,8 +78,12 @@ namespace Era_sphere.Areas.AreaClientes.Models
         //[Range(1, 1000000, ErrorMessage = "Especifique una ciudad")]
         public int ciudadID { get; set; }
 
-        //opcional
-        //[DisplayName("Imagen")]
+        [DisplayName("Pais")]
+        public string pais_nombre { get; set; }
+    
+        [DisplayName("Ciudad")]
+        public string ciudad_nombre { get; set; }
+    
 
         [DisplayName(@"Reservas Históricas")]
         public int numero_reservas { get; set; }
@@ -99,13 +103,16 @@ namespace Era_sphere.Areas.AreaClientes.Models
             usuario = cliente.usuario;
             contrasenha = cliente.password;
             id_estado = cliente.estadoID;
-            ciudadID = cliente.ciudadID;
-            paisID = cliente.paisID;
             puntos_cliente = cliente.puntos_cliente;
             numero_reservas = cliente.numero_reservas;
             tarjeta_cliente = cliente.tarjeta_cliente;
             //pais = logica.context_publico.paises.Find(this.paisID);
+            paisID = cliente.paisID ?? 0;
+            ciudadID = cliente.ciudadID ?? 0;
 
+
+            pais_nombre = cliente.pais == null ? "ninguno" : cliente.pais.nombre;
+            ciudad_nombre = cliente.ciudad == null ? "ninguno" : cliente.ciudad.nombre;
 
 
         }

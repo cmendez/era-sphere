@@ -56,7 +56,8 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
         [GridAction]
         public ActionResult Delete(int id)
         {
-            perfil_logica.eliminarPerfil(id);
+            if (id != 1)
+                perfil_logica.eliminarPerfil(id);
             return View("Index", new GridModel(perfil_logica.retornarPerfiles()));
         }
 

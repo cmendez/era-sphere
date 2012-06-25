@@ -178,11 +178,11 @@
 
 									<div class="form_row">
 									<label> Nro Documento: <span id = "reqnrodocumento"  style = "color:red; display:none" > *Debe ingresar un numero correcto</span></label>
-									<input name="nro_documento_natural" maxlength = "12" id = "numero_documento" class="input tipRight" type="text" style="width: 300px"/>
+									<input name="nro_documento_natural" maxlength = "12" id = "numero_documento" class="input tipRight" type="text" style="width: 300px" />
 									</div>
 									<div class="form_row">
 									<label> Fecha de Nacimiento <span id = "reqfecha" style = "color:red; display:none" > *Requerido </span></label>
-									<input class="input validate[required] tipTop" id="fecha_nacimiento" type="date" style="width: 290px;" name="inputtext" placeholder="" original-title=".tipTop - top tooltip by tipsy">
+									<input class="input validate[required] tipTop" id="fecha_nacimiento" type="date" style="width: 290px;" name="inputtext" placeholder="" readonly = readonly original-title=".tipTop - top tooltip by tipsy">
 									</div>
 									<div class="form_row">
 									<label> Telefono: </label>
@@ -223,26 +223,26 @@
                                 <input type = "checkbox" id = "chkdomingo" />
 							</div>
                             <div class="form_row">
-							<label> Horario Entrada: </label>
+							<label> Horario Entrada: <span id = "hentrada" style = "color:red; display:none" >  </span></label>
                                 <p>&nbsp;L &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D</p> 
-							    <input id="lunesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="martesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="miercolesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="juevesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="viernesTimeIn" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="sabadoTimeIn" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="domingoTimeIn" class="input tipRight" type="text" style="width: 35px"/>
+							    <input id="lunesTimeIn" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="martesTimeIn" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="miercolesTimeIn" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="juevesTimeIn" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="viernesTimeIn" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="sabadoTimeIn" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="domingoTimeIn" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
 							</div>
                              <div class="form_row">
-							<label> Horario Salida: </label>
+							<label> Horario Salida: <span id = "hsalida" style = "color:red; display:none" >  </span></label>
                                 <p>&nbsp;L &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D</p> 
-							    <input id="lunesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="martesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="miercolesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="juevesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="viernesTimeOut" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="sabadoTimeOut" class="input tipRight" type="text" style="width: 35px"/>
-                                <input id="domingoTimeOut" class="input tipRight" type="text" style="width: 35px"/>
+							    <input id="lunesTimeOut" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="martesTimeOut" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="miercolesTimeOut" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="juevesTimeOut" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="viernesTimeOut" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="sabadoTimeOut" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
+                                <input id="domingoTimeOut" class="input tipRight" type="text" style="width: 35px" readonly = "readonly"/>
 							</div>
                             <!--
                                     <div class="form_row">
@@ -601,6 +601,17 @@
         }
     });
 
+    /*
+    $("#chklunes").change(function(){
+      if ($("#chklunes").is(':checked')) {
+        $("#lunesTimeIn").css({'background-color' : '#FFFFEEE'});
+      }else {
+        //$("#lunesTimeIn").val("");
+        //$('#lunesTimeIn').attr('enable', false);
+      }
+    });
+    */
+
     function armaHorario(){
     var result = "";
     result += $("#chklunes").is(':checked')?"1":"0";
@@ -738,6 +749,10 @@
         $("#reqpass2").hide();
         $("#reqemail").hide();
         $("#reqnrodocumento").hide();
+        $("#hentrada").hide();
+        $("#hsalida").hide();
+        $("#reqhotel").hide();
+        $("#reqperfil").hide();
     }
 
     function validaFormulario(){
@@ -830,6 +845,42 @@
             $("#reqpass2").html("Las claves deben coincidir");
             yeti = false;
         }
+
+        var achk = [];
+        achk.push("lunes");
+        achk.push("martes");
+        achk.push("miercoles");
+        achk.push("jueves");
+        achk.push("viernes");
+        achk.push("sabado");
+        achk.push("domingo");
+        
+        for ( d = 0; d < 7; d++){
+           var chk = '#chk' + achk[d];
+           if ($(chk).is(':checked')) {
+            //verificamos que el in y out ingresen
+            var hin = '#' + achk[d] + 'TimeIn';
+            var hout = '#' + achk[d] + 'TimeOut';
+            //$("#hentrada").html();
+            var s = true;
+            if ($(hin).val() == "") {
+            $("#hentrada").html("Falta el " + achk[d]);
+            $("#hentrada").show();
+            s = false;
+            }
+            if ($(hout).val() == "") {
+            $("#hsalida").html("Falta el " + achk[d]);
+             $("#hsalida").show();
+             s = false;
+            }
+            if (s == false) {
+              yeti = false;
+              break;
+            }
+           }
+        }
+        
+
         return yeti;
     }
 </script>

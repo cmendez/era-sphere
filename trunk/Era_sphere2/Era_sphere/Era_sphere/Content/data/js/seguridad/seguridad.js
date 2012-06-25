@@ -47,6 +47,7 @@
                             var np = data.nombrePerfil;
                             var token = data.listaVisibilidad;
                             localStorage.setItem("token", token);
+                            localStorage.setItem("nombrePerfil", np);
                             var url = "/Home/Sistema";
                             $(location).attr('href', url);
                         }

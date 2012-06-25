@@ -7,6 +7,7 @@ using Era_sphere.Generics;
 using ReportManagement;
 using Era_sphere.Areas.AreaPromociones.Models;
 using Era_sphere.Areas.AreaReportes.Models.RepExcelPromocion;
+using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
 
 namespace Era_sphere.Areas.AreaReportes.Controllers
 {
@@ -30,6 +31,8 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             List<ObjetoReportePromocion> listareportePromocion = new List<ObjetoReportePromocion>();
             EraSphereContext context = new EraSphereContext();
             List<Promocion> promociones = context.promociones.ToList();
+            DateTime date = DateTime.Now;
+            List<Cadena> cadena = (new EraSphereContext()).cadenas.ToList();
 
             foreach (Promocion p in promociones)
             {
@@ -38,11 +41,18 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             }
             //
 
-            reporte.cabecera = new String[2, 7]
-                {
-                    {"Nombre","Descripción","Puntos requeridos", "Descuento", "Fecha de inicio", "Fecha de fin", "Asociado a"},
+            reporte.titulo = new String[5, 7]
+            {
+                    {"","REPORTE DE CLIENTES","","", "", "",""},
+                    {"","","","","","",""},
+                    {"CADENA",cadena[0].nombreCadena,"","FECHA",date.ToShortDateString(),"",""},
+                    {"","","","","","",""},
                     {"","","","","","",""}
-                 
+            };
+
+            reporte.cabecera = new String[1, 7]
+                {
+                    {"Nombre","Descripción","Puntos requeridos", "Descuento", "Fecha de inicio", "Fecha de fin", "Asociado a"}
                 };
 
             reporte.fileName = "ReportePromocion.xls";

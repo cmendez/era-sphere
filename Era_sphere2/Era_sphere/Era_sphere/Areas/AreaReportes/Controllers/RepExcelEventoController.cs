@@ -7,6 +7,7 @@ using Era_sphere.Generics;
 using ReportManagement;
 using Era_sphere.Areas.AreaEventos.Models.Evento;
 using Era_sphere.Areas.AreaReportes.Models.RepExcelEvento;
+using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
 
 namespace Era_sphere.Areas.AreaReportes.Controllers
 {
@@ -31,6 +32,8 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             List<ObjetoReporteEvento> listareporteEvento = new List<ObjetoReporteEvento>();
             EraSphereContext context = new EraSphereContext();
             List<Evento> eventos = context.eventos.ToList();
+            DateTime date = DateTime.Now;
+            List<Cadena> cadena = (new EraSphereContext()).cadenas.ToList();
 
             foreach (Evento e in eventos)
             {
@@ -39,11 +42,18 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             }
             //
 
-            reporte.cabecera = new String[2, 6]
+            reporte.titulo = new String[5, 6]
+            {
+                    {"","REPORTE DE CLIENTES","","","",""},
+                    {"","","","","",""},
+                    {"CADENA",cadena[0].nombreCadena,"","FECHA",date.ToShortDateString(),""},
+                    {"","","","","",""},
+                    {"","","","","",""}
+            };
+
+            reporte.cabecera = new String[1, 6]
                 {
                     {"Hotel","Evento","Número de Participantes", "Número de Ambientes", "Número de Servicios", "Precio Total"},
-                    {"","","","","",""}
-                 
                 };
 
             //   {x.ToString(),s,y.ToString(),"fin XD"}

@@ -39,5 +39,12 @@ namespace Era_sphere.Areas.AreaContable.Controllers
             r.auxID = hotelID;
             return this.ViewPdf("","ReciboPDF", r);
         }
+        public ActionResult ReciboEventoPDF(int reciboId, int hotelID)
+        {
+            Recibo r = context.recibos.Find(reciboId);
+            r.auxID = hotelID;
+            return this.ViewPdf("", "ReciboEventoPDF", r);
+        }
+
     }
 }

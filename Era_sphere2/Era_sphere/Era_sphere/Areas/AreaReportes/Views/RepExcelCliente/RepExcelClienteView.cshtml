@@ -7,14 +7,44 @@
 }
 <?xml version="1.0" encoding="utf-16"?>
 <ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+<ss:Styles>
+		<ss:Style ss:ID="Default" ss:Name="Normal">
+			<ss:Alignment ss:Vertical="Bottom"/>
+			<ss:Borders/>
+			<ss:Font ss:FontName="Calibri" ss:Size="11" ss:Color="#000000"/>
+			<ss:Interior/>
+			<ss:NumberFormat/>
+			<ss:Protection/>
+		</ss:Style>
+		<ss:Style ss:ID="s68">
+			<ss:Font ss:FontName="Calibri" ss:Size="11" ss:Color="#F2F2F2" ss:Bold="1"/>
+            <ss:Interior ss:Color="#808080" ss:Pattern="Solid"/>
+		</ss:Style>
+
+        <ss:Style ss:ID="s63">
+			<ss:Font ss:FontName="Calibri" ss:Size="11" ss:Color="#000000" ss:Bold="1"/>
+		</ss:Style>
+</ss:Styles>    
     <ss:Worksheet ss:Name="Sheet1">
         <ss:Table>
+        @for (int i = 0; i < Model.titulo.GetLength(0); ++i)
+        {
+            <ss:Row>
+            @for (int j = 0; j < Model.titulo.GetLength(1); ++j)
+            {
+                <ss:Cell ss:StyleID="s63">
+                    <ss:Data ss:Type="String">@Model.titulo[i, j]</ss:Data>
+                </ss:Cell>
+            }
+            </ss:Row>
+        }
+
         @for (int i = 0; i < Model.cabecera.GetLength(0); ++i)
         {
             <ss:Row>
             @for (int j = 0; j < Model.cabecera.GetLength(1); ++j)
             {
-                <ss:Cell>
+                <ss:Cell ss:StyleID="s68">
                     <ss:Data ss:Type="String">@Model.cabecera[i, j]</ss:Data>
                 </ss:Cell>
             }

@@ -7,6 +7,7 @@ using ReportManagement;
 using Era_sphere.Areas.AreaClientes.Models;
 using Era_sphere.Areas.AreaReportes.Models.RepExcelCliente;
 using Era_sphere.Generics;
+using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas;
 
 namespace Era_sphere.Areas.AreaReportes.Controllers
 {
@@ -30,6 +31,8 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             List<ObjetoReporteCliente> listareporteCliente = new List<ObjetoReporteCliente>();
             EraSphereContext context = new EraSphereContext();
             List<Cliente> clientes = context.clientes.ToList();
+            DateTime date = DateTime.Now;
+            List<Cadena> cadena = (new EraSphereContext()).cadenas.ToList();
 
             foreach (Cliente c in clientes)
             {
@@ -38,11 +41,18 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             }
             //
 
-            reporte.cabecera = new String[2, 7]
-                {
-                    {"Nombre","Identificador","Usuairo", "Tarjeta del Cliente", "Habitación asignada", "Puntos", "Número de reservas"},
+            reporte.titulo = new String[5, 7]
+            {
+                    {"","REPORTE DE CLIENTES","","", "", "",""},
+                    {"","","","","","",""},
+                    {"CADENA",cadena[0].nombreCadena,"","FECHA",date.ToShortDateString(),"",""},
+                    {"","","","","","",""},
                     {"","","","","","",""}
-                 
+            };
+
+            reporte.cabecera = new String[1, 7]
+                {
+                    {"Nombre","Identificador","Usuairo", "Tarjeta del Cliente", "Habitación asignada", "Puntos", "Número de reservas"}                 
                 };
 
             reporte.fileName = "ReporteCliente.xls";

@@ -39,10 +39,21 @@
             columns.Command(commands =>
             {
                 commands.Delete().ButtonType(GridButtonType.Image);
+                commands.Custom("editarEmpleado")
+                   .ButtonType(GridButtonType.Text)
+                   //.ImageHtmlAttributes(new { @class = "t-icon t-edit" })
+                   .Ajax(true)
+                   .Action("DameEmpleado", "Empleado")
+                   .Text("Editar")
+
+                   .DataRouteValues(route =>
+                   {
+                       route.Add(p => p.ID).RouteKey("empleadoID");
+                   });
                 //commands.Edit()
             });
         })
-
+        .ClientEvents(events => events.OnComplete("Grid_onComplete"))
         .Pageable()
         .Sortable()
 
@@ -126,7 +137,7 @@
 							<input class="input tipRight" maxlength = 80 type="text" style="width:400px;" name="direccion" id="direccion"/>
 							</div>
 							<div class="form_row">
-							<label> Correo Electronico:</label>
+							<label> Correo Electronico: <span id = "reqemail" style = "color:red; display:none" > *Email no valido </span></label>
 							<input class="input tipRight" maxlength = 80 type="text" style="width:400px;" name="email" id="email"/>
 							</div>
 							<div id="right_form_natural" style = "top:-450px">
@@ -166,8 +177,8 @@
                                     </div>
 
 									<div class="form_row">
-									<label> Nro Documento: </label>
-									<input name="nro_documento_natural" id = "numero_documento" class="input tipRight" type="number" style="width: 300px"/>
+									<label> Nro Documento: <span id = "reqnrodocumento"  style = "color:red; display:none" > *Debe ingresar un numero correcto</span></label>
+									<input name="nro_documento_natural" maxlength = "12" id = "numero_documento" class="input tipRight" type="text" style="width: 300px"/>
 									</div>
 									<div class="form_row">
 									<label> Fecha de Nacimiento <span id = "reqfecha" style = "color:red; display:none" > *Requerido </span></label>
@@ -283,7 +294,40 @@
 
     
 <script type = "text/javascript">
-  
+  localStorage.setItem("codeEmpleadoEditando","")
+   function Grid_onComplete(e) {
+        localStorage.setItem("estadoEmpleado", "normal");
+        if (e.name == "editarEmpleado") {
+            localStorage.setItem("estadoEmpleado", "editando");
+            var result = e.response;
+            localStorage.setItem("codeEmpleadoEditando",result.ID);
+            $("#nombre_cargo").val(result.nombre_cargo);
+            $("#nombre_cliente").val(result.nombre);
+            $("#apellido_paterno").val(result.apellido_paterno);
+            $("#apellido_materno").val(result.apellido_materno);
+            $("#pais").val(result.paisID);
+            $("#ciudad").val(result.ciudadID);
+            $("#direccion").val(result.direccion);
+            $("#email").val(result.correo_electronico);
+            $("#hotel").val(result.hotelID);
+            $("#perfil").val(result.perfilID);
+            //dni
+            $("#numero_documento").val(result.documento_identidad);
+            //fecha nac
+            $("#telefono_natural").val(result.telefono);
+            $("#celular_natural").val(result.celular);
+
+            //claves
+            $("#usuario").val(result.usuario);
+            $("#pass1").val(result.contrasenha);
+            $("#pass2").val(result.contrasenha);
+            $('#dialogEditar').dialog('open');
+            
+        }
+    }
+
+
+
   //cargar Hoteles
    $.ajax({
             type: "POST",
@@ -511,8 +555,24 @@
             "Aceptar": function () {
                 if (validaFormulario()) {
                      var empleado  = armaEntrada();
-               
-               $.ajax({
+               if (localStorage.getItem("estadoEmpleado") == "editando") {
+                    //alert("editando");
+                    
+                    $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(empleado),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    url: "Empleado/ActualizarEmpleado",
+                    success: function (data) {
+                        if (data.me == "") {
+                            $('#EmpleadosGrid').data('tGrid').ajaxRequest();
+                        }
+                        
+                    }
+                });
+               }else {
+                    $.ajax({
                     type: "POST",
                     data: JSON.stringify(empleado),
                     dataType: "json",
@@ -527,6 +587,8 @@
                         
                     }
                 });
+               
+               }
                 $("#mask").hide();  
                  $(this).dialog("close");
                 }
@@ -551,8 +613,27 @@
     return result;
     }
 
+    function validar_ndoc(valor){
+    var filter =   /[0-9\.]{3,}/;
+        if(filter.test(valor))
+            return true;
+        else
+            return false;
+    }
+
+    function validar_email(valor)
+    {
+        var filter = /[\w-\.]{3,}@@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+        if(filter.test(valor))
+            return true;
+        else
+            return false;
+    }
+
+
     function armaEntrada(){
         //Datos Personales.
+        
         var nombre_empleado = $("#nombre_cliente").val();
         var app_paterno = $("#apellido_paterno").val();
         var app_materno = $("#apellido_materno").val();
@@ -588,6 +669,7 @@
        
         var jsonEntrada = {
             //datos persona
+                     ID : localStorage.getItem("codeEmpleadoEditando"),
                      nombre : nombre_empleado,
                      apellido_paterno : app_paterno,
                      apellido_materno : app_materno,
@@ -654,10 +736,13 @@
         $("#requsuario").hide();
         $("#reqpass1").hide();
         $("#reqpass2").hide();
+        $("#reqemail").hide();
+        $("#reqnrodocumento").hide();
     }
 
     function validaFormulario(){
         //PERSONALES
+        init();
         var yeti = true;
         var nombre_empleado = $("#nombre_cliente").val();
         if (nombre_empleado == "") {
@@ -676,8 +761,15 @@
         }
 
         var direccion = $("#direccion").val();
+        
+        
         var email = $("#email").val();
-       
+        if (email !="")
+        if (!validar_email(email)){
+            $("#reqemail").show();
+            yeti = false;
+        }
+        
         var perfil = $("#perfil").val();
         if (perfil == "") {
           $("#reqperfil").show();
@@ -692,6 +784,12 @@
        
         var tipo_documento = $("#tipo_documento").val();
         var numero_documento = $("#numero_documento").val();
+        if (numero_documento != "")
+         if (!validar_ndoc(numero_documento)){
+           $("#reqnrodocumento").show();
+           yeti = false;
+         }
+
         var fecha_nac = $("#fecha_nacimiento").val();
         if (fecha_nac == "") {
           $("#reqfecha").show();

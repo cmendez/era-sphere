@@ -4,6 +4,8 @@
 @using Era_sphere.Areas.AreaConfiguracion.Models.Cadenas
 @using Era_sphere.Areas.AreaHoteles.Models
 @using Era_sphere.Areas.AreaEventos.Models.Evento
+@using Era_sphere.Areas.AreaEventos.Models.EventoXAmbiente
+@using Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 @model Recibo
 @using Telerik.Web.Mvc.UI  
 @{
@@ -101,7 +103,8 @@ else
 }
 
 @{
-    Evento evento = context.eventos.Find(Model.eventoID);               
+    Evento evento = context.eventos.Find(Model.eventoID);
+    List<EventoXAmbiente> lista = context.eventoXAmbientes.Where(exa => exa.eventoID == Model.eventoID).ToList();
 }
 
 <label style="font-weight:bold"> Detalle del evento</label>
@@ -112,8 +115,106 @@ else
     <div class="editor-label"> Número de participantes </div>
     <div class="editor-label"> @Html.DisplayFor(model => evento.num_participantes) </div>
     <br />    
+    
+
+<div class="editor-label"> Ambientes </div>
+<br />
+<table cellpadding="3" cellspacing="3">
+       <tr border="1" bgcolor="#777777" color="#ffffff">
+           <td width="60%" align="center">
+              Nombre
+           </td>
+           <td width="50%" align="center">
+              Fecha de inicio
+           </td>
+           <td width="50%" align="center">
+              Fecha de fin
+          </td>
+          <td width="20%" align="center">
+              Precio
+          </td>
+      </tr>
+      @{
+          var OddColor2 = "#DDEEEE";
+          var evenColor2 = "#EEFFFF";
+          var Odd2 = OddColor2;
+       }
+       @foreach (EventoXAmbiente exa in lista)
+       {
+           <tr border="1" bgcolor="@Odd2">
+               <td align="center">@context.ambientes.Find(exa.ambienteID).descripcion
+               </td>
+               <td align="center">@exa.fecha_hora_inicio
+               </td>
+               <td align="center">@exa.fecha_hora_fin
+               </td>
+               <td align="center">@context.ambientes.Find(exa.ambienteID).precio
+               </td>
+           </tr>
+           if (Odd2 == OddColor2)
+           {
+               Odd2 = evenColor2;
+           }
+           else
+           {
+               Odd2 = OddColor2;
+           }
+
+       }
+</table>
+
+<br />
+<br />
+@{
+    List<Servicio> servicios = context.servicios.Where(s => s.eventoID == Model.eventoID).ToList();
+}
+<div class="editor-label"> Servicios </div>
+<br />
+<table cellpadding="3" cellspacing="3">
+       <tr border="1" bgcolor="#777777" color="#ffffff">
+           <td width="60%" align="center">
+              Descripcion
+           </td>
+           <td width="50%" align="center">
+              Tipo de servicio
+           </td>
+           <td width="50%" align="center">
+              Precio final
+          </td>
+      </tr>
+      @{
+          var OddColor3 = "#DDEEEE";
+          var evenColor3 = "#EEFFFF";
+          var Odd3 = OddColor3;
+       }
+       @foreach (Servicio s in servicios)
+       {
+           <tr border="1" bgcolor="@Odd3">
+               <td align="center">@s.descripcion
+               </td>
+               <td align="center">@context.tipo_servicios.Find(s.tipo_servicioID).descripcion
+               </td>
+               <td align="center">@s.precio_final
+               </td>
+           </tr>
+           if (Odd3 == OddColor3)
+           {
+               Odd3 = evenColor3;
+           }
+           else
+           {
+               Odd3 = OddColor3;
+           }
+
+       }
+</table>
 
 
+
+<br />
+<br />
+<div class="editor-label"> Detalle del Recibo </div>
+<br />
 <table cellpadding="3" cellspacing="3">
        <tr border="1" bgcolor="#777777" color="#ffffff">
            <td width="90%" align="center">

@@ -69,6 +69,7 @@
         .ClientEvents(events =>
         {
             events.OnComplete("completado");
+            events.OnCommand("onCommand");
         })
         
         .DataBinding(dataBinding => dataBinding
@@ -110,7 +111,14 @@
     </div></text>).Visible(false).Width(600).Height(400).Scrollable(true)
     )
 <script type="text/javascript">
-   
+    function onCommand(e) {
+        if (e.dataItem.estadoID == 4) {
+            if (e.name != "VerRecibos") {
+                alert("La reserva ya esta anulada.");
+                e.preventDefault();
+            }
+        }
+    }
     function completado(e) {
         if (e.name == "Check-In") {
             var dias_dif = e.response.dias_dif;
@@ -119,7 +127,6 @@
                 alert("No se puede realizar el check-in porque su estado no es sin check-in");
                 return;
             }
-            console.log(dias_dif);
             if (dias_dif > 0) {
                 alert("Aun no puede efectuar el checkin, faltan " + dias_dif + " dias para realizarlo.");
             } else if(dias_dif < 0){

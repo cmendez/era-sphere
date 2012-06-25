@@ -19,7 +19,7 @@
     double impuesto = h.pais.IGV == null ? 0.0 : h.pais.IGV.Value / 100.0;
     DateTime hoy = DateTime.Now.Date;
     List<Promocion> aux = context.promociones.ToList();
-    List<PromocionView> promociones = context.promociones.Where(x => x.hotelID == idHotel).ToList().Where(z => z.fecha_inicio <= hoy && z.fecha_fin >= hoy).ToList().Select(q => new PromocionView(q)).ToList();
+    List<PromocionView> promociones = context.promociones.Where(x => x.hotelID == idHotel).ToList().Where(z => z.fecha_inicio <= hoy && z.fecha_fin >= hoy && z.puntos_requeridos < puntos).ToList().Select(q => new PromocionView(q)).ToList();
     string nombre = LogicaCliente.toString(c);
     List<string> tipos = new List<string>();
     tipos.Add("Boleta");

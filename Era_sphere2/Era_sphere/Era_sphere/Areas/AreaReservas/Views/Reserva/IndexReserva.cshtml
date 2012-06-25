@@ -88,7 +88,15 @@
         if(tamanho == null) tamanho = 0;
      }
      function onCommand(e){
+        try{
+        if(e.dataItem.estadoID == 4){
+                alert("La reserva ya esta anulada.");
+                e.preventDefault();
+            return; 
+            }
+         }catch(ex){}
         if(e.name == "Anular"){
+            
             if(!confirm("Desea anular la reserva?")){
                 e.preventDefault();
             }
@@ -136,7 +144,7 @@
                 commands
                     .Custom("Anular")
                     .Text("Anular")
-                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
+                    .DataRouteValues(route => { route.Add(o => o.ID).RouteKey("reserva_id"); route.Add(o => o.estadoID).RouteKey("estadoID"); })
                     .Ajax(true)
                     .Action("AnulaReserva", "Reserva")
                 .HtmlAttributes(new { style = "text-align: center" });

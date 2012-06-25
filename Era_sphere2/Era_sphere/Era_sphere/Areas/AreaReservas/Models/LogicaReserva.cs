@@ -266,7 +266,6 @@ namespace Era_sphere.Areas.AreaReservas.Models
                     eliminarReservaCliente(reserva.ID);
                     logica_cliente.cambiarEstadoAnularReserva(reserva.responsable_pagoID);
                     reserva.responsable_pago.numero_reservas--;
-                    context.Entry(reserva.responsable_pago).State = EntityState.Modified;
                     context.SaveChanges();
                     return devolucion;
         }

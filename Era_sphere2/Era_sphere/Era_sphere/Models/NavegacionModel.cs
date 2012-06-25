@@ -244,6 +244,11 @@ namespace Era_sphere.Models
                 Nombre = "Reportes Promociones",
                 Url = "/AreaReportes/ReportePromocion"
             });
+            AreaReportes.Add(new SubLink
+            {
+                Nombre = "Reportes Compras",
+                Url = "/AreaContable/AdministrarOC/Reportes"
+            });
 
             menu.Add(
                 new Link()

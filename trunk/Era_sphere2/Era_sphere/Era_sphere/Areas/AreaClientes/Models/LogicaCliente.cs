@@ -294,44 +294,32 @@ namespace Era_sphere.Areas.AreaClientes.Models
 
         public void cambiarEstadoEliminarReserva(int id_cliente_reserva)
         {
-            List<Cliente> clientes = new List<Cliente>();
-            clientes = retornarClientes();
-
-            for (int i = 0; i < clientes.Count(); i++)
-            {
-                if (id_cliente_reserva == clientes[i].ID)
+            Cliente clientes = context.clientes.Find(id_cliente_reserva);
+            int numero_reservas_posterior = reservasPosteriores(id_cliente_reserva);
                 {
 
-                    if (clientes[i].reservas.Count()==0)
+                    if (numero_reservas_posterior == 0)
                     {
-                        clientes[i].estadoID = 1;
-                        clientes[i].estado = context.estados_cliente.Find(1);
-                        modificarCliente(clientes[i]);
-                        break;
+                        // falta condicion para que se pueda determinar si se debe cambiar a sin reserva o con reserva
+                        clientes.estadoID = 1;
+                        clientes.estado = context.estados_cliente.Find(1);
+                        modificarCliente(clientes);
+                        
                     }
+                    else
+                    {
+                        clientes.estadoID = 2;
+                        clientes.estado = context.estados_cliente.Find(2);
+                        modificarCliente(clientes);
+                    }
+
                 }
-            }
+         
         }
 
         public void cambiarEstadoAnularReserva(int id_cliente_reserva)
         {
-            List<Cliente> clientes = new List<Cliente>();
-            clientes = retornarClientes();
-
-            for (int i = 0; i < clientes.Count(); i++)
-            {
-                if (id_cliente_reserva == clientes[i].ID)
-                {
-
-                    if (clientes[i].reservas.Where(x => x.estado.descripcion != "Anulada").ToList().Count() == 0)
-                    {
-                        clientes[i].estadoID = 1;
-                        clientes[i].estado = context.estados_cliente.Find(1);
-                        modificarCliente(clientes[i]);
-                        break;
-                    }
-                }
-            }
+            cambiarEstadoEliminarReserva(id_cliente_reserva);
         }
 
 

@@ -17,6 +17,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Fiscal
         }
         [Required]
         [DisplayName("Descripcion")]
+        [MaxLength(30)]
         public string descripcion { get; set; }
         [DisplayName("ID Tipo de Pago")]
         public int ID { get; set; }

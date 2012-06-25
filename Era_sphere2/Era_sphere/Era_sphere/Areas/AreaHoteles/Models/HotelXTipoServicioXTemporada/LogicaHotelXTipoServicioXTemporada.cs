@@ -49,9 +49,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXServicioXTemporadaNM
             database_table.agregarElemento(pxtv.deserializa(this));
         }
 
-        public void eliminarServicioXTemporada(int id, int servicioXTemporada_id)
+        public void eliminarServicioXTemporada(int id2)
         {
-            database_table.eliminarElemento(servicioXTemporada_id);
+            database_table.eliminarElemento_logico(id2);
             return;
         }
 

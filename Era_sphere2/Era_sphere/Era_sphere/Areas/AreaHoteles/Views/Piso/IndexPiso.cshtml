@@ -93,7 +93,7 @@
             var nroPisos = $("#nroPisos").val();
             var pisosGrid = $("#PisosGrid").data("tGrid");
             /**/console.log(pisosGrid);
-            var ult_piso = pisosGrid.total + pisosGrid.insertedDataItems().length - pisosGrid.deletedDataItems().length;
+            var ult_piso = obtenUltimoPiso(pisosGrid);
 
             for (var i = 1; i <= nroPisos; i++) {
                 var nroPiso_act = ult_piso + i;
@@ -110,6 +110,39 @@
         if (10  <= i && i < 100)    ceros = "0";
         if (100 <= i && i < 1000)   ceros = "";
         return ceros + i;
+    }
+
+    function obtenUltimoPiso(grid) {
+        var arrayPisos = grid.data;
+        var arrayPisosInserted = grid.insertedDataItems();
+        var arrayPisosCopy = [];
+        var i = 0;
+        /**/console.log("arrayPisos");
+        /**/console.log(arrayPisos);
+        arrayPisos.forEach(
+                function (element, index, array) {
+                    arrayPisosCopy[arrayPisosCopy.length] = element;
+                }
+            );
+        arrayPisosInserted.forEach(
+                function (element, index, array) {
+                    arrayPisosCopy[arrayPisosCopy.length] = element;
+                }
+            );
+
+        arrayPisosCopy.sort(function (a, b) {
+            return a.codigo_piso < b.codigo_piso;
+        });
+
+        /**/console.log("arrayPisosCopy");
+        /**/console.log(arrayPisosCopy);
+
+        if (arrayPisosCopy.length == 0) {
+            return 0;
+        }
+
+        var ult_piso = parseInt((arrayPisosCopy[0].codigo_piso.substring(1)), 10);
+        return ult_piso;
     }
 </script>
 

@@ -30,7 +30,7 @@
                             .TemplateName("HotelXTipoHabitacionXTemporadaViewTemplate"))
 
         .DataKeys(key => key.Add(v => v.ID))
-        //.ClientEvents(events => events.OnEdit("onEdit"))
+        .ClientEvents(events => events.OnEdit("onEdit"))
         .Columns(columns =>
         {
             columns.Bound(v => v.tipoHabitacion_descripcion);
@@ -39,7 +39,7 @@
             columns.Bound(v => v.precio);
             columns.Command(commands =>
             {
-                commands.Edit().ButtonType(GridButtonType.Image);
+                //commands.Edit().ButtonType(GridButtonType.Image);
                 commands.Delete().ButtonType(GridButtonType.Image);
             });
         })
@@ -64,17 +64,21 @@
 <script type="text/javascript">
     function onEdit(e) {
         console.log(e);
-        var mode = e.mode;
-        var form = e.form;
-        console.log($(form).find('#tipohabitacionID'));
-        $(form).find('#tipohabitacionID').val(e.dataItem.tipoHabitacionID);
-        $(form).find('#tipohabitacionID').text(e.dataItem.tt_desc);
+        if (e.mode == "edit") {
+            console.log();
+//            $('#tipohabitacionID').trigger('change');
+            var mode = e.mode;
+            var form = e.form;
+//            console.log($(form).find('#tipohabitacionID'));
+            $(form).find('#tipohabitacionID').val(e.dataItem.tipoHabitacionID);
+//            $(form).find('#tipohabitacionID').text(e.dataItem.tt_desc);
 
-        $(form).find('#tipoTemporadaID').val(e.dataItem.tipoTemporadaID);
+//            $(form).find('#tipoTemporadaID').val(e.dataItem.tipoTemporadaID);
 
-//        $('#tipohabitacionID').data('tComboBox').value(e.dataItem.tipoHabitacionID);
-//        $('#precio_base').data('tComboBox').text(e.dataItem.costo_base);
-//        $('#tipoTemporadaID').data('tComboBox').value(e.dataItem.tipoTemporadaID);
-//        $('#temporadaID').data('tComboBox').value(e.dataItem.temporadaID);
+            //        $('#tipohabitacionID').data('tComboBox').value(e.dataItem.tipoHabitacionID);
+            //        $('#precio_base').data('tComboBox').text(e.dataItem.costo_base);
+            //        $('#tipoTemporadaID').data('tComboBox').value(e.dataItem.tipoTemporadaID);
+            //        $('#temporadaID').data('tComboBox').value(e.dataItem.temporadaID);
+        }
     }
 </script>

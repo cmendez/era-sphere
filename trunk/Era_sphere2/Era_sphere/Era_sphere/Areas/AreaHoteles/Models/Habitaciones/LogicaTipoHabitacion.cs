@@ -26,7 +26,11 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             foreach (TipoHabitacion tipoHabitacion in tipoHabitaciones) tipoHabitacion_view.Add(new TipoHabitacionView(tipoHabitacion));
             return tipoHabitacion_view;
         }
-        
+
+        public List<TipoHabitacion> retornarTodos()
+        {
+            return database_table.retornarTodos();
+        }
         
         public TipoHabitacionView retornarTipoHabitacion(int tipohabitacion_id)
         {
@@ -55,7 +59,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public void eliminarTipoHabitacion(int tipohabitacionID)
         {
-            database_table.eliminarElemento(tipohabitacionID);
+            database_table.eliminarElemento_logico(tipohabitacionID);
         }
         public List<TipoHabitacion> buscarTipoHabitacion(TipoHabitacion tipohabitacion_campos)
         {
@@ -77,6 +81,12 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         {
             if (tipohabitacionID == null) return 0;
             return tipohabitacion_context.tipos_habitacion.Find(tipohabitacionID).costo_base;
+        }
+
+        public int contarDuplicados(int ID, string descripcion)
+        {
+            List<TipoHabitacion> ths = this.retornarTodos();
+            return ths.Count(e => e.ID != ID && e.descripcion == descripcion);
         }
     }
     

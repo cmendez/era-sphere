@@ -45,10 +45,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXProductoNM
             database_table.agregarElemento(hxpv.deserializa());
         }
 
-        //BUGG?????? HXPCONTROLLER.DELETE()
-        public void eliminarProducto(int id, int producto_id)
+        public void eliminarProducto(int hotelXProductoID)
         {
-            database_table.eliminarElemento(producto_id);
+            database_table.eliminarElemento_logico(hotelXProductoID);
             return;
         }
 

@@ -9,9 +9,13 @@ using Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM;
 
 namespace Era_sphere.Areas.AreaHoteles.Models
 {
-    public class TipoHabitacionView
+    public class TipoHabitacionView : IValidatableObject
     {
-        public TipoHabitacionView() { }
+        public TipoHabitacionView() 
+        {
+            ID = -1;
+        }
+
         public TipoHabitacionView(TipoHabitacion tipoHabitacion, int hotelID = 0)
         {
             costo_base = tipoHabitacion.costo_base;
@@ -30,7 +34,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         public int cap_max_personas { get; set; }
         [DisplayName("ID tipo habitacion")]
         public int ID { get; set; }
-        [DisplayName("Costo base")]
+        [DisplayName("Costo base (USD$)")]
         [Range(0, Era_sphere.Generics.StringsDeValidaciones.infinito)]
         public decimal costo_base { get; set; }
 
@@ -54,6 +58,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
             TipoHabitacion tipo_habitacion = new TipoHabitacion
             {
+                costo_base = this.costo_base,
                 descripcion = this.descripcion,
                 cap_max_personas = this.cap_max_personas,
                 ID = this.ID
@@ -64,6 +69,19 @@ namespace Era_sphere.Areas.AreaHoteles.Models
             //    tipo_habitacion.comodidades=(new Era_sphere)
             //}
             return tipo_habitacion;
+        }
+
+        public IEnumerable<ValidationResult>
+           Validate(ValidationContext validationContext)
+        {
+            var field_desc = new[] { "descripcion" };
+
+            int n_duplicados = (new LogicaTipoHabitacion()).contarDuplicados(ID, descripcion);
+
+            if (1 <= n_duplicados)
+            {
+                yield return new ValidationResult("Ya existe un tipo de habitación con esta descripción", field_desc);
+            }
         }
     }
 }

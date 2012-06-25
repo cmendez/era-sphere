@@ -56,9 +56,9 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
             database_table.agregarElemento(hxthxt.deserializa());
         }
 
-        public void eliminarTipoHabitacionXTemporada(int id, int tipoHabitacionXTemporada_id)
+        public void eliminarTipoHabitacionXTemporada(int idHotelXTHXT)
         {
-            database_table.eliminarElemento_logico(tipoHabitacionXTemporada_id);
+            database_table.eliminarElemento_logico(idHotelXTHXT);
             return;
         }
 
@@ -71,6 +71,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models.HotelXTipoHabitacionXTemporadaNM
 
         public decimal getPrecioTipoHabitacion(int hotelID, int tipo_habitacionID, DateTime fecha)
         {
+            if (tipo_habitacionID == -1) return 0;
             LogicaTemporada lt = new LogicaTemporada();
             Temporada temporada = lt.retornarTemporada(fecha);
             var res = this.hxthxt_context.hxthxts.FirstOrDefault(x => x.hotelID == hotelID && x.temporadaID == temporada.ID && x.tipoHabitacionID == tipo_habitacionID);

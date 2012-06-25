@@ -61,6 +61,7 @@ namespace Era_sphere.Generics
             base.OnModelCreating(modelBuilder);
             crear_fiscal(modelBuilder);
             crear_orden_compra(modelBuilder);
+            builderHotel(modelBuilder);
             //crear_eventos_servicios(modelBuilder);
         }
 

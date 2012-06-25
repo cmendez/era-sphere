@@ -91,8 +91,8 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public IEnumerable<TipoHabitacion> retornarTiposHabitacion(int hotel_id)
         {
-            //return (new LogicaHotelXTipoHabitacionXTemporada()).retornarTiposHabitaciones(hotel_id);
-            return null;
+            return (new LogicaHotelXTipoHabitacionXTemporada()).retornarTiposHabitaciones(hotel_id);
+            //return null;
         }
 
         public List<Habitacion> retornarHabitacionesDePiso(int pisoID)

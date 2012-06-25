@@ -32,7 +32,7 @@ namespace Era_sphere.Areas.AreaHoteles.Models
 
         public void eliminarHotel(int hotel_id)
         {
-            database_table.eliminarElemento(hotel_id);
+            database_table.eliminarElemento_logico(hotel_id);
             return;
         }
 

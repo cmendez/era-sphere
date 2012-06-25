@@ -36,13 +36,10 @@ namespace Era_sphere.Areas.AreaHoteles.Models
         //[InverseProperty("hotel")]
         public virtual ICollection<Piso> lista_pisos { get; set; } 
        //public Ciudad ciudad { get; set; }
-        [ForeignKey("pais")]
-        public int paisID { get; set; }
+        public int ?paisID { get; set; }
         public virtual Pais pais { get; set; }
-        [ForeignKey("ciudad")]
-        public int ciudadID { get; set; }
+        public int? ciudadID { get; set; }
         public virtual Ciudad ciudad { get; set; }
-        [ForeignKey("provincia")]
         public int? provinciaID { get; set; }
         public virtual Provincia provincia { get; set; } 
         //public ICollection<Piso> pisos_hotel { get; set; }

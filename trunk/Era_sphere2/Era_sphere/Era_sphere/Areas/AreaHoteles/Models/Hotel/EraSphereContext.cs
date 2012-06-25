@@ -20,5 +20,15 @@ namespace Era_sphere.Generics
             hoteles.Add(hotel2);
             SaveChanges();
         }
+
+        void builderHotel( DbModelBuilder builder ){
+            builder.Entity<Hotel>().HasOptional(e => e.pais)
+                                    .WithOptionalDependent();
+            builder.Entity<Hotel>().HasOptional(e => e.ciudad)
+                                    .WithOptionalDependent();
+            builder.Entity<Hotel>().HasOptional(e => e.provincia)
+                                    .WithOptionalDependent();
+
+        }
     }
 }

@@ -73,6 +73,7 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         {
 
             Evento evento = logica.context.eventos.Find(eventoID);
+            evento.estado_eventoID = 4;
             var recibos_lineas = evento.getReciboLineas();
             decimal puntosratio = logica.context.cadenas.Find(1).ptos_x_dolar;
             Cliente c = logica.context.clientes.Find(clienteID);

@@ -45,9 +45,11 @@ namespace Era_sphere.Areas.AreaEmpleados.Models
         }
 
 
-        public Empleado retornarEmpleado(int empleadoID)
+        public EmpleadoView retornarEmpleado(int empleadoID)
         {
-            return database_table.retornarUnSoloElemento(empleadoID);
+            Empleado emp =  database_table.retornarUnSoloElemento(empleadoID);
+            EmpleadoView empleado = new EmpleadoView(emp);
+            return empleado;
         }
 
         public void modificarEmpleado(Empleado empleado)

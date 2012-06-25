@@ -24,6 +24,21 @@ namespace Era_sphere.Areas.AreaEmpleados.Controllers
             return View("CrearEmpleado");
         }
 
+        [GridAction]
+        public JsonResult DameEmpleado(int empleadoID)
+        {
+            var empleado = le.retornarEmpleado(empleadoID);
+            return new JsonResult() { Data = empleado };
+        }
+        
+        [HttpPost]
+        public JsonResult ActualizarEmpleado(EmpleadoView emp)
+        {
+            Empleado empleado = emp.deserializa(le);
+            le.modificarEmpleado(empleado);
+            return Json(new { me = "" });
+        }
+        
 
         [GridAction]
         public ActionResult Select()

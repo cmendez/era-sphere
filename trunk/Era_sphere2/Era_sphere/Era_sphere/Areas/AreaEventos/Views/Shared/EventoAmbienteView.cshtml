@@ -108,7 +108,7 @@
                         }
                     }
                     else {
-
+                        $(".error_fecha_fin_error").hide();
                         $.ajax(
                             {
                                 url: '@Url.Action("InsertAmbiente","Evento",new {idEvento=idEvento} )',

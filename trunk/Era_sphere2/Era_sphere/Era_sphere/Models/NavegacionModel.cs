@@ -100,11 +100,11 @@ namespace Era_sphere.Models
                 Url = "/AreaConfiguracion/Cadena"
             });
 
-            AreaConfiguracion.Add(new SubLink()
-            {
-                Nombre = "Comodidades",
-                Url = "/AreaHoteles/Comodidades"
-            });
+            //AreaConfiguracion.Add(new SubLink()
+            //{
+            //    Nombre = "Comodidades",
+            //    Url = "/AreaHoteles/Comodidades"
+            //});
 
             AreaConfiguracion.Add(new SubLink
             {

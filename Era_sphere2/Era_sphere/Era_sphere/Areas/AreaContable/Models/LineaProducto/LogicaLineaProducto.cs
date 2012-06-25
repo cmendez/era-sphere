@@ -47,7 +47,7 @@ namespace Era_sphere.Areas.AreaContable.Models
 
         public void eliminarLineaProducto(int lineaproductoID)
         {
-            database_table.eliminarElemento(lineaproductoID);
+            database_table.eliminarElemento_logico(lineaproductoID);
         }
 
         public List<LineaProducto> buscarLineaProducto(LineaProducto lineaproducto_campos)

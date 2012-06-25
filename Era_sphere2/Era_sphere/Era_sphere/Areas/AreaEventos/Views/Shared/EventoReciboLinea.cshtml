@@ -13,21 +13,43 @@
 
         function ConfirmarPago() {
         console.log("configar pago");
-         $.ajax(
-                {
-                    url: '@Url.Action("PagarLineasEvento", "../AreaContable/Pagos")',
-                    traditional: true,
-                    data: {  clienteID : @clienteID,
-                            eventoID: @idEvento },
-                    type: "POST",
-                    success: function (data) {
-                        //$("#Cortecuenta").data("tWindow").close();
-                        $("#recibo_evento_div").load('@Url.Action("ReciboEvento", "../AreaContable/Recibo")', {reciboId: data.recibo_id, hotelID: @idHotel});
-                        $("#ReciboEvento").data("tWindow").center().open();
-                    },
-                    async: false
-                }
-            );
+        var gg;
+        var montodeuda=$("#deuda").val();
+        console.log("haber"+montodeuda)
+        var juanchis_json = JSON.stringify({ clienteID:@clienteID,eventoID:@idEvento});
+        $.ajax(
+                    {
+                        url: '@Url.Action("Deuda", "Evento")',
+                        dataType : 'json',
+                        contentType : 'application/json',
+                        data: JSON.stringify({cad:montodeuda}),
+                        type: "POST",
+                        success: function (data) {
+                            console.log("resul "+data.deuda)
+                           if(data.deuda){
+                                $.ajax(
+                                    {
+                                        url: '@Url.Action("PagarLineasEvento", "../AreaContable/Pagos")',
+                                        dataType : 'json',
+                                            contentType : 'application/json',
+                                        data: juanchis_json,
+                                        type: "POST",
+                                        success: function (data) {
+                                            $("#PagarEvento").data("tWindow").close();
+                                            $("#recibo_evento_div").load('@Url.Action("ReciboEvento", "../AreaContable/Recibo")', {reciboId: data.recibo_id, hotelID: @idHotel});
+                                            $("#ReciboEvento").data("tWindow").center().open();
+                                        },
+                                        async: false
+                                    }
+                                            );
+                            }
+                            else {alert("Debe cancelar toda la deuda");}
+                        },
+                        async: false
+                    }
+                );
+        
+        
         
     }
 </script>
@@ -37,7 +59,7 @@
     </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true)
     )
 
-    <div type="button"  onclick="ConfirmarPago()">GGGGG</div>
+    
 
 <div class="titlebar">
         <h5>
@@ -79,4 +101,8 @@
         )
         )
 </div>
+    <div class="form">
+        <input type="button" class="submit" onclick="ConfirmarPago()" value="Generar Boleta"/>
+    </div>
+
 

@@ -385,7 +385,9 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             EventoView evento = (new LogicaEvento()).retornarEvento(idEvento);
             ViewBag.idEvento = idEvento;
             ViewBag.precio_total = evento.precio_total;
-            ViewBag.deuda = evento.precio_total - evento.pagado;
+            decimal deuda=evento.precio_total - evento.pagado;
+            deuda = (deuda)>0? deuda : (decimal)0.0 ;
+            ViewBag.deuda = (float)deuda;
             ViewBag.pagado = evento.pagado;
             return PartialView("MontosEventos");
         }
@@ -403,6 +405,9 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         {
             Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
             ReciboLinea linea = (new EraSphereContext()).recibos_lineas.Find(id);
+
+            decimal f = evento.precio_total - evento.pagado + linea.precio_final;
+            if (f < reciboLinea.precio_final) reciboLinea.precio_final = f;
             evento.pagado = evento.pagado - linea.precio_final + reciboLinea.precio_final;
             evento_logica.modificarEvento(new EventoView(evento));
             evento.modificarReciboLinea(reciboLinea, id);
@@ -412,13 +417,21 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         [GridAction]
         public ActionResult DeleteReciboLinea(int id, int idEvento)
         {
-            Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
-            ReciboLinea linea = (new EraSphereContext()).recibos_lineas.Find(id);
+            EraSphereContext context=new EraSphereContext();
+            Evento evento = context.eventos.Find(idEvento);
+            ReciboLinea linea = context.recibos_lineas.Find(id);
             evento.pagado = evento.pagado - linea.precio_final;
             evento_logica.modificarEvento(new EventoView(evento));
             evento.eliminarReciboLinea(id);
             return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
         }
+        public JsonResult Deuda(string cad)
+        {
+            int num=(int)Double.Parse(cad);
+            bool f= num==0 ;
+            return Json(new { deuda = f }, JsonRequestBehavior.AllowGet);
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
         [GridAction]
         public ActionResult InsertReciboLinea(int idEvento)
@@ -427,10 +440,12 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
             ReciboLinea linea = new ReciboLinea();
             Evento evento = (new EraSphereContext()).eventos.Find(idEvento);
             evento.estado_eventoID = 3;//Parcialmente pagado
-
+            
             if (TryUpdateModel(linea))
             {
                 linea.fecha = DateTime.Now;
+                decimal f = evento.precio_total - evento.pagado;
+                if (f < linea.precio_final) linea.precio_final = f;
                 linea.de_evento = true;
                 linea.detalle = "Pago de evento";
                 evento.registraReciboLinea(linea);

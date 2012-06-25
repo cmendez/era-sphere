@@ -294,6 +294,24 @@ namespace Era_sphere.Models
 
         }
 
+        public IEnumerable<SubLink> getMenu(string token, string men)
+        {
+            List<SubLink> retorno = new List<SubLink>();
+            for (int i = 0; i < token.Length; i++)
+                if (token[i] == '1') { 
+                    //retorno.Add(this.menu[i]); 
+                    List<SubLink> lista = this.menu[i].Sublinks;
+                    for (int j = 0; j < lista.Count; j++) {
+                        SubLink slink = lista[j];
+                        if (slink.Nombre.ToUpper().Contains(men.ToUpper())) {
+                            retorno.Add(slink);
+                        }
+                    }
+                }
+            return retorno;
+        }
+
+
         public IEnumerable<Link> getMenu(string token)
         {
             List<Link> retorno = new List<Link>();

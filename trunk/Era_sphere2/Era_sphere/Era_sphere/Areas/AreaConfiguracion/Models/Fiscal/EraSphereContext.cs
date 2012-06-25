@@ -36,23 +36,23 @@ namespace Era_sphere.Generics
             Proveedor p = new Proveedor
             {
                 ID = 1,
-                razon_social = "Proveedor 1",
+                razon_social = "VERDUSAC",
                 ruc = "21234567890",
-                telefono = "12312312",
-                correo = "a@b.c",
-                direccion = "direccion 1 ",
-                persona_contacto = "Persona 1"
+                telefono = "348-8767",
+                correo = "compras@verdusac.com.pe",
+                direccion = "Av. Lomas de los Lirios 130 Surco",
+                persona_contacto = "Pedro Aguirre Erquínigo"
             };
          
             proveedores.Add(
                 new Proveedor { 
                     ID = 2,
-                    razon_social = "Proveedor 2",
+                    razon_social = "PAPIJULIO S.A.",
                     ruc = "123123123",
-                    telefono = "1212112",
-                    correo = "ff@g.g",
-                    direccion = "direccion 2",
-                    persona_contacto = "Persona 2"
+                    telefono = "659-9865",
+                    correo = "cotizaciones_papijulio@yahoo.com",
+                    direccion = "Av. Arequipa 256 Sta. Patricia - La Molina",
+                    persona_contacto = "Alejandra Hoces Benavides"
                 }
           );
             p.productos = new List<proveedor_x_producto>();

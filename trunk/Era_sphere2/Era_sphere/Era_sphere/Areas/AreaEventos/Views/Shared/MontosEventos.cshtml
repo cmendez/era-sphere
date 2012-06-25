@@ -9,25 +9,24 @@
     <div class="editor-label">
         <label>Precio Total</label>
     </div>
-    <div>
-        @ViewBag.precio_total
+    <div >
+        <input type="text" id = "precio_total" readonly="readonly" value="@ViewBag.precio_total"/>
     </div>
     </td>
     <td>
     <div class="editor-label">
         <label>Pagado</label>
     </div>
-    <div>
-        @ViewBag.pagado
+    <div >
+        <input type="text" id = "pagado" readonly="readonly" value="@ViewBag.pagado"/>
     </div>
+
     </td>
     <td>
     <div class="editor-label">
         <label>Deuda</label>
     </div>
-    <div>
-        @ViewBag.deuda
-    </div>
+        <input type="text" id = "deuda" readonly="readonly" value="@ViewBag.deuda"/>
     </td>
 </tr>
 </table>

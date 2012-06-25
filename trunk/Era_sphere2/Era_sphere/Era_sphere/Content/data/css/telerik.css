@@ -47,6 +47,44 @@ html body .t-button{text-decoration:none;/*Site.css*/}
 	-moz-box-shadow: 0px 1px 1px #323a43;
 	box-shadow: 0px 1px 1px #323a43;
 }
+.z-button{
+	display: inline-block;
+	padding:2px 6px;
+	height: 27px;
+	width: 50px;
+	background: url('../images/form_button.png') top repeat-x;
+	color: #ffffff;
+	text-align: center;
+	text-shadow: 1px 1px 0px #000000;
+	text-decoration: none;
+	line-height: 30px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #2a3139;
+	-webkit-box-shadow: 0px 1px 1px #323a43;
+	-moz-box-shadow: 0px 1px 1px #323a43;
+	box-shadow: 0px 1px 1px #323a43;
+}
+.xurreta-button{
+	display: inline-block;
+	padding:2px 6px;
+	height: 27px;
+	width: auto;
+	background: url('../images/form_button.png') top repeat-x;
+	color: #ffffff;
+	text-align: center;
+	text-shadow: 1px 1px 0px #000000;
+	text-decoration: none;
+	line-height: 30px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #2a3139;
+	-webkit-box-shadow: 0px 1px 1px #323a43;
+	-moz-box-shadow: 0px 1px 1px #323a43;
+	box-shadow: 0px 1px 1px #323a43;
+}
 *+html .t-button{display:inline;zoom:1}
 * html .t-button{display:inline;zoom:1}
 *+html .t-button{overflow:visible;margin-right:4px}

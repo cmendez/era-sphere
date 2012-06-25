@@ -45,8 +45,8 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         [GridAction]
         public ActionResult Delete(int? id, int id_hotel)
         {
-            int tiposervicioXTemporada_id = id ?? -1;
-            logicahpt.eliminarServicioXTemporada(id_hotel, tiposervicioXTemporada_id);
+            int id2 = id ?? -1;
+            logicahpt.eliminarServicioXTemporada(id2);
             return View("Index", new GridModel(logicahpt.retornarTipoServiciosXTemporada(id_hotel)));
         }
         [AcceptVerbs(HttpVerbs.Post)]

@@ -44,7 +44,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
 
             reporte.titulo = new String[5, 6]
             {
-                    {"","REPORTE DE CLIENTES","","","",""},
+                    {"","REPORTE DE","EVENTOS","","",""},
                     {"","","","","",""},
                     {"CADENA",cadena[0].nombreCadena,"","FECHA",date.ToShortDateString(),""},
                     {"","","","","",""},

@@ -8,6 +8,7 @@ namespace Era_sphere.Areas.AreaReportes.Models.RepExcelEvento
     public class RepEvento
     {
         public String fileName { get; set; }
+        public String[,] titulo { get; set; }
         public String[,] cabecera { get; set; }
         public String[][] contenido { get; set; }
     }

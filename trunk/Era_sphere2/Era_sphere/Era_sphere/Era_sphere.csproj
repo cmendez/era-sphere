@@ -1484,6 +1484,7 @@
     <Content Include="Areas\AreaHoteles\Views\HotelXTipoHabitacionXTemporada\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelXTipoHabitacionXTemporadaViewTemplate.cshtml" />
     <Content Include="Areas\AreaContable\Views\Shared\OrdenesAceptadasPartial.cshtml" />
+    <Content Include="Areas\AreaContable\Views\Recibo\ReciboEventoPDF.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ReciboLineaTemplate.cshtml">
       <SubType>Code</SubType>

@@ -39,7 +39,7 @@ else
 
 <br />
 <label style="font-weight:bold"> Detalle del cliente</label>
-@if (Model.tipo == 0)
+@if (cliente.tipoID==1)
 { //boleta
     <label style="font-weight:bold;">Boleta</label>
     Html.RenderPartial("BoletaCliente", cliente);

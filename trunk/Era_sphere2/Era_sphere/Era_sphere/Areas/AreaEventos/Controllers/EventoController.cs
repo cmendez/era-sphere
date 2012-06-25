@@ -422,12 +422,16 @@ namespace Era_sphere.Areas.AreaEventos.Controllers
         [GridAction]
         public ActionResult DeleteReciboLinea(int id, int idEvento)
         {
-            EraSphereContext context=new EraSphereContext();
+            EraSphereContext context = new EraSphereContext();
             Evento evento = context.eventos.Find(idEvento);
-            ReciboLinea linea = context.recibos_lineas.Find(id);
-            evento.pagado = evento.pagado - linea.precio_final;
-            evento_logica.modificarEvento(new EventoView(evento));
-            evento.eliminarReciboLinea(id);
+            try
+            {
+                ReciboLinea linea = context.recibos_lineas.Find(id);
+                evento.pagado = evento.pagado - linea.precio_final;
+                evento_logica.modificarEvento(new EventoView(evento));
+                evento.eliminarReciboLinea(id);
+            }
+            catch (Exception e) { ;}
             return View("EventoReciboLinea", new GridModel(evento.getReciboLineas()));
         }
         public JsonResult Deuda(string cad)

@@ -39,44 +39,44 @@ else
 </span>
 
 <br />
-<label style="font-weight:bold"> Detalle del cliente</label>
+@*<label style="font-weight:bold"> Detalle del cliente</label>*@
+<h2>Detalle del Cliente</h2>
 @if (Model.tipo == 0)
 {
     //boleta
-    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre) </div>
+    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre): </div>
     <div class="editor-label"> @Html.DisplayFor(model => cliente.nombre) </div>
     <br />
-    <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_materno) </div>
+    <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_materno): </div>
     <div class="editor-label"> @Html.DisplayFor(model => cliente.apellido_paterno) </div>
     <br />
-    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre) </div>
+    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre): </div>
     <div class="editor-label"> @Html.DisplayFor(model => cliente.nombre) </div>
     <br />
-    <div class="editor-label"> @Html.LabelFor(model => cliente.documento_identidad) : <label>@cliente.tipo_documento.descripcion</label></div>
+    <div class="editor-label"> @Html.LabelFor(model => cliente.documento_identidad): <label>@cliente.tipo_documento.descripcion</label></div>
     <div class="editor-label"> @Html.DisplayFor(model => cliente.documento_identidad) </div>
     <br />
-    <div class="editor-label"> @Html.LabelFor(model => cliente.puntos_cliente) </div>
+    <div class="editor-label"> @Html.LabelFor(model => cliente.puntos_cliente): </div>
     <div class="editor-label"> @Html.DisplayFor(model => cliente.puntos_cliente) </div>
     <br />
 }
 else
 {
-     
-        
+             
     if (cliente.tipoID == 1)
     {
-    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre) </div>
+    <div class="editor-label"> @Html.LabelFor(model => cliente.nombre): </div>
         <div class="editor-label"> @Html.DisplayFor(model => cliente.nombre) </div>
         <br />
-        <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_paterno) </div>
+        <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_paterno): </div>
         <div class="editor-label"> @Html.DisplayFor(model => cliente.apellido_paterno) </div>
         <br />
-        <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_materno) </div>
+        <div class="editor-label"> @Html.LabelFor(model => cliente.apellido_materno): </div>
         <div class="editor-label"> @Html.DisplayFor(model => cliente.apellido_materno) </div>
     }
     else
     {
-        <div class="editor-label"> @Html.LabelFor(model => cliente.razon_social) </div>
+        <div class="editor-label"> @Html.LabelFor(model => cliente.razon_social): </div>
         <div class="editor-label"> @Html.DisplayFor(model => cliente.razon_social) </div>
     }
     
@@ -85,7 +85,7 @@ else
         <div class="editor-label"> Ruc:</div>
         <div class="editor-label"> @Html.DisplayFor(model => cliente.ruc) </div>
         <br />
-        <div class="editor-label"> @Html.LabelFor(model => cliente.puntos_cliente) </div>
+        <div class="editor-label"> @Html.LabelFor(model => cliente.puntos_cliente): </div>
         <div class="editor-label"> @Html.DisplayFor(model => cliente.puntos_cliente) </div>
         <br />
     
@@ -107,12 +107,14 @@ else
     List<EventoXAmbiente> lista = context.eventoXAmbientes.Where(exa => exa.eventoID == Model.eventoID).ToList();
 }
 
-<label style="font-weight:bold"> Detalle del evento</label>
+@*<label style="font-weight:bold"> Detalle del evento</label>*@
+<br />
+<h2>Detalle del Evento</h2>
 
-    <div class="editor-label"> @Html.LabelFor(model => evento.nombre) </div>
+    <div class="editor-label"> Nombre: </div>
     <div class="editor-label"> @Html.DisplayFor(model => evento.nombre) </div>
     <br />
-    <div class="editor-label"> Número de participantes </div>
+    <div class="editor-label"> Número de participantes: </div>
     <div class="editor-label"> @Html.DisplayFor(model => evento.num_participantes) </div>
     <br />    
     
@@ -213,7 +215,9 @@ else
 
 <br />
 <br />
-<div class="editor-label"> Detalle del Recibo </div>
+@*<div class="editor-label"> Detalle del Recibo </div>*@
+
+<h2>Detalle del Recibo</h2>
 <br />
 <table cellpadding="3" cellspacing="3">
        <tr border="1" bgcolor="#777777" color="#ffffff">

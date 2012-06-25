@@ -6,7 +6,7 @@
 @model ServicioView
 @{
     EraSphereContext context = new EraSphereContext();
-    var tipos = context.tipo_servicios.ToList();
+    var tipos = context.tipo_servicios.Where(x => x.eliminado == false).ToList();
     bool edit = (bool)(ViewData["edit"]);
     LogicaReserva l = new LogicaReserva();
     int reservaID = (int)(ViewData["reservaID"]);

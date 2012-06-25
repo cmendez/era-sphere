@@ -1,20 +1,21 @@
 ﻿@using Telerik.Web.Mvc.UI;
 @{
     ViewBag.Title = "Reporte Compras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
     <div class="titlebar">
         <h3>
-            Reporte de Compras
+            Reporte de Ordenes de Compras
         </h3>
     </div>
     <div class="block_cont">
         
-        <h2>Presione el link para mostrar el reporte de compras: </h2>
-        <a ref="../AreaContable/AdministrarOC/Export"><p><b>CLIC</b></p></a>
-
+        <h2>Presione el link para mostrar el reporte de compras</h2>
+        
+        <div align="left"><a href = "./AreaContable/AdministrarOC/Export" button class="xurreta-button" >Mostrar Reporte en EXCEL</a>  </div>
     </div>
     <!-- Table Wrapper End -->
 </div>

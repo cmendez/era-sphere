@@ -26,6 +26,15 @@ namespace Era_sphere.Areas.AreaConfiguracion.Controllers
 
         }
 
+        [HttpPost]
+        public JsonResult getCadena() {
+            int id = 0;
+            List<Cadena> lista = cadena_logica.retornarCadenas();
+            id = lista[lista.Count - 1].ID;
+            var cadena = cadena_logica.retornarCadena(id);
+            return Json(new { Data = cadena });
+        }
+
         public ActionResult Create()
         {    
             return View(); //devuelve el view de cadena, CREATE.CSHTML

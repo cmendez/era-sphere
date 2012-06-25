@@ -45,7 +45,9 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         }
         [GridAction]
         public ActionResult SelectEOCL(int id_eoc) {
-            List<EOCLineaView> ans = logica.retornar_entrega_lineas(id_eoc);
+            List<EOCLineaView> ans = new List<EOCLineaView>();
+             try{ ans = logica.retornar_entrega_lineas(id_eoc); }
+            catch( Exception ex ){} 
             return View("OrdenesAceptadasPartial", new GridModel( ans ) );
         }
         [GridAction]

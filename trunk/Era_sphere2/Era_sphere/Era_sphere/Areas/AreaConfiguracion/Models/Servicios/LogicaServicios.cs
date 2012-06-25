@@ -55,7 +55,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         public void eliminarServicio(int servicioID)
         {
-            tabla_servicios.eliminarElemento(servicioID);
+            tabla_servicios.eliminarElemento_logico(servicioID);
         }
 
         public List<Servicio> buscarServicio(Servicio servicio_campos)
@@ -78,7 +78,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Servicios
 
         internal void eliminarTipoServicio(int servicio_id)
         {
-            tabla_tipo_servicios.eliminarElemento(servicio_id);
+            tabla_tipo_servicios.eliminarElemento_logico(servicio_id);
         }
 
         internal void modificarTipoServicio(TipoServicio p)

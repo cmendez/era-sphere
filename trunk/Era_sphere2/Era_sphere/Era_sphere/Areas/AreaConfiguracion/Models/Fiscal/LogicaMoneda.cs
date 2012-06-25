@@ -27,7 +27,7 @@ namespace Era_sphere.Areas.AreaConfiguracion.Models.Fiscal
         }
         public void eliminarMoneda(int moneda_id)
         {
-            database_table.eliminarElemento(moneda_id);
+            database_table.eliminarElemento_logico(moneda_id);
             return;
         }
         public List<MonedaView> retornarMonedas()

@@ -32,6 +32,7 @@
             columns.Bound(p => p.deuda);
             columns.Command(commands =>
             {
+                commands.Delete().ButtonType(GridButtonType.Image);
                 commands.Custom("Detalles")
                     .Text("Detalles").Ajax(true)
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
@@ -40,7 +41,7 @@
                     .Text("Pagar").Ajax(true)
                     .DataRouteValues(route => route.Add(c => c.ID).RouteKey("ID"))
                     .Action("Nada", "Evento");
-       
+                
           });
         })
         .Pageable()
@@ -48,7 +49,7 @@
         .DataBinding(dataBinding => dataBinding
             .Ajax()
             .Select("Select", "Evento", new { id_hotel = idhotel ,estado=3})
-            
+            .Delete("Delete", "Evento", new { id_hotel = idhotel })
         )
 )
     </div>

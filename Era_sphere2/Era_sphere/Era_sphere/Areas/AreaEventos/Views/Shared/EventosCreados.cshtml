@@ -36,6 +36,12 @@
             var detailModal = $("#DetalleEvento").data("tWindow");
             detailModal.center().open();
         }
+        if (  e.name != 'dataBinding'){
+            
+            $("#EventoCreado").data("tGrid").ajaxRequest();
+            $("#EventoPPagado").data("tGrid").ajaxRequest();
+            $("#EventoPagado").data("tGrid").ajaxRequest();    
+        }
 
     }
 

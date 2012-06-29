@@ -77,7 +77,7 @@ namespace Era_sphere.Areas.AreaContable.Models
 
             List<Producto> usados = new List<Producto>();
             List<proveedor_x_producto> relacion = q_prov.retornarUnSoloElemento(proveedor_id).productos.ToList();
-            foreach (proveedor_x_producto pp in relacion) usados.Add(q_producto.retornarUnSoloElemento(pp.productoID));
+            foreach (proveedor_x_producto pp in relacion) if( !pp.eliminado ) usados.Add(q_producto.retornarUnSoloElemento(pp.productoID));
             List<Producto> resta;
             if (text != null)
                 resta = proveedor_context.productos.Where(p => (p.descripcion.StartsWith(text) && !p.eliminado)).ToList();

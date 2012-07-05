@@ -31,14 +31,13 @@
         var idhotel = $('#hotel').val();
         ///AreaReservas/Reserva/Index/1
         $("#reserva").html("");
-        $("#loader").show();
+        //$("#loader").show();
         $("#reserva").load("../../AreaReservas/Reserva/Cliente/" + idhotel,
         function (responseText, textStatus, XMLHttpRequest) {
             if (textStatus == "success") {
                 // all good!
-                $("#loader").hide();
+                //$(".t-grid-bottom").hide();
             }
-
         });
     });
 

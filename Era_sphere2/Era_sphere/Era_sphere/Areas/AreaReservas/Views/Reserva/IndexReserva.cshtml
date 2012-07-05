@@ -94,6 +94,11 @@
                 e.preventDefault();
             return; 
             }
+        if(e.dataItem.estadoID == 2 || e.dataItem.estadoID == 3){
+                alert("La reserva no se puede anular pues ya se ha realizado el check-in.");
+                e.preventDefault();
+            return; 
+            }
          }catch(ex){}
         if(e.name == "Anular"){
             
@@ -107,8 +112,8 @@
  @(Html.Telerik().Window()
     .Name("Cortecuenta").Title("CorteDeCuenta")
     .Content(@<text><div id="cortecuentadiv">
-    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true).ClientEvents(events => events.OnClose("verificaPago"))
-    )
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true).ClientEvents(events => events.OnClose("verificaPago")).Draggable(true)
+    )true
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->

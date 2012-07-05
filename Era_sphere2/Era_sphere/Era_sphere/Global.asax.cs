@@ -48,7 +48,7 @@ namespace Era_sphere
         {
             AreaRegistration.RegisterAllAreas();
          
-            //Database.SetInitializer<EraSphereContext>(new EraSphereContextInitializer());
+            Database.SetInitializer<EraSphereContext>(new EraSphereContextInitializer());
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 

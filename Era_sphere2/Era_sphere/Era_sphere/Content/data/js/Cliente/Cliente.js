@@ -41,6 +41,12 @@
         });
     });
 
+    $("#registrate").click(function () {
+        //alert("aaa");
+        init();
+        $("#registrateContent").show();
+    });
+
     $("#consumoCliente").click(function () {
         //dialogConsumo
 
@@ -49,7 +55,45 @@
         $('#dialogConsumo').dialog('open');
     });
 
-    $("#promocionesCliente").click(function () {
+    $("#registrateboton").click(function () {
+      
+      var jsonCliente = {
+                 tipocliente: $("#tipocliente").val(),
+                 nomcliente : $("#nomcliente").val(),
+                 appmaterno : $("#appmaterno").val(),
+                 apppaterno : $("#apppaterno").val(), 
+                 emailcliente : $("#emailcliente").val(), 
+                 usuariocliente : $("#usuariocliente").val(),
+                 clavecliente : $("#pwdcliente").val(),
+                 rscliente : $("#rscliente").val(),
+                 ruccliente : $("#ruccliente").val(),
+                 tipodocumento : $("#tipoDocumento").val(),
+                 nrodocumento : $("#nrodocumento").val(),
+        };
+
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(jsonCliente),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            url: "/AreaClientes/Cliente/registraCliente",
+
+            success: function (data) {
+                if (data.me == ""){
+                    $("#textmessage").html("Usuario Registrado Correctamente");
+                }else {
+                    $("#textmessage").html("Ocurrio un error, al registrar");
+                }
+            }
+        });
+
+
+
+
+    });
+
+                    
+ $("#promocionesCliente").click(function () {
 
         var jsonLogin = {
             puntos: localStorage.getItem("PUNTOSCLIENTE")
@@ -103,6 +147,7 @@
         //e.preventdefault();
         $("#inicioContent").hide();
         $("#detalleContent").hide();
+        $("#registrateContent").hide();
         $("#somosContent").show();
 
         return false;
@@ -112,14 +157,27 @@
         $("#inicioContent").hide();
         $("#detalleContent").hide();
         $("#somosContent").hide();
+        $("#registrateContent").hide();
     }
 
     $("#inicio").click(function (e) {
         //e.preventdefault();
+        init();
         $("#somosContent").hide();
         $("#detalleContent").hide();
         $("#inicioContent").show();
         return false;
+    });
+
+    $("#tipocliente").change(function () {
+
+        if ($("#tipocliente").val() == "1") {
+            $("#natural").hide();
+            $("#juridico").show();
+        } else {
+            $("#juridico").hide();
+            $("#natural").show();
+        }
     });
 
     $("#intranet").click(function (e) {

@@ -270,6 +270,50 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
         }
 
 
+        public JsonResult registraCliente(string tipocliente, string nomcliente, string appmaterno, string apppaterno, string emailcliente,
+                                            string usuariocliente, string clavecliente, string rscliente, string ruccliente, string tipodocumento, string nrodocumento)
+        {
+
+            if (tipocliente == "0")
+            {
+                int tdoc = int.Parse(tipodocumento) + 1;
+                Cliente c = new Cliente
+                {
+                    nombre = nomcliente,
+                    apellido_materno = appmaterno,
+                    apellido_paterno = apppaterno,
+                    correo_electronico = emailcliente,
+                    usuario = usuariocliente,
+                    password = clavecliente,
+                    tipo_documentoID = tdoc,
+                    documento_identidad = nrodocumento,
+                    tipoID = 1,
+                    estadoID = cliente_logica.context.estados_cliente.Find(1).ID,
+                    paisID = 1,
+                    ciudadID = 1
+                };
+                cliente_logica.agregarCliente(c);
+            }
+            else
+            {
+                Cliente c = new Cliente
+                {
+                    razon_social = rscliente,
+                    correo_electronico = emailcliente,
+                    usuario = usuariocliente,
+                    password = clavecliente,
+                    ruc = ruccliente,
+                    tipoID = 2,
+                    tipo_documentoID = 3,
+                    documento_identidad = ruccliente,
+                    estadoID = cliente_logica.context.estados_cliente.Find(1).ID,
+                    paisID = 1,
+                    ciudadID = 1
+                };
+                cliente_logica.agregarCliente(c);
+            }
+            return Json(new { me = "" });
+        }
 
     }
 }

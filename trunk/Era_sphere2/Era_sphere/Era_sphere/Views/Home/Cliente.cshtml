@@ -33,6 +33,7 @@
         		<li><a href="#" id="somos">Quien&eacute;s somos?</a></li>
                 <li> <a href = "#" id = "detalle" style = "display:none">Detalle Cliente</li>
         		<li><a href="#" id="intranet"> Intranet </a></li>
+                <li><a href ="#" id = "registrate"> Registrate </a></li>
         	</ul>
         	</nav>
         	
@@ -92,6 +93,74 @@
                             <li> <a id = "consumoCliente" href = "#"> Ver Consumo </a></li>
                             <li> <a id = "promocionesCliente" href = "#">Ver Promociones </a></li>
                         </ul>
+                    </div>
+
+
+                    <div id = "registrateContent" style = "display:none">
+                        <br />
+                        <br />
+                        <span class = "title"> Registrate!! y aprovecha promociones y descuentos </span>
+                        
+                               <fieldset>
+                     <p> 
+                     Cliente Natural o Empresa? 
+                    <select id = "tipocliente">
+                      <option value="0" selected>Natural</option>
+                      <option value="1">Juridico</option>
+                    </select>
+                     </p>
+                     
+                     <div id = "natural">
+                        <p> 
+                     <input type = "text" maxlength = 20 placeholder = "Nombre Cliente" id = "nomcliente">
+                     </p>
+                     <p> 
+                      <input type = "text"  maxlength = 20 placeholder = "App Materno" id = "appmaterno">
+                      </p>
+
+                       <p> 
+                      <input type = "text"  maxlength = 20 placeholder = "App Paterno" id = "apppaterno">
+                      </p>
+                        
+                     <p> 
+                     Tipo Documento 
+                    <select id = "tipoDocumento">
+                      <option value="0" selected>DNI</option>
+                      <option value="1">Pasaporte</option>
+                    </select>
+
+                       <p> 
+                      <input type = "text"  maxlength = 20 placeholder = "Nro Documento" id = "nrodocumento">
+                      </p>
+                    
+
+                     </p>
+                    
+
+                     </div>
+
+                     <div id = "juridico" style = "display:none">
+                     <p> <input type = "text" maxlength = 20 placeholder = "Razon Social" id = "rscliente"> </p>
+                     <p> <input type = "text" maxlength = 20 placeholder = "RUC" id = "ruccliente"> </p>
+ 
+                     </div>
+
+                     
+                        <p><input type = "text"  maxlength = 20 placeholder = "Email" id = "emailcliente">
+                        </p>
+                      <p><input type = "text"  maxlength = 20 placeholder = "Usuario" id = "usuariocliente">
+                    </p>
+                       <p><input type = "password"  maxlength = 20 placeholder = "Su contrasenha" id = "pwdcliente">
+                    </p>
+                    
+                      <button id = "registrateboton" > Registrate!!! </button>
+                      <span id = "textmessage" class = "title" style = "display:none;"></span>
+                      
+
+                      <p id = "explain" style = "display:none; color : red">
+                        
+                      </p>
+                    </fieldset>
                     </div>
 
 

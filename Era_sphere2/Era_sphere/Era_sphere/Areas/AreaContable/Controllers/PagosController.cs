@@ -30,14 +30,16 @@ namespace Era_sphere.Areas.AreaContable.Controllers
         {
             return View("TarjetaDeCreditoIndex", pt);
         }
-        public ActionResult CorteDeCuenta(int reservaID)
+        public ActionResult CorteDeCuenta(int reservaID, bool? solo_tarjeta)
         {
+            solo_tarjeta = solo_tarjeta ?? false;
             ViewData["idCosteable"] = reservaID;
             Reserva r = logica.context.Reservas.Find(reservaID);
             ViewData["clienteID"] = r.responsable_pagoID;
             ViewData["hotelID"] = r.hotelID;
             ViewData["Monedas"] = moneda.retornarMonedas();            
             ViewData["costo_total"] = r.costo_final;
+            ViewData["solo_tarjeta"] = solo_tarjeta.Value;
             return PartialView("CorteDeCuenta", r.getReciboLineas());
         }
 

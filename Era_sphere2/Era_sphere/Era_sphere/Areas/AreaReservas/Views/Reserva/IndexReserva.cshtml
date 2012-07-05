@@ -79,7 +79,7 @@
             if(tamanho2 == null) tamanho2 = 0;
             if(tamanho2 == tamanho) return;
             var id = e.response.data[e.response.data.length - 1].ID;
-            $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : id});
+            $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : id, solo_tarjeta : false});
             $("#Cortecuenta").data("tWindow").center().open();
          }
      }
@@ -167,7 +167,7 @@
                     .Action("Nada", "Reserva");
             });
 
-        }).Pageable().Sortable()
+        }).Sortable()
                                                             .ClientEvents(events =>
                                                             {
                                                                 events.OnDataBound("generarCruces");

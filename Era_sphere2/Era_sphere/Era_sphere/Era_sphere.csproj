@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\AreaCargos\AreaCargosAreaRegistration.cs" />
+    <Compile Include="Areas\AreaClientes\Models\Nada.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\TipoServicioController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\EraSphereContext.cs" />
     <Compile Include="Areas\AreaConfiguracion\Models\Perfiles\InterfazLogicaPerfil.cs" />
@@ -1589,6 +1590,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\AreaHoteles\Views\Ambiente\AmbienteInformacion.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\DetalleClienteTemplatePDF.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Content\data\._.DS_Store" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ReciboLineaTemplate.cshtml">
       <SubType>Code</SubType>

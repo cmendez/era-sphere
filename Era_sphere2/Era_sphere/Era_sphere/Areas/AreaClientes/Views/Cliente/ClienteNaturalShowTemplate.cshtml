@@ -7,8 +7,8 @@
 
 @{
     EraSphereContext context = new EraSphereContext();
-    string pais_nombre = context.paises.Find(Model.paisID).nombre;
-    string ciudad_nombre = context.ciudades.Find(Model.ciudadID).nombre;
+    string pais_nombre = Model.paisID == 0 ? "" : context.paises.Find(Model.paisID).nombre;
+    string ciudad_nombre = Model.ciudadID == 0 ? "" : context.ciudades.Find(Model.ciudadID).nombre;
     string estado_nombre = context.estados_cliente.Find(Model.id_estado).descripcion;
     string tipo_documento_descripcion = context.tipos_documento.Find(Model.id_tipo_documento).descripcion;
 }

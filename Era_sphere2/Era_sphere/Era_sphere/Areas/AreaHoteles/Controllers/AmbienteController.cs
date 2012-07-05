@@ -67,7 +67,7 @@ namespace Era_sphere.Areas.AreaHoteles.Controllers
         public ActionResult RetornarAmbiente(int ID)
         {
             
-            return PartialView("AmbienteInformación", (new LogicaAmbiente()).retornarAmbiente(ID));
+            return PartialView("AmbienteInformacion", (new LogicaAmbiente()).retornarAmbiente(ID));
         }
     }
 }

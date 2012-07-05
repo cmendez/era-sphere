@@ -12,7 +12,7 @@ namespace Era_sphere.Generics
     
     public partial class EraSphereContext : DbContext
     {
-        public EraSphereContext()// : base("Data Source=inti.lab.inf.pucp.edu.pe;Initial Catalog=inf2450881g4;Persist Security Info=True;User ID=inf2450881g4dba;Password=zapatilla")
+        public EraSphereContext() :base("Data Source=inti.lab.inf.pucp.edu.pe;Initial Catalog=inf2450881g4;Persist Security Info=True;User ID=inf2450881g4dba;Password=zapatilla")
         {
         }
 
@@ -36,7 +36,7 @@ namespace Era_sphere.Generics
             seedRelacionesPromocion();
             seedOrdenCompra();
             seedTipoHabitaciones();
-            seedComodidades();
+            //seedComodidades();
             seedPisos();
             seedClientes();
             seedHabitaciones();
@@ -71,8 +71,8 @@ namespace Era_sphere.Generics
 
 
     
-    public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
-   // public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
+   // public class EraSphereContextInitializer : DropCreateDatabaseIfModelChanges<EraSphereContext>{
+    public class EraSphereContextInitializer : DropCreateDatabaseAlways<EraSphereContext>{
         protected override void Seed(EraSphereContext context){
             context.seed();
         }

@@ -66,7 +66,8 @@ namespace Era_sphere.Generics
                 apellido_paterno = "lepage",
                 estado = sin_reserva,
                 estadoID = sin_reserva.ID,
-                usuario = "xurrepompom"
+                usuario = "xurrepompom",
+                puntos_cliente = 12345
             };
             Cliente c2 = new Cliente
             {
@@ -86,7 +87,8 @@ namespace Era_sphere.Generics
                 apellido_paterno = "tamagotchi",
                 estado = sin_reserva,
                 estadoID = sin_reserva.ID,
-                usuario = "aquispesaravia"
+                usuario = "aquispesaravia",
+                puntos_cliente = 54321
             };
             Cliente c3 = new Cliente
             {
@@ -104,7 +106,8 @@ namespace Era_sphere.Generics
                 ruc = "1234345457",
                 estado = sin_reserva,
                 estadoID = sin_reserva.ID,
-                usuario = "piticlin"
+                usuario = "jpplusplus",
+                puntos_cliente = 11111
             };
             clientes.Add(c1);
             clientes.Add(c2);

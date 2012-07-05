@@ -259,7 +259,7 @@
 <label>Costo total hasta la fecha: </label>
 <input type="text" value="@costo_total" />
 <div style="height:10px"></div>
-
+@if(@solo_tarjeta == 0){
 <label>Promociones</label>
 @Html.Telerik().DropDownList().BindTo(new SelectList(promociones, "ID", "nombre")).Name("PromocionesCombo").Placeholder("Seleccione").ClientEvents(e => e.OnChange("CambioPromocion"))  
 <br />
@@ -270,7 +270,7 @@
 <br />
 <button onclick="AgregarPromocion();">AgregarPromocion</button>
 <br />
-
+}
 <label> Sin pagar </label>
 <br />
 @(Html.Telerik().Grid(Model.Where(p => p.pagado == false).ToList())

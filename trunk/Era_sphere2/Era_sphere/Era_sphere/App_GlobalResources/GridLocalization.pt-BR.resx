@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddNew" xml:space="preserve">
-    <value>Adicionar novo registro</value>
+    <value>Registrar</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Excluir</value>
@@ -229,7 +229,7 @@
     <value>É verdade</value>
   </data>
   <data name="NoRecords" xml:space="preserve">
-    <value>Nenhum registro encontrado.</value>
+    <value />
   </data>
   <data name="CancelChanges" xml:space="preserve">
     <value>Cancelar alterações</value>

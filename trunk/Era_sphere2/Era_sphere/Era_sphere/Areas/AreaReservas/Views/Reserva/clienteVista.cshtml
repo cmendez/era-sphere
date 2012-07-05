@@ -12,6 +12,44 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
+ @{Html.Telerik().Window()
+    .Name("Cortecuenta").Title("Corte de Cuenta")
+    .Content(@<text><div id="cortecuentadiv">
+    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true).ClientEvents(events => events.OnClose("verificaPago")).Draggable(true).Render();
+     }
+
+<script type="text/javascript">
+    function onComplete(e) {
+        console.log(e.name);
+        if (e.name == "mostrar_juridico") {
+            $("#detalle-cliente-juridico").load('@Url.Action("ClienteJuridicoShow", "Cliente")' + '/' + e.response.id);
+            var detailModal = $("#DetalleJuridico").data("tWindow");
+            detailModal.center().open();
+        } else if (e.name == "mostrar_natural") {
+            $("#detalle-cliente-natural").load('@Url.Action("ClienteNaturalShow", "Cliente")' + '/' + e.response.id);
+            var detailModal = $("#DetalleNatural").data("tWindow");
+            detailModal.center().open();
+        }
+    }
+    function verificaPago(e) {
+        if(!se_pago){
+        var data = $("#ReservaGrid").data("tGrid").data
+        var id_reserva = data[data.length - 1].ID;
+        $.ajax({
+                       url: '@Url.Action("Delete", "Reserva")',
+                       traditional: true,
+                       data: { id: id_reserva, id_hotel : @ViewData["hotelID"]},
+                       type: "POST",
+                       success: function (data) {
+                        $("#ReservaGrid").data("tGrid").ajaxRequest();
+                        
+                        },
+                       async: false
+                   });
+        }
+    }
+</script> 
+
 <script type="text/javascript">
     var antes = []; var first = true;
     var id = -1;
@@ -58,6 +96,7 @@
      }
      var tamanho = 0;
      function completado(e) {
+     console.log("miwi");
          if (e.name == "Anular") {
              var hubo = e.response.devolucion;
              $("#ReservaGrid").data("tGrid").ajaxRequest();
@@ -95,11 +134,6 @@
      }
 </script>
 
- @(Html.Telerik().Window()
-    .Name("Cortecuenta").Title("CorteDeCuenta")
-    .Content(@<text><div id="cortecuentadiv">
-    </div></text>).Visible(false).Width(600).Height(400).Scrollable(true).Modal(true).ClientEvents(events => events.OnClose("verificaPago"))
-    )
 
 <div class="block big" style="position: relative">
     <!-- Block Begin -->
@@ -109,46 +143,15 @@
 
       @(Html.Telerik().Grid(Model)
         .Name("ReservaGrid")
-        .Localizable("es-ES")
+        .Localizable("pt-BR")
         .Filterable()
         .ToolBar(commands => commands.Insert())
         .Editable(editing => editing
                             .Mode(GridEditMode.PopUp)
                             .TemplateName("ReservaViewTemplate"))
 
-        .DataKeys(key => key.Add(c => c.ID))
-        .Columns(columns =>
-        {
-            columns.Bound(p => p.responsable_pago);
-            columns.Bound(p => p.documento_identidad).Title("Documento");
-            columns.Bound(p => p.codigo);
-            columns.ForeignKey(p => p.estadoID, new SelectList(estados, "ID", "descripcion"));
-            columns.Command(commands =>
-            {
-                commands.Edit().ButtonType(GridButtonType.Image);
-                commands.Delete().ButtonType(GridButtonType.Image);
-                commands
-                    .Custom("Anular")
-                    .Text("Anular")
-                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
-                    .Ajax(true)
-                    .Action("AnulaReserva", "Reserva")
-                .HtmlAttributes(new { style = "text-align: center" });
-                commands
-                    .Custom("Servicios")
-                    .Text("Servicios")
-                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
-                    .Ajax(true)
-                    .Action("Nada", "Reserva");
-                commands
-                    .Custom("AsignarHuespedes")
-                    .Text("Asignar Huespedes")
-                    .DataRouteValues(route => route.Add(o => o.ID).RouteKey("reserva_id"))
-                    .Ajax(true)
-                    .Action("Nada", "Reserva");
-            });
-
-        }).Pageable().Sortable()
+        .DataKeys(key => key.Add(c => c.ID)).Footer(false)
+        .Columns(columns => columns.Template(@<text>awi</text>))
                                                             .ClientEvents(events =>
                                                             {
                                                                 events.OnDataBound("generarCruces");
@@ -159,7 +162,7 @@
                                                             })
                                                             .DataBinding(dataBinding => dataBinding
                                                                 .Ajax()
-                                                                .Select("Select", "Reserva", new { id = @hotelID })
+                                                                .Select("Select", "Reserva", new { id = 0 })
                                                                 .Insert("Insert", "Reserva", new { id = @hotelID })
                                                                 .Delete("Delete", "Reserva", new { id_hotel = @hotelID })
                                                                 .Update("Update", "Reserva", new { id_hotel = @hotelID })
@@ -168,50 +171,9 @@
                                                                )
 
 
-                                                               
-    <p>@Html.ActionLink("Ver check-in y check-out", "Index", new { controller = "../AreaReservas/CheckInCheckOut", ID = @hotelID, partial = false },
-                            new { @class = "tipTop" }
-                        )
+                        
     </div>
                         
         </p>
     <!-- Table Wrapper End -->
 </div>
-
-@(Html.Telerik().Window()
-    .Name("ServicioDeReserva").Title("Servicios de Reserva")
-    .Content(@<text><div id="mantenimiento_servicio_form"></div></text>).Visible(false).Width(800).Height(600).Scrollable(true)
-    )
-
-    @(Html.Telerik().Window()
-    .Name("AsignarHuespedes").Title("Asignar Huesped a Habitación Reservada")
-    .Content(@<text><div id="mantenimiento_huespedes"></div></text>).Visible(false).Width(800).Height(600).Scrollable(true)
-    )
-<script type="text/javascript">
-    function onComplete(e) {
-        console.log(e.name);
-        if (e.name == "mostrar_juridico") {
-            $("#detalle-cliente-juridico").load('@Url.Action("ClienteJuridicoShow", "Cliente")' + '/' + e.response.id);
-            var detailModal = $("#DetalleJuridico").data("tWindow");
-            detailModal.center().open();
-        } else if (e.name == "mostrar_natural") {
-            $("#detalle-cliente-natural").load('@Url.Action("ClienteNaturalShow", "Cliente")' + '/' + e.response.id);
-            var detailModal = $("#DetalleNatural").data("tWindow");
-            detailModal.center().open();
-        }
-    }
-    function verificaPago(e) {
-        if(!se_pago){
-        var data = $("#ReservaGrid").data("tGrid").data
-        var id_reserva = data[data.length - 1].ID;
-        $.ajax({
-                       url: '@Url.Action("Delete", "Reserva")',
-                       traditional: true,
-                       data: { id: id_reserva, id_hotel : @ViewData["hotelID"]},
-                       type: "POST",
-                       success: function (data) { $("#ReservaGrid").data("tGrid").ajaxRequest();},
-                       async: false
-                   });
-        }
-    }
-</script> 

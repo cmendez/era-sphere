@@ -6,6 +6,7 @@
 @{
     ViewBag.Title = "DetalleClienteTemplate";
    var puntos_acumulados = ViewBag.puntos;
+   List<object> sn = new List<object> { new { ID = true, nombre = "Si" }, new { ID = false, nombre = "No" } };
 }
 
 
@@ -23,7 +24,8 @@
             columns.Bound(p => p.detalle);
             columns.Bound(p => p.precio_final);
             columns.Bound(p => p.fecha);
-            columns.Bound(p => p.puntos);            
+            columns.Bound(p => p.puntos);
+            columns.ForeignKey(p => p.pagado, new SelectList(sn, "ID", "nombre")).Title("Pagado");      
         })
 
         .Pageable()

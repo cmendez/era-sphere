@@ -10,6 +10,7 @@ using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 using Era_sphere.Generics;
 using Telerik.Web.Mvc;
 using ReportManagement;
+using Era_sphere.Areas.AreaReservas.Models;
 
 namespace Era_sphere.Areas.AreaClientes.Controllers
 {
@@ -150,7 +151,9 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             List<ReciboLinea> lineas = new List<ReciboLinea>();
             List<int> recibos = cliente_logica.context.recibos.Where(x => x.clienteID == id).ToList().Select(y => y.ID).ToList();
             lineas = cliente_logica.context.recibos_lineas.Where(x => recibos.Contains(x.reciboID.Value)).ToList();
-            
+            List<Reserva> reservas = cliente_logica.context.Reservas.Where(x => x.responsable_pagoID == id && x.estadoID != 4).ToList();
+            LogicaReserva log = new LogicaReserva();
+            reservas.ForEach(r => lineas.AddRange(r.getReciboLineas().Where(x => x.pagado == false).ToList()));
             Cliente cliente = cliente_logica.retornarCliente(id);
             
             if (id > 0)
@@ -174,6 +177,9 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
             List<ReciboLinea> lineas = new List<ReciboLinea>();
             List<int> recibos = cliente_logica.context.recibos.Where(x => x.clienteID == id).ToList().Select(y => y.ID).ToList();
             lineas = cliente_logica.context.recibos_lineas.Where(x => recibos.Contains(x.reciboID.Value)).ToList();
+            List<Reserva> reservas = cliente_logica.context.Reservas.Where(x => x.responsable_pagoID == id && x.estadoID != 4).ToList();
+            LogicaReserva log = new LogicaReserva();
+            reservas.ForEach(r => lineas.AddRange(r.getReciboLineas().Where(x => x.pagado == false).ToList()));
 
             Cliente cliente = cliente_logica.retornarCliente(id);
             Nada n = new Nada();

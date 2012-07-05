@@ -9,10 +9,11 @@ using Era_sphere.Areas.AreaContable.Models.Recibo;
 using Era_sphere.Areas.AreaConfiguracion.Models.Ubigeo;
 using Era_sphere.Generics;
 using Telerik.Web.Mvc;
+using ReportManagement;
 
 namespace Era_sphere.Areas.AreaClientes.Controllers
 {
-    public class ClienteController : Controller
+    public class ClienteController : PdfViewController
     {
         LogicaCliente cliente_logica = new LogicaCliente();
 
@@ -163,7 +164,33 @@ namespace Era_sphere.Areas.AreaClientes.Controllers
                 ViewBag.estado = "";
                 ViewBag.puntos = "";
             }
+            ViewBag.id = id;
             return View("DetalleClienteTemplate", lineas);
+        }
+
+        //DETALLE DEL CLIENTE PDF
+        public ActionResult DetalleClientePDF(int id)
+        {
+            List<ReciboLinea> lineas = new List<ReciboLinea>();
+            List<int> recibos = cliente_logica.context.recibos.Where(x => x.clienteID == id).ToList().Select(y => y.ID).ToList();
+            lineas = cliente_logica.context.recibos_lineas.Where(x => recibos.Contains(x.reciboID.Value)).ToList();
+
+            Cliente cliente = cliente_logica.retornarCliente(id);
+            Nada n = new Nada();
+            if (id > 0)
+            {
+                n.estado = cliente.estado.descripcion;
+                n.cliente = LogicaCliente.toString(cliente);
+                n.puntos = "" + cliente.puntos_cliente;
+            }
+            else
+            {
+                n.estado = "";
+                n.puntos = "";
+                n.cliente = "";
+            }
+            n.recibos = lineas;
+            return this.ViewPdf("", "DetalleClienteTemplatePDF", n);
         }
 
         [HttpPost]

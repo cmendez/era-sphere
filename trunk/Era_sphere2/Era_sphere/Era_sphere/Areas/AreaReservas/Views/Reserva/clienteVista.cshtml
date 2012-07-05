@@ -32,21 +32,7 @@
         }
     }
     function verificaPago(e) {
-        if(!se_pago){
-        var data = $("#ReservaGrid").data("tGrid").data
-        var id_reserva = data[data.length - 1].ID;
-        $.ajax({
-                       url: '@Url.Action("Delete", "Reserva")',
-                       traditional: true,
-                       data: { id: id_reserva, id_hotel : @ViewData["hotelID"]},
-                       type: "POST",
-                       success: function (data) {
-                        $("#ReservaGrid").data("tGrid").ajaxRequest();
-                        
-                        },
-                       async: false
-                   });
-        }
+        
     }
 </script> 
 
@@ -117,7 +103,7 @@
             if(tamanho2 == null) tamanho2 = 0;
             if(tamanho2 == tamanho) return;
             var id = e.response.data[e.response.data.length - 1].ID;
-            $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : id});
+            $("#cortecuentadiv").load('@Url.Action("CorteDeCuenta", "../AreaContable/Pagos")', {reservaID : id, solo_tarjeta : true});
             $("#Cortecuenta").data("tWindow").center().open();
          }
      }

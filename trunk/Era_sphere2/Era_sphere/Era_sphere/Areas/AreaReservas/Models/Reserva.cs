@@ -104,7 +104,7 @@ namespace Era_sphere.Areas.AreaReservas.Models
         {
             if (precio_derecho_reserva > 0)
             {
-                ReciboLinea paguito = new ReciboLinea("Pago del adelanto", precio_derecho_reserva, 1, DateTime.Now, false);
+                ReciboLinea paguito = new ReciboLinea("Pago del adelanto (reserva " + this.codigo_reserva + ")", precio_derecho_reserva, 1, DateTime.Now, false);
                 registraReciboLinea(paguito);
             }
 

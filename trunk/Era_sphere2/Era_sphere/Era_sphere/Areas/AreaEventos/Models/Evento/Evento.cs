@@ -116,7 +116,7 @@ namespace Era_sphere.Areas.AreaEventos.Models.Evento
         {
             if (pagado > 0)
             {
-                ReciboLinea paguito = new ReciboLinea("Pago del adelanto", pagado, 1, DateTime.Now, false);
+                ReciboLinea paguito = new ReciboLinea("Pago del adelanto (evento " + this.nombre + ")", pagado, 1, DateTime.Now, false);
                 registraReciboLinea(paguito);
             }
         }

@@ -31,7 +31,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
             //
             List<ObjetoReporteEvento> listareporteEvento = new List<ObjetoReporteEvento>();
             EraSphereContext context = new EraSphereContext();
-            List<Evento> eventos = context.eventos.ToList();
+            List<Evento> eventos = context.eventos.OrderByDescending(x => x.fecha_inicio).ToList();
             DateTime date = DateTime.Now;
             List<Cadena> cadena = (new EraSphereContext()).cadenas.ToList();
 

@@ -1,0 +1,62 @@
+﻿@model Nada
+@using Era_sphere.Areas.AreaClientes.Models
+@using Era_sphere.Areas.AreaContable.Models.Recibo;
+@using Era_sphere.Generics;
+@using Telerik.Web.Mvc.UI
+@{
+    ViewBag.Title = "DetalleClienteTemplate";
+   var puntos_acumulados = Model.puntos;
+}
+
+<label>@Model.cliente</label>
+<br />
+<label>Puntos acumulados</label>
+<br />
+<label>@puntos_acumulados</label>
+<p />
+<div style="height:10px;padding:5px;"></div>
+
+<table cellpadding="3" cellspacing="3">
+       <tr border="1" bgcolor="#777777" color="#ffffff">
+           <td width="20%" align="center">
+              Detalle
+           </td>
+           <td width="90%" align="center">
+              Precio Final
+           </td>
+           <td width="20%" align="center">
+              Fecha
+           </td>
+           <td width="20%" align="center">
+              Puntos
+           </td>
+      </tr>
+      @{
+          var OddColor = "#DDEEEE";
+          var evenColor = "#EEFFFF";
+          var Odd = OddColor;
+       }
+       @foreach (ReciboLinea l in Model.recibos)
+       {
+           <tr border="1" bgcolor="@Odd">
+               <td align="center">@l.detalle
+               </td>
+               <td align="center">@l.precio_final
+               </td>
+               <td align="center">@l.fecha
+               </td>
+               <td align="center">@l.unidades
+               </td>
+               
+           </tr>
+           if (Odd == OddColor)
+           {
+               Odd = evenColor;
+           }
+           else
+           {
+               Odd = OddColor;
+           }
+
+       }
+   </table>

@@ -37,7 +37,7 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
 
             foreach (Evento e in eventos)
             {
-                ObjetoReporteEvento registro = new ObjetoReporteEvento(context.hoteles.Find(e.hotel).razon_social,  e.nombre, e.participantes.Count, e.eventoXAmbiente.Count, e.evento_servicios.Count, e.precio_total);
+                ObjetoReporteEvento registro = new ObjetoReporteEvento(e.fecha_inicio, context.hoteles.Find(e.hotel).razon_social,  e.nombre, e.participantes.Count, e.eventoXAmbiente.Count, e.evento_servicios.Count, e.precio_total);
                 listareporteEvento.Add(registro);
             }
             //
@@ -51,9 +51,9 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                     {"","","","","",""}
             };
 
-            reporte.cabecera = new String[1, 6]
+            reporte.cabecera = new String[1, 7]
                 {
-                    {"Hotel","Evento","Número de Participantes", "Número de Ambientes", "Número de Servicios", "Precio Total"},
+                    {"Hotel", "Fecha de inicio", "Evento","Número de Participantes", "Número de Ambientes", "Número de Servicios", "Precio Total"},
                 };
 
             //   {x.ToString(),s,y.ToString(),"fin XD"}
@@ -69,12 +69,14 @@ namespace Era_sphere.Areas.AreaReportes.Controllers
                 //llenamos el reporte
                 for (int i = 0; i < listareporteEvento.Count; i++)
                 {
+                    string formato = "dd/mm/yyyy";
                     reporte.contenido[i][0] = listareporteEvento[i].hotel;
-                    reporte.contenido[i][1] = listareporteEvento[i].evento;
-                    reporte.contenido[i][2] = listareporteEvento[i].numAmb.ToString();
-                    reporte.contenido[i][3] = listareporteEvento[i].numPart.ToString();
-                    reporte.contenido[i][4] = listareporteEvento[i].numServ.ToString();
-                    reporte.contenido[i][5] = listareporteEvento[i].precioTotal.ToString();
+                    reporte.contenido[i][1] = listareporteEvento[i].fecha_inicio.ToString(formato);
+                    reporte.contenido[i][2] = listareporteEvento[i].evento;
+                    reporte.contenido[i][3] = listareporteEvento[i].numAmb.ToString();
+                    reporte.contenido[i][4] = listareporteEvento[i].numPart.ToString();
+                    reporte.contenido[i][5] = listareporteEvento[i].numServ.ToString();
+                    reporte.contenido[i][6] = listareporteEvento[i].precioTotal.ToString();
                 }
 
             }

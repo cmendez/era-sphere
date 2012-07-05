@@ -100,18 +100,40 @@
     </Compile>
     <Compile Include="Areas\AreaContable\Models\Recibo\ReciboLineaXEvento.cs" />
     <Compile Include="Areas\AreaContable\Models\Recibo\Costeable.cs" />
-    <Compile Include="Areas\AreaCargos\Models\LogicaPreciable.cs" />
-    <Compile Include="Areas\AreaCargos\Models\Preciable.cs" />
+    <Compile Include="Areas\AreaCargos\Models\LogicaPreciable.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaCargos\Models\Preciable.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Areas\AreaClientes\AreaClientesAreaRegistration.cs" />
-    <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs" />
-    <Compile Include="Areas\AreaClientes\Models\Cliente.cs" />
-    <Compile Include="Areas\AreaClientes\Models\ClienteNaturalView.cs" />
-    <Compile Include="Areas\AreaClientes\Models\ClienteJuridicoView.cs" />
-    <Compile Include="Areas\AreaClientes\Models\EraSphereContext.cs" />
-    <Compile Include="Areas\AreaClientes\Models\EstadoCliente.cs" />
-    <Compile Include="Areas\AreaClientes\Models\InterfazLogicaCliente.cs" />
-    <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs" />
-    <Compile Include="Areas\AreaClientes\Models\TipoDocumentoCliente.cs" />
+    <Compile Include="Areas\AreaClientes\Controllers\ClienteController.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaClientes\Models\Cliente.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaClientes\Models\ClienteNaturalView.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaClientes\Models\ClienteJuridicoView.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaClientes\Models\EraSphereContext.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaClientes\Models\EstadoCliente.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaClientes\Models\InterfazLogicaCliente.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaClientes\Models\LogicaCliente.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Areas\AreaClientes\Models\TipoDocumentoCliente.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Areas\AreaConfiguracion\AreaConfiguracionAreaRegistration.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\CadenaController.cs" />
     <Compile Include="Areas\AreaConfiguracion\Controllers\FiscalController.cs" />
@@ -1403,20 +1425,32 @@
     <Content Include="Areas\AreaConfiguracion\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\AreaClientes\Views\Cliente\IndexCliente.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\IndexCliente.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaHoteles\Views\Web.config" />
     <Content Include="Areas\AreaEventos\Views\Web.config" />
-    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Index.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaConfiguracion\Views\Perfiles\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\HotelViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Piso\IndexPiso.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\PisoViewTemplate.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Comodidades\Index.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Ambiente\IndexAmbiente.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Create.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Delete.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Details.cshtml" />
-    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Edit.cshtml" />
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Create.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Delete.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Details.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaConfiguracion\Views\Cadena\Edit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaHoteles\Views\Piso\PisoEditView.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\TipoHabitacion\TipoHabitacionIndex.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\TipoHabitacion\TipoHabitacionEditView.cshtml" />
@@ -1454,19 +1488,29 @@
     <Content Include="Areas\AreaPromociones\Views\Promocion\PromocionIndex.cshtml" />
     <Content Include="Areas\AreaCargos\Views\Web.config" />
     <Content Include="Areas\AreaConfiguracion\Views\TipoServicio\TipoServiciosIndex.cshtml" />
-    <Content Include="Areas\AreaClientes\Views\Cliente\ClienteNaturalShowTemplate.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\ClienteNaturalShowTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteNaturalIndexView.cshtml" />
     <Content Include="Areas\AreaClientes\Views\Shared\ClienteJuridicoIndexView.cshtml" />
-    <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\ClienteJuridicoShowTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaHoteles\Views\TipoHabitacion\TipoHabitacionComodidades.cshtml" />
     <Content Include="Areas\AreaHoteles\Views\Shared\EditorTemplates\BuscarComodidades.cshtml" />
-    <Content Include="Areas\AreaClientes\Views\Cliente\DetalleClienteTemplate.cshtml" />
+    <Content Include="Areas\AreaClientes\Views\Cliente\DetalleClienteTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckInViewTemplate.cshtml" />
     <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\CheckOutViewTemplate.cshtml" />
     <Content Include="Areas\AreaReservas\Views\CheckInCheckOut\IndexCheckInCheckOut.cshtml" />
     <Content Include="Areas\AreaReservas\Views\Consulta\IndexConsulta.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Reserva\IndexReserva.cshtml" />
-    <Content Include="Areas\AreaReservas\Views\Reserva\ReservaHabitacionClienteView.cshtml" />
+    <Content Include="Areas\AreaReservas\Views\Reserva\IndexReserva.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaReservas\Views\Reserva\ReservaHabitacionClienteView.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaReportes\Views\RepExcelCliente\Index.cshtml" />
     <Content Include="Areas\AreaReportes\Views\RepExcelCliente\RepExcelClienteView.cshtml" />
     <Content Include="Areas\AreaReportes\Views\RepExcelEvento\Index.cshtml" />
@@ -1482,17 +1526,27 @@
     <Content Include="Areas\AreaReportes\Views\ReportePromocion\Index.cshtml" />
     <Content Include="Areas\AreaReportes\Views\ReportePromocion\ReportePromocionView.cshtml" />
     <Content Include="Areas\AreaConfiguracion\Views\Shared\EditorTemplates\TipoServicioViewTemplate.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Evento\CargarAmbiente.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Evento\EventoIndex.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Evento\EventoLlenarDatos.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Evento\PruebaHtml.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Evento\CargarAmbiente.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaEventos\Views\Evento\EventoIndex.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaEventos\Views\Evento\EventoLlenarDatos.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaEventos\Views\Evento\PruebaHtml.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaEventos\Views\Shared\EventoAdicionalView.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoAmbienteView.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoCalcularCostos.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoCliente.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoParticipanteView.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventoRecibolinea.cshtml" />
-    <Content Include="Areas\AreaEventos\Views\Shared\EventosCreados.cshtml" />
+    <Content Include="Areas\AreaEventos\Views\Shared\EventosCreados.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\AreaEventos\Views\Shared\EventoServicioView.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\EventosPPagado.cshtml" />
     <Content Include="Areas\AreaEventos\Views\Shared\PagarEvento.cshtml" />
@@ -1528,6 +1582,13 @@
     <Content Include="Areas\AreaHoteles\Views\HotelXTipoServicioXTemporada\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Areas\AreaEventos\Views\Shared\EventosPagados.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaReservas\Views\Reserva\clienteVista.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\AreaHoteles\Views\Ambiente\AmbienteInformacion.cshtml" />
     <None Include="Content\data\._.DS_Store" />
     <Content Include="Areas\AreaEventos\Views\Shared\EditorTemplates\ReciboLineaTemplate.cshtml">
       <SubType>Code</SubType>

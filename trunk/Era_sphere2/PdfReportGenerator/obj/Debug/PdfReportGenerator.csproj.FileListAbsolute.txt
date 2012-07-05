@@ -34,3 +34,18 @@ C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\bin\Debug\itextsharp.
 C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\obj\Debug\PdfReportGenerator.dll
 C:\Users\Pedro\Documents\Repositorio SW\PdfReportGenerator\obj\Debug\PdfReportGenerator.pdb
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\PdfReportGenerator.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\PdfReportGenerator.pdb
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\itextsharp.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\Microsoft.CSharp.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\System.Data.DataSetExtensions.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\System.Data.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\System.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\System.Web.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\System.Web.Mvc.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\System.Xml.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\System.Xml.Linq.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\bin\Debug\System.Web.Mvc.xml
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\obj\Debug\PdfReportGenerator.dll
+C:\Users\Administrador\Desktop\Resort Solutions EraSphere\Era_sphere2\PdfReportGenerator\obj\Debug\PdfReportGenerator.pdb

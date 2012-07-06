@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
-  <publishProfile publishUrl="http://localhost" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Perfil1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+  <publishProfile publishUrl="C:\Users\Administrador\Desktop\Deploy" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Perfil1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="Scripts/jquery.unobtrusive-ajax.min.js" publishTime="06/25/2012 05:44:35" />
     <file relUrl="Areas/AreaContable/Views/Shared/EditorTemplates/OrdenLineaViewTemplate.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-ro.js" publishTime="06/25/2012 05:44:52" />
@@ -58,6 +58,7 @@
     <file relUrl="Areas/AreaContable/Views/OrdenCompra/Index.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Areas/AreaHoteles/Views/Ambiente/AmbienteInformacion.cshtml" publishTime="06/25/2012 05:44:39" />
     <file relUrl="Areas/AreaHoteles/Views/Shared/EditorTemplates/TipoHabitacionViewTemplate.cshtml" publishTime="06/25/2012 07:33:53" />
+    <file relUrl="Areas/AreaConfiguracion/Views/TipoDePago/Details.cshtml" publishTime="06/25/2012 05:44:41" />
     <file relUrl="Content/data/images/icons/icon_fav.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Areas/AreaReportes/Views/RepExcelCliente/RepExcelClienteView.cshtml" publishTime="06/25/2012 05:44:38" />
@@ -66,7 +67,6 @@
     <file relUrl="Content/data/js/plugins/._jqplot.pyramidAxisRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Scripts/2012.1.214/telerik.grid.resizing.min.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/2012.1.214/WebBlue/loading.gif" publishTime="06/25/2012 05:44:48" />
-    <file relUrl="Content/data/js/fancybox/._fancy_shadow_ne.png" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/img/._testpic3b.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="bin/Content/img/testpic3b.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/cp_gallery.html" publishTime="06/25/2012 05:44:47" />
@@ -82,15 +82,15 @@
     <file relUrl="Content/2012.1.214/Hay/treeview-nodes-rtl.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/2012.1.214/Web20/editor.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Areas/AreaConfiguracion/Views/Cadena/Delete.cshtml" publishTime="06/25/2012 05:44:41" />
-    <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-fr.js" publishTime="06/25/2012 05:44:52" />
+    <file relUrl="Areas/AreaClientes/Views/Cliente/DetalleClienteTemplatePDF.cshtml" publishTime="07/05/2012 11:57:58" />
     <file relUrl="Content/data/js/plugins/jqplot.barRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-pl.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Vista/slider-v.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/plugins/jqplot.cursor.min.js" publishTime="06/25/2012 05:44:52" />
-    <file relUrl="bin/Areas/AreaEventos/Views/Shared/EventosCreados.cshtml" publishTime="06/25/2012 12:02:41" />
+    <file relUrl="bin/Areas/AreaEventos/Views/Shared/EventosCreados.cshtml" publishTime="07/05/2012 11:57:59" />
     <file relUrl="Areas/AreaReservas/Views/CheckInCheckOut/CheckOutViewTemplate.cshtml" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/data/js/fancybox/fancy_title_over.png" publishTime="06/25/2012 05:44:54" />
-    <file relUrl="Areas/AreaHoteles/Views/Shared/EditorTemplates/HotelViewTemplate.cshtml" publishTime="06/25/2012 05:44:39" />
+    <file relUrl="Content/data/js/plugins/._jqplot.pyramidRenderer.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/telerik.hay.min.css" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/2012.1.214/Vista/slider-h.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/img/icon_home.png" publishTime="06/25/2012 05:44:55" />
@@ -111,6 +111,7 @@
     <file relUrl="Content/data/images/icons/._icon_email.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Areas/AreaContable/Views/Shared/EditorTemplates/ProveedorViewTemplate.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/2012.1.214/Vista/imagebrowser.png" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="Content/data/js/ui/admincp/._jquery-ui-1.8.17.custom.css" publishTime="06/25/2012 05:44:51" />
     <file relUrl="bin/Areas/AreaClientes/Models/InterfazLogicaCliente.cs" publishTime="06/25/2012 05:44:40" />
     <file relUrl="Views/Home/Test_Page.html" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Scripts/MicrosoftMvcAjax.debug.js" publishTime="06/25/2012 05:44:35" />
@@ -124,7 +125,6 @@
     <file relUrl="Content/data/js/plugins/._jquery.jqplot.min.css" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/Office2007/slider-v.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Areas/AreaClientes/Views/Shared/ClienteNaturalIndexView.cshtml" publishTime="06/25/2012 05:44:40" />
-    <file relUrl="Content/data/js/fancybox/jquery.fancybox-1.3.4.css" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Views/Account/Register.cshtml" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/data/js/fancybox/fancy_shadow_nw.png" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/data/js/plugins/._jqplot.canvasAxisLabelRenderer.min.js" publishTime="06/25/2012 05:44:51" />
@@ -135,10 +135,10 @@
     <file relUrl="Areas/AreaContable/Views/Shared/OrdenesRegistradasPartial.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/2012.1.214/Vista/loading.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Areas/AreaConfiguracion/Views/Temporada/TemporadaIndex.cshtml" publishTime="06/25/2012 07:44:44" />
+    <file relUrl="Content/data/js/ui/admincp/images/ui-bg_glass_10_821414_1x400.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Areas/AreaEventos/Views/Evento/PruebaHtml.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/2012.1.214/Hay/treeview-line.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Scripts/ApiCliente/mantenimiento_cliente.js" publishTime="06/25/2012 05:44:35" />
-    <file relUrl="Content/2012.1.214/Office2010Silver/gradient.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/images/icons/icon_doc.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/js/ui/admincp/images/._ui-bg_highlight-soft_20_495362_1x100.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/themes/base/jquery.ui.tabs.css" publishTime="06/25/2012 05:44:47" />
@@ -163,6 +163,7 @@
     <file relUrl="Content/data/js/plugins/jqplot.canvasTextRenderer.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/images/icons/icon_tag.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/images/action_icons.png" publishTime="06/25/2012 05:44:50" />
+    <file relUrl="Content/2012.1.214/telerik.office2010black.min.css" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Areas/AreaHoteles/Views/Shared/EditorTemplates/HotelXTipoServicioXTemporadaViewTemplate.cshtml" publishTime="06/25/2012 05:44:39" />
     <file relUrl="bin/Content/img/test_avatar.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/data/js/plugins/jqplot.cursor.js" publishTime="06/25/2012 05:44:51" />
@@ -175,13 +176,13 @@
     <file relUrl="Content/data/images/icons/._icon_star2.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/js/plugins/._jqplot.trendline.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/js/plugins/jqplot.barRenderer.js" publishTime="06/25/2012 05:44:51" />
+    <file relUrl="Content/data/js/plugins/jqplot.pyramidAxisRenderer.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/Forest/sprite-vertical.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/fancybox/._fancybox.png" publishTime="06/25/2012 05:44:54" />
-    <file relUrl="bin/Areas/AreaClientes/Models/EraSphereContext.cs" publishTime="06/25/2012 11:46:26" />
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-hr.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Areas/AreaEventos/Views/Shared/PagarEvento.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/2012.1.214/Sunset/editor.png" publishTime="06/25/2012 05:44:48" />
-    <file relUrl="Views/Home/Cliente.cshtml" publishTime="06/25/2012 05:44:47" />
+    <file relUrl="Views/Home/Cliente.cshtml" publishTime="07/05/2012 13:58:34" />
     <file relUrl="App_GlobalResources/EditorLocalization.de-DE.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="bin/Areas/AreaConfiguracion/Views/Cadena/Create.cshtml" publishTime="06/25/2012 05:44:41" />
     <file relUrl="Areas/AreaContable/Views/EntregaOC/ResumenEntregas.cshtml" publishTime="06/25/2012 05:44:42" />
@@ -200,16 +201,16 @@
     <file relUrl="Areas/AreaClientes/Views/Shared/EditorTemplates/ClienteJuridicoViewTemplate.cshtml" publishTime="06/25/2012 05:44:40" />
     <file relUrl="Content/data/js/fancybox/fancy_shadow_sw.png" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/data/js/fancybox/fancy_title_right.png" publishTime="06/25/2012 05:44:54" />
-    <file relUrl="Areas/AreaEventos/Views/Shared/EventosPPagado.cshtml" publishTime="06/25/2012 05:44:38" />
+    <file relUrl="Areas/AreaEventos/Views/Shared/EventosPPagado.cshtml" publishTime="07/05/2012 11:57:59" />
     <file relUrl="App_GlobalResources/EditorLocalization.nl-NL.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/themes/base/jquery.ui.resizable.css" publishTime="06/25/2012 05:44:47" />
     <file relUrl="App_GlobalResources/UploadLocalization.pl-PL.resx" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/data/css/Cliente.css" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/js/ui/admincp/images/ui-icons_571c1c_256x240.png" publishTime="06/25/2012 05:44:51" />
-    <file relUrl="Content/data/js/Cliente/Cliente.js" publishTime="06/25/2012 05:44:52" />
+    <file relUrl="Content/data/js/Cliente/Cliente.js" publishTime="07/05/2012 13:58:35" />
     <file relUrl="bin/Content/img/._testpic3b.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/bin/EntityFramework.xml" publishTime="06/24/2012 22:39:01" />
-    <file relUrl="Content/data/images/icons/._icon_square.png" publishTime="06/25/2012 05:44:50" />
+    <file relUrl="bin/Areas/AreaClientes/Models/LogicaCliente.cs" publishTime="06/25/2012 12:04:25" />
     <file relUrl="bin/Content/img/._testpic3.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/data/images/icons/icon_zip.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/js/plugins/._jqplot.bubbleRenderer.js" publishTime="06/25/2012 05:44:51" />
@@ -236,6 +237,7 @@
     <file relUrl="Content/2012.1.214/Black/sprite.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/images/icons/._icon_cross.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/js/fancybox/._fancy_shadow_w.png" publishTime="06/25/2012 05:44:54" />
+    <file relUrl="Content/data/js/plugins/._jqplot.mekkoRenderer.min.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/css/reset.css" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Areas/AreaReportes/Views/ReporteEmpleado/IndexFormReporteEmpleado.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/data/js/plugins/jqplot.highlighter.js" publishTime="06/25/2012 05:44:52" />
@@ -256,8 +258,9 @@
     <file relUrl="Content/data/images/action_tooltip.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Areas/AreaEventos/Views/Shared/EditorTemplates/ParticipanteViewTemplate.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Scripts/2012.1.214/telerik.datetimepicker.min.js" publishTime="06/25/2012 05:44:36" />
-    <file relUrl="bin/Areas/AreaClientes/Models/LogicaCliente.cs" publishTime="06/25/2012 12:04:25" />
+    <file relUrl="Content/data/images/icons/icon_plus.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/themes/base/images/ui-icons_cd0a0a_256x240.png" publishTime="06/25/2012 05:44:47" />
+    <file relUrl="Content/data/images/icons/._icon_square.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/js/fancybox/._fancy_shadow_e.png" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/data/images/icons/icon_settings.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Areas/AreaContable/Views/EntregaOC/DetalleOC.cshtml" publishTime="06/25/2012 05:44:42" />
@@ -275,7 +278,6 @@
     <file relUrl="Content/data/js/plugins/._jqplot.logAxisRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/images/._logo.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/data/images/icons/icon_pictures.png" publishTime="06/25/2012 05:44:50" />
-    <file relUrl="Content/data/js/plugins/._jqplot.pyramidRenderer.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/fancybox/jquery.fancybox-1.3.4.pack.js" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Views/Account/LogOn.cshtml" publishTime="06/25/2012 05:44:46" />
     <file relUrl="Content/data/images/icons/._icon_save.png" publishTime="06/25/2012 05:44:50" />
@@ -292,7 +294,7 @@
     <file relUrl="Content/data/js/plugins/._jqplot.blockRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/images/icons/._icon_star.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Scripts/modernizr-1.7.min.js" publishTime="06/25/2012 05:44:35" />
-    <file relUrl="Content/2012.1.214/Forest/imagebrowser.png" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="Areas/AreaReportes/Views/RepExcelPromocion/Index.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Areas/AreaReservas/Views/Shared/GridResultAcumulado.cshtml" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/2012.1.214/Transparent/slider-h.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Areas/AreaHoteles/Views/Hotel/ViewPage1.cshtml" publishTime="06/25/2012 05:44:39" />
@@ -328,17 +330,16 @@
     <file relUrl="App_GlobalResources/EditorLocalization.pt-BR.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Areas/AreaConfiguracion/Views/Shared/EditorTemplates/TipoTemporadaViewTemplate.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Areas/AreaEventos/Views/Evento/EventoIndex.cshtml" publishTime="06/25/2012 09:34:01" />
-    <file relUrl="Content/2012.1.214/WebBlue/treeview-nodes.png" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="Content/data/js/fancybox/._jquery.fancybox-1.3.4.css" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Views/Shared/Error.cshtml" publishTime="06/25/2012 09:18:58" />
     <file relUrl="bin/Content/img/._testpic1.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/data/js/plugins/jqplot.mekkoRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/js/plugins/jqplot.pyramidRenderer.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="bin/Content/img/._testpic2b.png" publishTime="06/25/2012 05:44:55" />
-    <file relUrl="bin/Areas/AreaClientes/Views/Cliente/DetalleClienteTemplate.cshtml" publishTime="06/25/2012 05:44:40" />
     <file relUrl="Areas/AreaHoteles/Views/AdministrarHotel/Administrar.cshtml" publishTime="06/25/2012 05:44:39" />
     <file relUrl="Content/data/images/._search_bg.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/cp_article.html" publishTime="06/25/2012 05:44:49" />
-    <file relUrl="Areas/AreaEventos/Views/Shared/EventosCreados.cshtml" publishTime="06/25/2012 12:02:41" />
+    <file relUrl="Areas/AreaEventos/Views/Shared/EventosCreados.cshtml" publishTime="07/05/2012 11:57:59" />
     <file relUrl="Content/2012.1.214/Sunset/sprite-vertical.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Scripts/jquery.validate.unobtrusive.min.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/themes/base/jquery.ui.all.css" publishTime="06/25/2012 05:44:47" />
@@ -353,9 +354,8 @@
     <file relUrl="Areas/AreaClientes/Views/Shared/ClienteJuridicoIndexView.cshtml" publishTime="06/25/2012 05:44:40" />
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-ru.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/js/._jquery.multiselect.min.js" publishTime="06/25/2012 05:44:52" />
-    <file relUrl="Content/data/js/._jquery.dataTables.min.js" publishTime="06/25/2012 05:44:53" />
+    <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-zh_TW.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Scripts/2012.1.214/telerik.datepicker.min.js" publishTime="06/25/2012 05:44:36" />
-    <file relUrl="Content/data/images/icons/._icon_notify.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Scripts/2012.1.214/telerik.list.min.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/data/js/fancybox/._jquery.mousewheel-3.0.4.pack.js" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/data/js/ui/admincp/images/._ui-bg_highlight-soft_10_363e49_1x100.png" publishTime="06/25/2012 05:44:51" />
@@ -373,11 +373,12 @@
     <file relUrl="Content/data/images/icons/icon_check.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/2012.1.214/Metro/slider-v.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Views/_ViewStart.cshtml" publishTime="06/25/2012 05:44:47" />
-    <file relUrl="Areas/AreaReservas/Views/Reserva/clienteVista.cshtml" publishTime="06/25/2012 12:04:26" />
-    <file relUrl="Web.config" publishTime="06/25/2012 09:53:29" />
+    <file relUrl="Areas/AreaReservas/Views/Reserva/clienteVista.cshtml" publishTime="07/05/2012 12:10:36" />
+    <file relUrl="Web.config" publishTime="07/05/2012 15:18:40" />
     <file relUrl="Content/data/js/._jquery-1.7.1.min.js" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Areas/AreaConfiguracion/Views/Web.config" publishTime="06/25/2012 05:44:41" />
     <file relUrl="Areas/AreaContable/Views/Pagos/TarjetaDeCreditoIndex.cshtml" publishTime="06/25/2012 05:44:42" />
+    <file relUrl="Areas/AreaHoteles/Views/Shared/EditorTemplates/HotelViewTemplate.cshtml" publishTime="06/25/2012 05:44:39" />
     <file relUrl="Content/2012.1.214/Telerik/sprite-vertical.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/bin/EntityFramework.dll" publishTime="06/24/2012 22:39:01" />
     <file relUrl="Content/themes/base/jquery.ui.selectable.css" publishTime="06/25/2012 05:44:47" />
@@ -389,7 +390,7 @@
     <file relUrl="Content/themes/base/jquery.ui.button.css" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/data/js/plugins/._jqplot.canvasTextRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="bin/Areas/AreaReservas/Views/Reserva/ReservaHabitacionClienteView.cshtml" publishTime="06/25/2012 05:44:37" />
-    <file relUrl="bin/Content/img/favicon.ico" publishTime="06/25/2012 05:44:55" />
+    <file relUrl="Content/data/js/._jquery.dataTables.min.js" publishTime="06/25/2012 05:44:53" />
     <file relUrl="Areas/AreaEmpleados/Views/Empleado/CrearEmpleado.cshtml" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Areas/AreaContable/Views/Shared/OrdenesPagadasPartial.cshtml" publishTime="06/25/2012 08:19:00" />
     <file relUrl="Content/data/images/icons/._icon_monitor.png" publishTime="06/25/2012 05:44:50" />
@@ -398,7 +399,7 @@
     <file relUrl="App_GlobalResources/EditorLocalization.uk-UA.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="bin/Areas/AreaClientes/Views/Cliente/ClienteNaturalShowTemplate.cshtml" publishTime="06/25/2012 11:41:49" />
     <file relUrl="Scripts/2012.1.214/telerik.common.min.js" publishTime="06/25/2012 05:44:36" />
-    <file relUrl="Areas/AreaReservas/Views/CheckInCheckOut/IndexCheckInCheckOut.cshtml" publishTime="06/25/2012 05:44:37" />
+    <file relUrl="Areas/AreaReservas/Views/CheckInCheckOut/IndexCheckInCheckOut.cshtml" publishTime="07/05/2012 11:57:59" />
     <file relUrl="Content/data/js/mantenimientos/mantenimientosClientes.js" publishTime="06/25/2012 05:44:53" />
     <file relUrl="Content/data/js/plugins/jqplot.ciParser.min.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/Transparent/widget.png" publishTime="06/25/2012 05:44:47" />
@@ -406,7 +407,7 @@
     <file relUrl="Content/img/._test_avatar.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/data/images/icons/._icon_unlock.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="App_GlobalResources/UploadLocalization.pt-PT.resx" publishTime="06/25/2012 05:44:37" />
-    <file relUrl="Content/2012.1.214/Outlook/sprite.png" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="Content/data/js/editor/jquery.cleditor.js" publishTime="06/25/2012 05:44:55" />
     <file relUrl="App_GlobalResources/EditorLocalization.en-US.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="App_Readme/Elmah.txt" publishTime="06/25/2012 05:44:46" />
     <file relUrl="Content/data/images/icons/._icon_xls.png" publishTime="06/25/2012 05:44:50" />
@@ -442,7 +443,6 @@
     <file relUrl="Areas/AreaEmpleados/Views/Web.config" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-da.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Hay/slider-v.gif" publishTime="06/25/2012 05:44:49" />
-    <file relUrl="Areas/AreaReportes/Views/RepExcelPromocion/Index.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/2012.1.214/telerik.webblue.min.css" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Areas/AreaContable/Views/EntregaOC/Index.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/2012.1.214/Office2010Blue/imagebrowser.png" publishTime="06/25/2012 05:44:48" />
@@ -476,6 +476,7 @@
     <file relUrl="Content/img/testpic2.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Areas/AreaContable/Views/Proveedor/ProductosProveedor.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/data/js/plugins/._jqplot.pieRenderer.js" publishTime="06/25/2012 05:44:52" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/data/js/fancybox/._fancy_shadow_n.png" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/img/testpic4.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/2012.1.214/Office2010Black/loading.gif" publishTime="06/25/2012 05:44:47" />
@@ -503,7 +504,7 @@
     <file relUrl="Content/2012.1.214/Forest/slider-h.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-fa.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Areas/AreaEventos/Views/Evento/CargarAmbiente.cshtml" publishTime="06/25/2012 12:11:38" />
-    <file relUrl="Content/data/images/icons/._icon_pictures.png" publishTime="06/25/2012 05:44:50" />
+    <file relUrl="bin/Areas/AreaClientes/Views/Cliente/DetalleClienteTemplate.cshtml" publishTime="07/05/2012 11:57:58" />
     <file relUrl="Content/2012.1.214/Sitefinity/editor.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Areas/AreaConfiguracion/Views/Perfiles/Index.cshtml" publishTime="06/25/2012 05:44:41" />
     <file relUrl="Content/data/images/icons/icon_ppt.png" publishTime="06/25/2012 05:44:50" />
@@ -511,8 +512,7 @@
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-de.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Areas/AreaConfiguracion/Views/Servicios/ServiciosDeReservaIndex.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Areas/AreaReservas/Views/Shared/EditorTemplates/ReservaViewTemplate.cshtml" publishTime="06/25/2012 05:44:37" />
-    <file relUrl="Content/data/js/plugins/._jqplot.mekkoRenderer.min.js" publishTime="06/25/2012 05:44:51" />
-    <file relUrl="Content/data/js/fancybox/._jquery.fancybox-1.3.4.css" publishTime="06/25/2012 05:44:54" />
+    <file relUrl="Content/data/images/icons/._icon_notify.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Areas/AreaEventos/Views/Shared/EventoLlenarDatosNoEdit.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Areas/AreaConfiguracion/Views/TiposTemporada/Index.cshtml" publishTime="06/25/2012 05:44:41" />
     <file relUrl="Content/data/js/tooltip/tipsy.css" publishTime="06/25/2012 05:44:55" />
@@ -534,7 +534,6 @@
     <file relUrl="Content/data/images/icons/._icon_pen.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/js/plugins/._jqplot.donutRenderer.min.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Areas/AreaContable/Views/Shared/EditorTemplates/ProductoViewTemplate.cshtml" publishTime="06/25/2012 05:44:42" />
-    <file relUrl="Content/data/images/icons/icon_power.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/2012.1.214/Metro/editor.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/plugins/jqplot.funnelRenderer.min.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/ui/admincp/images/._ui-icons_454545_256x240.png" publishTime="06/25/2012 05:44:51" />
@@ -566,7 +565,6 @@
     <file relUrl="Content/data/js/ui/admincp/images/._ui-bg_flat_0_aaaaaa_40x100.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-tr.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Hay/imagebrowser.png" publishTime="06/25/2012 05:44:49" />
-    <file relUrl="Content/2012.1.214/telerik.outlook.min.css" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/fancybox/fancy_nav_right.png" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/2012.1.214/Sitefinity/treeview-nodes-rtl.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/data/js/plugins/jqplot.dateAxisRenderer.js" publishTime="06/25/2012 05:44:52" />
@@ -581,6 +579,7 @@
     <file relUrl="Content/data/images/icons/._icon_home.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Areas/AreaContable/Views/Ordenes/Create.cshtml" publishTime="06/25/2012 05:44:43" />
     <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-hr.js" publishTime="06/25/2012 05:44:52" />
+    <file relUrl="Content/2012.1.214/WebBlue/treeview-nodes.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/images/loginbox_password.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/data/images/icons/icon_target.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/2012.1.214/Forest/treeview-line.png" publishTime="06/25/2012 05:44:48" />
@@ -594,16 +593,19 @@
     <file relUrl="Content/data/images/._alert_icons.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/data/images/search_button.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/data/images/._unread_bg.png" publishTime="06/25/2012 05:44:49" />
+    <file relUrl="Content/data/js/plugins/._jqplot.cursor.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/ui/admincp/images/._ui-bg_highlight-soft_20_38404c_1x100.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/Sitefinity/slider-h.gif" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/2012.1.214/Outlook/treeview-nodes-rtl.png" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="Content/2012.1.214/Outlook/sprite.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Views/Shared/_Login.cshtml" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/2012.1.214/WebBlue/slider-h.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/validation/._jquery.validationEngine.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-sv.js" publishTime="06/25/2012 05:44:52" />
-    <file relUrl="Content/2012.1.214/Office2010Blue/loading.gif" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="Content/data/js/plugins/jqplot.canvasTextRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Hay/sprite.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-it.js" publishTime="06/25/2012 05:44:52" />
+    <file relUrl="Scripts/jquery.unobtrusive-ajax.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/2012.1.214/Default/treeview-nodes-rtl.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/2012.1.214/Transparent/group.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/data/js/fancybox/._jquery.fancybox-1.3.4.js" publishTime="06/25/2012 05:44:54" />
@@ -614,17 +616,14 @@
     <file relUrl="Content/data/js/plugins/jqplot.canvasAxisTickRenderer.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Scripts/2012.1.214/telerik.grid.reordering.min.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/2012.1.214/Simple/editor.png" publishTime="06/25/2012 05:44:48" />
-    <file relUrl="bin/PdfReportGenerator.dll" publishTime="06/25/2012 06:10:36" />
+    <file relUrl="bin/PdfReportGenerator.dll" publishTime="07/05/2012 15:18:25" />
     <file relUrl="Content/data/js/plugins/jqplot.logAxisRenderer.min.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="App_GlobalResources/GridLocalization.ru-RU.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/2012.1.214/Sitefinity/slider-v.gif" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Areas/AreaCargos/Views/Web.config" publishTime="06/25/2012 05:44:38" />
-    <file relUrl="Content/2012.1.214/Transparent/gradient.png" publishTime="06/25/2012 05:44:47" />
-    <file relUrl="Content/data/js/plugins/._jqplot.ciParser.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/._jquery.validate.js" publishTime="06/25/2012 05:44:53" />
     <file relUrl="Content/2012.1.214/WebBlue/slider-v.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Areas/AreaReportes/Views/RepExcelEvento/RepExcelEventoView.cshtml" publishTime="06/25/2012 05:44:38" />
-    <file relUrl="bin/Areas/AreaClientes/Views/Cliente/ClienteJuridicoShowTemplate.cshtml" publishTime="06/25/2012 05:44:40" />
     <file relUrl="Content/2012.1.214/telerik.black.min.css" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Areas/AreaPromociones/Views/Promocion/PromocionIndex.cshtml" publishTime="06/25/2012 05:44:37" />
     <file relUrl="App_GlobalResources/GridLocalization.da-DK.resx" publishTime="06/25/2012 05:44:36" />
@@ -670,29 +669,31 @@
     <file relUrl="Content/data/js/plugins/._jqplot.enhancedLegendRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Black/editor.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/themes/base/jquery.ui.accordion.css" publishTime="06/25/2012 05:44:47" />
-    <file relUrl="bin/Era_sphere.dll" publishTime="06/25/2012 12:19:21" />
+    <file relUrl="bin/Era_sphere.dll" publishTime="07/05/2012 15:18:29" />
     <file relUrl="Content/2012.1.214/Forest/slider-v.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="bin/Areas/AreaEventos/Views/Evento/EventoIndex.cshtml" publishTime="06/25/2012 09:34:01" />
     <file relUrl="Content/data/css/._grid.css" publishTime="06/25/2012 05:44:50" />
-    <file relUrl="Content/2012.1.214/WebBlue/sprite.png" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="bin/Areas/AreaClientes/Views/Cliente/ClienteJuridicoShowTemplate.cshtml" publishTime="06/25/2012 05:44:40" />
     <file relUrl="Areas/AreaContable/Views/Recibo/ReciboEventoPDF.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Areas/AreaEventos/Views/Shared/EventoRecibolinea.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Areas/AreaConfiguracion/Views/TipoDePago/Create.cshtml" publishTime="06/25/2012 05:44:41" />
     <file relUrl="Content/data/js/editor/._jquery.cleditor.css" publishTime="06/25/2012 05:44:54" />
-    <file relUrl="Areas/AreaReservas/Views/Reserva/IndexReserva.cshtml" publishTime="06/25/2012 05:44:37" />
+    <file relUrl="Areas/AreaReservas/Views/Reserva/IndexReserva.cshtml" publishTime="07/05/2012 12:10:36" />
     <file relUrl="Content/data/js/plugins/._jqplot.pieRenderer.min.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Areas/AreaPromociones/Views/Shared/EditorTemplates/PromocionViewTemplate.cshtml" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/2012.1.214/Black/slider-v.gif" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="bin/Areas/AreaClientes/Views/Cliente/DetalleClienteTemplatePDF.cshtml" publishTime="07/05/2012 11:57:58" />
     <file relUrl="App_GlobalResources/GridLocalization.fr-FR.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-cz.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/images/icons/icon_up.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/2012.1.214/Office2007/sprite.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/._jquery-ui-1.8.9.custom.min.js" publishTime="06/25/2012 05:44:55" />
-    <file relUrl="Content/data/js/ui/admincp/images/ui-bg_glass_10_821414_1x400.png" publishTime="06/25/2012 05:44:51" />
+    <file relUrl="Content/2012.1.214/Office2010Blue/loading.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/plugins/._jqplot.canvasAxisTickRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="bin/Content/img/testpic4b.png" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-fr.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Areas/AreaContable/Views/Ordenes/Details.cshtml" publishTime="06/25/2012 05:44:43" />
+    <file relUrl="Content/data/js/ui/admincp/images/._ui-bg_glass_0_ffffff_1x400.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/plugins/._jqplot.donutRenderer.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/themes/base/images/ui-icons_454545_256x240.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/2012.1.214/Hay/treeview-nodes.png" publishTime="06/25/2012 05:44:49" />
@@ -701,15 +702,17 @@
     <file relUrl="Content/2012.1.214/Web20/sprite-vertical.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/cp_forms.html" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/2012.1.214/Web20/imagebrowser.png" publishTime="06/25/2012 05:44:48" />
-    <file relUrl="Content/data/images/icons/icon_plus.png" publishTime="06/25/2012 05:44:50" />
+    <file relUrl="Content/2012.1.214/Forest/imagebrowser.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="bin/Areas/AreaCargos/Models/LogicaPreciable.cs" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Scripts/2012.1.214/telerik.upload.min.js" publishTime="06/25/2012 05:44:36" />
+    <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-sv.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Scripts/2012.1.214/telerik.editor.min.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/2012.1.214/Web20/treeview-line.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Areas/AreaClientes/Views/Cliente/ClienteJuridicoShowTemplate.cshtml" publishTime="06/25/2012 05:44:40" />
     <file relUrl="Content/2012.1.214/Black/slider-h.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/2012.1.214/Outlook/treeview-nodes.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/plugins/jqplot.dragable.min.js" publishTime="06/25/2012 05:44:51" />
+    <file relUrl="Content/data/images/icons/._icon_pictures.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Scripts/2012.1.214/telerik.autocomplete.min.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Areas/AreaHoteles/Views/Piso/IndexPiso.cshtml" publishTime="06/25/2012 07:33:53" />
     <file relUrl="Areas/AreaContable/Views/Recibo/ReciboPDF.cshtml" publishTime="06/25/2012 05:44:42" />
@@ -792,18 +795,17 @@
     <file relUrl="Content/2012.1.214/Web20/slider-v.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="App_GlobalResources/GridLocalization.nl-NL.resx" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Scripts/2012.1.214/jquery.validate.min.js" publishTime="06/25/2012 05:44:36" />
-    <file relUrl="bin/Areas/AreaReservas/Views/Reserva/clienteVista.cshtml" publishTime="06/25/2012 12:04:26" />
+    <file relUrl="bin/Areas/AreaReservas/Views/Reserva/clienteVista.cshtml" publishTime="07/05/2012 12:10:36" />
     <file relUrl="Content/data/js/ui/jquery-ui-1.8.17.custom.min.js" publishTime="06/25/2012 05:44:51" />
-    <file relUrl="Areas/AreaReportes/Views/RepExcelPromocion/RepExcelPromocionView.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/data/js/plugins/jqplot.json2.js" publishTime="06/25/2012 05:44:51" />
-    <file relUrl="bin/Areas/AreaReservas/Views/Reserva/IndexReserva.cshtml" publishTime="06/25/2012 05:44:37" />
+    <file relUrl="bin/Areas/AreaReservas/Views/Reserva/IndexReserva.cshtml" publishTime="07/05/2012 12:10:36" />
     <file relUrl="Content/2012.1.214/WebBlue/imagebrowser.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Areas/AreaContable/Views/Proveedores/Create.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/2012.1.214/Transparent/sprite-vertical.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Scripts/jquery-ui-1.8.11.min.js" publishTime="06/25/2012 05:44:35" />
     <file relUrl="Content/data/images/ajax-loader.gif" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/images/icons/._icon_logout.png" publishTime="06/25/2012 05:44:50" />
-    <file relUrl="Areas/AreaContable/Views/Proveedores/Edit.cshtml" publishTime="06/25/2012 05:44:42" />
+    <file relUrl="Content/data/js/fancybox/jquery.fancybox-1.3.4.css" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/data/js/validation/._validationEngine.jquery.css" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Areas/AreaConfiguracion/Views/Cadena/Create.cshtml" publishTime="06/25/2012 05:44:41" />
     <file relUrl="Scripts/2012.1.214/telerik.panelbar.min.js" publishTime="06/25/2012 05:44:36" />
@@ -820,12 +822,12 @@
     <file relUrl="Content/503.html" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/data/js/ui/admincp/images/._ui-icons_ea8510_256x240.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/Windows7/slider-h.gif" publishTime="06/25/2012 05:44:49" />
+    <file relUrl="Content/2012.1.214/WebBlue/sprite.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/images/icons/icon_left.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/2012.1.214/Web20/treeview-nodes.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/2012.1.214/Office2010Silver/slider-h.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/images/icons/icon_notify.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="bin/Areas/AreaEventos/Views/Evento/CargarAmbiente.cshtml" publishTime="06/25/2012 12:11:38" />
-    <file relUrl="Scripts/jquery-1.5.1-vsdoc.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/2012.1.214/Telerik/slider-h.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/calendar/fullcalendar.min.js" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Scripts/jquery-1.5.1.js" publishTime="06/25/2012 05:44:36" />
@@ -839,7 +841,7 @@
     <file relUrl="Areas/AreaReportes/Views/RepExcelEvento/Index.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/data/images/icons/._icon_cut.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/data/images/logo2.png" publishTime="06/25/2012 05:44:50" />
-    <file relUrl="Content/data/images/icons/._icon_charts.png" publishTime="06/25/2012 05:44:50" />
+    <file relUrl="Content/data/js/validation/languages/._jquery.validationEngine-fr.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Hay/slider-h.gif" publishTime="06/25/2012 05:44:49" />
     <file relUrl="App_GlobalResources/EditorLocalization.pt-PT.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/data/images/icons/._icon_target.png" publishTime="06/25/2012 05:44:49" />
@@ -855,11 +857,10 @@
     <file relUrl="Content/data/js/plugins/jqplot.pyramidGridRenderer.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/js/plugins/jqplot.pointLabels.min.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/plugins/._jqplot.highlighter.js" publishTime="06/25/2012 05:44:51" />
-    <file relUrl="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png" publishTime="06/25/2012 05:44:47" />
-    <file relUrl="Content/2012.1.214/Office2010Black/sprite.png" publishTime="06/25/2012 05:44:47" />
+    <file relUrl="bin/Areas/AreaClientes/Models/EraSphereContext.cs" publishTime="06/25/2012 11:46:26" />
     <file relUrl="Areas/AreaConfiguracion/Views/Shared/EditorTemplates/TemporadaViewTemplate.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/2012.1.214/Windows7/sprite.png" publishTime="06/25/2012 05:44:49" />
-    <file relUrl="bin/PdfReportGenerator.pdb" publishTime="06/25/2012 06:10:36" />
+    <file relUrl="bin/PdfReportGenerator.pdb" publishTime="07/05/2012 15:18:25" />
     <file relUrl="Content/data/js/css_browser_selector.js" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/js/calendar/fullcalendar.css" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/images/._action_icons.png" publishTime="06/25/2012 05:44:50" />
@@ -888,7 +889,7 @@
     <file relUrl="Content/2012.1.214/Default/sprite.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/2012.1.214/Default/treeview-line.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Areas/AreaContable/Views/AdministrarOC/ViewPage1.cshtml" publishTime="06/25/2012 05:44:43" />
-    <file relUrl="Content/data/js/plugins/._jqplot.cursor.js" publishTime="06/25/2012 05:44:51" />
+    <file relUrl="bin/Content/img/favicon.ico" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Areas/AreaContable/Views/Producto/IndexProducto.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Areas/AreaConfiguracion/Views/Shared/EditorTemplates/TipoDePagoViewTemplate.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="bin/Content/img/testpic3.png" publishTime="06/25/2012 05:44:55" />
@@ -904,8 +905,8 @@
     <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-ro.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Areas/AreaEventos/Views/Shared/PrecioServicio.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/data/images/icons/icon_save.png" publishTime="06/25/2012 05:44:50" />
-    <file relUrl="Content/data/js/editor/jquery.cleditor.js" publishTime="06/25/2012 05:44:55" />
-    <file relUrl="Areas/AreaClientes/Views/Cliente/DetalleClienteTemplate.cshtml" publishTime="06/25/2012 05:44:40" />
+    <file relUrl="Content/2012.1.214/telerik.outlook.min.css" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="Areas/AreaClientes/Views/Cliente/DetalleClienteTemplate.cshtml" publishTime="07/05/2012 11:57:58" />
     <file relUrl="Content/2012.1.214/telerik.sitefinity.min.css" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/data/js/validation/jquery.validationEngine.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/data/images/alert_bg.png" publishTime="06/25/2012 05:44:50" />
@@ -937,7 +938,7 @@
     <file relUrl="Content/data/js/ui/admincp/images/ui-icons_454545_256x240.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Views/Account/ChangePasswordSuccess.cshtml" publishTime="06/25/2012 05:44:46" />
     <file relUrl="Content/data/js/plugins/._jqplot.meterGaugeRenderer.js" publishTime="06/25/2012 05:44:51" />
-    <file relUrl="Areas/AreaEmpleados/Views/Empleado/Index.cshtml" publishTime="06/25/2012 06:46:00" />
+    <file relUrl="Areas/AreaEmpleados/Views/Empleado/Index.cshtml" publishTime="07/05/2012 14:09:05" />
     <file relUrl="Areas/AreaHoteles/Views/Shared/EditorTemplates/HotelXTipoHabitacionXTemporadaViewTemplate.cshtml" publishTime="06/25/2012 07:33:53" />
     <file relUrl="Areas/AreaEventos/Views/Evento/EventoLlenarDatos.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/2012.1.214/Telerik/sprite.png" publishTime="06/25/2012 05:44:48" />
@@ -948,7 +949,7 @@
     <file relUrl="Content/2012.1.214/Transparent/slider-v.gif" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Views/Home/About.cshtml" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/2012.1.214/Windows7/editor.png" publishTime="06/25/2012 05:44:49" />
-    <file relUrl="Areas/AreaContable/Views/Pagos/CorteDeCuenta.cshtml" publishTime="06/25/2012 05:44:42" />
+    <file relUrl="Areas/AreaContable/Views/Pagos/CorteDeCuenta.cshtml" publishTime="07/05/2012 12:10:36" />
     <file relUrl="Content/data/images/._block_title_bg.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Areas/AreaContable/Views/Proveedor/IndexProveedor.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Scripts/2012.1.214/telerik.calendar.min.js" publishTime="06/25/2012 05:44:36" />
@@ -958,21 +959,21 @@
     <file relUrl="Content/data/js/plugins/jqplot.enhancedLegendRenderer.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/fancybox/._fancybox-x.png" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/data/js/fancybox/fancy_shadow_w.png" publishTime="06/25/2012 05:44:54" />
-    <file relUrl="Areas/AreaConfiguracion/Views/TipoDePago/Details.cshtml" publishTime="06/25/2012 05:44:41" />
+    <file relUrl="Content/2012.1.214/Office2010Silver/gradient.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/2012.1.214/telerik.telerik.min.css" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/images/logo.png" publishTime="06/25/2012 05:44:49" />
-    <file relUrl="App_GlobalResources/GridLocalization.pt-BR.resx" publishTime="06/25/2012 05:44:36" />
+    <file relUrl="App_GlobalResources/GridLocalization.pt-BR.resx" publishTime="07/05/2012 12:10:36" />
     <file relUrl="Content/cp_main.html" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Content/data/images/icons/icon_square.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="App_GlobalResources/EditorLocalization.da-DK.resx" publishTime="06/25/2012 05:44:37" />
     <file relUrl="Content/data/images/._alert_close_btn.png" publishTime="06/25/2012 05:44:49" />
     <file relUrl="Areas/AreaContable/Views/AdministrarOC/ResumenOC.cshtml" publishTime="06/25/2012 05:44:43" />
-    <file relUrl="Content/data/js/plugins/jqplot.pyramidAxisRenderer.js" publishTime="06/25/2012 05:44:51" />
+    <file relUrl="Areas/AreaContable/Views/Proveedores/Edit.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-de.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Web20/treeview-nodes-rtl.png" publishTime="06/25/2012 05:44:48" />
-    <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-zh_TW.js" publishTime="06/25/2012 05:44:52" />
+    <file relUrl="Content/data/images/icons/icon_power.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/data/images/icons/._icon_paste.png" publishTime="06/25/2012 05:44:50" />
-    <file relUrl="bin/Era_sphere.pdb" publishTime="06/25/2012 12:19:21" />
+    <file relUrl="bin/Era_sphere.pdb" publishTime="07/05/2012 15:18:29" />
     <file relUrl="Areas/AreaConfiguracion/Views/TipoDePago/Edit.cshtml" publishTime="06/25/2012 05:44:41" />
     <file relUrl="bin/Scripts/ApiSeguridad/seguridad_sistema.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Areas/AreaContable/Views/AdministrarOC/Index.cshtml" publishTime="06/25/2012 05:44:43" />
@@ -981,7 +982,7 @@
     <file relUrl="Content/2012.1.214/telerik.metro.min.css" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/images/icons/._icon_settings.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="bin/Content/img/testpic4.png" publishTime="06/25/2012 05:44:55" />
-    <file relUrl="Content/data/js/plugins/jqplot.canvasTextRenderer.min.js" publishTime="06/25/2012 05:44:52" />
+    <file relUrl="Content/2012.1.214/Transparent/gradient.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Scripts/2012.1.214/telerik.grid.grouping.min.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/data/js/jquery.validate.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Web20/sprite.png" publishTime="06/25/2012 05:44:48" />
@@ -989,7 +990,7 @@
     <file relUrl="Areas/AreaContable/Views/Shared/EntregaOCPartial.cshtml" publishTime="06/25/2012 07:47:53" />
     <file relUrl="Content/data/js/plugins/jqplot.json2.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Areas/AreaContable/Views/Proveedor/DetallesProductoProveedor.cshtml" publishTime="06/25/2012 05:44:42" />
-    <file relUrl="Content/data/js/ui/admincp/._jquery-ui-1.8.17.custom.css" publishTime="06/25/2012 05:44:51" />
+    <file relUrl="Areas/AreaReportes/Views/RepExcelPromocion/RepExcelPromocionView.cshtml" publishTime="06/25/2012 05:44:38" />
     <file relUrl="Content/data/js/plugins/._jqplot.mekkoRenderer.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/themes/base/images/ui-icons_2e83ff_256x240.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/2012.1.214/Office2010Black/imagebrowser.png" publishTime="06/25/2012 05:44:47" />
@@ -1016,7 +1017,7 @@
     <file relUrl="bin/Telerik.Web.Mvc.dll" publishTime="06/24/2012 22:39:01" />
     <file relUrl="Areas/AreaConfiguracion/Views/TipoDePago/IndexTipoDePago.cshtml" publishTime="06/25/2012 05:44:41" />
     <file relUrl="Content/data/js/plugins/._jqplot.pyramidGridRenderer.js" publishTime="06/25/2012 05:44:52" />
-    <file relUrl="Scripts/jquery.unobtrusive-ajax.js" publishTime="06/25/2012 05:44:36" />
+    <file relUrl="Content/data/js/fancybox/._fancy_shadow_ne.png" publishTime="06/25/2012 05:44:54" />
     <file relUrl="Content/cp_table.html" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/data/js/fancybox/fancy_close.png" publishTime="06/25/2012 05:44:53" />
     <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-ja.js" publishTime="06/25/2012 05:44:52" />
@@ -1035,7 +1036,7 @@
     <file relUrl="Areas/AreaContable/Views/Shared/OrdenesAtendidasPartial.cshtml" publishTime="06/25/2012 05:44:42" />
     <file relUrl="Content/2012.1.214/Transparent/active.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/2012.1.214/Transparent/hover.png" publishTime="06/25/2012 05:44:47" />
-    <file relUrl="Content/data/js/validation/languages/jquery.validationEngine-sv.js" publishTime="06/25/2012 05:44:52" />
+    <file relUrl="Content/data/js/plugins/._jqplot.ciParser.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/Office2007/treeview-nodes-rtl.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/ui/admincp/images/ui-bg_highlight-hard_100_efefef_1x100.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/Office2007/loading.gif" publishTime="06/25/2012 05:44:48" />
@@ -1057,23 +1058,24 @@
     <file relUrl="Content/form_example.html" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/data/js/plugins/._jqplot.pyramidGridRenderer.min.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Areas/AreaContable/Views/Recibo/RecibosReserva.cshtml" publishTime="06/25/2012 05:44:42" />
+    <file relUrl="Content/data/images/icons/._icon_charts.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/data/images/icons/._icon_pdf.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="bin/NPOI.dll" publishTime="06/24/2012 22:39:01" />
     <file relUrl="Content/data/js/tooltip/._tipsy.css" publishTime="06/25/2012 05:44:55" />
     <file relUrl="Content/data/js/plugins/jqplot.BezierCurveRenderer.js" publishTime="06/25/2012 05:44:51" />
-    <file relUrl="bin/Areas/AreaClientes/Controllers/ClienteController.cs" publishTime="06/25/2012 05:44:40" />
+    <file relUrl="bin/Areas/AreaClientes/Controllers/ClienteController.cs" publishTime="07/05/2012 13:58:34" />
     <file relUrl="Content/2012.1.214/Office2010Blue/slider-v.gif" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/plugins/jqplot.trendline.js" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/2012.1.214/Office2010Blue/sprite-vertical.png" publishTime="06/25/2012 05:44:48" />
     <file relUrl="Content/data/js/plugins/jqplot.donutRenderer.min.js" publishTime="06/25/2012 05:44:51" />
-    <file relUrl="Content/2012.1.214/telerik.office2010black.min.css" publishTime="06/25/2012 05:44:48" />
+    <file relUrl="Scripts/jquery-1.5.1-vsdoc.js" publishTime="06/25/2012 05:44:36" />
     <file relUrl="Content/data/images/icons/icon_cross.png" publishTime="06/25/2012 05:44:50" />
     <file relUrl="Content/themes/base/jquery.ui.core.css" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Content/data/js/ui/admincp/images/ui-icons_ffffff_256x240.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/plugins/._jqplot.highlighter.min.js" publishTime="06/25/2012 05:44:52" />
     <file relUrl="Content/2012.1.214/Sitefinity/imagebrowser.png" publishTime="06/25/2012 05:44:49" />
-    <file relUrl="Content/data/js/ui/admincp/images/._ui-bg_glass_0_ffffff_1x400.png" publishTime="06/25/2012 05:44:51" />
+    <file relUrl="Content/2012.1.214/Office2010Black/sprite.png" publishTime="06/25/2012 05:44:47" />
     <file relUrl="Areas/AreaHoteles/Views/HotelXTipoHabitacionXTemporada/Index.cshtml" publishTime="06/25/2012 07:33:53" />
     <file relUrl="Content/data/js/ui/admincp/images/._ui-bg_highlight-hard_20_ffb400_1x100.png" publishTime="06/25/2012 05:44:51" />
     <file relUrl="Content/data/js/plugins.css" publishTime="06/25/2012 05:44:53" />
